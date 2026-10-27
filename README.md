@@ -29,6 +29,7 @@ scripts/audit.sh         build + audit, fails on sorry / unexpected axioms
 | `Common.ZetaTail` | midpoint rule `x^{-σ} ≤ ∫_{x-1/2}^{x+1/2} t^{-σ}` (via AM–GM); `ζ(σ) ≤ ∑_{n<N} n^{-σ} + (N−1/2)^{1-σ}/(σ−1)`; rational bounds `x^{-(p/r+ε)} ≤ q` from `1 ≤ q₁^r x^p` and `k log 2 + 1 − 2^k/x ≤ log x` (`rpow_neg_add_le`); `ζ(3) ≤ 1.2024` |
 | `Common.LogBounds` | two-sided Taylor bounds for `log(1−x)`, `0 ≤ x < 1`, with rational remainder; `log 3` to 10 digits |
 | `Common.TrigBounds` | alternating Taylor bounds for `sin x` (`x² ≤ 6`) and `cos x` (`x² ≤ 2`), `arcsin y` from `sin`, rational bounds for `√y`; with `norm_num` they give `arcsin`/`arccos` of rationals to any precision |
+| `Common.HingeIntegral` | exact angular integrals for Backlund's method: with `σ = c + R cos θ`, `∫₀^{θ_h} max 0 (σ − a) = (c − a)θ_a + R sin θ_a` and `∫_{θ_h}^π max 0 (1 − σ − a) = (1 − c − a)(π − θ'_a) + R sin θ'_a` (`1/2 ≤ a ≤ 1`), with `θ_a = π/2 + arcsin((c−a)/R)`, `sin θ_a = √(1 − ((a−c)/R)²)`; any piecewise linear profile reduces to these |
 | `Common.Zeta23Port` | the generalised Hilbert inequality of Montgomery–Vaughan, `Zeta23.MV.mv_hilbert`, ported from [zeta23](https://github.com/anthropics/formal-math/tree/main/zeta23) (Anthropic, Apache-2.0; see `Common/Zeta23Port/README.md`, `LICENSE`, `NOTICE_zeta23`) |
 
 ### `Papers/RvmClock/` — *The Riemann–von Mangoldt clock* (`rvm_clock_envelope`, v13)
@@ -63,6 +64,7 @@ Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backl
 | `C₁ = (1/(2π𝔡)) ∫₀^π 𝔢_E^*(c + R cos θ) dθ` in closed form (exact piecewise integration) and `C₁ ≤ 0.0978293` | `C1.integral_eStar_eq`, `C1.C1_le` | `C1.lean` |
 | **Theorem 1.3** with every numerical input proved | `C1.theorem_1_3_numeric` | `C1.lean` |
 | `\|ζ(3+it)\| ≤ 1.21`; `χ(s) = 2(2π)^{s-1}Γ(1-s) sin(πs/2)` and the functional equation `ζ(s) = χ(s) ζ(1-s)` (from Mathlib's `riemannZeta_one_sub`); **Theorem 1.3** with only the literature inputs and Lemma 4.3 as hypotheses | `ZetaFacts.zeta3`, `ZetaFacts.chi`, `ZetaFacts.functional_equation`, `ZetaFacts.theorem_1_3_lit` | `ZetaFacts.lean` |
+| `𝔢_B` (Bourgain profile, nodes from the A-process: `pair_j`, `gB_node_j`); `∫₀^π 𝔢_B^*(1+cos θ) dθ` in closed form; **Corollary 1.2**: `0.096816006 ≤ Λ(𝔢_B) ≤ 0.096816007`; **Corollary 1.4(a)**: `2πΛ(𝔢_B) ≤ 0.60832`; Remark 5.2: `Λ(0) = (3√3 − π)/(12π log 2)` | `LambdaB.integral_eBStar_eq`, `LambdaB.LambdaB_le`, `LambdaB.LambdaB_ge`, `LambdaB.two_pi_LambdaB_le`, `LambdaB.Lambda0_eq` | `LambdaB.lean` |
 
 Remaining hypotheses of `theorem_1_3_lit`: the literature inputs of `HYPOTHESES.md` and Lemma 4.3 (`hchi`, now a
 statement about the explicit `chi`; it needs Stirling's formula with remainder for the complex Gamma function,
@@ -71,8 +73,8 @@ which Mathlib does not have). Pending: the ζ layer of Theorem 1.5 (instantiatin
 
 `scripts/constantes_v3.py`, `scripts/constantes_v3_output.txt`: the program of Appendix A of the article (Python 3.13,
 mpmath 1.4.1; constants `Λ(𝔢_B)`, `C₁`, `C₂`, `C₃(100)`, crossings with Bellotti–Wong and with Yang's (4.29); the angular
-integral both by quadrature and by the closed form (5.3)) and its output. `scripts/gen_sigs.py`, `scripts/gen_c1.py`
-generate the rational certificates of `ZetaSigS.lean` and `C1.lean`.
+integral both by quadrature and by the closed form (5.3)) and its output. `scripts/gen_sigs.py`, `scripts/gen_c1.py`, `scripts/gen_lambdaB.py`
+generate the rational certificates of `ZetaSigS.lean`, `C1.lean` and `LambdaB.lean` (`gen_lambdaB_output.txt`: its checks).
 
 `CheckAll.lean`, `CheckMaximal.lean`: `#check`/`#print axioms` of Branch A (superseded by `Audit.lean`).
 `logs_mac_2026-10-26/`: compiler outputs of the previous, file-by-file setup (SHA-256 of the sources as of
@@ -107,6 +109,8 @@ commit it refers to.
 * 2026-10-27 — this repository: `Common/` + `Papers/` layout, `Audit.lean`, `HYPOTHESES.md`, CI;
   `ZetaSigS.lean` (`log ζ(σ♯) ≤ 1.52499`) and `Thm13Zeta.lean` (ζ constants discharged in Theorem 1.3).
 * 2026-10-27 — `C1.lean`, `ZetaFacts.lean`; `scripts/constantes_v3.py` with its output (article v13, Appendix A).
+* 2026-10-28 — `Common/HingeIntegral.lean` (exact angular integrals of hinge profiles, any `c, R`);
+  `LambdaB.lean`: `Λ(𝔢_B)`, `2πΛ(𝔢_B)` and `Λ(0)` certified (article v14).
   First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`.
 * 2026-10-27 — `C1.lean`: `C₁ ≤ 0.0978293` by exact piecewise integration; `theorem_1_3_numeric`. CI run
   40470337612 (commit `ad159d9`), `AUDIT OK`.

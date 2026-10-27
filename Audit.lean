@@ -16,6 +16,8 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #print axioms Common.LogBounds.log_one_sub_le
 #print axioms Common.TrigBounds.sin_le_partial
 #print axioms Common.TrigBounds.arcsin_le_of_le_sin
+#print axioms Common.HingeIntegral.int_max_a
+#print axioms Common.HingeIntegral.int_max_b
 #print axioms Zeta23.MV.mv_hilbert
 
 -- Papers/RvmClock, Branch A (Theorems 1.5, 1.6 and their lemmas)
@@ -50,6 +52,13 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #print axioms RvmClock.ZetaFacts.functional_equation
 #print axioms RvmClock.ZetaFacts.theorem_1_3_lit
 
+-- Papers/RvmClock, Corollaries 1.2 and 1.4(a), Remark 5.2 (certified constants)
+#print axioms RvmClock.LambdaB.integral_eBStar_eq
+#print axioms RvmClock.LambdaB.LambdaB_le
+#print axioms RvmClock.LambdaB.LambdaB_ge
+#print axioms RvmClock.LambdaB.two_pi_LambdaB_le
+#print axioms RvmClock.LambdaB.Lambda0_eq
+
 -- statements of the main results, for the record
 #check @RvmClock.transfer
 #check @RvmClock.sublevel
@@ -58,6 +67,8 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #check @RvmClock.Thm13.theorem_1_3_zeta
 #check @RvmClock.ZetaConst.log_zeta_ratio_le
 #check @RvmClock.ZetaSigS.log_zeta_sigS_le
+#check @RvmClock.LambdaB.LambdaB_le
+#check @RvmClock.LambdaB.Lambda0_eq
 #check @RvmClock.C1.C1_le
 #check @RvmClock.C1.theorem_1_3_numeric
 #check @RvmClock.ZetaFacts.theorem_1_3_lit

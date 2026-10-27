@@ -1,5 +1,3 @@
-# CI run 40472400023, commit 2077ae4, Tue Oct 27 08:20:09 UTC 2026, ubuntu-latest, Lean 4.36.0-rc1 + Mathlib cache
-# lake build: 0 errors; scripts/audit.sh: AUDIT OK
 'Common.ZetaSeries.zeta_one_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Common.ZetaSeries.zeta_two_add_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Common.ZetaTail.zeta_le_partial_add_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -7,6 +5,8 @@
 'Common.LogBounds.log_one_sub_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Common.TrigBounds.sin_le_partial' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Common.TrigBounds.arcsin_le_of_le_sin' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Common.HingeIntegral.int_max_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Common.HingeIntegral.int_max_b' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Zeta23.MV.mv_hilbert' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.maximal_cube_36' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -36,6 +36,11 @@
 'RvmClock.ZetaFacts.zeta3' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.ZetaFacts.functional_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.ZetaFacts.theorem_1_3_lit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.LambdaB.integral_eBStar_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.LambdaB.LambdaB_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.LambdaB.LambdaB_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.LambdaB.two_pi_LambdaB_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.LambdaB.Lambda0_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 @RvmClock.transfer : ∀ {γ : ℤ → ℝ} {ℓ₀ ℓ₁ : ℤ} {a b : ℝ},
   RvmClock.Window γ ℓ₀ ℓ₁ a b →
     ∀ {f : ℝ → ℝ},
@@ -198,6 +203,11 @@ RvmClock.Thm13.theorem_1_3_zeta : ∀ (S : ℝ → ℝ),
                               Real.exp 1 ≤ T → |S T| ≤ 9783e-5 * Real.log T + 0.7214 * Real.log (Real.log T) + 10.6
 RvmClock.ZetaConst.log_zeta_ratio_le : Real.log ((riemannZeta ↑1.000002).re / (riemannZeta ↑2.000004).re) ≤ 12.62467
 RvmClock.ZetaSigS.log_zeta_sigS_le : Real.log (riemannZeta ↑RvmClock.Explicit.sigS).re ≤ 1.52499
+RvmClock.LambdaB.LambdaB_le : (∫ (θ : ℝ) in 0..Real.pi, RvmClock.LambdaB.eBStar (1 + Real.cos θ)) /
+    (2 * Real.pi * Real.log 2) ≤
+  96816007e-9
+RvmClock.LambdaB.Lambda0_eq : (∫ (θ : ℝ) in 0..Real.pi, max (1 / 2 - (1 + Real.cos θ)) 0) / (2 * Real.pi * Real.log 2) =
+  (3 * √3 - Real.pi) / (12 * Real.pi * Real.log 2)
 RvmClock.C1.C1_le : (∫ (θ : ℝ) in 0..Real.pi,
       RvmClock.Profile.eStar (RvmClock.Explicit.cc + RvmClock.Explicit.RR * Real.cos θ)) /
     (2 * Real.pi * RvmClock.Explicit.dd) ≤
