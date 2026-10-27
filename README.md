@@ -31,7 +31,7 @@ scripts/audit.sh         build + audit, fails on sorry / unexpected axioms
 | `Common.TrigBounds` | alternating Taylor bounds for `sin x` (`x² ≤ 6`) and `cos x` (`x² ≤ 2`), `arcsin y` from `sin`, rational bounds for `√y`; with `norm_num` they give `arcsin`/`arccos` of rationals to any precision |
 | `Common.Zeta23Port` | the generalised Hilbert inequality of Montgomery–Vaughan, `Zeta23.MV.mv_hilbert`, ported from [zeta23](https://github.com/anthropics/formal-math/tree/main/zeta23) (Anthropic, Apache-2.0; see `Common/Zeta23Port/README.md`, `LICENSE`, `NOTICE_zeta23`) |
 
-### `Papers/RvmClock/` — *The Riemann–von Mangoldt clock* (`rvm_clock_envelope`, v10)
+### `Papers/RvmClock/` — *The Riemann–von Mangoldt clock* (`rvm_clock_envelope`, v13)
 
 Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backlund`, `RvmClock.Explicit`,
 `RvmClock.Thm13`, `RvmClock.ZetaConst`, `RvmClock.ZetaSigS`.
@@ -69,6 +69,11 @@ statement about the explicit `chi`; it needs Stirling's formula with remainder f
 which Mathlib does not have). Pending: the ζ layer of Theorem 1.5 (instantiating
 `ZetaInputs` with the zeros of `riemannZeta`, Lemma 4.1, Theorem 3.1); the Selberg–Fujii inputs.
 
+`scripts/constantes_v3.py`, `scripts/constantes_v3_output.txt`: the program of Appendix A of the article (Python 3.13,
+mpmath 1.4.1; constants `Λ(𝔢_B)`, `C₁`, `C₂`, `C₃(100)`, crossings with Bellotti–Wong and with Yang's (4.29); the angular
+integral both by quadrature and by the closed form (5.3)) and its output. `scripts/gen_sigs.py`, `scripts/gen_c1.py`
+generate the rational certificates of `ZetaSigS.lean` and `C1.lean`.
+
 `CheckAll.lean`, `CheckMaximal.lean`: `#check`/`#print axioms` of Branch A (superseded by `Audit.lean`).
 `logs_mac_2026-10-26/`: compiler outputs of the previous, file-by-file setup (SHA-256 of the sources as of
 2026-10-26, before the move to this layout).
@@ -101,6 +106,7 @@ commit it refers to.
   `vcasana1/REVIEWOWNPAPERS_OCT26`, branch `rvm-clock-articulo-y-lean`, folder `LEAN_RVM_CLOCK/`.
 * 2026-10-27 — this repository: `Common/` + `Papers/` layout, `Audit.lean`, `HYPOTHESES.md`, CI;
   `ZetaSigS.lean` (`log ζ(σ♯) ≤ 1.52499`) and `Thm13Zeta.lean` (ζ constants discharged in Theorem 1.3).
+* 2026-10-27 — `C1.lean`, `ZetaFacts.lean`; `scripts/constantes_v3.py` with its output (article v13, Appendix A).
   First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`.
 * 2026-10-27 — `C1.lean`: `C₁ ≤ 0.0978293` by exact piecewise integration; `theorem_1_3_numeric`. CI run
   40470337612 (commit `ad159d9`), `AUDIT OK`.
