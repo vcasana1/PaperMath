@@ -1,5 +1,0 @@
-== lean ExplicitCheck.lean (Lean 4.36.0-rc1, Mathlib v4.36.0-rc1) Mon Oct 26 21:21:59 UTC 2026
-'RvmClock.Explicit.thm_1_3' depends on axioms: [propext, Classical.choice, Quot.sound]
-'RvmClock.Explicit.explicit_N' depends on axioms: [propext, Classical.choice, Quot.sound]
-'RvmClock.Explicit.backlund_conditions' depends on axioms: [propext, Classical.choice, Quot.sound]
-rc=0

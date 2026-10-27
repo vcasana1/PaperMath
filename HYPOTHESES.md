@@ -74,7 +74,7 @@ inequalities, Theorem 7.3 (`transfer`, `transfer_36`; see the scope note below),
 (`Construction.lean`), the Mertens-type bounds (`Mertens.lean`), Theorem 3.9 (`mean_value`, from the
 Montgomery–Vaughan inequality `Zeta23.MV.mv_hilbert` ported from zeta23), Lemma 7.5 and Lemma 7.6.
 
-Scope notes (from the external review of 2026-10-26):
+Scope notes:
 * `maximal_cube`, `maximal_cube_36` are the *window* form of Lemma 7.2 (maximal function over intervals inside
   the window), which is the form stated in the article and used in Theorem 7.3.
 * `transfer_36` assumes, besides measurability of `f`, that `q_f²(q_f+1)²` is integrable on `(a,b]`; in the

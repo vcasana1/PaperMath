@@ -32,7 +32,7 @@ scripts/audit.sh         build + audit, fails on sorry / unexpected axioms
 | `Common.HingeIntegral` | exact angular integrals for Backlund's method: with `σ = c + R cos θ`, `∫₀^{θ_h} max 0 (σ − a) = (c − a)θ_a + R sin θ_a` and `∫_{θ_h}^π max 0 (1 − σ − a) = (1 − c − a)(π − θ'_a) + R sin θ'_a` (`1/2 ≤ a ≤ 1`), with `θ_a = π/2 + arcsin((c−a)/R)`, `sin θ_a = √(1 − ((a−c)/R)²)`; any piecewise linear profile reduces to these |
 | `Common.Zeta23Port` | the generalised Hilbert inequality of Montgomery–Vaughan, `Zeta23.MV.mv_hilbert`, ported from [zeta23](https://github.com/anthropics/formal-math/tree/main/zeta23) (Anthropic, Apache-2.0; see `Common/Zeta23Port/README.md`, `LICENSE`, `NOTICE_zeta23`) |
 
-### `Papers/RvmClock/` — *The Riemann–von Mangoldt clock* (`rvm_clock_envelope`, v13)
+### `Papers/RvmClock/` — *The Riemann–von Mangoldt clock* (`rvm_clock_envelope`, v22)
 
 Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backlund`, `RvmClock.Explicit`,
 `RvmClock.Thm13`, `RvmClock.ZetaConst`, `RvmClock.ZetaSigS`.
@@ -41,7 +41,7 @@ Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backl
 |---|---|---|
 | Lemma 7.2 (discrete maximal inequality; window form, constant 24 and 36) | `maximal_cube`, `maximal_cube_36` | `Maximal.lean` |
 | inequality (7.4), bathtub | `bathtub_right`, `bathtub_left` | `Bathtub.lean` |
-| **Theorem 7.3** (sublevel transfer), v7 form with `∫ q_f⁴` and `2·24^{1/3}`; article forms | `transfer`, `transfer_24`, `transfer_36` | `Transfer.lean` |
+| **Theorem 7.3** (sublevel transfer), with `∫ q_f⁴` and `2·24^{1/3}` as in the article; variant with constant 36 | `transfer` (via `transfer_24`), `transfer_36` | `Transfer.lean` |
 | (1.10)–(1.12), §7.1, (7.1), (7.2), **Proposition 7.1** (prime-corrected clock) | `abs_PhiM_le`, `abs_Phi_le_sqrt`, `continuousOn_F`, `xClock_pos`, `xClock_lt_succ`, `Sub_subset_two_tau`, `budget_le_two_sqrt`; `casanya_method` (= `xClock`, the name of the method) | `Construction.lean` |
 | Theorem 3.9 (Montgomery–Vaughan mean value) | `mean_value` | `MeanValue.lean` |
 | Theorem 3.10 (Mertens-type bounds, proved from Chebyshev) | `sum_log_div_le`, `sum_inv_prime_le`, `nth_prime_le_sq` | `Mertens.lean` |
@@ -77,14 +77,6 @@ integral both by quadrature and by the closed form (5.3)) and its output. `scrip
 `scripts/yang_smallt_arb_output.txt`: the Arb certificate of Remark 4.5(ii) (constant `1.87781 ≤ 2` on `3 ≤ t ≤ T_m`, `4 ≤ m ≤ 9`). `scripts/gen_sigs.py`, `scripts/gen_c1.py`, `scripts/gen_lambdaB.py`
 generate the rational certificates of `ZetaSigS.lean`, `C1.lean` and `LambdaB.lean` (`gen_lambdaB_output.txt`: its checks).
 
-`CheckAll.lean`, `CheckMaximal.lean`: `#check`/`#print axioms` of Branch A (superseded by `Audit.lean`).
-`logs_mac_2026-10-26/`: compiler outputs of the previous, file-by-file setup (SHA-256 of the sources as of
-2026-10-26, before the move to this layout).
-
-### `Papers/PrimeClock/`
-
-`Psi.lean`: the function `Ψ_j` of (4.2) of *Prime Corrected Clock* and `Ψ₁(u) = u² + 1/12`.
-
 ## Building
 
 ```
@@ -97,23 +89,6 @@ Single file: `lake env lean PaperMath/Papers/RvmClock/ZetaSigS.lean` (after its 
 
 ## How to cite
 
-Cite the commit (or the Zenodo DOI of a tagged release, once it exists): "V. Casaña-Giner, PaperMath: Lean 4
+Cite the commit: "V. Casaña-Giner, PaperMath: Lean 4
 formalisations, `https://github.com/vcasana1/PaperMath`, commit `<sha>`". The article's Appendix B names the
 commit it refers to.
-
-## History
-
-* 2026-10-14 — Lake project created on the author's Mac (`~/Lean/PaperMath`).
-* 2026-10-17 … 10-26 — `RvmClock` Blocks 1–11 (Branch A, then Branch B and `ZetaConst`), compiled file by file
-  with Lean 4.36.0-rc1 (logs in `Papers/RvmClock/logs_mac_2026-10-26/`); sources mirrored in
-  `vcasana1/REVIEWOWNPAPERS_OCT26`, branch `rvm-clock-articulo-y-lean`, folder `LEAN_RVM_CLOCK/`.
-* 2026-10-27 — this repository: `Common/` + `Papers/` layout, `Audit.lean`, `HYPOTHESES.md`, CI;
-  `ZetaSigS.lean` (`log ζ(σ♯) ≤ 1.52499`) and `Thm13Zeta.lean` (ζ constants discharged in Theorem 1.3).
-* 2026-10-27 — `C1.lean`, `ZetaFacts.lean`; the program of Appendix A of the article with its output in `scripts/`.
-* 2026-10-28 — `Common/HingeIntegral.lean` (exact angular integrals of hinge profiles, any `c, R`);
-  `LambdaB.lean`: `Λ(𝔢_B)`, `2πΛ(𝔢_B)` and `Λ(0)` certified (article v21).
-  First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`.
-* 2026-10-27 — `C1.lean`: `C₁ ≤ 0.0978293` by exact piecewise integration; `theorem_1_3_numeric`. CI run
-  40470337612 (commit `ad159d9`), `AUDIT OK`.
-* 2026-10-27 — `ZetaFacts.lean`: `|ζ(3+it)| ≤ 1.21` and the functional equation proved from Mathlib;
-  `theorem_1_3_lit`. CI run 40472400023 (commit `2077ae4`), `AUDIT OK`; its output is `Audit_output.txt`.

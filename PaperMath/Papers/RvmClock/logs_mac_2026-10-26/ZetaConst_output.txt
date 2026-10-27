@@ -1,6 +1,0 @@
-== lean ZetaConst.lean (Lean 4.36.0-rc1, Mathlib parcial) Mon Oct 26 23:17:12 UTC 2026
-rc=0
-== #print axioms / #check
-'RvmClock.ZetaConst.log_zeta_ratio_le' depends on axioms: [propext, Classical.choice, Quot.sound]
-RvmClock.ZetaConst.log_zeta_ratio_le : Real.log ((riemannZeta ↑1.000002).re / (riemannZeta ↑2.000004).re) ≤ 12.62467
-RvmClock.ZetaConst.zeta_c_pos : 0 < (riemannZeta ↑1.000002).re
