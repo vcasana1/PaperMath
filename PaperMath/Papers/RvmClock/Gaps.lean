@@ -3,7 +3,7 @@ import Mathlib.Analysis.SpecificLimits.Basic
 import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 
 /-!
-# Lemma 7.4 (third moment of the gaps) — combinatorial part
+# Lemma 7.5 (third moment of the gaps) — combinatorial part
 
 If the gaps `D_ℓ ∈ [0,1]` satisfy, for every `j` with `2^{j+1} ≤ L`,
 `Σ_{D_ℓ ≥ 2^{j+1}/L} D_ℓ ≤ M (j+2)² / 16^j`, then `Σ D_ℓ³ ≤ (4 Σ D_ℓ + 256 M) / L²`.
@@ -71,7 +71,7 @@ lemma exists_dyadic {D L : ℝ} (hL : 1 ≤ L) (hD1 : D ≤ 1) (hD2 : 2 / L ≤ 
   have : (j : ℝ) < ⌈L⌉₊ := by linarith
   exact_mod_cast this
 
-/-- **Lemma 7.4, combinatorial core.** -/
+/-- **Lemma 7.5, combinatorial core.** -/
 theorem sum_cube_le {ι : Type*} (Λ : Finset ι) (D : ι → ℝ) (hD0 : ∀ ℓ ∈ Λ, 0 ≤ D ℓ)
     (hD1 : ∀ ℓ ∈ Λ, D ℓ ≤ 1) {L M : ℝ} (hL : 1 ≤ L) (hM : 0 ≤ M)
     (hyp : ∀ j : ℕ, (2 : ℝ) ^ (j + 1) ≤ L →
@@ -193,7 +193,7 @@ lemma D_nonneg (ℓ : ℕ) : 0 ≤ Z.D ℓ := by
 /-- The set `𝒜_h = {t ∈ [T, 4T] : N(t+h) = N(t)}`. -/
 def Aset (T h : ℝ) : Set ℝ := {t ∈ Icc T (4 * T) | Z.N (t + h) = Z.N t}
 
-/-- **Lemma 7.4, disjoint intervals**: if `D_ℓ ≤ 1` on `Λ ⊆ {ℓ : T < γ_ℓ ≤ 2T}`, then
+/-- **Lemma 7.5, disjoint intervals**: if `D_ℓ ≤ 1` on `Λ ⊆ {ℓ : T < γ_ℓ ≤ 2T}`, then
 `Σ_{ℓ ∈ Λ, D_ℓ ≥ 2h} D_ℓ ≤ 2 |𝒜_h|`. -/
 theorem sum_D_le_two_vol {T h : ℝ} (hT : 1 ≤ T) (hh : 0 < h) (Λ : Finset ℕ)
     (hΛ : ∀ ℓ ∈ Λ, T < Z.γ ℓ ∧ Z.γ ℓ ≤ 2 * T) (hD1 : ∀ ℓ ∈ Λ, Z.D ℓ ≤ 1) :

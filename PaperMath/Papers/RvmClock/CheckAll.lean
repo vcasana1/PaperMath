@@ -33,7 +33,7 @@ import PaperMath.Papers.RvmClock.Sublevel
 #print axioms RvmClock.xClock_pos
 #print axioms RvmClock.Sub_subset_two_tau
 #print axioms RvmClock.budget_le_two_sqrt
--- Mertens-type bounds (replace Theorem 3.10 in Lemma 7.5)
+-- Mertens-type bounds (replace Theorem 3.10 in Lemma 7.6)
 #check @RvmClock.sum_log_div_le
 #check @RvmClock.sum_inv_prime_le
 #check @RvmClock.nth_prime_le_sq
@@ -45,21 +45,21 @@ import PaperMath.Papers.RvmClock.Sublevel
 #check @RvmClock.mean_value
 #print axioms Zeta23.MV.mv_hilbert
 #print axioms RvmClock.mean_value
--- Lemma 7.4 (third moment of the gaps), conditional on Fujii (b) as an explicit hypothesis
+-- Lemma 7.5 (third moment of the gaps), conditional on Fujii (b) as an explicit hypothesis
 #check @RvmClock.sum_cube_le
 #check @RvmClock.Ordinates.sum_D_le_two_vol
 #print RvmClock.ZetaInputs.FujiiB
 #check @RvmClock.ZetaInputs.vol_A_le
 #check @RvmClock.ZetaInputs.gaps_third_moment
 #print axioms RvmClock.ZetaInputs.gaps_third_moment
--- Fourth moments of prime Dirichlet polynomials (𝒟₁, 𝒟₂ in Lemma 7.5)
+-- Fourth moments of prime Dirichlet polynomials (𝒟₁, 𝒟₂ in Lemma 7.6)
 #check @RvmClock.prime_fourth_moment
 #print axioms RvmClock.prime_fourth_moment
--- Expansion of the finite Euler phase (proof of Lemma 7.5)
+-- Expansion of the finite Euler phase (proof of Lemma 7.6)
 #check @RvmClock.eulerArg_expand
 #check @RvmClock.PhiM_expand
 #print axioms RvmClock.PhiM_expand
--- Lemma 7.5 (fourth moment of the counting error), conditional on Fujii (a) as an explicit hypothesis
+-- Lemma 7.6 (fourth moment of the counting error), conditional on Fujii (a) as an explicit hypothesis
 #print RvmClock.primesLt
 #check @RvmClock.mem_primesLt
 #print RvmClock.zp

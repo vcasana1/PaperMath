@@ -5,7 +5,7 @@ import Mathlib.Analysis.SpecialFunctions.Complex.LogBounds
 import Mathlib.Analysis.PSeries
 
 /-!
-# Expansion of the finite Euler phase (equation (7.x) `phase_split` in the proof of Lemma 7.5)
+# Expansion of the finite Euler phase (equation (7.5) `phase_split` in the proof of Lemma 7.6)
 
 `Φ_m(t) = (1/π) Im Σ_{ν<m} p_ν^{-1/2-it} + (1/2π) Im Σ_{ν<m} p_ν^{-1-2it} + Φ⁽³⁾(t)`,
 with `|Φ⁽³⁾(t)| ≤ K` uniformly in `m` and `t`.
