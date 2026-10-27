@@ -1,0 +1,13 @@
+== Lean 4.36.0-rc1 / Mathlib v4.36.0-rc1, Mon Oct 26 22:40:56 UTC 2026
+-- Profile: rc=0
+-- ZetaLines: rc=0
+-- ZetaNodes: rc=0
+-- ZetaBound: rc=0
+-- Backlund: rc=0
+-- Explicit: rc=0
+-- Thm13: rc=0
+-- axioms:
+'RvmClock.Thm13.theorem_1_3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.ZetaLines.lemma_4_4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.Backlund.master' depends on axioms: [propext, Classical.choice, Quot.sound]
+rc=0
