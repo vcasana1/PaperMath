@@ -1,5 +1,6 @@
-# yang_smallt_arb.py -- certificate for Remark 'Robustness of the inputs' (ii) of rvm_clock_envelope (Python 3.13.17, python-flint 0.9.0)
-# Rigorous (Arb) redo of Yang (JMAA 534 (2024) 128124), Sec. 3.1, eqs. (3.9)-(3.13), for 4<=k<=9,
+# yang_smallt_arb.py -- certificate for Remark 4.5(ii) of the article rvm_clock_envelope (Appendix A).
+# Python 3.13.17, python-flint 0.9.0 (Arb ball arithmetic, 120 bits, outward rounding).
+# Rigorous redo of Yang (JMAA 534 (2024) 128124), Sec. 3.1, eqs. (3.9)-(3.13), for 4<=k<=9,
 # with |Log(Q0+s)| = rho(s)*log|Q0+s| in the Phragmen-Lindelof conclusion (Fiori Cor.3 / Trudgian Lemma 3),
 # A(t0) as printed in (3.12), t0 on a partition of [3, T_k].  On a piece t in [e^a, e^b], t0=e^a:
 #   |zeta(sigma_k+it)| <= 0.618^{k/(K-1)} * rho_max(piece) * A(e^a) * t^{(1-sigma_k)/3} log t

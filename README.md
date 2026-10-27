@@ -71,9 +71,10 @@ statement about the explicit `chi`; it needs Stirling's formula with remainder f
 which Mathlib does not have). Pending: the ζ layer of Theorem 1.5 (instantiating
 `ZetaInputs` with the zeros of `riemannZeta`, Lemma 4.1, Theorem 3.1); the Selberg–Fujii inputs.
 
-`scripts/constantes_v3.py`, `scripts/constantes_v3_output.txt`: the program of Appendix A of the article (Python 3.13,
+`scripts/constantes_v5.py`, `scripts/constantes_v5_output.txt`: the program of Appendix A of the article (Python 3.13,
 mpmath 1.4.1; constants `Λ(𝔢_B)`, `C₁`, `C₂`, `C₃(100)`, crossings with Bellotti–Wong and with Yang's (4.29); the angular
-integral both by quadrature and by the closed form (5.3)) and its output. `scripts/gen_sigs.py`, `scripts/gen_c1.py`, `scripts/gen_lambdaB.py`
+integral both by quadrature and by the closed form (5.3)) and its output. `scripts/yang_smallt_arb.py`,
+`scripts/yang_smallt_arb_output.txt`: the Arb certificate of Remark 4.5(ii) (constant `1.87781 ≤ 2` on `3 ≤ t ≤ T_m`, `4 ≤ m ≤ 9`). `scripts/gen_sigs.py`, `scripts/gen_c1.py`, `scripts/gen_lambdaB.py`
 generate the rational certificates of `ZetaSigS.lean`, `C1.lean` and `LambdaB.lean` (`gen_lambdaB_output.txt`: its checks).
 
 `CheckAll.lean`, `CheckMaximal.lean`: `#check`/`#print axioms` of Branch A (superseded by `Audit.lean`).
@@ -108,7 +109,7 @@ commit it refers to.
   `vcasana1/REVIEWOWNPAPERS_OCT26`, branch `rvm-clock-articulo-y-lean`, folder `LEAN_RVM_CLOCK/`.
 * 2026-10-27 — this repository: `Common/` + `Papers/` layout, `Audit.lean`, `HYPOTHESES.md`, CI;
   `ZetaSigS.lean` (`log ζ(σ♯) ≤ 1.52499`) and `Thm13Zeta.lean` (ζ constants discharged in Theorem 1.3).
-* 2026-10-27 — `C1.lean`, `ZetaFacts.lean`; `scripts/constantes_v3.py` with its output (article v13, Appendix A).
+* 2026-10-27 — `C1.lean`, `ZetaFacts.lean`; the program of Appendix A of the article with its output in `scripts/`.
 * 2026-10-28 — `Common/HingeIntegral.lean` (exact angular integrals of hinge profiles, any `c, R`);
   `LambdaB.lean`: `Λ(𝔢_B)`, `2πΛ(𝔢_B)` and `Λ(0)` certified (article v21).
   First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`.

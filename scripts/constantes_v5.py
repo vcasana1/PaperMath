@@ -1,8 +1,9 @@
-# Constants of the article (v5): Bourgain profile (Thm 1.1, Cor 1.2) and explicit profile (Thm 1.3)
-# v3 added the closed form (5.3) of the angular integral for both profiles and the crossing with Yang's (4.29);
-# v4 corrects the equation and lemma numbers in the comments and printed labels (article v15);
-# v5 prints C_3(100) as defined in Section 5.3 (with the two mean-value costs 2C_1/T and 2C_2/(T log T))
-# and also the same sum with the exact differences log(T+2)-log T, log log(T+2)-log log T (article v20).
+# constantes_v5.py -- constants of the article rvm_clock_envelope (Appendix A).
+# Bourgain profile (Theorem 1.1, Corollary 1.2) and explicit profile (Theorem 1.3): the angular integrals by
+# quadrature and by the closed form (5.3), the constants C_1, C_2, log(zeta(c)/zeta(2c)), log zeta(sigma#),
+# C_3(100) as defined in Section 5.3 (with the costs 2C_1/T and 2C_2/(T log T)) and the same sum with the exact
+# differences, Lambda(0), and the crossing points with Bellotti-Wong (1.7) and with Yang's (4.29).
+# Python 3.13.17, mpmath 1.4.1, 40 decimal digits.
 import sys, mpmath
 from mpmath import mp, mpf, quad, sqrt, log, pi, acos, cos, sin, zeta, nstr
 mp.dps = 40
