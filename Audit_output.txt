@@ -1,4 +1,4 @@
-# CI run 40470337612, commit ad159d9, Tue Oct 27 08:01:20 UTC 2026, ubuntu-latest, Lean 4.36.0-rc1 + Mathlib cache
+# CI run 40472400023, commit 2077ae4, Tue Oct 27 08:20:09 UTC 2026, ubuntu-latest, Lean 4.36.0-rc1 + Mathlib cache
 # lake build: 0 errors; scripts/audit.sh: AUDIT OK
 'Common.ZetaSeries.zeta_one_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Common.ZetaSeries.zeta_two_add_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -33,6 +33,9 @@
 'RvmClock.C1.integral_eStar_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.C1.C1_le' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.C1.theorem_1_3_numeric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.ZetaFacts.zeta3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.ZetaFacts.functional_equation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.ZetaFacts.theorem_1_3_lit' depends on axioms: [propext, Classical.choice, Quot.sound]
 @RvmClock.transfer : ∀ {γ : ℤ → ℝ} {ℓ₀ ℓ₁ : ℤ} {a b : ℝ},
   RvmClock.Window γ ℓ₀ ℓ₁ a b →
     ∀ {f : ℝ → ℝ},
@@ -255,3 +258,94 @@ RvmClock.C1.theorem_1_3_numeric : ∀ (S : ℝ → ℝ),
                         (∀ (T : ℝ), Real.exp 1 ≤ T → T ≤ 100 → |S T| ≤ 2.5167) →
                           ∀ (T : ℝ),
                             Real.exp 1 ≤ T → |S T| ≤ 9783e-5 * Real.log T + 0.7214 * Real.log (Real.log T) + 10.6
+RvmClock.ZetaFacts.theorem_1_3_lit : ∀ (S : ℝ → ℝ),
+  (∀ (t : ℝ),
+      3 < |t| →
+        |t| ≤ Real.exp 105 → ‖riemannZeta (RvmClock.ZetaLines.sp (1 / 2) t)‖ ≤ 0.618 * |t| ^ (1 / 6) * Real.log |t|) →
+    (∀ (t : ℝ), Real.exp 105 < |t| → ‖riemannZeta (RvmClock.ZetaLines.sp (1 / 2) t)‖ ≤ 66.7 * |t| ^ (27 / 164)) →
+      (∀ (m : ℕ),
+          4 ≤ m →
+            m ≤ 9 →
+              ∀ (t : ℝ),
+                3 ≤ |t| →
+                  ‖riemannZeta (RvmClock.ZetaLines.sp (1 - ↑m / (2 ^ m - 2)) t)‖ ≤
+                    2 * |t| ^ (1 / (2 ^ m - 2)) * Real.log |t|) →
+        (∀ (t : ℝ), 3 ≤ |t| → ‖riemannZeta (RvmClock.ZetaLines.sp 1 t)‖ ≤ Real.log |t|) →
+          (∀ σ ∈ Set.Icc (1 / 2) 3,
+              ∀ (t : ℝ),
+                ‖RvmClock.ZetaLines.Xi (RvmClock.ZetaLines.sp σ t)‖ ≤
+                  ‖RvmClock.ZetaLines.sp σ t‖ + 2 * ‖RvmClock.ZetaLines.sp σ t‖ * ‖RvmClock.ZetaLines.sp σ t - 1‖) →
+            (∀ (a b α β : ℝ),
+                a < b →
+                  1 - a < 10 →
+                    β ≤ α →
+                      0 ≤ β →
+                        (∀ (t : ℝ),
+                            ‖RvmClock.ZetaLines.Xi (RvmClock.ZetaLines.sp a t)‖ ≤
+                              2 * ‖10 + RvmClock.ZetaLines.sp a t‖ ^ α *
+                                ‖Complex.log (10 + RvmClock.ZetaLines.sp a t)‖) →
+                          (∀ (t : ℝ),
+                              ‖RvmClock.ZetaLines.Xi (RvmClock.ZetaLines.sp b t)‖ ≤
+                                2 * ‖10 + RvmClock.ZetaLines.sp b t‖ ^ β *
+                                  ‖Complex.log (10 + RvmClock.ZetaLines.sp b t)‖) →
+                            ∀ σ ∈ Set.Icc a b,
+                              ∀ (t : ℝ),
+                                ‖RvmClock.ZetaLines.Xi (RvmClock.ZetaLines.sp σ t)‖ ≤
+                                  (2 * ‖10 + RvmClock.ZetaLines.sp σ t‖ ^ α) ^ ((b - σ) / (b - a)) *
+                                      (2 * ‖10 + RvmClock.ZetaLines.sp σ t‖ ^ β) ^ ((σ - a) / (b - a)) *
+                                    ‖Complex.log (10 + RvmClock.ZetaLines.sp σ t)‖) →
+              (∀ σ ∈ Set.Icc (-1e-2) (1 / 2),
+                  ∀ (t : ℝ),
+                    98 ≤ t →
+                      ‖RvmClock.ZetaFacts.chi (RvmClock.ZetaLines.sp σ t)‖ ≤
+                        1.0070 * (t / (2 * Real.pi)) ^ (1 / 2 - σ)) →
+                ∀ (Z : ℝ → ℕ → ℝ) (A0 D1 D2 E : ℝ → ℝ),
+                  (∀ (T : ℝ),
+                      100 ≤ T →
+                        ∀ (Ψ : ℝ → ℝ),
+                          (∀ (θ : ℝ), Ψ (-θ) = Ψ θ) →
+                            (∀ (n : ℕ),
+                                1 ≤ n →
+                                  ∀ (θ : ℝ),
+                                    1 / ↑n *
+                                        Real.log
+                                          ‖RvmClock.Backlund.fB T n
+                                              (RvmClock.Backlund.pt RvmClock.Explicit.cc RvmClock.Explicit.RR θ)‖ ≤
+                                      Ψ θ) →
+                              ∃ nm,
+                                StrictMono nm ∧
+                                  ∀ ε > 0,
+                                    ∃ M,
+                                      ∀ m ≥ M,
+                                        Z T (nm m) ≤
+                                          (Real.log
+                                                (RvmClock.Thm13.zetaC /
+                                                  (√((RvmClock.Explicit.cc - 1) ^ 2 + T ^ 2) * RvmClock.Thm13.zeta2C)) +
+                                              1 / Real.pi * ∫ (θ : ℝ) in 0..Real.pi, Ψ θ) +
+                                            ε) →
+                    (∀ (T : ℝ),
+                        100 ≤ T →
+                          ∀ (n : ℕ),
+                            1 ≤ n →
+                              |D2 T| ≤
+                                Real.pi * Z T n / (2 * RvmClock.Explicit.dd) + E T / 2 + 3 * Real.pi / (2 * ↑n) +
+                                  Real.pi / 4) →
+                      (∀ (T : ℝ),
+                          100 ≤ T →
+                            E T / Real.pi ≤ (640 * RvmClock.Explicit.delS - 112) / (1536 * (3 * T - 1)) + 1 / 1024) →
+                        (∀ (T : ℝ), 100 ≤ T → Real.pi * S T = A0 T + D2 T - D1 T) →
+                          (∀ (T : ℝ), 100 ≤ T → |A0 T| ≤ Real.log RvmClock.Thm13.zetaS) →
+                            (∀ (T : ℝ),
+                                100 ≤ T →
+                                  D1 T =
+                                    Real.arctan
+                                        ((RvmClock.Explicit.cc +
+                                              (RvmClock.Explicit.cc - 1 / 2) ^ 2 / RvmClock.Explicit.RR -
+                                            1) /
+                                          T) +
+                                      Real.arctan (1 / (2 * T))) →
+                              (∀ (T : ℝ), Real.exp 1 ≤ T → T ≤ 100 → |S T| ≤ 2.5167) →
+                                ∀ (T : ℝ),
+                                  Real.exp 1 ≤ T → |S T| ≤ 9783e-5 * Real.log T + 0.7214 * Real.log (Real.log T) + 10.6
+def RvmClock.ZetaFacts.chi : ℂ → ℂ :=
+fun s => 2 * (2 * ↑Real.pi) ^ (s - 1) * Complex.Gamma (1 - s) * Complex.sin (↑Real.pi * s / 2)

@@ -36,7 +36,11 @@ Sustituye a `claude/HANDOFF-rvm-clock-lean-constantes-v2.md` del proyecto de Cla
    `sin θ_a = √(1 − x²)`; 15 arcsin y 15 raíces acotados a 12 cifras con `Common.TrigBounds` (serie alternada
    de `sin`, `Antitone.alternating_series_le_tendsto`). Valor 0.0978292318785, margen 6.8·10⁻⁸ (no 7.7·10⁻⁷).
    `RvmClock.C1.theorem_1_3_numeric`: Teorema 1.3 solo con hipótesis de la literatura. CI run 40470337612.
-4. Lema 4.3 (`hchi`), la capa ζ del Teorema 1.5 (`ZetaInputs` con los ceros de `riemannZeta`, Lema 4.1,
-   Teorema 3.1), el núcleo Selberg–Fujii (`FujiiA`, `FujiiB`), `I.zeta3` (|ζ(3+it)| ≤ 1.21, trivial desde
-   `Common.ZetaSeries`).
-5. Para la revista: release etiquetada + DOI de Zenodo; citar el commit en el Apéndice B.
+4. (hecho) `I.zeta3` y la ecuación funcional: `ZetaFacts.lean` (`zeta3`, `chi`, `functional_equation`,
+   `theorem_1_3_lit`; CI run 40472400023, commit 2077ae4).
+5. Lema 4.3 (`hchi`, ahora enunciado para `ZetaFacts.chi`): necesita Stirling con resto explícito para
+   `Complex.Gamma` (DLMF 5.11(ii)); Mathlib no lo tiene. Las demás hipótesis de `theorem_1_3_lit` son
+   literatura (HPY, PY, Yang, Patel, Titchmarsh (2.1.4), Fiori, Bellotti–Wong 3.5, Platt) y no se formalizan.
+6. La capa ζ del Teorema 1.5 (`ZetaInputs` con los ceros de `riemannZeta`, Lema 4.1, Teorema 3.1); el núcleo
+   Selberg–Fujii (`FujiiA`, `FujiiB`) no.
+7. Para la revista: release etiquetada + DOI de Zenodo; el Apéndice B de la v11 del artículo cita el commit 2077ae4.

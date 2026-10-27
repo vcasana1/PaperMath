@@ -10,7 +10,7 @@ Lean guarantees that the conclusions follow from the hypotheses. It does **not**
 transcribed correctly from its source, nor that the hypotheses are satisfiable. Those two points are what an
 external review has to verify, statement by statement, against the sources below.
 
-## Branch B — Theorem 1.3, `RvmClock.C1.theorem_1_3_numeric` (`PaperMath/Papers/RvmClock/C1.lean`)
+## Branch B — Theorem 1.3, `RvmClock.ZetaFacts.theorem_1_3_lit` (`PaperMath/Papers/RvmClock/ZetaFacts.lean`)
 
 Conclusion: for every `T ≥ e`, `|S(T)| ≤ 0.09783 log T + 0.7214 log log T + 10.6`, inequality (1.7).
 
@@ -25,11 +25,11 @@ explicit profile of §4.1 (`Profile.lean`). `sp σ t = σ + it`.
 | | `I.py`: `‖ζ(1/2+it)‖ ≤ 66.7 |t|^{27/164}` for `|t| > e^105` | Patel–Yang 2024, Thm. 1.1, doi:10.1016/j.jnt.2024.03.011 (Theorem 3.3(a)) | literature |
 | | `I.yang`: `‖ζ(σ_m+it)‖ ≤ 2 |t|^{1/(2^m−2)} log|t|` for `4 ≤ m ≤ 9`, `|t| ≥ 3`, `σ_m = 1 − m/(2^m−2)` | Yang 2024, Thm. 1.1, doi:10.1016/j.jmaa.2024.128124, **with constant 2 instead of 1.546** (Remark 4.5(ii) of the article: Yang's constant on `3 ≤ |t| ≤ T_m` is recomputed as 1.878 ≤ 2) | literature, not literal |
 | | `I.patel`: `‖ζ(1+it)‖ ≤ log|t|` for `|t| ≥ 3` | Patel 2022, Thm. 1.1, doi:10.1016/j.indag.2022.04.007 (Theorem 3.3(c)) | literature |
-| | `I.zeta3`: `‖ζ(3+it)‖ ≤ 1.21` | trivial bound `|ζ(3+it)| ≤ ζ(3) = 1.2020…` (not yet proved in Lean) | literature (elementary) |
+| | ~~`I.zeta3`~~: `‖ζ(3+it)‖ ≤ 1.21` | `ZetaFacts.zeta3`: `‖ζ(s)‖ ≤ ζ(Re s) = ζ(3) ≤ 1.2024` (`Common.ZetaSeries.norm_zeta_le_zeta_re`, `Common.ZetaTail.zeta_three_le`) | **proved** |
 | | `I.small`: `‖Ξ(s)‖ ≤ ‖s‖ + 2‖s‖‖s−1‖` for `1/2 ≤ σ ≤ 3`, `Ξ(s) = (s−1)ζ(s)` | consequence of Titchmarsh 1986, (2.1.4) | literature (consequence, not the formula itself) |
 | | `I.pl`: Phragmén–Lindelöf for `Ξ` between two lines, `Q = 10`, `A = B = 2`, equal log powers | Fiori 2026, Cor. 3, doi:10.48550/arXiv.2502.13282 (Theorem 3.4); Rademacher 1959, doi:10.1007/BF01162949. The holomorphy and growth hypotheses on `Ξ` are classical and not checked | literature |
-| `chi : ℂ → ℂ`, `hFE` | `ζ(s) = χ(s) ζ(1−s)` for `−0.01 ≤ σ ≤ 1/2`, `t ≥ 98` | functional equation (Titchmarsh 1986, (2.1.1)) | literature (classical) |
-| `hchi` | `‖χ(σ+it)‖ ≤ 1.0070 (t/2π)^{1/2−σ}` for `−0.01 ≤ σ ≤ 1/2`, `t ≥ 98` | Lemma 4.3 of the article (from Stirling with remainder, DLMF §5.11(ii)) | article lemma, not yet in Lean |
+| ~~`chi : ℂ → ℂ`, `hFE`~~ | `ζ(s) = χ(s) ζ(1−s)`, `χ(s) = 2(2π)^{s−1} Γ(1−s) sin(πs/2)` | `ZetaFacts.chi`, `ZetaFacts.functional_equation` (for `Im s ≠ 0`), from Mathlib's `riemannZeta_one_sub` | **proved** (χ is now a definition) |
+| `hchi` | `‖ZetaFacts.chi (σ+it)‖ ≤ 1.0070 (t/2π)^{1/2−σ}` for `−0.01 ≤ σ ≤ 1/2`, `t ≥ 98` | Lemma 4.3 of the article (from Stirling with remainder, DLMF §5.11(ii)); needs Stirling's formula with explicit remainder for `Complex.Gamma`, not in Mathlib | article lemma, not in Lean |
 | `Z : ℝ → ℕ → ℝ`, `A0 D1 D2 E : ℝ → ℝ` | `Z T n = 𝒵_n(c,R)` at height `T`; `A0 = arg ζ(σ♯+iT)`-term, `D2 = Δ arg((s−1)ζ(s))` from `σ♯` to `1/2`, `D1 = Δ arg(s−1)`, `E T = 𝓔(T,δ♯)` | §5 of the article, (5.3) | abstract data |
 | `hA` | Theorem 3.5(a): for every even majorant `Ψ ≥ (1/n) log|𝔣_n(c+Re^{iθ})|` there is a subsequence with `limsup 𝒵_{n_m} ≤ log(ζ(c)/(√((c−1)²+T²) ζ(2c))) + (1/π)∫₀^π Ψ` | Bellotti–Wong 2025, Lemma 2.1, doi:10.1090/mcom/4133 (after Hasanalizade–Shen–Wong 2022, Props. 3.5, 3.7, doi:10.1090/mcom/3665) | literature |
 | `hB` | Theorem 3.5(b): `|D2| ≤ π 𝒵_n/(2𝔡) + 𝓔(T,δ♯)/2 + 3π/(2n) + π/4` for every `n ≥ 1` | Bellotti–Wong 2025, Lemmas 2.3, 2.4; Bennett–Martin–O'Bryant–Rechnitzer 2021, Lemma 3.4, doi:10.1090/mcom/3599 | literature |
@@ -45,7 +45,8 @@ explicit profile of §4.1 (`Profile.lean`). `sp σ t = σ + it`.
 `RvmClock.Thm13.theorem_1_3` (`Thm13.lean`) is the same theorem with `zc, z2c, zs` free and the five struck-out
 lines as hypotheses; `Thm13.theorem_1_3_zeta` (`Thm13Zeta.lean`) instantiates `zc := ζ(c)`, `z2c := ζ(2c)`,
 `zs := ζ(σ♯)` (Mathlib's `riemannZeta`, real part) and discharges four of them; `C1.theorem_1_3_numeric`
-discharges `hC1` too, so every remaining hypothesis is a literature input.
+discharges `hC1` too; `ZetaFacts.theorem_1_3_lit` takes the six remaining fields of `ExplicitInputs` as separate
+hypotheses, proves `zeta3` and the functional equation, and leaves the literature inputs and Lemma 4.3.
 
 Intermediate results and their own hypotheses: `RvmClock.ZetaLines.lemma_4_4` (Lemma 4.4, hypotheses `I`,
 `hFE`, `hchi`), `RvmClock.Backlund.master` (Proposition 5.1, general `c, R, K, h, Ω`), `RvmClock.Explicit.thm_1_3`
