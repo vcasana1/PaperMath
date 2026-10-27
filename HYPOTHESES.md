@@ -4,7 +4,7 @@ For each main theorem: every hypothesis as it is written in Lean, its source in 
 statement, DOI) and whether it is a **literature** input, a **numerical** input (a real number checked by
 interval arithmetic outside Lean), or a **proved** fact (formerly a hypothesis, now a theorem of this library).
 The numbering of theorems, lemmas and equations is that of the article *The Riemann–von Mangoldt clock*
-(`rvm_clock_envelope`, v14). Sources are cited in the version in which the statement was checked (the copy in
+(`rvm_clock_envelope`, v21). Sources are cited in the version in which the statement was checked (the copy in
 the author's library), with the published version when it exists.
 
 Lean guarantees that the conclusions follow from the hypotheses. It does **not** check that a hypothesis is
@@ -65,8 +65,8 @@ Data `Z : ZetaInputs` (`Inputs.lean`, extending `Ordinates` of `Gaps.lean`):
 
 | Lean hypothesis | Statement | Source | Kind |
 |---|---|---|---|
-| `hA : Z.FujiiA` (`Fourth.lean`) | `∃ A U₀, ∀ U ≥ U₀, ∫_U^{2U} |S(t) − (1/π) Im Σ_{p<U^{1/200}} p^{−1/2−it}|⁴ dt ≤ A U` | Fujii 1974, §3, pp. 232–233, doi:10.1090/S0002-9947-1974-0349603-2, with the corrections of Fujii 1981, §5, doi:10.1090/S0002-9947-1981-0621970-5 (Theorem 3.8(a), `k = 2`, `α_F = 1/5`, `H = T = U`, `Y = U^{1/200}`) | literature |
-| `hB : Z.FujiiB` (`Inputs.lean`) | `∃ A T₀, ∀ T ≥ T₀, ∀ 0 < h ≤ 1, ∫_T^{2T} (S(t+h) − S(t))⁴ dt ≤ A T log²(2 + h log T)` | Fujii 1974, Main Theorem, p. 225, with Fujii 1981, §5 (Theorem 3.8(b), `k = 2`, `α_F = 1/2`, `H = T`) | literature |
+| `hA : Z.FujiiA` (`Fourth.lean`) | `∃ A U₀, ∀ U ≥ U₀, ∫_U^{2U} |S(t) − (1/π) Im Σ_{p<U^{1/200}} p^{−1/2−it}|⁴ dt ≤ A U` | Fujii 1974, §3, pp. 232–233 (Selberg's expression with `x = T^{a₂/(60k)}`, the bounds `‖B_i‖ ≪ k² H^{1/(2k)}` for its five error terms, Lemma 5 for the primes in `[x³, Y)` with `A = 20/α_F`), doi:10.1090/S0002-9947-1974-0349603-2, with the corrections of Fujii 1981, §5, doi:10.1090/S0002-9947-1981-0621970-5 (Theorem 3.8(a), `k = 2`, `α_F = 1/5`, `H = T = U`, `Y = U^{1/200}`; Fujii's hypotheses `0 < a_i ≤ 1/2`, `q ≤ T^{1/4−a₁}`, `T^{1/2+a₂} ≤ H ≤ T` hold with `q = 1`, `a₂ = α_F`) | literature |
+| `hB : Z.FujiiB` (`Inputs.lean`) | `∃ A T₀, ∀ T ≥ T₀, ∀ 0 < h ≤ 1, ∫_T^{2T} (S(t+h) − S(t))⁴ dt ≤ A T log²(2 + h log T)` | Fujii 1974, Main Theorem, p. 225 (`0 < a_i ≤ 1/2`, `T^{1/2+a₂} ≤ H ≤ T`, `0 < h ≤ H − (H/√T)^{1/8}`; the endpoints `a₂ = 1/2`, `H = T` are admitted), restated for `q = 1`, `H = T` in Fujii 1981, §1 (α), with `log(3 + h log T)` (`log(3+x) ≤ (log 3/log 2) log(2+x)`), and §5 (Theorem 3.8(b), `k = 2`, `α_F = 1/2`, `H = T`) | literature |
 | `hTi : Z.Titchmarsh` (`Sublevel.lean`) | `S(t) = O(log t)` and `γ_{k+1} − γ_k → 0` | Titchmarsh 1986, §§9.4, 9.12 (Theorem 3.1) | literature (classical) |
 
 Everything else in Branch A is proved without hypotheses: Lemma 7.2 (`maximal_cube_36`), the bathtub
@@ -93,7 +93,7 @@ No hypotheses. `0.096816006 ≤ Λ(𝔢_B) ≤ 0.096816007` (`LambdaB_le`, `Lamb
 `(2π log 2)⁻¹ ∫₀^π 𝔢^*(1 + cos θ) dθ`. Not formalised: the passages to the limit of Theorem 1.1 and Corollary 1.2
 (they use Bourgain's exponent pair, Theorem 3.7(c), and Lemma 4.3).
 
-## Not formalised (status at v14)
+## Not formalised (status at v21)
 
 * Theorem 1.1 and the limit in Corollary 1.2 (need Theorem 3.7, Lemma 4.3 and a uniform version of Proposition 5.1
   as `c, R → 1`); Corollary 1.4 (a), (b) and Proposition 6.2 (need the identification of `γ_k` with the zeros of

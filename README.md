@@ -110,7 +110,7 @@ commit it refers to.
   `ZetaSigS.lean` (`log ζ(σ♯) ≤ 1.52499`) and `Thm13Zeta.lean` (ζ constants discharged in Theorem 1.3).
 * 2026-10-27 — `C1.lean`, `ZetaFacts.lean`; `scripts/constantes_v3.py` with its output (article v13, Appendix A).
 * 2026-10-28 — `Common/HingeIntegral.lean` (exact angular integrals of hinge profiles, any `c, R`);
-  `LambdaB.lean`: `Λ(𝔢_B)`, `2πΛ(𝔢_B)` and `Λ(0)` certified (article v14).
+  `LambdaB.lean`: `Λ(𝔢_B)`, `2πΛ(𝔢_B)` and `Λ(0)` certified (article v21).
   First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`.
 * 2026-10-27 — `C1.lean`: `C₁ ≤ 0.0978293` by exact piecewise integration; `theorem_1_3_numeric`. CI run
   40470337612 (commit `ad159d9`), `AUDIT OK`.
