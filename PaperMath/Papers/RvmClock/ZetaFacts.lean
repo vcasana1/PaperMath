@@ -50,9 +50,8 @@ theorem functional_equation (s : ℂ) (hs : s.im ≠ 0) :
   rw [sub_sub_cancel] at h
   rw [h]
   unfold chi
-  rw [show (Real.pi : ℂ) * (1 - s) / 2 = Real.pi / 2 - Real.pi * s / 2 by ring, Complex.cos_pi_div_two_sub,
-    neg_sub]
-  ring
+  rw [show (Real.pi : ℂ) * (1 - s) / 2 = Real.pi / 2 - Real.pi * s / 2 by ring,
+    Complex.cos_pi_div_two_sub, neg_sub]
 
 theorem hFE (σ t : ℝ) (ht : 98 ≤ t) :
     riemannZeta (sp σ t) = chi (sp σ t) * riemannZeta (1 - sp σ t) :=
