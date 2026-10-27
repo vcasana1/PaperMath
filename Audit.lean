@@ -46,6 +46,9 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #print axioms RvmClock.C1.integral_eStar_eq
 #print axioms RvmClock.C1.C1_le
 #print axioms RvmClock.C1.theorem_1_3_numeric
+#print axioms RvmClock.ZetaFacts.zeta3
+#print axioms RvmClock.ZetaFacts.functional_equation
+#print axioms RvmClock.ZetaFacts.theorem_1_3_lit
 
 -- statements of the main results, for the record
 #check @RvmClock.transfer
@@ -57,3 +60,5 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #check @RvmClock.ZetaSigS.log_zeta_sigS_le
 #check @RvmClock.C1.C1_le
 #check @RvmClock.C1.theorem_1_3_numeric
+#check @RvmClock.ZetaFacts.theorem_1_3_lit
+#print RvmClock.ZetaFacts.chi

@@ -212,4 +212,17 @@ theorem one_le_zeta_re {s : ℝ} (hs : 1 < s) : 1 ≤ (riemannZeta (s : ℂ)).re
 theorem zeta_re_pos {s : ℝ} (hs : 1 < s) : 0 < (riemannZeta (s : ℂ)).re :=
   lt_of_lt_of_le one_pos (one_le_zeta_re hs)
 
+/-- `‖ζ(s)‖ ≤ ζ(Re s)` for `Re s > 1` (termwise, from the Dirichlet series). -/
+theorem norm_zeta_le_zeta_re {s : ℂ} (hs : 1 < s.re) :
+    ‖riemannZeta s‖ ≤ (riemannZeta (s.re : ℂ)).re := by
+  rw [zeta_eq_tsum_one_div_nat_cpow hs, zeta_re_eq_tsum hs]
+  have hre : s.re ≠ 0 := by linarith
+  have hnorm : ∀ n : ℕ, ‖1 / (n : ℂ) ^ s‖ = 1 / (n : ℝ) ^ s.re := by
+    intro n
+    rw [norm_div, norm_one, Complex.norm_natCast_cpow_of_re_ne_zero n hre]
+  have hsum : Summable (fun n : ℕ => ‖1 / (n : ℂ) ^ s‖) := by
+    simp_rw [hnorm]; exact Real.summable_one_div_nat_rpow.2 hs
+  calc ‖∑' n : ℕ, 1 / (n : ℂ) ^ s‖ ≤ ∑' n : ℕ, ‖1 / (n : ℂ) ^ s‖ := norm_tsum_le_tsum_norm hsum
+    _ = ∑' n : ℕ, 1 / (n : ℝ) ^ s.re := by simp_rw [hnorm]
+
 end Common.ZetaSeries

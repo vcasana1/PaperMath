@@ -32,6 +32,7 @@ import PaperMath.Papers.RvmClock.ZetaConst
 import PaperMath.Papers.RvmClock.ZetaSigS
 import PaperMath.Papers.RvmClock.Thm13Zeta
 import PaperMath.Papers.RvmClock.C1
+import PaperMath.Papers.RvmClock.ZetaFacts
 
 -- Papers/PrimeClock — "Prime Corrected Clock" (only the definition of Ψ_j so far)
 import PaperMath.Papers.PrimeClock.Psi

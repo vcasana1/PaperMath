@@ -226,4 +226,20 @@ theorem rpow_neg_add_le {x a ε q₁ q : ℝ} (p r k : ℕ) (ha : a = (p : ℝ) 
     _ = q₁ / (1 + ε * L) := by ring
     _ ≤ q := by rw [div_le_iff₀ hpos]; exact hq
 
+/-- `ζ(3) ≤ 1.2024` (`ζ(3) = 1.2020569…`): four terms and the midpoint tail from `4.5`. -/
+theorem zeta_three_le : (riemannZeta ((3 : ℝ) : ℂ)).re ≤ 1.2024 := by
+  have h := zeta_le_partial_add_tail (σ := 3) (by norm_num) 5 (by norm_num)
+  have e3 : ((3 : ℝ)) = ((3 : ℕ) : ℝ) := by norm_num
+  have hsum : ∑ n ∈ range 5, 1 / (n : ℝ) ^ (3 : ℝ) = 1 + 1 / 8 + 1 / 27 + 1 / 64 := by
+    simp only [Finset.sum_range_succ, Finset.sum_range_zero]
+    rw [e3]
+    simp only [Real.rpow_natCast]
+    norm_num
+  have htail : (((5 : ℕ) : ℝ) - 1 / 2) ^ (1 - (3 : ℝ)) / ((3 : ℝ) - 1) = 2 / 81 := by
+    rw [show (1 : ℝ) - 3 = -((2 : ℕ) : ℝ) by norm_num, Real.rpow_neg (show (0 : ℝ) ≤ ((5 : ℕ) : ℝ) - 1 / 2 by norm_num),
+      Real.rpow_natCast]
+    norm_num
+  rw [hsum, htail] at h
+  linarith
+
 end Common.ZetaTail
