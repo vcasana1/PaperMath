@@ -33,6 +33,7 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #print axioms RvmClock.ZetaInputs.gaps_third_moment
 #print axioms RvmClock.fourth_moment
 #print axioms RvmClock.sublevel
+#print axioms RvmClock.casanya_method_sublevel
 #print axioms RvmClock.proportion
 
 -- Papers/RvmClock, Branch B (Theorem 1.3)
@@ -62,6 +63,7 @@ is a failure. `scripts/audit.sh` checks this automatically.
 -- statements of the main results, for the record
 #check @RvmClock.transfer
 #check @RvmClock.sublevel
+#check @RvmClock.casanya_method_sublevel
 #check @RvmClock.proportion
 #check @RvmClock.Thm13.theorem_1_3
 #check @RvmClock.Thm13.theorem_1_3_zeta

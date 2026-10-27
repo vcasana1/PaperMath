@@ -42,7 +42,7 @@ Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backl
 | Lemma 7.2 (discrete maximal inequality; window form, constant 24 and 36) | `maximal_cube`, `maximal_cube_36` | `Maximal.lean` |
 | inequality (7.4), bathtub | `bathtub_right`, `bathtub_left` | `Bathtub.lean` |
 | **Theorem 7.3** (sublevel transfer), v7 form with `∫ q_f⁴` and `2·24^{1/3}`; article forms | `transfer`, `transfer_24`, `transfer_36` | `Transfer.lean` |
-| (1.10)–(1.12), §7.1, (7.1), (7.2), **Proposition 7.1** (prime-corrected clock) | `abs_PhiM_le`, `abs_Phi_le_sqrt`, `continuousOn_F`, `xClock_pos`, `xClock_lt_succ`, `Sub_subset_two_tau`, `budget_le_two_sqrt` | `Construction.lean` |
+| (1.10)–(1.12), §7.1, (7.1), (7.2), **Proposition 7.1** (prime-corrected clock) | `abs_PhiM_le`, `abs_Phi_le_sqrt`, `continuousOn_F`, `xClock_pos`, `xClock_lt_succ`, `Sub_subset_two_tau`, `budget_le_two_sqrt`; `casanya_method` (= `xClock`, the name of the method) | `Construction.lean` |
 | Theorem 3.9 (Montgomery–Vaughan mean value) | `mean_value` | `MeanValue.lean` |
 | Theorem 3.10 (Mertens-type bounds, proved from Chebyshev) | `sum_log_div_le`, `sum_inv_prime_le`, `nth_prime_le_sq` | `Mertens.lean` |
 | Lemma 7.5, combinatorial part; abstract ordinates | `sum_cube_le`, `Ordinates.sum_D_le_two_vol` | `Gaps.lean` |
@@ -50,7 +50,7 @@ Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backl
 | fourth moment of prime Dirichlet polynomials (`𝒟₁`, `𝒟₂`) | `prime_fourth_moment` | `PrimeFourth.lean` |
 | Euler-phase expansion, `phase_split` | `eulerArg_expand`, `PhiM_expand` | `Phase.lean` |
 | Fujii (a) as hypothesis, **Lemma 7.6** | `ZetaInputs.FujiiA`, `fourth_moment` | `Fourth.lean` |
-| Theorem 3.1 as hypothesis, **Theorem 1.5**, **Corollary 1.6** | `ZetaInputs.Titchmarsh`, `sublevel`, `proportion` | `Sublevel.lean` |
+| Theorem 3.1 as hypothesis, **Theorem 1.5**, **Corollary 1.6** | `ZetaInputs.Titchmarsh`, `sublevel`, `casanya_method_sublevel`, `proportion` | `Sublevel.lean` |
 | §4.1 explicit profile `𝔢_E`, reflection `𝔢_E^*`, (1.4) | `Profile.gE`, `Profile.eStar`, `eStar_continuous`, `eStar_nonneg` | `Profile.lean` |
 | Theorem 3.3 and 3.4 as hypotheses (`ExplicitInputs`), (4.4) on one line, interpolation | `ZetaLines.ExplicitInputs`, `ZetaLines.line_bound`, `ZetaLines.strip` | `ZetaLines.lean` |
 | (4.4) on the nine lines, `|Ξ(s)| ≤ 2|Q+s|^{1+𝔢_E(σ)}|Log(Q+s)|` | `ZetaLines.half_three` | `ZetaNodes.lean` |

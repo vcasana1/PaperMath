@@ -49,6 +49,13 @@ noncomputable def F (t : ℝ) : ℝ := N0 t + Phi t
 
 noncomputable def xClock (k : ℕ) : ℝ := volume.real {t ∈ Ioi (0 : ℝ) | F t < (k : ℝ) - 1 / 2}
 
+/-- **Casaña's method** (Section 7.1 of the article): the `k`-th ordinate is approximated by the sublevel
+measure `x_k = |{t > 0 : N₀(t) + Φ(t) < k − 1/2}|` of the Riemann–von Mangoldt main term corrected by the
+finite Euler phase `Φ` with about `√t` primes, equation (1.12). `casanya_method k` is `xClock k`. -/
+noncomputable def casanya_method (k : ℕ) : ℝ := xClock k
+
+@[simp] theorem casanya_method_eq (k : ℕ) : casanya_method k = xClock k := rfl
+
 /-! ### `|arg (1 - z)| ≤ arcsin |z|` -/
 
 lemma abs_arg_one_sub_le (z : ℂ) (hz : ‖z‖ < 1) : |Complex.arg (1 - z)| ≤ Real.arcsin ‖z‖ := by

@@ -730,4 +730,14 @@ theorem proportion (Z : ZetaInputs) (hA : Z.FujiiA) (hB : Z.FujiiB) (hTi : Z.Tit
   rw [div_div, div_mul_eq_mul_div, le_div_iff₀ (by positivity)]
   linarith
 
+/-- **Theorem 1.5 for Casaña's method**: the same statement as `sublevel`, written with `casanya_method`. -/
+theorem casanya_method_sublevel (Z : ZetaInputs) (hA : Z.FujiiA) (hB : Z.FujiiB) (hTi : Z.Titchmarsh) :
+    ∃ C C' T₀ : ℝ, 0 ≤ C ∧ 0 ≤ C' ∧ ∀ T : ℝ, T₀ ≤ T →
+      ∑ k ∈ Finset.Ioc (Z.N T) (Z.N (2 * T)), (casanya_method k - Z.γ (k - 1)) ^ 2
+          ≤ C * T / Real.log T ∧
+      (∑ k ∈ Finset.Ioc (Z.N T) (Z.N (2 * T)), (casanya_method k - Z.γ (k - 1)) ^ 2)
+          / (Finset.Ioc (Z.N T) (Z.N (2 * T))).card ≤ C' / (Real.log T) ^ 2 ∧
+      T * Real.log T / (8 * π) ≤ ((Finset.Ioc (Z.N T) (Z.N (2 * T))).card : ℝ) := by
+  exact sublevel Z hA hB hTi
+
 end RvmClock
