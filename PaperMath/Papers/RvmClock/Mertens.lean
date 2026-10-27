@@ -5,7 +5,7 @@ import Mathlib.Algebra.BigOperators.Intervals
 import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-!
-# Mertens-type bounds used in Lemma 7.5 (replacing Theorem 3.10 of the article)
+# Mertens-type bounds used in Lemma 7.6 (replacing Theorem 3.10 of the article)
 
 * `sum_log_div_le`  : `Σ_{p ≤ n} log p / p ≤ log n + log 4`  (Mertens' first theorem, upper bound);
 * `sum_inv_prime_le`: `Σ_{Y ≤ p ≤ n} 1/p ≤ (log n + log 4) / log Y`;

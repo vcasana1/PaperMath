@@ -267,7 +267,7 @@ lemma log_two_add_pow_le (j : ℕ) : Real.log (2 + (2 : ℝ) ^ j) ≤ (j : ℝ) 
         have : (0:ℝ) ≤ (j : ℝ) + 2 := by positivity
         nlinarith
 
-/-- **Lemma 7.4 (third moment of the gaps)**, from Fujii (b) and `D_ℓ ≤ 1` for large `γ_ℓ`:
+/-- **Lemma 7.5 (third moment of the gaps)**, from Fujii (b) and `D_ℓ ≤ 1` for large `γ_ℓ`:
 `Σ_{T < γ_ℓ ≤ 2T} D_ℓ³ ≤ B · T / log²(T/2π)`. -/
 theorem gaps_third_moment (hF : Z.FujiiB) (hgap : ∃ G : ℝ, ∀ ℓ, G ≤ Z.γ ℓ → Z.D ℓ ≤ 1) :
     ∃ B T₁ : ℝ, 0 ≤ B ∧ ∀ T : ℝ, T₁ ≤ T →

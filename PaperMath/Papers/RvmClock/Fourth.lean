@@ -2,7 +2,7 @@ import PaperMath.Papers.RvmClock.Phase
 import PaperMath.Papers.RvmClock.Inputs
 
 /-!
-# Lemma 7.5: fourth moment of the counting error
+# Lemma 7.6: fourth moment of the counting error
 
 `∫_U^{2U} |𝓕(t) − N(t)|⁴ dt ≪ U` for `U = 2^j`, `j ≥ j₀`, under the hypothesis `FujiiA`
 (Theorem 3.8(a) of the article: Selberg's approximation in Fujii's form, `k = 2`, `α_F = 1/5`,
@@ -109,7 +109,7 @@ lemma abs_im_div_le (c : ℝ) (hc0 : 0 ≤ c) (hc : c ≤ 1) (w : ℂ) : |c * w.
 lemma pi_inv_le_one : 1 / π ≤ 1 := by
   rw [div_le_one Real.pi_pos]; linarith [Real.pi_gt_three]
 
-/-- Pointwise bound for `N₀ + Φ_m − N` (the five pieces of the proof of Lemma 7.5). -/
+/-- Pointwise bound for `N₀ + Φ_m − N` (the five pieces of the proof of Lemma 7.6). -/
 lemma pointwise_A (Z : ZetaInputs) {K : ℝ}
     (hK : ∀ (m : ℕ) (t : ℝ), |PhiM m t - (1 / π) * ∑ ν ∈ Finset.range m, (zp (prime ν) t).im
         - 1 / (2 * π) * ∑ ν ∈ Finset.range m, (zp (prime ν) t ^ 2).im| ≤ K)
@@ -398,7 +398,7 @@ lemma F_sub_N_measurable (Z : ZetaInputs) {a b : ℝ} (ha : 0 < a) :
     Z.N_measurable.aestronglyMeasurable
   exact ((hF.sub hN).norm.pow 4).congr (Filter.Eventually.of_forall (fun t => by simp [Real.norm_eq_abs]))
 
-/-- **Lemma 7.5** (fourth moment of the counting error), under `FujiiA`:
+/-- **Lemma 7.6** (fourth moment of the counting error), under `FujiiA`:
 for `U = 2^j`, `j ≥ j₀`, `|𝓕 − N|⁴` is integrable on `[U, 2U]` and `∫_U^{2U} |𝓕 − N|⁴ ≤ B·U`. -/
 theorem fourth_moment (Z : ZetaInputs) (hFA : Z.FujiiA) :
     ∃ B : ℝ, ∃ j₀ : ℤ, 0 ≤ B ∧ ∀ j : ℤ, j₀ ≤ j →

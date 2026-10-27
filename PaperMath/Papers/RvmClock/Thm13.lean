@@ -93,7 +93,7 @@ theorem theorem_1_3 (S : ℝ → ℝ)
       have : sp σ t = (σ : ℂ) + (t : ℂ) * Complex.I := rfl
       rw [← this]; linarith)
     (hA T hT) (hB T hT) (hdec T hT) (hA0 T hT) (hD1 T hT)
-  -- compare with the assembled form (5.4)
+  -- compare with the assembled form (5.5)
   have hC2 : C2 = 1 / (2 * dd) := rfl
   have hs := sigS_le
   have hσterm : (cc + (cc - 1 / 2) ^ 2 / RR - 1 / 2) / (Real.pi * T) ≤ 0.7501 / (Real.pi * T) := by

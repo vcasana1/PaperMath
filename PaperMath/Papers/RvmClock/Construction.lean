@@ -14,10 +14,10 @@ import Mathlib.Analysis.Complex.ExponentialBounds
 # The prime-corrected clock (Section 7.1 and Proposition 7.1, article v7)
 
 * `prime ν = p_{ν+1}` (so `prime 0 = 2`);
-* `PhiM m t = -(1/π) Σ_{ν<m} arg (1 - p_{ν+1}^{-1/2-it})`  (eq. (7.1));
+* `PhiM m t = -(1/π) Σ_{ν<m} arg (1 - p_{ν+1}^{-1/2-it})`  (eq. (1.10));
 * `N0 t = t/(2π) log (t/(2πe)) + 7/8`;
 * `budget j = ⌊2^{j/2}⌋`, `blk t = ⌊log₂ t⌋`;
-* `Phi`, `F = N0 + Phi` (eq. (7.2)), `xClock k = |{t > 0 : F t < k - 1/2}|` (eq. (7.3)).
+* `Phi`, `F = N0 + Phi` (eq. (1.11)), `xClock k = |{t > 0 : F t < k - 1/2}|` (eq. (1.12)).
 -/
 
 open Real Set MeasureTheory
@@ -109,7 +109,7 @@ lemma abs_eulerArg_le (n : ℕ) (hn : 2 ≤ n) (t : ℝ) : |eulerArg n t| ≤ π
     _ ≤ Real.arcsin (1 / Real.sqrt 2) := Real.arcsin_le_arcsin h1
     _ = π / 4 := arcsin_inv_sqrt_two
 
-/-- Eq. (7.4): `|Φ_m(t)| ≤ m/4`. -/
+/-- Eq. (7.1): `|Φ_m(t)| ≤ m/4`. -/
 lemma abs_PhiM_le (m : ℕ) (t : ℝ) : |PhiM m t| ≤ m / 4 := by
   unfold PhiM
   rw [abs_mul, abs_neg, abs_of_pos (by positivity : (0:ℝ) < 1 / π)]
@@ -195,7 +195,7 @@ lemma abs_Phi_le_budget {t : ℝ} (ht : 0 < t) : |Phi t| ≤ (budget (blk t + 1)
   unfold Phi
   exact abs_G_le h1 h2.le
 
-/-- Eq. (7.5): `|Φ(t)| ≤ √(2t)/4`. -/
+/-- Eq. (7.2): `|Φ(t)| ≤ √(2t)/4`. -/
 lemma abs_Phi_le_sqrt {t : ℝ} (ht : 0 < t) : |Phi t| ≤ Real.sqrt (2 * t) / 4 := by
   obtain ⟨h1, h2⟩ := mem_blk ht
   have hb := budget_sq_le (blk t + 1)

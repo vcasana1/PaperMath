@@ -5,7 +5,7 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Real
 /-!
 # Theorem 1.3 of `rvm_clock_envelope`: the final deduction
 
-From the assembled inequality (5.4) at `T ≥ 100` (Proposition 5.1 with Lemma 4.4) and Platt's
+From the assembled inequality (5.5) at `T ≥ 100` (Proposition 5.1 with Lemma 4.4) and Platt's
 bound (Theorem 3.6) on `[e, 100]`, we deduce
 `|S(T)| ≤ 0.09783 log T + 0.7214 log log T + 10.6` for every `T ≥ e`, and the `N(T)` version with `10.7`.
 
@@ -220,7 +220,7 @@ end RvmClock.Explicit
 
 namespace RvmClock.Explicit
 
-/-- Theorem 1.3 (1.7), from: the assembled bound (5.4) of Proposition 5.1 at `T ≥ 100`, with
+/-- Theorem 1.3 (1.7), from: the assembled bound (5.5) of Proposition 5.1 at `T ≥ 100`, with
 `𝓔(T,δ♯)/(2π)` bounded as in Theorem 3.5(c); Platt's bound (Theorem 3.6) on `[e,100]`; and the
 numerical values `C₁ ≤ 0.0978293`, `log ζ(σ♯) ≤ 1.52499`. -/
 theorem thm_1_3 (S : ℝ → ℝ) (C1 Lz : ℝ) (E : ℝ → ℝ)

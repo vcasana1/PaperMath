@@ -2,7 +2,7 @@ import PaperMath.Papers.RvmClock.MeanValue
 import Mathlib.Algebra.Order.Chebyshev
 
 /-!
-# Fourth moments of prime Dirichlet polynomials (used for `𝒟₁`, `𝒟₂` in Lemma 7.5)
+# Fourth moments of prime Dirichlet polynomials (used for `𝒟₁`, `𝒟₂` in Lemma 7.6)
 
 For a finite set `P` of primes, `k ≥ 1` and coefficients `a_p`,
 `∫_U^{2U} |Σ_{p∈P} a_p p^{-ikt}|⁴ dt ≤ 2U (Σ|a_p|²)² + C (Σ (p^k+1)|a_p|²)²`,
