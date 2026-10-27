@@ -14,6 +14,8 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #print axioms Common.ZetaTail.zeta_le_partial_add_tail
 #print axioms Common.ZetaTail.rpow_neg_add_le
 #print axioms Common.LogBounds.log_one_sub_le
+#print axioms Common.TrigBounds.sin_le_partial
+#print axioms Common.TrigBounds.arcsin_le_of_le_sin
 #print axioms Zeta23.MV.mv_hilbert
 
 -- Papers/RvmClock, Branch A (Theorems 1.5, 1.6 and their lemmas)
@@ -41,6 +43,9 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #print axioms RvmClock.ZetaSigS.zeta_sigS_le
 #print axioms RvmClock.ZetaSigS.log_zeta_sigS_le
 #print axioms RvmClock.Thm13.theorem_1_3_zeta
+#print axioms RvmClock.C1.integral_eStar_eq
+#print axioms RvmClock.C1.C1_le
+#print axioms RvmClock.C1.theorem_1_3_numeric
 
 -- statements of the main results, for the record
 #check @RvmClock.transfer
@@ -50,3 +55,5 @@ is a failure. `scripts/audit.sh` checks this automatically.
 #check @RvmClock.Thm13.theorem_1_3_zeta
 #check @RvmClock.ZetaConst.log_zeta_ratio_le
 #check @RvmClock.ZetaSigS.log_zeta_sigS_le
+#check @RvmClock.C1.C1_le
+#check @RvmClock.C1.theorem_1_3_numeric

@@ -5,6 +5,7 @@
 import PaperMath.Common.ZetaSeries
 import PaperMath.Common.LogBounds
 import PaperMath.Common.ZetaTail
+import PaperMath.Common.TrigBounds
 import PaperMath.Common.Zeta23Port.MV.Final
 
 -- Papers/RvmClock — "The Riemann–von Mangoldt clock"
@@ -30,6 +31,7 @@ import PaperMath.Papers.RvmClock.Thm13
 import PaperMath.Papers.RvmClock.ZetaConst
 import PaperMath.Papers.RvmClock.ZetaSigS
 import PaperMath.Papers.RvmClock.Thm13Zeta
+import PaperMath.Papers.RvmClock.C1
 
 -- Papers/PrimeClock — "Prime Corrected Clock" (only the definition of Ψ_j so far)
 import PaperMath.Papers.PrimeClock.Psi
