@@ -30,16 +30,20 @@ lemma two_rpow_le {σ x h : ℝ} (hσ : 0 ≤ σ) (hh : 0 ≤ h) (hx : h < x) :
   have hc : 0 < x ^ (-σ) := Real.rpow_pos_of_pos hx0 _
   have hab : x ^ (-σ) * x ^ (-σ) ≤ (x - h) ^ (-σ) * (x + h) ^ (-σ) := by
     rw [← Real.mul_rpow hx0.le hx0.le, ← Real.mul_rpow (by linarith) (by linarith)]
-    apply Real.rpow_le_rpow_of_nonpos (by nlinarith) (by nlinarith) (by linarith)
-  nlinarith [sq_nonneg ((x - h) ^ (-σ) - (x + h) ^ (-σ)),
-    sq_nonneg ((x - h) ^ (-σ) + (x + h) ^ (-σ) - 2 * x ^ (-σ))]
+    apply Real.rpow_le_rpow_of_nonpos (mul_pos (by linarith) (by linarith)) (by nlinarith [sq_nonneg h])
+      (by linarith)
+  set a := (x - h) ^ (-σ)
+  set b := (x + h) ^ (-σ)
+  set c := x ^ (-σ)
+  have h4 : (2 * c) ^ 2 ≤ (a + b) ^ 2 := by nlinarith [sq_nonneg (a - b)]
+  exact (pow_le_pow_iff_left₀ (by positivity) (by positivity) two_ne_zero).1 h4
 
 lemma continuousOn_shift {σ x : ℝ} (hx : 1 / 2 < x) (s : ℝ) (hs : s = 1 ∨ s = -1) :
     ContinuousOn (fun h : ℝ => (x + s * h) ^ (-σ)) (Set.Icc 0 (1 / 2)) := by
   apply ContinuousOn.rpow_const (by fun_prop)
   intro h hh
   left
-  rcases hs with rfl | rfl <;> · have := hh.1; have := hh.2; nlinarith
+  rcases hs with rfl | rfl <;> · have := hh.1; have := hh.2; exact ne_of_gt (by linarith)
 
 /-- `x^{-σ} ≤ ∫_{x-1/2}^{x+1/2} t^{-σ} dt` for `σ ≥ 0`, `x > 1/2`. -/
 lemma rpow_le_integral {σ x : ℝ} (hσ : 0 ≤ σ) (hx : 1 / 2 < x) :
@@ -52,22 +56,26 @@ lemma rpow_le_integral {σ x : ℝ} (hσ : 0 ≤ σ) (hx : 1 / 2 < x) :
     have := intervalIntegral.integral_comp_sub_left (fun t : ℝ => t ^ (-σ)) (a := 0) (b := 1 / 2) x
     simp only [sub_zero] at this
     rw [← this]
-    congr 1; funext h; ring_nf
+    congr 1; funext h; congr 1; ring
   have e2 : ∫ h in (0 : ℝ)..(1 / 2), (x + 1 * h) ^ (-σ) = ∫ t in x..(x + 1 / 2), t ^ (-σ) := by
     have := intervalIntegral.integral_comp_add_left (fun t : ℝ => t ^ (-σ)) (a := 0) (b := 1 / 2) x
     simp only [add_zero] at this
     rw [← this]
-    congr 1; funext h; ring_nf
+    congr 1; funext h; congr 1; ring
   have hsplit : ∫ t in (x - 1 / 2)..(x + 1 / 2), t ^ (-σ)
       = (∫ t in (x - 1 / 2)..x, t ^ (-σ)) + ∫ t in x..(x + 1 / 2), t ^ (-σ) := by
     rw [intervalIntegral.integral_add_adjacent_intervals]
-    · rw [← e1]; exact hI1
-    · rw [← e2]; exact hI2
+    · apply intervalIntegral.intervalIntegrable_rpow (Or.inr _)
+      rw [Set.uIcc_of_le (by linarith)]
+      intro h0; linarith [h0.1]
+    · apply intervalIntegral.intervalIntegrable_rpow (Or.inr _)
+      rw [Set.uIcc_of_le (by linarith)]
+      intro h0; linarith [h0.1]
   rw [hsplit, ← e1, ← e2, ← intervalIntegral.integral_add hI1 hI2]
   have hc : x ^ (-σ) = ∫ _ in (0 : ℝ)..(1 / 2), 2 * x ^ (-σ) := by
-    rw [intervalIntegral.integral_const]; simp; ring
+    rw [intervalIntegral.integral_const, smul_eq_mul]; ring
   rw [hc]
-  apply intervalIntegral.integral_mono_on (by norm_num) (by simp) (hI1.add hI2)
+  apply intervalIntegral.integral_mono_on (by norm_num) intervalIntegrable_const (hI1.add hI2)
   intro h hh
   have := two_rpow_le hσ hh.1 (show h < x by linarith [hh.2])
   simp only [neg_mul, one_mul]
@@ -83,7 +91,7 @@ theorem midpoint_rpow {σ x : ℝ} (hσ : 1 < σ) (hx : 1 / 2 < x) :
       = ((x + 1 / 2) ^ (-σ + 1) - (x - 1 / 2) ^ (-σ + 1)) / (-σ + 1) := by
     apply integral_rpow
     right
-    refine ⟨by linarith, ?_⟩
+    refine ⟨fun h => by linarith, ?_⟩
     rw [Set.uIcc_of_le (by linarith)]
     intro h0
     linarith [h0.1]
@@ -158,8 +166,8 @@ theorem rpow_neg_le_of_pow {x q : ℝ} (hx : 0 < x) (hq : 0 < q) (p r : ℕ) (hr
     (h : 1 ≤ q ^ r * x ^ p) : x ^ (-((p : ℝ) / r)) ≤ q := by
   have hr' : (r : ℝ) ≠ 0 := by exact_mod_cast hr.ne'
   have h1 : (x ^ (-((p : ℝ) / r))) ^ r = (x ^ p)⁻¹ := by
-    rw [← Real.rpow_natCast, ← Real.rpow_mul hx.le, show -((p : ℝ) / r) * r = -(p : ℝ) by field_simp,
-      Real.rpow_neg hx.le, Real.rpow_natCast]
+    rw [← Real.rpow_natCast (x ^ (-((p : ℝ) / r))) r, ← Real.rpow_mul hx.le,
+      show -((p : ℝ) / r) * r = -(p : ℝ) by field_simp, Real.rpow_neg hx.le, Real.rpow_natCast]
   have h2 : (x ^ p)⁻¹ ≤ q ^ r := by
     rw [inv_le_iff_one_le_mul₀ (by positivity)]
     linarith [mul_comm (q ^ r) (x ^ p)]
@@ -210,7 +218,7 @@ theorem rpow_neg_add_le {x a ε q₁ q : ℝ} (p r k : ℕ) (ha : a = (p : ℝ) 
   have hA : x ^ (-a) ≤ q₁ := by rw [ha]; exact rpow_neg_le_of_pow hx0 hq₁ p r hr h₁
   have hB : x ^ (-ε) ≤ 1 / (1 + ε * L) := rpow_neg_small_le hx0 hε hL hpos
   have hsplit : x ^ (-(a + ε)) = x ^ (-a) * x ^ (-ε) := by
-    rw [← Real.rpow_add hx0]; ring_nf
+    rw [← Real.rpow_add hx0]; congr 1; ring
   rw [hsplit]
   calc x ^ (-a) * x ^ (-ε) ≤ q₁ * (1 / (1 + ε * L)) :=
         mul_le_mul hA hB (Real.rpow_nonneg hx0.le _) hq₁.le

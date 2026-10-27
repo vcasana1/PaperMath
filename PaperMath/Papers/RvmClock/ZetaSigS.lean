@@ -40,8 +40,12 @@ lemma term (n k : ℕ) (q₁ q : ℝ) (hn : 1 ≤ n) (hk : (2 : ℝ) ^ k ≤ n) 
   exact rpow_neg_add_le 5 4 k (by norm_num) (by norm_num) hn' (by norm_num) hk hq₁ h₁ hq
 
 
-/-- `∑_{2 ≤ n < 12} 1/n^{σ♯} ≤ 1.423191552823`. -/
-lemma block0 : ∑ n ∈ Ico 2 12, 1 / (n : ℝ) ^ sigS ≤ 1.423191552823 := by
+/-- `∑_{n<50} 1/n^{σ♯} ≤ 3.087083518448` (the terms `n = 0` and `n = 1` are `0` and `1`; the others are the
+rational bounds of `term`). -/
+lemma partial_sum_le : ∑ n ∈ range 50, 1 / (n : ℝ) ^ sigS ≤ 3.087083518448 := by
+  have t0 : (1 : ℝ) / ((0 : ℕ) : ℝ) ^ sigS = 0 := by
+    simp [Real.zero_rpow sigS_pos.ne']
+  have t1 : (1 : ℝ) / ((1 : ℕ) : ℝ) ^ sigS = 1 := by simp
   have t2 := term 2 1 0.420448207627 0.42044740619 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t3 := term 3 1 0.253278561884 0.253277846926 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t4 := term 4 2 0.176776695297 0.176776021373 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
@@ -52,14 +56,6 @@ lemma block0 : ∑ n ∈ Ico 2 12, 1 / (n : ℝ) ^ sigS ≤ 1.423191552823 := by
   have t9 := term 9 3 0.06415002991 0.064149643472 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t10 := term 10 3 0.05623413252 0.056233780021 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t11 := term 11 3 0.049918226071 0.049917903179 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
-  rw [show Ico 2 12 = Finset.range 10 |>.map ⟨(· + 2), add_left_injective 2⟩ from ?_]
-  · rw [Finset.sum_map]; simp only [Function.Embedding.coeFn_mk, Finset.sum_range_succ, Finset.sum_range_zero]
-    push_cast
-    linarith
-  · ext m; simp [Finset.mem_Ico]; omega
-
-/-- `∑_{12 ≤ n < 22} 1/n^{σ♯} ≤ 0.314372860466`. -/
-lemma block1 : ∑ n ∈ Ico 12 22, 1 / (n : ℝ) ^ sigS ≤ 0.314372860466 := by
   have t12 := term 12 3 0.04477374716 0.044773450083 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t13 := term 13 3 0.040510799066 0.040510524561 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t14 := term 14 3 0.036926653855 0.036926399173 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
@@ -70,14 +66,6 @@ lemma block1 : ∑ n ∈ Ico 12 22, 1 / (n : ℝ) ^ sigS ≤ 0.314372860466 := b
   have t19 := term 19 4 0.025209138182 0.025208935028 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t20 := term 20 4 0.023643540226 0.023643346951 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t21 := term 21 4 0.022244665607 0.022244481437 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
-  rw [show Ico 12 22 = Finset.range 10 |>.map ⟨(· + 12), add_left_injective 12⟩ from ?_]
-  · rw [Finset.sum_map]; simp only [Function.Embedding.coeFn_mk, Finset.sum_range_succ, Finset.sum_range_zero]
-    push_cast
-    linarith
-  · ext m; simp [Finset.mem_Ico]; omega
-
-/-- `∑_{22 ≤ n < 32} 1/n^{σ♯} ≤ 0.169133323196`. -/
-lemma block2 : ∑ n ∈ Ico 22 32, 1 / (n : ℝ) ^ sigS ≤ 0.169133323196 := by
   have t22 := term 22 4 0.02098802868 0.020987852915 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t23 := term 23 4 0.019853642848 0.019853474857 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t24 := term 24 4 0.018825041742 0.018824880954 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
@@ -88,14 +76,6 @@ lemma block2 : ∑ n ∈ Ico 22 32, 1 / (n : ℝ) ^ sigS ≤ 0.169133323196 := b
   have t29 := term 29 4 0.014859442051 0.014859310437 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t30 := term 30 4 0.014242900214 0.014242773341 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t31 := term 31 4 0.013670924433 0.013670802008 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
-  rw [show Ico 22 32 = Finset.range 10 |>.map ⟨(· + 22), add_left_injective 22⟩ from ?_]
-  · rw [Finset.sum_map]; simp only [Function.Embedding.coeFn_mk, Finset.sum_range_succ, Finset.sum_range_zero]
-    push_cast
-    linarith
-  · ext m; simp [Finset.mem_Ico]; omega
-
-/-- `∑_{32 ≤ n < 42} 1/n^{σ♯} ≤ 0.112445829752`. -/
-lemma block3 : ∑ n ∈ Ico 32 42, 1 / (n : ℝ) ^ sigS ≤ 0.112445829752 := by
   have t32 := term 32 5 0.013139006489 0.013138881266 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t33 := term 33 5 0.012643216511 0.012643094959 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t34 := term 34 5 0.012180114017 0.012179995962 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
@@ -106,14 +86,6 @@ lemma block3 : ∑ n ∈ Ico 32 42, 1 / (n : ℝ) ^ sigS ≤ 0.112445829752 := b
   have t39 := term 39 5 0.010260516929 0.010260414075 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t40 := term 40 5 0.00994088411 0.0099407839 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t41 := term 41 5 0.009638738082 0.0096386404 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
-  rw [show Ico 32 42 = Finset.range 10 |>.map ⟨(· + 32), add_left_injective 32⟩ from ?_]
-  · rw [Finset.sum_map]; simp only [Function.Embedding.coeFn_mk, Finset.sum_range_succ, Finset.sum_range_zero]
-    push_cast
-    linarith
-  · ext m; simp [Finset.mem_Ico]; omega
-
-/-- `∑_{42 ≤ n < 50} 1/n^{σ♯} ≤ 0.067939952211`. -/
-lemma block4 : ∑ n ∈ Ico 42 50, 1 / (n : ℝ) ^ sigS ≤ 0.067939952211 := by
   have t42 := term 42 5 0.009352729784 0.009352634523 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t43 := term 43 5 0.0090816431 0.009081550158 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t44 := term 44 5 0.00882437904 0.00882428832 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
@@ -122,29 +94,8 @@ lemma block4 : ∑ n ∈ Ico 42 50, 1 / (n : ℝ) ^ sigS ≤ 0.067939952211 := b
   have t47 := term 47 5 0.008126016084 0.008125931506 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t48 := term 48 5 0.007914955059 0.007914872369 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
   have t49 := term 49 5 0.007713560674 0.0077134798 (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
-  rw [show Ico 42 50 = Finset.range 8 |>.map ⟨(· + 42), add_left_injective 42⟩ from ?_]
-  · rw [Finset.sum_map]; simp only [Function.Embedding.coeFn_mk, Finset.sum_range_succ, Finset.sum_range_zero]
-    push_cast
-    linarith
-  · ext m; simp [Finset.mem_Ico]; omega
-
-/-- `∑_{n<50} 1/n^{σ♯} ≤ 3.087083518448` (the terms `n = 0` and `n = 1` are `0` and `1`). -/
-lemma partial_sum_le : ∑ n ∈ range 50, 1 / (n : ℝ) ^ sigS ≤ 3.087083518448 := by
-  have h0 : (1 : ℝ) / ((0 : ℕ) : ℝ) ^ sigS = 0 := by
-    simp [Real.zero_rpow sigS_pos.ne']
-  have h1 : (1 : ℝ) / ((1 : ℕ) : ℝ) ^ sigS = 1 := by simp
-  have e : range 50 = Ico 0 2 ∪ Ico 2 12 ∪ Ico 12 22 ∪ Ico 22 32 ∪ Ico 32 42 ∪ Ico 42 50 := by
-    ext m; simp [Finset.mem_Ico]; omega
-  rw [e, Finset.sum_union, Finset.sum_union, Finset.sum_union, Finset.sum_union, Finset.sum_union]
-  · have h01 : ∑ n ∈ Ico 0 2, 1 / (n : ℝ) ^ sigS = 1 := by
-      rw [show Ico 0 2 = {0, 1} by rfl, Finset.sum_pair (by norm_num)]
-      rw [h0, h1]; norm_num
-    linarith [block0, block1, block2, block3, block4]
-  all_goals
-    rw [Finset.disjoint_left]; intro m hm1 hm2
-    simp [Finset.mem_Ico, Finset.mem_union] at hm1 hm2; omega
-
-/-- Tail: `(49.5)^{1-σ♯}/(σ♯-1) ≤ 1.507993095275`. -/
+  simp only [Finset.sum_range_succ, Finset.sum_range_zero]
+  linarith
 
 lemma tail_le : (((50 : ℕ) : ℝ) - 1 / 2) ^ (1 - sigS) / (sigS - 1) ≤ 1.507993095275 := by
   have hx : (1 : ℝ) ≤ ((50 : ℕ) : ℝ) - 1 / 2 := by norm_num

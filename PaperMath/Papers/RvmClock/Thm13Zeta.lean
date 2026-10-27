@@ -24,7 +24,7 @@ noncomputable def zeta2C : ℝ := (riemannZeta ((2 * cc : ℝ) : ℂ)).re
 /-- `ζ(σ♯)`. -/
 noncomputable def zetaS : ℝ := (riemannZeta (sigS : ℂ)).re
 
-lemma zetaC_eq : zetaC = (riemannZeta ((1.000002 : ℝ) : ℂ)).re := rfl
+lemma zetaC_eq : zetaC = (riemannZeta ((1.000002 : ℝ) : ℂ)).re := by unfold zetaC cc; rfl
 lemma zeta2C_eq : zeta2C = (riemannZeta ((2.000004 : ℝ) : ℂ)).re := by
   unfold zeta2C cc; norm_num
 
