@@ -74,7 +74,7 @@ lemma integral_lin (a α β : ℝ) :
     ∫ θ in α..β, (cc + RR * cos θ - a) = (cc - a) * (β - α) + RR * (sin β - sin α) := by
   have e : (fun θ => cc + RR * cos θ - a) = fun θ => (cc - a) + RR * cos θ := by funext θ; ring
   rw [e, integral_add (continuous_const.intervalIntegrable _ _)
-    ((continuous_const.mul continuous_cos).intervalIntegrable _ _), integral_const,
+    ((by fun_prop : Continuous fun θ : ℝ => RR * cos θ).intervalIntegrable _ _), integral_const,
     integral_const_mul, integral_cos, smul_eq_mul]
   ring
 
@@ -83,7 +83,7 @@ lemma integral_lin' (a α β : ℝ) :
   have e : (fun θ => 1 - (cc + RR * cos θ) - a) = fun θ => (1 - cc - a) + (-RR) * cos θ := by
     funext θ; ring
   rw [e, integral_add (continuous_const.intervalIntegrable _ _)
-    ((continuous_const.mul continuous_cos).intervalIntegrable _ _), integral_const,
+    ((by fun_prop : Continuous fun θ : ℝ => -RR * cos θ).intervalIntegrable _ _), integral_const,
     integral_const_mul, integral_cos, smul_eq_mul]
   ring
 
@@ -92,14 +92,14 @@ lemma integral_half (α β : ℝ) :
   have e : (fun θ => 1 / 2 - (cc + RR * cos θ)) = fun θ => (1 / 2 - cc) + (-RR) * cos θ := by
     funext θ; ring
   rw [e, integral_add (continuous_const.intervalIntegrable _ _)
-    ((continuous_const.mul continuous_cos).intervalIntegrable _ _), integral_const,
+    ((by fun_prop : Continuous fun θ : ℝ => -RR * cos θ).intervalIntegrable _ _), integral_const,
     integral_const_mul, integral_cos, smul_eq_mul]
   ring
 
 /-- `∫₀^{θ_h} max 0 (c + R cos θ - a) = (c - a) θ_a + R sin θ_a` for `1/2 ≤ a ≤ 1`. -/
 lemma int_max_a {a : ℝ} (h1 : 1 / 2 ≤ a) (h2 : a ≤ 1) :
     ∫ θ in (0 : ℝ)..θh, max 0 (cc + RR * cos θ - a) = (cc - a) * θa a + RR * sin (θa a) := by
-  have hI : ∀ α β : ℝ, IntervalIntegrable (fun θ => max 0 (cc + RR * cos θ - a)) volume α β :=
+  have hI : ∀ α β : ℝ, IntervalIntegrable (fun θ => max 0 (cc + RR * cos θ - a)) MeasureTheory.volume α β :=
     fun α β => (continuous_const.max (by fun_prop)).intervalIntegrable α β
   have hR := RR_ne
   have hc := cos_θa h1 h2
@@ -134,7 +134,7 @@ lemma int_max_b {a : ℝ} (h1 : 1 / 2 ≤ a) (h2 : a ≤ 1) :
     ∫ θ in θh..π, max 0 (1 - (cc + RR * cos θ) - a)
       = (1 - cc - a) * (π - θb a) + RR * sin (θb a) := by
   have hI : ∀ α β : ℝ,
-      IntervalIntegrable (fun θ => max 0 (1 - (cc + RR * cos θ) - a)) volume α β :=
+      IntervalIntegrable (fun θ => max 0 (1 - (cc + RR * cos θ) - a)) MeasureTheory.volume α β :=
     fun α β => (continuous_const.max (by fun_prop)).intervalIntegrable α β
   have hR := RR_ne
   have hc := cos_θb h1 h2
@@ -257,7 +257,7 @@ theorem integral_eStar_eq :
         + (s5 - s4) * ((1 - cc - 123 / 127) * (π - θb (123 / 127)) + RR * sin (θb (123 / 127)))
         + (s6 - s5) * ((1 - cc - 167 / 170) * (π - θb (167 / 170)) + RR * sin (θb (167 / 170)))
         + (0 - s6) * ((1 - cc - 1) * (π - θb 1) + RR * sin (θb 1)))) := by
-  have hI : ∀ α β : ℝ, IntervalIntegrable (fun θ => eStar (cc + RR * cos θ)) volume α β :=
+  have hI : ∀ α β : ℝ, IntervalIntegrable (fun θ => eStar (cc + RR * cos θ)) MeasureTheory.volume α β :=
     fun α β => (eStar_continuous.comp (by fun_prop)).intervalIntegrable α β
   rw [← integral_add_adjacent_intervals (hI 0 θh) (hI θh π),
     integral_congr (fun θ hθ => eStar_left hθ), integral_congr (fun θ hθ => eStar_right hθ),
