@@ -1,4 +1,4 @@
-# Handoff — Lean (PaperMath) y constantes del Teorema 1.3 — v3, 2026-10-27
+# Handoff — Lean (PaperMath) y constantes del Teorema 1.3 — v4, 2026-10-27
 
 Sustituye a `claude/HANDOFF-rvm-clock-lean-constantes-v2.md` del proyecto de Claude. Leer junto con
 `claude/HANDOFF-rvm-clock-envelope-v10.md`.
@@ -30,11 +30,12 @@ Sustituye a `claude/HANDOFF-rvm-clock-lean-constantes-v2.md` del proyecto de Cla
   (Taylor con resto para log(1−x), log 3), `ZetaTail` (punto medio, `rpow_neg_add_le`), `Zeta23Port`.
 
 ## Pendiente (máxima exactitud, sin aflojar umbrales)
-3. `hC1`: `(1/(2π𝔡)) ∫₀^π 𝔢_E^*(c + R cos θ) dθ ≤ 0.0978293`. Valor real 0.0978292318; margen 7.7·10⁻⁷.
-   Ruta: integral exacta por trozos (el integrando es lineal a trozos en `cos θ`: nodos `ς_i` ⇒ ángulos
-   `arccos((ς_i − c)/R)`), con cotas racionales de arccos y de sin a 9–10 cifras (ir a `Common/`), y la
-   integral `∫ (a + b cos θ) dθ = a θ + b sin θ` en cada trozo. Hace falta `intervalIntegral` de funciones
-   lineales a trozos en `cos`; `eStar` está definido con `max 0 (σ − ς_i)` (`Profile.lean`).
+3. (hecho) `hC1 ≤ 0.0978293`: `RvmClock.C1.C1_le` (`Papers/RvmClock/C1.lean`, generado por
+   `scripts/gen_c1.py`). Integral exacta: `gE` es suma de términos `max 0 (σ − ς_i)`, cada uno integra a
+   `(c − a)θ_a + R sin θ_a` (`int_max_a`, `int_max_b`); `θ_a = π/2 + arcsin((c − a)/R)` y
+   `sin θ_a = √(1 − x²)`; 15 arcsin y 15 raíces acotados a 12 cifras con `Common.TrigBounds` (serie alternada
+   de `sin`, `Antitone.alternating_series_le_tendsto`). Valor 0.0978292318785, margen 6.8·10⁻⁸ (no 7.7·10⁻⁷).
+   `RvmClock.C1.theorem_1_3_numeric`: Teorema 1.3 solo con hipótesis de la literatura. CI run 40470337612.
 4. Lema 4.3 (`hchi`), la capa ζ del Teorema 1.5 (`ZetaInputs` con los ceros de `riemannZeta`, Lema 4.1,
    Teorema 3.1), el núcleo Selberg–Fujii (`FujiiA`, `FujiiB`), `I.zeta3` (|ζ(3+it)| ≤ 1.21, trivial desde
    `Common.ZetaSeries`).

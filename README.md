@@ -28,6 +28,7 @@ scripts/audit.sh         build + audit, fails on sorry / unexpected axioms
 | `Common.ZetaSeries` | `ζ(s) = ∑ n^{-s}` for real `s > 1` (`zeta_re_eq_tsum`); `ζ(1+s) ≤ 1 + 1/s`; `ζ(2+ε) ≥ π²/6 − εK`, `K ≤ 1.0116398448`; `1 ≤ ζ(s)` |
 | `Common.ZetaTail` | midpoint rule `x^{-σ} ≤ ∫_{x-1/2}^{x+1/2} t^{-σ}` (via AM–GM); `ζ(σ) ≤ ∑_{n<N} n^{-σ} + (N−1/2)^{1-σ}/(σ−1)`; rational bounds `x^{-(p/r+ε)} ≤ q` from `1 ≤ q₁^r x^p` and `k log 2 + 1 − 2^k/x ≤ log x` (`rpow_neg_add_le`) |
 | `Common.LogBounds` | two-sided Taylor bounds for `log(1−x)`, `0 ≤ x < 1`, with rational remainder; `log 3` to 10 digits |
+| `Common.TrigBounds` | alternating Taylor bounds for `sin x` (`x² ≤ 6`) and `cos x` (`x² ≤ 2`), `arcsin y` from `sin`, rational bounds for `√y`; with `norm_num` they give `arcsin`/`arccos` of rationals to any precision |
 | `Common.Zeta23Port` | the generalised Hilbert inequality of Montgomery–Vaughan, `Zeta23.MV.mv_hilbert`, ported from [zeta23](https://github.com/anthropics/formal-math/tree/main/zeta23) (Anthropic, Apache-2.0; see `Common/Zeta23Port/README.md`, `LICENSE`, `NOTICE_zeta23`) |
 
 ### `Papers/RvmClock/` — *The Riemann–von Mangoldt clock* (`rvm_clock_envelope`, v10)
@@ -59,9 +60,10 @@ Namespaces `RvmClock`, `RvmClock.Profile`, `RvmClock.ZetaLines`, `RvmClock.Backl
 | `log(ζ(c)/ζ(2c)) ≤ 12.62467`, `c = 1.000002` | `ZetaConst.log_zeta_ratio_le` | `ZetaConst.lean` |
 | `ζ(σ♯) ≤ 4.595076613723`, `log ζ(σ♯) ≤ 1.52499`, `σ♯ = 1.25000275000025` | `ZetaSigS.zeta_sigS_le`, `ZetaSigS.log_zeta_sigS_le` | `ZetaSigS.lean` |
 | **Theorem 1.3** with `ζ(c)`, `ζ(2c)`, `ζ(σ♯)` instantiated and proved | `Thm13.theorem_1_3_zeta` | `Thm13Zeta.lean` |
+| `C₁ = (1/(2π𝔡)) ∫₀^π 𝔢_E^*(c + R cos θ) dθ` in closed form (exact piecewise integration) and `C₁ ≤ 0.0978293` | `C1.integral_eStar_eq`, `C1.C1_le` | `C1.lean` |
+| **Theorem 1.3** with every numerical input proved (only literature inputs remain) | `C1.theorem_1_3_numeric` | `C1.lean` |
 
-Remaining hypotheses of `theorem_1_3_zeta`: the literature inputs of `HYPOTHESES.md` and the single numerical
-value `C₁ ≤ 0.0978293`. Pending: `C₁` in Lean; Lemma 4.3 (`hchi`); the ζ layer of Theorem 1.5 (instantiating
+Remaining hypotheses of `theorem_1_3_numeric`: only the literature inputs of `HYPOTHESES.md`. Pending: Lemma 4.3 (`hchi`); the ζ layer of Theorem 1.5 (instantiating
 `ZetaInputs` with the zeros of `riemannZeta`, Lemma 4.1, Theorem 3.1); the Selberg–Fujii inputs.
 
 `CheckAll.lean`, `CheckMaximal.lean`: `#check`/`#print axioms` of Branch A (superseded by `Audit.lean`).
@@ -96,4 +98,6 @@ commit it refers to.
   `vcasana1/REVIEWOWNPAPERS_OCT26`, branch `rvm-clock-articulo-y-lean`, folder `LEAN_RVM_CLOCK/`.
 * 2026-10-27 — this repository: `Common/` + `Papers/` layout, `Audit.lean`, `HYPOTHESES.md`, CI;
   `ZetaSigS.lean` (`log ζ(σ♯) ≤ 1.52499`) and `Thm13Zeta.lean` (ζ constants discharged in Theorem 1.3).
-  First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`; its output is `Audit_output.txt`.
+  First green CI run: 40426476309 (commit `341d289`), `AUDIT OK`.
+* 2026-10-27 — `C1.lean`: `C₁ ≤ 0.0978293` by exact piecewise integration; `theorem_1_3_numeric`. CI run
+  40470337612 (commit `ad159d9`), `AUDIT OK`; its output is `Audit_output.txt`.

@@ -10,7 +10,7 @@ Lean guarantees that the conclusions follow from the hypotheses. It does **not**
 transcribed correctly from its source, nor that the hypotheses are satisfiable. Those two points are what an
 external review has to verify, statement by statement, against the sources below.
 
-## Branch B — Theorem 1.3, `RvmClock.Thm13.theorem_1_3_zeta` (`PaperMath/Papers/RvmClock/Thm13Zeta.lean`)
+## Branch B — Theorem 1.3, `RvmClock.C1.theorem_1_3_numeric` (`PaperMath/Papers/RvmClock/C1.lean`)
 
 Conclusion: for every `T ≥ e`, `|S(T)| ≤ 0.09783 log T + 0.7214 log log T + 10.6`, inequality (1.7).
 
@@ -37,14 +37,15 @@ explicit profile of §4.1 (`Profile.lean`). `sp σ t = σ + it`.
 | `hdec` | `π S(T) = A0 T + D2 T − D1 T` for `T ≥ 100` | decomposition of `π S(T)` used in Bellotti–Wong 2025, §3 (equation (5.3) of the article) | literature (classical) |
 | `hA0` | `|A0 T| ≤ log ζ(σ♯)` | `|arg ζ(σ♯+iT)| ≤ |log ζ(σ♯+iT)| ≤ log ζ(σ♯)` (Euler product, §5 of the article) | literature (classical) |
 | `hD1` | `D1 T = arctan((σ♯−1)/T) + arctan(1/(2T))` | elementary (§5 of the article) | literature (elementary) |
-| `hC1` | `C₁ = (1/(2π𝔡)) ∫₀^π 𝔢_E^*(c + R cos θ) dθ ≤ 0.0978293` | value `0.0978292318…` ((1.6), Appendix B of the article), checked with Arb; margin `7.7·10⁻⁷` | **numerical** (pending in Lean) |
+| ~~`hC1`~~ | `C₁ = (1/(2π𝔡)) ∫₀^π 𝔢_E^*(c + R cos θ) dθ ≤ 0.0978293` | `RvmClock.C1.C1_le` (`C1.lean`): exact piecewise integration, value `0.0978292318785…`, margin `6.8·10⁻⁸` | **proved** |
 | `hplatt` | `|S(T)| ≤ 2.5167` for `e ≤ T ≤ 100` | Bellotti–Wong 2025, (1.2), from Platt 2017, doi:10.1090/mcom/3198 (Theorem 3.6) | literature (computation) |
 | ~~`hzc`, `hz2c`, `hzeta`~~ | `0 < ζ(c)`, `0 < ζ(2c)`, `log(ζ(c)/ζ(2c)) ≤ 12.62467` | `RvmClock.ZetaConst` (`ZetaConst.lean`), margin `2.44·10⁻⁶` | **proved** |
 | ~~`hzs`~~ | `log ζ(σ♯) ≤ 1.52499` | `RvmClock.ZetaSigS.log_zeta_sigS_le` (`ZetaSigS.lean`), margin `4.6·10⁻⁶` | **proved** |
 
-`RvmClock.Thm13.theorem_1_3` (`Thm13.lean`) is the same theorem with `zc, z2c, zs` free and the four struck-out
-lines as hypotheses; `theorem_1_3_zeta` instantiates `zc := ζ(c)`, `z2c := ζ(2c)`, `zs := ζ(σ♯)` (Mathlib's
-`riemannZeta`, real part) and discharges them.
+`RvmClock.Thm13.theorem_1_3` (`Thm13.lean`) is the same theorem with `zc, z2c, zs` free and the five struck-out
+lines as hypotheses; `Thm13.theorem_1_3_zeta` (`Thm13Zeta.lean`) instantiates `zc := ζ(c)`, `z2c := ζ(2c)`,
+`zs := ζ(σ♯)` (Mathlib's `riemannZeta`, real part) and discharges four of them; `C1.theorem_1_3_numeric`
+discharges `hC1` too, so every remaining hypothesis is a literature input.
 
 Intermediate results and their own hypotheses: `RvmClock.ZetaLines.lemma_4_4` (Lemma 4.4, hypotheses `I`,
 `hFE`, `hchi`), `RvmClock.Backlund.master` (Proposition 5.1, general `c, R, K, h, Ω`), `RvmClock.Explicit.thm_1_3`
