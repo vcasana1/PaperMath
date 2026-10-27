@@ -73,7 +73,7 @@ which Mathlib does not have). Pending: the ζ layer of Theorem 1.5 (instantiatin
 
 `scripts/constantes_v5.py`, `scripts/constantes_v5_output.txt`: the program of Appendix A of the article (Python 3.13,
 mpmath 1.4.1; constants `Λ(𝔢_B)`, `C₁`, `C₂`, `C₃(100)`, crossings with Bellotti–Wong and with Yang's (4.29); the angular
-integral both by quadrature and by the closed form (5.3)) and its output. `scripts/yang_smallt_arb.py`,
+integral both by quadrature and by the closed form (5.3)) and its output. `scripts/casanya_method.py`, `scripts/casanya_method_output.txt`: Casaña's method of Section 7.1 (`x_k`, `k ≤ 20`, against `γ_k` and the clock `τ_k`; illustration). `scripts/yang_smallt_arb.py`,
 `scripts/yang_smallt_arb_output.txt`: the Arb certificate of Remark 4.5(ii) (constant `1.87781 ≤ 2` on `3 ≤ t ≤ T_m`, `4 ≤ m ≤ 9`). `scripts/gen_sigs.py`, `scripts/gen_c1.py`, `scripts/gen_lambdaB.py`
 generate the rational certificates of `ZetaSigS.lean`, `C1.lean` and `LambdaB.lean` (`gen_lambdaB_output.txt`: its checks).
 

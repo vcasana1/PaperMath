@@ -20,6 +20,7 @@
 'RvmClock.ZetaInputs.gaps_third_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.fourth_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.sublevel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RvmClock.casanya_method_sublevel' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.proportion' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.ZetaLines.lemma_4_4' depends on axioms: [propext, Classical.choice, Quot.sound]
 'RvmClock.Backlund.master' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -60,6 +61,21 @@ RvmClock.sublevel : ∀ (Z : RvmClock.ZetaInputs),
                 T₀ ≤ T →
                   ∑ k ∈ Finset.Ioc (Z.N T) (Z.N (2 * T)), (RvmClock.xClock k - Z.γ (k - 1)) ^ 2 ≤ C * T / Real.log T ∧
                     (∑ k ∈ Finset.Ioc (Z.N T) (Z.N (2 * T)), (RvmClock.xClock k - Z.γ (k - 1)) ^ 2) /
+                          ↑(Finset.Ioc (Z.N T) (Z.N (2 * T))).card ≤
+                        C' / Real.log T ^ 2 ∧
+                      T * Real.log T / (8 * Real.pi) ≤ ↑(Finset.Ioc (Z.N T) (Z.N (2 * T))).card
+RvmClock.casanya_method_sublevel : ∀ (Z : RvmClock.ZetaInputs),
+  Z.FujiiA →
+    Z.FujiiB →
+      Z.Titchmarsh →
+        ∃ C C' T₀,
+          0 ≤ C ∧
+            0 ≤ C' ∧
+              ∀ (T : ℝ),
+                T₀ ≤ T →
+                  ∑ k ∈ Finset.Ioc (Z.N T) (Z.N (2 * T)), (RvmClock.casanya_method k - Z.γ (k - 1)) ^ 2 ≤
+                      C * T / Real.log T ∧
+                    (∑ k ∈ Finset.Ioc (Z.N T) (Z.N (2 * T)), (RvmClock.casanya_method k - Z.γ (k - 1)) ^ 2) /
                           ↑(Finset.Ioc (Z.N T) (Z.N (2 * T))).card ≤
                         C' / Real.log T ^ 2 ∧
                       T * Real.log T / (8 * Real.pi) ≤ ↑(Finset.Ioc (Z.N T) (Z.N (2 * T))).card
