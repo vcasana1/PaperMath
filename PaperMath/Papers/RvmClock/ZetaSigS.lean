@@ -36,7 +36,7 @@ lemma term (n k : ℕ) (q₁ q : ℝ) (hn : 1 ≤ n) (hk : (2 : ℝ) ^ k ≤ n) 
     (hq : q₁ ≤ q * (1 + 1375007 / 500002500000 * (k * 0.6931471803 + (1 - 2 ^ k / (n : ℝ))))) :
     1 / (n : ℝ) ^ sigS ≤ q := by
   have hn' : (1 : ℝ) ≤ n := by exact_mod_cast hn
-  rw [one_div, ← Real.rpow_neg (by linarith), sigS_eq]
+  rw [one_div, ← Real.rpow_neg (show (0 : ℝ) ≤ n by linarith), sigS_eq]
   exact rpow_neg_add_le 5 4 k (by norm_num) (by norm_num) hn' (by norm_num) hk hq₁ h₁ hq
 
 

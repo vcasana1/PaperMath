@@ -29,7 +29,8 @@ lemma two_rpow_le {σ x h : ℝ} (hσ : 0 ≤ σ) (hh : 0 ≤ h) (hx : h < x) :
   have hb : 0 < (x + h) ^ (-σ) := Real.rpow_pos_of_pos (by linarith) _
   have hc : 0 < x ^ (-σ) := Real.rpow_pos_of_pos hx0 _
   have hab : x ^ (-σ) * x ^ (-σ) ≤ (x - h) ^ (-σ) * (x + h) ^ (-σ) := by
-    rw [← Real.mul_rpow hx0.le hx0.le, ← Real.mul_rpow (by linarith) (by linarith)]
+    rw [← Real.mul_rpow hx0.le hx0.le,
+      ← Real.mul_rpow (show (0 : ℝ) ≤ x - h by linarith) (show (0 : ℝ) ≤ x + h by linarith)]
     apply Real.rpow_le_rpow_of_nonpos (mul_pos (by linarith) (by linarith)) (by nlinarith [sq_nonneg h])
       (by linarith)
   set a := (x - h) ^ (-σ)
@@ -86,7 +87,7 @@ lemma rpow_le_integral {σ x : ℝ} (hσ : 0 ≤ σ) (hx : 1 / 2 < x) :
 `x^{-σ} ≤ ((x-1/2)^{1-σ} - (x+1/2)^{1-σ})/(σ-1)`. -/
 theorem midpoint_rpow {σ x : ℝ} (hσ : 1 < σ) (hx : 1 / 2 < x) :
     x ^ (-σ) ≤ ((x - 1 / 2) ^ (1 - σ) - (x + 1 / 2) ^ (1 - σ)) / (σ - 1) := by
-  have h := rpow_le_integral (by linarith) hx
+  have h := rpow_le_integral (show (0 : ℝ) ≤ σ by linarith) hx
   have hint : ∫ t in (x - 1 / 2)..(x + 1 / 2), t ^ (-σ)
       = ((x + 1 / 2) ^ (-σ + 1) - (x - 1 / 2) ^ (-σ + 1)) / (-σ + 1) := by
     apply integral_rpow
@@ -122,7 +123,7 @@ lemma term_le_T_sub {σ : ℝ} (hσ : 1 < σ) (n : ℕ) (hn : 1 ≤ n) :
     1 / (n : ℝ) ^ σ ≤ T σ n - T σ (n + 1) := by
   have hn' : (1 : ℝ) ≤ n := by exact_mod_cast hn
   have h := midpoint_rpow hσ (show 1 / 2 < (n : ℝ) by linarith)
-  rw [Real.rpow_neg (by linarith)] at h
+  rw [Real.rpow_neg (show (0 : ℝ) ≤ n by linarith)] at h
   unfold T
   push_cast
   rw [show (n : ℝ) + 1 - 1 / 2 = n + 1 / 2 by ring, ← sub_div, one_div]
@@ -147,7 +148,7 @@ theorem zeta_le_partial_add_tail {σ : ℝ} (hσ : 1 < σ) (N : ℕ) (hN : 1 ≤
   rw [Common.ZetaSeries.zeta_re_eq_tsum hσ]
   apply Real.tsum_le_of_sum_range_le (fun n => by positivity)
   intro M
-  rcases le_or_lt N M with hM | hM
+  rcases le_or_gt N M with hM | hM
   · have := partial_le hσ N hN M hM
     have := T_nonneg hσ M (le_trans hN hM)
     unfold T at *

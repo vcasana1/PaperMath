@@ -37,6 +37,8 @@ jobs:
           else
             git checkout --orphan ci-logs && git rm -rfq . && git clean -fdxq
           fi
+          printf '.lake\n' > .gitignore
+          git rm -rq --cached .lake 2>/dev/null || true
           mkdir -p "run-${{ github.run_id }}" && cp /tmp/logs/* "run-${{ github.run_id }}/"
           echo "${{ github.sha }} ${{ github.ref_name }} $(date -u)" > "run-${{ github.run_id }}/COMMIT"
           git add -A && git commit -qm "logs of run ${{ github.run_id }} (${{ github.sha }})" || true
