@@ -9,7 +9,7 @@ NAMES = {'L5': '\\ell_{5}', 'L20': '\\ell_{20}', 'L60': '\\ell_{60}', 'L150': '\
 rows = []; macros = []
 for tag, mac in LINES:
     s = json.load(open(FAM+'line_%s/summary_pp.json' % tag)); sol = json.load(open(FAM+'line_%s/sol.json' % tag))
-    cz = s['Czeta_pp_upper']; supN = s.get('Fsup_N', s.get('Fsup_upper')); supS = float(json.load(open(FAM+'line_%s/sol_elemS.json' % tag))['Fsup_upper'])
+    cz = float(s['Czeta_pp_upper']); supN = float(s.get('Fsup_N', s.get('Fsup_upper'))); supS = float(json.load(open(FAM+'line_%s/sol_elemS.json' % tag))['Fsup_upper'])
     A1 = s['A1']; A3N = s['A3_N']; A3S = s['A3_S']
     # consistency checks (rounding up to 3 decimals)
     import math
@@ -48,7 +48,9 @@ for L, k in act:
 print('active:', [(float(L), rows[k][0]) for L, k in segs])
 assert [k for L, k in segs] == list(range(len(mine))), 'unexpected envelope order'
 brk = [L for L, k in segs][1:]
-for nm, L in zip(['A', 'B', 'C', 'D', 'E'], brk): macros.append('\\newcommand{\\LineBreak%s}{%.1f}' % (nm, float(L)))
+for nm, L in zip(['A', 'B', 'C', 'D', 'E'], brk):
+    macros.append('\\newcommand{\\LineBreak%s}{%s}' % (nm, ('%.6f' % (math.floor(float(L)*1e6)/1e6))))
+    macros.append('\\newcommand{\\LineBreak%sfrac}{\\tfrac{%d}{%d}}' % (nm, L.numerator, L.denominator))
 BW = [(Fr('0.0946'), Fr('5.746')), (Fr('0.097'), Fr('4.954'))]
 AMB = [(Fr('0.097'), Fr('4.807')), (Fr('0.1'), Fr('4.140')), (Fr('0.12'), Fr('2.830')), (Fr('0.14'), Fr('2.306')), (Fr('0.16'), Fr('2.027')), (Fr('0.18'), Fr('1.847')), (Fr('0.2'), Fr('1.722'))]
 import math

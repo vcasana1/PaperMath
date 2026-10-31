@@ -72,6 +72,7 @@
 \newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\appsub}[1]{\par\medskip\noindent\textbf{#1}\par\nobreak\smallskip}
+\newcommand{\dg}{\psi_{\Gamma}}
 \newcommand{\R}{\mathbb R}
 \newcommand{\C}{\mathbb C}
 \newcommand{\main}{\mathcal M}
@@ -87,7 +88,7 @@
 \address{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain}
 \email{\href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es}}
 \thanks{ORCID \href{https://orcid.org/0000-0002-8252-2608}{0000-0002-8252-2608}.}
-\date{31 October 2026}
+\date{1 November 2026}
 
 \begin{document}
 
@@ -175,7 +176,13 @@ For every $T\ge1$, with $L=\log T$,
 \end{align}
 \end{theorem}
 
-The six lines are called $\ell_5,\ell_{20},\ell_{60},\ell_{150},\ell_{400},\ell_{6000}$, after the value of $L$ for which each was optimised. In \CGeqref{eq:thm_N} they are the smallest on $L\in[0,\LineBreakA]$, $[\LineBreakA,\LineBreakB]$, $[\LineBreakB,\LineBreakC]$, $[\LineBreakC,\LineBreakD]$, $[\LineBreakD,\LineBreakE]$ and $[\LineBreakE,\infty)$ respectively. Each line is proved on its own for all $T\ge1$; in particular
+The six lines are called $\ell_5,\ell_{20},\ell_{60},\ell_{150},\ell_{400},\ell_{6000}$, after the value of $L$ for which each was optimised. In \CGeqref{eq:thm_N} they are the smallest, respectively, on $[0,L_1]$, $[L_1,L_2]$, $[L_2,L_3]$, $[L_3,L_4]$, $[L_4,L_5]$ and $[L_5,\infty)$, where the breakpoints, at which two adjacent lines agree, are
+\[
+\begin{aligned}
+L_1&=\LineBreakAfrac=\LineBreakA\ldots,&\quad L_2&=\LineBreakBfrac=\LineBreakB\ldots,&\quad L_3&=\LineBreakCfrac=\LineBreakC\ldots,\\
+L_4&=\LineBreakDfrac=\LineBreakD\ldots,&\quad L_5&=\LineBreakEfrac=\LineBreakE\ldots
+\end{aligned}
+\] Each line is proved on its own for all $T\ge1$; in particular
 \begin{equation}
 \bigl|N(T)-\main(T)\bigr|\le\LineBAone\log T+\LineBAthreeN,\qquad |S(T)|\le\LineBAone\log T+\LineBAthreeS\qquad(T\ge1).
 \label{eq:single_line}
@@ -298,7 +305,7 @@ with a real constant $B$ and absolute convergence for every $s$ that is not a ze
 F(\sigma)-F(\sigma+d)=\sum_\rho\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr),
 \label{eq:F_diff}
 \end{equation}
-a difference of two absolutely convergent series. For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an ordinate, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
+an absolutely convergent series of differences (the two series \CGeqref{eq:hadamard}, with their regularising terms $1/\rho$, are each absolutely convergent; nothing is asserted about $\sum_\rho(s-\rho)^{-1}$ alone). For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an ordinate, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
 \begin{equation}
 \int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),
 \label{eq:g_def}
@@ -329,11 +336,11 @@ U=\sum_{\iota\in\mathcal B}c_\iota G_\iota,\qquad\mathcal B=\mathcal B_m=\{(\mat
 \end{equation}
 Each $G_\iota$ is even in $b$; $G_{\mathrm R,j}$ is even in $t$ and $G_{\mathrm I,j}$ is odd in $t$, because $(x-it)^{-j}=\overline{(x+it)^{-j}}$. Write $\Phi_{\mathrm R}(z)=\Rp z$, $\Phi_{\mathrm I}(z)=-\Ip z$, and
 \begin{equation}
-D_1(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\psi\Bigl(\frac s2\Bigr),\qquad
-D_j(s)=\frac1{s^j}+\frac1{(s-1)^j}+\frac{(-1)^{j-1}}{(j-1)!\,2^j}\psi^{(j-1)}\Bigl(\frac s2\Bigr)\quad(j\ge2),
+D_1(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\dg\Bigl(\frac s2\Bigr),\qquad
+D_j(s)=\frac1{s^j}+\frac1{(s-1)^j}+\frac{(-1)^{j-1}}{(j-1)!\,2^j}\dg^{(j-1)}\Bigl(\frac s2\Bigr)\quad(j\ge2),
 \label{eq:D_def}
 \end{equation}
-where $\psi=\Gamma'/\Gamma$.
+where $\dg=\Gamma'/\Gamma$ is the digamma function (the letter $\psi$ alone denotes the Chebyshev function $\psi(x)=\sum_{n\le x}\Lambda(n)$ in Section~\CGref{subsec:euler}).
 
 \begin{lemma}[Sums of the kernel functions over the zeros]\label{lem:kernel_sums}
 Let $d>\frac12$, $T>0$ and $s_1=\sigma_1+iT$. For every $\iota=(\mathrm X,j)\in\mathcal B$ the series $\sum_\rho G_\iota(b_\rho,t_\rho)$ converges absolutely and
@@ -349,14 +356,14 @@ Since $s_1-\rho=(d+b_\rho)+it_\rho$ and $s_1-(1-\bar\rho)=(d-b_\rho)+it_\rho$, a
 
 From \CGeqref{eq:xi_def}, for $\Rp s>1$,
 \begin{equation}
-\frac{\xi'}\xi(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\psi\Bigl(\frac s2\Bigr)+\frac{\zeta'}\zeta(s)=D_1(s)-\sum_{n\ge2}\Lambda(n)n^{-s},
+\frac{\xi'}\xi(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\dg\Bigl(\frac s2\Bigr)+\frac{\zeta'}\zeta(s)=D_1(s)-\sum_{n\ge2}\Lambda(n)n^{-s},
 \label{eq:xi_log_der}
 \end{equation}
 which gives \CGeqref{eq:kernel_sum} for $j=1$. For $j\ge2$, differentiating \CGeqref{eq:hadamard} $j-1$ times term by term (the differentiated series converge absolutely and locally uniformly away from the zeros) gives $\sum_\rho(s-\rho)^{-j}=\frac{(-1)^{j-1}}{(j-1)!}\bigl(\frac{\xi'}\xi\bigr)^{(j-1)}(s)$, and differentiating \CGeqref{eq:xi_log_der} $j-1$ times gives
 \[
 \frac{(-1)^{j-1}}{(j-1)!}\Bigl(\frac{\xi'}\xi\Bigr)^{(j-1)}(s)=D_j(s)-\frac1{(j-1)!}\sum_{n\ge2}\Lambda(n)(\log n)^{j-1}n^{-s},
 \]
-because $\frac{d^{j-1}}{ds^{j-1}}s^{-1}=(-1)^{j-1}(j-1)!\,s^{-j}$ and $\frac{d^{j-1}}{ds^{j-1}}\frac12\psi(\frac s2)=2^{-j}\psi^{(j-1)}(\frac s2)$. Applying $\Phi_{\mathrm X}$ and multiplying by $2$ proves \CGeqref{eq:kernel_sum}.
+because $\frac{d^{j-1}}{ds^{j-1}}s^{-1}=(-1)^{j-1}(j-1)!\,s^{-j}$ and $\frac{d^{j-1}}{ds^{j-1}}\frac12\dg(\frac s2)=2^{-j}\dg^{(j-1)}(\frac s2)$. Applying $\Phi_{\mathrm X}$ and multiplying by $2$ proves \CGeqref{eq:kernel_sum}.
 \end{proof}
 
 %======================================================================
@@ -534,9 +541,9 @@ For $|\ph z|<\pi$, $\Lo\Gamma(z)=(z-\frac12)\Lo z-z+\frac12\log(2\pi)+\mathcal R
 On the circle $|w-z|=\frac12|z|$ one has $|w|\ge\frac12|z|$ and $|\ph w-\ph z|\le\arcsin\frac12=\frac\pi6$, so $|\ph w|<\frac\pi2+\frac\pi6=\frac{2\pi}3$ and $\sec^2(\frac12\ph w)<\sec^2\frac\pi3=4$; hence $|\mathcal R(w)|\le\frac4{12\cdot|z|/2}=\frac2{3|z|}$ there, and Cauchy's estimate for the $(k+1)$-st derivative on this circle gives \CGeqref{eq:R_deriv}.
 \end{proof}
 
-Since $\psi=(\Lo\Gamma)'$, Lemma~\CGref{lem:stirling} gives $\psi(z)=\Lo z-\frac1{2z}+\mathcal R'(z)$ and, for $k\ge1$,
+Since $\dg=(\Lo\Gamma)'$, Lemma~\CGref{lem:stirling} gives $\dg(z)=\Lo z-\frac1{2z}+\mathcal R'(z)$ and, for $k\ge1$,
 \begin{equation}
-\psi^{(k)}(z)=\frac{(-1)^{k-1}(k-1)!}{z^k}+\frac{(-1)^kk!}{2z^{k+1}}+\mathcal R^{(k+1)}(z).
+\dg^{(k)}(z)=\frac{(-1)^{k-1}(k-1)!}{z^k}+\frac{(-1)^kk!}{2z^{k+1}}+\mathcal R^{(k+1)}(z).
 \label{eq:psi_k}
 \end{equation}
 
@@ -583,9 +590,9 @@ where $\mathsf K_\Gamma$ is the first bracket of \CGeqref{eq:K_def} (which is la
 \]
 using $0\le\Rp\frac1{s}\le\frac\sigma{T^2}$, $0\le\Rp\frac1{s-1}\le\frac{\sigma-1}{T^2}$, $|\mathcal R'(z_1)|\le\frac4{3|z_1|^2}\le\frac{16}{3T^2}$ from \CGeqref{eq:R_deriv}, and $T\ge2$. Since $\frac{\sigma_1}2\le(2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83$ for $\sigma_1>1$, the last bracket halved is at most $(2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83$, so $|c_{\mathrm R,1}|\,|\delta_1|/\pi$ is at most the second term of \CGeqref{eq:K_def} divided by $T$.
 
-\emph{The terms $j\ge2$.} $|D_j(s_1)|\le\frac2{T^j}+\frac{|\psi^{(j-1)}(z_1)|}{(j-1)!\,2^j}$, and by \CGeqref{eq:psi_k} with $k=j-1\ge1$, \CGeqref{eq:R_deriv} and $|z_1|\ge\frac T2$,
+\emph{The terms $j\ge2$.} $|D_j(s_1)|\le\frac2{T^j}+\frac{|\dg^{(j-1)}(z_1)|}{(j-1)!\,2^j}$, and by \CGeqref{eq:psi_k} with $k=j-1\ge1$, \CGeqref{eq:R_deriv} and $|z_1|\ge\frac T2$,
 \[
-|\psi^{(j-1)}(z_1)|\le(j-2)!\Bigl(\frac2T\Bigr)^{j-1}+\frac{(j-1)!}2\Bigl(\frac2T\Bigr)^{j}+j!\,\frac4{3T}\Bigl(\frac4T\Bigr)^{j}.
+|\dg^{(j-1)}(z_1)|\le(j-2)!\Bigl(\frac2T\Bigr)^{j-1}+\frac{(j-1)!}2\Bigl(\frac2T\Bigr)^{j}+j!\,\frac4{3T}\Bigl(\frac4T\Bigr)^{j}.
 \]
 The resulting bound for $|D_j(s_1)|$ is of the form $\sum_{\nu\ge2}\alpha_\nu T^{-\nu}$ with $\alpha_\nu\ge0$, so $T|D_j(s_1)|$ is non-increasing in $T$ and $|D_j(s_1)|\le T_0\,\mathrm{bound}(T_0)/T$ for $T\ge T_0$; this gives the third term of \CGeqref{eq:K_def}.
 
@@ -612,7 +619,7 @@ Let $T_0=10^4$. The program \texttt{elem\_gen.py} (Appendix~\CGref{app:cert_elem
 \end{proposition}
 
 \begin{proof}
-The functions $F_u,F_\ell$ are real-analytic in $T>0$; the centred form is the mean value theorem $F(T)=F(T_{\rm m})+F'(\xi)(T-T_{\rm m})$ with $\xi$ between $T$ and $T_{\rm m}$. The derivative is computed from $\frac{d}{dT}\arg s=\Rp\frac1s$, $\frac d{dT}\Ip\Lo\Gamma(\frac s2)=\frac12\Rp\psi(\frac s2)$, $\frac d{dT}\main(T)=\frac1{2\pi}\log\frac T{2\pi}$, $\frac d{dT}D_j(s)=iD_j'(s)$ with $D_1'(s)=-s^{-2}-(s-1)^{-2}+\frac14\psi'(\frac s2)$ and $D_j'(s)=-js^{-j-1}-j(s-1)^{-j-1}+\frac{(-1)^{j-1}}{(j-1)!\,2^{j+1}}\psi^{(j)}(\frac s2)$ for $j\ge2$, and, in the $S$-mode, $\frac d{dT}\vartheta(T)=\frac12\Rp\psi(\frac14+\frac{iT}2)-\frac12\log\pi$. The polygamma values on an interval are enclosed by $\psi^{(k)}(z_{\rm m})+\psi^{(k+1)}(Z)\cdot i[-\frac r2,\frac r2]$, where $Z$ is the ball of the segment and $r$ its length in $T$, which is valid because $\psi^{(k)}(z+\eta)-\psi^{(k)}(z)=\int_0^1\psi^{(k+1)}(z+u\eta)\eta\,du$ lies in $\eta$ times the convex hull of the enclosure. All other operations are ball operations, so each interval bound is rigorous, and the supremum over $[1,T_0]$ is the maximum of the $9215$ upper bounds. For $T\ge T_0$ the bound \CGeqref{eq:F_large} is monotone in $T$, so it is evaluated at $T_0$.
+The functions $F_u,F_\ell$ are real-analytic in $T>0$; the centred form is the mean value theorem $F(T)=F(T_{\rm m})+F'(T_*)(T-T_{\rm m})$ for some $T_*$ between $T$ and $T_{\rm m}$. The derivative is computed from $\frac{d}{dT}\arg s=\Rp\frac1s$, $\frac d{dT}\Ip\Lo\Gamma(\frac s2)=\frac12\Rp\dg(\frac s2)$, $\frac d{dT}\main(T)=\frac1{2\pi}\log\frac T{2\pi}$, $\frac d{dT}D_j(s)=iD_j'(s)$ with $D_1'(s)=-s^{-2}-(s-1)^{-2}+\frac14\dg'(\frac s2)$ and $D_j'(s)=-js^{-j-1}-j(s-1)^{-j-1}+\frac{(-1)^{j-1}}{(j-1)!\,2^{j+1}}\dg^{(j)}(\frac s2)$ for $j\ge2$, and, in the $S$-mode, $\frac d{dT}\vartheta(T)=\frac12\Rp\dg(\frac14+\frac{iT}2)-\frac12\log\pi$. The polygamma values on an interval are enclosed by $\dg^{(k)}(z_{\rm m})+\dg^{(k+1)}(Z)\cdot i[-\frac r2,\frac r2]$, where $Z$ is the ball of the segment and $r$ its length in $T$, which is valid because $\dg^{(k)}(z+\eta)-\dg^{(k)}(z)=\int_0^1\dg^{(k+1)}(z+u\eta)\eta\,du$ lies in $\eta$ times the convex hull of the enclosure. All other operations are ball operations, so each interval bound is rigorous, and the supremum over $[1,T_0]$ is the maximum of the $9215$ upper bounds. For $T\ge T_0$ the bound \CGeqref{eq:F_large} is monotone in $T$, so it is evaluated at $T_0$.
 \end{proof}
 
 \subsection{The kernel inequality}\label{subsec:kernel_cert}
@@ -695,9 +702,9 @@ Let $\frac12=\varsigma_0<\varsigma_1<\dots<\varsigma_n=1$ and $e_0\ge e_1\ge\dot
 \end{lemma}
 
 \begin{proof}
-Fix $\varepsilon>0$ and $i<n$, and put $\Xi(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\Xi$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\Xi(s)|\le|s|+|s||s-1|/\Rp s\le3|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\Xi(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\Xi$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\Xi(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
+Fix $\varepsilon>0$ and $i<n$, and put $\mathcal Z(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\mathcal Z$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\mathcal Z(s)|\le|s|+|s||s-1|/\Rp s\le3|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\mathcal Z(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\mathcal Z$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\mathcal Z(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
 \[
-|\Xi(s)|\le\bigl(A_i|Q+s|^{1+e_i+\varepsilon}\bigr)^{\frac{\varsigma_{i+1}-\sigma}{\varsigma_{i+1}-\varsigma_i}}\bigl(B_i|Q+s|^{1+e_{i+1}+\varepsilon}\bigr)^{\frac{\sigma-\varsigma_i}{\varsigma_{i+1}-\varsigma_i}}\le\max(A_i,B_i)\,|Q+s|^{1+\mathfrak e(\sigma)+\varepsilon},
+|\mathcal Z(s)|\le\bigl(A_i|Q+s|^{1+e_i+\varepsilon}\bigr)^{\frac{\varsigma_{i+1}-\sigma}{\varsigma_{i+1}-\varsigma_i}}\bigl(B_i|Q+s|^{1+e_{i+1}+\varepsilon}\bigr)^{\frac{\sigma-\varsigma_i}{\varsigma_{i+1}-\varsigma_i}}\le\max(A_i,B_i)\,|Q+s|^{1+\mathfrak e(\sigma)+\varepsilon},
 \]
 because the exponent interpolates linearly. For $|t|\ge2$, $|Q+s|\le Q+1+|t|\le6|t|$ and $|s-1|\ge|t|$, so $|\zeta(s)|\le\max(A_i,B_i)6^{1+e_0+\varepsilon}|t|^{\mathfrak e(\sigma)+\varepsilon}$ on the strip. Taking the maximum over the $n$ strips gives \CGeqref{eq:admissible}; $\mathfrak e$ is continuous, non-negative, and $\mathfrak e(1)=0$.
 \end{proof}
@@ -785,7 +792,7 @@ For fixed $d>\frac12$ and a kernel $U$, as $T\to\infty$,
 \end{lemma}
 
 \begin{proof}
-By Lemma~\CGref{lem:kernel_sums}, $\sum_\rho G_\iota(b_\rho,t_\rho)=2\Phi_{\mathrm X}(D_j(s_1))+O(1)$, the arithmetic sum being bounded by $\frac2{(j-1)!}\sum_n\Lambda(n)(\log n)^{j-1}n^{-\sigma_1}<\infty$. By the proof of Lemma~\CGref{lem:elem_large}, $\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+O(T^{-2})$, $\Ip D_1(s_1)=O(1)$ and $D_j(s_1)=O(T^{-2})$ for $j\ge2$ (indeed $|\psi^{(j-1)}(z_1)|=O(T^{-(j-1)})$). Hence $\sum_\rho U(b_\rho,t_\rho)=c_{\mathrm R,1}\log T+O(1)$. The second statement follows from $U(b,-t)=\sum_\iota\varepsilon_{\mathrm X}c_\iota G_\iota(b,t)$ and the same bounds.
+By Lemma~\CGref{lem:kernel_sums}, $\sum_\rho G_\iota(b_\rho,t_\rho)=2\Phi_{\mathrm X}(D_j(s_1))+O(1)$, the arithmetic sum being bounded by $\frac2{(j-1)!}\sum_n\Lambda(n)(\log n)^{j-1}n^{-\sigma_1}<\infty$. By the proof of Lemma~\CGref{lem:elem_large}, $\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+O(T^{-2})$, $\Ip D_1(s_1)=O(1)$ and $D_j(s_1)=O(T^{-2})$ for $j\ge2$ (indeed $|\dg^{(j-1)}(z_1)|=O(T^{-(j-1)})$). Hence $\sum_\rho U(b_\rho,t_\rho)=c_{\mathrm R,1}\log T+O(1)$. The second statement follows from $U(b,-t)=\sum_\iota\varepsilon_{\mathrm X}c_\iota G_\iota(b,t)$ and the same bounds.
 \end{proof}
 
 Fix $d=\frac9{10}$, $m=10$, the $19$ coefficients $c_\iota$ ($\iota\in\mathcal B_{10}$) of Table~\CGref{tab:hybrid_kernel}, and the $K=85$ disc data $(c_k,R_k,v_k)$ with weights $\kappa_k\ge0$ of Table~\CGref{tab:hybrid_discs} (Appendix~\CGref{app:tables}). The $c_\iota$ and $\kappa_k$ are the exact binary numbers of the file \texttt{hyb\_m10\_P.json} (Appendix~\CGref{app:data}); the disc data are the rational numbers of the table, obtained from the file by rounding to denominators $\le10^4$ and replacing $R_k$ by $\min(R_k,c_k-\frac12)$, so that $c_k-R_k\ge\frac12$ exactly. Let $W_k$ be the weight \CGeqref{eq:W_def} of $(c_k,R_k,v_k)$ and put

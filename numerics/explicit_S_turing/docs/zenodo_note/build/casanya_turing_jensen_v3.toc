@@ -1,0 +1,24 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{2}{section.1}%
+\contentsline {section}{\tocsection {}{2}{Results}}{4}{section.2}%
+\contentsline {section}{\tocsection {}{3}{The identity of Turing type}}{5}{section.3}%
+\contentsline {section}{\tocsection {}{4}{The explicit estimate}}{8}{section.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{The decomposition}}{8}{subsection.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{The Euler product}}{9}{subsection.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{The elementary part}}{11}{subsection.4.3}%
+\contentsline {subsection}{\tocsubsection {}{4.4}{The kernel inequality}}{13}{subsection.4.4}%
+\contentsline {subsection}{\tocsubsection {}{4.5}{Proof of Theorem\nonbreakingspace \ref {thm:explicit} and of Corollary\nonbreakingspace \ref {cor:comparison}}}{14}{table.2}%
+\contentsline {section}{\tocsection {}{5}{Jensen discs and admissible profiles}}{15}{section.5}%
+\contentsline {section}{\tocsection {}{6}{The asymptotic estimate}}{17}{section.6}%
+\contentsline {section}{\tocsection {}{7}{Methods and remarks}}{18}{section.7}%
+\contentsline {subsection}{\tocsubsection {}{7.1}{Where the kernel inequality binds}}{18}{subsection.7.1}%
+\contentsline {subsection}{\tocsubsection {}{7.2}{Optimisation}}{18}{subsection.7.2}%
+\contentsline {subsection}{\tocsubsection {}{7.3}{Certification}}{19}{subsection.7.3}%
+\contentsline {subsection}{\tocsubsection {}{7.4}{Comparison of the two methods}}{19}{subsection.7.4}%
+\contentsline {subsection}{\tocsubsection {}{}{Data availability}}{19}{section*.3}%
+\contentsline {subsection}{\tocsubsection {}{}{AI declaration}}{19}{section*.4}%
+\contentsline {subsection}{\tocsubsection {}{}{Mathematical software}}{20}{section*.5}%
+\contentsline {section}{\tocsection {}{}{References}}{20}{section*.6}%
+\contentsline {section}{\tocsection {Appendix}{A}{Data tables}}{21}{appendix.A}%
+\contentsline {section}{\tocsection {Appendix}{B}{Programs}}{24}{appendix.B}%
+\contentsline {section}{\tocsection {Appendix}{C}{Outputs of the certification programs}}{39}{appendix.C}%
+\contentsline {section}{\tocsection {Appendix}{D}{Exact data}}{43}{appendix.D}%
