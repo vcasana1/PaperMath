@@ -6,3 +6,7 @@ all certified;  C < 0.0947215742364   time 115s
 C_zeta < 2.34530149288    time 44s
 SUP over T>=1 of max(F_u,F_l) <= 0.728941807706
 LINE L60 CERTIFIED: |N(T)-main| <= 0.09473 log T + 3.075  (T>=1)
+all certified;  C < 0.0934806284360   time 127s
+AssertionError: ('monotonicity fails near L=', 652.8064067011674, [+/- 0.832])
+SUP over T>=1 of max(F_u,F_l) <= 0.730317096644
+LINE L150 FAILED
