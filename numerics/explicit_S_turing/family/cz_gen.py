@@ -43,18 +43,21 @@ def dlogg_upper(Lb):
     A0 = cpoly(pa, Lb)/PI; B0 = ((e-2)/Lb+cpoly(pb, Lb))/PI
     A1_ = cpoly(dpa, Lb)/PI; B1_ = (-(e-2)/(Lb*Lb)-dA*e/Lb+cpoly(dpb, Lb))/PI
     return (A0*A1_+B0*B1_)/(A0*A0+B0*B0)-s1
-LB = 2000.0
 # L >= LB: (log h)' <= (|A0'|+|B0'|)/h and h >= |P| for the one of A0, B0 of larger degree D.
 # In u = 1/L in [0, 1/LB]: num/L^D and low/L^D are polynomials in u, evaluated on the u-ball.
+# LB is increased until the crude bound works (needed when the top kernel coefficients are tiny).
 DA = max([i for i in range(DEG+1) if pa[i] != 0], default=-1); DB = max([i for i in range(DEG+1) if pb[i] != 0], default=-1)
 q = [abs(pa[i])+abs(pb[i]) for i in range(DEG+1)]
 if DA >= DB: D, pp, extra = DA, pa, 0
 else: D, pp, extra = DB, pb, 2
-u = arb(0).union(1/arb(LB))
-num = u*sum((i*q[i]*u**(D-i) for i in range(1, DEG+1)), arb(0))+2*u**(D+2)+dA*u**(D+1)
 if DEG > D: raise SystemExit('degree bookkeeping')
-low = abs(pp[D])-sum((abs(pp[i])*u**(D-i) for i in range(D)), arb(0))-extra*u**(D+1)
-ratio = num/low
+for LB in [2000.0, 5000.0, 2e4, 1e5, 1e6, 1e7]:
+    u = arb(0).union(1/arb(LB))
+    num = u*sum((i*q[i]*u**(D-i) for i in range(1, DEG+1)), arb(0))+2*u**(D+2)+dA*u**(D+1)
+    low = abs(pp[D])-sum((abs(pp[i])*u**(D-i) for i in range(D)), arb(0))-extra*u**(D+1)
+    if low > 0:
+        ratio = num/low
+        if ratio < s1: break
 assert low > 0 and ratio < s1, ('crude ratio fails', ratio)
 print('g monotone on [%g, oo): crude bound %s < sigma1' % (LB, ratio.str(6)))
 # On [L0, LB] no monotonicity is assumed: G(L) = sup_{L' >= L} g(L') is majorized by a non-increasing step function,

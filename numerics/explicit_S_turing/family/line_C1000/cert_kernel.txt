@@ -1,0 +1,4 @@
+d = 17/20  m = 10  profile B  discs used: 0
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083837875706933761349  (ball [0.083838 +/- 1.25e-7] )
+kernel part c_R1/(2pi) = 0.0838378757069
+limit t^2 U at |t|->inf = [0.0002066518417 +/- 4.66e-14] True

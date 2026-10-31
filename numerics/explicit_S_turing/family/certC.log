@@ -1,0 +1,10 @@
+all certified;  C < 0.0839860184066   time 2716s
+AssertionError: ('crude ratio fails', nan)
+Traceback (most recent call last):
+  File "/home/claude/papermath/numerics/explicit_S_turing/family/certify_line.py", line 17, in <module>
+    rc3,o3=run(['python3','elem_gen.py',sol,A1s,'10000'],'cert_elem.txt')
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/papermath/numerics/explicit_S_turing/family/certify_line.py", line 12, in run
+    out=open(D+'/'+log).read(); print(out.strip().splitlines()[-1],flush=True); return p.returncode,out
+                                      ~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range
