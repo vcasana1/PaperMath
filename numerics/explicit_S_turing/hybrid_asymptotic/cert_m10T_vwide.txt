@@ -3,3 +3,10 @@ C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074855308835466606257  (ball [0.074855 +
 kernel part c_R1/(2pi) = 0.0655800589512
 limit t^2 U at |t|->inf = [0.001401888763 +/- 9.15e-14] True
 t in (0,T1]: certified, boxes 2075965
+Traceback (most recent call last):
+  File "/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/certify_hybrid.py", line 140, in <module>
+    n2=cert_main(Fr(0),Fr(1,2),-T1,Fr(0),-1); print('t in [-T1,0): certified, boxes',n2,flush=True)
+  File "/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/certify_hybrid.py", line 74, in cert_main
+    if dep>=maxdepth: raise RuntimeError('fail at b=[%s,%s] t=[%s,%s] H=%s'%(float(b0),float(b1),float(t0),float(t1),H))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: fail at b=[0.4672115072607994,0.46721150912344456] t=[-0.44921875,-0.44921874068677425] H=[+/- 9.17e-8]
