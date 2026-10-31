@@ -20,3 +20,4 @@ L*=1000 d=0.85 m=(10,10) A1=0.08384 A3=5.2627 val=89.0997 49s
 L*=1000 d=0.90 m=(10,10) A1=0.08413 A3=4.6710 val=88.8018 42s
 L*=1000 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
 L*=1000 d=1.00 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
+L*=2500 d=0.80 m=(10,10) A1=0.08408 A3=6.0301 val=216.2201 62s
