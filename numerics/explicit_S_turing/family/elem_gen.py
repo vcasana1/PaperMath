@@ -11,6 +11,7 @@ from flint import arb, acb, ctx
 ctx.prec = 256
 def A(q): return arb(q.numerator)/arb(q.denominator) if isinstance(q, Fr) else arb(q)
 sol = json.load(open(sys.argv[1])); A1 = A(Fr(sys.argv[2])); T0 = int(sys.argv[3]) if len(sys.argv) > 3 else 10**4
+MODE = sys.argv[4] if len(sys.argv) > 4 else 'N'   # 'N': |N - main|;  'S': |S(T)| = |N - theta/pi - 1|
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(b) for b in sol['B']]; c = [A(Fr(x)) for x in sol['c']]
 J = max(j for _, j in B)
 PI = arb.pi(); s1r = A(Fr(1, 2)+d); s2r = A(Fr(1, 2)+2*d); LOGPI = PI.log()
@@ -31,6 +32,9 @@ def F_at(T):
     s1 = acb(s1r, T); s2 = acb(s2r, T)
     Ael = lambda s: (s.log().imag+(s-1).log().imag)-T/2*LOGPI+(s/2).lgamma().imag
     base = (2*Ael(s1)-Ael(s2))/PI-T/(2*PI)*(T/(2*PI*arb(1).exp())).log()
+    if MODE == 'S':   # replace main(T) by theta(T)/pi + 1
+        theta = acb(arb(1)/4, T/2).lgamma().imag-T/2*LOGPI
+        base = base+T/(2*PI)*(T/(2*PI*arb(1).exp())).log()-theta/PI-1
     ps = [psi(k, s1/2) for k in range(J)]
     R, I = combine([Dj(j, s1, ps) for (_, j) in B])
     return base+(R+I)/PI-A1*T.log(), -(base-(R-I)/PI)-A1*T.log()
@@ -42,6 +46,10 @@ def dF_ball(Tb):
     s1 = acb(s1r, Tb); s2 = acb(s2r, Tb)
     dA = lambda s, sr: ((1/s).real+(1/(s-1)).real)-LOGPI/2+P(0, sr).real/2
     dbase = (2*dA(s1, s1r)-dA(s2, s2r))/PI-(Tb/(2*PI)).log()/(2*PI)
+    if MODE == 'S':   # d/dT [main - theta/pi] = (1/2pi) log(T/2pi) - (1/(2pi)) Re psi(1/4+iT/2) + (1/(2pi)) log pi
+        zm = acb(arb(1)/4, Tm/2); zb = acb(arb(1)/4, Tb/2)
+        P0 = psi(0, zm)+psi(1, zb)*acb(0, rad/2)
+        dbase = dbase+(Tb/(2*PI)).log()/(2*PI)-(P0.real-LOGPI)/(2*PI)
     ps = [P(k, s1r) for k in range(J+1)]
     R, I = combine([acb(0, 1)*dDj(j, s1, ps) for (_, j) in B])
     return dbase+(R+I)/PI-A1/Tb, -(dbase-(R-I)/PI)-A1/Tb
@@ -65,8 +73,10 @@ for (k, j), cc in zip(B, c):
     Dbound = 2/T**j+ps/(factorial(j-1)*2**j)
     K += abs(cc)/PI*Dbound*T      # Dbound <= const/T, so Dbound*T is the coefficient of 1/T
 Finf_u = arb(7)/8-C1*(2*PI).log(); Finf_l = -arb(7)/8-C1*(2*PI).log()
+if MODE == 'S':   # theta/pi + 1 - main = 7/8 + varpi/pi, |varpi(T)| <= (1/16+1/8+1/3)/T (Stirling, Olver's bound)
+    Finf_u = -C1*(2*PI).log(); Finf_l = -C1*(2*PI).log(); K = K+(arb(1)/16+arb(1)/8+arb(1)/3)/PI
 tu = Finf_u+K/T; tl = Finf_l+K/T
 S = max(supu.upper(), supl.upper(), tu.upper(), tl.upper())
 print('T>=T0: F_u <=', tu.upper().str(10, radius=False), ' F_l <=', tl.upper().str(10, radius=False), ' (K=', K.str(6), ')')
 print('SUP over T>=1 of max(F_u,F_l) <=', S.str(12, radius=False))
-json.dump({'A1': sys.argv[2], 'Fsup_upper': S.str(15, radius=False)}, open(sys.argv[1].replace('.json', '_elem.json'), 'w'))
+json.dump({'A1': sys.argv[2], 'mode': MODE, 'Fsup_upper': S.str(15, radius=False)}, open(sys.argv[1].replace('.json', '_elem%s.json' % ('' if MODE == 'N' else 'S')), 'w'))
