@@ -12,3 +12,4 @@ L*=150 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with
 L*=150 d=1.00 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
 L*=400 d=0.80 m=(10,10) A1=0.08429 A3=5.8864 val=39.6016 386s
 L*=400 d=0.85 m=(10,10) A1=0.08398 A3=5.1823 val=38.7740 48s
+L*=400 d=0.90 m=(10,10) A1=0.08424 A3=4.6095 val=38.3056 97s
