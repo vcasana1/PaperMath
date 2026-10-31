@@ -26,3 +26,4 @@ L*=2500 d=0.90 m=(10,10) A1=0.08411 A3=4.6958 val=214.9790 92s
 L*=2500 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
 L*=2500 d=1.00 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
 L*=6000 d=0.80 m=(10,10) A1=0.08407 A3=6.0258 val=510.4175 119s
+L*=6000 d=0.85 m=(10,10) A1=0.08381 A3=5.3017 val=508.1868 46s
