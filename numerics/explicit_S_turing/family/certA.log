@@ -1,0 +1,4 @@
+all certified;  C < 0.108221935484   time 54s
+C_zeta < 1.67979336898    time 45s
+SUP over T>=1 of max(F_u,F_l) <= 0.702070950967
+LINE L20 CERTIFIED: |N(T)-main| <= 0.10823 log T + 2.382  (T>=1)
