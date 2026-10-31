@@ -1,0 +1,208 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage[no-math]{fontspec}
+\fi
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[pagebackref=true]{hyperref}
+\usepackage{bookmark}
+\usepackage{pdfcomment}
+
+% Hover previews for internal references (no layout change).
+\makeatletter
+\let\CG@origref\ref
+\let\CG@origeqref\eqref
+\newcommand{\CG@gettip}[1]{\@ifundefined{CGTip@#1}{Reference: #1}{\csname CGTip@#1\endcsname}}
+\DeclareRobustCommand{\CGref}[1]{\pdftooltip{\CG@origref{#1}}{\CG@gettip{#1}}}
+\DeclareRobustCommand{\CGeqref}[1]{\pdftooltip{\CG@origeqref{#1}}{\CG@gettip{#1}}}
+\expandafter\gdef\csname CGTip@eq:identity\endcsname{Equation (2.1): N(T) = (1/pi)(2 arg xi(1/2+d+iT) - arg xi(1/2+2d+iT)) + (1/2pi) sum\_rho f(1/2-beta, T-gamma).}
+\expandafter\gdef\csname CGTip@eq:split\endcsname{Equation (2.2): |N(T)-main(T)| <= A\_1 log T + C\_zeta + sup\_T F, C\_zeta = sum\_n Lambda(n) n\textasciicircum{}(-sigma\_1) sqrt(alpha\_n\textasciicircum{}2+beta\_n\textasciicircum{}2).}
+\expandafter\gdef\csname CGTip@eq:familyN\endcsname{Equation (1.1): seven certified lines for |N(T) - (T/2pi) log(T/2pi e)|, T >= 1.}
+\expandafter\gdef\csname CGTip@eq:familyS\endcsname{Equation (1.2): the same seven slopes for |S(T)|, T >= 1, with constants 0.979, 1.498, 2.187, 2.350, 2.887, 3.704, 6.099.}
+\expandafter\gdef\csname CGTip@eq:BWkernels\endcsname{Equation (1.3): with the kernels (2.43), (2.44) of Bellotti-Wong: min(0.0946 log T + 5.138, 0.097 log T + 4.507), T >= 1.}
+\expandafter\gdef\csname CGTip@eq:hybrid\endcsname{Equation (1.4): limsup |S(T)|/log T < 0.0775422804104 < Lambda(0) = 0.0786252...}
+\expandafter\gdef\csname CGTip@sec:what\endcsname{Section 1: What I obtained}
+\expandafter\gdef\csname CGTip@sec:how\endcsname{Section 2: How}
+\expandafter\gdef\csname CGTip@sec:compare\endcsname{Section 3: Comparison and attribution}
+\makeatother
+
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 1},
+  linkbordercolor={1 0 0},
+  citebordercolor={0 0.3 1},
+  urlbordercolor={0 0.6 0.6},
+  filebordercolor={0 0.6 0.6},
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  pdfstartview=FitH,
+  pdftitle={Letter to V. Amberger, C. Bellotti and P.-J. Wong on explicit bounds for S(T)},
+  pdfauthor={V\'ictor Casa\~na-Giner},
+  pdfsubject={Explicit bounds for the argument of the Riemann zeta function},
+  pdfkeywords={Riemann zeta function, S(T), zero counting, Turing method, explicit bounds}
+}
+% Back-references in the bibliography.
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1 %
+    \relax
+  \or
+    \ (Cited on p.~#2.)%
+  \else
+    \ (Cited on pp.~#2.)%
+  \fi}
+
+% In \cite[note]{key} the note (e.g. a section number) is linked too.
+\makeatletter
+\let\CG@origcite\cite
+\renewcommand*{\cite}[2][]{\def\CG@citekey{#2}%
+  \ifx\relax#1\relax\CG@origcite{#2}\else\CG@origcite[#1]{#2}\fi}
+\def\@cite#1#2{{\@citestyle[\citeform{#1}\if@tempswa, \hyper@link{cite}{cite.\CG@citekey}{#2}\fi]}}
+\makeatother
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{3}
+\setlength{\emergencystretch}{1.5em}
+\newcommand{\main}{\mathrm{M}}
+
+\begin{document}
+
+\noindent\textbf{From:} V\'ictor Casa\~na-Giner, Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain\\
+\href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es} \quad ORCID \href{https://orcid.org/0000-0002-8252-2608}{0000-0002-8252-2608}\\[2pt]
+\textbf{To:} Victor Amberger, Chiara Bellotti, Peng-Jie Wong\\[2pt]
+\textbf{Subject:} Optimised kernels and a hybrid variant of your Turing-type method for $S(T)$\\[2pt]
+\textbf{Date:} 31 October 2026
+
+\bigskip
+
+\noindent Dear Dr.~Amberger, Dr.~Bellotti and Professor Wong,
+
+\medskip
+
+I have read with great interest your preprints \cite{Amberger2025} and \cite{BellottiWong2026}, and earlier \cite{BellottiWong2025}. I write to tell you what I have obtained by building on your Turing-type method \cite{Turing1953}, how I obtained it, and how it compares with your results. The method is yours; my contributions are an optimisation of the kernel, a sharper treatment of the constants, and a hybrid variant for the asymptotic coefficient. I would be grateful for any comments before I write these results up.
+
+Throughout, $N(T)$ counts the zeros $\rho=\beta+i\gamma$ of $\zeta$ with $0<\gamma\le T$, $\main(T)=\frac T{2\pi}\log\frac T{2\pi e}$, $L=\log T$, and $\mathfrak a=\limsup_{T\to\infty}|S(T)|/\log T$. All numerical inequalities below are certified in Arb ball arithmetic \cite{Johansson2017} at $256$ bits. No numerical data on the zeros (in particular no computation of Platt) is used. The only arithmetic input beyond the Euler product is $\psi(x)<1.03883x$ \cite[Thm.~12]{RosserSchoenfeld1962}.
+
+\section{What I obtained}\label{sec:what}
+
+\textbf{(a) Zero counting, all $T\ge1$.} For every $T\ge1$,
+\begin{equation}
+\begin{split}\bigl|N(T)-\main(T)\bigr|\le\min\{&0.20176L+1.505,\ 0.10823L+2.382,\ 0.09473L+3.075,\ 0.09349L+3.237,\\ &0.09152L+3.776,\ 0.09012L+4.593,\ 0.08844L+6.988\}.\end{split}
+\label{eq:familyN}
+\end{equation}
+The seven lines are active on $L\in[0,9.4]$, $[9.4,51.3]$, $[51.3,130.6]$, $[130.6,273.6]$, $[273.6,583.6]$, $[583.6,1425.6]$, $[1425.6,\infty)$. The right side of \CGeqref{eq:familyN} lies below $\min(0.0946L+5.746,\,0.097L+4.954)$ of \cite[Cor.~1.3]{BellottiWong2026} for every $T\ge1$. The smallest difference is $1.996$, at $L\approx51.4$, and the difference tends to infinity. Each of the lines $0.09349L+3.237$ and $0.09012L+4.593$ is, on its own, below both of your lines for all $T\ge1$.
+
+\textbf{(b) The argument, all $T\ge1$.} With the same seven kernels,
+\begin{equation}
+\begin{split}|S(T)|\le\min\{&0.20176L+0.979,\ 0.10823L+1.498,\ 0.09473L+2.187,\ 0.09349L+2.350,\\ &0.09152L+2.887,\ 0.09012L+3.704,\ 0.08844L+6.099\}.\end{split}
+\label{eq:familyS}
+\end{equation}
+For comparison, \cite[Cor.~1.5]{BellottiWong2025} gives $0.10076L+0.24460\log L+7.20844$, and \cite[Cor.~1.3]{BellottiWong2026} gives $|S(T)|\le0.0946L+6.691$ for $T\ge e$, through $|S|\le|N-\main|+\frac78+|\varpi|/\pi$.
+
+\textbf{(c) Your own kernels.} With the tuples (2.43) and (2.44) of \cite{BellottiWong2026} (rounded to binary) and the treatment of the constants of Section~\CGref{sec:how},
+\begin{equation}
+\bigl|N(T)-\main(T)\bigr|\le\min\{0.0946L+5.138,\ 0.097L+4.507\}\qquad(T\ge1),
+\label{eq:BWkernels}
+\end{equation}
+in place of $5.746$ and $4.954$.
+
+\textbf{(d) The asymptotic coefficient.} A hybrid of your kernel majorant with Jensen discs, described in Section~\CGref{sec:how}, gives
+\begin{equation}
+\mathfrak a<0.0775422804104<\Lambda(0)=\frac{3\sqrt3-\pi}{12\pi\log2}=0.0786252\ldots,
+\label{eq:hybrid}
+\end{equation}
+where $\Lambda(0)$ is the value that Backlund's method gives under the Lindel\"of hypothesis. This bound is asymptotic only: no bound at any finite height is claimed. On a grid, without certification, the same construction gives about $0.0760$ (kernel of order $10$, $1045$ discs) and $0.0752$ (order $20$).
+
+\section{How}\label{sec:how}
+
+\textbf{The identity.} As in \cite[\S2]{Amberger2025} and \cite[\S2]{BellottiWong2026}, for $d>\frac12$ and $T$ not an ordinate,
+\begin{equation}
+N(T)=\frac1\pi\Bigl(2\arg\xi(\tfrac12+d+iT)-\arg\xi(\tfrac12+2d+iT)\Bigr)+\frac1{2\pi}\sum_\rho f(\tfrac12-\beta,\,T-\gamma),
+\label{eq:identity}
+\end{equation}
+with $f(b,t)=2\arctan\frac{d+b}t+2\arctan\frac{d-b}t-\arctan\frac{2d+b}t-\arctan\frac{2d-b}t$. I majorise $f\le U$ on $|b|\le\frac12$, $t\ne0$, by $U=\sum_\iota c_\iota\bigl(F_\iota(d+b,t)+F_\iota(d-b,t)\bigr)$, with $F_{{\rm R},j}=\operatorname{Re}(x+it)^{-j}$ ($1\le j\le m$) and $F_{{\rm I},j}=-\operatorname{Im}(x+it)^{-j}$ ($2\le j\le m$). The sums of $U$ over the zeros are evaluated through $\xi'/\xi$ and its derivatives at $\frac12+d+iT$.
+
+\textbf{1. Optimal kernels.} For fixed $d$, the condition $f\le U$ is linear in the coefficients. The total bound at a target height $L^*$ is a convex function of them, since the Euler-product term below is a sum of Euclidean norms. I minimise $A_1L^*+A_3$ by second-order cone programming, with cutting planes for $f\le U$ and a margin $\eta/(1+t^2)$, for $d\in\{0.65,\dots,1.2\}$ and $m\le5$. The seven lines of \CGeqref{eq:familyN} are the optima for $L^*\in\{5,20,60,150,400,1000,2500\}$. For instance, the line $0.09349L+3.237$ has $d=0.85$ and $m=5$.
+
+\textbf{2. The Euler product, combined.} For each prime power $n$, the contribution of $\zeta$ to the bound is $\alpha_n\cos(T\log n)+\beta_n\sin(T\log n)$. Here $\alpha_n$ collects the real-part terms and $\beta_n$ the imaginary-part terms and the two values of $\arg\zeta$. I bound it by $\sqrt{\alpha_n^2+\beta_n^2}$, which gives
+\begin{equation}
+\bigl|N(T)-\main(T)\bigr|\le A_1\log T+C_\zeta+\sup_{T\ge1}F(T),\qquad C_\zeta=\sum_n\Lambda(n)\,n^{-\sigma_1}\sqrt{a(\log n)^2+b(\log n)^2},
+\label{eq:split}
+\end{equation}
+with $\sigma_1=\frac12+d$ and explicit functions $a$, $b$. $C_\zeta$ is summed exactly in Arb over all prime powers up to $10^8$. The tail is bounded by partial summation with $\psi(x)<1.03883x$ and a non-increasing majorant of the summand. For your kernel (2.43) this gives $C_\zeta<4.40867$, which corresponds to $C_E/2\le4.584$ in your notation.
+
+\textbf{3. The elementary part, exactly.} $F(T)$ collects the contributions of $\Gamma$, of $s(s-1)$ and of the main term, minus $A_1\log T$. I evaluate it as a function of $T$ and take one supremum. On $[1,10^4]$ this uses a centred form on $9215$ intervals. For $T\ge10^4$ I use Stirling's formula with Olver's remainder \cite[5.11(ii)]{DLMF} and Cauchy estimates for the polygamma functions. For (2.43), $\sup F\le0.72834$, attained at $T=1$; for comparison, $(G_u+C_3)/2\approx1.16$. In the version for $S(T)$, the constant $\frac78$ cancels and $\sup F$ is negative, about $-0.16$.
+
+\textbf{4. The kernel inequality.} $f\le U$ is certified on the whole half-strip $0\le b\le\frac12$, $t\ne0$, by centred-form bisection. In a neighbourhood of $t=0$ I use the form of $f$ that is continuous up to $t=0^\pm$. For $|t|\ge100$ I use the variable $u=1/t$, together with the expansion $t^2f=4d^3u+O(u^3)$ with an explicit remainder.
+
+\textbf{5. The hybrid.} By the maximum principle, the constraints that fix the optimum of the kernel are those at $b=\pm\frac12$, that is, at hypothetical zeros near $\beta=0$ or $\beta=1$. If the constraint is imposed only at $b=0$, as would suffice if all zeros were on the critical line, the optimal coefficient decreases towards $0$ with $m$: $0.050$, $0.020$, $0.0126$ for $m=4,10,20$. In the hybrid, the kernel may fail near $b=\pm\frac12$. The excess is paid by weights $\kappa_k\log^+(R_k/|\rho^*-c_k-i(T+v_k)|)$, where $\rho^*$ is the zero of real part $\ge\frac12$ among $\rho$ and $1-\bar\rho$, on discs with $c_k-R_k\ge\frac12$. Their sums over the zeros are bounded by Jensen's formula and Bourgain's exponent pair \cite{Bourgain2017}, through $2\bigl(J_k+\varepsilon\bigr)\log T$ with $J_k=\frac1{2\pi}\int_0^{2\pi}\mathfrak e(c_k+R_k\cos\theta)\,d\theta$. This gives
+\[
+\mathfrak a\le\frac{c_{{\rm R},1}}{2\pi}+\frac1\pi\sum_k\kappa_kJ_k ,
+\]
+and \CGeqref{eq:hybrid} for a kernel with $m=10$, $d=\frac9{10}$ and $39$ discs.
+
+\section{Comparison and attribution}\label{sec:compare}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & previous & this letter\\\midrule
+$|N-\main|$, $T\ge1$ & $\min(0.0946L+5.746,\ 0.097L+4.954)$ \cite{BellottiWong2026} & \CGeqref{eq:familyN}, below by $\ge1.996$\\
+$|S(T)|$, $T\ge e$ & $0.0946L+6.691$ (from \cite{BellottiWong2026}) & $0.09349L+2.350$; \CGeqref{eq:familyS}\\
+final slope, explicit & $0.0946$ & $0.08844$\\
+$\mathfrak a$ & $0.0946$ & $0.07755$ (asymptotic only)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The identity \CGeqref{eq:identity} and the idea of the kernel majorant are those of \cite{Amberger2025,BellottiWong2026}. Your \S3 in \cite{BellottiWong2026} anticipates that more parameters and convex optimisation should lower the leading constant. Items 1--3 of Section~\CGref{sec:how} carry this out and sharpen the bookkeeping. Item 5, the Jensen discs controlled by subconvexity, is, as far as I know, new.
+
+The programs, the coefficients (as exact binary numbers) and the outputs of all certificates are public at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
+
+I would be happy to share more details, and I would greatly appreciate your opinion, in particular on whether you plan to pursue the optimisation in \S3 of \cite{BellottiWong2026}, so that we can avoid duplicating work.
+
+\medskip
+\noindent With kind regards,
+
+\medskip
+\noindent V\'ictor Casa\~na-Giner
+
+\begin{thebibliography}{9}
+
+\bibitem{Amberger2025} V. S. G. Amberger, Estimating the number of zeros of Dedekind zeta-functions, preprint, arXiv:2510.27444 (v1 2025, v4), \href{https://doi.org/10.48550/arXiv.2510.27444}{doi:10.48550/arXiv.2510.27444}.
+
+\bibitem{BellottiWong2025} C. Bellotti and P.-J. Wong, Improved estimates for the argument and zero-counting function of the Riemann zeta-function, \textit{Math. Comp.} (2025, published online 14 November 2025), \href{https://doi.org/10.1090/mcom/4133}{doi:10.1090/mcom/4133}.
+
+\bibitem{BellottiWong2026} C. Bellotti and P.-J. Wong, Counting zeros of Artin $L$-functions, preprint, arXiv:2606.31441v1, 2026, \href{https://doi.org/10.48550/arXiv.2606.31441}{doi:10.48550/arXiv.2606.31441}.
+
+\bibitem{Bourgain2017} J. Bourgain, Decoupling, exponential sums and the Riemann zeta function, \textit{J. Amer. Math. Soc.} \textbf{30} (2017) 205--224, \href{https://doi.org/10.1090/jams/860}{doi:10.1090/jams/860}.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions, \S5.11, \url{https://dlmf.nist.gov/5.11}.
+
+\bibitem{Johansson2017} F. Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, \textit{IEEE Trans. Comput.} \textbf{66} (2017) 1281--1292, \href{https://doi.org/10.1109/TC.2017.2690633}{doi:10.1109/TC.2017.2690633}.
+
+\bibitem{RosserSchoenfeld1962} J. B. Rosser and L. Schoenfeld, Approximate formulas for some functions of prime numbers, \textit{Illinois J. Math.} \textbf{6} (1962) 64--94, \href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+
+\bibitem{Turing1953} A. M. Turing, Some calculations of the Riemann zeta-function, \textit{Proc. London Math. Soc. (3)} \textbf{3} (1953) 99--117, \href{https://doi.org/10.1112/plms/s3-3.1.99}{doi:10.1112/plms/s3-3.1.99}.
+
+\end{thebibliography}
+
+\end{document}
