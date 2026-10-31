@@ -1,1 +1,4 @@
 candidate D6000 d= 0.85 C1= 0.08381417060209288 A3_est= 5.30173732619673
+all certified;  C < 0.0838141706021   time 3243s
+C_zeta < 4.58951034745    time 82s
+SUP over T>=1 of max(F_u,F_l) <= 0.735737656779
