@@ -38,7 +38,7 @@ with open('generated_tables.tex', 'w') as f:
     f.write('\\begin{tabular}{@{}cr@{\\quad}cr@{}}\\toprule $\\iota$ & $c_\\iota$ & $\\iota$ & $c_\\iota$\\\\\\midrule\n')
     Rs = [(b, cc) for b, cc in zip(B, c) if b[0] == 'R']; Is = [(b, cc) for b, cc in zip(B, c) if b[0] == 'I']
     for i in range(10):
-        l = '$(\\mathrm R,%d)$ & $%s$' % (Rs[i][0][1], ('%.12g' % float(Rs[i][1])).replace('e-', '\\cdot10^{-').replace('e+', '\\cdot10^{') if 'e' not in '%.12g' % float(Rs[i][1]) else '%.12g' % float(Rs[i][1]))
+        l = '$(\\mathrm R,%d)$ & $%.12g$' % (Rs[i][0][1], float(Rs[i][1]))
         if i < 9: l += ' & $(\\mathrm I,%d)$ & $%.12g$' % (Is[i][0][1], float(Is[i][1]))
         else: l += ' & & '
         f.write(l+'\\\\\n')
@@ -81,13 +81,18 @@ with open('generated_tables.tex', 'w') as f:
         p = FAM+'line_%s/sol.json' % tag
         if not os.path.exists(FAM+'line_%s/summary_pp.json' % tag): continue
         s = json.load(open(p)); Bl = [tuple(x) for x in s['B']]; cl = s['c']
-        f.write('%%%%TAB_%s\n' % name)
+        f.write('%%%%%%%%TAB_%s\n' % name)
         f.write('\\begin{tabular}{@{}cr@{\\quad}cr@{}}\\toprule $\\iota$ & $c_\\iota$ & $\\iota$ & $c_\\iota$\\\\\\midrule\n')
         Rs = [(b, cc) for b, cc in zip(Bl, cl) if b[0] == 'R']; Is = [(b, cc) for b, cc in zip(Bl, cl) if b[0] == 'I']
+        def g12(x):
+            t = '%.12g' % x
+            if 'e' in t:
+                m_, e_ = t.split('e'); return '%s\\cdot10^{%d}' % (m_, int(e_))
+            return t
         for i in range(len(Rs)):
-            l = '$(\\mathrm R,%d)$ & $%.12g$' % (Rs[i][0][1], Rs[i][1])
-            l += (' & $(\\mathrm I,%d)$ & $%.12g$' % (Is[i][0][1], Is[i][1])) if i < len(Is) else ' & & '
-            f.write(l.replace('e-0', '\\cdot10^{-').replace('e-', '\\cdot10^{-')+'\\\\\n')
+            l = '$(\\mathrm R,%d)$ & $%s$' % (Rs[i][0][1], g12(Rs[i][1]))
+            l += (' & $(\\mathrm I,%d)$ & $%s$' % (Is[i][0][1], g12(Is[i][1]))) if i < len(Is) else ' & & '
+            f.write(l+'\\\\\n')
         f.write('\\bottomrule\\end{tabular}\n')
 print('C_H =', CH.str(16))
 

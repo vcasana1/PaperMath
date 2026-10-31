@@ -807,6 +807,9 @@ C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074888389970260602744  (ball [0.074888 +
 kernel part c_R1/(2pi) = 0.0656118899398
 limit t^2 U at |t|->inf = [0.001761888763 +/- 9.16e-14] True
 t in (0,T1]: certified, boxes 1648951
+t in [-T1,0): certified, boxes 2054381
+|t|>=T1: certified, boxes 155116
+all certified;  C < 0.0748883899703   time 716s
 \end{lstlisting}
 \subsection*{Line $\ell_{5}$: kernel inequality}
 \begin{lstlisting}
@@ -962,6 +965,37 @@ SUP over T>=1 of max(F_u,F_l) <= 0.737565719751
 intervals 9215  sup F_u on [1,T0] <= -0.1458266308   sup F_l <= -0.1520124642
 T>=T0: F_u <= -0.1540198712  F_l <= -0.1540198712  (K= [3.36106 +/- 6.67e-7] )
 SUP over T>=1 of max(F_u,F_l) <= -0.145826630820
+\end{lstlisting}
+\subsection*{Line $\ell_{6000}$: kernel inequality}
+\begin{lstlisting}
+d = 17/20  m = 10  profile B  discs used: 0
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083814170602092884236  (ball [0.083814 +/- 1.71e-7] )
+kernel part c_R1/(2pi) = 0.0838141706021
+limit t^2 U at |t|->inf = [0.0002027460239 +/- 3.01e-14] True
+t in (0,T1]: certified, boxes 14760921
+t in [-T1,0): certified, boxes 15866017
+|t|>=T1: certified, boxes 4194302
+all certified;  C < 0.0838141706021   time 3243s
+\end{lstlisting}
+\subsection*{Line $\ell_{6000}$: $C_\zeta$}
+\begin{lstlisting}
+per-prime phase maximum for p <= 1000 : gain [0.28466228 +/- 4.66e-10]
+primes 5761455  partial sum (n<=100000000) = [4.10087443545128 +/- 2.45e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  81s
+g monotone on [5000, oo): crude bound [+/- 0.0108] < sigma1
+tail <= [0.4886359120 +/- 3.99e-12]  (integral [0.4671146906 +/- 3.15e-11] , far tail [2.9139e-111 +/- 4.83e-116] )
+C_zeta < 4.58951034745    time 82s
+\end{lstlisting}
+\subsection*{Line $\ell_{6000}$: elementary part, mode N}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= 0.7357376568   sup F_l <= -1.027508246
+T>=T0: F_u <= 0.7212794331  F_l <= -1.028720567  (K= [3.19575 +/- 1.13e-6] )
+SUP over T>=1 of max(F_u,F_l) <= 0.735737656779
+\end{lstlisting}
+\subsection*{Line $\ell_{6000}$: elementary part, mode S}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= -0.1464102938   sup F_l <= -0.1517135820
+T>=T0: F_u <= -0.1537039882  F_l <= -0.1537039882  (K= [3.36154 +/- 2.48e-6] )
+SUP over T>=1 of max(F_u,F_l) <= -0.146410293767
 \end{lstlisting}
 \section{Exact data}\label{app:data}
 The following files hold the coefficients as exact binary floating-point numbers (the decimal strings are the shortest that round-trip), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\le10^4$ and then replaces $R_k$ by $\min(R_k,c_k-\frac12)$, as in \texttt{certify\_hybrid.py}), and the parameters $d$, $m$, $\eta$.
@@ -2064,5 +2098,124 @@ The following files hold the coefficients as exact binary floating-point numbers
  "m": 10,
  "val": 39.05580672837446,
  "time": 38.073201417922974
+}
+\end{lstlisting}
+\subsection*{\texttt{line\_D6000/sol.json} (line $\ell_{6000}$)}
+\begin{lstlisting}
+{
+ "d": 0.85,
+ "B": [
+  [
+   "R",
+   1
+  ],
+  [
+   "R",
+   2
+  ],
+  [
+   "R",
+   3
+  ],
+  [
+   "R",
+   4
+  ],
+  [
+   "R",
+   5
+  ],
+  [
+   "R",
+   6
+  ],
+  [
+   "R",
+   7
+  ],
+  [
+   "R",
+   8
+  ],
+  [
+   "R",
+   9
+  ],
+  [
+   "R",
+   10
+  ],
+  [
+   "I",
+   2
+  ],
+  [
+   "I",
+   3
+  ],
+  [
+   "I",
+   4
+  ],
+  [
+   "I",
+   5
+  ],
+  [
+   "I",
+   6
+  ],
+  [
+   "I",
+   7
+  ],
+  [
+   "I",
+   8
+  ],
+  [
+   "I",
+   9
+  ],
+  [
+   "I",
+   10
+  ]
+ ],
+ "c": [
+  0.5266199652605132,
+  0.44752559745950127,
+  0.21763335933091524,
+  -0.06632610210813339,
+  0.049224751946469816,
+  -0.002454597973796714,
+  5.8415182530844107e-05,
+  -7.96150671490144e-07,
+  6.08645994127779e-09,
+  -2.0583832928014207e-11,
+  0.5834246015810649,
+  -0.23667212703027896,
+  0.09567840750457196,
+  -0.01858966229544025,
+  0.0008313848476117577,
+  -1.89384002058713e-05,
+  2.517567194510178e-07,
+  -1.8927048877024136e-09,
+  6.322548809318692e-12
+ ],
+ "C1": 0.08381417060209288,
+ "Cz_est": 4.566001466369842,
+ "z_est": 0.7357358598268879,
+ "A3_est": 5.30173732619673,
+ "Lstar": 6000.0,
+ "eta": 0.0002,
+ "prof": "B",
+ "discs": [],
+ "kappa": [],
+ "J": [],
+ "m": 10,
+ "val": 508.18676093875405,
+ "time": 46.305405139923096,
+ "pp": 300
 }
 \end{lstlisting}

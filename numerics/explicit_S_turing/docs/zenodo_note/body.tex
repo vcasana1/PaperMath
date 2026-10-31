@@ -1,0 +1,896 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage[no-math]{fontspec}
+\fi
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,mathrsfs}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{longtable,booktabs,array}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[pagebackref=true]{hyperref}
+\usepackage{bookmark}
+\usepackage{pdfcomment}
+
+% ---------- hover previews for internal references (no layout change) ----------
+\makeatletter
+\let\CG@origref\ref
+\let\CG@origeqref\eqref
+\newcommand{\CG@gettip}[1]{\@ifundefined{CGTip@#1}{Reference: #1}{\csname CGTip@#1\endcsname}}
+\DeclareRobustCommand{\CGref}[1]{\pdftooltip{\CG@origref{#1}}{\CG@gettip{#1}}}
+\DeclareRobustCommand{\CGeqref}[1]{\pdftooltip{\CG@origeqref{#1}}{\CG@gettip{#1}}}
+\newcommand{\CGtip}[2]{\expandafter\gdef\csname CGTip@#1\endcsname{#2}}
+\makeatother
+\input{tips.tex}
+
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 1},
+  linkbordercolor={1 0 0},
+  citebordercolor={0 0.3 1},
+  urlbordercolor={0 0.6 0.6},
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  pdfstartview=FitH,
+  pdftitle={Explicit and asymptotic estimates for the zero-counting function of the Riemann zeta-function},
+  pdfauthor={V\'ictor Casa\~na-Giner},
+  pdfsubject={Riemann zeta function, zero counting, argument, Turing's method, Jensen's formula, certified computation},
+  pdfkeywords={Riemann zeta function, S(T), N(T), Turing method, Jensen formula, subconvexity, explicit bounds, ball arithmetic}
+}
+% back-references in the bibliography
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1 \relax\or\ (Cited on p.~#2.)\else\ (Cited on pp.~#2.)\fi}
+% in \cite[note]{key} the note is linked too
+\makeatletter
+\let\CG@origcite\cite
+\renewcommand*{\cite}[2][]{\def\CG@citekey{#2}%
+  \ifx\relax#1\relax\CG@origcite{#2}\else\CG@origcite[#1]{#2}\fi}
+\def\@cite#1#2{{\@citestyle[\citeform{#1}\if@tempswa, \hyper@link{cite}{cite.\CG@citekey}{#2}\fi]}}
+\makeatother
+
+\geometry{margin=1in}
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{2}
+\setlength{\emergencystretch}{1.5em}
+\lstset{basicstyle=\ttfamily\scriptsize,breaklines=true,breakatwhitespace=false,columns=fullflexible,keepspaces=true,frame=single,framerule=0.2pt,xleftmargin=2pt,xrightmargin=2pt,showstringspaces=false,literate={~}{{\textasciitilde}}1}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\main}{\mathcal M}
+\newcommand{\eP}{\mathfrak e_{\mathrm P}}
+\newcommand{\Lo}{\operatorname{Log}}
+\newcommand{\ph}{\operatorname{ph}}
+\newcommand{\Rp}{\operatorname{Re}}
+\newcommand{\Ip}{\operatorname{Im}}
+\input{generated_values.tex}
+
+\title[Explicit and asymptotic estimates for $N(T)$]{Explicit and asymptotic estimates for the zero-counting function of the Riemann zeta-function}
+\author{V\'ictor Casa\~na-Giner}
+\address{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain}
+\email{\href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es}}
+\thanks{ORCID \href{https://orcid.org/0000-0002-8252-2608}{0000-0002-8252-2608}.}
+\date{31 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+Let $N(T)$ be the number of non-trivial zeros of the Riemann zeta-function with imaginary part in $(0,T]$, counted with multiplicity, and let $S(T)$ be the argument of $\zeta$ on the critical line, normalised so that $N(T)=\frac1\pi\vartheta(T)+1+S(T)$. Two estimates are proved by the method of Turing type that Amberger introduced for Dedekind zeta-functions and that Bellotti and Wong extended to Artin $L$-functions. The first is explicit: for every $T\ge1$,
+\[
+\Bigl|N(T)-\frac T{2\pi}\log\frac T{2\pi e}\Bigr|\le\LineBAone\log T+\LineBAthreeN,\qquad |S(T)|\le\LineBAone\log T+\LineBAthreeS,
+\]
+and a piecewise linear bound, formed by six lines, lies below the explicit bounds of Amberger and of Bellotti and Wong for every $T\ge1$. The kernels of the method are found by convex optimisation instead of by hand, the constant coming from the Euler product is computed exactly up to $10^8$ and bounded beyond by a prime-number estimate of Rosser and Schoenfeld, and the elementary part is evaluated as one function of $T$. The second estimate is asymptotic: $\limsup_{T\to\infty}|S(T)|/\log T<\CHup$. It comes from a hybrid of the kernel majorant with Jensen's formula on discs to the right of the critical line, where the growth of $\zeta$ is controlled by the subconvexity bounds of Bourgain, of Trudgian and Yang, of Tao, Trudgian and Yang, and of Heath-Brown. The constant is smaller than the value $0.0786252\ldots$ that the method of Backlund gives for discs centred near $s=1$ even under the Lindel\"of hypothesis. Every inequality between elementary functions that enters a proof is certified in ball arithmetic, and no numerical information on the zeros is used.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+
+Let $\zeta$ be the Riemann zeta-function and
+\begin{equation}
+\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(\tfrac s2)\zeta(s)
+\label{eq:xi_def}
+\end{equation}
+its completed form, an entire function that satisfies $\xi(s)=\xi(1-s)$ and is real and positive on the real axis \cite[\S2.1, (2.1.12)--(2.1.13)]{Titchmarsh1986}. By the Euler product, $\zeta$ has no zeros in $\Rp s>1$, and by the functional equation none in $\Rp s<0$ other than the trivial zeros $-2,-4,\ldots$, which are cancelled in $\xi$ by the poles of $\Gamma(s/2)$. The zeros of $\xi$ are therefore the non-trivial zeros of $\zeta$, all in the strip $0<\Rp s<1$. Throughout, $\rho=\beta+i\gamma$ runs over these zeros, counted with multiplicity, and
+\begin{equation}
+N(T)=\#\{\rho:\ 0<\gamma\le T\}\qquad(T>0),
+\label{eq:N_def}
+\end{equation}
+so that $N(T)$ is right-continuous and $N(T)=N(T^+)$ at an ordinate $T$. Since $\xi(\bar s)=\overline{\xi(s)}$, the zeros are symmetric with respect to the real axis, and $N(T)$ counts half of the zeros with $|\gamma|\le T$. Riemann stated and von Mangoldt \cite{VonMangoldt1905} proved that
+\begin{equation}
+N(T)=\main(T)+O(\log T),\qquad \main(T)=\frac T{2\pi}\log\frac T{2\pi e}.
+\label{eq:RvM}
+\end{equation}
+The function
+\begin{equation}
+\vartheta(T)=\Ip\Lo\Gamma\bigl(\tfrac14+\tfrac{iT}2\bigr)-\frac T2\log\pi
+\label{eq:theta_def}
+\end{equation}
+is the Riemann--Siegel theta function, with the branch of $\Lo\Gamma$ that is real on $(0,\infty)$, and the argument of $\zeta$ on the critical line is the function $S$ defined for $T>0$ by
+\begin{equation}
+N(T)=\frac1\pi\vartheta(T)+1+S(T)
+\label{eq:S_def}
+\end{equation}
+\cite[\S9.3]{Titchmarsh1986}; with the convention \CGeqref{eq:N_def}, $S(T)=S(T^+)$ at the ordinates. Since $\vartheta(T)/\pi+1=\main(T)+\frac78+O(1/T)$ (Lemma~\CGref{lem:varpi} below), the estimate \CGeqref{eq:RvM} is equivalent to $S(T)=O(\log T)$.
+
+The problem of making \CGeqref{eq:RvM} explicit, in the form
+\begin{equation}
+\bigl|N(T)-\main(T)\bigr|\le C_1\log T+C_2\log\log T+C_3\qquad(T\ge T_0),
+\label{eq:explicit_form}
+\end{equation}
+goes back to Backlund \cite{Backlund1918}, after von Mangoldt \cite{VonMangoldt1905} and Grossmann \cite{Grossmann1913}, and was taken up by Rosser \cite{Rosser1941}, Trudgian \cite{Trudgian2012,Trudgian2014}, Platt and Trudgian \cite{PlattTrudgian2015}, Hasanalizade, Shen and Wong \cite{HasanalizadeShenWong2022} and Bellotti and Wong \cite{BellottiWong2025}, all by the method of Backlund: the variation of $\arg\zeta$ on the horizontal segment from $\frac12+iT$ to the right is controlled by Jensen's formula on a disc centred at a point $c+iT$ with $c>1$, and the growth of $\zeta$ on that disc by convexity or subconvexity bounds. Table~\CGref{tab:history} lists the constants obtained in this way, in the form \CGeqref{eq:explicit_form} and with the first height $T_0$ from which each bound is proved. The leading constant obtainable by this method is limited from below: for the family of discs used in \cite{CasanaGiner2026}, centred near $s=1$ with radius near $1$, the leading constant cannot be smaller than
+\begin{equation}
+\Lambda(0)=\frac{3\sqrt3-\pi}{12\pi\log2}=0.0786252\ldots
+\label{eq:Lambda0}
+\end{equation}
+for any admissible growth profile of $\zeta$, even under the Lindel\"of hypothesis \cite[Remark~5.2]{CasanaGiner2026}; whether other discs could do better is not settled there.
+
+In 2025 Amberger \cite{Amberger2025} introduced a different method, inspired by Turing's \cite[Lemma~1]{Turing1953}, for Dedekind zeta-functions, and Bellotti and Wong \cite{BellottiWong2026} extended it to Artin $L$-functions and sharpened it. Instead of a disc, it uses an exact identity: for $d>\frac12$, $N(T)$ equals a combination of the arguments of $\xi$ at the two points $\frac12+d+iT$ and $\frac12+2d+iT$, which lie in the zero-free half-plane $\Rp s>1$, plus a sum over all the zeros of an explicit function $f(\frac12-\beta,T-\gamma)$ (Lemma~\CGref{lem:identity}). The sum over the zeros is then estimated from above and from below by sums of functions of the form $\Rp(x+it)^{-j}$ and $\Ip(x+it)^{-j}$, whose sums over the zeros are the derivatives of $\xi'/\xi$ at $\frac12+d+iT$, again in the zero-free half-plane. For the Riemann zeta-function the method gives $|N(T)-\main(T)|\le0.097\log T+4.807$ for all $T\ge1$ in \cite[Cor.~2]{Amberger2025}, and $\min(0.0946\log T+5.746,\ 0.097\log T+4.954)$ in \cite[Cor.~1.3]{BellottiWong2026}. Both articles choose the coefficients of the majorant by trial, with three or four of them, and Bellotti and Wong \cite[\S3]{BellottiWong2026} ask what the method can give when more coefficients are allowed and chosen by convex optimisation, and whether the infimum of the leading constant over all such majorants is zero.
+
+This article contains two contributions to that method. The first is quantitative. The majorant is taken from a family with nineteen coefficients and the coefficients are chosen by a second-order cone programme, with the inequality that defines the majorant imposed on a grid and refined by cutting planes. The constant that comes from the Euler product is computed exactly in ball arithmetic over all prime powers up to $10^8$, taking, for each prime, the maximum over the common phase of all its powers (an observation of Amberger \cite[Lemma~9]{Amberger2025}), and bounded beyond $10^8$ by partial summation with the inequality $\psi(x)<1.03883x$ of Rosser and Schoenfeld \cite[Thm.~12]{RosserSchoenfeld1962}. The remaining part, which comes from $\Gamma$, from $s(s-1)$ and from the main term, is evaluated as a single function of $T$ whose supremum over $T\ge1$ is certified. The result (Theorem~\CGref{thm:explicit}) is a piecewise linear bound, valid for all $T\ge1$, that lies below the bounds of \cite{Amberger2025} and \cite{BellottiWong2026} at every height; its last line has leading constant $\LineBAone$.
+
+The second contribution is methodological. By the maximum principle, the constraints that determine the optimal majorant are those at hypothetical zeros with $\beta$ near $0$ or near $1$, and the method of Turing type, which uses no information on $\zeta$ inside the critical strip, cannot exclude them. In the hybrid of Section~\CGref{sec:jensen} the majorant is allowed to fail near $\beta\in\{0,1\}$, and the excess is paid by weights of the form $\log^+(R/|\rho^*-s_0|)$, where $s_0=c+i(T+v)$ with $c>1$ and $\rho^*$ is the one of $\rho$, $1-\bar\rho$ with real part $\ge\frac12$. The sum of such a weight over the zeros is bounded by Jensen's formula on the disc $|s-s_0|<R$, and the integral of $\log|\zeta|$ on its boundary by the subconvexity bounds for $\zeta$ in the strip. The coefficients of the majorant and the weights of the discs are chosen together by linear programming. This gives (Theorem~\CGref{thm:hybrid})
+\[
+\limsup_{T\to\infty}\frac{|S(T)|}{\log T}<\CHup,
+\]
+below the value \CGeqref{eq:Lambda0}. The bound is asymptotic: the subconvexity estimates used have no explicit constants, and no height from which the inequality holds is computed.
+
+The identity of Lemma~\CGref{lem:identity}, the family of kernel functions and the way their sums over the zeros are evaluated are due to Amberger \cite{Amberger2025} and to Bellotti and Wong \cite{BellottiWong2026}, as is the maximum over the phase in the Euler product; they are proved here again, with the normalisation used in this article, so that the article is self-contained. The convex optimisation, the certification of every inequality in ball arithmetic \cite{Johansson2017}, and the hybrid with Jensen's formula are, to the author's knowledge, new. Backlund's method and the method of Turing type are compared in Section~\CGref{sec:methods}, where the computations are also described. All numerical statements in the proofs are certified in Arb ball arithmetic \cite{Johansson2017} through \texttt{python-flint}; the programs and their outputs are reproduced after the bibliography (Appendices~\CGref{app:code}--\CGref{app:data}), and no computation of zeros of $\zeta$, in particular no verification of the Riemann hypothesis up to some height, is used anywhere.
+
+%======================================================================
+\section{Results}\label{sec:results}
+
+Write $L=\log T$ and, for a finite set of lines $\ell_i(L)=A_{1,i}L+A_{3,i}$,
+\begin{equation}
+\min_i\ell_i(L)=\min_i\bigl(A_{1,i}L+A_{3,i}\bigr).
+\label{eq:envelope_def}
+\end{equation}
+
+\begin{theorem}[Explicit estimate]\label{thm:explicit}
+For every $T\ge1$, with $L=\log T$,
+\begin{align}
+\bigl|N(T)-\main(T)\bigr|&\le\min\{\LineFiveAone L+\LineFiveAthreeN,\ \LineTwentyAone L+\LineTwentyAthreeN,\ \LineSixtyAone L+\LineSixtyAthreeN,\notag\\
+&\qquad\quad \LineOneFiftyAone L+\LineOneFiftyAthreeN,\ \LineFourHAone L+\LineFourHAthreeN,\ \LineBAone L+\LineBAthreeN\},\label{eq:thm_N}\\
+|S(T)|&\le\min\{\LineFiveAone L+\LineFiveAthreeS,\ \LineTwentyAone L+\LineTwentyAthreeS,\ \LineSixtyAone L+\LineSixtyAthreeS,\notag\\
+&\qquad\quad \LineOneFiftyAone L+\LineOneFiftyAthreeS,\ \LineFourHAone L+\LineFourHAthreeS,\ \LineBAone L+\LineBAthreeS\}.\label{eq:thm_S}
+\end{align}
+\end{theorem}
+
+The six lines are called $\ell_5,\ell_{20},\ell_{60},\ell_{150},\ell_{400},\ell_{6000}$, after the value of $L$ for which each was optimised. In \CGeqref{eq:thm_N} they are the smallest on $L\in[0,\LineBreakA]$, $[\LineBreakA,\LineBreakB]$, $[\LineBreakB,\LineBreakC]$, $[\LineBreakC,\LineBreakD]$, $[\LineBreakD,\LineBreakE]$ and $[\LineBreakE,\infty)$ respectively. Each line is proved on its own for all $T\ge1$; in particular
+\begin{equation}
+\bigl|N(T)-\main(T)\bigr|\le\LineBAone\log T+\LineBAthreeN,\qquad |S(T)|\le\LineBAone\log T+\LineBAthreeS\qquad(T\ge1).
+\label{eq:single_line}
+\end{equation}
+
+\begin{corollary}[Comparison]\label{cor:comparison}
+For every $T\ge1$ the right side of \CGeqref{eq:thm_N} is smaller than $\min(0.0946L+5.746,\ 0.097L+4.954)$ \cite[Cor.~1.3]{BellottiWong2026} by at least $\GapBW$, and smaller than the minimum of the seven bounds $0.097L+4.807$, $0.1L+4.140$, $0.12L+2.830$, $0.14L+2.306$, $0.16L+2.027$, $0.18L+1.847$, $0.2L+1.722$ of \cite[Cor.~2 and Table~6]{Amberger2025} by at least $\GapAmb$. The single line $\LineFourHAone L+\LineFourHAthreeN$ is smaller than both bounds of \cite[Cor.~1.3]{BellottiWong2026} for every $T\ge1$.
+\end{corollary}
+
+In the form \CGeqref{eq:explicit_form} with $C_2=0$ and $T_0=1$, the last line of Theorem~\CGref{thm:explicit} has $(C_1,C_3)=(\LineBAone,\LineBAthreeN)$; Table~\CGref{tab:history} puts it next to the earlier results. For $S(T)$, Bellotti and Wong \cite[Cor.~1.5]{BellottiWong2025} prove $|S(T)|\le0.10076L+0.24460\log L+7.20844$ for $T\ge e$, and \cite[Cor.~1.3]{BellottiWong2026} gives, through $|S|\le|N-\main|+\frac78+|\varpi|/\pi$ (Lemma~\CGref{lem:varpi}), $|S(T)|\le0.0946L+6.691$ for $T\ge e$.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+ & $C_1$ & $C_2$ & $C_3$ & $T_0$\\
+\midrule
+von Mangoldt \cite{VonMangoldt1905} (1905) & $0.4320$ & $1.9167$ & $13.0788$ & $28.5580$\\
+Grossmann \cite{Grossmann1913} (1913) & $0.2907$ & $1.7862$ & $7.0120$ & $50$\\
+Backlund \cite{Backlund1918} (1918) & $0.1370$ & $0.4430$ & $5.2250$ & $200$\\
+Rosser \cite{Rosser1941} (1941) & $0.1370$ & $0.4430$ & $2.4630$ & $2$\\
+Trudgian \cite{Trudgian2012} (2012) & $0.1700$ & $0$ & $2.8730$ & $e$\\
+Trudgian \cite{Trudgian2014} (2014) & $0.1120$ & $0.2780$ & $3.3850$ & $e$\\
+Platt and Trudgian \cite{PlattTrudgian2015} (2015) & $0.1100$ & $0.2900$ & $3.165$ & $e$\\
+Hasanalizade, Shen and Wong \cite{HasanalizadeShenWong2022} (2022) & $0.1038$ & $0.2573$ & $9.4925$ & $e$\\
+Bellotti and Wong \cite{BellottiWong2025} (2025) & $0.10076$ & $0.24460$ & $8.08344$ & $e$\\
+Amberger \cite[Cor.~2]{Amberger2025} (2025, v5 of 2026) & $0.097$ & $0$ & $4.807$ & $1$\\
+Bellotti and Wong \cite[Cor.~1.3]{BellottiWong2026} (2026) & $0.0946$ & $0$ & $5.746$ & $1$\\
+Theorem~\CGref{thm:explicit}, line $\ell_{400}$ & $\LineFourHAone$ & $0$ & $\LineFourHAthreeN$ & $1$\\
+Theorem~\CGref{thm:explicit}, line $\ell_{6000}$ & $\LineBAone$ & $0$ & $\LineBAthreeN$ & $1$\\
+\bottomrule
+\end{tabular}
+\caption{Explicit bounds $|N(T)-\main(T)|\le C_1\log T+C_2\log\log T+C_3$ for $T\ge T_0$. The rows up to 2025 are taken from \cite[Table~3]{BellottiWong2026}.}
+\label{tab:history}
+\end{table}
+
+For the asymptotic coefficient
+\begin{equation}
+\mathfrak a=\limsup_{T\to\infty}\frac{|S(T)|}{\log T},
+\label{eq:a_def}
+\end{equation}
+the explicit bounds give $\mathfrak a\le0.0946$ \cite{BellottiWong2026} and $\mathfrak a\le\LineBAone$ (Theorem~\CGref{thm:explicit}), and Backlund's method with the exponent pair of Bourgain gives $\mathfrak a\le0.0968160\ldots$ \cite[Cor.~1.2]{CasanaGiner2026}.
+
+\begin{theorem}[Hybrid estimate]\label{thm:hybrid}
+$\mathfrak a\le C_{\rm H}$, where $C_{\rm H}$ is the number \CGeqref{eq:CH} defined by the data of Section~\CGref{sec:hybrid_proof}, and
+\begin{equation}
+C_{\rm H}=\CHval\ldots<\CHup .
+\label{eq:CH_value}
+\end{equation}
+In particular $\mathfrak a<\Lambda(0)$, with $\Lambda(0)$ as in \CGeqref{eq:Lambda0}.
+\end{theorem}
+
+Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. The explicit bounds of Theorem~\CGref{thm:explicit} are not improved by it at any finite height.
+
+\begin{remark}[Conventions]\label{rem:conventions}
+Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not an ordinate and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at an ordinate, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
+\end{remark}
+
+\begin{remark}[On the infimum of the leading constant]\label{rem:infimum}
+Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ over all majorants of the type used in the method, with finitely many kernel functions, is $0$. The computations of Section~\CGref{sec:methods} give, for the family \CGeqref{eq:kernel_def} with $d=\frac9{10}$, the optimal leading constants $0.08831$, $0.08071$, $0.0800$ and $0.0795$ for $m=4,10,20,40$ (grid optima, not certified), which suggest a positive limit near $0.079$. The same computations with the admissibility constraint imposed only at $\beta=\frac12$, as would suffice under the Riemann hypothesis, give $0.050$, $0.020$ and $0.0126$ for $m=4,10,20$. The obstruction thus comes from hypothetical zeros near $\beta\in\{0,1\}$, and it is exactly what the hybrid of Theorem~\CGref{thm:hybrid} removes, at the price of using subconvexity bounds for $\zeta$ inside the strip.
+\end{remark}
+
+%======================================================================
+\section{The identity of Turing type}\label{sec:identity}
+
+On the closed half-plane $\Rp s\ge1$ the function $\xi$ has no zeros ($\zeta$ has none, $\Gamma$ has none, and $\xi(1)=\frac12$), and the half-plane is simply connected, so $\arg\xi$ has a continuous branch there; it is normalised by $\arg\xi(\sigma)=0$ for real $\sigma\ge1$, where $\xi(\sigma)>0$. For $d>\frac12$ put
+\begin{equation}
+\sigma_1=\tfrac12+d,\qquad\sigma_2=\tfrac12+2d,\qquad s_1=\sigma_1+iT,\qquad s_2=\sigma_2+iT .
+\label{eq:sigma12}
+\end{equation}
+For $b\in\R$ with $|b|<d$ and $t\ne0$ put
+\begin{equation}
+f(b,t)=2\arctan\frac{d+b}t+2\arctan\frac{d-b}t-\arctan\frac{2d+b}t-\arctan\frac{2d-b}t,
+\label{eq:f_def}
+\end{equation}
+and for a zero $\rho=\beta+i\gamma$ and a height $T$ write
+\begin{equation}
+b_\rho=\tfrac12-\beta,\qquad t_\rho=T-\gamma .
+\label{eq:b_t_rho}
+\end{equation}
+Since $0<\beta<1$, one has $|b_\rho|<\frac12<d$. The function $f$ is even in $b$ and odd in $t$.
+
+\begin{lemma}[Identity of Turing type \cite{Turing1953,Amberger2025,BellottiWong2026}]\label{lem:identity}
+Let $d>\frac12$ and let $T>0$ not be an ordinate. Then
+\begin{equation}
+N(T)=\frac1\pi\Bigl(2\arg\xi(s_1)-\arg\xi(s_2)\Bigr)+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho),
+\label{eq:identity}
+\end{equation}
+where the series converges absolutely.
+\end{lemma}
+
+\begin{proof}
+\emph{The argument principle.} Let $\mathcal R$ be the rectangle with vertices $\sigma_2$, $\sigma_2+iT$, $1-\sigma_2+iT$, $1-\sigma_2$. The function $\xi$ has no zeros on $\partial\mathcal R$: none on the vertical sides, which lie outside the critical strip; none on the top side, because $T$ is not an ordinate; and none on the real segment, because $\xi(\sigma)>0$ for all real $\sigma$ (for $\sigma\ge1$ this was noted above; for $0<\sigma<1$ one has $\sigma(\sigma-1)<0$ and $\zeta(\sigma)<0$, the latter because $(1-2^{1-\sigma})\zeta(\sigma)=\sum_{n\ge1}(-1)^{n-1}n^{-\sigma}>0$ and $1-2^{1-\sigma}<0$; the case $\sigma\le0$ follows from $\xi(\sigma)=\xi(1-\sigma)$). The zeros of $\xi$ inside $\mathcal R$ are the non-trivial zeros with $0<\gamma<T$, so by the argument principle the variation of $\arg\xi$ along $\partial\mathcal R$, counterclockwise, is $2\pi N(T)$.
+
+Let $\Delta_1$ be the variation of $\arg\xi$ along the path $\pi_1$ from $\sigma_2$ to $\sigma_2+iT$ and then to $\frac12+iT$. The reflection $s\mapsto1-\bar s$ in the critical line maps $\pi_1$ onto the path $\pi_1'$ from $1-\sigma_2$ to $1-\sigma_2+iT$ to $\frac12+iT$, and $\xi(1-\bar s)=\xi(\bar s)=\overline{\xi(s)}$, so the variation of $\arg\xi$ along $\pi_1'$ is $-\Delta_1$. The boundary $\partial\mathcal R$, counterclockwise, is $\pi_1$ followed by the reverse of $\pi_1'$ followed by the real segment from $1-\sigma_2$ to $\sigma_2$, on which $\arg\xi$ is constant. Hence $2\pi N(T)=\Delta_1+\Delta_1$, that is, $\Delta_1=\pi N(T)$.
+
+Along the vertical part of $\pi_1$ the variation is $\arg\xi(s_2)$, the branch defined above. Along the horizontal part, $\xi$ has no zeros, and with
+\begin{equation}
+F(\sigma)=\Ip\frac{\xi'}\xi(\sigma+iT)=\frac{\partial}{\partial\sigma}\arg\xi(\sigma+iT)\qquad(\tfrac12\le\sigma\le\sigma_2),
+\label{eq:F_def}
+\end{equation}
+a continuous function, the variation from $\sigma_2+iT$ to $\frac12+iT$ is $-\int_{1/2}^{\sigma_2}F(\sigma)\,d\sigma$. Therefore
+\begin{equation}
+\pi N(T)=\arg\xi(s_2)-\int_{1/2}^{\sigma_2}F(\sigma)\,d\sigma .
+\label{eq:argprinciple}
+\end{equation}
+Since $\int_{\sigma_1}^{\sigma_2}F(\sigma)\,d\sigma=\arg\xi(s_2)-\arg\xi(s_1)$ (the segment lies in $\Rp s\ge1$, where the branch is the one fixed above) and $\int_{1/2}^{\sigma_1}F(\sigma+d)\,d\sigma=\int_{\sigma_1}^{\sigma_2}F$,
+\begin{equation}
+\pi N(T)=2\arg\xi(s_1)-\arg\xi(s_2)-\int_{1/2}^{\sigma_1}\bigl(F(\sigma)-F(\sigma+d)\bigr)\,d\sigma .
+\label{eq:turing_split}
+\end{equation}
+
+\emph{The sum over the zeros.} By the Hadamard product \cite[Ch.~12]{Davenport2000},
+\begin{equation}
+\frac{\xi'}\xi(s)=B+\sum_\rho\Bigl(\frac1{s-\rho}+\frac1\rho\Bigr),
+\label{eq:hadamard}
+\end{equation}
+with a real constant $B$ and absolute convergence for every $s$ that is not a zero. Taking imaginary parts at $\sigma+iT$ and at $\sigma+d+iT$ and subtracting, the constants cancel and
+\begin{equation}
+F(\sigma)-F(\sigma+d)=\sum_\rho\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr),
+\label{eq:F_diff}
+\end{equation}
+a difference of two absolutely convergent series. For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an ordinate, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
+\begin{equation}
+\int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),\qquad g(b,t)=-2\arctan\frac{b+d}t+\arctan\frac bt+\arctan\frac{b+2d}t ,
+\label{eq:g_def}
+\end{equation}
+since $\sigma-\beta$ runs from $b_\rho$ to $b_\rho+d$ in the first term and $\sigma+d-\beta$ from $b_\rho+d$ to $b_\rho+2d$ in the second. For $|b|\le\frac12$ and $|t|\ge1$, the expansion $\arctan(y/t)=y/t-y^3/(3t^3)+O(|t|^{-5})$ gives $g(b,t)=O(|t|^{-3})$, because $-2(b+d)+b+(b+2d)=0$; hence $\sum_\rho g(b_\rho,t_\rho)$ converges absolutely.
+
+The map $\rho\mapsto1-\bar\rho$ is a bijection of the set of zeros that preserves multiplicities and maps $(b_\rho,t_\rho)$ to $(-b_\rho,t_\rho)$. Hence
+\[
+\sum_\rho g(b_\rho,t_\rho)=\frac12\sum_\rho\bigl(g(b_\rho,t_\rho)+g(-b_\rho,t_\rho)\bigr)=-\frac12\sum_\rho f(b_\rho,t_\rho),
+\]
+because $g(b,t)+g(-b,t)=-f(b,t)$: the terms $\arctan\frac bt$ and $\arctan\frac{-b}t$ cancel, and the others give \CGeqref{eq:f_def} with the opposite sign. Inserting this in \CGeqref{eq:turing_split} proves \CGeqref{eq:identity}.
+\end{proof}
+
+For an index $\iota=(\mathrm X,j)$ with $\mathrm X\in\{\mathrm R,\mathrm I\}$ and $j\ge1$, and for $x>0$, $t\in\R$, put
+\begin{equation}
+F_{\mathrm R,j}(x,t)=\Rp(x+it)^{-j},\qquad F_{\mathrm I,j}(x,t)=-\Ip(x+it)^{-j},\qquad G_\iota(b,t)=F_\iota(d+b,t)+F_\iota(d-b,t)\quad(|b|<d).
+\label{eq:G_def}
+\end{equation}
+A \emph{kernel} is a real linear combination
+\begin{equation}
+U=\sum_{\iota\in\mathcal B}c_\iota G_\iota,\qquad\mathcal B=\mathcal B_m=\{(\mathrm R,j):1\le j\le m\}\cup\{(\mathrm I,j):2\le j\le m\}.
+\label{eq:kernel_def}
+\end{equation}
+Each $G_\iota$ is even in $b$; $G_{\mathrm R,j}$ is even in $t$ and $G_{\mathrm I,j}$ is odd in $t$, because $(x-it)^{-j}=\overline{(x+it)^{-j}}$. Write $\Phi_{\mathrm R}(z)=\Rp z$, $\Phi_{\mathrm I}(z)=-\Ip z$, and
+\begin{equation}
+D_1(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\psi\Bigl(\frac s2\Bigr),\qquad
+D_j(s)=\frac1{s^j}+\frac1{(s-1)^j}+\frac{(-1)^{j-1}}{(j-1)!\,2^j}\psi^{(j-1)}\Bigl(\frac s2\Bigr)\quad(j\ge2),
+\label{eq:D_def}
+\end{equation}
+where $\psi=\Gamma'/\Gamma$.
+
+\begin{lemma}[Sums of the kernel functions over the zeros]\label{lem:kernel_sums}
+Let $d>\frac12$, $T>0$ and $s_1=\sigma_1+iT$. For every $\iota=(\mathrm X,j)\in\mathcal B$ the series $\sum_\rho G_\iota(b_\rho,t_\rho)$ converges absolutely and
+\begin{equation}
+\sum_\rho G_\iota(b_\rho,t_\rho)=2\,\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)-\frac2{(j-1)!}\sum_{n\ge2}\Lambda(n)(\log n)^{j-1}\,\Phi_{\mathrm X}\bigl(n^{-s_1}\bigr),
+\label{eq:kernel_sum}
+\end{equation}
+where $\Phi_{\mathrm R}(n^{-s_1})=n^{-\sigma_1}\cos(T\log n)$ and $\Phi_{\mathrm I}(n^{-s_1})=n^{-\sigma_1}\sin(T\log n)$.
+\end{lemma}
+
+\begin{proof}
+Since $s_1-\rho=(d+b_\rho)+it_\rho$ and $s_1-(1-\bar\rho)=(d-b_\rho)+it_\rho$, and $\rho\mapsto1-\bar\rho$ permutes the zeros, $\sum_\rho G_\iota(b_\rho,t_\rho)=2\sum_\rho F_\iota(s_1-\rho)$, where $F_\iota(z)$ stands for $F_\iota(\Rp z,\Ip z)$, provided the series converge absolutely. For $j\ge2$ this is clear from $|s_1-\rho|^{-j}\le|s_1-\rho|^{-2}$ and $\sum_\rho|s_1-\rho|^{-2}<\infty$. For $j=1$, $\Rp\frac1{s_1-\rho}=\frac{\sigma_1-\beta}{|s_1-\rho|^2}>0$, and by \CGeqref{eq:hadamard} together with $B=-\sum_\rho\Rp\frac1\rho$ \cite[Ch.~12]{Davenport2000}, the series of positive terms $\sum_\rho\Rp\frac1{s_1-\rho}$ converges to $\Rp\frac{\xi'}\xi(s_1)$.
+
+From \CGeqref{eq:xi_def}, for $\Rp s>1$,
+\begin{equation}
+\frac{\xi'}\xi(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\psi\Bigl(\frac s2\Bigr)+\frac{\zeta'}\zeta(s)=D_1(s)-\sum_{n\ge2}\Lambda(n)n^{-s},
+\label{eq:xi_log_der}
+\end{equation}
+which gives \CGeqref{eq:kernel_sum} for $j=1$. For $j\ge2$, differentiating \CGeqref{eq:hadamard} $j-1$ times term by term (the differentiated series converge absolutely and locally uniformly away from the zeros) gives $\sum_\rho(s-\rho)^{-j}=\frac{(-1)^{j-1}}{(j-1)!}\bigl(\frac{\xi'}\xi\bigr)^{(j-1)}(s)$, and differentiating \CGeqref{eq:xi_log_der} $j-1$ times gives
+\[
+\frac{(-1)^{j-1}}{(j-1)!}\Bigl(\frac{\xi'}\xi\Bigr)^{(j-1)}(s)=D_j(s)-\frac1{(j-1)!}\sum_{n\ge2}\Lambda(n)(\log n)^{j-1}n^{-s},
+\]
+because $\frac{d^{j-1}}{ds^{j-1}}s^{-1}=(-1)^{j-1}(j-1)!\,s^{-j}$ and $\frac{d^{j-1}}{ds^{j-1}}\frac12\psi(\frac s2)=2^{-j}\psi^{(j-1)}(\frac s2)$. Applying $\Phi_{\mathrm X}$ and multiplying by $2$ proves \CGeqref{eq:kernel_sum}.
+\end{proof}
+
+%======================================================================
+\section{The explicit estimate}\label{sec:explicit}
+
+\subsection{The decomposition}\label{subsec:decomposition}
+Fix $d>\frac12$, $m\ge2$ and a kernel $U=\sum_{\iota\in\mathcal B_m}c_\iota G_\iota$ such that
+\begin{equation}
+f(b,t)\le U(b,t)\qquad\text{for }0\le b\le\tfrac12,\ t\ne0.
+\tag{K}\label{eq:K}
+\end{equation}
+Since $f$ and $U$ are even in $b$, \CGeqref{eq:K} holds for $|b|\le\frac12$. Put $\varepsilon_{\mathrm R}=1$, $\varepsilon_{\mathrm I}=-1$ and, for $L>0$,
+\begin{equation}
+a(L)=-\frac1\pi\sum_{(\mathrm R,j)\in\mathcal B}c_{\mathrm R,j}\frac{L^{j-1}}{(j-1)!},\qquad
+b(L)=\frac1\pi\Bigl(\frac{e^{-dL}-2}L-\sum_{(\mathrm I,j)\in\mathcal B}c_{\mathrm I,j}\frac{L^{j-1}}{(j-1)!}\Bigr).
+\label{eq:ab_def}
+\end{equation}
+For $s=\sigma+iT$ with $\sigma>1$ and $T>0$ put
+\begin{equation}
+\mathcal A(s)=\arg s+\arg(s-1)-\frac T2\log\pi+\Ip\Lo\Gamma\Bigl(\frac s2\Bigr),\qquad\arg s=\arctan\frac T\sigma,\quad\arg(s-1)=\arctan\frac T{\sigma-1},
+\label{eq:A_def}
+\end{equation}
+and
+\begin{equation}
+\mathcal E(T)=\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)-\main(T),\qquad
+\mathcal E_u(T)=\mathcal E(T)+\frac1\pi\sum_{\iota\in\mathcal B}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr),\qquad
+\mathcal E_\ell(T)=\mathcal E(T)-\frac1\pi\sum_{\iota\in\mathcal B}\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr).
+\label{eq:E_def}
+\end{equation}
+
+\begin{proposition}[Two-sided estimate]\label{prop:twosided}
+Under \CGeqref{eq:K}, for every $T>0$ that is not an ordinate,
+\begin{equation}
+\begin{aligned}
+N(T)-\main(T)&\le\mathcal E_u(T)+\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\bigl(a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr),\\
+N(T)-\main(T)&\ge\mathcal E_\ell(T)+\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\bigl(-a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr),
+\end{aligned}
+\label{eq:twosided}
+\end{equation}
+and both series converge absolutely.
+\end{proposition}
+
+\begin{proof}
+For $\Rp s>1$, $\Lo\zeta(s)=\sum_{n\ge2}\frac{\Lambda(n)}{\log n}n^{-s}$ is the branch of $\log\zeta$ that is real on $(1,\infty)$ and continuous on the half-plane, and $\xi(s)=\frac12\cdot s\cdot(s-1)\cdot\pi^{-s/2}\cdot\Gamma(\frac s2)\cdot\zeta(s)$ is a product of non-vanishing factors each of which has a continuous argument on $\Rp s\ge1$, $T>0$, vanishing on the real axis: $\arg s$ and $\arg(s-1)$ as in \CGeqref{eq:A_def}, $-\frac T2\log\pi$, $\Ip\Lo\Gamma(\frac s2)$ and $\Ip\Lo\zeta(s)$. Their sum is a continuous argument of $\xi$ vanishing on the real axis, hence it is the branch of Section~\CGref{sec:identity}:
+\begin{equation}
+\arg\xi(s)=\mathcal A(s)-\sum_{n\ge2}\frac{\Lambda(n)}{\log n}n^{-\sigma}\sin(T\log n)\qquad(s=\sigma+iT,\ \sigma>1,\ T>0).
+\label{eq:argxi}
+\end{equation}
+Since $n^{-\sigma_2}=n^{-\sigma_1}e^{-d\log n}$,
+\begin{equation}
+\frac1\pi\bigl(2\arg\xi(s_1)-\arg\xi(s_2)\bigr)=\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)+\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\frac{e^{-d\log n}-2}{\log n}\sin(T\log n).
+\label{eq:argxi_comb}
+\end{equation}
+
+\emph{Upper bound.} By \CGeqref{eq:K} at $(b_\rho,t_\rho)$, $f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)$ for every zero, and the series $\sum_\rho U(b_\rho,t_\rho)$ converges absolutely by Lemma~\CGref{lem:kernel_sums}. Hence, by Lemma~\CGref{lem:identity} and \CGeqref{eq:kernel_sum},
+\[
+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\le\frac1{2\pi}\sum_{\iota}c_\iota\sum_\rho G_\iota(b_\rho,t_\rho)
+=\frac1\pi\sum_\iota c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)-\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr),
+\]
+and $\Phi_{\mathrm R}(e^{-iT\log n})=\cos(T\log n)$, $\Phi_{\mathrm I}(e^{-iT\log n})=\sin(T\log n)$. Adding \CGeqref{eq:argxi_comb} and comparing with \CGeqref{eq:ab_def} gives the first line of \CGeqref{eq:twosided}.
+
+\emph{Lower bound.} Since $f(b,-t)=-f(b,t)$, \CGeqref{eq:K} at $(b_\rho,-t_\rho)$ gives $f(b_\rho,t_\rho)\ge-U(b_\rho,-t_\rho)$, and $U(b,-t)=\sum_\iota\varepsilon_{\mathrm X}c_\iota G_\iota(b,t)$ by the parity of the $G_\iota$ in $t$. Hence
+\[
+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\ge-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)+\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota\varepsilon_{\mathrm X}c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr).
+\]
+The inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)-(-\pi b(\log n)-\frac{e^{-d\log n}-2}{\log n})\sin(T\log n)$, by \CGeqref{eq:ab_def} and $\varepsilon_{\mathrm I}=-1$. Adding \CGeqref{eq:argxi_comb} gives the second line of \CGeqref{eq:twosided}. Absolute convergence follows from $\sigma_1>1$ and the polynomial growth of $a$ and $b$.
+\end{proof}
+
+For a prime $p$ write $\lambda_k=(\log p)\,p^{-k\sigma_1}$, $a_k=a(k\log p)$, $b_k=b(k\log p)$ and
+\begin{equation}
+f_p(x)=\sum_{k\ge1}\lambda_k\bigl(a_k\cos kx+b_k\sin kx\bigr)\qquad(x\in\R),\qquad M_p=\max_{x\in\R}f_p(x).
+\label{eq:fp_def}
+\end{equation}
+The series converges absolutely and uniformly, so $f_p$ is continuous and $2\pi$-periodic, and $M_p$ exists. Grouping the prime powers $n=p^k$ in \CGeqref{eq:twosided} according to $p$, with the common phase $x=T\log p$, the series in the first line is $\sum_pf_p(T\log p)\le\sum_pM_p$, and the series in the second line is $\sum_p\bigl(-f_p(-T\log p)\bigr)\ge-\sum_pM_p$, because $\sum_k\lambda_k(-a_k\cos kx+b_k\sin kx)=-f_p(-x)$. This is the observation of Amberger \cite[Lemma~9]{Amberger2025} that the lower bound is obtained from the upper one by changing the sign of the odd part. With
+\begin{equation}
+F_u(T)=\mathcal E_u(T)-A_1\log T,\qquad F_\ell(T)=-\mathcal E_\ell(T)-A_1\log T,
+\label{eq:Fu_Fl_def}
+\end{equation}
+Proposition~\CGref{prop:twosided} gives, for every $T>0$ not an ordinate and every $A_1$ and $C_\zeta\ge\sum_pM_p$,
+\begin{equation}
+\bigl|N(T)-\main(T)\bigr|\le A_1\log T+C_\zeta+\max\bigl(F_u(T),F_\ell(T)\bigr).
+\label{eq:master_explicit}
+\end{equation}
+Sections~\CGref{subsec:euler}--\CGref{subsec:kernel_cert} bound the three ingredients: $C_\zeta$, $\sup_{T\ge1}\max(F_u,F_\ell)$, and the verification of \CGeqref{eq:K}.
+
+\subsection{The Euler product}\label{subsec:euler}
+
+\begin{lemma}[Bounds for $M_p$]\label{lem:Mp}
+Let $h(L)=\sqrt{a(L)^2+b(L)^2}$ and $H_{p,k}=\lambda_kh(k\log p)$. Then
+\begin{enumerate}[label=(\alph*)]
+\item $M_p\le\sum_{k\ge1}H_{p,k}$; more precisely, for every $K\ge1$, $M_p\le\max_x\sum_{k\le K}\lambda_k(a_k\cos kx+b_k\sin kx)+\sum_{k>K}H_{p,k}$;
+\item for every integer $\mathsf M\ge1$ and $x_i=2\pi i/\mathsf M$ ($0\le i<\mathsf M$), and every $K\ge1$,
+\[
+\max_x\sum_{k\le K}\lambda_k(a_k\cos kx+b_k\sin kx)\le\max_{0\le i<\mathsf M}\sum_{k\le K}\lambda_k(a_k\cos kx_i+b_k\sin kx_i)+\frac\pi{\mathsf M}\sum_{k\le K}kH_{p,k}.
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $|a\cos\theta+b\sin\theta|\le\sqrt{a^2+b^2}$ for real $a,b,\theta$, and the maximum of a sum is at most the sum of the maxima. (b) The finite sum $\phi(x)=\sum_{k\le K}\lambda_k(a_k\cos kx+b_k\sin kx)$ is differentiable with $|\phi'(x)|\le\sum_{k\le K}k\lambda_k\sqrt{a_k^2+b_k^2}$, every real $x$ is within $\pi/\mathsf M$ of some $x_i$ modulo $2\pi$, and $\phi$ is $2\pi$-periodic; the mean value theorem gives the claim.
+\end{proof}
+
+\begin{lemma}[The tail]\label{lem:tail}
+Let $N_0\ge2$, $g(x)=h(\log x)\,x^{-\sigma_1}$ for $x\ge N_0$, and let $G\colon[N_0,\infty)\to[0,\infty)$ be non-increasing with $G\ge g$ and $xG(x)\to0$ as $x\to\infty$. Then
+\begin{equation}
+\sum_{n>N_0}\Lambda(n)g(n)\le G(N_0)\bigl(1.03883\,N_0-\psi(N_0)\bigr)+1.03883\int_{N_0}^\infty G(x)\,dx ,
+\label{eq:tail_bound}
+\end{equation}
+where $\psi(x)=\sum_{n\le x}\Lambda(n)$.
+\end{lemma}
+
+\begin{proof}
+Since $G\ge g\ge0$, $\sum_{n>N_0}\Lambda(n)g(n)\le\int_{(N_0,\infty)}G\,d\psi$, a Stieltjes integral with respect to the non-decreasing function $\psi$. Integration by parts on $[N_0,X]$ gives $G(X)\psi(X)-G(N_0)\psi(N_0)+\int_{N_0}^X\psi(x)\,d(-G)(x)$, where $-G$ is non-decreasing so $d(-G)\ge0$. By $\psi(x)<1.03883x$ for all $x>0$ \cite[Thm.~12]{RosserSchoenfeld1962} and $G(X)\psi(X)\le1.03883XG(X)\to0$,
+\[
+\int_{(N_0,\infty)}G\,d\psi\le-G(N_0)\psi(N_0)+1.03883\int_{N_0}^\infty x\,d(-G)(x)=-G(N_0)\psi(N_0)+1.03883\Bigl(N_0G(N_0)+\int_{N_0}^\infty G(x)\,dx\Bigr),
+\]
+the last step by integration by parts again, using $XG(X)\to0$. This is \CGeqref{eq:tail_bound}.
+\end{proof}
+
+The majorant $G$ is built as follows. Let $L_0=\log N_0$ and let $L_{\rm B}>L_0$ be such that $g$ is non-increasing on $[e^{L_{\rm B}},\infty)$; then on $[e^{L_{\rm B}},\infty)$ take $G=g$. On $[L_0,L_{\rm B}]$ choose points $L_0=u_0<u_1<\dots<u_r=L_{\rm B}$, let $\bar g_i$ be an upper bound of $g$ on $[e^{u_i},e^{u_{i+1}}]$ computed in ball arithmetic, and put $G=\max(\bar g_i,\bar g_{i+1},\dots,\bar g_{r-1},g(e^{L_{\rm B}}))$ on $[e^{u_i},e^{u_{i+1}})$; this $G$ is non-increasing and $G\ge g$, and $\int_{N_0}^{e^{L_{\rm B}}}G\,dx$ is a finite sum. The condition on $L_{\rm B}$ is verified by the next lemma. Write $a(L)=\frac1\pi P_a(L)$ and $b(L)=\frac1\pi\bigl(P_b(L)+\frac{e^{-dL}-2}L\bigr)$ with polynomials $P_a=\sum_i\mathsf a_iL^i$, $P_b=\sum_i\mathsf b_iL^i$ read off from \CGeqref{eq:ab_def}, let $D$ be the larger of their degrees, $P$ the one of $P_a$, $P_b$ of degree $D$ (if both have degree $D$, take $P=P_a$), and $q_i=|\mathsf a_i|+|\mathsf b_i|$.
+
+\begin{lemma}[Monotonicity of $g$]\label{lem:monotone}
+Let $u=1/L$ and
+\[
+\mathrm{num}(u)=u\sum_{i\ge1}iq_iu^{D-i}+d\,u^{D+1}+2u^{D+2},\qquad
+\mathrm{low}(u)=|\mathsf p_D|-\sum_{i<D}|\mathsf p_i|u^{D-i}-\varepsilon_Pu^{D+1},
+\]
+where $\mathsf p_i$ are the coefficients of $P$ and $\varepsilon_P=2$ if $P=P_b$, $\varepsilon_P=0$ if $P=P_a$. If $\mathrm{low}(u)>0$ and $\mathrm{num}(u)/\mathrm{low}(u)<\sigma_1$ for all $u\in[0,1/L_{\rm B}]$, then $g$ is strictly decreasing on $[e^{L_{\rm B}},\infty)$.
+\end{lemma}
+
+\begin{proof}
+On $[e^{L_{\rm B}},\infty)$ one has $h>0$ (because $\mathrm{low}>0$ gives $P\ne0$ there), so $\log g$ is differentiable in $L=\log x$ with $\frac{d}{dL}\log g=\frac{aa'+bb'}{a^2+b^2}-\sigma_1\le\frac{|a'|+|b'|}h-\sigma_1$, using $|a|,|b|\le h$. Further $h\ge\frac1\pi|P(L)|-\frac{\varepsilon_P}{\pi L}\ge\frac{L^D}\pi\mathrm{low}(1/L)$, since $|\frac{e^{-dL}-2}L|\le\frac2L$, and $|a'|+|b'|\le\frac1\pi\bigl(\sum_{i\ge1}iq_iL^{i-1}+\frac dL+\frac2{L^2}\bigr)=\frac{L^D}\pi\mathrm{num}(1/L)$, because $\bigl|\frac d{dL}\frac{e^{-dL}-2}L\bigr|\le\frac{de^{-dL}}L+\frac{|e^{-dL}-2|}{L^2}\le\frac dL+\frac2{L^2}$. Hence $\frac d{dL}\log g\le\mathrm{num}/\mathrm{low}-\sigma_1<0$.
+\end{proof}
+
+\begin{proposition}[Certified value of $C_\zeta$]\label{prop:Cz}
+Let $N_0=10^8$, $P_0=1000$, $\mathsf M=4096$. Then $\sum_pM_p\le C_\zeta$ with
+\begin{equation}
+C_\zeta=\sum_{p\le P_0}\min\Bigl(\max_{i<\mathsf M}\sum_{k:\,p^k\le N_0}\lambda_k(a_k\cos kx_i+b_k\sin kx_i)+\frac\pi{\mathsf M}\sum_{k:\,p^k\le N_0}kH_{p,k},\ \sum_{k:\,p^k\le N_0}H_{p,k}\Bigr)+\sum_{\substack{P_0<p\le N_0\\ p^k\le N_0}}H_{p,k}+\mathrm{Tail},
+\label{eq:Cz_def}
+\end{equation}
+where $\mathrm{Tail}$ is the right side of \CGeqref{eq:tail_bound} with $L_{\rm B}$ verified by Lemma~\CGref{lem:monotone}. The program \texttt{cz\_gen\_pp.py} (Appendix~\CGref{app:cert_cz}) evaluates every term of \CGeqref{eq:Cz_def} in ball arithmetic and reports an upper bound of the resulting ball. For the six kernels of Theorem~\CGref{thm:explicit} the values are in Table~\CGref{tab:lines}.
+\end{proposition}
+
+\begin{proof}
+For $p\le P_0$, Lemma~\CGref{lem:Mp}(a) with $K$ the largest $k$ with $p^k\le N_0$, then (b) for the finite sum, and the powers $p^k>N_0$ go to the tail; for $P_0<p\le N_0$, Lemma~\CGref{lem:Mp}(a) with the same split; for $p>N_0$, Lemma~\CGref{lem:Mp}(a) with $K=0$. All prime powers $n>N_0$ are covered by $\sum_{n>N_0}\Lambda(n)g(n)$, bounded by Lemma~\CGref{lem:tail} with the majorant described before Lemma~\CGref{lem:monotone}; the integral $\int_{e^{L_{\rm B}}}^{e^{L_1}}g\,dx$, with $L_1=800$, is computed by rigorous quadrature in the variable $L$, and $\int_{e^{L_1}}^\infty g\,dx$ is bounded by $\frac1\pi\int_{L_1}^\infty\bigl(\sum_iq_iL^i+3\bigr)e^{(1-\sigma_1)L}\,dL$, a finite combination of incomplete gamma functions evaluated in closed form, using $h\le|a|+|b|\le\frac1\pi(\sum_iq_iL^i+\frac2L)$ and $\frac2L\le3$. The partial sums over $n\le N_0$ are exact ball sums over the $5\,761\,455$ primes below $10^8$ and their powers.
+\end{proof}
+
+\subsection{The elementary part}\label{subsec:elementary}
+
+\begin{lemma}[Stirling's formula with remainder]\label{lem:stirling}
+For $|\ph z|<\pi$, $\Lo\Gamma(z)=(z-\frac12)\Lo z-z+\frac12\log(2\pi)+\mathcal R(z)$ with $|\mathcal R(z)|\le\sec^2(\frac12\ph z)/(12|z|)$ \cite[\S5.11(ii)]{DLMF}, \cite[(8.4.06)]{Olver1974}. Consequently, for $\Rp z>0$ and every integer $k\ge0$,
+\begin{equation}
+\bigl|\mathcal R^{(k+1)}(z)\bigr|\le(k+1)!\,\frac2{3|z|}\Bigl(\frac2{|z|}\Bigr)^{k+1}.
+\label{eq:R_deriv}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+On the circle $|w-z|=\frac12|z|$ one has $|w|\ge\frac12|z|$ and $|\ph w-\ph z|\le\arcsin\frac12=\frac\pi6$, so $|\ph w|<\frac\pi2+\frac\pi6=\frac{2\pi}3$ and $\sec^2(\frac12\ph w)<\sec^2\frac\pi3=4$; hence $|\mathcal R(w)|\le\frac4{12\cdot|z|/2}=\frac2{3|z|}$ there, and Cauchy's estimate for the $(k+1)$-st derivative on this circle gives \CGeqref{eq:R_deriv}.
+\end{proof}
+
+Since $\psi=(\Lo\Gamma)'$, Lemma~\CGref{lem:stirling} gives $\psi(z)=\Lo z-\frac1{2z}+\mathcal R'(z)$ and, for $k\ge1$,
+\begin{equation}
+\psi^{(k)}(z)=\frac{(-1)^{k-1}(k-1)!}{z^k}+\frac{(-1)^kk!}{2z^{k+1}}+\mathcal R^{(k+1)}(z).
+\label{eq:psi_k}
+\end{equation}
+
+\begin{lemma}[The elementary part for large $T$]\label{lem:elem_large}
+Let $T\ge T_0\ge1$, $z_1=s_1/2$, $C_1=c_{\mathrm R,1}/(2\pi)$ and suppose $A_1\ge C_1$. Then
+\begin{equation}
+F_u(T)\le\frac78-C_1\log(2\pi)+\frac{\mathsf K}T,\qquad F_\ell(T)\le-\frac78-C_1\log(2\pi)+\frac{\mathsf K}T,
+\label{eq:F_large}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+\mathsf K&=\frac1\pi\Bigl(4d+\frac{\sigma_1^2}2+\frac{\sigma_2(\sigma_2-1)}2+1+\frac{\sigma_2^2}2+\sigma_1(\sigma_1-1)\Bigr)+\frac{|c_{\mathrm R,1}|}\pi\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83\Bigr)\\
+&\quad+\frac{T_0}\pi\sum_{\substack{\iota=(\mathrm X,j)\in\mathcal B\\ j\ge2}}|c_\iota|\Bigl(\frac2{T_0^{\,j}}+\frac1{(j-1)!\,2^j}\Bigl[(j-2)!\Bigl(\frac2{T_0}\Bigr)^{j-1}+\frac{(j-1)!}2\Bigl(\frac2{T_0}\Bigr)^{j}+j!\,\frac4{3T_0}\Bigl(\frac4{T_0}\Bigr)^{j}\Bigr]\Bigr).
+\end{aligned}
+\label{eq:K_def}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\emph{The term $\mathcal E(T)$.} For $s=\sigma+iT$ with $\sigma>1$, $\arg s=\frac\pi2-\arctan\frac\sigma T$ and $\arg(s-1)=\frac\pi2-\arctan\frac{\sigma-1}T$, so $\arg s+\arg(s-1)=\pi-\theta_\sigma$ with $0\le\theta_\sigma\le\frac{2\sigma-1}T$. With $z=s/2$, Lemma~\CGref{lem:stirling} gives
+\[
+\Ip\Lo\Gamma(z)=\Bigl(\frac\sigma2-\frac12\Bigr)\arg z+\frac T2\log|z|-\frac T2+\Ip\mathcal R(z),\qquad
+\arg z=\frac\pi2-\arctan\frac\sigma T,\qquad\log|z|=\log\frac T2+\frac12\log\Bigl(1+\frac{\sigma^2}{T^2}\Bigr),
+\]
+and $|\mathcal R(z)|\le\frac1{3T}$ since $|\ph z|<\frac\pi2$ and $|z|\ge\frac T2$. Hence
+\[
+\mathcal A(s)=\pi+\frac T2\log\frac T{2\pi}-\frac T2+\frac{(\sigma-1)\pi}4+\delta_\sigma,\qquad
+\delta_\sigma=-\theta_\sigma-\frac{\sigma-1}2\arctan\frac\sigma T+\frac T4\log\Bigl(1+\frac{\sigma^2}{T^2}\Bigr)+\Ip\mathcal R(z),
+\]
+with $0\le\frac{\sigma-1}2\arctan\frac\sigma T\le\frac{\sigma(\sigma-1)}{2T}$ and $0\le\frac T4\log(1+\frac{\sigma^2}{T^2})\le\frac{\sigma^2}{4T}$. Since $2(\sigma_1-1)-(\sigma_2-1)=-\frac12$ and $2(2\sigma_1-1)=2\sigma_2-1=4d$,
+\[
+\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)=1+\main(T)-\frac18+\frac{2\delta_{\sigma_1}-\delta_{\sigma_2}}\pi,
+\]
+and, collecting the bounds (the arguments contribute at most $\frac{4d}T$ in absolute value, the three remainders at most $\frac1T$),
+\[
+|\mathcal E(T)-\tfrac78|\le\frac1{\pi T}\Bigl(4d+\sigma_1(\sigma_1-1)+\frac{\sigma_1^2}2+\frac{\sigma_2(\sigma_2-1)}2+\frac{\sigma_2^2}4+1\Bigr)\le\frac{\mathsf K_\Gamma}T,
+\]
+where $\mathsf K_\Gamma$ is the first bracket of \CGeqref{eq:K_def} (which is larger, having $\frac{\sigma_2^2}2$ in place of $\frac{\sigma_2^2}4$).
+
+\emph{The term $j=1$.} By \CGeqref{eq:psi_k} with $k=0$, $\Rp D_1(s_1)=\Rp\frac1{s_1}+\Rp\frac1{s_1-1}-\frac12\log\pi+\frac12\log|z_1|-\frac12\Rp\frac1{s_1}+\frac12\Rp\mathcal R'(z_1)$, and $\log|z_1|=\log\frac T2+\frac12\log(1+\frac{\sigma_1^2}{T^2})$, so
+\[
+\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+\delta_1,\qquad|\delta_1|\le\frac1{T^2}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr)\le\frac1{T_0T}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr),
+\]
+using $0\le\Rp\frac1{s}\le\frac\sigma{T^2}$, $0\le\Rp\frac1{s-1}\le\frac{\sigma-1}{T^2}$ and $|\mathcal R'(z_1)|\le\frac4{3|z_1|^2}\le\frac{16}{3T^2}$ from \CGeqref{eq:R_deriv}. Since $T_0\ge1$, $|c_{\mathrm R,1}|\,|\delta_1|/\pi$ is at most the second term of \CGeqref{eq:K_def} divided by $T$, with room to spare.
+
+\emph{The terms $j\ge2$.} $|D_j(s_1)|\le\frac2{T^j}+\frac{|\psi^{(j-1)}(z_1)|}{(j-1)!\,2^j}$, and by \CGeqref{eq:psi_k} with $k=j-1\ge1$, \CGeqref{eq:R_deriv} and $|z_1|\ge\frac T2$,
+\[
+|\psi^{(j-1)}(z_1)|\le(j-2)!\Bigl(\frac2T\Bigr)^{j-1}+\frac{(j-1)!}2\Bigl(\frac2T\Bigr)^{j}+j!\,\frac4{3T}\Bigl(\frac4T\Bigr)^{j}.
+\]
+The resulting bound for $|D_j(s_1)|$ is of the form $\sum_{\nu\ge2}\alpha_\nu T^{-\nu}$ with $\alpha_\nu\ge0$, so $T|D_j(s_1)|$ is non-increasing in $T$ and $|D_j(s_1)|\le T_0\,\mathrm{bound}(T_0)/T$ for $T\ge T_0$; this gives the third term of \CGeqref{eq:K_def}.
+
+\emph{Conclusion.} $\mathcal E_u(T)=\mathcal E(T)+\frac{c_{\mathrm R,1}}\pi\Rp D_1(s_1)+\frac1\pi\sum_{j\ge2}c_\iota\Phi_{\mathrm X}(D_j(s_1))=\frac78+C_1\log\frac T{2\pi}+\Delta(T)$ with $|\Delta(T)|\le\mathsf K/T$, so $F_u(T)=\frac78-C_1\log(2\pi)+(C_1-A_1)\log T+\Delta(T)\le\frac78-C_1\log(2\pi)+\mathsf K/T$, because $A_1\ge C_1$ and $\log T\ge0$. Likewise $\mathcal E_\ell(T)=\frac78-C_1\log\frac T{2\pi}+\Delta_\ell(T)$ with $|\Delta_\ell|\le\mathsf K/T$, and $F_\ell(T)=-\frac78-C_1\log(2\pi)+(C_1-A_1)\log T-\Delta_\ell(T)\le-\frac78-C_1\log(2\pi)+\mathsf K/T$.
+\end{proof}
+
+\begin{lemma}[The theta function]\label{lem:varpi}
+For $T>0$, $\frac1\pi\vartheta(T)+1=\main(T)+\frac78+\frac{\varpi(T)}\pi$ with $|\varpi(T)|\le\bigl(\frac1{16}+\frac18+\frac13\bigr)\frac1T$.
+\end{lemma}
+
+\begin{proof}
+With $z=\frac14+\frac{iT}2$, Lemma~\CGref{lem:stirling} gives $\vartheta(T)=-\frac14\arg z+\frac T2\log|z|-\frac T2-\frac T2\log\pi+\Ip\mathcal R(z)$, and $\arg z=\frac\pi2-\arctan\frac1{2T}$, $\log|z|=\log\frac T2+\frac12\log(1+\frac1{4T^2})$. Hence $\vartheta(T)=\frac T2\log\frac T{2\pi}-\frac T2-\frac\pi8+\varpi(T)$ with $\varpi=\frac14\arctan\frac1{2T}+\frac T4\log(1+\frac1{4T^2})+\Ip\mathcal R(z)$, and the three terms are at most $\frac1{8T}$, $\frac1{16T}$ and $\frac1{3T}$ ($|z|\ge\frac T2$, $|\ph z|<\frac\pi2$). Dividing by $\pi$ and using $\pi\main(T)=\frac T2\log\frac T{2\pi}-\frac T2$ gives the claim.
+\end{proof}
+
+For the argument, write $\mathcal E^{S}_u=\mathcal E_u-\frac78-\frac\varpi\pi$, $\mathcal E^{S}_\ell=\mathcal E_\ell-\frac78-\frac\varpi\pi$ and $F^S_u=\mathcal E^S_u-A_1\log T$, $F^S_\ell=-\mathcal E^S_\ell-A_1\log T$. Since $S(T)=N(T)-\main(T)-\frac78-\frac{\varpi(T)}\pi$ by \CGeqref{eq:S_def} and Lemma~\CGref{lem:varpi}, Proposition~\CGref{prop:twosided} gives
+\begin{equation}
+|S(T)|\le A_1\log T+C_\zeta+\max\bigl(F^S_u(T),F^S_\ell(T)\bigr),
+\label{eq:master_S}
+\end{equation}
+and Lemma~\CGref{lem:elem_large} gives, for $T\ge T_0$, $\max(F^S_u,F^S_\ell)\le-C_1\log(2\pi)+(\mathsf K+\frac1\pi(\frac1{16}+\frac18+\frac13))/T$.
+
+\begin{proposition}[Certified suprema of the elementary part]\label{prop:elem}
+Let $T_0=10^4$. The program \texttt{elem\_gen.py} (Appendix~\CGref{app:cert_elem}) covers $[1,T_0]$ by $9215$ intervals $[\alpha,\beta]$ with $\beta/\alpha\le1.001$ and, on each, encloses $F_u$ and $F_\ell$ (or $F^S_u$, $F^S_\ell$) by the centred form $F(\frac{\alpha+\beta}2)+F'([\alpha,\beta])\cdot[-\frac{\beta-\alpha}2,\frac{\beta-\alpha}2]$, where $F'([\alpha,\beta])$ is a ball enclosing the derivative on the interval; for $T\ge T_0$ it uses Lemma~\CGref{lem:elem_large}. The resulting upper bounds for $\sup_{T\ge1}\max(F_u,F_\ell)$ and $\sup_{T\ge1}\max(F^S_u,F^S_\ell)$ for the six kernels are in Table~\CGref{tab:lines}.
+\end{proposition}
+
+\begin{proof}
+The functions $F_u,F_\ell$ are real-analytic in $T>0$; the centred form is the mean value theorem $F(T)=F(T_{\rm m})+F'(\xi)(T-T_{\rm m})$ with $\xi$ between $T$ and $T_{\rm m}$. The derivative is computed from $\frac{d}{dT}\arg s=\Rp\frac1s$, $\frac d{dT}\Ip\Lo\Gamma(\frac s2)=\frac12\Rp\psi(\frac s2)$, $\frac d{dT}\main(T)=\frac1{2\pi}\log\frac T{2\pi}$, $\frac d{dT}D_j(s)=iD_j'(s)$ with $D_1'(s)=-s^{-2}-(s-1)^{-2}+\frac14\psi'(\frac s2)$ and $D_j'(s)=-js^{-j-1}-j(s-1)^{-j-1}+\frac{(-1)^{j-1}}{(j-1)!\,2^{j+1}}\psi^{(j)}(\frac s2)$ for $j\ge2$, and, in the $S$-mode, $\frac d{dT}\vartheta(T)=\frac12\Rp\psi(\frac14+\frac{iT}2)-\frac12\log\pi$. The polygamma values on an interval are enclosed by $\psi^{(k)}(z_{\rm m})+\psi^{(k+1)}(Z)\cdot i[-\frac r2,\frac r2]$, where $Z$ is the ball of the segment and $r$ its length in $T$, which is valid because $\psi^{(k)}(z+\eta)-\psi^{(k)}(z)=\int_0^1\psi^{(k+1)}(z+u\eta)\eta\,du$ lies in $\eta$ times the convex hull of the enclosure. All other operations are ball operations, so each interval bound is rigorous, and the supremum over $[1,T_0]$ is the maximum of the $9215$ upper bounds. For $T\ge T_0$ the bound \CGeqref{eq:F_large} is monotone in $T$, so it is evaluated at $T_0$.
+\end{proof}
+
+\subsection{The kernel inequality}\label{subsec:kernel_cert}
+Condition \CGeqref{eq:K} is an inequality between explicit elementary functions of two real variables on a half-strip. It is certified by bisection, as follows. For $t\ne0$, by $\arctan y+\arctan\frac1y=\operatorname{sgn}(y)\frac\pi2$ and since $d\pm b>0$ and $2d\pm b>0$ for $0\le b\le\frac12$,
+\begin{equation}
+f(b,t)=\operatorname{sgn}(t)\,\pi-2\arctan\frac t{d+b}-2\arctan\frac t{d-b}+\arctan\frac t{2d+b}+\arctan\frac t{2d-b},
+\label{eq:f_regular}
+\end{equation}
+so on each closed half-box $[0,\frac12]\times[0,T_1]$ (with $\operatorname{sgn}=+1$) and $[0,\frac12]\times[-T_1,0]$ (with $\operatorname{sgn}=-1$) the right side of \CGeqref{eq:f_regular} is real-analytic, including at $t=0$, and so is $U$, because $d\pm b\ge d-\frac12>0$.
+
+\begin{lemma}[Tail of the kernel inequality]\label{lem:kernel_tail}
+Let $T_1\ge2d+\frac12$, $0\le b\le\frac12$, $|t|\ge T_1$ and $u=1/t$. Then
+\begin{equation}
+t^2f(b,t)\le4d^3u+\mathsf K_5|u|^3,\qquad\mathsf K_5=\frac15\Bigl(2\bigl(d+\tfrac12\bigr)^5+2d^5+\bigl(2d+\tfrac12\bigr)^5+(2d)^5\Bigr),
+\label{eq:f_tail}
+\end{equation}
+and
+\begin{equation}
+t^2U(b,t)=\sum_{(\mathrm R,1)}c_{\mathrm R,1}\Bigl(\frac{d+b}{1+(d+b)^2u^2}+\frac{d-b}{1+(d-b)^2u^2}\Bigr)+\sum_{\substack{\iota\in\mathcal B\\ j\ge2}}c_\iota\sum_{x=d\pm b}\Phi_{\mathrm X}\Bigl(u^{j-2}(xu+i)^{-j}\Bigr),
+\label{eq:U_tail}
+\end{equation}
+a real-analytic function of $(b,u)$ on $[0,\frac12]\times[-1/T_1,1/T_1]$ with value $2dc_{\mathrm R,1}-2c_{\mathrm R,2}$ at $u=0$.
+\end{lemma}
+
+\begin{proof}
+Write $f=\sum_{i=1}^4\alpha_i\arctan(y_iu)$ with $(\alpha_i)=(2,2,-1,-1)$ and $(y_i)=(d+b,d-b,2d+b,2d-b)$; then $|y_iu|\le(2d+\frac12)/T_1\le1$. For $|y|\le1$, $\arctan y=y-\frac{y^3}3+r(y)$ with $|r(y)|\le\frac{|y|^5}5$ (alternating series). Since $\sum\alpha_iy_i=0$ and $\sum\alpha_iy_i^3=2(d+b)^3+2(d-b)^3-(2d+b)^3-(2d-b)^3=-12d^3$,
+\[
+f=4d^3u^3+\sum_i\alpha_ir(y_iu),\qquad\Bigl|\sum_i\alpha_ir(y_iu)\Bigr|\le\frac{|u|^5}5\sum_i|\alpha_i||y_i|^5\le\mathsf K_5|u|^5,
+\]
+using $|y_1|\le d+\frac12$, $|y_2|\le d$, $|y_3|\le2d+\frac12$, $|y_4|\le2d$. Multiplying by $t^2=u^{-2}$ gives \CGeqref{eq:f_tail}. For \CGeqref{eq:U_tail}: $t^2\Rp(x+it)^{-1}=t^2\frac x{x^2+t^2}=\frac x{1+x^2u^2}$, and for $j\ge2$, $x+it=(xu+i)/u$, so $t^2(x+it)^{-j}=u^{j-2}(xu+i)^{-j}$. At $u=0$ the terms with $j=1$ give $2dc_{\mathrm R,1}$, the terms with $j=2$ give $c_{\mathrm R,2}\cdot2\Rp(i^{-2})+c_{\mathrm I,2}\cdot2(-\Ip i^{-2})=-2c_{\mathrm R,2}$, and the terms with $j\ge3$ vanish.
+\end{proof}
+
+\begin{proposition}[Certification of \CGeqref{eq:K}]\label{prop:kernel_cert}
+The program \texttt{certify\_hybrid.py} (Appendix~\CGref{app:cert_hybrid}), run with an empty list of discs, certifies \CGeqref{eq:K} for a kernel as follows. (a) On $[0,\frac12]\times[0,T_1]$ and on $[0,\frac12]\times[-T_1,0]$ it evaluates $H=U-f$, with $f$ in the form \CGeqref{eq:f_regular}, on boxes by the centred form $H(\text{centre})+\nabla H(\text{box})\cdot(\text{half-widths})$, and bisects every box on which the ball of $H$ does not lie in $(0,\infty)$; it stops when all boxes are certified. (b) For $|t|\ge T_1$ it certifies $t^2U-4d^3u-\mathsf K_5|u|^3>0$ on $[0,\frac12]\times(0,1/T_1]$ and on $[0,\frac12]\times[-1/T_1,0)$ in the same way, with the expressions of Lemma~\CGref{lem:kernel_tail}; by \CGeqref{eq:f_tail} this implies $U>f$ there. The driver tries $T_1=100$ first and $T_1=2000$ if the first run fails; both satisfy $T_1\ge2d+\frac12$. For each of the six kernels of Theorem~\CGref{thm:explicit} the run terminated with every box certified (Appendix~\CGref{app:cert}).
+\end{proposition}
+
+\begin{proof}
+The centred form is the two-variable mean value theorem for the real-analytic function $H$ on a convex box, with the gradient enclosed by balls; a positive lower bound of the enclosure on a box proves $U>f$ on the box. The union of the certified boxes is the whole half-strip $0\le b\le\frac12$, $0<|t|\le T_1$ (the boxes are closed and include $t=0$, where \CGeqref{eq:f_regular} is the continuous extension), together with $|t|\ge T_1$ by (b).
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:explicit} and of Corollary~\ref{cor:comparison}}\label{subsec:proof_explicit}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+line & $d$ & $m$ & $A_1$ & $C_\zeta<$ & $\sup\max(F_u,F_\ell)\le$ & $A_3^N$ & $\sup\max(F^S_u,F^S_\ell)\le$ & $A_3^S$\\
+\midrule
+\input{generated_linetable.tex}
+\bottomrule
+\end{tabular}
+\caption{The six kernels of Theorem~\CGref{thm:explicit}: parameters, certified upper bounds for $C_\zeta$ and for the suprema of the elementary part, and the resulting constants $A_3^N=\lceil C_\zeta+\sup\max(F_u,F_\ell)\rceil_3$, $A_3^S=\lceil C_\zeta+\sup\max(F^S_u,F^S_\ell)\rceil_3$ (rounded up to three decimals); $A_1=\lceil c_{\mathrm R,1}/(2\pi)\rceil_5$. The coefficients $c_\iota$ are in Appendix~\CGref{app:tables}.}
+\label{tab:lines}
+\end{table}
+
+\begin{proof}[Proof of Theorem~\CGref{thm:explicit}]
+Each line $A_1L+A_3$ of \CGeqref{eq:thm_N} corresponds to a kernel listed in Table~\CGref{tab:lines} and Appendix~\CGref{app:tables}, with $A_1=\lceil C_1\rceil_5\ge C_1=c_{\mathrm R,1}/(2\pi)$. For it, \CGeqref{eq:K} holds by Proposition~\CGref{prop:kernel_cert}; $\sum_pM_p\le C_\zeta$ by Proposition~\CGref{prop:Cz}; and $\sup_{T\ge1}\max(F_u,F_\ell)$ is bounded by Proposition~\CGref{prop:elem}, with $A_1\ge C_1$ as required in Lemma~\CGref{lem:elem_large}. By \CGeqref{eq:master_explicit}, for every $T\ge1$ that is not an ordinate, $|N(T)-\main(T)|\le A_1\log T+C_\zeta+\sup\max(F_u,F_\ell)\le A_1\log T+A_3^N$. At an ordinate $T$, $N(T)=\lim_{t\to T^+}N(t)$ and $\main$ is continuous, so the inequality persists. The same argument with \CGeqref{eq:master_S} gives \CGeqref{eq:thm_S}, with $S(T)=S(T^+)$ at the ordinates.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\CGref{cor:comparison}]
+The difference between the minimum of finitely many lines and the minimum of finitely many other lines is a piecewise linear function of $L\ge0$, whose minimum over $[0,\infty)$ is attained at $L=0$, at a breakpoint of one of the two envelopes, or, if the slopes allow, approached as $L\to\infty$. Here the smallest slope of the bounds of \cite{BellottiWong2026} and of \cite{Amberger2025} is $0.0946$ and $0.097$ respectively, larger than $\LineBAone$, so the differences tend to $+\infty$. Evaluating at $L=0$ and at the finitely many breakpoints, in exact rational arithmetic, gives the minimal differences $\GapBW$ (at $L=\GapBWat$) and $\GapAmb$ (at $L=\GapAmbat$), both positive. The last statement follows from $\LineFourHAone<0.0946$ and $\LineFourHAthreeN<4.954$.
+\end{proof}
+
+%======================================================================
+\section{Jensen discs and admissible profiles}\label{sec:jensen}
+
+\begin{definition}[Admissible profile]\label{def:admissible}
+An \emph{admissible profile} is a continuous function $\mathfrak e\colon[\frac12,1]\to[0,\infty)$ with $\mathfrak e(1)=0$ such that, for every $\varepsilon>0$,
+\begin{equation}
+|\zeta(\sigma+it)|\le K_\varepsilon|t|^{\mathfrak e(\sigma)+\varepsilon}\qquad\text{for }\tfrac12\le\sigma\le1,\ |t|\ge2,
+\label{eq:admissible}
+\end{equation}
+with a constant $K_\varepsilon$ independent of $\sigma$ and $t$. It is extended by $\mathfrak e(\sigma)=0$ for $\sigma>1$.
+\end{definition}
+
+For $\frac12\le\sigma\le1$ let $\mu(\sigma)$ be the infimum of the $\xi\ge0$ such that $\zeta(\sigma+it)\ll|t|^\xi$ as $|t|\to\infty$ \cite[\S5.1]{Titchmarsh1986}; $\mu$ is convex, hence continuous, on $[\frac12,1]$, and $\mu(1)=0$. By definition, for every $\varepsilon>0$ and each fixed $\sigma$, $\zeta(\sigma+it)\ll_{\sigma,\varepsilon}|t|^{\mu(\sigma)+\varepsilon}$ for $|t|\ge2$.
+
+\begin{lemma}[Interpolation of pointwise bounds]\label{lem:interpolation}
+Let $\frac12=\varsigma_0<\varsigma_1<\dots<\varsigma_n=1$ and $e_0\ge e_1\ge\dots\ge e_n=0$ be such that, for each $i$ and each $\varepsilon>0$, $|\zeta(\varsigma_i+it)|\le K_{i,\varepsilon}|t|^{e_i+\varepsilon}$ for $|t|\ge2$. Then the piecewise linear function $\mathfrak e$ with $\mathfrak e(\varsigma_i)=e_i$ is an admissible profile.
+\end{lemma}
+
+\begin{proof}
+Fix $\varepsilon>0$ and $i<n$, and put $\Xi(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\Xi$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\Xi(s)|\le|s|+|s||s-1|/\Rp s\le2|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\Xi(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\Xi$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\Xi(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
+\[
+|\Xi(s)|\le\bigl(A_i|Q+s|^{1+e_i+\varepsilon}\bigr)^{\frac{\varsigma_{i+1}-\sigma}{\varsigma_{i+1}-\varsigma_i}}\bigl(B_i|Q+s|^{1+e_{i+1}+\varepsilon}\bigr)^{\frac{\sigma-\varsigma_i}{\varsigma_{i+1}-\varsigma_i}}\le\max(A_i,B_i)\,|Q+s|^{1+\mathfrak e(\sigma)+\varepsilon},
+\]
+because the exponent interpolates linearly. For $|t|\ge2$, $|Q+s|\le Q+1+|t|\le6|t|$ and $|s-1|\ge|t|$, so $|\zeta(s)|\le\max(A_i,B_i)6^{1+e_0+\varepsilon}|t|^{\mathfrak e(\sigma)+\varepsilon}$ on the strip. Taking the maximum over the $n$ strips gives \CGeqref{eq:admissible}; $\mathfrak e$ is continuous, non-negative, and $\mathfrak e(1)=0$.
+\end{proof}
+
+An \emph{exponent pair} $(k,\ell)$ in the sense of \cite[\S5.20]{Titchmarsh1986} satisfies $0\le k\le\frac12\le\ell\le1$, and
+\begin{equation}
+\mu(\ell-k)\le k
+\label{eq:pair_to_mu}
+\end{equation}
+\cite[Lemma~23]{TaoTrudgianYang2025}, \cite[(5.20.1)]{Titchmarsh1986}.
+
+\begin{lemma}[The profile $\eP$]\label{lem:profile}
+Let $\mathcal N$ be the set of the following points $(\varsigma,e)$ with $\frac12\le\varsigma\le1$, for each of which $\mu(\varsigma)\le e$ is a theorem:
+\begin{enumerate}[label=(\roman*)]
+\item $(\frac12,\frac{13}{84})$ \cite[Thm.~5]{Bourgain2017};
+\item the breakpoints of the piecewise linear bound for $\mu$ of Trudgian and Yang \cite[Thm.~2.4]{TrudgianYang2024}, that is, $(\varsigma,\mu^{\rm TY}(\varsigma))$ for $\varsigma\in\{\frac{88225}{153852},\frac{521}{796},\frac{53141}{76066},\frac{3620}{5119},\frac{52209}{69128},\frac{1389}{1736},\frac{134765}{163248},\frac{18193}{21906},\frac{249}{280},\frac{277}{300}\}$, where $\mu^{\rm TY}$ is the bound of that theorem (its ten pieces agree at the common endpoints, and the last piece is stated there up to $\frac{277}{300}$);
+\item $(\ell-k,k)$ for the four exponent pairs $(k,\ell)$ of Tao, Trudgian and Yang \cite[Thm.~20]{TaoTrudgianYang2025}: $(\frac{89}{1282},\frac{997}{1282})$, $(\frac{652397}{9713986},\frac{7599781}{9713986})$, $(\frac{10769}{351096},\frac{609317}{702192})$, $(\frac{89}{3478},\frac{15327}{17390})$, by \CGeqref{eq:pair_to_mu};
+\item $(\varsigma_n,\mu_n)$ with $\varsigma_n=1-\frac{3n^2-3n+2}{n(n-1)^2(n+2)}$ and $\mu_n=\frac2{(n-1)^2(n+2)}$ for $6\le n\le399$: by Heath-Brown \cite[Thm.~2]{HeathBrown2017}, $\bigl(\frac2{(n-1)^2(n+2)},1-\frac{3n-2}{n(n-1)(n+2)}+\varepsilon'\bigr)$ is an exponent pair for every $n\ge3$ and $\varepsilon'>0$, so \CGeqref{eq:pair_to_mu} gives $\mu(\varsigma_n+\varepsilon')\le\mu_n$ for every $\varepsilon'>0$, and $\mu(\varsigma_n)\le\mu_n$ by the continuity of $\mu$;
+\item $(1,0)$, since $\zeta(1+it)\ll\log|t|$ \cite[Thm.~3.5]{Titchmarsh1986}.
+\end{enumerate}
+Let $\eP$ be the piecewise linear function through the vertices of the lower convex hull of $\mathcal N$ (Table~\CGref{tab:nodes} in Appendix~\CGref{app:tables} lists them; the four points of (ii) with $\varsigma\in\{\frac{3620}{5119},\frac{134765}{163248},\frac{18193}{21906},\frac{249}{280}\}$ lie on or above chords of other points and are not vertices). Then $\eP$ is an admissible profile.
+\end{lemma}
+
+\begin{proof}
+At each vertex $(\varsigma_i,e_i)$ of the hull, $\mu(\varsigma_i)\le e_i$, so $|\zeta(\varsigma_i+it)|\le K_{i,\varepsilon}|t|^{e_i+\varepsilon}$ for $|t|\ge2$ and every $\varepsilon>0$, by the definition of $\mu$. The vertices have $\varsigma_0=\frac12$, $\varsigma_{\rm last}=1$, and non-increasing ordinates (the values in Table~\CGref{tab:nodes} decrease, and the last is $0$). Lemma~\CGref{lem:interpolation} applies.
+\end{proof}
+
+The points of $\mathcal N$ that are not vertices are not needed: the chord between two vertices is a valid bound by Lemma~\CGref{lem:interpolation}, and it is smaller. No use is made of the convexity of $\mu$ beyond its continuity in (iv).
+
+A \emph{disc datum} is a triple $(c,R,v)$ of real numbers with $c>1$, $R>0$ and $c-R\ge\frac12$. Its weight is
+\begin{equation}
+W(b,t)=\log^+\frac R{\sqrt{(c-\frac12-|b|)^2+(t+v)^2}}\qquad(|b|<\tfrac12,\ t\in\R),
+\label{eq:W_def}
+\end{equation}
+and, for an admissible profile $\mathfrak e$,
+\begin{equation}
+J(\mathfrak e;c,R)=\frac1{2\pi}\int_0^{2\pi}\mathfrak e(c+R\cos\theta)\,d\theta=\frac1\pi\int_0^\pi\mathfrak e(c+R\cos\theta)\,d\theta .
+\label{eq:J_def}
+\end{equation}
+Since $\mathfrak e=0$ on $[1,\infty)$ and $c-R\ge\frac12$, only the values of $\mathfrak e$ on $[c-R,1]\subset[\frac12,1]$ enter.
+
+\begin{lemma}[Jensen bound]\label{lem:jensen}
+Let $\mathfrak e$ be an admissible profile, $(c,R,v)$ a disc datum and $\varepsilon>0$. There is $T_\varepsilon$ such that for all $T\ge T_\varepsilon$,
+\begin{equation}
+\sum_\rho W(b_\rho,t_\rho)\le2\bigl(J(\mathfrak e;c,R)+\varepsilon\bigr)\log T,
+\label{eq:jensen_bound}
+\end{equation}
+and the same bound holds for $\sum_\rho W(b_\rho,-t_\rho)$.
+\end{lemma}
+
+\begin{proof}
+Let $s_0=c+i(T+v)$ and, for a zero $\rho$, let $\rho^*$ be the one of $\rho$, $1-\bar\rho$ with real part $\ge\frac12$, so $\rho^*=\frac12+|b_\rho|+i\gamma$. Then $|\rho^*-s_0|^2=(c-\frac12-|b_\rho|)^2+(t_\rho+v)^2$ and $W(b_\rho,t_\rho)=\log^+(R/|\rho^*-s_0|)$. The point $\rho^*$ is a zero of $\zeta$, and each zero $w$ with $\Rp w>\frac12$ is $\rho^*$ for exactly two zeros ($w$ and $1-\bar w$), which have the same multiplicity, while a zero $w$ with $\Rp w=\frac12$ is $\rho^*$ only for $\rho=w$. Since the open disc $\mathbb D=\{|s-s_0|<R\}$ lies in $\Rp s>c-R\ge\frac12$,
+\begin{equation}
+\sum_\rho W(b_\rho,t_\rho)\le2\sum_{w\in\mathbb D}\log\frac R{|w-s_0|},
+\label{eq:W_to_jensen}
+\end{equation}
+the sum over the zeros of $\zeta$ in $\mathbb D$ with multiplicity. For $T>R+|v|+1$ the closed disc $\bar{\mathbb D}$ does not contain $s=1$, so $\zeta$ is holomorphic on it, and $\zeta(s_0)\ne0$ because $\Rp s_0=c>1$. Jensen's formula \cite[\S3.61]{Titchmarsh1939} gives
+\begin{equation}
+\sum_{w\in\mathbb D}\log\frac R{|w-s_0|}=\frac1{2\pi}\int_0^{2\pi}\log|\zeta(s_0+Re^{i\theta})|\,d\theta-\log|\zeta(s_0)| .
+\label{eq:jensen}
+\end{equation}
+By the Euler product, $|\zeta(s_0)|\ge\prod_p(1+p^{-c})^{-1}=\zeta(2c)/\zeta(c)$. On the circle, $s=\sigma+it$ with $\sigma=c+R\cos\theta\ge\frac12$ and $t=T+v+R\sin\theta\in[T-R-|v|,T+R+|v|]$, so $\log t=\log T+O(1/T)$ and $t\ge2$ for large $T$. Where $\sigma\le1$, \CGeqref{eq:admissible} gives $\log|\zeta(s)|\le(\mathfrak e(\sigma)+\varepsilon/2)\log t+\log K_{\varepsilon/2}$. Where $1\le\sigma\le2$, $|\zeta(s)|\le K\log t$ \cite[Thm.~3.5]{Titchmarsh1986}, and where $\sigma\ge2$, $|\zeta(s)|\le\zeta(2)$; in both cases $\log|\zeta(s)|\le\log\log t+O(1)=o(\log T)$. Inserting in \CGeqref{eq:jensen} and \CGeqref{eq:W_to_jensen},
+\[
+\sum_\rho W(b_\rho,t_\rho)\le2\bigl(J(\mathfrak e;c,R)+\tfrac\varepsilon2\bigr)\log T+O_\varepsilon(\log\log T)+2\log\frac{\zeta(c)}{\zeta(2c)},
+\]
+and the last two terms are at most $\varepsilon\log T$ for $T$ large. Replacing $t_\rho$ by $-t_\rho$ in $W$ amounts to replacing $v$ by $-v$, which changes neither $J$ nor the argument.
+\end{proof}
+
+%======================================================================
+\section{The asymptotic estimate}\label{sec:hybrid_proof}
+
+\begin{lemma}[Main term, asymptotic form]\label{lem:main_asym}
+For fixed $d>\frac12$, as $T\to\infty$, $\frac1\pi\bigl(2\arg\xi(s_1)-\arg\xi(s_2)\bigr)=\frac1\pi\vartheta(T)+1+O(1)$.
+\end{lemma}
+
+\begin{proof}
+By \CGeqref{eq:argxi}, $\arg\xi(s)=\mathcal A(s)+O(1)$ for $\sigma\in\{\sigma_1,\sigma_2\}$, since $|\sum_n\frac{\Lambda(n)}{\log n}n^{-\sigma}\sin(T\log n)|\le\log\zeta(\sigma)$. The proof of Lemma~\CGref{lem:elem_large} gives $\frac1\pi(2\mathcal A(s_1)-\mathcal A(s_2))=\main(T)+\frac78+O(1/T)$, and Lemma~\CGref{lem:varpi} gives $\main(T)+\frac78=\frac1\pi\vartheta(T)+1+O(1/T)$.
+\end{proof}
+
+\begin{lemma}[Sums of the kernel functions, asymptotic form]\label{lem:kernel_asym}
+For fixed $d>\frac12$ and a kernel $U$, as $T\to\infty$,
+\[
+\sum_\rho U(b_\rho,t_\rho)=c_{\mathrm R,1}\log T+O(1),\qquad\sum_\rho U(b_\rho,-t_\rho)=c_{\mathrm R,1}\log T+O(1).
+\]
+\end{lemma}
+
+\begin{proof}
+By Lemma~\CGref{lem:kernel_sums}, $\sum_\rho G_\iota(b_\rho,t_\rho)=2\Phi_{\mathrm X}(D_j(s_1))+O(1)$, the arithmetic sum being bounded by $\frac2{(j-1)!}\sum_n\Lambda(n)(\log n)^{j-1}n^{-\sigma_1}<\infty$. By the proof of Lemma~\CGref{lem:elem_large}, $\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+O(T^{-2})$, $\Ip D_1(s_1)=O(1)$ and $D_j(s_1)=O(T^{-2})$ for $j\ge2$ (indeed $|\psi^{(j-1)}(z_1)|=O(T^{-(j-1)})$). Hence $\sum_\rho U(b_\rho,t_\rho)=c_{\mathrm R,1}\log T+O(1)$. The second statement follows from $U(b,-t)=\sum_\iota\varepsilon_{\mathrm X}c_\iota G_\iota(b,t)$ and the same bounds.
+\end{proof}
+
+Fix $d=\frac9{10}$, $m=10$, the $19$ coefficients $c_\iota$ ($\iota\in\mathcal B_{10}$) of Table~\CGref{tab:hybrid_kernel}, and the $K=85$ disc data $(c_k,R_k,v_k)$ with weights $\kappa_k\ge0$ of Table~\CGref{tab:hybrid_discs} (Appendix~\CGref{app:tables}). The $c_\iota$ and $\kappa_k$ are the exact binary numbers of the file \texttt{hyb\_m10\_P.json} (Appendix~\CGref{app:data}); the disc data are the rational numbers of the table, obtained from the file by rounding to denominators $\le10^4$ and replacing $R_k$ by $\min(R_k,c_k-\frac12)$, so that $c_k-R_k\ge\frac12$ exactly. Let $W_k$ be the weight \CGeqref{eq:W_def} of $(c_k,R_k,v_k)$ and put
+\begin{equation}
+U=\sum_{\iota\in\mathcal B_{10}}c_\iota G_\iota,\qquad
+C_{\rm H}=\frac{c_{\mathrm R,1}}{2\pi}+\frac1\pi\sum_{k=1}^{K}\kappa_kJ(\eP;c_k,R_k).
+\label{eq:CH}
+\end{equation}
+
+\begin{proposition}[Certified hybrid inequality]\label{prop:hybrid_cert}
+For $0\le b\le\frac12$ and $t\ne0$,
+\begin{equation}
+f(b,t)\le U(b,t)+\sum_{k=1}^K\kappa_kW_k(b,t).
+\label{eq:hybrid_ineq}
+\end{equation}
+Moreover $C_{\rm H}\in\CHball$, so $C_{\rm H}<\CHup$; its two parts are $c_{\mathrm R,1}/(2\pi)=\CHkernel\ldots$ and $\frac1\pi\sum_k\kappa_kJ_k=\CHdiscs\ldots$.
+\end{proposition}
+
+\begin{proof}
+The program \texttt{certify\_hybrid.py} with the file \texttt{hyb\_m10\_P.json} and $T_1=40$ (Appendix~\CGref{app:out_hybrid}) proceeds as in Proposition~\CGref{prop:kernel_cert}, with these changes. (a) On the two half-boxes $[0,\frac12]\times[0,T_1]$ and $[0,\frac12]\times[-T_1,0]$ it bounds $H=U-f+\sum_k\kappa_kW_k^{\rm low}$ from below, where $U-f$ is enclosed by the centred form and $W_k^{\rm low}$ is the lower endpoint of the ball of $\log\frac{R_k}{\sqrt{(c_k-\frac12-b)^2+(t+v_k)^2}}$ over the box when that endpoint is positive, and $0$ otherwise; since $\kappa_k\ge0$ and $W_k\ge W_k^{\rm low}$ on the box, a positive lower bound for $H$ proves \CGeqref{eq:hybrid_ineq} on the box. It terminated with all boxes certified ($\HybBoxesPos$ boxes for $t>0$, $\HybBoxesNeg$ for $t<0$). (b) For $|t|\ge T_1=40$ every $W_k$ vanishes, because $W_k(b,t)>0$ requires $|t+v_k|<R_k$, hence $|t|<R_k+|v_k|\le2.2<T_1$ (Table~\CGref{tab:hybrid_discs}), and $T_1\ge2d+\frac12=2.3$; the tail is certified as in Proposition~\CGref{prop:kernel_cert}(b) ($\HybBoxesTail$ boxes). (c) The profile $\eP$ is piecewise linear with rational vertices and $c_k-R_k\ge\frac12$, so by \CGeqref{eq:J_def} each $J(\eP;c_k,R_k)$ is a finite sum, over the pieces $[\varsigma_i,\varsigma_{i+1}]\cap[c_k-R_k,1]=[p,q]$ with $\eP=\alpha+\beta\sigma$ there, of
+\[
+\frac1\pi\Bigl[(\alpha+\beta c_k)(\theta_p-\theta_q)+\beta R_k(\sin\theta_p-\sin\theta_q)\Bigr],\qquad\theta_\sigma=\arccos\frac{\sigma-c_k}{R_k}\quad(\theta_p\ge\theta_q),
+\]
+since $\sigma=c_k+R_k\cos\theta$ and $d\sigma=-R_k\sin\theta\,d\theta$; the arguments of $\arccos$ lie in $[-1,1]$ because $p,q\in[c_k-R_k,c_k+R_k]$. The program evaluates these sums in ball arithmetic and reports the ball of $C_{\rm H}$ stated.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\CGref{thm:hybrid}]
+Let $\varepsilon>0$ and let $T\to\infty$ through values that are not ordinates. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
+\[
+-U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,-t_\rho)\Big|_{t_\rho\to t_\rho}=U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
+\]
+Summing over $\rho$ (all series converge absolutely: those of $U$ by Lemma~\CGref{lem:kernel_sums}, those of $W_k$ because only finitely many zeros lie in each disc) and using Lemmas~\CGref{lem:kernel_asym} and~\CGref{lem:jensen} with the admissible profile $\eP$ of Lemma~\CGref{lem:profile},
+\[
+\Bigl|\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\Bigr|\le\Bigl(\frac{c_{\mathrm R,1}}{2\pi}+\frac1\pi\sum_k\kappa_k\bigl(J(\eP;c_k,R_k)+\varepsilon\bigr)\Bigr)\log T+O(1)
+\]
+for $T\ge\max_kT_\varepsilon(k)$. By Lemma~\CGref{lem:identity} and Lemma~\CGref{lem:main_asym}, $S(T)=\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)+O(1)$, so $|S(T)|\le(C_{\rm H}+\varepsilon\sum_k\kappa_k/\pi)\log T+O(1)$. Dividing by $\log T$, letting $T\to\infty$ (at the ordinates $S(T)=S(T^+)$ is a limit of values at non-ordinates, so the limit superior over non-ordinates is $\mathfrak a$) and then $\varepsilon\to0$ gives $\mathfrak a\le C_{\rm H}$, and Proposition~\CGref{prop:hybrid_cert} gives \CGeqref{eq:CH_value}. Finally $\CHup<0.0786252<\Lambda(0)$.
+\end{proof}
+
+%======================================================================
+\section{Methods and remarks}\label{sec:methods}
+
+\subsection{Where the kernel inequality binds}\label{subsec:binding}
+For fixed coefficients, $U-f$ is harmonic in $(b,t)$ on each of the half-strips $|b|<d$, $t>0$ and $|b|<d$, $t<0$: each $\arctan\frac yt$ is an argument of $t+iy$, hence harmonic in $(y,t)$ and in $(b,t)$, and each $F_\iota(d\pm b,t)$ is the real or imaginary part of a holomorphic function of $(d\pm b)+it$. By the maximum principle, $f\le U$ on $|b|\le\frac12$, $t\ne0$ holds as soon as it holds on the lines $b=\pm\frac12$ and in the limits $t\to0^\pm$ and $|t|\to\infty$. The constraints that fix the optimum of the kernel are therefore those at $b=\pm\frac12$, that is, at hypothetical zeros with $\beta$ arbitrarily close to $0$ or $1$. The values of $\zeta$ on $\Rp s>1$, which are all the method uses, cannot exclude clusters of order $\log T$ of such zeros near height $T$, and the numerical optima of Remark~\CGref{rem:infimum} reflect this. The weights $W_k$ relax exactly these constraints: in Table~\CGref{tab:hybrid_discs} every disc has $c_k-R_k\ge\frac12$, and only the values of $\eP$ on $[\frac12,1]$ enter $C_{\rm H}$.
+
+\subsection{Optimisation}\label{subsec:optimisation}
+For fixed $d$ the set of admissible $(c_\iota)$ in \CGeqref{eq:K}, and of admissible $(c_\iota,\kappa_k)$ in \CGeqref{eq:hybrid_ineq}, is convex, being defined by linear inequalities indexed by $(b,t)$. For Theorem~\CGref{thm:explicit}, the quantity minimised at a target height $L^*$ is $A_1L^*+C_\zeta+\sup F$, where $C_\zeta$ is approximated by $\sum_{p\le300}\max_{x\text{ on a grid}}f_p(x)+\sum_{p>300}\sum_kH_{p,k}$ over prime powers up to $2\cdot10^4$ plus a quadrature of the tail, a convex function of the coefficients (a sum of pointwise maxima of linear functions and of Euclidean norms), and $\sup F$ by its maximum on a grid of $260$ heights in $[1,10^6]$ and its limit at $T=\infty$. The problem is a second-order cone programme, solved with \texttt{cvxpy} and Clarabel; the constraint \CGeqref{eq:K} is imposed on a grid of $26\times1399$ points $(b,t)$ with a margin $\eta/(1+t^2)$, $\eta=2\cdot10^{-4}$, and the points where the current solution violates it on a finer grid ($201\times24000$) are added as cutting planes, until no violation remains. The optimisation was run for $d\in\{0.65,0.75,0.8,0.85,0.9,0.95,1,1.2\}$, $m\in\{2,3,4,5,7,10\}$ and $L^*\in\{5,20,60,150,400,1000,2500,6000,20000\}$; the six kernels of Theorem~\CGref{thm:explicit} are the best found for $L^*=5,20,60,150,400,6000$. Longer kernels did not lower the leading constant below $0.0838$: for $L^*=20000$ the optimum is again $A_1=0.08381$.
+
+For Theorem~\CGref{thm:hybrid} the objective is \CGeqref{eq:CH}, linear in $(c_\iota,\kappa_k)$, so the problem is a linear programme (HiGHS through \texttt{scipy}), with the same grid, cutting planes and a margin $\eta=10^{-3}$. The candidate discs were all $(c,R,v)$ with $c\in\{1.03,1.06,1.1,\log3,1.15,1.2,1.25,1.3,1.4,1.5,\log5,2,e,3\}$, $R\in\{c-1+x:x=0.05,0.1,\dots,0.5\}$ with $R\le c-\frac12$, and $v\in\{0,\pm0.2,\pm0.35,\pm0.5,\pm0.65,\pm0.8,\pm1,\pm1.3,\pm1.6,\pm2\}$; the optimum uses $85$ of the $2660$ candidates. The first certification of the LP solution found a true violation of \CGeqref{eq:hybrid_ineq}, of size $-8.9\cdot10^{-5}$ at $(b,t)\approx(0.467,-0.450)$, between two cutting planes; it was repaired by adding $2\cdot10^{-4}$ to $c_{\mathrm R,1}$, which adds $2\cdot10^{-4}G_{\mathrm R,1}>0$ to $U$ and $3.2\cdot10^{-5}$ to $C_{\rm H}$. The repaired kernel is the one of Table~\CGref{tab:hybrid_kernel}. With the Bourgain profile (the piecewise linear function through the points $(\lambda_j-\kappa_j,\kappa_j)$, $(\kappa_j,\lambda_j)=A^j(\frac{13}{84},\frac{55}{84})$, $0\le j\le7$, and $(1,0)$, where $A$ is the $A$-process) in place of $\eP$ the same construction gives, on the grid, $0.07531$; with $\eP$ it gives $0.07477$ before the margin and the repair; with $m=20$ the grid value is $0.0740$ (cutting planes not converged); none of these is certified. The grid values quoted in Remark~\CGref{rem:infimum} are from the same programs.
+
+\subsection{Certification}\label{subsec:certification}
+All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits of precision; a ball computed by Arb contains the exact value of the expression evaluated, and the programs only ever use the endpoints of balls in the direction that makes the final statement weaker. The kernel inequality for the hybrid ($T_1=40$) took $716$ seconds; for the longest explicit kernel ($\ell_{400}$, $T_1=100$) the three parts of Proposition~\CGref{prop:kernel_cert} needed $11\,835\,193$, $9\,801\,985$ and $4\,194\,302$ boxes and $2716$ seconds. The constant $C_\zeta$ for each kernel takes about $165$ seconds (the sum over the $5\,761\,455$ primes below $10^8$ and their powers, and the tail), and the elementary part about $120$ seconds per mode. The coefficients are passed to the certifiers as the exact binary numbers written by the optimiser (the JSON files of Appendix~\CGref{app:data}, whose decimal strings round-trip), so there is no rounding between search and certificate other than the rational rounding of the disc data described before \CGeqref{eq:CH}, which is itself part of the certified data.
+
+\subsection{Comparison of the two methods}\label{subsec:comparison_methods}
+Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Making Theorem~\CGref{thm:hybrid} explicit requires versions of \CGeqref{eq:admissible} with explicit constants, for which the available bounds are those of Hiary, Patel and Yang \cite{HiaryPatelYang2024} on the critical line, of Yang \cite{Yang2024} on the lines $\sigma=1-m/(2^m-2)$, and of Bellotti \cite{Bellotti2024} in the strip; with them the method gives bounds of the form $A_1\log T+B\log\log T+C$ with $A_1$ near $0.076$, valid from a computable height, and this is left for a later article.
+
+\subsection*{Data availability}
+The programs, the coefficient files and the outputs of all certificates are reproduced in Appendices~\CGref{app:code}--\CGref{app:data} and are available at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
+
+\input{ai_declaration.tex}
+
+\begin{thebibliography}{99}
+
+\bibitem{Amberger2025} V. S. G. Amberger, Estimating the number of zeros of Dedekind zeta-functions, arXiv:2510.27444v5, 12 October 2026 (v1: 31 October 2025), cited with the numbering of v5, \href{https://doi.org/10.48550/arXiv.2510.27444}{doi:10.48550/arXiv.2510.27444}.
+
+\bibitem{Backlund1918} R. J. Backlund, \"Uber die Nullstellen der Riemannschen Zetafunktion, \textit{Acta Math.} \textbf{41} (1916) 345--375, \href{https://doi.org/10.1007/BF02422950}{doi:10.1007/BF02422950}.
+
+\bibitem{Bellotti2024} C. Bellotti, Explicit bounds for the Riemann zeta function and a new zero-free region, \textit{J. Math. Anal. Appl.} \textbf{536} (2024) 128249, \href{https://doi.org/10.1016/j.jmaa.2024.128249}{doi:10.1016/j.jmaa.2024.128249}.
+
+\bibitem{BellottiWong2025} C. Bellotti and P.-J. Wong, Improved estimates for the argument and zero-counting function of the Riemann zeta-function, \textit{Math. Comp.} (2025, published online 14 November 2025), statements numbered as in arXiv:2412.15470v2 (\href{https://doi.org/10.48550/arXiv.2412.15470}{doi:10.48550/arXiv.2412.15470}), \href{https://doi.org/10.1090/mcom/4133}{doi:10.1090/mcom/4133}.
+
+\bibitem{BellottiWong2026} C. Bellotti and P.-J. Wong, Counting zeros of Artin $L$-functions, arXiv:2606.31441v1, 30 June 2026, \href{https://doi.org/10.48550/arXiv.2606.31441}{doi:10.48550/arXiv.2606.31441}.
+
+\bibitem{Bourgain2017} J. Bourgain, Decoupling, exponential sums and the Riemann zeta function, \textit{J. Amer. Math. Soc.} \textbf{30} (2017) 205--224, theorems numbered as in arXiv:1408.5794v2 (\href{https://doi.org/10.48550/arXiv.1408.5794}{doi:10.48550/arXiv.1408.5794}), \href{https://doi.org/10.1090/jams/860}{doi:10.1090/jams/860}.
+
+\bibitem{CasanaGiner2026} V. Casa\~na-Giner, Bounds for the argument of the Riemann zeta function and a prime-corrected Riemann--von Mangoldt approximation of its zeros, manuscript, version 57 (31 October 2026), submitted; statements numbered as in that version.
+
+\bibitem{Davenport2000} H. Davenport, \textit{Multiplicative Number Theory}, 3rd edn., revised by H. L. Montgomery, Graduate Texts in Mathematics, Vol.~74 (Springer, New York, 2000), \href{https://doi.org/10.1007/978-1-4757-5927-3}{doi:10.1007/978-1-4757-5927-3}.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions, \S5.11(ii), Release 1.2.4 of 2025-03-15, F. W. J. Olver et al., eds., \url{https://dlmf.nist.gov/5.11.ii}.
+
+\bibitem{Fiori2025} A. Fiori, A note on the Phragm\'en--Lindel\"of theorem, arXiv:2502.13282v3, 2026, \href{https://doi.org/10.48550/arXiv.2502.13282}{doi:10.48550/arXiv.2502.13282}.
+
+\bibitem{FLINT} The FLINT team, FLINT: Fast Library for Number Theory, version 3.6.0, \url{https://flintlib.org}.
+
+\bibitem{Grossmann1913} J. Grossmann, \"Uber die Nullstellen der Riemannschen Zeta-Funktion und der Dirichletschen $L$-Funktionen, Ph.D. thesis, Georg-August-Universit\"at G\"ottingen (1913).
+
+\bibitem{HasanalizadeShenWong2022} E. Hasanalizade, Q. Shen and P.-J. Wong, Counting zeros of the Riemann zeta function, \textit{J. Number Theory} \textbf{235} (2022) 219--241, \href{https://doi.org/10.1016/j.jnt.2021.06.032}{doi:10.1016/j.jnt.2021.06.032}.
+
+\bibitem{HeathBrown2017} D. R. Heath-Brown, A new $k$th derivative estimate for exponential sums via Vinogradov's mean value, \textit{Proc. Steklov Inst. Math.} \textbf{296} (2017) 88--103, theorems numbered as in arXiv:1601.04493v3 (\href{https://doi.org/10.48550/arXiv.1601.04493}{doi:10.48550/arXiv.1601.04493}), \href{https://doi.org/10.1134/S0081543817010084}{doi:10.1134/S0081543817010084}.
+
+\bibitem{HiaryPatelYang2024} G. A. Hiary, D. Patel and A. Yang, An improved explicit estimate for $\zeta(1/2+it)$, \textit{J. Number Theory} \textbf{256} (2024) 195--217, \href{https://doi.org/10.1016/j.jnt.2023.09.003}{doi:10.1016/j.jnt.2023.09.003}.
+
+\bibitem{Johansson2017} F. Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, \textit{IEEE Trans. Comput.} \textbf{66} (2017) 1281--1292, \href{https://doi.org/10.1109/TC.2017.2690633}{doi:10.1109/TC.2017.2690633}.
+
+\bibitem{Olver1974} F. W. J. Olver, \textit{Asymptotics and Special Functions} (Academic Press, New York, 1974); reprinted (A K Peters, Wellesley, MA, 1997), \href{https://doi.org/10.1201/9781439864548}{doi:10.1201/9781439864548}.
+
+\bibitem{PlattTrudgian2015} D. J. Platt and T. S. Trudgian, An improved explicit bound on $|\zeta(\frac12+it)|$, \textit{J. Number Theory} \textbf{147} (2015) 842--851, \href{https://doi.org/10.1016/j.jnt.2014.08.019}{doi:10.1016/j.jnt.2014.08.019}.
+
+\bibitem{Rademacher1959} H. Rademacher, On the Phragm\'en--Lindel\"of theorem and some applications, \textit{Math. Z.} \textbf{72} (1959) 192--204, \href{https://doi.org/10.1007/BF01162949}{doi:10.1007/BF01162949}.
+
+\bibitem{Rosser1941} J. B. Rosser, Explicit bounds for some functions of prime numbers, \textit{Amer. J. Math.} \textbf{63} (1941) 211--232, \href{https://doi.org/10.2307/2371291}{doi:10.2307/2371291}.
+
+\bibitem{RosserSchoenfeld1962} J. B. Rosser and L. Schoenfeld, Approximate formulas for some functions of prime numbers, \textit{Illinois J. Math.} \textbf{6} (1962) 64--94, \href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
+
+\bibitem{TaoTrudgianYang2025} T. Tao, T. S. Trudgian and A. Yang, New exponent pairs, zero density estimates, and zero additive energy estimates: a systematic approach, arXiv:2501.16779v1, 28 January 2025, \href{https://doi.org/10.48550/arXiv.2501.16779}{doi:10.48550/arXiv.2501.16779}.
+
+\bibitem{Titchmarsh1939} E. C. Titchmarsh, \textit{The Theory of Functions}, 2nd edn. (Oxford University Press, Oxford, 1939).
+
+\bibitem{Titchmarsh1986} E. C. Titchmarsh, \textit{The Theory of the Riemann Zeta-Function}, 2nd edn., revised by D. R. Heath-Brown (Clarendon Press, Oxford, 1986).
+
+\bibitem{Trudgian2012} T. S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on the critical line, \textit{Math. Comp.} \textbf{81} (2012) 1053--1061, \href{https://doi.org/10.1090/S0025-5718-2011-02537-8}{doi:10.1090/S0025-5718-2011-02537-8}.
+
+\bibitem{Trudgian2014} T. S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on the critical line II, \textit{J. Number Theory} \textbf{134} (2014) 280--292, \href{https://doi.org/10.1016/j.jnt.2013.07.017}{doi:10.1016/j.jnt.2013.07.017}.
+
+\bibitem{TrudgianYang2024} T. S. Trudgian and A. Yang, Toward optimal exponent pairs, arXiv:2306.05599v3, 15 July 2024, \href{https://doi.org/10.48550/arXiv.2306.05599}{doi:10.48550/arXiv.2306.05599}.
+
+\bibitem{Turing1953} A. M. Turing, Some calculations of the Riemann zeta-function, \textit{Proc. London Math. Soc. (3)} \textbf{3} (1953) 99--117, \href{https://doi.org/10.1112/plms/s3-3.1.99}{doi:10.1112/plms/s3-3.1.99}.
+
+\bibitem{VonMangoldt1905} H. von Mangoldt, Zur Verteilung der Nullstellen der Riemannschen Funktion $\xi(t)$, \textit{Math. Ann.} \textbf{60} (1905) 1--19, \href{https://doi.org/10.1007/BF01447494}{doi:10.1007/BF01447494}.
+
+\bibitem{Yang2024} A. Yang, Explicit bounds on $\zeta(s)$ in the critical strip and a zero-free region, \textit{J. Math. Anal. Appl.} \textbf{534} (2024) 128124, \href{https://doi.org/10.1016/j.jmaa.2024.128124}{doi:10.1016/j.jmaa.2024.128124}.
+
+\end{thebibliography}
+
+\appendix
+\section{Data tables}\label{app:tables}
+\input{generated_datatables.tex}
+\input{generated_appendix.tex}
+
+\end{document}

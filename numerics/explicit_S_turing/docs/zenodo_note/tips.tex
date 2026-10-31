@@ -1,0 +1,88 @@
+\CGtip{eq:identity}{Lemma 3.1: N(T) = (1/pi)(2 arg xi(s1) - arg xi(s2)) + (1/2pi) sum over rho of f(1/2-beta, T-gamma), d>1/2, T not an ordinate.}
+\CGtip{eq:f_def}{f(b,t) = 2atan((d+b)/t) + 2atan((d-b)/t) - atan((2d+b)/t) - atan((2d-b)/t).}
+\CGtip{eq:kernel_def}{Kernel U = sum of c_iota G_iota over iota in B_m = {(R,j): 1<=j<=m} u {(I,j): 2<=j<=m}.}
+\CGtip{eq:G_def}{F_R,j = Re (x+it)^(-j), F_I,j = -Im (x+it)^(-j), G_iota(b,t) = F_iota(d+b,t) + F_iota(d-b,t).}
+\CGtip{eq:kernel_sum}{Lemma 3.2: sum over rho of G_iota = 2 Phi_X(D_j(s1)) - (2/(j-1)!) sum Lambda(n) (log n)^(j-1) Phi_X(n^(-s1)).}
+\CGtip{eq:D_def}{D_1(s) = 1/s + 1/(s-1) - (1/2)log pi + (1/2)psi(s/2); D_j(s) = s^(-j) + (s-1)^(-j) + ((-1)^(j-1)/((j-1)! 2^j)) psi^(j-1)(s/2).}
+\CGtip{eq:K}{Condition (K): f(b,t) <= U(b,t) for 0 <= b <= 1/2, t != 0.}
+\CGtip{eq:ab_def}{a(L) = -(1/pi) sum_R c L^(j-1)/(j-1)!,  b(L) = (1/pi)[(e^(-dL)-2)/L - sum_I c L^(j-1)/(j-1)!].}
+\CGtip{eq:A_def}{A(s) = arg s + arg(s-1) - (T/2) log pi + Im LogGamma(s/2).}
+\CGtip{eq:E_def}{E = (1/pi)(2A(s1)-A(s2)) - M(T); E_u = E + (1/pi) sum c Phi(D_j(s1)); E_l = E - (1/pi) sum eps c Phi(D_j(s1)).}
+\CGtip{eq:twosided}{Proposition 4.1: E_l + sum Lambda n^(-sigma1)(-a cos + b sin) <= N - M <= E_u + sum Lambda n^(-sigma1)(a cos + b sin).}
+\CGtip{eq:fp_def}{f_p(x) = sum_k lambda_k (a_k cos kx + b_k sin kx), lambda_k = (log p) p^(-k sigma1); M_p = max f_p.}
+\CGtip{eq:Fu_Fl_def}{F_u = E_u - A1 log T, F_l = -E_l - A1 log T.}
+\CGtip{eq:master_explicit}{|N(T) - M(T)| <= A1 log T + C_zeta + max(F_u(T), F_l(T)), T not an ordinate, C_zeta >= sum of M_p.}
+\CGtip{eq:tail_bound}{Lemma 4.3: sum_(n>N0) Lambda(n) g(n) <= G(N0)(1.03883 N0 - psi(N0)) + 1.03883 int_(N0)^oo G.}
+\CGtip{eq:Cz_def}{Definition of the certified constant C_zeta (per-prime phase maximum for p <= 1000, hypot for the other prime powers <= 1e8, tail).}
+\CGtip{eq:R_deriv}{|R^(k+1)(z)| <= (k+1)! (2/(3|z|)) (2/|z|)^(k+1) for Re z > 0 (Cauchy estimate of Stirling's remainder).}
+\CGtip{eq:psi_k}{psi^(k)(z) = (-1)^(k-1)(k-1)!/z^k + (-1)^k k!/(2 z^(k+1)) + R^(k+1)(z).}
+\CGtip{eq:F_large}{Lemma 4.6: for T >= T0, F_u <= 7/8 - C1 log(2pi) + K/T and F_l <= -7/8 - C1 log(2pi) + K/T.}
+\CGtip{eq:K_def}{The constant K of Lemma 4.6 (Gamma and argument part, j=1 part, j>=2 part).}
+\CGtip{eq:master_S}{|S(T)| <= A1 log T + C_zeta + max(F_u^S, F_l^S).}
+\CGtip{eq:f_regular}{f(b,t) = sgn(t) pi - 2atan(t/(d+b)) - 2atan(t/(d-b)) + atan(t/(2d+b)) + atan(t/(2d-b)), continuous up to t=0 on each side.}
+\CGtip{eq:f_tail}{Lemma 4.9: t^2 f(b,t) <= 4 d^3 u + K5 |u|^3, u = 1/t, |t| >= T1 >= 2d+1/2.}
+\CGtip{eq:U_tail}{t^2 U as a real-analytic function of (b,u); value 2 d c_R1 - 2 c_R2 at u = 0.}
+\CGtip{eq:admissible}{Admissible profile: |zeta(sigma+it)| <= K_eps |t|^(e(sigma)+eps) for 1/2 <= sigma <= 1, |t| >= 2.}
+\CGtip{eq:pair_to_mu}{If (k,l) is an exponent pair then mu(l-k) <= k.}
+\CGtip{eq:W_def}{W(b,t) = log^+ ( R / sqrt((c-1/2-|b|)^2 + (t+v)^2) ).}
+\CGtip{eq:J_def}{J(e;c,R) = (1/2pi) int_0^(2pi) e(c + R cos theta) d theta.}
+\CGtip{eq:jensen_bound}{Lemma 5.5: sum over rho of W(b_rho, t_rho) <= 2 (J(e;c,R) + eps) log T for T >= T_eps.}
+\CGtip{eq:CH}{C_H = c_R1/(2pi) + (1/pi) sum_k kappa_k J(e_P; c_k, R_k).}
+\CGtip{eq:hybrid_ineq}{Proposition 6.3: f(b,t) <= U(b,t) + sum_k kappa_k W_k(b,t) for 0 <= b <= 1/2, t != 0.}
+\CGtip{eq:CH_value}{C_H = 0.0748883899702... < 0.0748883899703.}
+\CGtip{eq:Lambda0}{Lambda(0) = (3 sqrt 3 - pi)/(12 pi log 2) = 0.0786252...}
+\CGtip{eq:a_def}{a = limsup |S(T)| / log T.}
+\CGtip{eq:thm_N}{Theorem 2.1: |N(T) - M(T)| <= min of six lines, T >= 1.}
+\CGtip{eq:thm_S}{Theorem 2.1: |S(T)| <= min of six lines, T >= 1.}
+\CGtip{eq:single_line}{|N(T)-M(T)| <= 0.08382 log T + 5.326 and |S(T)| <= 0.08382 log T + 4.444 for T >= 1.}
+\CGtip{eq:explicit_form}{|N(T) - M(T)| <= C1 log T + C2 log log T + C3 for T >= T0.}
+\CGtip{eq:RvM}{N(T) = M(T) + O(log T), M(T) = (T/2pi) log(T/(2 pi e)).}
+\CGtip{eq:S_def}{N(T) = theta(T)/pi + 1 + S(T).}
+\CGtip{eq:N_def}{N(T) = number of zeros with 0 < gamma <= T.}
+\CGtip{thm:explicit}{Theorem 2.1 (Explicit estimate): six certified lines for |N - M| and |S|, all T >= 1.}
+\CGtip{thm:hybrid}{Theorem 2.3 (Hybrid estimate): limsup |S(T)|/log T <= C_H < 0.0748883899703.}
+\CGtip{cor:comparison}{Corollary 2.2: the envelope is below Bellotti-Wong by >= 2.231 and below Amberger by >= 0.291 for all T >= 1.}
+\CGtip{lem:identity}{Lemma 3.1: the identity of Turing type.}
+\CGtip{lem:kernel_sums}{Lemma 3.2: exact sums of the kernel functions over the zeros.}
+\CGtip{prop:twosided}{Proposition 4.1: two-sided estimate for N - M.}
+\CGtip{lem:Mp}{Lemma 4.2: bounds for the per-prime maximum M_p.}
+\CGtip{lem:tail}{Lemma 4.3: the tail of the Euler-product constant via psi(x) < 1.03883 x.}
+\CGtip{lem:monotone}{Lemma 4.4: a sufficient condition for g to decrease.}
+\CGtip{prop:Cz}{Proposition 4.5: certified value of C_zeta.}
+\CGtip{lem:stirling}{Lemma 4.6: Stirling's formula with Stieltjes' remainder bound and Cauchy estimates.}
+\CGtip{lem:elem_large}{Lemma 4.7: the elementary part for T >= T0.}
+\CGtip{lem:varpi}{Lemma 4.8: theta(T)/pi + 1 = M(T) + 7/8 + varpi(T)/pi, |varpi| <= (1/16+1/8+1/3)/T.}
+\CGtip{prop:elem}{Proposition 4.9: certified suprema of the elementary part on [1, 1e4] and beyond.}
+\CGtip{lem:kernel_tail}{Lemma 4.10: tail of the kernel inequality for |t| >= T1.}
+\CGtip{prop:kernel_cert}{Proposition 4.11: certification of (K) by bisection.}
+\CGtip{def:admissible}{Definition 5.1: admissible profile.}
+\CGtip{lem:interpolation}{Lemma 5.2: piecewise linear interpolation of pointwise growth bounds is admissible (Rademacher).}
+\CGtip{lem:profile}{Lemma 5.3: the profile e_P from published bounds for mu(sigma) is admissible.}
+\CGtip{lem:jensen}{Lemma 5.4: Jensen bound for the sum of W over the zeros.}
+\CGtip{lem:main_asym}{Lemma 6.1: (1/pi)(2 arg xi(s1) - arg xi(s2)) = theta/pi + 1 + O(1).}
+\CGtip{lem:kernel_asym}{Lemma 6.2: sum over rho of U(b_rho, +-t_rho) = c_R1 log T + O(1).}
+\CGtip{prop:hybrid_cert}{Proposition 6.3: certified hybrid inequality and value of C_H.}
+\CGtip{rem:infimum}{Remark 2.5: on the infimum of the leading constant (question of Bellotti and Wong).}
+\CGtip{rem:conventions}{Remark 2.4: half-weight convention at the ordinates.}
+\CGtip{sec:identity}{Section 3: The identity of Turing type.}
+\CGtip{sec:explicit}{Section 4: The explicit estimate.}
+\CGtip{sec:jensen}{Section 5: Jensen discs and admissible profiles.}
+\CGtip{sec:hybrid_proof}{Section 6: The asymptotic estimate.}
+\CGtip{sec:methods}{Section 7: Methods and remarks.}
+\CGtip{sec:results}{Section 2: Results.}
+\CGtip{subsec:euler}{Section 4.2: The Euler product.}
+\CGtip{subsec:kernel_cert}{Section 4.4: The kernel inequality.}
+\CGtip{tab:lines}{Table 2: the six kernels and their certified constants.}
+\CGtip{tab:history}{Table 1: history of explicit bounds for |N(T) - M(T)|.}
+\CGtip{tab:nodes}{Table A.3: vertices of the profile e_P with sources.}
+\CGtip{tab:hybrid_kernel}{Table A.1: coefficients of the hybrid kernel.}
+\CGtip{tab:hybrid_discs}{Table A.2: the 85 disc data, weights and J_k.}
+\CGtip{app:code}{Appendix B: programs.}
+\CGtip{app:cert}{Appendix C: outputs of the certification programs.}
+\CGtip{app:data}{Appendix D: exact data (JSON files).}
+\CGtip{app:tables}{Appendix A: data tables.}
+\CGtip{app:cert_hybrid}{Appendix B: certify_hybrid.py.}
+\CGtip{app:cert_cz}{Appendix B: cz_gen_pp.py.}
+\CGtip{app:cert_elem}{Appendix B: elem_gen.py.}
+\CGtip{app:profile}{Appendix B: profile_published.py.}
+\CGtip{app:out_hybrid}{Appendix C: output of the hybrid certification.}

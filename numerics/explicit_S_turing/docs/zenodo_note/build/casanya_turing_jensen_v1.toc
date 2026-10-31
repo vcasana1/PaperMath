@@ -1,0 +1,66 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{3}{section.1}%
+\contentsline {section}{\tocsection {}{2}{Results}}{4}{section.2}%
+\contentsline {section}{\tocsection {}{3}{The identity of Turing type}}{6}{section.3}%
+\contentsline {section}{\tocsection {}{4}{The explicit estimate}}{8}{section.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{The decomposition}}{8}{subsection.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{The Euler product}}{10}{subsection.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{The elementary part}}{11}{subsection.4.3}%
+\contentsline {subsection}{\tocsubsection {}{4.4}{The kernel inequality}}{13}{subsection.4.4}%
+\contentsline {subsection}{\tocsubsection {}{4.5}{Proof of Theorem\nonbreakingspace \ref {thm:explicit} and of Corollary\nonbreakingspace \ref {cor:comparison}}}{14}{table.2}%
+\contentsline {section}{\tocsection {}{5}{Jensen discs and admissible profiles}}{15}{section.5}%
+\contentsline {section}{\tocsection {}{6}{The asymptotic estimate}}{17}{section.6}%
+\contentsline {section}{\tocsection {}{7}{Methods and remarks}}{18}{section.7}%
+\contentsline {subsection}{\tocsubsection {}{7.1}{Where the kernel inequality binds}}{18}{subsection.7.1}%
+\contentsline {subsection}{\tocsubsection {}{7.2}{Optimisation}}{18}{subsection.7.2}%
+\contentsline {subsection}{\tocsubsection {}{7.3}{Certification}}{19}{subsection.7.3}%
+\contentsline {subsection}{\tocsubsection {}{7.4}{Comparison of the two methods}}{19}{subsection.7.4}%
+\contentsline {subsection}{\tocsubsection {}{}{Data availability}}{19}{section*.3}%
+\contentsline {subsection}{\tocsubsection {}{}{AI declaration}}{19}{section*.4}%
+\contentsline {subsection}{\tocsubsection {}{}{Mathematical software}}{20}{section*.5}%
+\contentsline {section}{\tocsection {}{}{References}}{20}{section*.6}%
+\contentsline {section}{\tocsection {Appendix}{A}{Data tables}}{21}{appendix.A}%
+\contentsline {section}{\tocsection {Appendix}{B}{Programs}}{24}{appendix.B}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {certify\_hybrid.py}: certification of the kernel inequality (with or without discs) and of $C_{\rm H}$}}{24}{lstlisting.-1}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {profile\_published.py}: the nodes of the profile $\mathfrak e_{\rm P}$}}{27}{lstlisting.-2}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {cz\_gen\_pp.py}: certification of $C_\zeta $ (per-prime phase maximum)}}{28}{lstlisting.-3}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {elem\_gen.py}: certification of $\sup F_u$, $\sup F_\ell $ (modes N and S)}}{30}{lstlisting.-4}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {certify\_line\_pp.py}: driver for one explicit line}}{32}{lstlisting.-5}%
+\contentsline {subsection}{\tocsubsection {}{}{Search programs}}{32}{section*.12}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {lpm.py}}}{32}{lstlisting.-6}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {explore\_discs.py}}}{33}{lstlisting.-7}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {opt\_line.py}}}{35}{lstlisting.-8}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {opt\_line\_pp.py}}}{37}{lstlisting.-9}%
+\contentsline {section}{\tocsection {Appendix}{C}{Outputs of the certification programs}}{39}{appendix.C}%
+\contentsline {subsection}{\tocsubsection {}{}{Hybrid: \texttt {certify\_hybrid.py hyb\_m10\_P.json 40}}}{39}{lstlisting.-10}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{5}$: kernel inequality}}{39}{lstlisting.-11}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{5}$: $C_\zeta $}}{39}{lstlisting.-12}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{5}$: elementary part, mode N}}{39}{lstlisting.-13}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{5}$: elementary part, mode S}}{39}{lstlisting.-14}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{20}$: kernel inequality}}{40}{lstlisting.-15}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{20}$: $C_\zeta $}}{40}{lstlisting.-16}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{20}$: elementary part, mode N}}{40}{lstlisting.-17}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{20}$: elementary part, mode S}}{40}{lstlisting.-18}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{60}$: kernel inequality}}{40}{lstlisting.-19}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{60}$: $C_\zeta $}}{40}{lstlisting.-20}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{60}$: elementary part, mode N}}{40}{lstlisting.-21}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{60}$: elementary part, mode S}}{40}{lstlisting.-22}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{150}$: kernel inequality}}{41}{lstlisting.-23}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{150}$: $C_\zeta $}}{41}{lstlisting.-24}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{150}$: elementary part, mode N}}{41}{lstlisting.-25}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{150}$: elementary part, mode S}}{41}{lstlisting.-26}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{400}$: kernel inequality}}{41}{lstlisting.-27}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{400}$: $C_\zeta $}}{41}{lstlisting.-28}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{400}$: elementary part, mode N}}{41}{lstlisting.-29}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{400}$: elementary part, mode S}}{41}{lstlisting.-30}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{6000}$: kernel inequality}}{42}{lstlisting.-31}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{6000}$: $C_\zeta $}}{42}{lstlisting.-32}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{6000}$: elementary part, mode N}}{42}{lstlisting.-33}%
+\contentsline {subsection}{\tocsubsection {}{}{Line $\ell _{6000}$: elementary part, mode S}}{42}{lstlisting.-34}%
+\contentsline {section}{\tocsection {Appendix}{D}{Exact data}}{42}{appendix.D}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {hyb\_m10\_P.json} (hybrid)}}{42}{lstlisting.-35}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {line\_L5/sol.json} (line $\ell _{5}$)}}{53}{lstlisting.-36}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {line\_L20/sol.json} (line $\ell _{20}$)}}{54}{lstlisting.-37}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {line\_L60/sol.json} (line $\ell _{60}$)}}{55}{lstlisting.-38}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {line\_L150/sol.json} (line $\ell _{150}$)}}{56}{lstlisting.-39}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {line\_C400/sol.json} (line $\ell _{400}$)}}{57}{lstlisting.-40}%
+\contentsline {subsection}{\tocsubsection {}{}{\texttt {line\_D6000/sol.json} (line $\ell _{6000}$)}}{59}{lstlisting.-41}%
