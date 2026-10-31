@@ -1,0 +1,12 @@
+all certified;  C < 0.0884364323172   time 74s
+C_zeta < 6.24956533772    time 46s
+SUP over T>=1 of max(F_u,F_l) <= 0.737846569275
+LINE L2500 CERTIFIED: |N(T)-main| <= 0.08844 log T + 6.988  (T>=1)
+all certified;  C < 0.0915176533855   time 77s
+C_zeta < 3.03936629842    time 45s
+SUP over T>=1 of max(F_u,F_l) <= 0.735910271133
+LINE L400 CERTIFIED: |N(T)-main| <= 0.09152 log T + 3.776  (T>=1)
+all certified;  C < 0.201756550427   time 1s
+C_zeta < 0.839273401079    time 45s
+SUP over T>=1 of max(F_u,F_l) <= 0.665366294652
+LINE L5 CERTIFIED: |N(T)-main| <= 0.20176 log T + 1.505  (T>=1)

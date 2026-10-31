@@ -2,3 +2,7 @@ d = 3/4  m = 5  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.088436432317236649114  (ball [0.088436 +/- 4.33e-7] )
 kernel part c_R1/(2pi) = 0.0884364323172
 limit t^2 U at |t|->inf = [0.01256404922 +/- 4.48e-12] True
+t in (0,T1]: certified, boxes 1051137
+t in [-T1,0): certified, boxes 188085
+|t|>=T1: certified, boxes 830
+all certified;  C < 0.0884364323172   time 74s
