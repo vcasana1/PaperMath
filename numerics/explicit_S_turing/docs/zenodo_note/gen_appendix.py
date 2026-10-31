@@ -58,7 +58,10 @@ with open('generated_tables.tex', 'w') as f:
     f.write('\\end{longtable}\n')
     CH = A(c[B.index(('R', 1))])/(2*PI)+tot
     f.write('%%%%VALUES\n')
-    f.write('\\newcommand{\\CHval}{%s}\n' % CH.str(14, radius=False))
+    # truncated (not rounded) decimal expansion: common prefix of the lower and upper bounds of the ball, 16 decimals
+    lo_ = CH.lower().str(24, radius=False); hi_ = CH.upper().str(24, radius=False); trunc_ = lo_[:18]
+    assert hi_.startswith(trunc_) and lo_.startswith(trunc_), (lo_, hi_)
+    f.write('\\newcommand{\\CHval}{%s}\n' % trunc_)
     f.write('\\newcommand{\\CHup}{%s}\n' % CH.upper().str(12, radius=False))
     cb = CH.str(16); m_, r_ = cb.strip('[]').split(' +/- '); rm, re_ = r_.split('e'); f.write('\\newcommand{\\CHball}{[%s\\pm%s\\cdot10^{%d}]}\n' % (m_, rm, int(re_)))
     f.write('\\newcommand{\\CHkernel}{%s}\n' % (A(c[0])/(2*PI)).str(12, radius=False))
