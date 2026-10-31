@@ -16,3 +16,4 @@ L*=400 d=0.90 m=(10,10) A1=0.08424 A3=4.6095 val=38.3056 97s
 L*=400 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
 L*=400 d=1.00 m=(10,10) A1=0.08664 A3=3.7756 val=38.4308 115s
 L*=1000 d=0.80 m=(10,10) A1=0.08410 A3=5.9939 val=90.0920 139s
+L*=1000 d=0.85 m=(10,10) A1=0.08384 A3=5.2627 val=89.0997 49s
