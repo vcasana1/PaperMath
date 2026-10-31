@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newcommand{\KK}{\mathcal K_T}
+\newcommand{\ga}{\gamma}
+\newcommand{\tC}{\tau^{\mathrm C}}
+\newcommand{\Nzero}{N_0}
+\title{Density-one pointwise improvement of the prime-corrected Riemann--von Mangoldt approximation of the imaginary parts\\\large Standalone theorem and proof (no new manuscript version)}
+\author{V\'ictor Casa\~na-Giner}
+\date{31 October 2026}
+\begin{document}
+\maketitle
+\section*{Notation and inputs}
+Let $\rho_k=\beta_k+i\gamma_k$ denote the nontrivial zeros of $\zeta$, with positive ordinates $\gamma_k$ in increasing order, \emph{counted with multiplicity}. No Riemann hypothesis is assumed. Put
+\[
+\Nzero(t)=\frac{t}{2\pi}\log\frac{t}{2\pi e}+\frac78,
+\qquad \Nzero(\tau_k)=k-\frac12.
+\]
+Thus $\tau_k=\gamma_k^{\mathrm{RvM}}$ is the uncorrected Riemann--von Mangoldt approximation of the existing manuscript. Let $p_1<p_2<\cdots$ denote the primes, and put
+\[
+\Phi_m(t)=-\frac1\pi\sum_{\nu=1}^{m}\sum_{r\ge1}
+\frac{\sin(rt\log p_\nu)}{r p_\nu^{r/2}}.
+\]
+For $2^j\le t\le2^{j+1}$ let $m_j=\lfloor2^{j/2}\rfloor$ and
+\[
+\Phi(t)=\left(2-\frac t{2^j}\right)\Phi_{m_j}(t)
++\left(\frac t{2^j}-1\right)\Phi_{m_{j+1}}(t),
+\qquad \mathcal F(t)=\Nzero(t)+\Phi(t).
+\]
+The prime-corrected ordinal points are the increasing sublevel points
+\[
+\tau_k^{\mathrm C}=
+\int_0^\infty \mathbf 1_{\{\mathcal F(t)<k-\frac12\}}\,dt,
+\qquad
+\KK=\{k:T<\gamma_k\le 2T\}.
+\]
+The prime-corrected localization theorem of the existing manuscript gives the unconditional estimate
+\begin{equation}
+\frac1{\#\KK}\sum_{k\in\KK}
+|\tau_k^{\mathrm C}-\gamma_k|^2\le\frac{C}{\log^2 T}
+\qquad (T\ge T_0),
+\label{eq:corrected-rms}
+\end{equation}
+where $C,T_0$ are absolute constants. The following argument uses \eqref{eq:corrected-rms} as an already proved input and does not reproduce its derivation.
+
+\section*{A zero-ordinate central limit theorem with the correct indexing}
+Korolev \cite[Theorem~10]{Korolev2012} proved, without RH, the Gaussian distribution of
+\[
+\frac{(\gamma_n-g_n)\,\vartheta'(g_N)}{\sqrt{\frac12\log\log N}},
+\qquad\vartheta(g_n)=\pi(n-1),
+\]
+over the blocks $N<n\le N+M$, $M=\lfloor N^{27/82+\varepsilon}\rfloor$ for fixed sufficiently small $\varepsilon>0$. Here $\vartheta$ is the Riemann--Siegel theta function, and $g_n$ are Gram points. In particular, these \emph{are the ordinates of all nontrivial zeros}, counted with multiplicity, not an enumeration restricted to zeros on the critical line. The theorem gives the standard normal distribution with an error tending to zero uniformly for starting indices $N$ in comparable ranges. For a fixed real $x$ its normalization agrees, up to $1+o(1)$, with
+\[
+\frac{(\gamma_n-g_n)\log T}{\sqrt{2\log\log T}}
+\quad\text{when }\gamma_n\asymp T.
+\]
+
+\begin{lemma}[The uncorrected points are Gaussian on dyadic blocks of zeros]\label{lem:clt}
+With $\KK$ as above, for every fixed real $x$,
+\begin{equation}
+\frac1{\#\KK}\#\left\{k\in\KK:
+\frac{(\gamma_k-\tau_k)\log T}{\sqrt{2\log\log T}}\le x\right\}
+\longrightarrow \frac1{\sqrt{2\pi}}\int_{-\infty}^x e^{-u^2/2}\,du.
+\label{eq:clt}
+\end{equation}
+Consequently, for every positive $A(T)$ with
+$A(T)=o(\sqrt{\log\log T})$,
+\begin{equation}
+\#\left\{k\in\KK:|\gamma_k-\tau_k|\le\frac{A(T)}{\log T}\right\}
+=o(\#\KK).
+\label{eq:small-bare}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The Riemann--Siegel expansion gives
+\[
+\frac{\vartheta(t)}{\pi}+1=\Nzero(t)+O(t^{-1}),\qquad
+\vartheta'(t)=\frac12\log\frac{t}{2\pi}+O(t^{-2}).
+\]
+Hence $\Nzero(g_n)=n+O(g_n^{-1})$, whereas
+$\Nzero(\tau_n)=n-\frac12$. Since
+$\Nzero'(t)=\frac1{2\pi}\log(t/(2\pi))$, the mean value theorem gives
+\begin{equation}
+|g_n-\tau_n|=O(1/\log T)
+\label{eq:gram-shift}
+\end{equation}
+uniformly for indices with $\gamma_n\in[T,2T]$ (both points then have height $\asymp T$, by Riemann--von Mangoldt). Thus the change from $g_n$ to $\tau_n$ disappears in the normalized variable.
+
+The set of indices $\KK$ is a contiguous interval. Partition it into consecutive blocks of lengths $\lfloor N^{27/82+\varepsilon}\rfloor$, with $N$ the first index of each block and a final remainder of length $o(\#\KK)$. Since throughout this interval $N\asymp T\log T$ and $\log\log N=\log\log T+o(1)$, Korolev's theorem applies uniformly to these blocks with the normalization in \eqref{eq:clt}. Summing the block distribution estimates proves \eqref{eq:clt}.
+
+Let $Z_T=(\gamma_k-\tau_k)\log T/\sqrt{2\log\log T}$ for $k$ uniform on $\KK$. Equation \eqref{eq:clt} states $Z_T\Rightarrow Z$, where $Z$ is standard Gaussian and has no atom at zero. For every fixed $\eta>0$ and every $A(T)=o(\sqrt{\log\log T})$, eventually
+\[
+\mathbb P\left(|Z_T|\le \frac{A(T)}{\sqrt{2\log\log T}}\right)
+\le\mathbb P(|Z_T|\le\eta).
+\]
+Taking a limit superior and then sending $\eta\downarrow0$ proves \eqref{eq:small-bare}.
+\end{proof}
+
+\section*{Density-one improvement}
+\begin{theorem}[Pointwise prime correction wins at density one]\label{thm:D}
+Without RH, without a simplicity hypothesis, and without monotonicity of $\mathcal F$, for every fixed $\delta>0$,
+\begin{equation}
+\frac1{\#\KK}
+\#\left\{k\in\KK:
+|\tau_k^{\mathrm C}-\gamma_k|\ge
+\delta|\tau_k-\gamma_k|\right\}
+\longrightarrow0.
+\label{eq:ratio}
+\end{equation}
+In particular,
+\begin{equation}
+\#\left\{k\in\KK:
+|\tau_k^{\mathrm C}-\gamma_k|\ge|\tau_k-\gamma_k|\right\}
+=o(\#\KK),
+\label{eq:D}
+\end{equation}
+and therefore $|\tau_k^{\mathrm C}-\gamma_k|<|\tau_k-\gamma_k|$ for a density-one proportion of indices $k\in\KK$.
+\end{theorem}
+\begin{proof}
+Choose any $A(T)$ such that $A(T)\to\infty$ and
+$A(T)=o(\sqrt{\log\log T})$, for instance
+$A(T)=(\log\log T)^{1/4}$.
+By Markov's inequality and \eqref{eq:corrected-rms},
+\begin{equation}
+\frac1{\#\KK}\#\left\{k\in\KK:
+|\tau_k^{\mathrm C}-\gamma_k|\ge\frac{A(T)}{\log T}\right\}
+\le\frac{C}{A(T)^2}=o(1).
+\label{eq:markov}
+\end{equation}
+For each fixed $\delta>0$ we have the set inclusion
+\begin{align*}
+&\left\{k\in\KK:
+|\tau_k^{\mathrm C}-\gamma_k|\ge
+\delta|\tau_k-\gamma_k|\right\}\\
+&\quad\subseteq\left\{k\in\KK:
+|\tau_k^{\mathrm C}-\gamma_k|\ge\frac{A(T)}{\log T}\right\}
+\cup\left\{k\in\KK:
+|\tau_k-\gamma_k|\le\frac{A(T)}{\delta\log T}\right\}.
+\end{align*}
+The first set has relative cardinality $o(1)$ by \eqref{eq:markov}; the second has relative cardinality $o(1)$ by Lemma~\ref{lem:clt} since $A(T)/\delta=o(\sqrt{\log\log T})$. This proves \eqref{eq:ratio}. Taking $\delta=1$ yields \eqref{eq:D}.
+\end{proof}
+
+\begin{remark}[Relation to the explicit bounds for $S(T)$]
+Theorem~\ref{thm:D} is a \emph{density-one} comparison of ordinal positions, not a supremum bound. It does not by itself reduce any of the coefficients $C_1,C_2,C_3$ in an explicit all-height inequality for $S(T)$: the exceptional zero ordinates remain uncontrolled pointwise. A stronger, genuinely uniform estimate is necessary for that distinct objective.
+\end{remark}
+\begin{remark}[Source-critical distinction]
+Kargin's independent Gaussian theorem considers zeros with real part at least $1/2$ and therefore has a different enumeration from the full-multiplicity ordinal sequence when RH is not assumed. Korolev's \emph{Theorem 10}, as stated in the arXiv version of \cite{Korolev2012}, explicitly uses the full list of ordinates and handles multiplicities. It is the appropriate unconditional input here. Fujii's 1974 paper need not be invoked for the Gaussian step, so the subsequent correction to Fujii's work does not enter this proof.
+\end{remark}
+\begin{thebibliography}{9}
+\bibitem{Korolev2012} M.~A.~Korolev, \emph{On Gram's law in the theory of the Riemann zeta function}, Izvestiya: Mathematics \textbf{76} (2012), no.~2, 275--309. DOI: \href{https://doi.org/10.1070/IM2012v076n02ABEH002583}{10.1070/IM2012v076n02ABEH002583}. Theorem 10 in the text \href{https://arxiv.org/abs/1011.3997}{arXiv:1011.3997v1}.
+\bibitem{CasanyaOrdinalPrimes} V.~Casa\~na, \emph{casanya\_ordinal\_primes}, manuscript, Theorem ``Localization by primes'', equation (main\_sublevel); current source file \texttt{casanya\_ordinal\_primes\_v60.tex}.
+\end{thebibliography}
+\end{document}

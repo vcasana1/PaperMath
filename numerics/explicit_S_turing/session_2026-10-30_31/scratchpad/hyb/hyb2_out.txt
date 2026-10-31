@@ -1,0 +1,5 @@
+m=10 d=0.70 pure=0.08160 hybrid=0.07898 ndiscs=427
+m=10 d=0.80 pure=0.08071 hybrid=0.07798 ndiscs=427
+m=10 d=0.90 pure=0.08100 hybrid=0.07744 ndiscs=427
+m=20 d=0.80 pure=0.07983 hybrid=0.07625 ndiscs=427
+m=20 d=0.90 pure=0.07996 hybrid=0.07634 ndiscs=427

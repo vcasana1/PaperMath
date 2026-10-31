@@ -1,0 +1,214 @@
+\begin{abstract}
+Let $\mathfrak a=\limsup_{T\to\infty}|S(T)|/\log T$. It is proved that $\mathfrak a<@@CUP@@$, which is smaller than the value $\Lambda(0)=\frac{3\sqrt3-\pi}{12\pi\log2}=0.0786252\ldots$ that Backlund's method gives under the Lindel\"of hypothesis. The proof combines the identity of Turing type used by Amberger and by Bellotti and Wong with Jensen's formula on small discs to the right of the critical line, where the number of zeros near $\beta=1$ is controlled by Bourgain's exponent pair. The only inequality that is not proved by hand is a two-variable inequality between explicit elementary functions; it is certified with Arb ball arithmetic on the whole half-strip.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\section{Result}\label{sec:result}
+
+Let $\rho=\beta+i\gamma$ run over the nontrivial zeros of $\zeta$, with multiplicity, let $N(T)$ be the number of them with $0<\gamma\le T$, and let $S(T)=N(T)-\frac1\pi\vartheta(T)-1$, where $\vartheta$ is the Riemann--Siegel theta function. Write
+\begin{equation}
+\mathfrak a=\limsup_{T\to\infty}\frac{|S(T)|}{\log T}.
+\label{eq:a_def}
+\end{equation}
+The best previous upper bounds for $\mathfrak a$ are $0.0968160\ldots$ (Bourgain's exponent pair in Backlund's method \cite[Cor.~1.2]{CasanaGiner2026}) and $0.0946$ (Bellotti and Wong \cite[Cor.~1.3]{BellottiWong2026}, valid for all $T\ge1$). Backlund's method cannot go below $\Lambda(0)=0.0786252\ldots$ for any admissible profile, even under the Lindel\"of hypothesis \cite[Remark~5.2]{CasanaGiner2026}.
+
+\begin{theorem}[Hybrid bound]\label{thm:main}
+$\mathfrak a\le C_{\rm H}$, where $C_{\rm H}$ is the number \CGeqref{eq:CH} built from the data of Section~\CGref{sec:data}, and
+\begin{equation}
+C_{\rm H}=@@CVAL@@\ldots<@@CUP@@ .
+\label{eq:CH_value}
+\end{equation}
+In particular $\mathfrak a<\Lambda(0)$.
+\end{theorem}
+
+\begin{corollary}[Distance to the imaginary parts]\label{cor:distance}
+Let $\tau_k$ be the solution of the Riemann--von Mangoldt equation of \cite[(1.4)]{CasanaGiner2026}. Then $\limsup_{k\to\infty}|\tau_k-\gamma_k|\le2\pi C_{\rm H}<@@DUP@@$.
+\end{corollary}
+
+\begin{proof}
+By \cite[Prop.~6.2]{CasanaGiner2026}, $\limsup_k|\tau_k-\gamma_k|=2\pi\mathfrak a$.
+\end{proof}
+
+Theorem~\CGref{thm:main} is asymptotic: it gives $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, with $T_0(\varepsilon)$ not computed. The explicit bound of Bellotti and Wong for all $T\ge1$ is not improved here.
+
+\subsection{Origin of the method}\label{subsec:origin}
+The identity of Lemma~\CGref{lem:identity} and the idea of bounding the function $f$ of \CGeqref{eq:f_def} from above by a combination of the functions $\operatorname{Re}(x+it)^{-j}$ and $\operatorname{Im}(x+it)^{-j}$ are those of Amberger \cite[\S2]{Amberger2025} (with three coefficients) and of Bellotti and Wong \cite[\S2]{BellottiWong2026} (with four coefficients); both go back to Turing \cite{Turing1953}. In their method the majorant must hold for every zero in the critical strip, and no bound for $\zeta$ inside the strip is used. The new ingredient here is that the majorant may fail for zeros with $\beta$ near $0$ or $1$; the excess is paid by the weights $W_k$ of \CGeqref{eq:W_def}, whose sums over the zeros are bounded by Jensen's formula and an admissible exponent profile (Lemma~\CGref{lem:jensen}). The coefficients are chosen by linear programming (Remark~\CGref{rem:lp}).
+
+\section{The identity of Turing type}\label{sec:identity}
+
+Let $\xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(\frac s2)\zeta(s)$. On the half-plane $\operatorname{Re}s>1$, where $\xi$ has no zeros, let $\arg\xi$ be the continuous branch that vanishes on the real axis. For $d>0$, $b\in\R$ and $t\ne0$ put
+\begin{equation}
+f(b,t)=2\arctan\frac{d+b}t+2\arctan\frac{d-b}t-\arctan\frac{2d+b}t-\arctan\frac{2d-b}t .
+\label{eq:f_def}
+\end{equation}
+For a zero $\rho$ write $b_\rho=\frac12-\beta$ and, for fixed $T$, $t_\rho=T-\gamma$.
+
+\begin{lemma}[Turing--Amberger identity]\label{lem:identity}
+Let $d>\frac12$ and let $T>0$ not be the imaginary part of a zero. Then
+\begin{equation}
+N(T)=\frac1\pi\Bigl(2\arg\xi\bigl(\tfrac12+d+iT\bigr)-\arg\xi\bigl(\tfrac12+2d+iT\bigr)\Bigr)+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho),
+\label{eq:identity}
+\end{equation}
+where the series converges absolutely.
+\end{lemma}
+
+\begin{proof}
+Put $\sigma_1=\frac12+d$, $\sigma_2=\frac12+2d$, both $>1$, and $F(\sigma)=\operatorname{Im}\frac{\xi'}\xi(\sigma+iT)$, which is continuous on $[\frac12,\infty)$ because $T$ is not an imaginary part of a zero. By the argument principle on the rectangle with vertices $\sigma_2\pm iT$, $1-\sigma_2\pm iT$, the functional equation $\xi(s)=\xi(1-s)$ and $\xi(\bar s)=\overline{\xi(s)}$ \cite[Ch.~15]{Davenport2000},
+\[
+\pi N(T)=\arg\xi(\sigma_2+iT)-\int_{1/2}^{\sigma_2}F(\sigma)\,d\sigma .
+\]
+Since $\int_{1/2}^{\sigma_1}F(\sigma+d)\,d\sigma=\int_{\sigma_1}^{\sigma_2}F(\sigma)\,d\sigma=\arg\xi(\sigma_2+iT)-\arg\xi(\sigma_1+iT)$,
+\begin{equation}
+\pi N(T)=2\arg\xi(\sigma_1+iT)-\arg\xi(\sigma_2+iT)-\int_{1/2}^{\sigma_1}\bigl(F(\sigma)-F(\sigma+d)\bigr)\,d\sigma .
+\label{eq:turing_split}
+\end{equation}
+By the Hadamard product, $\frac{\xi'}\xi(s)=B+\sum_\rho\bigl(\frac1{s-\rho}+\frac1\rho\bigr)$ with absolute convergence and a real constant $B$ \cite[Ch.~12]{Davenport2000}. Hence
+\[
+F(\sigma)-F(\sigma+d)=\sum_\rho\operatorname{Im}\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr),
+\]
+and the $\rho$-th term is bounded by $d/t_\rho^2$ for $|t_\rho|\ge1$. Since the number of zeros with $|\gamma-T|\le1$ is finite and $\sum_\rho(1+t_\rho^2)^{-1}<\infty$, dominated convergence allows integration term by term. With $\operatorname{Im}\frac1{(\sigma-\beta)+it}=-\frac t{(\sigma-\beta)^2+t^2}$ and $\frac12-\beta=b$,
+\[
+\int_{1/2}^{\sigma_1}\operatorname{Im}\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),\qquad g(b,t)=-2\arctan\frac{b+d}t+\arctan\frac bt+\arctan\frac{b+2d}t .
+\]
+The first-order terms of the expansions at $t=\pm\infty$ cancel, so $g(b,t)=O(|t|^{-3})$ uniformly for $|b|\le\frac12$, and $\sum_\rho g(b_\rho,t_\rho)$ converges absolutely. The map $\rho\mapsto1-\bar\rho$ permutes the zeros, preserves multiplicities, and sends $(b_\rho,t_\rho)$ to $(-b_\rho,t_\rho)$. Hence
+\[
+-\sum_\rho g(b_\rho,t_\rho)=-\frac12\sum_\rho\bigl(g(b_\rho,t_\rho)+g(-b_\rho,t_\rho)\bigr)=\frac12\sum_\rho f(b_\rho,t_\rho),
+\]
+because the terms $\arctan\frac bt$ and $\arctan\frac{-b}t$ cancel. Inserting this in \CGeqref{eq:turing_split} gives \CGeqref{eq:identity}.
+\end{proof}
+
+\begin{lemma}[Main term]\label{lem:main_term}
+For fixed $d>\frac12$ and $T\to\infty$,
+\[
+\frac1\pi\Bigl(2\arg\xi\bigl(\tfrac12+d+iT\bigr)-\arg\xi\bigl(\tfrac12+2d+iT\bigr)\Bigr)=\frac1\pi\vartheta(T)+1+O(1).
+\]
+\end{lemma}
+
+\begin{proof}
+For $\sigma\in\{\sigma_1,\sigma_2\}$ and $s=\sigma+iT$, $\arg\xi(s)=\arg\bigl(\tfrac12s(s-1)\bigr)-\tfrac T2\log\pi+\operatorname{Im}\log\Gamma(\tfrac s2)+\operatorname{Im}\log\zeta(s)$, with continuous branches on $\operatorname{Re}s>1$ vanishing on the real axis. Here $|\operatorname{Im}\log\zeta(s)|\le\log\zeta(\sigma)$, $\arg(s(s-1))=\pi+O(1/T)$, and Stirling's formula \cite[5.11.1]{DLMF} gives $\operatorname{Im}\log\Gamma(\frac s2)=\frac T2\log\frac T2-\frac T2+\frac\pi4(\sigma-1)+O(1/T)$. So $2\arg\xi(\sigma_1+iT)-\arg\xi(\sigma_2+iT)=\frac T2\log\frac T{2\pi e}+O(1)$, and $\vartheta(T)=\frac T2\log\frac T{2\pi e}+O(1)$.
+\end{proof}
+
+\begin{corollary}\label{cor:S_identity}
+For fixed $d>\frac12$ and $T\to\infty$, $T$ not an imaginary part of a zero, $S(T)=\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)+O(1)$.
+\end{corollary}
+
+\section{The kernel and its sums over the zeros}\label{sec:kernel}
+
+For $j\ge1$, $x>0$ and $t\in\R$ put $F_{{\rm R},j}(x,t)=\operatorname{Re}(x+it)^{-j}$ and $F_{{\rm I},j}(x,t)=-\operatorname{Im}(x+it)^{-j}$, and, for an index $\iota=({\rm X},j)$,
+\begin{equation}
+G_\iota(b,t)=F_\iota(d+b,t)+F_\iota(d-b,t)\qquad(|b|<d).
+\label{eq:G_def}
+\end{equation}
+A \emph{kernel} is $U=\sum_{\iota\in\mathcal B}c_\iota G_\iota$ with real $c_\iota$, over the finite index set $\mathcal B=\{({\rm R},j):1\le j\le m\}\cup\{({\rm I},j):2\le j\le m\}$.
+
+\begin{lemma}[Sums of the kernel]\label{lem:kernel_sums}
+Let $d>\frac12$ be fixed and $U$ a kernel. As $T\to\infty$,
+\[
+\sum_\rho U(b_\rho,t_\rho)=c_{{\rm R},1}\log T+O(1),\qquad\sum_\rho U(b_\rho,-t_\rho)=c_{{\rm R},1}\log T+O(1).
+\]
+\end{lemma}
+
+\begin{proof}
+Let $s=\frac12+d+iT$. Then $s-\rho=(d+b_\rho)+it_\rho$ and $s-(1-\bar\rho)=(d-b_\rho)+it_\rho$. Since $\rho\mapsto1-\bar\rho$ permutes the zeros, $\sum_\rho G_\iota(b_\rho,t_\rho)=2\sum_\rho F_\iota(s-\rho)$, where $F_\iota(z)$ means $F_\iota(\operatorname{Re}z,\operatorname{Im}z)$.
+
+For $j=1$: since $B=-\sum_\rho\operatorname{Re}\frac1\rho$ \cite[Ch.~12]{Davenport2000}, $\operatorname{Re}\frac{\xi'}\xi(s)=\sum_\rho\operatorname{Re}\frac1{s-\rho}$, a series of positive terms. From $\frac{\xi'}\xi(s)=\frac1s+\frac1{s-1}-\frac12\log\pi+\frac12\psi(\frac s2)+\frac{\zeta'}\zeta(s)$, $\operatorname{Re}\psi(\frac s2)=\log\frac T2+O(1/T)$ \cite[5.11.2]{DLMF} and $|\frac{\zeta'}\zeta(s)|\le-\frac{\zeta'}\zeta(\frac12+d)$, one gets $\sum_\rho G_{{\rm R},1}(b_\rho,t_\rho)=2\operatorname{Re}\frac{\xi'}\xi(s)=\log T+O(1)$.
+
+For $j\ge2$: $\sum_\rho(s-\rho)^{-j}=\frac{(-1)^{j-1}}{(j-1)!}\bigl(\frac{\xi'}\xi\bigr)^{(j-1)}(s)$, with absolute convergence, by term-wise differentiation of the Hadamard series. The derivatives of order $j-1\ge1$ of $\frac1s$, $\frac1{s-1}$ and $\psi(\frac s2)$ are $O(1/T)$, and $|(\frac{\zeta'}\zeta)^{(j-1)}(s)|\le\sum_n\Lambda(n)(\log n)^{j-1}n^{-1/2-d}$. So these sums are $O(1)$.
+
+Replacing $t_\rho$ by $-t_\rho$ leaves $G_{{\rm R},j}$ unchanged and changes the sign of $G_{{\rm I},j}$; the second statement follows.
+\end{proof}
+
+\section{Jensen discs}\label{sec:jensen}
+
+A \emph{disc datum} is a triple $(c,R,v)$ with $c>1$, $R>0$, $c-R\ge\frac12$. Its weight is
+\begin{equation}
+W(b,t)=\log^+\frac R{\sqrt{(c-\frac12-|b|)^2+(t+v)^2}},
+\label{eq:W_def}
+\end{equation}
+and, for a profile $\mathfrak e$ on $[\frac12,1]$ extended by $\mathfrak e(\sigma)=0$ for $\sigma>1$,
+\begin{equation}
+J(\mathfrak e;c,R)=\frac1{2\pi}\int_0^{2\pi}\mathfrak e(c+R\cos\theta)\,d\theta .
+\label{eq:J_def}
+\end{equation}
+
+\begin{lemma}[Jensen bound]\label{lem:jensen}
+Let $\mathfrak e$ be an admissible profile \cite[(1.3)]{CasanaGiner2026}, $(c,R,v)$ a disc datum and $\varepsilon>0$. As $T\to\infty$,
+\[
+\sum_\rho W(b_\rho,t_\rho)\le2\bigl(J(\mathfrak e;c,R)+\varepsilon\bigr)\log T+O_\varepsilon(1),
+\]
+and the same holds for $\sum_\rho W(b_\rho,-t_\rho)$.
+\end{lemma}
+
+\begin{proof}
+Let $s_0=c+i(T+v)$ and, for a zero $\rho$, let $\rho^*=\frac12+|b_\rho|+i\gamma$, the one of $\rho$, $1-\bar\rho$ with real part $\ge\frac12$. Then $|\rho^*-s_0|^2=(c-\frac12-|b_\rho|)^2+(t_\rho+v)^2$, so $W(b_\rho,t_\rho)=\log^+(R/|\rho^*-s_0|)$. If $\beta\ne\frac12$, the two zeros $\rho$, $1-\bar\rho$ have the same $\rho^*$; if $\beta=\frac12$, $\rho^*=\rho$. Hence
+\[
+\sum_\rho W(b_\rho,t_\rho)\le2\sum_{|\rho-s_0|<R}\log\frac R{|\rho-s_0|},
+\]
+where the sum on the right is over all zeros of $\zeta$ in the disc $|s-s_0|<R$, counted with multiplicity. All of them are nontrivial, because the disc lies in $\operatorname{Re}s>c-R\ge\frac12$, and the disc does not contain $s=1$ for $T>R+|v|$. By Jensen's formula \cite[\S3.61]{Titchmarsh1939},
+\[
+\sum_{|\rho-s_0|<R}\log\frac R{|\rho-s_0|}=\frac1{2\pi}\int_0^{2\pi}\log|\zeta(s_0+Re^{i\theta})|\,d\theta-\log|\zeta(s_0)| .
+\]
+By the Euler product, $|\zeta(s_0)|\ge\zeta(2c)/\zeta(c)$. On the circle, $\operatorname{Im}s=T+O(1)$. For $\frac12\le\operatorname{Re}s\le1$, $\log|\zeta(s)|\le(\mathfrak e(\operatorname{Re}s)+\varepsilon)\log T+O_\varepsilon(1)$ by admissibility; for $\operatorname{Re}s\ge1$, $|\zeta(s)|\le\log T+O(1)$ \cite[Thm.~3.5 and (3.6.5)]{Titchmarsh1986}. This gives the first bound. Replacing $t_\rho$ by $-t_\rho$ amounts to replacing $v$ by $-v$, which does not change $J$.
+\end{proof}
+
+\section{The data and the certified inequality}\label{sec:data}
+
+Fix $d=@@D@@$ and $m=@@M@@$, the coefficients $c_\iota$ ($\iota\in\mathcal B$, $|\mathcal B|=@@NB@@$), the disc data $(c_k,R_k,v_k)$ and the weights $\kappa_k\ge0$, $1\le k\le K$, $K=@@K@@$, listed in Table~\CGref{tab:data} and, with all digits, in the file \texttt{@@SOLFILE@@}. The values of $c_\iota$ and $\kappa_k$ are the exact binary numbers of the file; the disc data are rational. Let $\eB$ be Bourgain's profile \cite[(1.6)]{CasanaGiner2026} and put
+\begin{equation}
+U=\sum_{\iota\in\mathcal B}c_\iota G_\iota,\qquad W_k \text{ as in \CGeqref{eq:W_def} for }(c_k,R_k,v_k),\qquad C_{\rm H}=\frac{c_{{\rm R},1}}{2\pi}+\frac1\pi\sum_{k=1}^K\kappa_kJ(\eB;c_k,R_k).
+\label{eq:CH}
+\end{equation}
+
+\begin{proposition}[Certified kernel inequality]\label{prop:certified}
+For $0\le b\le\frac12$ and $t\ne0$,
+\begin{equation}
+f(b,t)\le U(b,t)+\sum_{k=1}^K\kappa_kW_k(b,t).
+\label{eq:kernel_ineq}
+\end{equation}
+Moreover $C_{\rm H}=@@CVAL@@\ldots$.
+\end{proposition}
+
+\begin{proof}
+All functions in \CGeqref{eq:kernel_ineq} are explicit and elementary. The inequality is certified by the program of Appendix~\CGref{app:code} in Arb ball arithmetic \cite{Johansson2017} at $256$ bits. The certification has three parts.
+
+(a) \emph{Bounded region, $0<|t|\le T_1$, $T_1=@@T1@@$.} For $t\ne0$,
+\begin{equation}
+f(b,t)=\operatorname{sgn}(t)\,\pi-2\arctan\frac t{d+b}-2\arctan\frac t{d-b}+\arctan\frac t{2d+b}+\arctan\frac t{2d-b},
+\label{eq:f_regular}
+\end{equation}
+by $\arctan y+\arctan\frac1y=\operatorname{sgn}(y)\frac\pi2$. On each of the closed half-boxes $[0,\frac12]\times[0,T_1]$ (sign $+$) and $[0,\frac12]\times[-T_1,0]$ (sign $-$), the right side of \CGeqref{eq:f_regular} is continuous up to $t=0$. The program evaluates $H=U+\sum_k\kappa_kW_k^{\rm low}-f$ on boxes, where $W_k^{\rm low}$ is the lower endpoint of the ball of $\log\frac{R_k}{\rm dist}$ when it is positive and $0$ otherwise (so $W_k^{\rm low}\le W_k$), and bisects every box on which the ball of $H$ is not positive. It terminated with all boxes certified ($@@NBOX@@$ boxes in total).
+
+(b) \emph{Tail, $|t|\ge T_1$.} There $W_k=0$, since $|v_k|+R_k\le T_1$. Put $u=1/t$. Then $t^2F_{{\rm R},1}(x,t)=x/(1+x^2u^2)$ and, for $j\ge2$, $t^2(x+it)^{-j}=u^{j-2}(xu+i)^{-j}$, so $t^2U$ is an explicit function of $(b,u)$, continuous at $u=0$. For $|z|\le1$, $|\arctan z-z+\frac{z^3}3|\le\frac{|z|^5}5$. In $f=\sum_i\alpha_i\arctan(y_iu)$, with $(\alpha_i)=(2,2,-1,-1)$ and $(y_i)=(d+b,d-b,2d+b,2d-b)$, one has $\sum\alpha_iy_i=0$ and $\sum\alpha_iy_i^3=-12d^3$, hence
+\[
+t^2f\le4d^3u+K_5|u|^3,\qquad K_5=\tfrac15\bigl(2(d+\tfrac12)^5+2d^5+(2d+\tfrac12)^5+(2d)^5\bigr),
+\]
+for $|u|\le1/T_1$, where $|y_iu|\le1$. The program certifies $t^2U-4d^3u-K_5|u|^3>0$ for $0\le b\le\frac12$, $0<|u|\le1/T_1$ ($@@NTAIL@@$ boxes).
+
+(c) \emph{The constant.} Since $\eB$ is piecewise linear with rational nodes and $c_k-R_k\ge\frac12$, the integral \CGeqref{eq:J_def} is a finite sum of terms $(A+Bc_k)(\theta_p-\theta_q)+BR_k(\sin\theta_p-\sin\theta_q)$ with $\theta=\arccos\frac{\sigma-c_k}{R_k}$ at the nodes and the endpoints. The program evaluates them in ball arithmetic and gives the ball $C_{\rm H}\in@@CBALL@@$.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:main}}\label{sec:proof}
+
+\begin{proof}[Proof of Theorem~\CGref{thm:main}]
+Let $0<\varepsilon'<\varepsilon_0$ and let $\mathfrak e_{\varepsilon'}$ be the admissible profiles of the proof of \cite[Cor.~1.2]{CasanaGiner2026}, which converge to $\eB$ uniformly on $[\frac12,1]$ as $\varepsilon'\to0$. Let $T\to\infty$ through values that are not imaginary parts of zeros. All the functions in \CGeqref{eq:kernel_ineq} are even in $b$; since $|b_\rho|<\frac12$, \CGeqref{eq:kernel_ineq} holds at $(b_\rho,t_\rho)$ for every zero, and, since $f(b,-t)=-f(b,t)$, also
+\[
+f(b_\rho,t_\rho)\ge-U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho).
+\]
+Summing over $\rho$ and using Lemmas~\CGref{lem:kernel_sums} and~\CGref{lem:jensen} with the profile $\mathfrak e_{\varepsilon'}$,
+\[
+\Bigl|\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\Bigr|\le\Bigl(\frac{c_{{\rm R},1}}{2\pi}+\frac1\pi\sum_k\kappa_k\bigl(J(\mathfrak e_{\varepsilon'};c_k,R_k)+\varepsilon\bigr)\Bigr)\log T+O_{\varepsilon,\varepsilon'}(1).
+\]
+By Corollary~\CGref{cor:S_identity}, $\mathfrak a\le\frac{c_{{\rm R},1}}{2\pi}+\frac1\pi\sum_k\kappa_k(J(\mathfrak e_{\varepsilon'};c_k,R_k)+\varepsilon)$; at the imaginary parts of zeros $S(T)=S(T^+)$ is a limit of values at other points. Letting $\varepsilon\to0$, then $\varepsilon'\to0$ (so $J(\mathfrak e_{\varepsilon'};c_k,R_k)\to J(\eB;c_k,R_k)$), gives $\mathfrak a\le C_{\rm H}$, and Proposition~\CGref{prop:certified} gives \CGeqref{eq:CH_value}.
+\end{proof}
+
+\section{Why the discs help}\label{sec:why}
+
+\begin{remark}[Where the constraint binds]\label{rem:binding}
+For fixed coefficients, $f-U$ is harmonic in $(b,t)$ on each of the half-strips $|b|<d$, $t>0$ and $t<0$ (each $\arctan\frac{y}{t}$ is an argument, and each $F_\iota(d\pm b,t)$ is the real part of a holomorphic function of $(d\pm b)+it$). By the maximum principle, $f\le U$ on $|b|\le\frac12$ holds if and only if it holds on the boundary lines $b=\pm\frac12$ and in the limits $t\to0^\pm$ and $|t|\to\infty$. In the method of \cite{Amberger2025,BellottiWong2026} the constraints that fix the optimum are therefore those at $b=\pm\frac12$, that is, at hypothetical zeros with $\beta$ near $0$ or $1$; the values of $\zeta$ in $\operatorname{Re}s>1$ cannot exclude clusters of $\asymp\log T$ such zeros near height $T$. The weights $W_k$ relax exactly these constraints: in the certified data every disc has $c_k-R_k\ge@@MINSIG@@$, and only the values of $\eB$ on $[@@MINSIG@@,1]$ enter $C_{\rm H}$. The reflected part of the profile used in \cite{CasanaGiner2026} plays no role.
+\end{remark}
+
+\begin{remark}[Numerical experiments, not used in the proofs]\label{rem:lp}
+For fixed $d$, the set of admissible $(c_\iota,\kappa_k)$ is convex and the objective \CGeqref{eq:CH} is linear, so the coefficients were chosen by linear programming on a grid of $(b,t)$, refined by cutting planes, with the constraint strengthened by a margin $\eta/(1+t^2)$, $\eta=@@ETA@@$, to leave room for the certification. On grids, without certification, the values obtained are the following. Kernel alone, as in \cite{BellottiWong2026} but with the index set $\mathcal B$: $0.08831$ ($m=4$), $0.08071$ ($m=10$), $0.0800$ ($m=20$), $0.0795$ ($m=40$). Kernel and discs with $\eB$: $0.08188$ ($m=4$), $0.07746$ ($m=10$). If the constraint is imposed only at $b=0$, as it would suffice if all zeros were on the critical line, the optimum is $0.0500$, $0.0200$, $0.0126$ for $m=4,10,20$, which illustrates that the obstruction comes from the zeros off the line.
+\end{remark}

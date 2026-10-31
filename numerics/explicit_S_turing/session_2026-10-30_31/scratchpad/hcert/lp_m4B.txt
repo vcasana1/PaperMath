@@ -1,0 +1,1 @@
+m=4 d=0.70 prof=B eta=0.002 C=0.082049 kernel=0.074893 viol=1.58e-08 it=39 ndiscs_used=33

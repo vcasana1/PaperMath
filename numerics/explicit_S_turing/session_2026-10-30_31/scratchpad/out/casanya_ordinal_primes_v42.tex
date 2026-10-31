@@ -1,0 +1,1748 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,mathrsfs}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem,booktabs,longtable,array}
+\usepackage[expansion=false]{microtype}
+\usepackage{listings}
+\usepackage[pagebackref=true,colorlinks=true,linkcolor=MidnightBlue,citecolor=OliveGreen,urlcolor=MidnightBlue]{hyperref}
+\usepackage{bookmark}
+\newif\ifCGplain\CGplainfalse % \CGplaintrue: submission copy without tooltips (no pdfcomment, no tips file)
+\ifCGplain\else\usepackage{pdfcomment}\fi
+\numberwithin{equation}{section}
+\DeclareTextSymbolDefault{\textsection}{OMS}
+\DeclareTextSymbol{\textsection}{OMS}{"78}
+\DeclareTextSymbolDefault{\textparagraph}{OMS}
+\DeclareTextSymbol{\textparagraph}{OMS}{"7B}
+\DeclareTextSymbolDefault{\textbullet}{OMS}
+\DeclareTextSymbol{\textbullet}{OMS}{"0F}
+\DeclareTextSymbolDefault{\textasteriskcentered}{OMS}
+\DeclareTextSymbol{\textasteriskcentered}{OMS}{"03}
+\setlength{\emergencystretch}{2em}
+\lstset{language=Python,basicstyle=\ttfamily\scriptsize,breaklines=true,columns=fullflexible,keepspaces=true,showstringspaces=false,frame=single}
+
+% ---------- back-references: pages where each reference is cited ----------
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{\ifcase #1 \or\ \textit{(Cited on p.~#2.)}\else\ \textit{(Cited on pp.~#2.)}\fi}
+
+% ---------- hover previews (equations, statements, references) ----------
+\ifCGplain
+\DeclareRobustCommand{\CGref}[1]{\ref{#1}}
+\DeclareRobustCommand{\CGeqref}[1]{\eqref{#1}}
+\DeclareRobustCommand{\CGcite}[2][]{\if\relax\detokenize{#1}\relax\cite{#2}\else\cite[#1]{#2}\fi}
+\else
+\makeatletter
+\let\CG@origref\ref
+\let\CG@origeqref\eqref
+\newcommand{\CG@gettip}[1]{\@ifundefined{CGTip@#1}{#1}{\csname CGTip@#1\endcsname}}
+\newcommand{\CG@getbib}[1]{\@ifundefined{CGBib@#1}{#1}{\csname CGBib@#1\endcsname}}
+\DeclareRobustCommand{\CGref}[1]{\pdftooltip{\CG@origref{#1}}{\CG@gettip{#1}}}
+\DeclareRobustCommand{\CGeqref}[1]{\pdftooltip{\CG@origeqref{#1}}{\CG@gettip{#1}}}
+\DeclareRobustCommand{\CGcite}[2][]{\pdftooltip{\if\relax\detokenize{#1}\relax\cite{#2}\else\cite[#1]{#2}\fi}{\CG@getbib{#2}}}
+\makeatother
+% hover texts (equations, statements, references)
+\makeatletter
+\expandafter\gdef\csname CGTip@sec:intro\endcsname{Section 1: Introduction (p. 2)}
+\expandafter\gdef\csname CGTip@subsec:tau_intro\endcsname{Section 1.1: Inverting the Riemann--von Mangoldt formula (p. 3)}
+\expandafter\gdef\csname CGTip@eq:intro_RvM\endcsname{Eq. (1.1), p. 3: N(t)=Nz(t)+S(t)+(varpi(t))/pi , Nz(t)=t/2pi log t/(2pi e) +7/8 , S(t)=1/pi argzeta (1/2 +it ),}
+\expandafter\gdef\csname CGTip@eq:intro_tau\endcsname{Eq. (1.2), p. 3: Nz(tau\_k)=k-1/2 .}
+\expandafter\gdef\csname CGTip@subsec:results\endcsname{Section 1.2: Results (p. 4)}
+\expandafter\gdef\csname CGTip@eq:admissible\endcsname{Eq. (1.3), p. 4: zeta(sigma+it)<<\_varepsilon|t|\textasciicircum{}mathfrak e(sigma)+varepsilon uniformly for 1/2 <=sigma<=1, |t|>=2 .}
+\expandafter\gdef\csname CGTip@eq:reflected\endcsname{Eq. (1.4), p. 4: 1/2 -sigma, sigma<0, 1/2 -sigma+mathfrak e(1-sigma), 0<=sigma<1/2 , mathfrak e(sigma), 1/2 <=sigma<=1, 0, sigma>1,endcases}
+\expandafter\gdef\csname CGTip@thm:asymptotic\endcsname{Theorem 1.1 (Asymptotic bound) (p. 4): For every admissible profile mathfrak e, beginequation mathfrak a<=Lambda(mathfrak e):=1/2pilog 2 int \_0\textasciicircum{}1(mathfrak e\textasciicircum{}*(sigma))/(sqrt(sigma(2-sigma))) dsigma . endequation}
+\expandafter\gdef\csname CGTip@eq:asymptotic_formula\endcsname{Eq. (1.5), p. 4: mathfrak a<=Lambda(mathfrak e):=1/2pilog 2 int \_0\textasciicircum{}1(mathfrak e\textasciicircum{}*(sigma))/(sqrt(sigma(2-sigma))) dsigma .}
+\expandafter\gdef\csname CGTip@eq:bourgain_nodes\endcsname{Eq. (1.6), p. 4: (1/2 ,13/84 ), (139/194 ,13/194 ), (173/207 ,13/414 ), (773/854 ,13/854 ), (820/867 ,13/1734 ), (3387/3494 ,13/3494 ), (1149/1169 ,13/7014 ), (13921/14054 ,13/14054 ), (1,0). endgathered}
+\expandafter\gdef\csname CGTip@cor:bourgain\endcsname{Corollary 1.2 (Bourgain profile) (p. 4): mathfrak a<=Lambda(eB)=0.0968160063ldots}
+\expandafter\gdef\csname CGTip@thm:explicit\endcsname{Theorem 1.3 (Explicit bound) (p. 4): For every T>= e, beginalign |S(T)| <=0.09783log T+0.7214log log T+10.6, |N(T)-Nz(T) | <=0.09783log T+0.7214log log T+10.7. endalign}
+\expandafter\gdef\csname CGTip@eq:explicit_S\endcsname{Eq. (1.7), p. 4: |S(T)| <=0.09783log T+0.7214log log T+10.6, |N(T)-Nz(T) | <=0.09783log T+0.7214log log T+10.7.}
+\expandafter\gdef\csname CGTip@eq:explicit_N\endcsname{Eq. (1.8), p. 4: |S(T)| <=0.09783log T+0.7214log log T+10.6, |N(T)-Nz(T) | <=0.09783log T+0.7214log log T+10.7.}
+\expandafter\gdef\csname CGTip@cor:distance\endcsname{Corollary 1.4 (Distance to the ordinates) (p. 5): beginenumerate[label=(alph*)] item limsup \_k->inf |tau\_k-gamma\_k|<=2piLambda(eB)=0.6083129ldots<0.60832 . item For every k>=1, with mathfrak m\_k:=min(tau\_k,gamma\_k)>2pi, beginequation |tau\_k-gamma\_k|<=(2pi (0.09783log gamma\_k+0.7214log log gamma\_k+10.2 ))/(log (mathfrak m\_k/2pi)) . endequation endenumerate}
+\expandafter\gdef\csname CGTip@eq:distance_explicit\endcsname{Eq. (1.9), p. 5: |tau\_k-gamma\_k|<=(2pi (0.09783log gamma\_k+0.7214log log gamma\_k+10.2 ))/(log (mathfrak m\_k/2pi)) .}
+\expandafter\gdef\csname CGTip@eq:Euler_phase\endcsname{Eq. (1.10), p. 5: Ph\_m(t)=-1/pi sum \_nu=1\textasciicircum{}marg (1-p\_nu\textasciicircum{}-1/2-it )=-1/pi sum \_nu=1\textasciicircum{}msum \_r>=1(sin(rtlog p\_nu))/(r p\_nu\textasciicircum{}r/2)}
+\expandafter\gdef\csname CGTip@eq:F_def\endcsname{Eq. (1.11), p. 5: Ph(t)= (2-t/(2\textasciicircum{}j) )Ph\_m\_j(t)+ (t/(2\textasciicircum{}j) -1 )Ph\_m\_j+1(t), Fc(t)=Nz(t)+Ph(t).}
+\expandafter\gdef\csname CGTip@eq:xk_def\endcsname{Eq. (1.12), p. 5: tau\_k\textasciicircum{}mathrm C=int \_0\textasciicircum{}inf Ind\_Fc(t)<k-1/2 dt (k>=1).}
+\expandafter\gdef\csname CGTip@thm:sublevel\endcsname{Theorem 1.5 (Localization by primes) (p. 5): The numbers tau\_k\textasciicircum{}mathrm C are finite and 0<tau\_1\textasciicircum{}mathrm C<tau\_2\textasciicircum{}mathrm C<*s. For k>=2 (equivalently tau\_k>=2pi e, since Nz(2pi e)=7/8 ), tau\_k\textasciicircum{}mathrm C is determined by k and by the primes p\_nu with nu<=lfloor2sqrt(tau\_k)rfloor. There are absolute constants C and T\_0 such that, with Kc\_T=k:T<gamma\_k<=2T, ...}
+\expandafter\gdef\csname CGTip@eq:main_sublevel\endcsname{Eq. (1.13), p. 5: sum \_kinKc\_T(tau\_k\textasciicircum{}mathrm C-gamma\_k)\textasciicircum{}2<= C T/(log T) , hence 1/(no.Kc\_T) sum \_kinKc\_T(tau\_k\textasciicircum{}mathrm C-gamma\_k)\textasciicircum{}2<=(C')/(log \textasciicircum{}2T) (T>= T\_0),}
+\expandafter\gdef\csname CGTip@cor:proportion\endcsname{Corollary 1.6 (p. 5): For every mathsf A>0 and T>= T\_0, no.kinKc\_T:|tau\_k\textasciicircum{}mathrm C-gamma\_k|>mathsf A*2pi/(log T) <=(C'')/(mathsf A\textasciicircum{}2) no.Kc\_T, with C'' absolute.}
+\expandafter\gdef\csname CGTip@thm:meansquare\endcsname{Theorem 1.7 (Mean square without primes) (p. 5): Without any hypothesis on the zeros, as T->inf , beginequation 1/(no.Kc\_T) sum \_kinKc\_T(tau\_k-gamma\_k)\textasciicircum{}2=(2log log T)/(log \textasciicircum{}2T) (1+o(1) ), hence sum \_kinKc\_T(tau\_k-gamma\_k)\textasciicircum{}2asymp(Tlog log T)/(log T) . endequation}
+\expandafter\gdef\csname CGTip@eq:meansquare\endcsname{Eq. (1.14), p. 5: 1/(no.Kc\_T) sum \_kinKc\_T(tau\_k-gamma\_k)\textasciicircum{}2=(2log log T)/(log \textasciicircum{}2T) (1+o(1) ), hence sum \_kinKc\_T(tau\_k-gamma\_k)\textasciicircum{}2asymp(Tlog log T)/(log T) .}
+\expandafter\gdef\csname CGTip@eq:disp_01\endcsname{Eq. (1.15), p. 6: ((gamma\_k-tau\_k)log tau\_k)/(sqrt(2log log tau\_k))}
+\expandafter\gdef\csname CGTip@eq:disp_02\endcsname{Eq. (1.16), p. 6: |s\_k+Delta\textasciicircum{}rm G\_k|<1}
+\expandafter\gdef\csname CGTip@subsec:literature\endcsname{Section 1.3: Relation to the literature (p. 6)}
+\expandafter\gdef\csname CGTip@sec:notation\endcsname{Section 2: Notation (p. 9)}
+\expandafter\gdef\csname CGTip@sec:external\endcsname{Section 3: Results from the literature (p. 11)}
+\expandafter\gdef\csname CGTip@thm:known_zeta\endcsname{Theorem 3.3 (Explicit bounds for zeta) (p. 11): For real t: beginenumerate[label=(alph*)] item |zeta(1/2 +it)|<=0.618|t|\textasciicircum{}1/6log |t| for 3<|t|<= e\textasciicircum{}105 [HiaryPatelYang2024], and |zeta(1/2 +it)|<=66.7|t|\textasciicircum{}27/164 for |t|>e\textasciicircum{}105 [PatelYang2023]; item |zeta(sigma\_m+it)|<=1.546|t|\textasciicircum{}1/(2\textasciicircum{}m-2)log |t| for |t|>=3 and every integer m>=4, sigma\_m=1-m/(2\textasciicircum{}m-2) [Yang2024] (see Remark ...}
+\expandafter\gdef\csname CGTip@eq:backlund_f\endcsname{Eq. (3.3), p. 12: mathfrak f\_n(s)=1/2 [ ((s+iT-1)zeta(s+iT) )\textasciicircum{}n+ ((s-iT-1)zeta(s-iT) )\textasciicircum{}n ],}
+\expandafter\gdef\csname CGTip@eq:backlund_Z\endcsname{Eq. (3.4), p. 12: mathcal Z\_n(c,R)=1/n sum \_wlog R/(|w-c|) ,}
+\expandafter\gdef\csname CGTip@thm:known_exponents\endcsname{Theorem 3.7 (Exponent pairs) (p. 13): beginenumerate[label=(alph*)] item If (kappa,lambda) is an exponent pair, so is A(kappa,lambda)= (kappa/(2kappa+2) ,1/2 +lambda/(2kappa+2) ) [Ivic1985]. item If (kappa,lambda) is an exponent pair and 1/2 <=sigma<=lambda-kappa, then zeta(sigma+it)<<|t|\textasciicircum{}(kappa+lambda-sigma)/2log |t| for |t|>=2 [Ivic1985]; in particular ...}
+\expandafter\gdef\csname CGTip@sec:explicit_lemmas\endcsname{Section 4: Explicit lemmas (p. 14)}
+\expandafter\gdef\csname CGTip@lem:varpi\endcsname{Lemma 4.1 (p. 14): For t>0, vartheta(t)=t/2 log t/(2pi e) -pi/8 +varpi(t) with |varpi(t)|<=0.53/t. Consequently [eq:intro\_RvM] holds for t>0 not an ordinate.}
+\expandafter\gdef\csname CGTip@eq:disp_10\endcsname{Eq. (4.1), p. 14: ImLogGamma(z)=ylog |z|-1/4 phz-y+Immathcal R(z), log |z|=log y+1/2 log (1+1/(16y\textasciicircum{}2) ).}
+\expandafter\gdef\csname CGTip@lem:chi\endcsname{Lemma 4.3 (p. 14): For -0.01<=sigma<=1/2 and t>=98, |chi(sigma+it)|<=1.0070 (t/2pi)\textasciicircum{}1/2-sigma.}
+\expandafter\gdef\csname CGTip@eq:stirling_modulus\endcsname{Eq. (4.3), p. 14: log |Gamma(z)|=(omega-1/2 )log y-pi/2 y+1/2 log 2pi+phi(omega,y)+Remathcal R(z), phi(omega,y)=(omega-1/2 )/2 log (1+(omega\textasciicircum{}2)/(y\textasciicircum{}2) )+yarctanomega/y -omega . endgathered}
+\expandafter\gdef\csname CGTip@eq:disp_11\endcsname{Eq. (4.4), p. 14: log |chi(s)|=(1/2 -sigma)log t/2pi +phi(omega\_1,y)-phi(omega\_2,y)+Re (mathcal R(z\_1)-mathcal R(z\_2) ).}
+\expandafter\gdef\csname CGTip@subsec:explicit_profile\endcsname{Section 4.1: The explicit profile (p. 15)}
+\expandafter\gdef\csname CGTip@eq:explicit_nodes\endcsname{Eq. (4.5), p. 15: (1/2 ,27/164 ), (sigma\_m,1/(2\textasciicircum{}m-2) ) (4<= m<=9), (1,0),}
+\expandafter\gdef\csname CGTip@lem:explicit_zeta\endcsname{Lemma 4.4 (p. 15): For -0.01<=sigma<=3 and |t|>=98, |zeta(sigma+it)|<=2.74 |t|\textasciicircum{}eE\textasciicircum{}*(sigma)log |t|.}
+\expandafter\gdef\csname CGTip@eq:boundary\endcsname{Eq. (4.6), p. 15: |Xi(varsigma\_i+it)|<=2|Q+s|\textasciicircum{}1+e\_ilog |Q+s| (s=varsigma\_i+it).}
+\expandafter\gdef\csname CGTip@eq:disp_12\endcsname{Eq. (4.7), p. 15: |Xi(s)|<=2|Q+s|\textasciicircum{}1+eE\textasciicircum{}*(sigma)|Log(Q+s)| .}
+\expandafter\gdef\csname CGTip@eq:right_profile\endcsname{Eq. (4.8), p. 15: |zeta(s)| <=2 (1+84.5/(98\textasciicircum{}2) )\textasciicircum{}1+27/164 (1+(84.5/98\textasciicircum{}2+pi/2)/log 98 )t\textasciicircum{}eE\textasciicircum{}*(sigma)log t <=2.7167 t\textasciicircum{}eE\textasciicircum{}*(sigma)log t (1/2 <=sigma<=3). endsplit}
+\expandafter\gdef\csname CGTip@rem:robust\endcsname{Remark 4.5 (Robustness of the inputs) (p. 15): Theorem [thm:known\_zeta] enters Theorem [thm:explicit] only through [eq:boundary], that is, through bounds with constant 2 on the lines sigma=varsigma\_i, and each input has room. (i) On sigma=1/2 , the bound of [HiaryPatelYang2024] alone gives [eq:boundary] for 3<|t|<= e\textasciicircum{}577, since |t|\textasciicircum{}1/492<= e\textasciicircum{}577/492<2/0.618. Above ...}
+\expandafter\gdef\csname CGTip@sec:backlund\endcsname{Section 5: A disc-based estimate for S(T) (p. 16)}
+\expandafter\gdef\csname CGTip@prop:master\endcsname{Proposition 5.1 (p. 16): Let c,R satisfy [eq:backlund\_conditions] with c<=2 and R<=2, and let T>=3 be a non-ordinate. Suppose that, for a nonnegative measurable function mathfrak h on [c-R,c+R] with int \_0\textasciicircum{}pimathfrak h(c+Rcostheta) dtheta<inf , a constant K>=1 and a function Omega>=1 on [T-2,T+2] such that tmapsto t\textasciicircum{}mathfrak h(sigma)Omega(t) ...}
+\expandafter\gdef\csname CGTip@eq:zeta_hyp\endcsname{Eq. (5.1), p. 16: |zeta(sigma+it)|<= K t\textasciicircum{}mathfrak h(sigma)Omega(t) (c-R<=sigma<= c+R, T-2<= t<= T+2).}
+\expandafter\gdef\csname CGTip@eq:master\endcsname{Eq. (5.2), p. 16: |S(T)|<= 1/(2mathfrak d) [log (zeta(c))/(zeta(2c)) +log (T+3)/T +(mathcal I\_mathfrak h)/pi log (T+2)+log Omega(T+2)+log K ] +(log zeta(sigma\textasciicircum{}sharp))/pi +(sigma\textasciicircum{}sharp-1/2 )/(pi T) +(mathcal E(T,delta\textasciicircum{}sharp))/2pi +1/4 , endsplit}
+\expandafter\gdef\csname CGTip@eq:disp_13\endcsname{Eq. (5.3), p. 16: pi S(T)=argzeta(sigma\textasciicircum{}sharp+iT)+Delta\_sigma=sigma\textasciicircum{}sharp\textasciicircum{}1/2arg ((sigma+iT-1)zeta(sigma+iT) )-Delta\_sigma=sigma\textasciicircum{}sharp\textasciicircum{}1/2arg(sigma+iT-1)}
+\expandafter\gdef\csname CGTip@eq:disp_14\endcsname{Eq. (5.4), p. 16: Psi(theta)=log (T+3)+mathfrak h(c+Rcostheta)log (T+2)+log Omega(T+2)+log K,}
+\expandafter\gdef\csname CGTip@rem:lindelof\endcsname{Remark 5.2 (p. 17): Admissible profiles are nonnegative by definition, so mathfrak e\textasciicircum{}*>=0\textasciicircum{}* pointwise, where 0\textasciicircum{}*(sigma)=max(1/2 -sigma,0) is the reflected extension of the zero profile, and beginequation Lambda(mathfrak e)>=Lambda(0)=1/2pilog 2 int \_0\textasciicircum{}1/2((1/2-sigma) dsigma)/(sqrt(sigma(2-sigma))) =(3sqrt3-pi)/12pilog 2 =0.0786252ldots ...}
+\expandafter\gdef\csname CGTip@eq:disp_17\endcsname{Eq. (5.7), p. 17: Lambda(mathfrak e)>=Lambda(0)=1/2pilog 2 int \_0\textasciicircum{}1/2((1/2-sigma) dsigma)/(sqrt(sigma(2-sigma))) =(3sqrt3-pi)/12pilog 2 =0.0786252ldots}
+\expandafter\gdef\csname CGTip@lem:s_bounds\endcsname{Lemma 6.1 (p. 19): For every k>=1, G\_k\textasciicircum{}-+1/2 <= s\_k<= G\_k\textasciicircum{}+-1/2 ; in particular |s\_k|<=max(|G\_k\textasciicircum{}-|,|G\_k\textasciicircum{}+|)-1/2 .}
+\expandafter\gdef\csname CGTip@prop:distance_sharp\endcsname{Proposition 6.2 (Limit superior of lverttau\_k-gamma\_krvert) (p. 19): limsup \_k->inf |tau\_k-gamma\_k|=2pimathfrak a. In particular Corollary [cor:distance](a) is equivalent to Corollary [cor:bourgain], and the Lindel"of hypothesis would give limsup \_k|tau\_k-gamma\_k|<=2piLambda(0)=0.49401ldots (Remark [rem:lindelof]).}
+\expandafter\gdef\csname CGTip@sec:sublevel\endcsname{Section 7: Localization by primes (p. 20)}
+\expandafter\gdef\csname CGTip@subsec:construction\endcsname{Section 7.1: The construction (p. 20)}
+\expandafter\gdef\csname CGTip@eq:phasebound\endcsname{Eq. (7.1), p. 20: |Ph\_m(t)|<=m/4 .}
+\expandafter\gdef\csname CGTip@eq:globalphasebound\endcsname{Eq. (7.2), p. 20: |Ph(t)|<=1/4 sqrt(2t) (t>0).}
+\expandafter\gdef\csname CGTip@prop:ordered\endcsname{Proposition 7.1 (p. 20): For every k>=1, tau\_k\textasciicircum{}mathrm C is finite and 0<tau\_k\textasciicircum{}mathrm C<tau\_k+1\textasciicircum{}mathrm C. If tau\_k>=2pi e, the integral [eq:xk\_def] may be truncated at 2tau\_k, and its integrand uses only the primes p\_nu with nu<=lfloor2sqrt(tau\_k)rfloor.}
+\expandafter\gdef\csname CGTip@subsec:transfer\endcsname{Section 7.2: A deterministic transfer inequality (p. 21)}
+\expandafter\gdef\csname CGTip@lem:maximal\endcsname{Lemma 7.2 (p. 21): Let A<= B be integers and D=(D\_ell)\_A<=ell<= B nonnegative. For A<=ell<= B let (M D)\_ell=max1/(b-a+1) sum \_r=a\textasciicircum{}bD\_r: A<= a<=ell<= b<= B. Then sum \_ell=A\textasciicircum{}B(M D)\_ell\textasciicircum{}3<=24sum \_ell=A\textasciicircum{}BD\_ell\textasciicircum{}3.}
+\expandafter\gdef\csname CGTip@eq:disp_20\endcsname{Eq. (7.3), p. 21: sum \_ell(M D)\_ell\textasciicircum{}3=int \_0\textasciicircum{}inf 3Theta\textasciicircum{}2no.M D>=Theta dTheta<=12sum \_ell D\_ellint \_0\textasciicircum{}2D\_ellTheta dTheta=24sum \_ell D\_ell\textasciicircum{}3 .}
+\expandafter\gdef\csname CGTip@thm:transfer\endcsname{Theorem 7.3 (Sublevel transfer) (p. 21): In this theorem (gamma\_k), N and D\_ell are general: let (gamma\_k)\_k>=1 be any nondecreasing real sequence with finitely many terms in each bounded set, N(t)=no.k:gamma\_k<= t, and a<b with ell\_0=N(a)>=1, ell\_1=N(b). Put D\_ell=gamma\_ell+1-gamma\_ell for ell\_0<=ell<=ell\_1. Let f be a measurable real function on [a,b], and ...}
+\expandafter\gdef\csname CGTip@eq:disp_21\endcsname{Eq. (7.4), p. 21: x\textasciicircum{}f\_k=a+int \_a\textasciicircum{}bInd\_f(t)<k-1/2 dt, q\_f(t)= |lfloor f(t)+1/2 rfloor-N(t) | .}
+\expandafter\gdef\csname CGTip@eq:transfer\endcsname{Eq. (7.5), p. 21: sum \_a<gamma\_k<= b(x\textasciicircum{}f\_k-gamma\_k)\textasciicircum{}2<=2*24\textasciicircum{}1/3 (sum \_ell=ell\_0\textasciicircum{}ell\_1D\_ell\textasciicircum{}3 )\textasciicircum{}1/2 (int \_a\textasciicircum{}bq\_f\textasciicircum{}4 dt )\textasciicircum{}1/2,}
+\expandafter\gdef\csname CGTip@eq:bathtub\endcsname{Eq. (7.6), p. 21: (x\textasciicircum{}f\_k-gamma\_k)\textasciicircum{}2<= u\_k\textasciicircum{}2+v\_k\textasciicircum{}2<=2int \_E\_k|t-gamma\_k| dt .}
+\expandafter\gdef\csname CGTip@eq:disp_22\endcsname{Eq. (7.7), p. 22: sum \_a<gamma\_k<= bInd\_E\_k(t)|t-gamma\_k|<= q\_f(t)\textasciicircum{}2(M D)\_N(t) .}
+\expandafter\gdef\csname CGTip@eq:disp_23\endcsname{Eq. (7.8), p. 22: int \_a\textasciicircum{}b(M D)\_N(t)\textasciicircum{}2dt<=sum \_ell=ell\_0\textasciicircum{}ell\_1D\_ell(M D)\_ell\textasciicircum{}2<= (sum D\_ell\textasciicircum{}3 )\textasciicircum{}1/3 (sum (M D)\_ell\textasciicircum{}3 )\textasciicircum{}2/3<=24\textasciicircum{}2/3sum \_ell=ell\_0\textasciicircum{}ell\_1D\_ell\textasciicircum{}3 ,}
+\expandafter\gdef\csname CGTip@rem:quantile\endcsname{Remark 7.4 (Quantile form) (p. 22): In this remark mathsf m\_f and mathsf m\_N are local. Let mathsf m\_f be the image of Lebesgue measure on [a,b] under f, a measure of mass b-a on R, and mathsf m\_N the image under N, which is the sum of the point masses meastin[a,b]:N(t)=ell delta\_ell, ell\_0<=ell<=ell\_1. Then x\textasciicircum{}f\_k-a=mathsf m\_f ((-inf ,k-1/2 ) ) and ...}
+\expandafter\gdef\csname CGTip@subsec:arith_inputs\endcsname{Section 7.3: The arithmetic inputs (p. 22)}
+\expandafter\gdef\csname CGTip@lem:gaps\endcsname{Lemma 7.5 (Third moment of the gaps) (p. 22): sum \_T<gamma\_ell<=2T(gamma\_ell+1-gamma\_ell)\textasciicircum{}3<< T/log \textasciicircum{}2T for T>= T\_0.}
+\expandafter\gdef\csname CGTip@eq:disp_24\endcsname{Eq. (7.9), p. 22: measmathcal A\_h<= (4pi/hL\_T )\textasciicircum{}4int \_T\textasciicircum{}4T (S(t+h)-S(t) )\textasciicircum{}4dt<<(Tlog \textasciicircum{}2(2+hL\_T))/((hL\_T)\textasciicircum{}4) (1<= hL\_T, 0<h<=1).}
+\expandafter\gdef\csname CGTip@eq:disp_25\endcsname{Eq. (7.10), p. 22: sum \_substackT<gamma\_ell<=2T D\_ell>=2v/L\_TD\_ell<<(Tlog \textasciicircum{}2(2+v))/(v\textasciicircum{}4) (1<= v<= L\_T).}
+\expandafter\gdef\csname CGTip@lem:fourth\endcsname{Lemma 7.6 (Fourth moment of the counting error) (p. 23): For U=2\textasciicircum{}j with j>= j\_0, int \_U\textasciicircum{}2U|Fc(t)-N(t)|\textasciicircum{}4dt<< U.}
+\expandafter\gdef\csname CGTip@eq:phase_split\endcsname{Eq. (7.11), p. 23: Ph\_m(t)=1/pi Imsum \_p<Yp\textasciicircum{}-1/2-it+1/pi Immathscr D\_1(t)+1/2pi Immathscr D\_2(t)+Ph\textasciicircum{}(3)(t), mathscr D\_1(t)=sum \_Y<= p<= Xp\textasciicircum{}-1/2-it, mathscr D\_2(t)=sum \_p<= Xp\textasciicircum{}-1-2it, endgathered}
+\expandafter\gdef\csname CGTip@eq:disp_26\endcsname{Eq. (7.12), p. 23: |Ph\_m-S-varpi/pi |\_4<= |S-1/pi Imsum \_p<Yp\textasciicircum{}-1/2-it |\_4+1/pi |mathscr D\_1|\_4+1/2pi |mathscr D\_2|\_4+|Ph\textasciicircum{}(3)|\_4+1/pi |varpi|\_4<< U\textasciicircum{}1/4.}
+\expandafter\gdef\csname CGTip@rem:bare_point\endcsname{Remark 7.7 (p. 24): The uncorrected sequence tau\_k is the case Ph=0. Then q\_f is governed by S, and [eq:transfer], with Selberg's fourth moment (Theorem [thm:known\_selberg] with mathsf k=2, in dyadic form) in place of Lemma [lem:fourth] and with the window [T/2,3T] localized exactly as in the proof of Theorem [thm:sublevel], only yields ...}
+\expandafter\gdef\csname CGTip@thm:identity\endcsname{Theorem 8.1 (Exact defect identity) (p. 25): Let 1<= k\_1<k\_2 be indices, let F be a real C\textasciicircum{}1 function on an open interval containing [gamma\_k\_1,gamma\_k\_2], and put u\_k=k-1/2 -F(gamma\_k) for k\_1<= k<= k\_2. For every integer j>=1, beginequation int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-F(t) )\textasciicircum{}2jF'(t) dt=sum \_k=k\_1+1\textasciicircum{}k\_2-1Psi\_j(u\_k)+((1/2 +u\_k\_1)\textasciicircum{}2j+1+(1/2 ...}
+\expandafter\gdef\csname CGTip@eq:identity_general\endcsname{Eq. (8.1), p. 25: int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-F(t) )\textasciicircum{}2jF'(t) dt=sum \_k=k\_1+1\textasciicircum{}k\_2-1Psi\_j(u\_k)+((1/2 +u\_k\_1)\textasciicircum{}2j+1+(1/2 -u\_k\_2)\textasciicircum{}2j+1)/(2j+1) ,}
+\expandafter\gdef\csname CGTip@eq:Psi_def\endcsname{Eq. (8.2), p. 25: Psi\_j(u)=((1/2 +u)\textasciicircum{}2j+1+(1/2 -u)\textasciicircum{}2j+1)/(2j+1) =u\textasciicircum{}2j+sum \_l=0\textasciicircum{}j-1binom2j+12l(4\textasciicircum{}l-j)/(2j+1) u\textasciicircum{}2l.}
+\expandafter\gdef\csname CGTip@eq:identity_quadratic\endcsname{Eq. (8.3), p. 25: sum \_k=k\_1+1\textasciicircum{}k\_2-1u\_k\textasciicircum{}2=int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-F(t) )\textasciicircum{}2F'(t) dt-(k\_2-k\_1-1)/12 -((1/2 +u\_k\_1)\textasciicircum{}3+(1/2 -u\_k\_2)\textasciicircum{}3)/3 .}
+\expandafter\gdef\csname CGTip@rem:twelfth\endcsname{Remark 8.2 (p. 25): Psi\_j(u)=int \_u-1/2\textasciicircum{}u+1/2x\textasciicircum{}2j dx is the mean of x\textasciicircum{}2j over the unit interval centered at u, and 1/12 =int \_-1/2\textasciicircum{}1/2x\textasciicircum{}2 dx. The constant is associated with each unit increment in the enumeration counting multiplicities; repeated ordinates are handled by the degenerate-gap cancellation in the proof. When F is not ...}
+\expandafter\gdef\csname CGTip@cor:identity_distance\endcsname{Corollary 8.3 (p. 25): For 1<= k\_1<k\_2, beginequation sum \_k=k\_1+1\textasciicircum{}k\_2-1s\_k\textasciicircum{}2=int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2G(t)\textasciicircum{}2lL(t) dt-(k\_2-k\_1-1)/12 -((1/2 +s\_k\_1)\textasciicircum{}3+(1/2 -s\_k\_2)\textasciicircum{}3)/3 . endequation}
+\expandafter\gdef\csname CGTip@eq:identity_distance\endcsname{Eq. (8.5), p. 25: sum \_k=k\_1+1\textasciicircum{}k\_2-1s\_k\textasciicircum{}2=int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2G(t)\textasciicircum{}2lL(t) dt-(k\_2-k\_1-1)/12 -((1/2 +s\_k\_1)\textasciicircum{}3+(1/2 -s\_k\_2)\textasciicircum{}3)/3 .}
+\expandafter\gdef\csname CGTip@prop:s_meansquare\endcsname{Proposition 8.4 (p. 26): As T->inf , beginequation langle s\_k\textasciicircum{}2rangle\_Kc\_T=(log log T)/(2pi\textasciicircum{}2) (1+o(1) ). endequation}
+\expandafter\gdef\csname CGTip@eq:s_meansquare\endcsname{Eq. (8.6), p. 26: langle s\_k\textasciicircum{}2rangle\_Kc\_T=(log log T)/(2pi\textasciicircum{}2) (1+o(1) ).}
+\expandafter\gdef\csname CGTip@rem:meansquare_comparison\endcsname{Remark 8.5 (p. 27): Theorem [thm:meansquare] is an asymptotic equality, so the factor log log T is a property of the sequence tau\_k and not of the method. Theorem [thm:sublevel] gives langle(tau\_k\textasciicircum{}mathrm C-gamma\_k)\textasciicircum{}2rangle\_Kc\_T<= C'/log \textasciicircum{}2T for the points corrected by the Euler phases: the primes remove this factor from the proved ...}
+\expandafter\gdef\csname CGTip@sec:additional\endcsname{Section 9: Further consequences of ordinal localization (p. 27)}
+\expandafter\gdef\csname CGTip@prop:correction_second_moment\endcsname{Proposition 9.1 (Second moment and asymptotic correlation of the arithmetic correction) (p. 27): Write beginequation delta\_k=gamma\_k-tau\_k, b\_k=tau\_k\textasciicircum{}mathrm C-tau\_k, varepsilon\_k=gamma\_k-tau\_k\textasciicircum{}mathrm C, n\_T=no.mathcal K\_T, endequation where mathcal K\_T=k:T<gamma\_k<=2T, as above. Then, without RH, beginequation 1/n\_T sum \_kinmathcal K\_Tb\_k\textasciicircum{}2 =(2log log T)/(log \textasciicircum{}2T) (1+o(1)), endequation and beginequation (sum ...}
+\expandafter\gdef\csname CGTip@eq:disp_37\endcsname{Eq. (9.1), p. 27: delta\_k=gamma\_k-tau\_k, b\_k=tau\_k\textasciicircum{}mathrm C-tau\_k, varepsilon\_k=gamma\_k-tau\_k\textasciicircum{}mathrm C, n\_T=no.mathcal K\_T,}
+\expandafter\gdef\csname CGTip@eq:correction_second_moment\endcsname{Eq. (9.2), p. 27: 1/n\_T sum \_kinmathcal K\_Tb\_k\textasciicircum{}2 =(2log log T)/(log \textasciicircum{}2T) (1+o(1)),}
+\expandafter\gdef\csname CGTip@eq:correction_alignment\endcsname{Eq. (9.3), p. 27: (sum \_kinmathcal K\_Tdelta\_kb\_k)/( ) (sum \_kinmathcal K\_Tdelta\_k\textasciicircum{}2 )\textasciicircum{}1/2 (sum \_kinmathcal K\_Tb\_k\textasciicircum{}2 )\textasciicircum{}1/2 =1-O (1/(log log T) ).}
+\expandafter\gdef\csname CGTip@eq:correction_phases\endcsname{Eq. (9.4), p. 27: 1/n\_T sum \_kinmathcal K\_T |e\textasciicircum{}i(gamma\_k-tau\_k)-e\textasciicircum{}i(tau\_k\textasciicircum{}mathrm C-tau\_k) |\textasciicircum{}2 <<1/(log \textasciicircum{}2T) .}
+\expandafter\gdef\csname CGTip@eq:disp_38\endcsname{Eq. (9.5), p. 27: ||b|\_2-|delta|\_2 | <=|varepsilon|\_2 =O ((|delta|\_2)/(sqrt(log log T)) ).}
+\expandafter\gdef\csname CGTip@eq:disp_39\endcsname{Eq. (9.6), p. 28: 1-(langledelta,brangle)/DB =(E\textasciicircum{}2-(D-B)\textasciicircum{}2)/2DB <=(E\textasciicircum{}2)/2DB =O (1/(log log T) ),}
+\expandafter\gdef\csname CGTip@lem:additional_derivative\endcsname{Lemma 9.2 (Control of the derivative and of the endpoint phases) (p. 28): For T sufficiently large, the continuous, piecewise C\textasciicircum{}1 function Fc=Nz+Ph satisfies beginequation sup \_T/2<= t<=3T|Ph(t)|<< T\textasciicircum{}1/4, int \_T/2\textasciicircum{}3T|Fc'(t)|\textasciicircum{}2 dt<< Tlog \textasciicircum{}2T. endequation Derivatives are interpreted almost everywhere at the finitely many dyadic junctions.}
+\expandafter\gdef\csname CGTip@eq:additional_derivative\endcsname{Eq. (9.7), p. 28: sup \_T/2<= t<=3T|Ph(t)|<< T\textasciicircum{}1/4, int \_T/2\textasciicircum{}3T|Fc'(t)|\textasciicircum{}2 dt<< Tlog \textasciicircum{}2T.}
+\expandafter\gdef\csname CGTip@eq:disp_40\endcsname{Eq. (9.8), p. 28: Ph\_m'(t)=-1/pi sum \_nu<= msum \_r>=1 (log p\_nu)/(p\_nu\textasciicircum{}r/2) cos(rtlog p\_nu).}
+\expandafter\gdef\csname CGTip@eq:disp_41\endcsname{Eq. (9.9), p. 28: << Usum \_p<= p\_m(log \textasciicircum{}2p)/p +sum \_p<= p\_mlog \textasciicircum{}2p << Ulog \textasciicircum{}2U.}
+\expandafter\gdef\csname CGTip@eq:disp_42\endcsname{Eq. (9.10), p. 28: int \_U\textasciicircum{}2U |sum \_p<= p\_m (log p)/p cos(2tlog p) |\textasciicircum{}2dt << Usum \_p(log \textasciicircum{}2p)/(p\textasciicircum{}2) +sum \_p<= p\_mlog \textasciicircum{}2p << Ulog \textasciicircum{}2U.}
+\expandafter\gdef\csname CGTip@thm:corrected_ordinal_defect\endcsname{Theorem 9.3 (The corrected ordinal defect at the actual zeros) (p. 28): For kinmathcal K\_T define beginequation d\_k\textasciicircum{}mathrm C=k-1/2 -Fc(gamma\_k) = (k-1/2 -Nz(gamma\_k) )-Ph(gamma\_k). endequation Then, without RH, beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_T |d\_k\textasciicircum{}mathrm C|\textasciicircum{}2<<1. endequation}
+\expandafter\gdef\csname CGTip@eq:disp_43\endcsname{Eq. (9.11), p. 28: d\_k\textasciicircum{}mathrm C=k-1/2 -Fc(gamma\_k) = (k-1/2 -Nz(gamma\_k) )-Ph(gamma\_k).}
+\expandafter\gdef\csname CGTip@eq:corrected_ordinal_defect\endcsname{Eq. (9.12), p. 28: 1/(no.mathcal K\_T) sum \_kinmathcal K\_T |d\_k\textasciicircum{}mathrm C|\textasciicircum{}2<<1.}
+\expandafter\gdef\csname CGTip@eq:disp_44\endcsname{Eq. (9.13), p. 29: |int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-Fc(t))\textasciicircum{}2Fc'(t) dt | <= (int \_T-1\textasciicircum{}2T+1|N-Fc|\textasciicircum{}4dt )\textasciicircum{}1/2 (int \_T-1\textasciicircum{}2T+1|Fc'|\textasciicircum{}2dt )\textasciicircum{}1/2 << Tlog T. endaligned}
+\expandafter\gdef\csname CGTip@eq:disp_45\endcsname{Eq. (9.14), p. 29: sum \_kinmathcal K\_T|d\_k\textasciicircum{}mathrm C|\textasciicircum{}2 <= |int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-Fc(t))\textasciicircum{}2Fc'(t) dt | +(no.mathcal K\_T)/12 +O(T\textasciicircum{}3/4+log \textasciicircum{}3T) << Tlog T.}
+\expandafter\gdef\csname CGTip@cor:prime_phase_second_moment\endcsname{Corollary 9.4 (Second moment of the prime phases at the ordinates) (p. 29): With s\_k=k-1/2 -Nz(gamma\_k) as in Proposition [prop:s\_meansquare], one has, without RH, beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_TPh(gamma\_k)\textasciicircum{}2 sim(log log T)/(2pi\textasciicircum{}2) , endequation and beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_T s\_kPh(gamma\_k) sim(log log T)/(2pi\textasciicircum{}2) . endequation}
+\expandafter\gdef\csname CGTip@eq:prime_phase_second_moment\endcsname{Eq. (9.15), p. 29: 1/(no.mathcal K\_T) sum \_kinmathcal K\_TPh(gamma\_k)\textasciicircum{}2 sim(log log T)/(2pi\textasciicircum{}2) ,}
+\expandafter\gdef\csname CGTip@eq:prime_phase_covariance\endcsname{Eq. (9.16), p. 29: 1/(no.mathcal K\_T) sum \_kinmathcal K\_T s\_kPh(gamma\_k) sim(log log T)/(2pi\textasciicircum{}2) .}
+\expandafter\gdef\csname CGTip@thm:recovered_simple_certificate\endcsname{Theorem 9.5 (A deterministic certificate for simple critical-line zeros) (p. 29): In this theorem v\_k is a local symbol, unrelated to v\_k in the proof of Theorem [thm:transfer]. Let mathsf F\_test be any real-valued function defined at the ordinates, let j>=1 be an integer, and set beginequation v\_k=k-1/2 -mathsf F\_test(gamma\_k), mathcal K\_T=k:T<gamma\_k<=2T. endequation Let N\_simple,1/2(T,2T) count ...}
+\expandafter\gdef\csname CGTip@eq:disp_46\endcsname{Eq. (9.17), p. 29: v\_k=k-1/2 -mathsf F\_test(gamma\_k), mathcal K\_T=k:T<gamma\_k<=2T.}
+\expandafter\gdef\csname CGTip@eq:recovered_simple_certificate\endcsname{Eq. (9.18), p. 29: N\_simple,1/2(T,2T) >=no.mathcal K\_T-sum \_kinmathcal K\_T(2v\_k)\textasciicircum{}2j.}
+\expandafter\gdef\csname CGTip@eq:disp_47\endcsname{Eq. (9.19), p. 29: min\_ainmathbb Rsum \_i=0\textasciicircum{}m-1(a+i)\textasciicircum{}2 =sum \_i=0\textasciicircum{}m-1 (i-(m-1)/2 )\textasciicircum{}2 =(m(m\textasciicircum{}2-1))/12 .}
+\expandafter\gdef\csname CGTip@eq:disp_48\endcsname{Eq. (9.20), p. 30: (1/m sum \_i=0\textasciicircum{}m-1|2v\_k+i|\textasciicircum{}2j )\textasciicircum{}1/(2j) >= (1/m sum \_i=0\textasciicircum{}m-1|2v\_k+i|\textasciicircum{}2 )\textasciicircum{}1/2>=1.}
+\expandafter\gdef\csname CGTip@rem:certificate_scope\endcsname{Remark 9.6 (p. 30): It is a certificate, not an unconditional positive-proportion result: Theorem [thm:corrected\_ordinal\_defect] bounds the second moment of d\_k\textasciicircum{}mathrm C but does not provide a sufficiently small explicit constant for [eq:recovered\_simple\_certificate] to be positive. Further higher-moment and finite Euler-product results ...}
+\expandafter\gdef\csname CGTip@sec:conclusion\endcsname{Section 10: Conclusion (p. 30)}
+\expandafter\gdef\csname CGTip@app:code\endcsname{Section A: Computation of the constants (p. 31)}
+\expandafter\gdef\csname CGTip@app:sources\endcsname{Section B: Correspondence with the sources (p. 35)}
+\expandafter\gdef\csname CGBib@Backlund1918\endcsname{R.J. Backlund, "Uber die Nullstellen der Riemannschen Zetafunktion, Acta Math. 41 (1916) 345--375, doi:10.1007/BF02422950.}
+\expandafter\gdef\csname CGBib@Bellotti2024\endcsname{C. Bellotti, Explicit bounds for the Riemann zeta function and a new zero-free region, J. Math. Anal. Appl. 536 (2024) 128249, doi:10.1016/j.jmaa.2024.128249.}
+\expandafter\gdef\csname CGBib@BellottiWong2025\endcsname{C. Bellotti, P.-J. Wong, Improved estimates for the argument and zero-counting function of the Riemann zeta-function, Math. Comp. (2025, published online 14 November 2025), statements numbered as in arXiv:2412.15470v2 (doi:10.48550/arXiv.2412.15470), doi:10.1090/mcom/4133.}
+\expandafter\gdef\csname CGBib@BennettEtAl2021\endcsname{M.A. Bennett, G. Martin, K. O'Bryant, A. Rechnitzer, Counting zeros of Dirichlet L-functions, arXiv:2005.02989v1, 2020, cited with its numbering, doi:10.48550/arXiv.2005.02989; published version: Math. Comp. 90 (2021) 1455--1482, doi:10.1090/mcom/3599.}
+\expandafter\gdef\csname CGBib@Bourgain2017\endcsname{J. Bourgain, Decoupling, exponential sums and the Riemann zeta function, J. Amer. Math. Soc. 30 (2017) 205--224, theorems numbered as in arXiv:1408.5794v2 (doi:10.48550/arXiv.1408.5794), doi:10.1090/jams/860.}
+\expandafter\gdef\csname CGBib@DLMF\endcsname{NIST Digital Library of Mathematical Functions, S5.11(ii), Release 1.2.4 of 2025-03-15, F.W.J. Olver et al., eds., https://dlmf.nist.gov/5.11.ii.}
+\expandafter\gdef\csname CGBib@FazzariGerspachMinelli2025\endcsname{A. Fazzari, M. Gerspach, P. Minelli, Selberg's central limit theorem weighted by linear statistics of zeta zeros, arXiv:2507.04150v1, 2025, cited with its numbering, doi:10.48550/arXiv.2507.04150.}
+\expandafter\gdef\csname CGBib@FrancaLeClair2015\endcsname{G. Francca, A. LeClair, Transcendental equations satisfied by the individual zeros of Riemann zeta, Dirichlet and modular L-functions, Commun. Number Theory Phys. 9 (2015) 1--50, doi:10.4310/CNTP.2015.v9.n1.a1.}
+\expandafter\gdef\csname CGBib@Fiori2025\endcsname{A. Fiori, A note on the Phragm'en--Lindel"of theorem, arXiv:2502.13282v3, 2026, doi:10.48550/arXiv.2502.13282.}
+\expandafter\gdef\csname CGBib@Fujii1974\endcsname{A. Fujii, On the zeros of Dirichlet L-functions. I, Trans. Amer. Math. Soc. 196 (1974) 225--235, doi:10.1090/S0002-9947-1974-0349603-2.}
+\expandafter\gdef\csname CGBib@Fujii1981\endcsname{A. Fujii, On the zeros of Dirichlet L-functions. II (with corrections to ``On the zeros of Dirichlet L-functions. I'' and the subsequent papers), Trans. Amer. Math. Soc. 267 (1981) 33--40, doi:10.1090/S0002-9947-1981-0621970-5.}
+\expandafter\gdef\csname CGBib@Gonek2012\endcsname{S.M. Gonek, Finite Euler products and the Riemann hypothesis, Trans. Amer. Math. Soc. 364 (2012) 2157--2191, doi:10.1090/S0002-9947-2011-05546-7.}
+\expandafter\gdef\csname CGBib@Grossmann1913\endcsname{J. Grossmann, "Uber die Nullstellen der Riemannschen Zeta-Funktion und der Dirichletschen L-Funktionen, doctoral thesis, Georg-August-Universit"at G"ottingen, 1913.}
+\expandafter\gdef\csname CGBib@HardyLittlewoodPolya1934\endcsname{G.H. Hardy, J.E. Littlewood, G. P'olya, Inequalities, first ed., Cambridge University Press, Cambridge, 1934.}
+\expandafter\gdef\csname CGBib@HasanalizadeShenWong2021\endcsname{E. Hasanalizade, Q. Shen, P.-J. Wong, Counting zeros of Dedekind zeta functions, Math. Comp. 91 (2022) 277--293, doi:10.1090/mcom/3665.}
+\expandafter\gdef\csname CGBib@HasanalizadeShenWong2022\endcsname{E. Hasanalizade, Q. Shen, P.-J. Wong, Counting zeros of the Riemann zeta function, arXiv:2107.06506v1, 2021, cited with its numbering, doi:10.48550/arXiv.2107.06506; published version: J. Number Theory 235 (2022) 219--241, doi:10.1016/j.jnt.2021.06.032.}
+\expandafter\gdef\csname CGBib@HiaryLeongYang2024\endcsname{G.A. Hiary, N. Leong, A. Yang, Explicit bounds for the Riemann zeta-function on the 1-line, arXiv:2306.13289v2, 2024, cited with its numbering, doi:10.48550/arXiv.2306.13289; published version: Funct. Approx. Comment. Math. 73 (2025) 53--89, doi:10.7169/facm/240711-13-8.}
+\expandafter\gdef\csname CGBib@HiaryPatelYang2024\endcsname{G.A. Hiary, D. Patel, A. Yang, An improved explicit estimate for zeta(1/2+it), J. Number Theory 256 (2024) 195--217, doi:10.1016/j.jnt.2023.09.003.}
+\expandafter\gdef\csname CGBib@Ivic1985\endcsname{A. Ivi'c, The Riemann Zeta-Function, Wiley, New York, 1985; reprinted by Dover, Mineola, NY, 2003.}
+\expandafter\gdef\csname CGBib@Kargin2013\endcsname{V. Kargin, On fluctuations of Riemann's zeta zeros, Probab. Theory Related Fields 157 (2013) 575--604, theorems numbered as in arXiv:1203.5309v2 (doi:10.48550/arXiv.1203.5309), doi:10.1007/s00440-012-0465-9.}
+\expandafter\gdef\csname CGBib@Korolev2012\endcsname{M.A. Korolev, Gram's law and the argument of the Riemann zeta function, Publ. Inst. Math. (Beograd) (N.S.) 92(106) (2012) 53--78, doi:10.2298/PIM1206053K.}
+\expandafter\gdef\csname CGBib@LeClair2016\endcsname{A. LeClair, Riemann hypothesis and random walks: the zeta case, arXiv:1601.00914v1 (doi:10.48550/arXiv.1601.00914), 2016, cited with its numbering; published version: Symmetry 13 (2021) 2014, doi:10.3390/sym13112014.}
+\expandafter\gdef\csname CGBib@Leong2024\endcsname{N. Leong, Explicit estimates for the logarithmic derivative and the reciprocal of the Riemann zeta function, arXiv:2405.04869v5, 2026, cited with its numbering, doi:10.48550/arXiv.2405.04869.}
+\expandafter\gdef\csname CGBib@LiebLoss2001\endcsname{E.H. Lieb, M. Loss, Analysis, second ed., Grad. Stud. Math. 14, Amer. Math. Soc., Providence, RI, 2001, doi:10.1090/gsm/014.}
+\expandafter\gdef\csname CGBib@Mertens1874\endcsname{F. Mertens, Ein Beitrag zur analytischen Zahlentheorie, J. Reine Angew. Math. 78 (1874) 46--62, doi:10.1515/crll.1874.78.46.}
+\expandafter\gdef\csname CGBib@MontgomeryVaughan1974\endcsname{H.L. Montgomery, R.C. Vaughan, Hilbert's inequality, J. Lond. Math. Soc. (2) 8 (1974) 73--82, doi:10.1112/jlms/s2-8.1.73.}
+\expandafter\gdef\csname CGBib@Patel2022\endcsname{D. Patel, An explicit upper bound for |zeta(1+it)|, arXiv:2009.00769v1, 2020, cited with its numbering, doi:10.48550/arXiv.2009.00769; published version: Indag. Math. 33 (2022) 1012--1032, doi:10.1016/j.indag.2022.04.007.}
+\expandafter\gdef\csname CGBib@PatelYang2023\endcsname{D. Patel, A. Yang, An explicit sub-Weyl bound for zeta(1/2+it), J. Number Theory 262 (2024) 301--334, doi:10.1016/j.jnt.2024.03.011.}
+\expandafter\gdef\csname CGBib@Platt2017\endcsname{D.J. Platt, Isolating some non-trivial zeros of zeta, Math. Comp. 86 (2017) 2449--2467, doi:10.1090/mcom/3198.}
+\expandafter\gdef\csname CGBib@PlattTrudgian2015\endcsname{D.J. Platt, T.S. Trudgian, An improved explicit bound on |zeta(1/2 +it)|, arXiv:1402.3953, version dated 4 July 2018, cited with its numbering, doi:10.48550/arXiv.1402.3953; published version: J. Number Theory 147 (2015) 842--851, doi:10.1016/j.jnt.2014.08.019.}
+\expandafter\gdef\csname CGBib@Rademacher1959\endcsname{H. Rademacher, On the Phragm'en--Lindel"of theorem and some applications, Math. Z. 72 (1959) 192--204, doi:10.1007/BF01162949.}
+\expandafter\gdef\csname CGBib@Revers2026\endcsname{M. Revers, A new improved explicit estimate for zeta(1/2+it), preprint, arXiv:2602.05614v1, 2026, doi:10.48550/arXiv.2602.05614.}
+\expandafter\gdef\csname CGBib@Riesz1932\endcsname{F. Riesz, Sur un th'eor`eme de maximum de MM. Hardy et Littlewood, J. London Math. Soc. 7 (1932) 10--13, doi:10.1112/jlms/s1-7.1.10.}
+\expandafter\gdef\csname CGBib@Rosser1941\endcsname{J.B. Rosser, Explicit bounds for some functions of prime numbers, Amer. J. Math. 63 (1941) 211--232, doi:10.2307/2371291.}
+\expandafter\gdef\csname CGBib@Selberg1946a\endcsname{A. Selberg, Contributions to the theory of the Riemann zeta-function, Arch. Math. Naturvid. 48 (5) (1946) 89--155.}
+\expandafter\gdef\csname CGBib@Tenenbaum2015\endcsname{G. Tenenbaum, Introduction to Analytic and Probabilistic Number Theory, third ed., Grad. Stud. Math. 163, Amer. Math. Soc., Providence, RI, 2015, doi:10.1090/gsm/163.}
+\expandafter\gdef\csname CGBib@Titchmarsh1986\endcsname{E.C. Titchmarsh, The Theory of the Riemann Zeta-Function, second ed., revised by D.R. Heath-Brown, Clarendon Press, Oxford, 1986.}
+\expandafter\gdef\csname CGBib@Trudgian2012\endcsname{T.S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on the critical line, Math. Comp. 81 (2012) 1053--1061, doi:10.1090/S0025-5718-2011-02537-8.}
+\expandafter\gdef\csname CGBib@Trudgian2014\endcsname{T.S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on the critical line II, arXiv:1208.5846v2, 2012, cited with its numbering and constants, doi:10.48550/arXiv.1208.5846; published version: J. Number Theory 134 (2014) 280--292, doi:10.1016/j.jnt.2013.07.017.}
+\expandafter\gdef\csname CGBib@Tsang1984\endcsname{K.-M. Tsang, The distribution of the values of the Riemann zeta function, Ph.D. thesis, Princeton University, 1984; cited as in [FazzariGerspachMinelli2025].}
+\expandafter\gdef\csname CGBib@VonMangoldt1905\endcsname{H. von Mangoldt, Zur Verteilung der Nullstellen der Riemannschen Funktion xi(t), Math. Ann. 60 (1905) 1--19, doi:10.1007/BF01447494.}
+\expandafter\gdef\csname CGBib@Yang2024\endcsname{A. Yang, Explicit bounds on zeta(s) in the critical strip and a zero-free region, J. Math. Anal. Appl. 534 (2024) 128124, doi:10.1016/j.jmaa.2024.128124.}
+\makeatother
+\fi
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Nz}{N_0} % the smooth main term $N_0$
+\newcommand{\lL}{\mathcal L}
+\newcommand{\Fc}{\mathcal F}
+\newcommand{\Tc}{\mathcal T}
+\newcommand{\Ph}{\Phi}
+\newcommand{\M}{\mathcal M}
+\newcommand{\Ind}{\mathbf 1}
+\newcommand{\meas}{\operatorname{meas}}
+\newcommand{\eB}{\mathfrak e_{\rm B}}
+\newcommand{\eE}{\mathfrak e_{\rm E}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Kc}{\mathcal K}
+
+\hypersetup{pdftitle={Prime-defined approximation of Riemann zeta ordinates and bounds for the argument of the zeta function},pdfauthor={Víctor Casaña-Giner}}
+
+\title{Prime-defined approximation of Riemann zeta ordinates and bounds for the argument of the zeta function}
+\author{V\'ictor Casa\~na-Giner\thanks{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain. Email: \href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es}. ORCID \href{https://orcid.org/0000-0002-8252-2608}{0000-0002-8252-2608}.}}
+\date{30 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The ordinates $\gamma_k$ of all nontrivial zeros of the Riemann zeta function, counted with multiplicity, are approximated by a strictly increasing sequence $\tau_k^{\mathrm C}$ defined by the Riemann--von Mangoldt main term and the phases of approximately $\sqrt T$ Euler factors at height $T$. The points are defined by sublevel measures rather than by choosing roots of a possibly nonmonotone equation. Without assuming the Riemann hypothesis (RH),
+\[
+\frac{1}{\#\mathcal K_T}\sum_{k\in\mathcal K_T}
+|\tau_k^{\mathrm C}-\gamma_k|^2=O(\log^{-2}T),
+\qquad \mathcal K_T=\{k:T<\gamma_k\le2T\}.
+\]
+Thus the root-mean-square error is bounded by a constant multiple of the mean spacing $2\pi/\log T$ between zeros at height $T$. Combined with Selberg's second-moment theorem, an exact integral identity valid without RH and retaining repeated ordinates gives
+\[
+\frac1{\#\mathcal K_T}\sum_{k\in\mathcal K_T}
+|\gamma_k-\tau_k|^2
+=\frac{2\log\log T}{\log^2T}(1+o(1)),
+\qquad N_0(\tau_k)=k-\tfrac12.
+\]
+Consequently, the arithmetic correction $\tau_k^{\mathrm C}-\tau_k$ has the same leading second-moment asymptotic, and the corrected ordinal equation has an $O(1)$ mean-square defect at the actual ordinates.
+
+Independently, an admissible-exponent-profile version of Backlund's method gives
+\[
+\limsup_{T\to\infty}\frac{|S(T)|}{\log T}\le0.0968160\ldots,
+\qquad
+\limsup_{k\to\infty}|\tau_k-\gamma_k|\le0.60832,
+\]
+and the explicit unconditional estimate
+\[
+|S(T)|\le0.09783\log T+0.7214\log\log T+10.6
+\qquad (T\ge e).
+\]
+Its leading coefficient is smaller than that of Bellotti--Wong, while the complete bound is smaller only for $\log T>2425.8386\ldots$.
+\end{abstract}
+
+\medskip
+\noindent\textbf{MSC 2020:} 11M06, 11M26. \quad \textbf{Keywords:} Riemann zeta function; Riemann hypothesis (RH); argument of the zeta function; Backlund's method; exponent pairs; zeros of the zeta function; Euler phases.
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}\label{sec:intro}
+The main result of this paper constructs a strictly increasing sequence of approximate ordinates $\tau_k^{\mathrm C}$ through sublevel measures of $\Nz+\Ph$, where $\Nz$ is the Riemann--von Mangoldt main term and $\Ph$ is defined by finitely many Euler phases. Unconditionally, its root-mean-square error on dyadic blocks is $O(1/\log T)$, a bounded multiple of the mean zero spacing. The key technical feature is the sublevel-set definition: it remains valid even when the prime-complemented counting function is not monotone.
+
+An exact defect identity supplies an independent comparison. Without RH, the original Riemann--von Mangoldt ordinates differ from the actual ordinates by root-mean-square $\sqrt{2\log\log T}/\log T\,(1+o(1))$. Thus the arithmetic correction removes the factor $\log\log T$ from the proved mean-square upper order. Further consequences proved below describe the arithmetic correction itself and the defect of the ordinal equation when evaluated at the actual ordinates.
+
+The other results concern the argument $S(T)$ of the zeta function. A profile-based application of Backlund's method yields an asymptotic coefficient $0.0968160\ldots$, a resulting upper limit $0.60832$ for the distance between the original Riemann--von Mangoldt ordinates and the actual ordinates, and a fully explicit estimate $|S(T)|\le0.09783\log T+0.7214\log\log T+10.6$. The leading coefficient is smaller than Bellotti--Wong's; the complete estimate improves upon theirs only beyond the stated crossing height.
+
+Several related approaches supplement the main term $\Nz(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+\frac78$ of the Riemann--von Mangoldt formula using primes or values of $\zeta$. They differ from the present construction in the correcting term and in whether RH is assumed.
+
+For approaches that use $\zeta$, explicit bounds in the critical strip (Yang \CGcite{Yang2024}; Bellotti \CGcite{Bellotti2024}) give unconditional bounds for $S(T)$ and hence for $N-\Nz$ (Trudgian \CGcite{Trudgian2012}, \CGcite{Trudgian2014}; Bellotti and Wong \CGcite[Thm.~1.1, Cor.~1.5]{BellottiWong2025}). These control the size of $N-\Nz$, not the position of the ordinates.
+
+Fran\c{c}a and LeClair \CGcite[eq.~(20)]{FrancaLeClair2015} write the $n$-th ordinate as a solution of $\Nz(t)+S(t)=n-\frac12$ with the exact $S$; they do not assume RH, but they assume that $\lim_{\delta\to0^+}\arg\zeta(\frac12+\delta+it)$ exists for every $t$, and they do not prove that the equation has exactly one solution for each $n$ \CGcite[\S9]{FrancaLeClair2015}. In approaches using primes, $S$ is approximated by a sum over primes $p\le x$, in mean square and unconditionally (Selberg \CGcite{Selberg1946a}, Tsang \CGcite{Tsang1984}, Fujii \CGcite{Fujii1974}).
+
+Kargin \CGcite[Thm.~1.1]{Kargin2013} takes $t_k$ with $\Nz(t_k)=k-\frac12$ and proves, without RH, that $\gamma_k-t_k$, suitably normalized, is asymptotically Gaussian, a limit law over windows of $k$ and not a bound for each ordinate.
+
+Korolev \CGcite[Thm.~4.2]{Korolev2012} proves, without RH, Selberg's formulas for the moments of the Gram displacements $\Delta^{\rm G}_k$, the integers that locate each $\gamma_k$ among the Gram points, where the smooth term $\Nz$ takes integer values up to the Stirling remainder.
+
+Gonek \CGcite{Gonek2012} builds from a finite Euler product a function $\zeta_X$ whose zeros up to height $t$ number $\frac{t}{2\pi}\log\frac{t}{2\pi}-\frac{t}{2\pi}-\frac1\pi\sum_{n\le X^2}\Lambda_X(n)\frac{\sin(t\log n)}{n^{1/2}\log n}+O_X(1)$ for $X<\exp(C_3\log t/\Phi(t))$, in his notation, under RH \CGcite[Thm.~7.5, p.~2175]{Gonek2012}, and these zeros converge to those of $\zeta$ as $X\to\infty$, again under RH and without a rate \CGcite[Thm.~9.1, p.~2181]{Gonek2012}.
+
+LeClair \CGcite{LeClair2016} replaces $S$ by a finite number of Euler factors, a free parameter, on the basis of a conjectured random-walk behavior of sums over primes; that work is primarily numerical and does not state an error bound.
+
+The present article is unconditional, uses about $\sqrt t$ primes, tied to the height (zeta imaginary ordinates), and bounds the mean-square error of ordinates $\tau_{k}^{\mathrm C}$ that are increasing and indexed by construction.
+
+\subsection{Inverting the Riemann--von Mangoldt formula}\label{subsec:tau_intro}
+Let $\rho_k=\beta_k+i\gamma_k$ be the nontrivial zeros of the Riemann zeta function with positive imaginary ordinates, listed with multiplicity and $0<\gamma_1\le\gamma_2\le\cdots$, and let $N(t)=\#\{k:\gamma_k\le t\}$. For $t>0$ not an ordinate the Riemann--von Mangoldt formula reads \CGcite[\S9.3]{Titchmarsh1986}
+\begin{equation}
+N(t)=\Nz(t)+S(t)+\frac{\varpi(t)}\pi,\qquad \Nz(t)=\frac t{2\pi}\log\frac t{2\pi e}+\frac78,\qquad S(t)=\frac1\pi\arg\zeta\bigl(\tfrac12+it\bigr),
+\label{eq:intro_RvM}
+\end{equation}
+where $\varpi(t)=O(1/t)$ is the Stirling remainder of the Riemann--Siegel theta function (Lemma~\CGref{lem:varpi}). At an ordinate $t$ this paper uses the right-hand convention $S(t)=S(t^+)$, compatible with the right-continuous counting function $N$. Different conventions are used in the literature (see \CGcite[\S9.3]{Titchmarsh1986}). All bounds below have continuous majorants and extend to both one-sided limits by approximation through non-ordinates. The function $\Nz$ is strictly increasing on $(2\pi,\infty)$, with $\Nz(2\pi)=-\frac18$ and $\Nz(t)\to\infty$ as $t\to\infty$. Thus for every integer $k\ge1$ there is exactly one $\tau_k>2\pi$ with
+\begin{equation}
+\Nz(\tau_k)=k-\tfrac12 .
+\label{eq:intro_tau}
+\end{equation}
+The sequence $(\tau_k)$ solves the counting equation with the oscillating term $S$ removed. In terms of the Gram points $g_m$, defined by $\vartheta(g_m)=m\pi$ for $m\ge-1$ ($g_{-1}=9.66\ldots$), one has $\Nz(g_m)=m+1-\varpi(g_m)/\pi$, because $\vartheta/\pi+1=\Nz+\varpi/\pi$ (Lemma~\CGref{lem:varpi}). Since $|\varpi|/\pi<\frac12$, we have $\Nz(g_{k-2})<k-\frac12<\Nz(g_{k-1})$ for every $k\ge1$. Strict monotonicity thus gives $g_{k-2}<\tau_k<g_{k-1}$. The ordinate $\gamma_k$ lies in the same Gram interval, $\gamma_k\in(g_{k-2},g_{k-1}]$, exactly when the displacement $\Delta^{\rm G}_k$ of Remark~\CGref{rem:bare_point} vanishes. This is Gram's law in the index convention adopted here for the $k$-th ordinate (the Gram--Selberg phenomenon of \CGcite[Def.~1.4]{Korolev2012}), and it fails for a positive proportion of $k$ \CGcite[p.~58]{Korolev2012}. The resulting sequence gives a continuous counterpart of the Gram scale, read at the half-integer levels.
+
+The object of this paper is to determine how far these points lie from the ordinates $\gamma_k$, and how much arithmetic information can bring it within a bounded number of mean spacings $2\pi/\log\gamma_k$, with the intermediate objective of obtaining a better approximation of $\tau_k$ (or modifications thereof) to $\gamma_k$. The first question concerns the size of $S$; the second concerns its approximation by Euler phases.
+
+\subsection{Results}\label{subsec:results}
+Throughout, write $\mathfrak a=\limsup_{T\to\infty}|S(T)|/\log T$. An \emph{admissible profile} is a continuous function $\mathfrak e:[\frac12,1]\to[0,\infty)$ with $\mathfrak e(1)=0$ such that, for every $\varepsilon>0$,
+\begin{equation}
+\zeta(\sigma+it)\ll_\varepsilon|t|^{\mathfrak e(\sigma)+\varepsilon}\qquad\text{uniformly for }\tfrac12\le\sigma\le1,\ |t|\ge2 .
+\label{eq:admissible}
+\end{equation}
+Its \emph{reflected extension} is
+\begin{equation}
+\mathfrak e^*(\sigma)=\begin{cases}\frac12-\sigma,&\sigma<0,\\ \frac12-\sigma+\mathfrak e(1-\sigma),&0\le\sigma<\frac12,\\ \mathfrak e(\sigma),&\frac12\le\sigma\le1,\\ 0,&\sigma>1,\end{cases}
+\label{eq:reflected}
+\end{equation}
+a continuous function on $\R$ (at $\sigma=0$ both formulas give $\frac12$ because $\mathfrak e(1)=0$).
+
+\begin{theorem}[Asymptotic bound]\label{thm:asymptotic}
+For every admissible profile $\mathfrak e$,
+\begin{equation}
+\mathfrak a\le\Lambda(\mathfrak e):=\frac1{2\pi\log2}\int_0^1\frac{\mathfrak e^*(\sigma)}{\sqrt{\sigma(2-\sigma)}}\,d\sigma .
+\label{eq:asymptotic_formula}
+\end{equation}
+\end{theorem}
+
+Let $\eB$ be the piecewise linear function through the nine points
+\begin{equation}
+\begin{gathered}
+\bigl(\tfrac12,\tfrac{13}{84}\bigr),\ \bigl(\tfrac{139}{194},\tfrac{13}{194}\bigr),\ \bigl(\tfrac{173}{207},\tfrac{13}{414}\bigr),\ \bigl(\tfrac{773}{854},\tfrac{13}{854}\bigr),\ \bigl(\tfrac{820}{867},\tfrac{13}{1734}\bigr),\\ \bigl(\tfrac{3387}{3494},\tfrac{13}{3494}\bigr),\ \bigl(\tfrac{1149}{1169},\tfrac{13}{7014}\bigr),\ \bigl(\tfrac{13921}{14054},\tfrac{13}{14054}\bigr),\ (1,0).
+\end{gathered}
+\label{eq:bourgain_nodes}
+\end{equation}
+The nodes are the points $(\lambda_j-\kappa_j,\kappa_j)$ for $(\kappa_j,\lambda_j)=A^j(\frac{13}{84},\frac{55}{84})$, $0\le j\le7$, followed by $(1,0)$. Bourgain's cited exponent pairs include an arbitrary positive $\varepsilon$ in both coordinates; the limiting profile is obtained after taking $\varepsilon\to0^+$, as justified in the proof of Corollary~\CGref{cor:bourgain}.
+
+\begin{corollary}[Bourgain profile]\label{cor:bourgain}
+$\displaystyle \mathfrak a\le\Lambda(\eB)=0.0968160063\ldots$
+\end{corollary}
+
+\begin{theorem}[Explicit bound]\label{thm:explicit}
+For every $T\ge e$,
+\begin{align}
+|S(T)|&\le0.09783\log T+0.7214\log\log T+10.6,\label{eq:explicit_S}\\
+\bigl|N(T)-\Nz(T)\bigr|&\le0.09783\log T+0.7214\log\log T+10.7.\label{eq:explicit_N}
+\end{align}
+\end{theorem}
+
+The coefficient $0.09783$ comes from the value $0.0978292318\ldots$ of the Backlund quotient \CGeqref{eq:C1_value} for the explicit profile $\eE$ of Section~\CGref{subsec:explicit_profile}, at fixed parameters $c=1.000002$, $R=1.000005$. Among the explicit unconditional bounds compared in Table~\CGref{tab:records}, the coefficient $0.09783$ is the smallest leading coefficient in a bound of the form $|S(T)|\le A_1\log T+A_2\log\log T+A_3$ for all $T\ge e$.
+
+The previous values are $0.112$ (Trudgian, 2014), $0.110$ (Platt and Trudgian, 2015), $0.1038$ (Hasanalizade, Shen and Wong, 2022) and $0.10076$ (Bellotti and Wong, 2025). Table~\CGref{tab:records} lists the whole history, from von Mangoldt (1905).
+
+\par
+For $S$, Bellotti and Wong \CGcite[Cor.~1.5]{BellottiWong2025} prove $|S(T)|\le0.10076\log T+\min\{0.24460\log\log T+7.20844,\,1.68845\log\log T+1.50956\}$ for $T\ge e$ (their Theorem~1.1, for $N$, is discussed in Section~\CGref{subsec:literature}). The bound \CGeqref{eq:explicit_S} is the smaller of the two exactly when $\log T>2425.8386\ldots$. The minimum of the two bounds holds for all $T\ge e$.
+
+\begin{corollary}[Distance to the ordinates]\label{cor:distance}
+\begin{enumerate}[label=(\alph*)]
+\item $\displaystyle\limsup_{k\to\infty}|\tau_k-\gamma_k|\le2\pi\Lambda(\eB)=0.6083129\ldots<0.60832 .$
+\item For every $k\ge1$, with $\mathfrak m_k:=\min(\tau_k,\gamma_k)>2\pi$,
+\begin{equation}
+|\tau_k-\gamma_k|\le\frac{2\pi\bigl(0.09783\log\gamma_k+0.7214\log\log\gamma_k+10.2\bigr)}{\log(\mathfrak m_k/2\pi)} .
+\label{eq:distance_explicit}
+\end{equation}
+\end{enumerate}
+\end{corollary}
+
+Now, for the localization by primes let $p_1<p_2<\cdots$ be the primes, let
+\begin{equation}
+\Ph_m(t)=-\frac1\pi\sum_{\nu=1}^m\arg\bigl(1-p_\nu^{-1/2-it}\bigr)=-\frac1\pi\sum_{\nu=1}^m\sum_{r\ge1}\frac{\sin(rt\log p_\nu)}{r\,p_\nu^{r/2}}
+\label{eq:Euler_phase}
+\end{equation}
+be the phase of the first $m$ Euler factors at $\frac12+it$ (principal argument; $m\ge0$, and $\Ph_0=0$ as an empty sum). For every fixed $m$, the series over $r$ converges absolutely: $|p^{-1/2-it}|<1$ and $\Re(1-p^{-1/2-it})>0$, so the principal logarithm satisfies $\operatorname{Log}(1-z)=-\sum_{r\ge1}z^r/r$. Let $m_j=\lfloor2^{j/2}\rfloor\ge0$ for $j\in\Z$, and on the dyadic block $2^j\le t\le2^{j+1}$ let
+\begin{equation}
+\Ph(t)=\Bigl(2-\frac t{2^j}\Bigr)\Ph_{m_j}(t)+\Bigl(\frac t{2^j}-1\Bigr)\Ph_{m_{j+1}}(t),\qquad \Fc(t)=\Nz(t)+\Ph(t).
+\label{eq:F_def}
+\end{equation}
+We define the corrected ordinates by
+\begin{equation}
+\tau_{k}^{\mathrm C}=\int_0^\infty\Ind_{\{\Fc(t)<k-\frac12\}}\,dt\qquad(k\ge1).
+\label{eq:xk_def}
+\end{equation}
+
+\begin{theorem}[Localization by primes]\label{thm:sublevel}
+The numbers $\tau_{k}^{\mathrm C}$ are finite and $0<\tau_{1}^{\mathrm C}<\tau_{2}^{\mathrm C}<\cdots$. For $k\ge2$ (equivalently $\tau_k\ge2\pi e$, since $\Nz(2\pi e)=\frac78$), $\tau_{k}^{\mathrm C}$ is determined by $k$ and by the primes $p_\nu$ with $\nu\le\lfloor2\sqrt{\tau_k}\rfloor$. There are absolute constants $C$ and $T_0$ such that, with $\Kc_T=\{k:T<\gamma_k\le2T\}$,
+\begin{equation}
+\sum_{k\in\Kc_T}(\tau_{k}^{\mathrm C}-\gamma_k)^2\le C\,\frac T{\log T},\qquad\text{hence}\qquad \frac1{\#\Kc_T}\sum_{k\in\Kc_T}(\tau_{k}^{\mathrm C}-\gamma_k)^2\le\frac{C'}{\log^2T}\qquad(T\ge T_0),
+\label{eq:main_sublevel}
+\end{equation}
+with $C'$ absolute.
+\end{theorem}
+
+\begin{corollary}\label{cor:proportion}
+For every $\mathsf A>0$ and $T\ge T_0$, $\#\{k\in\Kc_T:|\tau_{k}^{\mathrm C}-\gamma_k|>\mathsf A\cdot\frac{2\pi}{\log T}\}\le\frac{C''}{\mathsf A^2}\,\#\Kc_T$, with $C''$ absolute.
+\end{corollary}
+
+The sequence $\tau_k$ does not attain this mean-square order, and its leading mean-square asymptotic is known.
+
+\begin{theorem}[Mean square without primes]\label{thm:meansquare}
+Without any hypothesis on the zeros, as $T\to\infty$,
+\begin{equation}
+\frac1{\#\Kc_T}\sum_{k\in\Kc_T}(\tau_k-\gamma_k)^2=\frac{2\log\log T}{\log^2T}\bigl(1+o(1)\bigr),\qquad\text{hence}\qquad \sum_{k\in\Kc_T}(\tau_k-\gamma_k)^2\asymp\frac{T\log\log T}{\log T}.
+\label{eq:meansquare}
+\end{equation}
+\end{theorem}
+
+Theorem~\CGref{thm:meansquare} is an asymptotic equality: the root-mean-square of $\tau_k-\gamma_k$ is $\frac{\sqrt{2\log\log T}}{2\pi}$ mean spacings, no more and no less. The Euler phases of Theorem~\CGref{thm:sublevel} remove the factor $\log\log T$ from the proved mean-square upper order. \par
+The proof (Section~\CGref{sec:meansquare}) rests on an exact identity, valid for every $C^1$ function $F$, between the sum of $(k-\frac12-F(\gamma_k))^2$ over the ordinates and the integral of $(N-F)^2F'$, together with Selberg's mean square of $S$. It does not use the transfer inequality of Section~\CGref{sec:sublevel}.
+
+Kargin \CGcite[Thm.~1.1]{Kargin2013} considers the points $t_k$ defined by $\Nz(t_k)=k-\frac12$, which are the $\tau_k$ of \CGeqref{eq:intro_tau}, and proves, without assuming RH, that
+\begin{equation}
+\frac{(\gamma_k-\tau_k)\log\tau_k}{\sqrt{2\log\log\tau_k}}
+\label{eq:disp_01}
+\end{equation}
+is asymptotically standard normal, with convergence of moments, when $k$ is uniform in a window $N<k\le N+N^{\theta}$, $\frac12<\theta\le1$. His $\gamma_k$ enumerate the zeros with real part at least $\frac12$, which is the enumeration used here when RH holds.
+
+Korolev \CGcite[Thm.~4.2]{Korolev2012} proves Selberg's formulas for the moments of the Gram displacements $\Delta^{\rm G}_k$ over short ranges of $k$. Since
+\begin{equation}
+|s_k+\Delta^{\rm G}_k|<1
+\label{eq:disp_02}
+\end{equation}
+(Remark~\CGref{rem:bare_point}), his second moment leads to the same value of $\langle s_k^2\rangle_{\Kc_T}$. Neither work states \CGeqref{eq:meansquare} for the full enumeration of the zeros. The present route of Section~\CGref{sec:meansquare} uses neither Gram intervals nor probabilistic limit theorems, and the identity behind it holds for every $C^1$ function in place of $\Nz$, monotone or not. These antecedents address the same scale of ordinal fluctuations but do not state the present full-multiplicity mean-square identity.
+
+Theorem~\CGref{thm:sublevel} is unconditional and makes no assumption about the real parts or multiplicities of the zeros (i.e., RH). The order of the points follows from the inclusion of sublevel sets as the level increases. In this way, no root selection or Newton step is needed.
+
+\subsection{Relation to the literature}\label{subsec:literature}
+Bounds of the form $A_1\log T+A_2\log\log T+A_3$ for $|N(T)-\frac T{2\pi}\log\frac T{2\pi e}|$ go back to von Mangoldt \CGcite{VonMangoldt1905}, and for $|S(T)|$ to Backlund \CGcite{Backlund1918}. Table~\CGref{tab:records} lists them.
+
+The leading coefficient was lowered by Trudgian to $0.112$ (the value of the published version, as listed in \CGcite[Table~1]{HasanalizadeShenWong2022} and \CGcite[Table~1]{BellottiWong2025}; the preprint \CGcite[Thm.~1]{Trudgian2014} states $0.111$), by Platt and Trudgian to $0.110$ \CGcite[Cor.~1]{PlattTrudgian2015}, by Hasanalizade, Shen and Wong to $0.1038$ \CGcite[Cor.~1.2]{HasanalizadeShenWong2022}, and by Bellotti and Wong to $0.10076$ \CGcite[Cor.~1.5]{BellottiWong2025}.
+
+The proof of \CGcite[Cor.~1]{PlattTrudgian2015} rests on \CGcite{Trudgian2014} (see \CGcite[\S5, footnote~8]{BellottiWong2025}) and on the bound for $\zeta(\frac12+it)$ of \CGcite[Thm.~1]{PlattTrudgian2015}, which is affected by the error in the lemma of Cheng and Graham pointed out in \CGcite[p.~3]{Revers2026}. (Fiori \CGcite{Fiori2025} corrected the Phragm\'en--Lindel\"of lemma \CGcite[Lemma~3]{Trudgian2014}; the version used here is his Theorem~\CGref{thm:known_PL}.) These proofs use a disc argument together with Jensen's formula. The present proof changes the treatment of the reflected exponents on the left of the critical line.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}llr@{\hspace{1.2em}}r@{\hspace{1.2em}}r@{\hspace{1.2em}}l@{}}
+\toprule
+year & authors & $A_1$ & $A_2$ & $A_3$ & range\\\midrule
+1905 & von Mangoldt \CGcite{VonMangoldt1905} & $0.4320$ & $1.9167$ & $13.0788$ & $T\ge28.558$\\
+1913 & Grossmann \CGcite{Grossmann1913} & $0.2907$ & $1.7862$ & $7.0120$ & $T\ge50$\\
+1916 & Backlund \CGcite{Backlund1918} & $0.1370$ & $0.4430$ & $5.2250$ & $T\ge2$\\
+1941 & Rosser \CGcite{Rosser1941} & $0.1370$ & $0.4430$ & $2.4630$ & $T\ge2$\\
+2012 & Trudgian \CGcite{Trudgian2012} & $0.1700$ & $0$ & $2.8730$ & $T\ge e$\\
+2014 & Trudgian \CGcite{Trudgian2014} & $0.1120$ & $0.2780$ & $3.3850$ & $T\ge e$\\
+2015 & Platt, Trudgian \CGcite{PlattTrudgian2015} & $0.1100$ & $0.2900$ & $3.165$ & $T\ge e$\\
+2022 & Hasanalizade, Shen, Wong \CGcite{HasanalizadeShenWong2022} & $0.1038$ & $0.2573$ & $9.4925$ & $T\ge e$\\
+2025 & Bellotti, Wong \CGcite{BellottiWong2025} & $0.10076$ & $0.24460$ & $8.08344$ & $T\ge e$\\\midrule
+2026 & this article, Theorem~\CGref{thm:explicit} & $0.09783$ & $0.7214$ & $11.55$ & $T\ge e$\\
+\bottomrule
+\end{tabular}
+\caption{Explicit bounds $\bigl|N(T)-\frac T{2\pi}\log\frac T{2\pi e}\bigr|\le A_1\log T+A_2\log\log T+A_3$. The rows up to 2025 are those of \CGcite[Table~1]{BellottiWong2025}, with the year of publication, checked against \CGcite[p.~1]{VonMangoldt1905} ($0.43200$, $1.91662$, $13.07873$), \CGcite[(39) and pp.~355, 375]{Backlund1918} ($0.137$, $0.443$, $4.350+\frac78$; Backlund's $Q(T)$ is $N(T)-\Nz(T)$, p.~354), Grossmann's constants as quoted in \CGcite[p.~355]{Backlund1918} ($0.29062$, $1.7862$, $6.13695+\frac78$), and \CGcite[Thm.~1]{Trudgian2012} ($0.17$, $1.998+\frac78$). Backlund states his inequality (39) for every $T\ge2$ \CGcite[p.~375]{Backlund1918}; \CGcite[Table~1]{BellottiWong2025} lists $T\ge200$, the range of his earlier bound \CGcite[p.~355]{Backlund1918}; for \CGcite{HasanalizadeShenWong2022} the constant term is the corrected value of \CGcite[\S1, footnote~1]{BellottiWong2025} ($9.3675$ in \CGcite[Cor.~1.2]{HasanalizadeShenWong2022}); the preprint \CGcite{Trudgian2014} has $0.111$ and $0.275$ in place of $0.1120$ and $0.2780$ \CGcite[Thm.~1, Cor.~1]{Trudgian2014}. The last row follows from \CGeqref{eq:explicit_S}, \CGeqref{eq:intro_RvM} and $|\varpi(T)|/\pi<0.07$ for $T\ge e$ (Lemma~\CGref{lem:varpi}): $10.6+\frac78+0.07=11.545<11.55$.}
+\label{tab:records}
+\end{table}
+
+Bellotti and Wong give two separate bounds. Their Theorem~1.1 is for the counting function without the constant $\frac78$: $|N(T)-\frac T{2\pi}\log\frac T{2\pi e}|\le0.10076\log T+0.24460\log\log T+8.08344$ for $T\ge e$. Their Corollary~1.5 is the bound for $|S(T)|$ quoted after Theorem~\CGref{thm:explicit}, with the constant $7.20844$ in the first term of the minimum, and $8.08344-7.20844=\frac78$.
+
+By \CGeqref{eq:intro_RvM}, $N(T)-\frac T{2\pi}\log\frac T{2\pi e}=S(T)+\frac78+\varpi(T)/\pi$ with $|\varpi(T)|/\pi<0.07$ (Lemma~\CGref{lem:varpi}), so \CGeqref{eq:explicit_S} is to be compared with their Corollary~1.5, and \CGeqref{eq:explicit_N}, in which $\Nz$ contains $\frac78$, with the bound $|N(T)-\Nz(T)|\le0.10076\log T+0.24460\log\log T+7.28$ that follows from their Corollary~1.5 and Lemma~\CGref{lem:varpi}.
+
+The version arXiv:2412.15470v2 of 7 July 2025 (with an appendix by A. Fiori), published in Math. Comp., is cited with its original numbering.
+
+Bellotti and Wong already take the center and the radius of the disc close to $1$ ($c=1.000225$, $r=1.000605$ in \CGcite[Table~2]{BellottiWong2025}, chosen numerically at fixed $T_0$; the limit $c,R\to1$ of Theorem~\CGref{thm:asymptotic} is the asymptotic form of the same choice, and is not taken there) and use on $[\frac12,1]$ the same explicit profile $\eE$ as Theorem~\CGref{thm:explicit}.
+
+To the left of $\frac12$, they bound $\zeta$ by linear interpolation of exponents between $\sigma=0$ and $\sigma=\frac12$ \CGcite[\S3.1]{BellottiWong2025}. The improvement comes from the exact reflection \CGeqref{eq:reflected} given by the functional equation, pointwise (Lemma~\CGref{lem:chi}). It lies below the chord because $\eE$ is convex.
+
+\par
+With $c,R\to1$ the Backlund quotient of the profile of \CGcite{BellottiWong2025} tends to $0.10073687\ldots$, that of the reflected profile to $0.09782899\ldots$ (Appendix~\CGref{app:code}). The improvement in the leading coefficient from $0.10076$ to $0.09783$ is entirely due to the reflected profile.
+
+Bellotti and Wong remark that $0.10076$ is nearly optimal among the values that their general theorem gives with the explicit bounds for $\zeta$ now available \CGcite[\S1]{BellottiWong2025}.
+
+Theorem~\CGref{thm:explicit} agrees with that remark: it uses the same bounds for $\zeta$ on $[\frac12,1]$ and a disc of the same kind, and lowers the coefficient only through the treatment of $\zeta$ to the left of $\frac12$, which lies outside the scope of the remark. Below a value that is nearly optimal for the established method, a further gain requires a change in the method.
+
+The reduction obtained, $0.00293$, is of the same size as the previous step $0.1038\to0.10076$. At fixed $c,R$ very close to $1$, this gives a larger constant term. For the Lindel\"of profile $\mathfrak e=0$ the functional \CGeqref{eq:asymptotic_formula} is $0.0786252\ldots$, and $\Lambda(\mathfrak e)\ge\Lambda(0)$ for every admissible $\mathfrak e$ (Remark~\CGref{rem:lindelof}).
+
+The present analysis does not determine whether other choices of disc parameters yield a smaller asymptotic coefficient.
+
+The approximation of $S$ by Euler phases is Selberg's \CGcite{Selberg1946a}.
+
+Its mean-value form, the continuous counterpart of Theorem~\CGref{thm:sublevel}, is classical: for $x$ a small fixed power of $T$, the moments of $S(t)$ minus the phase of the primes $p\le x$ are bounded on average over $[T,2T]$, a result attributed to Selberg and Tsang in \CGcite[\S3, before (3.6)]{FazzariGerspachMinelli2025}, with reference to \CGcite[Thm.~5.1]{Tsang1984}.
+
+It is used here in Fujii's form, Theorem~\CGref{thm:known_fujii}(a), assembled from \CGcite[\S3]{Fujii1974}, together with Fujii's moments for $S(t+h)-S(t)$ \CGcite[Main Theorem]{Fujii1974}. Its extension to about $\sqrt t$ primes, counted by number, follows from the mean value theorem of Montgomery and Vaughan (Theorem~\CGref{thm:known_MV}) and is carried out in Lemma~\CGref{lem:fourth}.
+
+The new ingredient of Theorem~\CGref{thm:sublevel} is the passage from the counting function to the ordinates themselves: the sum is over the zeros, and neither the monotonicity of $\Fc$ nor any hypothesis on the zeros is used. This passage is Theorem~\CGref{thm:transfer}. Fran\c{c}a and LeClair \CGcite{FrancaLeClair2015} study equations $\Nz(t)+S(t)=k-\frac12$ for the individual ordinates, with the exact $S$.
+
+That each of them has exactly one solution is not proved there.
+
+Two prime-based constructions provide a comparison with Theorem~\CGref{thm:sublevel}. LeClair \CGcite[\S VI, eq.~(49)]{LeClair2016} replaces $S$ by the phase of a finite number of Euler factors, that number being a free numerical parameter, and computes very high zeros by root-finding near the previous approximation. The aim there is numerical, and no error bound is stated. Gonek \CGcite{Gonek2012} builds functions $\zeta_X$ from a smoothed Euler product over $n\le X^2$ (in this paragraph $X$ is his parameter); for large $t$ the zeros of $\zeta_X(\frac12+it)$ are the points where a phase function built from primes crosses the levels $(2k+1)\pi$ \CGcite[\S10]{Gonek2012}. His results on these zeros assume RH: their number and simplicity when $X$ is small with respect to $t$ \CGcite[Thm.~8.1]{Gonek2012}, and their convergence to the ordinates of $\zeta$ as $X\to\infty$, on a fixed compact interval and without a rate \CGcite[Thm.~9.1]{Gonek2012}. Theorem~\CGref{thm:sublevel} has the following properties:
+\begin{enumerate}
+\item it is unconditional;
+\item it is quantitative: the root-mean-square error is $O(1/\log T)$, and Corollary~\CGref{cor:proportion} bounds the proportion of large deviations;
+\item the number of primes is tied to the height, about $\sqrt t$ primes at height $t$, instead of being a free parameter;
+\item $\tau_{k}^{\mathrm C}$ is the measure of a sublevel set, so the points are increasing and carry the index $k$ by construction; in \CGcite{LeClair2016} and \CGcite{Gonek2012} the solutions are indexed by selection or by counting.
+\end{enumerate}
+By comparison, Theorem~\CGref{thm:sublevel} controls only the mean square, whereas Gonek's Theorem~9.1, under RH, concerns every ordinate.
+
+\paragraph{Monotonicity.}
+The bound \CGeqref{eq:main_sublevel} does not follow directly from the results of Gonek \CGcite{Gonek2012} and LeClair \CGcite{LeClair2016}: deducing it from them would require, among other things, a proof that $\Fc$ is monotone. The available arguments for monotonicity assume RH \CGcite[Thm.~8.1 and \S10]{Gonek2012}; the present criterion avoids RH and does not require monotonicity. In this paragraph $X$ denotes a cutoff for the primes, as in \CGcite{Gonek2012}. If $\Fc$ were increasing on $[2\pi,\infty)$, then for $k\ge2$ the equation $\Fc(t)=k-\frac12$ would have exactly one solution, equal to $\tau_{k}^{\mathrm C}$ (on $(0,2\pi]$, $\Fc<\frac78+\frac12<\frac32$ by \CGeqref{eq:phasebound}); monotonicity alone does not bound $\tau_{k}^{\mathrm C}-\gamma_k$, since $\Fc'$ may be small in a long gap, and the passage from the counting error $N-\Fc$ to the positions is Theorem~\CGref{thm:transfer} in either case. For points defined as solutions, however, monotonicity is needed, and the two requirements, bounded error and monotonicity, pull in opposite directions.
+\begin{enumerate}
+\item \emph{Few primes give monotonicity but not bounded error.} Gonek's zeros of $\zeta_X(\frac12+it)$ are simple and are counted because his phase is increasing, which he proves for $X$ small with respect to $t$ and under RH \CGcite[Thm.~8.1 and \S10]{Gonek2012}. In that range the prime approximation does not have bounded error: by Selberg's approximation \CGcite[\S3]{Fujii1974} and Theorem~\CGref{thm:known_MV}, the mean square over $[T,2T]$ of $S$ plus $\frac1\pi\sum_{p\le X}p^{-1/2}\sin(t\log p)$ is $\frac1{2\pi^2}\log\frac{\log T}{\log X}+O\bigl(1+(\log\frac{\log T}{\log X})^{1/2}\bigr)$ for $2\le X\le T^{1/40}$ (Theorem~\CGref{thm:known_fujii}(a) with $\mathsf k=1$, $\alpha_{\rm F}=\frac12$, $H=T$, $Y=T^{1/40}$, and Theorem~\CGref{thm:known_MV} for the primes in $(X,Y)$). This tends to infinity when $\log X=o(\log T)$.
+\item \emph{Many primes give bounded error but not monotonicity.} Bounded error needs $\log X\gg\log T$. Then the derivative of the Euler phase is not dominated by $\Nz'$: by Theorem~\CGref{thm:known_MV}, the mean square over $[T,2T]$ of $\frac1\pi\sum_{p\le X}p^{-1/2}\log p\cos(t\log p)$ is $\frac{1}{2\pi^2}\sum_{p\le X}\frac{\log^2p}{p}(1+O(\frac{p}{T}))\asymp\log^2X\asymp\log^2T$ for $2\le X\le T$ with $\log X\asymp\log T$, the order of $\Nz'(T)^2$. No argument presently available establishes monotonicity of $\Fc$ in this range and the derivative estimate gives little information about whether $\Fc$ is monotone.
+\end{enumerate}
+At a level where $\Fc$ is not monotone, the equation may have several solutions. If solutions are indexed by counting, every spurious pair shifts all the later indices, so the errors accumulate along the sequence. Theorem~\CGref{thm:sublevel} neither proves nor uses monotonicity of $\Fc$. The number $\tau_{k}^{\mathrm C}$ is the distribution function $\lambda\mapsto\meas\{t>0:\Fc(t)<\lambda\}$ evaluated at $\lambda=k-\frac12$. Equivalently, it is the position at which the increasing rearrangement of $\Fc$ reaches this level, with the generalized-inverse convention (\CGcite[\S10.12]{HardyLittlewoodPolya1934} define the rearrangement in decreasing order as the inverse of the distribution function; the increasing one is defined in the same way). A non-monotone excursion of $\Fc$ moves only the nearby $\tau_{k}^{\mathrm C}$, and Theorem~\CGref{thm:transfer}, which holds for every measurable $f$, bounds the total effect by the fourth moment of $\lfloor\Fc+\frac12\rfloor-N$ and the third moment of the gaps. The sublevel construction thus takes the place of a monotonicity argument.
+
+\paragraph{Precedents of the construction.}
+The definition \CGeqref{eq:xk_def} evaluates the distribution function $D_{\Fc}(\lambda)=\meas\{t>0:\Fc(t)<\lambda\}$ at $\lambda=k-\frac12$. With the standard generalized-inverse convention, the increasing rearrangement reaches this level at the position $D_{\Fc}(k-\frac12)$ (Remark~\CGref{rem:quantile}).
+
+The ordinates themselves are the same construction applied to $N$, since $\gamma_k=\meas\{N<k-\frac12\}$, and Theorem~\CGref{thm:transfer} compares the two. Rearrangements and quantile functions are classical \CGcite[Ch.~X]{HardyLittlewoodPolya1934}. An application of this construction to the ordinates of the zeros, or an inequality of the form \CGeqref{eq:transfer}, is not known to the author to have been published as of 30 October 2026.
+
+As of 30 October 2026, the author is not aware of published results that combine the unconditional construction by finitely many Euler phases, increasing sublevel-defined ordinates, and the mean-square localization in Theorem~\CGref{thm:sublevel}. The bounds in Theorems~\CGref{thm:asymptotic} and~\CGref{thm:explicit} are compared quantitatively with their cited antecedents above.
+
+\subsection{Organization}
+Section~\CGref{sec:notation} fixes the notation. Section~\CGref{sec:external} collects the results from the literature, with the precise form in which they are used. Section~\CGref{sec:explicit_lemmas} proves the explicit lemmas on $\varpi$, $\chi$ and $\zeta$.
+
+Section~\CGref{sec:backlund} proves Theorems~\CGref{thm:asymptotic} and~\CGref{thm:explicit} and Corollary~\CGref{cor:bourgain}; Section~\CGref{sec:distance} proves Corollary~\CGref{cor:distance}; Section~\CGref{sec:sublevel} proves Theorem~\CGref{thm:sublevel} and Corollary~\CGref{cor:proportion}. Section~\CGref{sec:meansquare} proves the exact defect identity and Theorem~\CGref{thm:meansquare}.
+
+Section~\CGref{sec:additional} proves consequences for the prime correction, the ordinal defect and a recovered simplicity certificate. Section~\CGref{sec:conclusion} records the scope and limitations of these results.
+
+Appendix~\CGref{app:code} contains the program that computes the constants, with its output; Appendix~\CGref{app:sources} lists, for each result taken from the literature, where it is stated and how it is used.
+
+\paragraph{Dependence of the results.}
+Theorem~\CGref{thm:asymptotic} follows from Proposition~\CGref{prop:master} (Backlund's method, Theorem~\CGref{thm:known_backlund}) and Lemma~\CGref{lem:chi}; Corollary~\CGref{cor:bourgain} from Theorem~\CGref{thm:asymptotic} and Theorems~\CGref{thm:known_PL}, \CGref{thm:known_exponents}; Theorem~\CGref{thm:explicit} from Proposition~\CGref{prop:master}, Lemma~\CGref{lem:explicit_zeta} (which uses Theorems~\CGref{thm:known_zeta}, \CGref{thm:known_PL} and Lemma~\CGref{lem:chi}), Theorem~\CGref{thm:known_backlund}(c), Theorem~\CGref{thm:known_small} and Lemma~\CGref{lem:varpi}; Corollary~\CGref{cor:distance} and Proposition~\CGref{prop:distance_sharp} from Theorem~\CGref{thm:explicit}, Corollary~\CGref{cor:bourgain}, Lemma~\CGref{lem:s_bounds}, Theorem~\CGref{thm:known_basic} and Lemma~\CGref{lem:varpi}.
+
+Theorem~\CGref{thm:sublevel} follows from Theorem~\CGref{thm:known_basic}, Lemma~\CGref{lem:varpi} (in the weak form of Remark~\CGref{rem:varpi_weak}), Proposition~\CGref{prop:ordered}, Theorem~\CGref{thm:transfer} (a deterministic estimate based on Lemma~\CGref{lem:maximal}), Lemma~\CGref{lem:gaps} (Theorems~\CGref{thm:known_basic}, \CGref{thm:known_fujii}(b)) and Lemma~\CGref{lem:fourth} (Theorems~\CGref{thm:known_fujii}(a), \CGref{thm:known_MV}, \CGref{thm:known_mertens}); Corollary~\CGref{cor:proportion} from Theorem~\CGref{thm:sublevel}.
+
+Theorem~\CGref{thm:meansquare} follows from Theorem~\CGref{thm:identity} (a deterministic identity), Theorem~\CGref{thm:known_selberg}, Theorem~\CGref{thm:known_basic}, Lemma~\CGref{lem:varpi}, Lemma~\CGref{lem:s_bounds} and the proof of Corollary~\CGref{cor:distance}(a).
+
+%======================================================================
+\section{Notation}\label{sec:notation}
+
+Every symbol listed below has one meaning throughout, except the symbols explicitly declared local where they are introduced (Section~\CGref{sec:external}, two paragraphs of Section~\CGref{subsec:literature}, Remark~\CGref{rem:varpi_weak}, Lemma~\CGref{lem:maximal} and its proof, Theorem~\CGref{thm:transfer} and Remark~\CGref{rem:quantile}, Section~\CGref{sec:meansquare}, and Theorem~\CGref{thm:recovered_simple_certificate}).
+
+Dummy variables of integration and summation are local. The letter $\pi$ denotes only $3.14159\ldots$. $\operatorname{Log}$ and $\operatorname{ph}$ are the principal logarithm and argument ($-\pi<\operatorname{ph}\le\pi$). The implied constants in $\ll$ and $O$ are absolute unless a subscript indicates a dependence. In the definition of an admissible exponent profile, the constant may also depend on the chosen profile.
+
+\paragraph{Conventions at the ordinates.}
+The zeros are listed with multiplicity, so $N$ is right continuous, $N(\gamma^+)=N(\gamma)$, and $N(\gamma^+)-N(\gamma^-)$ is the multiplicity of the ordinate $\gamma$ (the number of zeros with that imaginary part).
+
+For $t>0$ not an ordinate, $S(t)=\frac1\pi\arg\zeta(\frac12+it)$ with the argument obtained by continuous variation along the segments from $2$ to $2+it$ and from $2+it$ to $\frac12+it$, so $S$ is continuous on each open interval between consecutive distinct ordinates.
+
+At an ordinate $\gamma$ the one-sided limits $S(\gamma^\pm)$ exist, $S(\gamma^+)-S(\gamma^-)$ is the multiplicity of $\gamma$ (because $\Nz$ and $\varpi$ are continuous in \CGeqref{eq:intro_RvM}), and this article adopts the right-continuous convention $S(\gamma)=S(\gamma^+)$. This convention is chosen to agree with $N(\gamma)=\#\{k:\gamma_k\le\gamma\}$; alternative conventions, including midpoint values, occur in the literature (see \CGcite[\S9.3]{Titchmarsh1986}).
+
+Other conventions at the ordinates (such as the mean of the two limits) change $S$ on a null set and do not affect the integrals of Theorems~\CGref{thm:known_fujii} and~\CGref{thm:known_MV}.
+
+All bounds for $|S(T)|$ in this article are proved first for $T$ not an ordinate and have right sides continuous in $T$. Taking sequences of non-ordinates tending to each ordinate $\gamma$ from either side yields the same bounds for $S(\gamma^-)$ and $S(\gamma^+)$. Hence, by \CGeqref{eq:intro_RvM}, they apply to the corresponding one-sided values $G(\gamma^\pm)=S(\gamma^\pm)+\varpi(\gamma)/\pi$, where $G=N-\Nz$.
+
+Multiplicities enter Lemma~\CGref{lem:s_bounds} and Proposition~\CGref{prop:distance_sharp} only through the inequalities $N(\gamma_k^-)+1\le k\le N(\gamma_k^+)$.
+
+\begin{center}\small
+\begin{longtable}{p{0.27\textwidth}p{0.65\textwidth}}
+\toprule symbol & meaning (where defined)\\\midrule\endfirsthead
+\toprule symbol & meaning (where defined)\\\midrule\endhead
+\bottomrule\endfoot
+$s=\sigma+it$ & complex variable, $\sigma,t\in\R$\\
+$\rho_k=\beta_k+i\gamma_k$ & zeros with $\gamma_k>0$, nondecreasing, with multiplicity\\
+$N(t)$, $N(t^\pm)$ & $\#\{k:\gamma_k\le t\}$ (right continuous); one-sided limits\\
+$\vartheta$, $\varpi$ & Riemann--Siegel theta function; $\varpi(t)=\vartheta(t)-\frac t2\log\frac t{2\pi e}+\frac\pi8$ (Lemma~\CGref{lem:varpi})\\
+$\Nz$, $\lL$ & $\Nz(t)=\frac t{2\pi}\log\frac t{2\pi e}+\frac78$; $\lL=\Nz'$, $\lL(t)=\frac1{2\pi}\log\frac t{2\pi}$\\
+$S(t)$, $G$, $G_k^\pm$ & $\frac1\pi\arg\zeta(\frac12+it)$, by continuous variation from $2$ to $2+it$ to $\frac12+it$; $G=N-\Nz=S+\varpi/\pi$; $G(\gamma_k^\pm)$\\
+$\tau_k$, $s_k$, $\xi_k$, $\mathfrak m_k$ & point defined by $\Nz(\tau_k)=k-\frac12$ \CGeqref{eq:intro_tau}; $\Nz(\tau_k)-\Nz(\gamma_k)$; mean-value point; $\min(\tau_k,\gamma_k)$ (Section~\CGref{sec:distance})\\
+$g_m$, $\Delta^{\rm G}_k$ & Gram points; displacement of $\gamma_k$ with respect to them (Remark~\CGref{rem:bare_point})\\
+$\chi(s)$, $\mathcal R(z)$ & factor of the functional equation, $\zeta(s)=\chi(s)\zeta(1-s)$; Stirling remainder (Theorem~\CGref{thm:known_stirling})\\
+$z$, $z_i$, $y$, $\omega_i$, $\phi$ & local variables of Lemmas~\CGref{lem:varpi}--\CGref{lem:chi}\\
+$\mathfrak a$ & $\limsup_{T\to\infty}|S(T)|/\log T$\\
+$\mathfrak e$, $\mathfrak e^*$, $\Lambda(\mathfrak e)$, $0^*$ & admissible profile \CGeqref{eq:admissible}; reflected extension \CGeqref{eq:reflected}; bounding functional \CGeqref{eq:asymptotic_formula}; $\max(\frac12-\sigma,0)$\\
+$\eB$, $\eE$, $\mathfrak e_{\varepsilon'}$ & Bourgain profile \CGeqref{eq:bourgain_nodes}; explicit profile \CGeqref{eq:explicit_nodes}; approximating profile (Section~\CGref{subsec:proof_bourgain})\\
+$(\kappa,\lambda)$, $(\kappa_j,\lambda_j)$, $A(\cdot)$ & exponent pairs; Bourgain's pair and its images; van der Corput's $A$-process\\
+$\sigma_m$, $\varsigma_i$, $e_i$, $\varsigma'_j$ & $1-m/(2^m-2)$, $m\ge4$ (Yang's lines); nodes and exponents in Lemma~\CGref{lem:explicit_zeta}; nodes in Section~\CGref{subsec:proof_bourgain}\\
+$Q$, $\Xi$ & shift in Theorem~\CGref{thm:known_PL} ($Q=10$ in all uses); $\Xi(s)=(s-1)\zeta(s)$ in Lemma~\CGref{lem:explicit_zeta}\\
+$c$, $R$, $\mathbb D(c,R)$, $\eta$ & center, radius and disc of Backlund's method; $c=1+\eta$, $R=1+2\eta$ in Section~\CGref{subsec:proof_asymptotic}\\
+$\sigma^\sharp$, $\delta^\sharp$, $\mathfrak d$ & $c+(c-\frac12)^2/R$; $2c-\sigma^\sharp-\frac12$; $\log(R/(c-\frac12))$\\
+$\mathfrak f_n$, $w$, $\mathcal Z_n(c,R)$ & Backlund function \CGeqref{eq:backlund_f}; its zeros; weighted zero count \CGeqref{eq:backlund_Z}\\
+$\mathcal E(T,d)$ & error term of Bennett et al.\ in Backlund's trick (Theorem~\CGref{thm:known_backlund})\\
+$\Psi$, $\theta$ & even majorant in Theorem~\CGref{thm:known_backlund}(a); angle, $s=c+Re^{i\theta}$\\
+$\mathfrak h$, $K$, $\Omega$, $\mathcal I_{\mathfrak h}$ & exponent function, constant and factor in \CGeqref{eq:zeta_hyp}; $\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta$\\
+$C_1$, $C_2$, $C_3(T)$ & $\mathcal I_{\eE^*}/(2\pi\mathfrak d)$, $1/(2\mathfrak d)$, constant term (Section~\CGref{subsec:proof_explicit})\\
+$A_1$, $A_2$, $A_3$ & generic coefficients of explicit bounds for $S$ and for $N$ (Section~\CGref{subsec:literature})\\
+$p$, $p_\nu$, $\pi$ & primes; the $\nu$-th prime; $3.14159\ldots$\\
+$\Ph_m$, $m_j$, $\Ph$, $\Ph^{(3)}$ & Euler phase \CGeqref{eq:Euler_phase}, prime budget $\lfloor2^{j/2}\rfloor$, interpolated phase \CGeqref{eq:F_def}, prime powers $r\ge3$ in \CGeqref{eq:phase_split}\\
+$\Fc$, $\tau_{k}^{\mathrm C}$, $\Tc$ & sublevel function $\Nz+\Ph$; sublevel construction \CGeqref{eq:xk_def}; $\tau_{k}^{\mathrm C}=\Tc(\tau_k)$\\
+$\Kc_T$, $\langle\cdot\rangle_{\Kc_T}$ & $\{k:T<\gamma_k\le2T\}$; mean over $\Kc_T$\\
+$a$, $b$, $\ell_0$, $\ell_1$ & window endpoints; $N(a)$, $N(b)$ (Theorem~\CGref{thm:transfer})\\
+$D_\ell$, $\M D$, $\Theta$ & gaps $\gamma_{\ell+1}-\gamma_\ell$; discrete maximal function over intervals inside a window $[A,B]$, level (Lemma~\CGref{lem:maximal})\\
+$f$, $x^f_k$, $q_f$, $E_k$, $u_k$, $v_k$ & measurable model of $N$, its sublevel points; $|\lfloor f+\frac12\rfloor-N|$, disagreement set; its measures to the right and left of $\gamma_k$ (Theorem~\CGref{thm:transfer})\\
+$F$, $u_k$, $\Psi_j$ & $C^1$ model of $N$, its defects $k-\frac12-F(\gamma_k)$, and $\Psi_j(u)=\int_{u-1/2}^{u+1/2}x^{2j}dx$ (Theorem~\CGref{thm:identity})\\
+$L_T$, $\mathcal A_h$, $v$ & $\log(T/2\pi)$, $\{t\in[T,4T]:N(t+h)=N(t)\}$, $hL_T$ (Lemma~\CGref{lem:gaps})\\
+$U$, $Y$, $X$, $V$ & dyadic height $2^j$; $U^{1/200}$, $p_m$; $\sum_{Y\le p\le X}1/p$ (Lemma~\CGref{lem:fourth})\\
+$\mathscr D_1$, $\mathscr D_2$, $d_1$, $d_2$, $\mathfrak c_n$, $\mathfrak c'_v$ & prime polynomials \CGeqref{eq:phase_split}; numbers of ordered prime factorizations, coefficients (Lemma~\CGref{lem:fourth})\\
+$\mathsf k$, $\alpha_{\rm F}$, $H$, $h$ & order, exponent, interval length and shift in Fujii's theorem (Theorem~\CGref{thm:known_fujii})\\
+$C$, $C'$, $C''$, $C_0$, $T_0$, $\mathsf A$ & absolute constants and thresholds, not the same at each occurrence, threshold in Corollary~\CGref{cor:proportion}\\
+\end{longtable}
+\end{center}
+
+%======================================================================
+\section{Results from the literature}\label{sec:external}
+
+The following statements are used as they stand; each was checked in the source indicated. Within this section the letters $\sigma_\pm$, $A$, $B$, $C$, $C'$, $\alpha_i$, $\beta_i$, $\Xi$, $\varkappa$ and $b_n$ are local. The letters $\mathsf k$, $\alpha_{\rm F}$, $H$ and $h$ have the meaning of Section~\CGref{sec:notation}.
+
+\begin{theorem}[\CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12]\label{thm:known_basic}
+For $t>0$ not an ordinate, $N(t)=\frac1\pi\vartheta(t)+1+S(t)$, where $\vartheta(t)=\operatorname{Im}\operatorname{Log}\Gamma(\frac14+\frac{it}2)-\frac t2\log\pi$ (the branch of $\operatorname{Log}\Gamma$ that is real on $(0,\infty)$). Moreover $S(t)=O(\log t)$ and $\gamma_{k+1}-\gamma_k\to0$ as $k\to\infty$.
+\end{theorem}
+
+\begin{theorem}[{Stirling's formula with remainder, \CGcite[\S5.11(ii)]{DLMF}}]\label{thm:known_stirling}
+For $|\operatorname{ph}z|<\pi$, $\operatorname{Log}\Gamma(z)=(z-\frac12)\operatorname{Log}z-z+\frac12\log(2\pi)+\mathcal R(z)$ with $|\mathcal R(z)|\le\sec^2(\frac12\operatorname{ph}z)/(12|z|)$.
+\end{theorem}
+
+\begin{theorem}[Explicit bounds for $\zeta$]\label{thm:known_zeta}
+For real $t$:
+\begin{enumerate}[label=(\alph*)]
+\item $|\zeta(\frac12+it)|\le0.618|t|^{1/6}\log|t|$ for $3<|t|\le e^{105}$ \CGcite{HiaryPatelYang2024}, and $|\zeta(\frac12+it)|\le66.7|t|^{27/164}$ for $|t|>e^{105}$ \CGcite{PatelYang2023};
+\item $|\zeta(\sigma_m+it)|\le1.546|t|^{1/(2^m-2)}\log|t|$ for $|t|\ge3$ and every integer $m\ge4$, $\sigma_m=1-m/(2^m-2)$ \CGcite[Thm.~1.1]{Yang2024} (see Remark~\CGref{rem:robust}(ii));
+\item $|\zeta(1+it)|\le\log|t|$ for $|t|\ge3$ \CGcite[Thm.~1.1]{Patel2022}.
+\end{enumerate}
+Inputs (a) and (b) are the display preceding (2.3) and the bound (2.4) in \CGcite[\S2]{BellottiWong2025}. For the $1$-line, \CGcite[(2.1)]{BellottiWong2025} combines \CGcite{Patel2022} with \CGcite[Thm.~1]{HiaryLeongYang2024} for $\exp(3070)<t\le\exp(3.69\cdot10^8)$ and with $|\zeta(1+it)|\le58.096\log^{2/3}t$ for $t>\exp(3.69\cdot10^8)$, which they call a direct consequence of \CGcite[Theorem~1]{Bellotti2024}. That theorem, \CGcite[Thm.~1.1]{Bellotti2024}, states $|\zeta(\sigma+it)|\le70.6995\,|t|^{4.43795(1-\sigma)^{3/2}}\log^{2/3}|t|$ for $\frac12\le\sigma\le1$, $|t|\ge3$, which at $\sigma=1$ gives the constant $70.6995$; the constant $58.096$ is \CGcite[Lemma~5]{Leong2024} ($|t|\ge3$), obtained there by running the argument of \CGcite{Bellotti2024} with other parameters. We need only (c), which holds for every $|t|\ge3$, so none of these bounds enters Theorem~\CGref{thm:explicit}.
+\end{theorem}
+
+\begin{theorem}[{Phragm\'en--Lindel\"of principle, \CGcite[Cor.~3]{Fiori2025}}]\label{thm:known_PL}
+Let $\sigma_-<\sigma_+$ and $Q>1-\sigma_-$ be real. Let $\Xi$ be holomorphic on $\sigma_-\le\operatorname{Re}s\le\sigma_+$ with $|\Xi(s)|<C\exp(C'e^{\varkappa|t|})$ there, for some $C,C'>0$ and $0<\varkappa<\pi/(\sigma_+-\sigma_-)$. Suppose that, with $A,B,\alpha_1,\alpha_2,\beta_1\ge0$ and $\alpha_1\ge\beta_1$,
+\begin{equation}
+|\Xi(s)|\le\begin{cases}A|Q+s|^{\alpha_1}|\operatorname{Log}(Q+s)|^{\alpha_2}&(\operatorname{Re}s=\sigma_-),\\ B|Q+s|^{\beta_1}|\operatorname{Log}(Q+s)|^{\alpha_2}&(\operatorname{Re}s=\sigma_+).\end{cases}
+\label{eq:disp_03}
+\end{equation}
+Then for $\sigma_-\le\operatorname{Re}s\le\sigma_+$,
+\begin{equation}
+|\Xi(s)|\le\bigl(A|Q+s|^{\alpha_1}\bigr)^{\frac{\sigma_+-\operatorname{Re}s}{\sigma_+-\sigma_-}}\bigl(B|Q+s|^{\beta_1}\bigr)^{\frac{\operatorname{Re}s-\sigma_-}{\sigma_+-\sigma_-}}|\operatorname{Log}(Q+s)|^{\alpha_2}.
+\label{eq:disp_04}
+\end{equation}
+\end{theorem}
+The same power $\alpha_2$ of the logarithm on both lines is essential: the version with different powers \CGcite[Lemma~3]{Trudgian2014} has a gap in its proof, corrected in \CGcite{Fiori2025}. With equal powers, Theorem~\CGref{thm:known_PL} also follows from its case $\alpha_2=0$, which is Rademacher's theorem \CGcite{Rademacher1959}, applied to $\Xi(s)\,(\operatorname{Log}(Q+s))^{-\alpha_2}$: since $\operatorname{Re}(Q+s)>1$ on the strip, $\operatorname{Log}(Q+s)$ has positive real part, so its principal power is holomorphic there, has modulus $|\operatorname{Log}(Q+s)|^{-\alpha_2}$, and is bounded by $(\log(Q+\sigma_-))^{-\alpha_2}$. Since $\log|Q+s|\le|\operatorname{Log}(Q+s)|$, a boundary bound with $\log|Q+s|$ implies the hypothesis.
+
+For $T>0$, integers $n\ge1$ and the disc $\mathbb D(c,R)=\{s:|s-c|<R\}$ put
+\begin{equation}
+\mathfrak f_n(s)=\tfrac12\Bigl[\bigl((s+iT-1)\zeta(s+iT)\bigr)^n+\bigl((s-iT-1)\zeta(s-iT)\bigr)^n\Bigr],
+\label{eq:backlund_f}
+\end{equation}
+\begin{equation}
+\mathcal Z_n(c,R)=\frac1n\sum_{w}\log\frac R{|w-c|},
+\label{eq:backlund_Z}
+\end{equation}
+the sum over the zeros $w$ of $\mathfrak f_n$ in $\mathbb D(c,R)$, with multiplicity.
+
+\begin{theorem}[{Backlund's method, \CGcite[Lemmas~2.1, 2.3, 2.4]{BellottiWong2025}}]\label{thm:known_backlund}
+Let $c,R$ be real, $\sigma^\sharp=c+(c-\frac12)^2/R$, $\delta^\sharp=2c-\sigma^\sharp-\frac12$, and suppose
+\begin{equation}
+c-R<\tfrac12<1<c<\sigma^\sharp<c+R,\qquad c<R,\qquad 0<\delta^\sharp<\tfrac12 .
+\label{eq:backlund_conditions}
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+\item If $\Psi:[-\pi,\pi]\to\R$ is even and $\Psi(\theta)\ge\frac1n\log|\mathfrak f_n(c+Re^{i\theta})|$ for all $n\ge1$ and $\theta$, there are $n_1<n_2<\cdots$ with
+\begin{equation}
+\limsup_{m\to\infty}\mathcal Z_{n_m}(c,R)\le\log\frac{\zeta(c)}{\sqrt{(c-1)^2+T^2}\,\zeta(2c)}+\frac1\pi\int_0^\pi\Psi(\theta)\,d\theta .
+\label{eq:disp_05}
+\end{equation}
+\item For every $n\ge1$, if $T$ is not an ordinate,
+\begin{equation}
+\Bigl|\Delta_{\sigma=\sigma^\sharp}^{1/2}\arg\bigl((\sigma+iT-1)\zeta(\sigma+iT)\bigr)\Bigr|\le\frac{\pi\mathcal Z_n(c,R)}{2\mathfrak d}+\frac{\mathcal E(T,\delta^\sharp)}2+\frac{3\pi}{2n}+\frac\pi4,\qquad\mathfrak d=\log\frac R{c-\frac12},
+\label{eq:disp_06}
+\end{equation}
+where $\mathcal E(T,d)$ ($0\le d<\frac92$, $T\ge\frac57$) is the explicit function $E(0,d,T)$ of \CGcite[Fig.~2]{BennettEtAl2021}.
+\item For $d\in[\frac14,\frac58]$ and $T\ge\frac57$, $\mathcal E(T,d)/\pi\le(640d-112)/(1536(3T-1))+2^{-10}$.
+\end{enumerate}
+\end{theorem}
+Bellotti and Wong state (a) and (b) as \CGcite[Lemmas~2.1, 2.3]{BellottiWong2025} and take them from \CGcite[Props.~3.5, 3.7]{HasanalizadeShenWong2021}, which are stated for Dedekind zeta functions $\zeta_K$ (here $K=\mathbb Q$). Their function $\mathcal E(T,d)$ is the function $E(a,d,T)$ of \CGcite[Def.~3.3 and Fig.~2]{BennettEtAl2021} at $a=0$ (the two expressions agree term by term), and (c) is \CGcite[Lemma~3.4]{BennettEtAl2021} at $a=0$.
+
+\begin{theorem}[{\CGcite[(1.2)]{BellottiWong2025}, from Platt's computation \CGcite{Platt2017}}]\label{thm:known_small}
+$|S(T)|\le2.5167$ for $0\le T\le30\,610\,046\,000$.
+\end{theorem}
+
+\begin{theorem}[Exponent pairs]\label{thm:known_exponents}
+\begin{enumerate}[label=(\alph*)]
+\item If $(\kappa,\lambda)$ is an exponent pair, so is $A(\kappa,\lambda)=\bigl(\frac\kappa{2\kappa+2},\frac12+\frac\lambda{2\kappa+2}\bigr)$ \CGcite[Lemma~2.8]{Ivic1985}.
+\item If $(\kappa,\lambda)$ is an exponent pair and $\frac12\le\sigma\le\lambda-\kappa$, then $\zeta(\sigma+it)\ll|t|^{(\kappa+\lambda-\sigma)/2}\log|t|$ for $|t|\ge2$ \CGcite[(7.57), p.~190]{Ivic1985}; in particular $\zeta(\lambda-\kappa+it)\ll|t|^\kappa\log|t|$.
+\item For every $\varepsilon>0$, $(\frac{13}{84}+\varepsilon,\frac{55}{84}+\varepsilon)$ is an exponent pair \CGcite[\S5, Thm.~6]{Bourgain2017}.
+\end{enumerate}
+\end{theorem}
+Statement (c) is the form in which the result is stated in \CGcite{Bourgain2017}. The bound $\zeta(\frac12+it)\ll|t|^{13/84+\varepsilon}$ is its consequence by (b). Part (c) is used only through (a) and (b), with $\varepsilon$ kept in both coordinates (Section~\CGref{subsec:proof_bourgain}).
+
+\begin{theorem}[{Fujii \CGcite{Fujii1974}, for the modulus $1$, with the corrections of \CGcite[\S5]{Fujii1981}}]\label{thm:known_fujii}
+Let $\mathsf k\ge1$ be an integer and $0<\alpha_{\rm F}\le\frac12$ be fixed, and let $T^{1/2+\alpha_{\rm F}}\le H\le T$. (The Main Theorem of \CGcite[p.~225]{Fujii1974} is stated for a primitive character $\chi$ modulo $q$ and fixed $a_1,a_2$ with $0<a_i\le\frac12$, under the hypotheses $q\le T^{1/4-a_1}$, $T^{1/2+a_2}\le H\le T$ and $0<h\le H-(H/\sqrt T)^{1/8}$; both endpoints $a_2=\frac12$ and $H=T$ are admitted. Here $q=1$, $\chi$ is the principal character, $S(t,\chi)=S(t)$, and $\alpha_{\rm F}=a_2$; the condition on $h$ holds for $0<h\le1$ as soon as $T\ge9$, since then $H\ge\sqrt T\ge3$ and $H-(H/\sqrt T)^{1/8}\ge H-H^{1/8}\ge1$.)
+\begin{enumerate}[label=(\alph*)]
+\item (Selberg's approximation, \CGcite[\S3, pp.~232--233]{Fujii1974}: Selberg's expression with $x=T^{\alpha_{\rm F}/(60\mathsf k)}$, the bounds $\|B_i\|\ll\mathsf k^{2}H^{1/(2\mathsf k)}$ for its five error terms (with $\mathsf k^{1/2}$ for $i=1,4$ and $\mathsf k^{3/2}$ for $i=5$), and \CGcite[Lemma~5]{Fujii1974} for the primes in $[x^3,Y]$.) For $T^{\alpha_{\rm F}/(20\mathsf k)}\le Y\le H^{1/\mathsf k}$,
+\begin{equation}
+\int_T^{T+H}\Bigl|S(t)-\frac1\pi\operatorname{Im}\sum_{p<Y}p^{-1/2-it}\Bigr|^{2\mathsf k}dt\ll_{\mathsf k,\alpha_{\rm F}}H .
+\label{eq:disp_07}
+\end{equation}
+\item (Main Theorem, \CGcite[p.~225]{Fujii1974}.) For $0<h\le1$ and $T\ge T_0(\mathsf k,\alpha_{\rm F})$, $\int_T^{T+H}(S(t+h)-S(t))^{2\mathsf k}dt\ll_{\mathsf k,\alpha_{\rm F}}H\,(\log(2+h\log T))^{\mathsf k}$.
+\end{enumerate}
+\end{theorem}
+The corrections in \CGcite[\S5]{Fujii1981} require $h$ to be bounded in the Main Theorem and change the dependence on $\mathsf k$ of some remainder terms. Neither affects (a) or (b) as stated, since $0<h\le1$ and $\mathsf k\le2$ is fixed in all applications below. In \CGcite[\S1, ($\alpha$)]{Fujii1981} the Main Theorem is restated for $q=1$ and $H=T$, exactly the case of (b), with $\log(3+h\log T)$ in place of $\log(2+h\log T)$ and with the remainder $O((A\mathsf k)^{2\mathsf k}T(\log(3+h\log T))^{\mathsf k-1/2})$. Since $\log(3+x)/\log(2+x)$ decreases for $x\ge0$, $\log(3+x)\le\frac{\log3}{\log2}\log(2+x)$, and that form also gives (b).
+
+In (a), \CGcite[Lemma~5]{Fujii1974} is stated for $\int_0^H$ and for coefficients with $|a(p)|\le A\log p/\log y$. The shift $t\mapsto t+T$ replaces $a(p)$ by $a(p)p^{-iT}$, and for $a(p)=1$ on $x^3\le p<Y$ one has $\log p/\log Y\ge\frac{\alpha_{\rm F}/(20\mathsf k)}{1/\mathsf k}=\frac{\alpha_{\rm F}}{20}$, so $A=20/\alpha_{\rm F}$.
+
+\begin{theorem}[{Montgomery--Vaughan \CGcite[Cor.~3]{MontgomeryVaughan1974}}]\label{thm:known_MV}
+For complex $b_1,\dots,b_M$,
+\begin{equation}
+\int_U^{2U}\Bigl|\sum_{n\le M}b_nn^{-it}\Bigr|^2dt=\sum_{n\le M}|b_n|^2\bigl(U+O(n)\bigr),
+\label{eq:disp_08}
+\end{equation}
+with an absolute implied constant. (Stated in \CGcite[Cor.~3]{MontgomeryVaughan1974} for $\int_0^U$ and for every sequence with $\sum_nn|b_n|^2<\infty$; we use only finite sums, and the integral over $[U,2U]$ is the case $b_n\mapsto b_nn^{-iU}$.)
+\end{theorem}
+
+\begin{theorem}[{Mertens and the prime number theorem; see \CGcite{Mertens1874} and \CGcite[Ch.~I.1]{Tenenbaum2015}}]\label{thm:known_mertens}
+Mertens' theorem gives $\sum_{p\le y}1/p=\log\log y+O(1)$ for $y\ge2$. The prime number theorem gives $p_m\asymp m\log m$ for $m\ge2$.
+\end{theorem}
+
+\begin{theorem}[{Selberg \CGcite{Selberg1946a}; see \CGcite[Notes for Chapter~9, (9.25.1), p.~245]{Titchmarsh1986}}]\label{thm:known_selberg}
+For every integer $\mathsf k\ge1$, as $T\to\infty$,
+\begin{equation}
+\int_0^TS(t)^{2\mathsf k}\,dt\sim\frac{(2\mathsf k)!}{\mathsf k!\,(2\pi)^{2\mathsf k}}\,T(\log\log T)^{\mathsf k}.
+\label{eq:disp_09}
+\end{equation}
+\end{theorem}
+Fujii \CGcite[p.~225]{Fujii1974} quotes Selberg's theorem for $\int_T^{T+H}$, $T^{1/2+a}\le H\le T$, with the remainder $O_{\mathsf k}(H(\log\log T)^{\mathsf k-1/2})$. Only the asymptotic form is used: with $\mathsf k=1$, in the dyadic form \CGeqref{eq:selberg_dyadic} (Proposition~\CGref{prop:s_meansquare}), and with $\mathsf k=2$ in Remark~\CGref{rem:bare_point}.
+
+%======================================================================
+\section{Explicit lemmas}\label{sec:explicit_lemmas}
+
+\begin{lemma}\label{lem:varpi}
+For $t>0$, $\vartheta(t)=\frac t2\log\frac t{2\pi e}-\frac\pi8+\varpi(t)$ with $|\varpi(t)|\le0.53/t$. Consequently \CGeqref{eq:intro_RvM} holds for $t>0$ not an ordinate.
+\end{lemma}
+
+\begin{proof}
+Put $z=\frac14+iy$, $y=t/2>0$, so $\operatorname{ph}z=\frac\pi2-\arctan\frac1{4y}\in(0,\frac\pi2)$ and $\sec^2(\frac12\operatorname{ph}z)<2$. By Theorem~\CGref{thm:known_stirling},
+\begin{equation}
+\operatorname{Im}\operatorname{Log}\Gamma(z)=y\log|z|-\tfrac14\operatorname{ph}z-y+\operatorname{Im}\mathcal R(z),\qquad \log|z|=\log y+\tfrac12\log\Bigl(1+\frac1{16y^2}\Bigr).
+\label{eq:disp_10}
+\end{equation}
+Since $y\log y-y-\frac t2\log\pi=\frac t2\log\frac t{2\pi e}$, this gives $\varpi(t)=\frac y2\log(1+\frac1{16y^2})+\frac14\arctan\frac1{4y}+\operatorname{Im}\mathcal R(z)$. The first term lies in $[0,\frac1{32y}]=[0,\frac1{16t}]$, the second in $[0,\frac1{16y}]=[0,\frac1{8t}]$, and $|\mathcal R(z)|\le\frac2{12|z|}\le\frac1{6y}=\frac1{3t}$. Hence $|\varpi(t)|\le(\frac1{16}+\frac18+\frac13)\frac1t=\frac{25}{48t}<\frac{0.53}t$. The last assertion is Theorem~\CGref{thm:known_basic}, since $\frac1\pi\vartheta+1=\Nz+\frac\varpi\pi$.
+\end{proof}
+
+\begin{remark}[Weak form of Lemma~\ref{lem:varpi}]\label{rem:varpi_weak}
+The explicit constant $0.53$ is needed only for \CGeqref{eq:explicit_N}. Theorem~\CGref{thm:sublevel} and Corollary~\CGref{cor:proportion} use Lemma~\CGref{lem:varpi} only through the weak form
+\begin{equation}
+\varpi(t)=O(1/t)\qquad(t\to\infty),
+\label{eq:varpi_weak}
+\end{equation}
+and in fact only through the boundedness of $\varpi$ on $[1,\infty)$ and the bound $\varpi(t+h)-\varpi(t)=O(1/t)$ for $0<h\le1$ in the proof of Lemma~\CGref{lem:gaps}. The weak form does not need the remainder bound of Theorem~\CGref{thm:known_stirling}. In this remark $\mathsf E$ and $z$ are local. Put $\mathsf E(z)=\operatorname{Log}\Gamma(z)-(z-\frac12)\operatorname{Log}z+z$. The partial-fraction series of $\Gamma'/\Gamma$ gives $\mathsf E'(z)=\frac{\Gamma'}\Gamma(z)-\operatorname{Log}z+\frac1{2z}=O(|z|^{-2})$ uniformly for $\operatorname{Re}z\ge\frac14$. Hence $\mathsf E(n+iy)-\mathsf E(n)=O(y/n^2)$, and Stirling's formula for $n!$ gives $\mathsf E(n)\to\log\sqrt{2\pi}$, so $\lim_{n\to\infty}\mathsf E(n+iy)$ is real. Integrating $\mathsf E'$ along the half-line from $\frac14+iy$ to $+\infty+iy$ then gives $\operatorname{Im}\mathsf E(\frac14+iy)=O(1/y)$. With $y=t/2$, this is \CGeqref{eq:varpi_weak}, by the computation in the proof of Lemma~\CGref{lem:varpi} with $\mathcal R=\mathsf E-\log\sqrt{2\pi}$.
+\end{remark}
+
+\begin{lemma}\label{lem:chi}
+For $-0.01\le\sigma\le\frac12$ and $t\ge98$, $|\chi(\sigma+it)|\le1.0070\,(t/2\pi)^{1/2-\sigma}$.
+\end{lemma}
+
+\begin{proof}
+Recall that $\chi(s)=\pi^{s-1/2}\Gamma(\frac{1-s}2)/\Gamma(\frac s2)$. Put $y=t/2\ge49$, $z_1=\frac{1-\sigma}2+iy$, $z_2=\frac\sigma2+iy$, with real parts $\omega_1\in[\frac14,0.505]$ and $\omega_2\in[-0.005,\frac14]$. Since $|\Gamma(\bar z)|=|\Gamma(z)|$, $|\chi(s)|=\pi^{\sigma-1/2}|\Gamma(z_1)|/|\Gamma(z_2)|$. For $z=\omega+iy$ with $y>0$ one has $\operatorname{ph}z=\frac\pi2-\arctan(\omega/y)$, and Theorem~\CGref{thm:known_stirling} gives
+\begin{equation}
+\begin{gathered}
+\log|\Gamma(z)|=(\omega-\tfrac12)\log y-\tfrac\pi2y+\tfrac12\log2\pi+\phi(\omega,y)+\operatorname{Re}\mathcal R(z),\\
+\phi(\omega,y)=\frac{\omega-\frac12}2\log\Bigl(1+\frac{\omega^2}{y^2}\Bigr)+y\arctan\frac\omega y-\omega .
+\end{gathered}
+\label{eq:stirling_modulus}
+\end{equation}
+Subtracting, and using $\omega_1-\omega_2=\frac12-\sigma$,
+\begin{equation}
+\log|\chi(s)|=(\tfrac12-\sigma)\log\frac t{2\pi}+\phi(\omega_1,y)-\phi(\omega_2,y)+\operatorname{Re}\bigl(\mathcal R(z_1)-\mathcal R(z_2)\bigr).
+\label{eq:disp_11}
+\end{equation}
+For $|\omega|\le0.505$ and $|\omega-\frac12|\le0.505$, $|\frac{\omega-1/2}2\log(1+\frac{\omega^2}{y^2})|\le\frac{0.505\cdot0.256}{2y^2}$ and $|y\arctan\frac\omega y-\omega|\le\frac{|\omega|^3}{3y^2}\le\frac{0.043}{y^2}$, so $|\phi(\omega_i,y)|\le\frac{0.108}{y^2}\le\frac{0.435}{t^2}$. Next $\operatorname{ph}z_1\in(0,\frac\pi2)$ and $\operatorname{ph}z_2\le\frac\pi2+\arctan\frac{0.005}{49}$, so $\sec^2(\frac12\operatorname{ph}z_i)\le2.0005$ and $|\mathcal R(z_i)|\le\frac{2.0005}{12y}=\frac{2.0005}{6t}$. Hence $\log|\chi(s)|-(\frac12-\sigma)\log\frac t{2\pi}\le\frac{0.6669}t+\frac{0.87}{t^2}\le0.00690$ for $t\ge98$, and $e^{0.0069}<1.0070$.
+\end{proof}
+
+\subsection{The explicit profile}\label{subsec:explicit_profile}
+Let $\eE$ be the piecewise linear function on $[\frac12,1]$ through
+\begin{equation}
+\bigl(\tfrac12,\tfrac{27}{164}\bigr),\quad\bigl(\sigma_m,\tfrac1{2^m-2}\bigr)\ (4\le m\le9),\quad(1,0),
+\label{eq:explicit_nodes}
+\end{equation}
+that is, through $(\frac57,\frac1{14})$, $(\frac56,\frac1{30})$, $(\frac{28}{31},\frac1{62})$, $(\frac{17}{18},\frac1{126})$, $(\frac{123}{127},\frac1{254})$, $(\frac{167}{170},\frac1{510})$, and let $\eE^*$ be its reflected extension \CGeqref{eq:reflected}.
+
+\begin{lemma}\label{lem:explicit_zeta}
+For $-0.01\le\sigma\le3$ and $|t|\ge98$, $|\zeta(\sigma+it)|\le2.74\,|t|^{\eE^*(\sigma)}\log|t|$.
+\end{lemma}
+
+\begin{proof}
+By $\zeta(\bar s)=\overline{\zeta(s)}$ it suffices to take $t>0$. Let $\varsigma_0<\varsigma_1<\cdots<\varsigma_8$ be $\frac12,\sigma_4,\dots,\sigma_9,1,3$, with exponents $e_0=\frac{27}{164}$, $e_i=\frac1{2^{i+3}-2}$ ($1\le i\le6$), $e_7=e_8=0$. The $e_i$ are nonincreasing, and $\eE^*$ is the linear interpolation of $(\varsigma_i,e_i)$ on $[\frac12,3]$. Put $Q=10$ and $\Xi(s)=(s-1)\zeta(s)$, an entire function with $|\Xi(\sigma+it)|\ll|t|^2$ for $\frac12\le\sigma\le3$, $|t|\ge1$.
+
+\emph{Boundary values.} It is enough to show that for every $i$ and every real $t$,
+\begin{equation}
+|\Xi(\varsigma_i+it)|\le2|Q+s|^{1+e_i}\log|Q+s|\qquad(s=\varsigma_i+it).
+\label{eq:boundary}
+\end{equation}
+Suppose first that $|t|>3$. On $\sigma=\frac12$, Theorem~\CGref{thm:known_zeta}(a) gives $|\zeta|\le2|t|^{27/164}\log|t|$: for $|t|\le e^{105}$ because $|t|^{1/6-27/164}=|t|^{1/492}\le e^{105/492}<2/0.618$, and for $|t|>e^{105}$ because $\log|t|>105>66.7/2$. On $\sigma=\varsigma_i=\sigma_{i+3}$ ($1\le i\le6$), (b) gives $|\zeta|\le2|t|^{e_i}\log|t|$. On $\sigma=1$, (c) gives $|\zeta(1+it)|\le\log|t|$. On $\sigma=3$, $|\zeta|\le\zeta(3)<2\log3$. Since $|s-1|\le|Q+s|$ and $|t|\le|Q+s|$, \CGeqref{eq:boundary} follows for $|t|>3$. Now let $|t|\le3$. For $\sigma>0$, $(s-1)\zeta(s)=s-s(s-1)\int_1^\infty\{u\}u^{-s-1}du$, by \CGcite[(2.1.4)]{Titchmarsh1986} and $\int_1^\infty u^{-s-1}du=\frac1s$, so for $\frac12\le\sigma\le3$, $|\Xi(s)|\le|s|+2|s||s-1|\le4.243+2\cdot4.243\cdot3.606<34.9$, whereas the right side of \CGeqref{eq:boundary} is at least $2\cdot10.5\log10.5>49$.
+
+\emph{Interpolation.} Theorem~\CGref{thm:known_PL} on each strip $\varsigma_i\le\sigma\le\varsigma_{i+1}$ ($Q>1-\varsigma_i$, $A=B=2$, $\alpha_1=1+e_i\ge\beta_1=1+e_{i+1}$, $\alpha_2=1$; the bounds \CGeqref{eq:boundary} imply its hypotheses because $\log|Q+s|\le|\operatorname{Log}(Q+s)|$) gives, for $\frac12\le\sigma\le3$ and all $t$,
+\begin{equation}
+|\Xi(s)|\le2|Q+s|^{1+\eE^*(\sigma)}|\operatorname{Log}(Q+s)| .
+\label{eq:disp_12}
+\end{equation}
+For $t\ge98$, $|Q+s|\le(169+t^2)^{1/2}\le t(1+84.5/t^2)$, $|\operatorname{Log}(Q+s)|\le\log|Q+s|+\frac\pi2\le\log t+84.5/t^2+\frac\pi2$ and $|s-1|\ge t$. Since $\eE^*\le\frac{27}{164}$ on $[\frac12,3]$,
+\begin{equation}
+\begin{split}
+|\zeta(s)|&\le2\Bigl(1+\frac{84.5}{98^2}\Bigr)^{1+\frac{27}{164}}\Bigl(1+\frac{84.5/98^2+\pi/2}{\log98}\Bigr)t^{\eE^*(\sigma)}\log t\\
+&\le2.7167\,t^{\eE^*(\sigma)}\log t\qquad(\tfrac12\le\sigma\le3).
+\end{split}
+\label{eq:right_profile}
+\end{equation}
+\emph{Reflection.} For $-0.01\le\sigma<\frac12$, $\zeta(s)=\chi(s)\zeta(1-s)$ and $|\zeta(1-s)|=|\zeta(1-\sigma+it)|$ with $1-\sigma\in(\frac12,1.01]$. By the previous step and Lemma~\CGref{lem:chi},
+$|\zeta(s)|\le1.0070\cdot2.7167\,t^{\frac12-\sigma+\eE^*(1-\sigma)}\log t\le2.74\,t^{\eE^*(\sigma)}\log t$, because $\frac12-\sigma+\eE^*(1-\sigma)=\eE^*(\sigma)$ by \CGeqref{eq:reflected} (for $\sigma<0$ both sides equal $\frac12-\sigma$).
+\end{proof}
+
+\begin{remark}[Robustness of the inputs]\label{rem:robust}
+Theorem~\CGref{thm:known_zeta} enters Theorem~\CGref{thm:explicit} only through \CGeqref{eq:boundary}, that is, through bounds with constant $2$ on the lines $\sigma=\varsigma_i$, and each input has room. (i) On $\sigma=\frac12$, the bound of \CGcite{HiaryPatelYang2024} alone gives \CGeqref{eq:boundary} for $3<|t|\le e^{577}$, since $|t|^{1/492}\le e^{577/492}<2/0.618$. Above $e^{577}$ any bound $C|t|^{27/164}$ with $C\le1154$ suffices in place of \CGcite{PatelYang2023}. Revers \CGcite[Thm.~1.1]{Revers2026} gives $|\zeta(\frac12+it)|\le0.611|t|^{1/6}\log|t|$ for $|t|\ge3$, with a detailed treatment of the intermediate range of \CGcite{HiaryPatelYang2024}.
+
+(ii) On $\sigma=\sigma_m$, the bound of \CGcite{Yang2024} is proved for $|t|\ge T_m$, the threshold of \CGcite[(3.4)]{Yang2024} (with $k=m$), by exponential sums \CGcite[\S3.2]{Yang2024}, and for $3\le|t|\le T_m$ by a Phragm\'en--Lindel\"of interpolation of $(s-1)\zeta(s)$ between $\sigma=\frac12$ and $\sigma=1$ with $Q_0=1.31$ \CGcite[\S3.1, (3.9)--(3.13)]{Yang2024}, whose conclusion is stated there with $\log|Q_0+s|$.
+
+Theorem~\CGref{thm:known_PL} gives it with $|\operatorname{Log}(Q_0+s)|$.
+
+Redoing \CGcite[(3.9)--(3.13)]{Yang2024} with this factor, with $A(t_0)$ as defined there and $t_0$ on a fine partition of $[3,T_m]$, interval arithmetic (the interval-arithmetic program of Appendix~\CGref{app:code}) gives on $3\le t\le T_m$ the constant $1.878$ (precisely $\le1.87781$, attained for $m=9$) in place of $1.546$ for $4\le m\le9$, the only values of $m$ used in Lemma~\CGref{lem:explicit_zeta}.
+
+Hence (b) holds for these $m$ with constant $2$, which is all that \CGeqref{eq:boundary} uses.
+
+(iii) On $\sigma=1$, \CGcite[\S2]{HiaryLeongYang2024} give independently $|\zeta(1+it)|\le\log|t|-0.45$ for $|t|\ge3$.
+\end{remark}
+
+%======================================================================
+\section{A disc-based estimate for $S(T)$}\label{sec:backlund}
+
+\begin{proposition}\label{prop:master}
+Let $c,R$ satisfy \CGeqref{eq:backlund_conditions} with $c\le2$ and $R\le2$, and let $T\ge3$ be a non-ordinate. Suppose that, for a nonnegative measurable function $\mathfrak h$ on $[c-R,c+R]$ with $\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta<\infty$, a constant $K\ge1$ and a function $\Omega\ge1$ on $[T-2,T+2]$ such that $t\mapsto t^{\mathfrak h(\sigma)}\Omega(t)$ is nondecreasing there for every $\sigma$,
+\begin{equation}
+|\zeta(\sigma+it)|\le K\,t^{\mathfrak h(\sigma)}\Omega(t)\qquad(c-R\le\sigma\le c+R,\ T-2\le t\le T+2).
+\label{eq:zeta_hyp}
+\end{equation}
+Then
+\begin{equation}
+\begin{split}
+|S(T)|\le{}&\frac1{2\mathfrak d}\Bigl[\log\frac{\zeta(c)}{\zeta(2c)}+\log\frac{T+3}T+\frac{\mathcal I_{\mathfrak h}}\pi\log(T+2)+\log\Omega(T+2)+\log K\Bigr]\\
+&+\frac{\log\zeta(\sigma^\sharp)}\pi+\frac{\sigma^\sharp-\frac12}{\pi T}+\frac{\mathcal E(T,\delta^\sharp)}{2\pi}+\frac14,
+\end{split}
+\label{eq:master}
+\end{equation}
+where $\mathcal I_{\mathfrak h}=\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta$ and $\mathfrak d=\log(R/(c-\frac12))$.
+\end{proposition}
+
+\begin{proof}
+\emph{Decomposition of the argument.} On the segments from $2$ to $2+iT$ and from $2+iT$ to $\sigma^\sharp+iT$ one has $\operatorname{Re}s>1$, where $\log\zeta$ is holomorphic. Hence
+\begin{equation}
+\pi S(T)=\arg\zeta(\sigma^\sharp+iT)+\Delta_{\sigma=\sigma^\sharp}^{1/2}\arg\bigl((\sigma+iT-1)\zeta(\sigma+iT)\bigr)-\Delta_{\sigma=\sigma^\sharp}^{1/2}\arg(\sigma+iT-1)
+\label{eq:disp_13}
+\end{equation}
+(this is the decomposition used in \CGcite[\S3]{BellottiWong2025}). Here $|\arg\zeta(\sigma^\sharp+iT)|\le|\log\zeta(\sigma^\sharp+iT)|\le\log\zeta(\sigma^\sharp)$, and the change of $\arg(\sigma-1+iT)$ from $\sigma=\sigma^\sharp$ to $\frac12$ is $\arctan\frac{\sigma^\sharp-1}T+\arctan\frac1{2T}\le\frac{\sigma^\sharp-1/2}T$.
+
+\emph{The majorant $\Psi$.} For $s=c+Re^{i\theta}$ one has $\sigma=\operatorname{Re}s\in[c-R,c+R]$ and $|\operatorname{Im}s|\le R\le2$, so $s+iT$ has imaginary part in $[T-2,T+2]$, $s-iT$ has imaginary part in $[-T-2,-T+2]$, and $|s\pm iT-1|\le\sqrt{9+(T+2)^2}\le T+3$. Since $|\zeta(\bar s)|=|\zeta(s)|$, \CGeqref{eq:zeta_hyp} and the monotonicity assumption bound both terms in \CGeqref{eq:backlund_f} by $\bigl((T+3)K(T+2)^{\mathfrak h(\sigma)}\Omega(T+2)\bigr)^n$, so $\frac1n\log|\mathfrak f_n(s)|\le\Psi(\theta)$ with
+\begin{equation}
+\Psi(\theta)=\log(T+3)+\mathfrak h(c+R\cos\theta)\log(T+2)+\log\Omega(T+2)+\log K,
+\label{eq:disp_14}
+\end{equation}
+an even function of $\theta$. Theorem~\CGref{thm:known_backlund}(a) gives a sequence $n_m$ with $\limsup_m\mathcal Z_{n_m}(c,R)\le Z^*$, where $Z^*$ is the bracket in \CGeqref{eq:master} (using $\sqrt{(c-1)^2+T^2}\ge T$).
+
+\emph{Backlund's trick.} Theorem~\CGref{thm:known_backlund}(b) at $n=n_m$, letting $m\to\infty$, gives $|\Delta_{\sigma=\sigma^\sharp}^{1/2}\arg((\sigma+iT-1)\zeta(\sigma+iT))|\le\frac{\pi Z^*}{2\mathfrak d}+\frac{\mathcal E(T,\delta^\sharp)}2+\frac\pi4$. Dividing the decomposition by $\pi$ gives \CGeqref{eq:master}.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:asymptotic}}\label{subsec:proof_asymptotic}
+Let $\mathfrak e$ be admissible, $0<\eta<10^{-2}$, $c=1+\eta$, $R=1+2\eta$. Then $c-R=-\eta$, $\sigma^\sharp=\frac54+\frac32\eta<c+R=2+3\eta$, $\delta^\sharp=\frac14+\frac\eta2\in[\frac14,\frac58]$ and $R/(c-\frac12)=2$. So \CGeqref{eq:backlund_conditions} holds and $\mathfrak d=\log2$.
+
+Let $\varepsilon\in(0,1)$. It is enough to establish $|\zeta(\sigma+it)|\le K_\varepsilon t^{\mathfrak e^*(\sigma)+\varepsilon}$ for $-0.01\le\sigma\le3$ and $t\ge98$, with $K_\varepsilon$ depending on $\varepsilon$ only (not on $\eta$). For $\frac12\le\sigma\le1$ this is \CGeqref{eq:admissible}. For $1\le\sigma\le3$, $\zeta(\sigma+it)\ll\log t\ll_\varepsilon t^\varepsilon$ \CGcite[Thm.~3.5]{Titchmarsh1986}. For $-0.01\le\sigma<\frac12$ it follows from Lemma~\CGref{lem:chi}, $\zeta(s)=\chi(s)\zeta(1-s)$ and the two previous cases at $1-\sigma\in(\frac12,1.01]$, as in the last step of the proof of Lemma~\CGref{lem:explicit_zeta}. Since $[c-R,c+R]=[-\eta,2+3\eta]\subset[-0.01,3]$, the claim covers the disc for every $\eta<10^{-2}$. For $T\ge100$, Proposition~\CGref{prop:master} applies with $\mathfrak h=\mathfrak e^*+\varepsilon$, $K=K_\varepsilon$ and $\Omega=1$. In \CGeqref{eq:master} the terms $\log\frac{\zeta(c)}{\zeta(2c)}$, $\log\frac{T+3}T$, $\log K_\varepsilon$, $\log\zeta(\sigma^\sharp)$ and $\frac{\sigma^\sharp-1/2}{\pi T}$ are $O_{\varepsilon,\eta}(1)$, and $\mathcal E(T,\delta^\sharp)/(2\pi)\le\frac12(\frac{640\delta^\sharp-112}{1536(3T-1)}+2^{-10})=O(1)$ by Theorem~\CGref{thm:known_backlund}(c). Hence
+\begin{equation}
+|S(T)|\le\frac{\log T}{2\pi\log2}\int_0^\pi\bigl(\mathfrak e^*(1+\eta+(1+2\eta)\cos\theta)+\varepsilon\bigr)d\theta+O_{\varepsilon,\eta}(1).
+\label{eq:disp_15}
+\end{equation}
+
+\emph{Passage to the limit.} The limits are taken in the order $T\to\infty$, then $\varepsilon\to0$, then $\eta\to0$. The parameters $\eta$ and $\varepsilon$ do not depend on $T$. For fixed $\varepsilon$ and $\eta$ the term $O_{\varepsilon,\eta}(1)$ is bounded, so dividing by $\log T$ and letting $T\to\infty$ through non-ordinates (at an ordinate $S(T)=S(T^+)$ is a limit of values at non-ordinates, so the $\limsup$ over non-ordinates is $\mathfrak a$) gives
+\begin{equation}
+\mathfrak a\le\frac1{2\pi\log2}\Bigl(\int_0^\pi\mathfrak e^*\bigl(1+\eta+(1+2\eta)\cos\theta\bigr)d\theta+\pi\varepsilon\Bigr).
+\label{eq:disp_16}
+\end{equation}
+The right side no longer involves $K_\varepsilon$. Let $\varepsilon\to0$. Finally, $\mathfrak e^*$ is continuous on $\R$: at $\sigma=\frac12$ both formulas in \CGeqref{eq:reflected} give $\mathfrak e(\frac12)$, at $\sigma=1$ both give $\mathfrak e(1)=0$, and at $\sigma=0$ both give $\frac12$. Hence $\mathfrak e^*$ is uniformly continuous on $[-1,4]$, and since the arguments $1+\eta+(1+2\eta)\cos\theta$ and $1+\cos\theta$ differ by at most $3\eta$, the integrand converges uniformly in $\theta$ as $\eta\to0$. Therefore $\mathfrak a\le\frac1{2\pi\log2}\int_0^\pi\mathfrak e^*(1+\cos\theta)\,d\theta$. The integrand vanishes for $0\le\theta\le\frac\pi2$. On $[\frac\pi2,\pi]$ substitute $\sigma=1+\cos\theta\in[0,1]$, $d\sigma=-\sin\theta\,d\theta$, $\sin\theta=\sqrt{1-(\sigma-1)^2}=\sqrt{\sigma(2-\sigma)}$. This is \CGeqref{eq:asymptotic_formula}.\qed
+
+\begin{remark}\label{rem:lindelof}
+Admissible profiles are nonnegative by definition, so $\mathfrak e^*\ge0^*$ pointwise, where $0^*(\sigma)=\max(\frac12-\sigma,0)$ is the reflected extension of the zero profile, and
+\begin{equation}
+\Lambda(\mathfrak e)\ge\Lambda(0)=\frac1{2\pi\log2}\int_0^{1/2}\frac{(1/2-\sigma)\,d\sigma}{\sqrt{\sigma(2-\sigma)}}=\frac{3\sqrt3-\pi}{12\pi\log2}=0.0786252\ldots
+\label{eq:disp_17}
+\end{equation}
+The Lindel\"of hypothesis would give $\mathfrak a\le0.0786253$ by Theorem~\CGref{thm:asymptotic}, and no admissible profile makes the right side of \CGeqref{eq:asymptotic_formula} smaller. Whether a disc with $(c,R)$ away from $(1,1)$ could give less is not addressed here.
+(With $\sigma=1+\cos\theta$ the integral is $\int_{2\pi/3}^\pi(-\frac12-\cos\theta)\,d\theta=\frac{\sqrt3}2-\frac\pi6$.)
+\end{remark}
+
+\subsection{Proof of Corollary~\ref{cor:bourgain}}\label{subsec:proof_bourgain}
+Let $0<\varepsilon'<\varepsilon_0$, where $\varepsilon_0>0$ is small enough that the nodes $\varsigma'_j$ defined below increase and $\varsigma'_7<1$ (this holds at $\varepsilon'=0$, where they are the nodes \CGeqref{eq:bourgain_nodes}, hence for all small $\varepsilon'$ by continuity), $(\kappa_0,\lambda_0)=(\frac{13}{84}+\varepsilon',\frac{55}{84}+\varepsilon')$ and $(\kappa_j,\lambda_j)=A^j(\kappa_0,\lambda_0)$, $1\le j\le7$.
+
+By Theorem~\CGref{thm:known_exponents}(c),(a) these are exponent pairs, and $\lambda_j-\kappa_j\ge\frac12$ (it equals $\frac12$ for $j=0$, and $A$ maps $\lambda-\kappa$ to $\frac12+\frac{\lambda-\kappa}{2\kappa+2}$). Put $\varsigma'_j=\lambda_j-\kappa_j$ ($0\le j\le7$), $\varsigma'_8=1$, $\kappa_8=0$.
+
+The $\varsigma'_j$ increase by the choice of $\varepsilon_0$, and the $\kappa_j$ decrease since $\kappa_{j+1}=\kappa_j/(2\kappa_j+2)<\kappa_j$. By Theorem~\CGref{thm:known_exponents}(b) and $\zeta(1+it)\ll\log|t|$ there is a constant $A_{\varepsilon'}\ge1$ with $|\zeta(\varsigma'_j+it)|\le A_{\varepsilon'}|t|^{\kappa_j}\log|t|$ for $|t|\ge3$ and $0\le j\le8$.
+
+With $Q=10$ and $\Xi(s)=(s-1)\zeta(s)$, the argument of the proof of Lemma~\CGref{lem:explicit_zeta} (for $|t|\le3$ the bound $|\Xi|<34.9$ from \CGcite[(2.1.4)]{Titchmarsh1986}; the pole of $\zeta$ at $s=1$ is removed by the factor $s-1$) gives $|\Xi(\varsigma'_j+it)|\le A_{\varepsilon'}|Q+s|^{1+\kappa_j}|\operatorname{Log}(Q+s)|$ for all real $t$.
+
+Theorem~\CGref{thm:known_PL} on each strip $\varsigma'_j\le\sigma\le\varsigma'_{j+1}$, with $\alpha_2=1$ on both lines, then shows that the piecewise linear function $\mathfrak e_{\varepsilon'}$ through the points $(\varsigma'_j,\kappa_j)$, $0\le j\le8$, is an admissible profile. By Theorem~\CGref{thm:asymptotic}, $\mathfrak a\le\Lambda(\mathfrak e_{\varepsilon'})$.
+
+As $\varepsilon'\to0$ the nodes tend to \CGeqref{eq:bourgain_nodes}, $\mathfrak e^*_{\varepsilon'}\to\eB^*$ uniformly, and $\Lambda(\mathfrak e_{\varepsilon'})\to\Lambda(\eB)$.
+
+The value $\Lambda(\eB)=0.0968160063238\ldots$ is computed in Appendix~\CGref{app:code} in two ways: by $40$-digit quadrature on each linear piece, and by the closed form \CGeqref{eq:hinge_integrals} with $c=R=1$, which expresses $2\pi\log2\cdot\Lambda(\eB)=\int_0^\pi\eB^*(1+\cos\theta)\,d\theta$ as a combination with rational coefficients of $\pi$ and of values of $\arccos$ and of square roots at rational points (here $\theta_h=\frac{2\pi}3$).
+
+Appendix~\CGref{app:code} computes these values (40-digit arithmetic, two independent evaluations) and gives $0.096816006\le\Lambda(\eB)\le0.096816007$ and $2\pi\Lambda(\eB)\le0.60832$.\qed
+
+\subsection{Proof of Theorem~\ref{thm:explicit}}\label{subsec:proof_explicit}
+Take $c=1.000002$ and $R=1.000005$. Then $c-R=-3\cdot10^{-6}$, $\sigma^\sharp=1.25000275\ldots$, $\delta^\sharp=0.2500012499\ldots\in[\frac14,\frac58]$, $c<R$, and \CGeqref{eq:backlund_conditions} holds. Let $T\ge100$ be a non-ordinate. For $\sigma\in[c-R,c+R]\subset[-0.01,3]$ and $t\in[T-2,T+2]\subset[98,\infty)$, Lemma~\CGref{lem:explicit_zeta} gives \CGeqref{eq:zeta_hyp} with $\mathfrak h=\eE^*$, $K=2.74$ and $\Omega(t)=\log t$.
+
+The integral $\mathcal I_{\eE^*}$ has a closed form. Write $\varsigma_0=\frac12<\varsigma_1<\dots<\varsigma_7=1$ for the abscissae in \CGeqref{eq:explicit_nodes}, $e_i$ for the ordinates and $\varrho_i=(e_{i+1}-e_i)/(\varsigma_{i+1}-\varsigma_i)$ for the slopes, so that
+\begin{equation}
+\eE(\sigma)=e_0+\varrho_0\bigl(\sigma-\tfrac12\bigr)+\sum_{i=1}^{6}(\varrho_i-\varrho_{i-1})\max(0,\sigma-\varsigma_i)-\varrho_6\max(0,\sigma-1)\qquad(\sigma\ge\tfrac12),
+\label{eq:disp_18}
+\end{equation}
+and by \CGeqref{eq:reflected} $\eE^*(\sigma)=\frac12-\sigma+\eE(1-\sigma)$ for $\sigma\le\frac12$, the right side being $\frac12-\sigma$ for $\sigma<0$. As $\theta$ runs over $[0,\pi]$, $\sigma=c+R\cos\theta$ decreases from $c+R$ to $c-R<0$. Split the integral at $\theta_h=\arccos\frac{1/2-c}R$, where $\sigma=\frac12$. The linear terms integrate to multiples of $\theta_h$, $\pi-\theta_h$ and $\sin\theta_h$, and each hinge integrates exactly: for $\frac12\le\varsigma\le1$, with $\theta_\varsigma=\arccos\frac{\varsigma-c}R\le\theta_h$ and $\theta'_\varsigma=\arccos\frac{1-\varsigma-c}R\ge\theta_h$,
+\begin{equation}
+\begin{aligned}
+\int_0^{\theta_h}\max(0,c+R\cos\theta-\varsigma)\,d\theta&=(c-\varsigma)\,\theta_\varsigma+R\sin\theta_\varsigma,\\
+\int_{\theta_h}^{\pi}\max(0,1-c-R\cos\theta-\varsigma)\,d\theta&=(1-c-\varsigma)(\pi-\theta'_\varsigma)+R\sin\theta'_\varsigma,
+\end{aligned}
+\label{eq:hinge_integrals}
+\end{equation}
+with $\sin\theta_\varsigma=\sqrt{1-((\varsigma-c)/R)^2}$ and likewise for $\theta'_\varsigma$. Hence $\mathcal I_{\eE^*}$ is a combination, with rational coefficients, of $\pi$, fifteen values of $\arccos$ at rational points and fifteen square roots of rational numbers. Evaluating it (Appendix~\CGref{app:code}) gives
+\begin{equation}
+C_1:=\frac{\mathcal I_{\eE^*}}{2\pi\mathfrak d}=0.0978292318785\ldots,\quad C_2:=\frac1{2\mathfrak d}=0.7213464797\ldots,\quad \log\frac{\zeta(c)}{\zeta(2c)}=12.6246665\ldots
+\label{eq:C1_value}
+\end{equation}
+By Proposition~\CGref{prop:master},
+\begin{equation}
+\begin{split}
+|S(T)|\le{}&C_1\log(T+2)+C_2\log\log(T+2)+C_2\Bigl[12.62467+\log\frac{T+3}T+\log2.74\Bigr]\\
+&+\frac{\log\zeta(\sigma^\sharp)}\pi+\frac{0.7501}{\pi T}+\frac{\mathcal E(T,\delta^\sharp)}{2\pi}+\frac14 .
+\end{split}
+\label{eq:explicit_assembled}
+\end{equation}
+Here $\log\zeta(\sigma^\sharp)=1.52498\ldots$,\footnote{The bound $\log\zeta(\sigma^\sharp)\le1.52499$ computed in Appendix~\CGref{app:code} uses $\zeta(\sigma)\le\sum_{n<N}n^{-\sigma}+(N-\frac12)^{1-\sigma}/(\sigma-1)$, from $n^{-\sigma}\le\int_{n-1/2}^{n+1/2}x^{-\sigma}\,dx$, which follows from $(x-h)^{-\sigma}+(x+h)^{-\sigma}\ge2\bigl((x-h)(x+h)\bigr)^{-\sigma/2}\ge2x^{-\sigma}$ for $0\le h<x$.} and by Theorem~\CGref{thm:known_backlund}(c), $\mathcal E(T,\delta^\sharp)/(2\pi)\le\frac12\bigl(\frac{640\delta^\sharp-112}{1536\cdot299}+2^{-10}\bigr)<0.00055$. Replacing $\log(T+2)$ by $\log T$ and $\log\log(T+2)$ by $\log\log T$ costs at most $\frac{2C_1}T+\frac{2C_2}{T\log T}$, by the mean value theorem ($\log(T+2)-\log T\le\frac2T$, and $\log\log(T+2)-\log\log T\le\frac2{T\log T}$ because $(\log\log u)'=1/(u\log u)$ decreases).
+
+Let $C_3(T)$ be the sum of these two costs and of all terms of \CGeqref{eq:explicit_assembled} other than $C_1\log(T+2)+C_2\log\log(T+2)$, with $\mathcal E(T,\delta^\sharp)$ replaced by the majorant of Theorem~\CGref{thm:known_backlund}(c). Every term of $C_3(T)$ is constant or decreasing in $T$: $\log\frac{T+3}T$, $\frac{0.7501}{\pi T}$, $\frac{2C_1}T$ and $\frac{2C_2}{T\log T}$ decrease.
+
+The majorant $\frac12\bigl(\frac{640\delta^\sharp-112}{1536(3T-1)}+2^{-10}\bigr)$ of $\mathcal E(T,\delta^\sharp)/(2\pi)$ decreases because $640\delta^\sharp-112=48.0008\ldots>0$. The remaining terms $C_2(12.62467+\log2.74)$, $\frac{\log\zeta(\sigma^\sharp)}\pi$ and $\frac14$ are constants. With the rounded values displayed, $C_3(100)\le10.5987$.
+
+The program of Appendix~\CGref{app:code} gives $C_3(100)=10.598602\ldots$, and $10.598545\ldots$ for the same sum with the exact differences $\log102-\log100$ and $\log\log102-\log\log100$ in place of the two costs.
+
+Hence $|S(T)|\le C_1\log T+C_2\log\log T+C_3(100)$ for $T\ge100$, and \CGeqref{eq:explicit_S} follows from $0.09783>C_1$, $0.7214>C_2$, $10.6>C_3(100)$. For $e\le T\le100$, Theorem~\CGref{thm:known_small} gives $|S(T)|\le2.5167$, smaller than the right side of \CGeqref{eq:explicit_S}. Finally \CGeqref{eq:explicit_N} follows from \CGeqref{eq:intro_RvM} and $|\varpi(T)|/\pi\le0.53/(\pi e)<0.07$ (Lemma~\CGref{lem:varpi}).\qed
+
+%======================================================================
+\section{Distance from \texorpdfstring{$\tau_k$}{tau_k} to the ordinates}\label{sec:distance}
+
+For $k\ge1$ put $s_k=k-\frac12-\Nz(\gamma_k)=\Nz(\tau_k)-\Nz(\gamma_k)$, and write $G=N-\Nz=S+\varpi/\pi$ (Lemma~\CGref{lem:varpi}), $G_k^\pm=G(\gamma_k^\pm)$.
+
+\begin{lemma}\label{lem:s_bounds}
+For every $k\ge1$, $G_k^-+\frac12\le s_k\le G_k^+-\frac12$; in particular $|s_k|\le\max(|G_k^-|,|G_k^+|)-\frac12$.
+\end{lemma}
+
+\begin{proof}
+The indices $j$ with $\gamma_j=\gamma_k$ are exactly $N(\gamma_k^-)+1,\dots,N(\gamma_k^+)$, so $N(\gamma_k^-)+1\le k\le N(\gamma_k^+)$. Subtract $\frac12+\Nz(\gamma_k)$ and use the continuity of $\Nz$. With $\mathfrak g=\max(|G_k^-|,|G_k^+|)$, $s_k\le G_k^+-\frac12\le\mathfrak g-\frac12$ and $s_k\ge G_k^-+\frac12\ge-\mathfrak g+\frac12$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:distance}]
+The function $\Nz$ is increasing on $(2\pi,\infty)$ with increasing derivative $\lL(t)=\frac1{2\pi}\log\frac t{2\pi}$, and $\gamma_1>14>2\pi$, $\tau_k>2\pi$, so $\mathfrak m_k>2\pi$. By the mean value theorem, $|s_k|=\lL(\xi_k)|\tau_k-\gamma_k|\ge\lL(\mathfrak m_k)|\tau_k-\gamma_k|$ for some $\xi_k$ between $\tau_k$ and $\gamma_k$.
+
+(b) Inequality \CGeqref{eq:explicit_N} holds for $G(t)$ at non-ordinates $t\ge e$ and, since its right side is continuous and increasing in $t$, for $G_k^\pm$ (note $\gamma_k>14>e$). With Lemma~\CGref{lem:s_bounds} it gives $|s_k|\le0.09783\log\gamma_k+0.7214\log\log\gamma_k+10.2$, and \CGeqref{eq:distance_explicit} follows from $\lL(\mathfrak m_k)=\frac1{2\pi}\log\frac{\mathfrak m_k}{2\pi}>0$.
+
+(a) First, $\mathfrak m_k\ge\gamma_k/2$ for large $k$: if $\tau_k<\gamma_k/2$, then $|s_k|=\Nz(\gamma_k)-\Nz(\tau_k)\ge\Nz(\gamma_k)-\Nz(\gamma_k/2)\ge\frac{\gamma_k}2\lL(\frac{\gamma_k}2)$, which exceeds the bound $O(\log\gamma_k)$ of (b) for large $k$. Hence $\log\mathfrak m_k=\log\gamma_k+O(1)$, so $|\tau_k-\gamma_k|=O(1)$ by (b), and then $\log\mathfrak m_k=\log\gamma_k+o(1)$. For $\varepsilon>0$, Corollary~\CGref{cor:bourgain} and $\varpi(t)\to0$ give $|G(t)|\le(\Lambda(\eB)+\varepsilon)\log t$ for large non-ordinates $t$, hence $|G_k^\pm|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$, $|s_k|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$ and $|\tau_k-\gamma_k|\le|s_k|/\lL(\mathfrak m_k)\le2\pi(\Lambda(\eB)+\varepsilon)(1+o(1))$. Let $\varepsilon\to0$. Finally, $2\pi\cdot0.0968160063238\ldots=0.6083129\ldots$.
+\end{proof}
+
+\begin{proposition}[Limit superior of $\lvert\tau_k-\gamma_k\rvert$]\label{prop:distance_sharp}
+$\limsup_{k\to\infty}|\tau_k-\gamma_k|=2\pi\mathfrak a$. In particular Corollary~\CGref{cor:distance}(a) is equivalent to Corollary~\CGref{cor:bourgain}, and the Lindel\"of hypothesis would give $\limsup_k|\tau_k-\gamma_k|\le2\pi\Lambda(0)=0.49401\ldots$ (Remark~\CGref{rem:lindelof}).
+\end{proposition}
+
+\begin{proof}
+\emph{Upper bound.} By the definition of $\mathfrak a$, for every $\varepsilon>0$ and all large non-ordinates $t$, $|S(t)|\le(\mathfrak a+\varepsilon)\log t$. The proof of Corollary~\CGref{cor:distance}(a), with $\Lambda(\eB)$ replaced by $\mathfrak a$, gives $\limsup_k|\tau_k-\gamma_k|\le2\pi\mathfrak a$. It uses Lemma~\CGref{lem:s_bounds}, which allows multiple ordinates.
+
+\emph{Lower bound.} One may assume $\mathfrak a>0$. Let $t>\gamma_1$ be a non-ordinate and $k=N(t)$, so that $\gamma_k<t<\gamma_{k+1}$. If the ordinate $\gamma_k$ is multiple, $k$ is the largest index with that ordinate, and $\gamma_{k+1}$ is the next distinct ordinate, whatever its multiplicity. Since no ordinate lies in $(\gamma_k,\gamma_{k+1})$, $N(\gamma_k^+)=k=N(\gamma_{k+1}^-)$.
+
+By the definition of $s_k$, $s_k=N(\gamma_k^+)-\frac12-\Nz(\gamma_k)=G_k^+-\frac12$ and $s_{k+1}=N(\gamma_{k+1}^-)+\frac12-\Nz(\gamma_{k+1})=G_{k+1}^-+\frac12$. On $(\gamma_k,\gamma_{k+1})$, $G=k-\Nz$ is decreasing, so $G_k^+\ge G(t)\ge G_{k+1}^-$, hence $s_k\ge G(t)-\frac12$ and $s_{k+1}\le G(t)+\frac12$.
+
+If $G(t)\ge\frac12$, then $|s_k|\ge G(t)-\frac12$, and if $G(t)\le-\frac12$ then $|s_{k+1}|\ge|G(t)|-\frac12$, so in all cases $\max(|s_k|,|s_{k+1}|)\ge|G(t)|-\frac12$.
+
+For $j\in\{k,k+1\}$ the mean value theorem gives $|s_j|=\lL(\xi_j)|\tau_j-\gamma_j|$ with $\xi_j$ between $\tau_j$ and $\gamma_j$, and $\lL$ increases, so $|\tau_j-\gamma_j|\ge|s_j|/\lL(\max(\tau_j,\gamma_j))$. By the proof of Corollary~\CGref{cor:distance}(a), $|\tau_j-\gamma_j|=O(1)$, and $\gamma_{k+1}-\gamma_k\to0$ as $t\to\infty$ (Theorem~\CGref{thm:known_basic}; $k=N(t)\to\infty$), so $\max(\tau_j,\gamma_j)=t+O(1)$ and $2\pi\lL(\max(\tau_j,\gamma_j))=\log t-\log2\pi+O(1/t)$. Finally $G(t)=S(t)+\varpi(t)/\pi$ with $\varpi(t)\to0$ (Lemma~\CGref{lem:varpi}).
+
+Choose non-ordinates $t\to\infty$ with $|S(t)|\ge(\mathfrak a-\varepsilon)\log t$, which exist by the definition of $\mathfrak a$ and the convention $S(T)=S(T^+)$. Then, for one of $j=k,k+1$,
+\begin{equation}
+|\tau_j-\gamma_j|\ge\frac{2\pi\bigl((\mathfrak a-\varepsilon)\log t-\frac12-o(1)\bigr)}{\log t-\log2\pi+O(1/t)}\longrightarrow2\pi(\mathfrak a-\varepsilon),
+\label{eq:disp_19}
+\end{equation}
+and $j\to\infty$ with $t$. Let $\varepsilon\to0$. Thus the limit superior of the displacement is determined by that of $|S(T)|/\log T$.
+\end{proof}
+
+%======================================================================
+\section{Localization by primes}\label{sec:sublevel}
+
+\subsection{The construction}\label{subsec:construction}
+Each summand in \CGeqref{eq:Euler_phase} is $-\frac1\pi\arg(1-p^{-1/2-it})$ with $|p^{-1/2-it}|\le2^{-1/2}$, so its modulus is at most $\frac1\pi\arcsin(2^{-1/2})=\frac14$. For every fixed $m$, the inner series over $r$ converges absolutely. The argument bound follows geometrically by maximizing the angle of $1-z$ over $|z|\le2^{-1/2}$, which gives $|\arg(1-z)|\le\arcsin|z|$. Therefore
+\begin{equation}
+|\Ph_m(t)|\le\frac m4 .
+\label{eq:phasebound}
+\end{equation}
+On $[2^j,2^{j+1}]$ the two definitions of $\Ph$ in \CGeqref{eq:F_def} at the endpoints agree, so $\Ph$ and $\Fc$ are continuous on $(0,\infty)$, and $\Fc(t)=\Nz(t)\to\frac78$ as $t\to0^+$ (for $t<\frac12$ one has $m_j=m_{j+1}=0$). Since $m_{j+1}^2\le2^{j+1}\le2t$ on the block,
+\begin{equation}
+|\Ph(t)|\le\tfrac14\sqrt{2t}\qquad(t>0).
+\label{eq:globalphasebound}
+\end{equation}
+Since $\Nz(\tau_k)=k-\frac12$, \CGeqref{eq:xk_def} reads $\tau_{k}^{\mathrm C}=\Tc(\tau_k)$ with $\Tc(\tau)=\int_0^\infty\Ind_{\{\Fc(t)<\Nz(\tau)\}}dt$: the corrected point is a function of the original point.
+
+\begin{proposition}\label{prop:ordered}
+For every $k\ge1$, $\tau_{k}^{\mathrm C}$ is finite and $0<\tau_{k}^{\mathrm C}<\tau_{k+1}^{\mathrm C}$. If $\tau_k\ge2\pi e$, the integral \CGeqref{eq:xk_def} may be truncated at $2\tau_k$, and its integrand uses only the primes $p_\nu$ with $\nu\le\lfloor2\sqrt{\tau_k}\rfloor$.
+\end{proposition}
+
+\begin{proof}
+By \CGeqref{eq:globalphasebound}, $\Fc(t)\ge\Nz(t)-\frac14\sqrt{2t}\to\infty$, so each sublevel set is bounded and $\tau_{k}^{\mathrm C}<\infty$. The block containing $2\pi$ is $[4,8]$, with $m_2=m_3=2$, so $\Fc(2\pi)\le\Nz(2\pi)+\frac24=-\frac18+\frac12=\frac38$. Fix $k\ge1$. Then $\Fc(2\pi)<\frac12\le k-\frac12$, and since $\Fc(t)\to\infty$ there is $t_1>2\pi$ with $\Fc(t_1)>k+\frac12$. By the intermediate value theorem $\Fc$ takes the value $k$ in $(2\pi,t_1)$, so the set $\{k-\frac12<\Fc<k+\frac12\}=\Fc^{-1}\bigl((k-\frac12,k+\frac12)\bigr)$ is nonempty, and it is open because $\Fc$ is continuous. Every nonempty open subset of $\R$ contains a nondegenerate interval and therefore has positive Lebesgue measure. Hence $\tau_{k+1}^{\mathrm C}-\tau_{k}^{\mathrm C}=\meas\{k-\frac12\le\Fc<k+\frac12\}\ge\meas\{k-\frac12<\Fc<k+\frac12\}>0$. Likewise $\tau_{1}^{\mathrm C}\ge\meas\{\Fc<\frac12\}>0$, because $\{\Fc<\frac12\}$ is open and contains $2\pi$.
+
+If $\tau_k\ge2\pi e$ and $t\ge2\tau_k$, then $\Nz(t)-\Nz(\tau_k)\ge(t-\tau_k)\lL(\tau_k)\ge\frac t{4\pi}>\frac14\sqrt{2t}$ (as $t\ge4\pi e>2\pi^2$), so $\Fc(t)>k-\frac12$. For $t\le2\tau_k$ the budgets used satisfy $m^2\le4\tau_k$, hence $m\le2\sqrt{\tau_k}$.
+\end{proof}
+
+\subsection{A deterministic transfer inequality}\label{subsec:transfer}
+
+\begin{lemma}\label{lem:maximal}
+Let $A\le B$ be integers and $D=(D_\ell)_{A\le\ell\le B}$ nonnegative. For $A\le\ell\le B$ let $(\M D)_\ell=\max\{\frac1{b-a+1}\sum_{r=a}^bD_r:\ A\le a\le\ell\le b\le B\}$. Then $\sum_{\ell=A}^B(\M D)_\ell^3\le24\sum_{\ell=A}^BD_\ell^3$.
+\end{lemma}
+
+\begin{proof}
+\emph{Rising sun.} In this proof $\mathsf g$, $\mathcal G$ and $\mathcal P_\pm$ are local. Let $\mathsf g$ be real on $[A,B]\cap\Z$, and let $\mathcal P_+(A',B)$ be the set of $j\in[A',B]$ for which $\sum_{r=j}^b\mathsf g_r\ge0$ for some $b\in[j,B]$. One can show that $\sum_{j\in \mathcal P_+(A',B)}\mathsf g_j\ge0$ by induction on $B-A'$ (this is the discrete form of F. Riesz's rising sun lemma \CGcite{Riesz1932}). If $A'\notin \mathcal P_+(A',B)$, then $\mathcal P_+(A',B)=\mathcal P_+(A'+1,B)$. Otherwise choose $b^*\in[A',B]$ maximizing $\mathcal G(b)=\sum_{r=A'}^b\mathsf g_r$. Then $\mathcal G(b^*)\ge0$, and for $A'<j\le b^*$ also $\sum_{r=j}^{b^*}\mathsf g_r=\mathcal G(b^*)-\mathcal G(j-1)\ge0$. Hence $[A',b^*]\subset \mathcal P_+(A',B)$, $\mathcal P_+(A',B)=[A',b^*]\cup \mathcal P_+(b^*+1,B)$, and $\sum_{\mathcal P_+(A',B)}\mathsf g=\mathcal G(b^*)+\sum_{\mathcal P_+(b^*+1,B)}\mathsf g\ge0$. The same argument from the right gives $\sum_{j\in\mathcal P_-}\mathsf g_j\ge0$ for the set $\mathcal P_-$ of $\ell\in[A,B]$ with $\sum_{r=a}^\ell \mathsf g_r\ge0$ for some $a\in[A,\ell]$.
+
+\emph{Weak type.} Let $\Theta>0$ and $\mathsf g=D-\Theta$. Then $\Theta\,\#\mathcal P_+\le\sum_{\mathcal P_+}D\le\sum D$ and likewise for $\mathcal P_-$. If $(\M D)_\ell\ge\Theta$, some $[a,b]\ni\ell$ has $\sum_{r=a}^b\mathsf g_r\ge0$. Splitting at $\ell$, either $\sum_{r=a}^{\ell}\mathsf g_r\ge0$, so $\ell\in\mathcal P_-$, or $\ell<b$ and $\sum_{r=\ell+1}^b\mathsf g_r>0$, so $\ell+1\in\mathcal P_+$. Hence $\Theta\,\#\{\ell:(\M D)_\ell\ge\Theta\}\le2\sum_\ell D_\ell$.
+
+\emph{Strong type.} Let $D''_\ell=D_\ell\Ind_{\{2D_\ell\ge\Theta\}}$. The remaining part $D-D''$ is $<\Theta/2$, so $(\M D)_\ell\ge\Theta$ implies $(\M D'')_\ell\ge\Theta/2$, and $\Theta\,\#\{\M D\ge\Theta\}\le4\sum_\ell D_\ell\Ind_{\{2D_\ell\ge\Theta\}}$. Hence
+\begin{equation}
+\sum_\ell(\M D)_\ell^3=\int_0^\infty3\Theta^2\#\{\M D\ge\Theta\}\,d\Theta\le12\sum_\ell D_\ell\int_0^{2D_\ell}\Theta\,d\Theta=24\sum_\ell D_\ell^3 .
+\label{eq:disp_20}
+\end{equation}
+\end{proof}
+
+\begin{theorem}[Sublevel transfer]\label{thm:transfer}
+In this theorem $(\gamma_k)$, $N$ and $D_\ell$ are general: let $(\gamma_k)_{k\ge1}$ be any nondecreasing real sequence with finitely many terms in each bounded set, $N(t)=\#\{k:\gamma_k\le t\}$, and $a<b$ with $\ell_0=N(a)\ge1$, $\ell_1=N(b)$. Put $D_\ell=\gamma_{\ell+1}-\gamma_\ell$ for $\ell_0\le\ell\le\ell_1$. Let $f$ be a measurable real function on $[a,b]$, and for $k$ with $a<\gamma_k\le b$ put
+\begin{equation}
+x^f_k=a+\int_a^b\Ind_{\{f(t)<k-\frac12\}}\,dt,\qquad q_f(t)=\bigl|\lfloor f(t)+\tfrac12\rfloor-N(t)\bigr| .
+\label{eq:disp_21}
+\end{equation}
+Then
+\begin{equation}
+\sum_{a<\gamma_k\le b}(x^f_k-\gamma_k)^2\le2\cdot24^{1/3}\Bigl(\sum_{\ell=\ell_0}^{\ell_1}D_\ell^3\Bigr)^{1/2}\Bigl(\int_a^bq_f^4\,dt\Bigr)^{1/2},
+\label{eq:transfer}
+\end{equation}
+and $q_f^4\le(1+|f-N|)^4$. (The right side may be $+\infty$; its first factor is positive, since $\sum_{\ell=\ell_0}^{\ell_1}D_\ell=\gamma_{\ell_1+1}-\gamma_{\ell_0}>b-a$. We do not claim that the constant $2\cdot24^{1/3}$ is optimal.)
+\end{theorem}
+
+\begin{proof}
+Fix $k$ with $a<\gamma_k\le b$. Then $\ell_0+1\le k\le\ell_1$. (An ordinate equal to $a$ has index $\le\ell_0$ and is not counted. The last gap $D_{\ell_1}=\gamma_{\ell_1+1}-\gamma_{\ell_1}$, to the first ordinate beyond $b$, is included in \CGeqref{eq:transfer} because $\{t\in[a,b]:N(t)=\ell_1\}\subset[\gamma_{\ell_1},\gamma_{\ell_1+1})$ reaches $b$.) Since $N(t)<k-\frac12$ exactly when $t<\gamma_k$, $\gamma_k=a+\int_a^b\Ind_{\{N<k-1/2\}}$, and $x^f_k-\gamma_k=u_k-v_k$ with $u_k=\meas\{t\in[\gamma_k,b]:f(t)<k-\frac12\}$ and $v_k=\meas\{t\in[a,\gamma_k):f(t)\ge k-\frac12\}$.
+
+Let $E_k\subset[a,b]$ be the set where $\Ind_{\{f<k-1/2\}}\ne\Ind_{\{N<k-1/2\}}$. By the bathtub principle \CGcite[Thm.~1.14]{LiebLoss2001}, a measurable set $U\subset[\gamma_k,b]$ of measure $u$ satisfies $\int_U(t-\gamma_k)\,dt\ge\int_{\gamma_k}^{\gamma_k+u}(t-\gamma_k)\,dt=\frac{u^2}2$: on $U\setminus[\gamma_k,\gamma_k+u]$ the integrand is $\ge u$, on $[\gamma_k,\gamma_k+u]\setminus U$ it is $\le u$, and the two sets have the same measure. Likewise on the left. Hence
+\begin{equation}
+(x^f_k-\gamma_k)^2\le u_k^2+v_k^2\le2\int_{E_k}|t-\gamma_k|\,dt .
+\label{eq:bathtub}
+\end{equation}
+Let $t\in[a,b]$ and $\ell=N(t)\in[\ell_0,\ell_1]$, so $\gamma_\ell\le t<\gamma_{\ell+1}$. If $t\in E_k$, the level $k-\frac12$ lies between $N(t)$ and $f(t)$: either $N(t)+1\le k\le\lfloor f(t)+\frac12\rfloor$ or $\lfloor f(t)+\frac12\rfloor+1\le k\le N(t)$. So at most $q_f(t)$ indices $k$ have $t\in E_k$. If $k>\ell$, then $k\le\lfloor f(t)+\frac12\rfloor$ and $|t-\gamma_k|\le\gamma_k-\gamma_\ell=\sum_{r=\ell}^{k-1}D_r\le(k-\ell)(\M D)_\ell\le q_f(t)(\M D)_\ell$. If $k\le\ell$, then $k>\lfloor f(t)+\frac12\rfloor$ and $|t-\gamma_k|\le\gamma_{\ell+1}-\gamma_k=\sum_{r=k}^{\ell}D_r\le(\ell-k+1)(\M D)_\ell\le q_f(t)(\M D)_\ell$. Here $\M$ is taken with $A=\ell_0$, $B=\ell_1$: the index intervals lie in $[\ell_0,\ell_1]$ and contain $\ell$. Therefore
+\begin{equation}
+\sum_{a<\gamma_k\le b}\Ind_{E_k}(t)|t-\gamma_k|\le q_f(t)^2(\M D)_{N(t)} .
+\label{eq:disp_22}
+\end{equation}
+Sum \CGeqref{eq:bathtub} over $k$, integrate, and apply Cauchy--Schwarz in $t$. Since $\{t\in[a,b]:N(t)=\ell\}\subset[\gamma_\ell,\gamma_{\ell+1})$, H\"older's inequality and Lemma~\CGref{lem:maximal} give
+\begin{equation}
+\int_a^b(\M D)_{N(t)}^2dt\le\sum_{\ell=\ell_0}^{\ell_1}D_\ell(\M D)_\ell^2\le\Bigl(\sum D_\ell^3\Bigr)^{1/3}\Bigl(\sum(\M D)_\ell^3\Bigr)^{2/3}\le24^{2/3}\sum_{\ell=\ell_0}^{\ell_1}D_\ell^3 ,
+\label{eq:disp_23}
+\end{equation}
+which proves \CGeqref{eq:transfer}. Finally $q_f\le|f-N|+\frac12$.
+\end{proof}
+
+\begin{remark}[Quantile form]\label{rem:quantile}
+In this remark $\mathsf m_f$ and $\mathsf m_N$ are local. Let $\mathsf m_f$ be the image of Lebesgue measure on $[a,b]$ under $f$, a measure of mass $b-a$ on $\R$, and $\mathsf m_N$ the image under $N$, which is the sum of the point masses $\meas\{t\in[a,b]:N(t)=\ell\}\,\delta_\ell$, $\ell_0\le\ell\le\ell_1$. Then $x^f_k-a=\mathsf m_f\bigl((-\infty,k-\tfrac12)\bigr)$ and $\gamma_k-a=\mathsf m_N\bigl((-\infty,k-\tfrac12)\bigr)$: the left side of \CGeqref{eq:transfer} compares the distribution functions of $\mathsf m_f$ and $\mathsf m_N$ at the half-integer levels, the midpoints between the levels at which $N$ jumps. Equivalently, $x^f_k$ is the point where the increasing rearrangement of $f$ on $[a,b]$ (\CGcite[\S10.12]{HardyLittlewoodPolya1934}, in increasing order), the generalized inverse of the distribution function, reaches the level $k-\frac12$, and $\gamma_k$ is the same point for $N$. The left side of \CGeqref{eq:transfer} is thus a discrete form of the squared $L^2$ distance between the two distribution functions. It is not the squared Wasserstein distance $W_2^2$, which compares their inverses, the increasing rearrangements of $f$ and $N$. The right side has no counterpart that we know of: one factor is a moment of the gaps between the atoms of $\mathsf m_N$, the other a moment of the pointwise difference $f-N$.
+\end{remark}
+
+\subsection{The arithmetic inputs}\label{subsec:arith_inputs}
+
+\begin{lemma}[Third moment of the gaps]\label{lem:gaps}
+$\sum_{T<\gamma_\ell\le2T}(\gamma_{\ell+1}-\gamma_\ell)^3\ll T/\log^2T$ for $T\ge T_0$.
+\end{lemma}
+
+\begin{proof}
+Write $D_\ell=\gamma_{\ell+1}-\gamma_\ell$ and $L_T=\log\frac T{2\pi}$. By Theorem~\CGref{thm:known_basic}, $D_\ell\to0$, so there is $T_0$ with $D_\ell\le1$ whenever $\gamma_\ell>T\ge T_0$. For $0<h\le1$ let $\mathcal A_h=\{t\in[T,4T]:N(t+h)=N(t)\}$. For every $t\in\mathcal A_h$ such that neither $t$ nor $t+h$ is an ordinate (a null set is excluded), \CGeqref{eq:intro_RvM} at $t$ and $t+h$ gives $|S(t+h)-S(t)|=|\Nz(t+h)-\Nz(t)+\frac{\varpi(t+h)-\varpi(t)}\pi|\ge\frac{hL_T}{2\pi}-O\bigl(\frac1T\bigr)\ge\frac{hL_T}{4\pi}$ when $hL_T\ge1$ and $T\ge T_0$. Theorem~\CGref{thm:known_fujii}(b) with $\mathsf k=2$, $\alpha_{\rm F}=\frac12$ and $H=T$ (the endpoints of its ranges, admitted there; this is the case ($\alpha$) of \CGcite{Fujii1981}), on $[T,2T]$ and on $[2T,4T]$, together with $\log(2+h\log4T)\le2\log(2+hL_T)$, gives, by Chebyshev's inequality,
+\begin{equation}
+\meas\mathcal A_h\le\Bigl(\frac{4\pi}{hL_T}\Bigr)^4\int_T^{4T}\bigl(S(t+h)-S(t)\bigr)^4dt\ll\frac{T\log^2(2+hL_T)}{(hL_T)^4}\qquad(1\le hL_T,\ 0<h\le1).
+\label{eq:disp_24}
+\end{equation}
+If $T<\gamma_\ell\le2T$ and $D_\ell\ge2h$, the interval $(\gamma_\ell,\gamma_{\ell+1}-h)$ lies in $[T,4T]$ (as $\gamma_{\ell+1}\le\gamma_\ell+1\le4T$) and in $\mathcal A_h$ (for $t$ in it, $\gamma_\ell<t<t+h<\gamma_{\ell+1}$, so $N(t+h)=N(t)=\ell$), and has length $D_\ell-h\ge D_\ell/2$. These intervals are disjoint. Hence, with $v=hL_T$,
+\begin{equation}
+\sum_{\substack{T<\gamma_\ell\le2T\\ D_\ell\ge2v/L_T}}D_\ell\ll\frac{T\log^2(2+v)}{v^4}\qquad(1\le v\le L_T).
+\label{eq:disp_25}
+\end{equation}
+Split according to $D_\ell<2/L_T$ and $2^{j+1}/L_T\le D_\ell<2^{j+2}/L_T$ for $j\ge0$ with $2^j\le L_T/2$. These ranges cover $[2/L_T,1]\ni D_\ell$, because $2^{j+2}/L_T>1$ for the largest such $j$, and for each of them $v=2^j$ satisfies $1\le v\le L_T$. The first part contributes at most $\frac4{L_T^2}\sum D_\ell\le\frac4{L_T^2}(T+1)$. The $j$-th part, with $v=2^j$, contributes at most $(2^{j+2}/L_T)^2\sum_{D_\ell\ge2^{j+1}/L_T}D_\ell\ll\frac{16\cdot4^j}{L_T^2}\cdot\frac{T(j+2)^2}{16^j}=\frac{16\,T(j+2)^2}{4^jL_T^2}$, and the sum over $j$ converges.
+\end{proof}
+
+\begin{lemma}[Fourth moment of the counting error]\label{lem:fourth}
+For $U=2^j$ with $j\ge j_0$, $\int_U^{2U}|\Fc(t)-N(t)|^4dt\ll U$.
+\end{lemma}
+
+\begin{proof}
+On $[U,2U]$, $\Fc-N=(2-\frac tU)(\Nz+\Ph_{m_j}-N)+(\frac tU-1)(\Nz+\Ph_{m_{j+1}}-N)$. By convexity of $|\cdot|^4$ it suffices to prove the bound for $\Nz+\Ph_m-N=\Ph_m-S-\varpi/\pi$ with $m\in\{m_j,m_{j+1}\}$, so that $\sqrt U-1\le m\le\sqrt{2U}$. Put $X=p_m$, so that $p\le X$ means $p\in\{p_1,\dots,p_m\}$, and $Y=U^{1/200}$. The ranges $p<Y$ and $Y\le p\le X$ below partition the primes $p\le X$. For $U$ large, $X\ge m\ge Y$ and $\log X\asymp\log U$ (Theorem~\CGref{thm:known_mertens}: $X=p_m\asymp m\log m\asymp\sqrt U\log U$), hence $V:=\sum_{Y\le p\le X}\frac1p=\log\log X-\log\log Y+O(1)=O(1)$ by Mertens' theorem. Expanding \CGeqref{eq:Euler_phase},
+\begin{equation}
+\begin{gathered}
+\Ph_m(t)=\frac1\pi\operatorname{Im}\sum_{p<Y}p^{-1/2-it}+\frac1\pi\operatorname{Im}\mathscr D_1(t)+\frac1{2\pi}\operatorname{Im}\mathscr D_2(t)+\Ph^{(3)}(t),\\
+\mathscr D_1(t)=\sum_{Y\le p\le X}p^{-1/2-it},\qquad \mathscr D_2(t)=\sum_{p\le X}p^{-1-2it},
+\end{gathered}
+\label{eq:phase_split}
+\end{equation}
+with $|\Ph^{(3)}(t)|\le\frac1\pi\sum_p\sum_{r\ge3}\frac1{rp^{r/2}}<\infty$. By Theorem~\CGref{thm:known_fujii}(a) with $\mathsf k=2$, $\alpha_{\rm F}=\frac15$ and $H=T=U$ (its hypotheses hold: $U^{1/2+\alpha_{\rm F}}=U^{7/10}\le H=U$, and $U^{\alpha_{\rm F}/(20\mathsf k)}=U^{1/200}=Y\le U^{1/2}=H^{1/\mathsf k}$), $\int_U^{2U}|S-\frac1\pi\operatorname{Im}\sum_{p<Y}p^{-1/2-it}|^4\ll U$.
+
+The square $\mathscr D_1^2=\sum_n\mathfrak c_nn^{-it}$ has $\mathfrak c_n=d_1(n)n^{-1/2}$, where $d_1(n)$ is the number of ordered pairs $(p,p')$ of primes of $[Y,X]$ with $pp'=n$: $d_1(n)=2$ if $n=pp'$ with $p\ne p'$, $1$ if $n=p^2$, $0$ otherwise, so $d_1\in\{0,1,2\}$, whence $d_1(n)^2\le2d_1(n)$, and $\sum_nd_1(n)=\#\{p\in[Y,X]\}^2\le m^2$.
+
+Hence $\sum_n|\mathfrak c_n|^2=\sum_nd_1(n)^2/n\le2\sum_nd_1(n)/n=2V^2=O(1)$ and $\sum_nn|\mathfrak c_n|^2=\sum_nd_1(n)^2\le2m^2\le4U$, and Theorem~\CGref{thm:known_MV} gives $\int_U^{2U}|\mathscr D_1|^4\ll U$. (The weight $n$ of Theorem~\CGref{thm:known_MV} is compensated by the factor $n^{-1}$ in $|\mathfrak c_n|^2$: the relevant bound is $O(m^2)=O(U)$, not $O(X^2)=O(U\log^2U)$.)
+
+In the same way $\mathscr D_2^2=\sum_v\mathfrak c'_vv^{-2it}$ with $\mathfrak c'_v=d_2(v)/v$, where $d_2(v)\le2$ counts the ordered pairs of primes of $[2,X]$ with product $v$, and $\sum_vd_2(v)=m^2$. Since $v^{-2it}=(v^2)^{-it}$, $\mathscr D_2^2$ is the Dirichlet polynomial in $n^{-it}$ whose coefficient is $\mathfrak c'_v$ at $n=v^2$ and $0$ at the other $n$, and Theorem~\CGref{thm:known_MV} applies to it with $\sum_v|\mathfrak c'_v|^2=\sum_vd_2(v)^2/v^2\le2\bigl(\sum_pp^{-2}\bigr)^2$ and $\sum_vv^2|\mathfrak c'_v|^2=\sum_vd_2(v)^2\le2m^2\le4U$, so $\int_U^{2U}|\mathscr D_2|^4\ll U$.
+
+Finally $|\varpi|\le0.53/t$ and $|\Ph^{(3)}|$ is bounded, so their $L^4[U,2U]$ norms are $\ll U^{1/4}$. Minkowski's inequality in $L^4[U,2U]$ combines the five pieces:
+\begin{equation}
+\bigl\|\Ph_m-S-\tfrac{\varpi}\pi\bigr\|_4\le\Bigl\|S-\frac1\pi\operatorname{Im}\sum_{p<Y}p^{-1/2-it}\Bigr\|_4+\frac1\pi\|\mathscr D_1\|_4+\frac1{2\pi}\|\mathscr D_2\|_4+\|\Ph^{(3)}\|_4+\frac1\pi\|\varpi\|_4\ll U^{1/4}.
+\label{eq:disp_26}
+\end{equation}
+\end{proof}
+
+The number of primes is dictated by the fourth moment. In the proof above, the remainder in Theorem~\CGref{thm:known_MV} for $\mathscr D_1^2$ is $\sum_nn|\mathfrak c_n|^2=\sum_nd_1(n)^2$, which lies between $\#\{p\in[Y,X]\}^2$ and $2m^2$. It is $O(U)$ if and only if $m\ll\sqrt U$, and the same holds for $\mathscr D_2^2$. This is why the primes are counted by number and not by size: the bound depends on $m$, not on $p_m\asymp\sqrt U\log U$. The restriction comes from the method. The present argument does not exclude the use of a larger number of primes.
+
+\subsection{Proof of Theorem~\ref{thm:sublevel}}\label{subsec:proof_sublevel}
+Finiteness, order and the prime budget are Proposition~\CGref{prop:ordered}. Let $T\ge T_0$, $a=T/2$, $b=3T$, and $k\in\Kc_T$. By \CGeqref{eq:intro_RvM}, Theorem~\CGref{thm:known_basic} and Lemma~\CGref{lem:varpi}, there is an absolute constant $C_0\ge1$ with $|N(t)-\Nz(t)|\le C_0\log t$ for $t\ge T/4$ and $T\ge T_0$. Since $k>N(T)$, for $0<t\le a$ it follows, by \CGeqref{eq:globalphasebound} and the monotonicity of $\Nz$ on $[2\pi,\infty)$ (and $\Nz\le\frac78$ on $(0,2\pi]$),
+\begin{equation}
+\Fc(t)\le\max\bigl(\tfrac78,\Nz(\tfrac T2)\bigr)+\tfrac14\sqrt T<\Nz(T)-C_0\log T\le N(T)<k-\tfrac12,
+\label{eq:disp_27}
+\end{equation}
+because $\Nz(T)-\Nz(T/2)\ge\frac T2\lL(\frac T2)\gg T\log T$. For $t\ge b$, similarly, $\Fc(t)\ge\Nz(t)-\frac14\sqrt{2t}\ge\Nz(3T)-\frac14\sqrt{6T}>\Nz(2T)+C_0\log(2T)\ge N(2T)\ge k$ (the function $\Nz(t)-\frac14\sqrt{2t}$ increases for $t\ge2\pi e$). Hence $\tau_{k}^{\mathrm C}=a+\int_a^b\Ind_{\{\Fc<k-1/2\}}dt$, and $\gamma_k\in(a,b]$.
+
+Theorem~\CGref{thm:transfer} with $f=\Fc$ applies to the indices $k\in\Kc_T$, a subset of $\{k:a<\gamma_k\le b\}$. The gaps $D_\ell$, $\ell_0\le\ell\le\ell_1$, have $\gamma_\ell\in(T/4,3T]$: $\gamma_\ell\le\gamma_{\ell_1}\le b=3T$, and $\gamma_{\ell_0}>T/4$ because, by Theorem~\CGref{thm:known_basic}, there is $\ell_*$ with $D_\ell<1$ for all $\ell\ge\ell_*$, and for $T\ge T_0$ one has $\ell_0=N(T/2)\ge\ell_*$, so $\gamma_{\ell_0}>\gamma_{\ell_0+1}-1>T/2-1\ge T/4$. Lemma~\CGref{lem:gaps} on the four dyadic intervals $(T',2T']$, $T'=T/4,T/2,T,2T$, which cover $(T/4,4T]$, gives $\sum_{\ell_0\le\ell\le\ell_1}D_\ell^3\ll T/\log^2T$. The interval $[a,b]$ is covered by at most four blocks $[2^j,2^{j+1}]$ with $T/4\le2^j\le3T$, so Lemma~\CGref{lem:fourth} gives $\int_a^b(1+|\Fc-N|)^4\ll T$. By \CGeqref{eq:transfer},
+\begin{equation}
+\sum_{k\in\Kc_T}(\tau_{k}^{\mathrm C}-\gamma_k)^2\ll\Bigl(\frac T{\log^2T}\Bigr)^{1/2}T^{1/2}=\frac T{\log T}.
+\label{eq:disp_28}
+\end{equation}
+For the mean-square bound, \CGeqref{eq:intro_RvM} with $S=O(\log T)$ (Theorem~\CGref{thm:known_basic}) and $\varpi=O(1)$ (Lemma~\CGref{lem:varpi}) gives
+\begin{equation}
+\begin{aligned}
+\#\Kc_T=N(2T)-N(T)&=\Nz(2T)-\Nz(T)+O(\log T)\\
+&=\frac T{2\pi}\bigl(\log T+2\log2-\log(2\pi e)\bigr)+O(\log T)\ge\frac{T\log T}{8\pi}\qquad(T\ge T_0),
+\end{aligned}
+\label{eq:disp_29}
+\end{equation}
+because $\Nz(2T)-\Nz(T)=\frac{2T}{2\pi}\log\frac{2T}{2\pi e}-\frac T{2\pi}\log\frac T{2\pi e}$ and $2\log2-\log(2\pi e)=-1.45\ldots$. Hence the mean of $(\tau_{k}^{\mathrm C}-\gamma_k)^2$ over $\Kc_T$ is at most $8\pi C/\log^2T$, and $C'=8\pi C$.\qed
+
+\begin{proof}[Proof of Corollary~\ref{cor:proportion}]
+Chebyshev's inequality applied to \CGeqref{eq:main_sublevel}.
+\end{proof}
+
+\begin{remark}\label{rem:bare_point}
+The uncorrected sequence $\tau_k$ is the case $\Ph=0$. Then $q_f$ is governed by $S$, and \CGeqref{eq:transfer}, with Selberg's fourth moment (Theorem~\CGref{thm:known_selberg} with $\mathsf k=2$, in dyadic form) in place of Lemma~\CGref{lem:fourth} and with the window $[T/2,3T]$ localized exactly as in the proof of Theorem~\CGref{thm:sublevel}, only yields $\sum_{k\in\Kc_T}(\tau_k-\gamma_k)^2\ll T\log\log T/\log T$. This is the right order: Theorem~\CGref{thm:meansquare} gives the asymptotic equality, by a route that does not pass through the transfer inequality. The same value has a reading in terms of Gram points. If $\Delta^{\rm G}_k$ is the integer with $g_{k+\Delta^{\rm G}_k-2}<\gamma_k\le g_{k+\Delta^{\rm G}_k-1}$ ($g_m$ the Gram points, $\vartheta(g_m)=m\pi$), then $\vartheta(\gamma_k)/\pi\in(k+\Delta^{\rm G}_k-2,k+\Delta^{\rm G}_k-1]$ and $\vartheta/\pi=\Nz-1+\varpi/\pi$ give $|s_k+\Delta^{\rm G}_k|<1$ for $\gamma_k\ge14$. Selberg's moments of $\Delta^{\rm G}_k$ over short ranges of $k$, in the form of Korolev \CGcite[Thm.~4.2]{Korolev2012}, are therefore consistent with Proposition~\CGref{prop:s_meansquare}: both give $\langle s_k^2\rangle_{\Kc_T}\sim\frac1{2\pi^2}\log\log T$, the former through the Gram intervals and the latter through the exact identity \CGeqref{eq:identity_distance}. The finite Euler phases of Theorem~\CGref{thm:sublevel} remove the factor $\log\log T$.
+\end{remark}
+
+%======================================================================
+\section{The mean square of \texorpdfstring{$\tau_k-\gamma_k$}{tau\_k - gamma\_k}}\label{sec:meansquare}
+
+In this section $F$, $u_k$, $\Psi_j$, $k_1$ and $k_2$ are local. The symbols $s_k$, $G=N-\Nz=S+\varpi/\pi$ and $\lL=\Nz'$ are those of Section~\CGref{sec:distance}, and $\Kc_T$, $\langle\cdot\rangle_{\Kc_T}$ those of Theorem~\CGref{thm:sublevel}. Section~\CGref{sec:distance} compared $\tau_k$ with $\gamma_k$ one index at a time. Here the comparison is in mean square, and it rests on an identity that turns a sum over the ordinates into an integral of the counting function. Nothing about the zeros is assumed.
+
+\begin{theorem}[Exact defect identity]\label{thm:identity}
+Let $1\le k_1<k_2$ be indices, let $F$ be a real $C^1$ function on an open interval containing $[\gamma_{k_1},\gamma_{k_2}]$, and put $u_k=k-\frac12-F(\gamma_k)$ for $k_1\le k\le k_2$. For every integer $j\ge1$,
+\begin{equation}
+\int_{\gamma_{k_1}}^{\gamma_{k_2}}\bigl(N(t)-F(t)\bigr)^{2j}F'(t)\,dt=\sum_{k=k_1+1}^{k_2-1}\Psi_j(u_k)+\frac{(\frac12+u_{k_1})^{2j+1}+(\frac12-u_{k_2})^{2j+1}}{2j+1},
+\label{eq:identity_general}
+\end{equation}
+where
+\begin{equation}
+\Psi_j(u)=\frac{(\frac12+u)^{2j+1}+(\frac12-u)^{2j+1}}{2j+1}=u^{2j}+\sum_{l=0}^{j-1}\binom{2j+1}{2l}\frac{4^{l-j}}{2j+1}\,u^{2l}.
+\label{eq:Psi_def}
+\end{equation}
+In particular, since $\Psi_1(u)=u^2+\frac1{12}$,
+\begin{equation}
+\sum_{k=k_1+1}^{k_2-1}u_k^2=\int_{\gamma_{k_1}}^{\gamma_{k_2}}\bigl(N(t)-F(t)\bigr)^2F'(t)\,dt-\frac{k_2-k_1-1}{12}-\frac{(\frac12+u_{k_1})^3+(\frac12-u_{k_2})^3}3 .
+\label{eq:identity_quadratic}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\emph{Existence of the integral.} On $[\gamma_{k_1},\gamma_{k_2}]$ the function $N$ is a step function with finitely many jumps, since $N(\gamma_{k_2})$ is finite, and $F$, $F'$ are continuous. The integrand is bounded and piecewise continuous, hence Riemann integrable.
+
+\emph{One gap.} Fix $k$ with $k_1\le k<k_2$. Suppose first that $\gamma_k<\gamma_{k+1}$. Then $N(t)=k$ for $t\in(\gamma_k,\gamma_{k+1})$, because exactly $k$ ordinates counted with multiplicity are $\le t$. The function $t\mapsto-(k-F(t))^{2j+1}/(2j+1)$ is $C^1$ with derivative $(k-F(t))^{2j}F'(t)$, by the chain rule, and no monotonicity of $F$ is needed. Hence
+\begin{equation}
+\begin{split}
+\int_{\gamma_k}^{\gamma_{k+1}}\bigl(k-F(t)\bigr)^{2j}F'(t)\,dt&=\frac{(k-F(\gamma_k))^{2j+1}-(k-F(\gamma_{k+1}))^{2j+1}}{2j+1}\\
+&=\frac{(\frac12+u_k)^{2j+1}+(\frac12-u_{k+1})^{2j+1}}{2j+1},
+\end{split}
+\label{eq:identity_one_gap}
+\end{equation}
+because $k-F(\gamma_k)=\frac12+u_k$ and $k-F(\gamma_{k+1})=-\frac12+u_{k+1}$. Now let $\gamma_k=\gamma_{k+1}$. The left side of \CGeqref{eq:identity_one_gap} is $0$. On the other hand $u_{k+1}=u_k+1$, so the right side equals $\bigl((\frac12+u_k)^{2j+1}+(-\frac12-u_k)^{2j+1}\bigr)/(2j+1)=0$. So \CGeqref{eq:identity_one_gap} holds for every $k$, and the values of $N$ at the finitely many ordinates do not affect the integrals.
+
+\emph{Summation.} Sum \CGeqref{eq:identity_one_gap} over $k_1\le k<k_2$, a finite sum. Each $k$ with $k_1<k<k_2$ contributes $(\frac12+u_k)^{2j+1}$ from the gap starting at $\gamma_k$ and $(\frac12-u_k)^{2j+1}$ from the gap ending at $\gamma_k$, that is, $\Psi_j(u_k)$. The unmatched terms are $(\frac12+u_{k_1})^{2j+1}$ and $(\frac12-u_{k_2})^{2j+1}$. This is \CGeqref{eq:identity_general}. In the binomial expansion of $(\frac12+u)^{2j+1}+(\frac12-u)^{2j+1}$ the odd powers of $u$ cancel and $u^{2l}$ has coefficient $2\binom{2j+1}{2l}2^{2l-2j-1}$, which gives \CGeqref{eq:Psi_def}; the leading coefficient is $\binom{2j+1}{2j}/(2j+1)=1$. For $j=1$, $\Psi_1(u)=u^2+\frac1{12}$, and \CGeqref{eq:identity_quadratic} follows.
+\end{proof}
+
+\begin{remark}\label{rem:twelfth}
+$\Psi_j(u)=\int_{u-1/2}^{u+1/2}x^{2j}\,dx$ is the mean of $x^{2j}$ over the unit interval centered at $u$, and $\frac1{12}=\int_{-1/2}^{1/2}x^2\,dx$. The constant is associated with each unit increment in the enumeration counting multiplicities; repeated ordinates are handled by the degenerate-gap cancellation in the proof. When $F$ is not monotone, $N-F$ need not run through an interval of length one between consecutive zeros, and the identity remains exact with the integral counted with sign.
+\end{remark}
+
+\begin{corollary}\label{cor:identity_distance}
+For $1\le k_1<k_2$,
+\begin{equation}
+\sum_{k=k_1+1}^{k_2-1}s_k^2=\int_{\gamma_{k_1}}^{\gamma_{k_2}}G(t)^2\lL(t)\,dt-\frac{k_2-k_1-1}{12}-\frac{(\frac12+s_{k_1})^3+(\frac12-s_{k_2})^3}3 .
+\label{eq:identity_distance}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Take $F=\Nz$ in Theorem~\CGref{thm:identity} with $j=1$. The function $\Nz$ is $C^\infty$ on $(0,\infty)$ with $\Nz'=\lL$, $u_k=k-\frac12-\Nz(\gamma_k)=s_k$, and $N-\Nz=G$.
+\end{proof}
+
+\begin{proposition}\label{prop:s_meansquare}
+As $T\to\infty$,
+\begin{equation}
+\langle s_k^2\rangle_{\Kc_T}=\frac{\log\log T}{2\pi^2}\bigl(1+o(1)\bigr).
+\label{eq:s_meansquare}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $T\ge T_0$, $k_1=N(T)$ and $k_2=N(2T)+1$. Since $\gamma_k\le T$ exactly when $k\le N(T)$, and likewise at $2T$, the indices $k$ with $k_1<k<k_2$ are exactly those of $\Kc_T$, and $k_2-k_1-1=\#\Kc_T$. By Theorem~\CGref{thm:known_basic} (Littlewood's zero-gap theorem, as in \CGcite[Thm.~9.12]{Titchmarsh1986}) the gaps $\gamma_{\ell+1}-\gamma_\ell$ tend to $0$, so for $T\ge T_0$ one has $T-1\le\gamma_{k_1}\le T$ and $2T<\gamma_{k_2}\le2T+1$: indeed $\gamma_{k_1}\le T<\gamma_{k_1+1}\le\gamma_{k_1}+1$, and $\gamma_{k_2-1}\le2T<\gamma_{k_2}\le\gamma_{k_2-1}+1$. Apply Corollary~\CGref{cor:identity_distance} and estimate the three terms on the right of \CGeqref{eq:identity_distance}.
+
+\emph{The integral.} By Theorem~\CGref{thm:known_basic} and Lemma~\CGref{lem:varpi}, $|G(t)|\le|S(t)|+|\varpi(t)|/\pi\ll\log t$ for $t\ge2$, and $\lL(t)\ll\log t$. The parts of the integral over $[\gamma_{k_1},T]$ and over $[2T,\gamma_{k_2}]$, two intervals of length at most $1$, are therefore $O(\log^3T)$. On $[T,2T]$ write $G^2=S^2+2S\varpi/\pi+\varpi^2/\pi^2$. Since $|\varpi(t)|\le0.53/t$,
+\begin{equation}
+\int_T^{2T}\Bigl|2S\frac\varpi\pi+\frac{\varpi^2}{\pi^2}\Bigr|\lL\,dt\ll\frac{\log T}{T}\int_T^{2T}\bigl(|S(t)|+1\bigr)\,dt\ll\log^2T .
+\label{eq:disp_30}
+\end{equation}
+Next, $0\le\lL(t)-\lL(T)=\frac1{2\pi}\log\frac tT\le\frac{\log2}{2\pi}$ on $[T,2T]$, so
+\begin{equation}
+\int_T^{2T}S^2\lL\,dt=\lL(T)\int_T^{2T}S^2\,dt+O\Bigl(\int_T^{2T}S^2\,dt\Bigr).
+\label{eq:disp_31}
+\end{equation}
+Theorem~\CGref{thm:known_selberg} with $\mathsf k=1$ gives $\int_0^TS^2\,dt=\frac{T}{2\pi^2}\log\log T\,(1+o(1))$. Subtracting the integrals over $[0,2T]$ and $[0,T]$, and using $\log\log2T-\log\log T=O(1/\log T)$,
+\begin{equation}
+\int_T^{2T}S(t)^2\,dt=\frac{T}{2\pi^2}\log\log T\,\bigl(1+o(1)\bigr).
+\label{eq:selberg_dyadic}
+\end{equation}
+Altogether, as $\lL(T)\to\infty$,
+\begin{equation}
+\begin{aligned}
+\int_{\gamma_{k_1}}^{\gamma_{k_2}}G^2\lL\,dt&=\frac{T\lL(T)}{2\pi^2}\log\log T\,\bigl(1+o(1)\bigr)+O(T\log\log T)+O(\log^3T)\\
+&=\frac{T\lL(T)}{2\pi^2}\log\log T\,\bigl(1+o(1)\bigr).
+\end{aligned}
+\label{eq:disp_32}
+\end{equation}
+
+\emph{The other two terms.} The second term is $\#\Kc_T/12$. For the third, Lemma~\CGref{lem:s_bounds} gives $|s_k|\le\max(|G_k^-|,|G_k^+|)\ll\log\gamma_k$, so the two cubes are $O(\log^3T)$.
+
+\emph{The size of $\Kc_T$.} By \CGeqref{eq:intro_RvM}, Theorem~\CGref{thm:known_basic} and Lemma~\CGref{lem:varpi},
+\begin{equation}
+\begin{aligned}
+\#\Kc_T=N(2T)-N(T)&=\Nz(2T)-\Nz(T)+O(\log T)\\
+&=T\lL(T)+\frac{T}{2\pi}(2\log2-1)+O(\log T)=T\lL(T)\Bigl(1+O\Bigl(\frac1{\log T}\Bigr)\Bigr),
+\end{aligned}
+\label{eq:disp_33}
+\end{equation}
+because $\Nz(2T)-\Nz(T)=\frac T{2\pi}\bigl(\log\frac T{2\pi}-1+2\log2\bigr)$.
+
+\emph{Conclusion.} Dividing \CGeqref{eq:identity_distance} by $\#\Kc_T$,
+\begin{equation}
+\langle s_k^2\rangle_{\Kc_T}=\frac{\log\log T}{2\pi^2}\bigl(1+o(1)\bigr)-\frac1{12}+O\Bigl(\frac{\log^3T}{T\log T}\Bigr)=\frac{\log\log T}{2\pi^2}\bigl(1+o(1)\bigr),
+\label{eq:disp_34}
+\end{equation}
+since $\log\log T\to\infty$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:meansquare}]
+By the mean value theorem, as in the proof of Corollary~\CGref{cor:distance}, $s_k=\Nz(\tau_k)-\Nz(\gamma_k)=\lL(\xi_k)(\tau_k-\gamma_k)$ for some $\xi_k$ between $\gamma_k$ and $\tau_k$. By the proof of Corollary~\CGref{cor:distance}(a), $|\tau_k-\gamma_k|\le C$ for all $k\ge1$, with $C$ absolute. For $k\in\Kc_T$ one has $\gamma_k\in(T,2T]$, hence $\xi_k\in[T-C,2T+C]$ and $\lL(\xi_k)=\lL(T)+O(1)=\lL(T)\bigl(1+O(1/\log T)\bigr)$, uniformly in $k\in\Kc_T$. Therefore
+\begin{equation}
+(\tau_k-\gamma_k)^2=\frac{s_k^2}{\lL(\xi_k)^2}=\frac{s_k^2}{\lL(T)^2}\Bigl(1+O\Bigl(\frac1{\log T}\Bigr)\Bigr)\qquad(k\in\Kc_T),
+\label{eq:disp_35}
+\end{equation}
+and, averaging over $\Kc_T$ and applying Proposition~\CGref{prop:s_meansquare},
+\begin{equation}
+\begin{aligned}
+\bigl\langle(\tau_k-\gamma_k)^2\bigr\rangle_{\Kc_T}&=\frac{\langle s_k^2\rangle_{\Kc_T}}{\lL(T)^2}\Bigl(1+O\Bigl(\frac1{\log T}\Bigr)\Bigr)\\
+&=\frac{4\pi^2}{\log^2(T/2\pi)}\cdot\frac{\log\log T}{2\pi^2}\bigl(1+o(1)\bigr)=\frac{2\log\log T}{\log^2T}\bigl(1+o(1)\bigr),
+\end{aligned}
+\label{eq:disp_36}
+\end{equation}
+because $\log(T/2\pi)=\log T\,(1+O(1/\log T))$. Finally $\sum_{k\in\Kc_T}(\tau_k-\gamma_k)^2=\#\Kc_T\cdot\langle(\tau_k-\gamma_k)^2\rangle_{\Kc_T}$ and $\#\Kc_T\asymp T\log T$, which gives $\sum_{k\in\Kc_T}(\tau_k-\gamma_k)^2\asymp T\log\log T/\log T$.
+\end{proof}
+
+\begin{remark}\label{rem:meansquare_comparison}
+Theorem~\CGref{thm:meansquare} is an asymptotic equality, so the factor $\log\log T$ is a property of the sequence $\tau_k$ and not of the method. Theorem~\CGref{thm:sublevel} gives $\langle(\tau_{k}^{\mathrm C}-\gamma_k)^2\rangle_{\Kc_T}\le C'/\log^2T$ for the points corrected by the Euler phases: the primes remove this factor from the proved mean-square upper order. With $F=\Nz$ and the higher moments of Theorem~\CGref{thm:known_selberg}, the identity \CGeqref{eq:identity_general} gives in the same way $\langle s_k^{2j}\rangle_{\Kc_T}\sim\frac{(2j)!}{j!(2\pi)^{2j}}(\log\log T)^j$ for every fixed $j$, by induction on $j$ through the lower-degree terms of $\Psi_j$. Only the case $j=1$ is used here.
+\end{remark}
+
+
+%======================================================================
+\section{Further consequences of ordinal localization}\label{sec:additional}
+The results of this section follow from the estimates already established in this article. The final certificate is included here with a self-contained proof because it applies to any continuous ordinal model. No conclusion about RH or a positive proportion of simple zeros is inferred from the bounds presently available.
+
+\begin{proposition}[Second moment and asymptotic correlation of the arithmetic correction]\label{prop:correction_second_moment}
+Write
+\begin{equation}
+\delta_k=\gamma_k-\tau_k,\qquad
+b_k=\tau_k^{\mathrm C}-\tau_k,\qquad
+\varepsilon_k=\gamma_k-\tau_k^{\mathrm C},\qquad
+n_T=\#\mathcal K_T,
+\label{eq:disp_37}
+\end{equation}
+where $\mathcal K_T=\{k:T<\gamma_k\le2T\}$, as above. Then, without RH,
+\begin{equation}
+\frac1{n_T}\sum_{k\in\mathcal K_T}b_k^2
+=\frac{2\log\log T}{\log^2T}\,(1+o(1)),
+\label{eq:correction_second_moment}
+\end{equation}
+and
+\begin{equation}
+\frac{\sum_{k\in\mathcal K_T}\delta_kb_k}
+{\bigl(\sum_{k\in\mathcal K_T}\delta_k^2\bigr)^{1/2}
+ \bigl(\sum_{k\in\mathcal K_T}b_k^2\bigr)^{1/2}}
+=1-O\!\left(\frac1{\log\log T}\right).
+\label{eq:correction_alignment}
+\end{equation}
+Furthermore,
+\begin{equation}
+\frac1{n_T}\sum_{k\in\mathcal K_T}
+\left|e^{i(\gamma_k-\tau_k)}-e^{i(\tau_k^{\mathrm C}-\tau_k)}\right|^2
+\ll\frac1{\log^2T}.
+\label{eq:correction_phases}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The exact relation $\delta_k=b_k+\varepsilon_k$ yields
+$\|\delta-b\|_2=\|\varepsilon\|_2$ on $\mathcal K_T$.
+Theorem~\CGref{thm:sublevel} gives
+$\|\varepsilon\|_2^2\ll n_T/\log^2T$, whereas
+Theorem~\CGref{thm:meansquare} gives
+$\|\delta\|_2^2\sim2n_T\log\log T/\log^2T$.
+By the reverse triangle inequality,
+\begin{equation}
+\bigl|\|b\|_2-\|\delta\|_2\bigr|
+\le\|\varepsilon\|_2
+=O\!\left(\frac{\|\delta\|_2}{\sqrt{\log\log T}}\right).
+\label{eq:disp_38}
+\end{equation}
+Put $D=\|\delta\|_2$, $B=\|b\|_2$ and $E=\|\varepsilon\|_2$. Since $E/D=O((\log\log T)^{-1/2})=o(1)$, the preceding inequality gives $|B/D-1|\le E/D=o(1)$. Hence $B^2=D^2(1+o(1))$, and Theorem~\CGref{thm:meansquare} proves \CGeqref{eq:correction_second_moment}.
+To prove the alignment, use the same $D$, $B$ and $E=\|\delta-b\|_2$.
+The polarization identity gives
+\begin{equation}
+1-\frac{\langle\delta,b\rangle}{DB}
+=\frac{E^2-(D-B)^2}{2DB}
+\le\frac{E^2}{2DB}
+=O\!\left(\frac1{\log\log T}\right),
+\label{eq:disp_39}
+\end{equation}
+using $B/D\to1$.
+Finally, $|e^{iv}-e^{iw}|\le|v-w|$ for real $v,w$; apply it with
+$v=\delta_k$, $w=b_k$ and sum the squares.
+\end{proof}
+
+\begin{lemma}[Control of the derivative and of the endpoint phases]\label{lem:additional_derivative}
+For $T$ sufficiently large, the continuous, piecewise $C^1$ function $\Fc=\Nz+\Ph$ satisfies
+\begin{equation}
+\sup_{T/2\le t\le3T}|\Ph(t)|\ll T^{1/4},
+\qquad
+\int_{T/2}^{3T}|\Fc'(t)|^2\,dt\ll T\log^2T.
+\label{eq:additional_derivative}
+\end{equation}
+Derivatives are interpreted almost everywhere at the finitely many dyadic junctions.
+\end{lemma}
+\begin{proof}
+On a dyadic interval $[U,2U]$, the two prime counts in the definition of
+$\Ph$ are at most $\sqrt{2U}$. For every prime $p$,
+$\sum_{r\ge1}1/(rp^{r/2})\le C_0p^{-1/2}$ with an absolute $C_0$.
+Since $p_\nu\ge\nu+1$, the triangle inequality gives
+$|\Ph_m(t)|\ll\sum_{\nu\le m}\nu^{-1/2}\ll\sqrt m\ll U^{1/4}$.
+Convex interpolation preserves this bound.
+
+Differentiate $\Ph_m$ termwise. For a fixed $m$ the remaining series over $r$ and its derivative converge uniformly, because $\sum_{r\ge1}(\log p)p^{-r/2}<\infty$ for each prime $p$:
+\begin{equation}
+\Ph_m'(t)=-\frac1\pi\sum_{\nu\le m}\sum_{r\ge1}
+\frac{\log p_\nu}{p_\nu^{r/2}}\cos(rt\log p_\nu).
+\label{eq:disp_40}
+\end{equation}
+For $r=1$, the cosine sum is the real part of the complex Dirichlet polynomial with frequencies $p$ and coefficients $(\log p)p^{-1/2}$.
+The Montgomery--Vaughan mean-value inequality, Theorem~\CGref{thm:known_MV}, and $|\operatorname{Re}z|^2\le|z|^2$ show that its integral square on
+$[U,2U]$ is bounded by
+\begin{equation}
+\ll U\sum_{p\le p_m}\frac{\log^2p}{p}
+ +\sum_{p\le p_m}\log^2p
+\ll U\log^2U.
+\label{eq:disp_41}
+\end{equation}
+Here $p_m\ll m\log(2m)\ll\sqrt U\log U$ follows from
+Theorem~\CGref{thm:known_mertens} as used in Lemma~\CGref{lem:fourth}.
+For $r=2$, the cosine sum is likewise the real part of a complex Dirichlet polynomial with frequencies $p^2$, so the same inequality applies:
+\begin{equation}
+\int_U^{2U}\Bigl|\sum_{p\le p_m}
+\frac{\log p}{p}\cos(2t\log p)\Bigr|^2dt
+\ll U\sum_p\frac{\log^2p}{p^2}
++\sum_{p\le p_m}\log^2p
+\ll U\log^2U.
+\label{eq:disp_42}
+\end{equation}
+The sum over $r\ge3$ is uniformly bounded by absolute convergence of
+$\sum_p(\log p)p^{-3/2}$.
+On $[U,2U]$, differentiating the interpolation weights adds
+$U^{-1}(\Ph_{m_{j+1}}-\Ph_{m_j})=O(U^{-3/4})$, so the same estimate holds
+for $\Ph'$.
+Finally, $\Nz'(t)=(2\pi)^{-1}\log(t/2\pi)=O(\log T)$ on
+$[T/2,3T]$. The interval intersects a uniformly bounded number of dyadic blocks;
+summing their bounds proves \CGeqref{eq:additional_derivative}.
+\end{proof}
+
+\begin{theorem}[The corrected ordinal defect at the actual zeros]\label{thm:corrected_ordinal_defect}
+For $k\in\mathcal K_T$ define
+\begin{equation}
+ d_k^{\mathrm C}=k-\frac12-\Fc(\gamma_k)
+ =\left(k-\frac12-\Nz(\gamma_k)\right)-\Ph(\gamma_k).
+\label{eq:disp_43}
+\end{equation}
+Then, without RH,
+\begin{equation}
+\frac1{\#\mathcal K_T}\sum_{k\in\mathcal K_T}
+|d_k^{\mathrm C}|^2\ll1.
+\label{eq:corrected_ordinal_defect}
+\end{equation}
+\end{theorem}
+\begin{proof}
+For an absolutely continuous real function $F$ on a compact interval,
+the composition $t\mapsto(k-F(t))^{2j+1}$ is absolutely continuous
+and has derivative $-(2j+1)(k-F(t))^{2j}F'(t)$ almost everywhere.
+Thus the proof of Theorem~\CGref{thm:identity} applies to such $F$
+by the fundamental theorem for absolutely continuous functions,
+including degenerate intervals between repeated ordinates.
+The function $\Fc$ is absolutely continuous on every compact interval:
+it is continuous and piecewise $C^1$ with finitely many dyadic junctions.
+Take $k_1=N(T)$ and $k_2=N(2T)+1$ in
+\CGeqref{eq:identity_quadratic}, with $F=\Fc$. The interior indices are
+exactly $\mathcal K_T$ and, as in the proof of
+Proposition~\CGref{prop:s_meansquare}, the two endpoints lie in
+$[T-1,2T+1]$ for large $T$. The terms
+$|k-\frac12-\Nz(\gamma_k)|$ at those endpoints are $O(\log T)$ by
+Lemma~\CGref{lem:s_bounds}, and Lemma~\CGref{lem:additional_derivative}
+gives $|\Ph(\gamma_k)|\ll T^{1/4}$.
+Using $(a+b)^3\le4(a^3+b^3)$ for $a,b\ge0$, the cubic boundary terms are $O(T^{3/4}+\log^3T)=o(T\log T)$.
+
+Cauchy--Schwarz, Lemmas~\CGref{lem:fourth} and
+\CGref{lem:additional_derivative}, and a covering by finitely many dyadic
+intervals give
+\begin{equation}
+\begin{aligned}
+\left|\int_{\gamma_{k_1}}^{\gamma_{k_2}}
+(N(t)-\Fc(t))^2\Fc'(t)\,dt\right|
+&\le\left(\int_{T-1}^{2T+1}|N-\Fc|^4dt\right)^{1/2}
+\left(\int_{T-1}^{2T+1}|\Fc'|^2dt\right)^{1/2}\\
+&\ll T\log T.
+\end{aligned}
+\label{eq:disp_44}
+\end{equation}
+The integral need not be nonnegative because $\Fc'$ may change sign.
+Taking absolute values in the quadratic identity yields
+\begin{equation}
+\sum_{k\in\mathcal K_T}|d_k^{\mathrm C}|^2
+\le\left|\int_{\gamma_{k_1}}^{\gamma_{k_2}}
+(N(t)-\Fc(t))^2\Fc'(t)\,dt\right|
++\frac{\#\mathcal K_T}{12}+O(T^{3/4}+\log^3T)
+\ll T\log T.
+\label{eq:disp_45}
+\end{equation}
+Division by $\#\mathcal K_T\asymp T\log T$ proves
+\CGeqref{eq:corrected_ordinal_defect}.
+\end{proof}
+
+\begin{corollary}[Second moment of the prime phases at the ordinates]\label{cor:prime_phase_second_moment}
+With $s_k=k-\frac12-\Nz(\gamma_k)$ as in
+Proposition~\CGref{prop:s_meansquare}, one has, without RH,
+\begin{equation}
+\frac1{\#\mathcal K_T}\sum_{k\in\mathcal K_T}\Ph(\gamma_k)^2
+\sim\frac{\log\log T}{2\pi^2},
+\label{eq:prime_phase_second_moment}
+\end{equation}
+and
+\begin{equation}
+\frac1{\#\mathcal K_T}\sum_{k\in\mathcal K_T}
+ s_k\Ph(\gamma_k)
+\sim\frac{\log\log T}{2\pi^2}.
+\label{eq:prime_phase_covariance}
+\end{equation}
+\end{corollary}
+\begin{proof}
+The relation $s_k=\Ph(\gamma_k)+d_k^{\mathrm C}$ is exact.
+Theorem~\CGref{thm:corrected_ordinal_defect} gives
+$\langle|d_k^{\mathrm C}|^2\rangle_{\mathcal K_T}=O(1)$, while
+Proposition~\CGref{prop:s_meansquare} gives
+$\langle s_k^2\rangle_{\mathcal K_T}\sim(2\pi^2)^{-1}\log\log T$.
+The reverse triangle inequality in the Euclidean norm therefore gives
+$\langle\Ph(\gamma_k)^2\rangle_{\mathcal K_T}
+=\langle s_k^2\rangle_{\mathcal K_T}
++O(\sqrt{\log\log T}+1)$, proving
+\CGeqref{eq:prime_phase_second_moment}.
+Finally,
+$\langle s_k\Ph(\gamma_k)\rangle
+=\langle s_k^2\rangle-\langle s_kd_k^{\mathrm C}\rangle$,
+and Cauchy--Schwarz makes the last term
+$O(\sqrt{\log\log T})$.
+\end{proof}
+
+\begin{theorem}[A deterministic certificate for simple critical-line zeros]\label{thm:recovered_simple_certificate}
+In this theorem $v_k$ is a local symbol, unrelated to $v_k$ in the proof of Theorem~\CGref{thm:transfer}. Let $\mathsf F_{\mathrm{test}}$ be any real-valued function defined at the ordinates,
+let $j\ge1$ be an integer, and set
+\begin{equation}
+v_k=k-\frac12-\mathsf F_{\mathrm{test}}(\gamma_k),\qquad
+\mathcal K_T=\{k:T<\gamma_k\le2T\}.
+\label{eq:disp_46}
+\end{equation}
+Let $N_{\mathrm{simple},1/2}(T,2T)$ count the simple zeros on the
+critical line in this block, with no repeated ordinates. Then
+\begin{equation}
+N_{\mathrm{simple},1/2}(T,2T)
+\ge\#\mathcal K_T-\sum_{k\in\mathcal K_T}(2v_k)^{2j}.
+\label{eq:recovered_simple_certificate}
+\end{equation}
+\end{theorem}
+\begin{proof}
+At an ordinate $\gamma$ of total multiplicity $m\ge2$, the consecutive
+indices can be written as $k,k+1,\ldots,k+m-1$. Because $\mathsf F_{\mathrm{test}}$ has the
+same value at all these indices, $v_{k+i}=v_k+i$.
+Among all $m$-tuples of consecutive real numbers spaced by one,
+\begin{equation}
+\min_{a\in\mathbb R}\sum_{i=0}^{m-1}(a+i)^2
+=\sum_{i=0}^{m-1}\left(i-\frac{m-1}{2}\right)^2
+=\frac{m(m^2-1)}{12}.
+\label{eq:disp_47}
+\end{equation}
+Hence
+$\frac1m\sum_{i=0}^{m-1}(2v_{k+i})^2\ge(m^2-1)/3\ge1$.
+The monotonicity of normalized $\ell^p$ norms, for $2j\ge2$, gives
+\begin{equation}
+\left(\frac1m\sum_{i=0}^{m-1}|2v_{k+i}|^{2j}\right)^{1/(2j)}
+\ge\left(\frac1m\sum_{i=0}^{m-1}|2v_{k+i}|^2\right)^{1/2}\ge1.
+\label{eq:disp_48}
+\end{equation}
+Hence $\sum_{i=0}^{m-1}(2v_{k+i})^{2j}\ge m$.
+The functional equation and conjugation symmetry give
+$\rho=\beta+i\gamma\mapsto1-\overline\rho=1-\beta+i\gamma$.
+If $\beta\ne\frac12$ these are distinct zeros with the same ordinate.
+Thus every ordinate of total multiplicity one corresponds to a simple
+zero on the critical line.
+The indices of $\mathcal K_T$ form a disjoint union of complete
+multiplicity blocks. The number of indices belonging to blocks of
+multiplicity at least two is therefore at most
+$\sum_{k\in\mathcal K_T}(2v_k)^{2j}$.
+Subtracting this quantity from $\#\mathcal K_T$ proves the claim.
+\end{proof}
+
+\begin{remark}\label{rem:certificate_scope}
+It is a certificate, not an unconditional positive-proportion result:
+Theorem~\CGref{thm:corrected_ordinal_defect} bounds the second moment
+of $d_k^{\mathrm C}$ but does not provide a sufficiently small explicit
+constant for \CGeqref{eq:recovered_simple_certificate} to be positive.
+Further higher-moment and finite Euler-product results are not claimed here.
+\end{remark}
+
+%======================================================================
+\section{Conclusion}\label{sec:conclusion}
+The principal conclusion is the unconditional, fully ordinally indexed
+construction $\tau_k^{\mathrm C}$ from finitely many Euler phases.
+The sublevel measures remain strictly increasing even though the
+underlying prime-complemented counting function need not be monotone.
+Theorem~\CGref{thm:sublevel} proves a root-mean-square localization error
+$O(1/\log T)$ over the complete list of zeros, including multiplicities.
+
+The exact defect identity provides a separate unconditional asymptotic:
+the uncorrected Riemann--von Mangoldt ordinates have mean-square error
+$2\log\log T/\log^2T\,(1+o(1))$. The arithmetic correction removes the
+divergent factor. Proposition~\CGref{prop:correction_second_moment} shows that
+the correction has the same leading second moment and is asymptotically aligned with
+the actual displacement vector.
+
+Theorem~\CGref{thm:corrected_ordinal_defect}
+and Corollary~\CGref{cor:prime_phase_second_moment} demonstrate the related
+bounded ordinal defect and the leading second-moment asymptotic of the prime phases
+at the ordinates.
+
+Independently, the argument estimates yield
+$\limsup_k|\tau_k-\gamma_k|\le0.60832$ and the explicit bound
+$|S(T)|\le0.09783\log T+0.7214\log\log T+10.6$ for $T\ge e$.
+The improved leading coefficient comes from pointwise reflection by the
+functional equation on the left of the critical line. As explained in
+Section~\CGref{subsec:results}, it improves the complete estimate of
+Bellotti--Wong only beyond the stated crossing height.
+
+Theorem~\CGref{thm:recovered_simple_certificate} gives a deterministic criterion for certifying simple
+critical-line zeros from individual ordinal defects. The available bounds
+do not satisfy the numerical threshold required to deduce RH, simplicity,
+or any stated positive proportion from this certificate.
+
+\paragraph{Limitations of this work.}
+The constant in Theorem~\CGref{thm:sublevel} is not explicit, so the result gives no numerical guarantee at any finite height; it controls the mean square, not every individual ordinate, and the explicit bound of Theorem~\CGref{thm:explicit} improves on Bellotti--Wong only for $\log T>2425.84$, as it trades the constant term for the leading coefficient (for comparison, \CGeqref{eq:explicit_N} is smaller than the bound $|N(t)-\Nz(t)|\le0.11\log t+0.29\log\log t+2.29+0.2/t_0$, $t\ge t_0\ge e$, used by Yang \CGcite[(4.29)]{Yang2024} in the proof of his zero-free region, as soon as $\log t>933.5$).
+
+An explicit version of Theorem~\CGref{thm:sublevel} would require explicit forms of Selberg's approximation and of Fujii's theorem.
+
+\appendix
+\section{Computation of the constants}\label{app:code}
+The constants $\Lambda(\eB)$, $C_1$, $C_2$, $\log(\zeta(c)/\zeta(2c))$, the constant term $C_3(100)=10.5986\ldots$ at $T=100$ (and the same sum with the exact differences, $10.5985\ldots$), $\Lambda(0)$, the crossing point $\log T=2425.8386\ldots$ with \CGcite{BellottiWong2025} and the crossing point $\log t=933.47\ldots$ with \CGcite[(4.29)]{Yang2024} are computed by the following program (Python~3.13.17 with \texttt{mpmath}~1.4.1, working precision $40$ decimal digits).
+
+It only evaluates integrals of piecewise linear functions, elementary constants and values of $\zeta$ at real points, and finds the two crossing points by bisection and by Newton's method.
+
+The integrals are computed piece by piece, with breakpoints at the nodes, and also by the closed form \CGeqref{eq:hinge_integrals} (function \texttt{closed\_form}), for $\eE^*$ at $(c,R)=(1.000002,1.000005)$ and for $\eB^*$ at $(c,R)=(1,1)$; the program checks that the two evaluations agree.
+
+The certified rounding of the critical constants ($C_1$, $\log(\zeta(c)/\zeta(2c))$, $\log\zeta(\sigma^\sharp)$, $\Lambda(\eB)$, $2\pi\Lambda(\eB)$ and $\Lambda(0)$) is computed in the present appendix, from the closed form by rationals; the decimals printed here are not themselves certified beyond the agreement of the two evaluations. The output follows the program.
+
+\lstinputlisting{code/constantes_v5.py}
+
+\lstinputlisting[language={}]{code/constantes_v5_output.txt}
+
+The constant $1.878$ of Remark~\CGref{rem:robust}(ii) is certified by the following program (Python~3.13.17 with \texttt{python-flint}~0.9.0, Arb ball arithmetic at $120$ bits with outward rounding, so that every printed value is an upper bound).
+
+For $4\le m\le9$ (the variables \texttt{k} and \texttt{K} of the program are $m$ and $2^{m-1}$, as in \CGcite[\S3]{Yang2024}) it covers $\log3\le\log t\le\log T_m$ by intervals $[a,b]$ of length $0.002(1+a/10)$.
+
+On each interval it encloses $|\operatorname{Log}(Q_0+s)|/\log|Q_0+s|=\bigl(1+\arg(Q_0+s)^2/\log^2|Q_0+s|\bigr)^{1/2}$, $s=\sigma_m+it$, over the whole interval, takes $t_0=e^a$ in \CGcite[(3.12)]{Yang2024}, and bounds $0.618^{m/(K-1)}A(e^a)\,t^{(m-3)/(6K-6)}$ at $t=e^b$, where the exponent is positive. The maximum over all intervals and all $m$ is $1.87781$.
+
+\lstinputlisting{code/yang_smallt_arb.py}
+
+\lstinputlisting[language={}]{code/yang_smallt_arb_output.txt}
+
+The construction of Section~\CGref{subsec:construction} is implemented, as an illustration, by the following program (\texttt{numpy}, \texttt{mpmath}~1.4.1): it evaluates $\Fc=\Nz+\Ph$ on a grid of step $10^{-3}$ on $(0,120]$, computes $\tau_{k}^{\mathrm C}=\meas\{t>0:\Fc(t)<k-\frac12\}$ for $k\le20$ by counting grid cells, and prints $\tau_{k}^{\mathrm C}$, the ordinate $\gamma_k$ (\texttt{mpmath.zetazero}) and the point $\tau_k$ of \CGeqref{eq:distance_explicit}.
+
+Theorem~\CGref{thm:sublevel} bounds the mean square of $\tau_{k}^{\mathrm C}-\gamma_k$ for $T$ large; the table makes no claim beyond what it prints.
+
+\lstinputlisting{code/casanya_method.py}
+
+\lstinputlisting[language={}]{code/casanya_method_output.txt}
+
+\section{Correspondence with the sources}\label{app:sources}
+The following table lists every statement taken from the literature (Section~\CGref{sec:external} and the proofs), where it is stated in the source, and the normalization or adaptation used here. Within the table, $\mathsf k$, $\alpha_{\rm F}$, $H$ and $h$ are as in Theorem~\CGref{thm:known_fujii}.
+
+\begin{center}\small
+\begin{longtable}{p{0.24\textwidth}p{0.30\textwidth}p{0.38\textwidth}}
+\toprule used as & source and place & form there; adaptation here\\\midrule\endfirsthead
+\toprule used as & source and place & form there; adaptation here\\\midrule\endhead
+\bottomrule\endfoot
+Theorem~\CGref{thm:known_basic} & \CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12 (formula for $N$ and one-sided limits at ordinates; $S=O(\log t)$; gaps $\to0$; the convention $S(t)=S(t^+)$ at an ordinate is adopted in this paper) & $N(t)=\frac1\pi\vartheta(t)+1+S(t)$ with $\vartheta$ through $\operatorname{Log}\Gamma(\frac14+\frac{it}2)$; Lemma~\CGref{lem:varpi} rewrites $\frac1\pi\vartheta+1=\Nz+\varpi/\pi$\\
+Theorem~\CGref{thm:known_stirling} & \CGcite[\S5.11(ii)]{DLMF} & $|\mathcal R(z)|\le\sec^2(\frac12\operatorname{ph}z)/(12|z|)$, $|\operatorname{ph}z|<\pi$; used at $z=\frac14+\frac{it}2$ (Lemma~\CGref{lem:varpi}) and at $z=\frac{1-s}2,\frac s2$ (Lemma~\CGref{lem:chi})\\
+Theorem~\CGref{thm:known_zeta}(a) & \CGcite{HiaryPatelYang2024}, Thm.~1.1; \CGcite{PatelYang2023}, Thm.~1.1; both as quoted in \CGcite[\S2, display before (2.3)]{BellottiWong2025} & $0.618|t|^{1/6}\log|t|$ and $66.7|t|^{27/164}$ for $|t|\ge3$; used only through \CGeqref{eq:boundary}, with constant $2$ on $\sigma=\frac12$ (Remark~\CGref{rem:robust}(i))\\
+Theorem~\CGref{thm:known_zeta}(b) & \CGcite{Yang2024}, Thm.~1.1; quoted in \CGcite[(2.4)]{BellottiWong2025} & $1.546|t|^{1/(2^m-2)}\log|t|$ on $\sigma=\sigma_m$, $|t|\ge3$; used with constant $2$ for $4\le m\le9$ after Remark~\CGref{rem:robust}(ii)\\
+Theorem~\CGref{thm:known_zeta}(c) & \CGcite{Patel2022}, Thm.~1.1 & $|\zeta(1+it)|\le\log|t|$, $|t|\ge3$; as stated\\
+comment after Theorem~\CGref{thm:known_zeta} & \CGcite{BellottiWong2025}, (2.1); \CGcite{Bellotti2024}, Thm.~1.1; \CGcite{Leong2024}, Lemma~5 & $58.096\log^{2/3}t$ is Leong's, not a direct consequence of Bellotti's $70.6995$; not used\\
+Theorem~\CGref{thm:known_PL} & \CGcite{Fiori2025}, Cor.~3 & equal powers of the logarithm on both lines; here $Q=10$, $\Xi(s)=(s-1)\zeta(s)$, $\alpha_2=1$\\
+Theorem~\CGref{thm:known_backlund} & \CGcite{BellottiWong2025}, Lemmas~2.1, 2.3, 2.4, which take (a), (b) from \CGcite{HasanalizadeShenWong2021}, Props.~3.5, 3.7 (for $\zeta_K$, here $K=\mathbb Q$); $\mathcal E(T,d)=E(0,d,T)$ of \CGcite{BennettEtAl2021}, Def.~3.3 and Fig.~2, and (c) its Lemma~3.4 at $a=0$ & $\mathfrak f_n$ as in \CGeqref{eq:backlund_f}, with the factor $\frac12$; (c) is the majorant of $\mathcal E(T,d)/\pi$ for $d\in[\frac14,\frac58]$; the decomposition of $\pi S(T)$ in the proof of Proposition~\CGref{prop:master} is that of \CGcite[\S3]{BellottiWong2025}\\
+Remark~\CGref{rem:robust}(i) & \CGcite{Revers2026}, Thm.~1.1 & $0.611|t|^{1/6}\log|t|$ for $|t|\ge3$; mentioned only\\
+Remark~\CGref{rem:robust}(ii) & \CGcite{Yang2024}, \S3.1, (3.9)--(3.13), \S3.2 & recomputed with $|\operatorname{Log}(Q_0+s)|$, constant $1.878$ for $4\le m\le9$ (interval-arithmetic program, Appendix~\CGref{app:code})\\
+Remark~\CGref{rem:robust}(iii) & \CGcite{HiaryLeongYang2024}, \S2 & $|\zeta(1+it)|\le\log|t|-0.45$ for $|t|\ge3$; mentioned only\\
+Table~\CGref{tab:records} & \CGcite{VonMangoldt1905}, p.~1; \CGcite{Backlund1918}, (39), pp.~354--355, 375 (also for Grossmann); \CGcite{Trudgian2012}, Thm.~1; the other rows as listed in \CGcite{BellottiWong2025}, Table~1 & normalization $N(T)-\frac T{2\pi}\log\frac T{2\pi e}$: $\frac78$ added to the constants stated for $N-\Nz$ or for $S$\\
+leading coefficients in Section~\CGref{subsec:literature} & \CGcite{Trudgian2014}, Thm.~1; \CGcite{PlattTrudgian2015}, Cor.~1; \CGcite{HasanalizadeShenWong2022}, Cor.~1.2 and Table~1; \CGcite{BellottiWong2025}, Cor.~1.5 and Table~1 & $0.111$ in the preprint of Trudgian, $0.112$ in its published version (as listed in both tables); $0.110$; $0.1038$; $0.10076$\\
+Theorem~\CGref{thm:known_small} & \CGcite[(1.2)]{BellottiWong2025}, from \CGcite{Platt2017} & $|S(T)|\le2.5167$ for $0\le T\le30\,610\,046\,000$; used on $[e,100]$\\
+Theorem~\CGref{thm:known_exponents}(a),(b) & \CGcite{Ivic1985}, Lemma~2.8 and (7.57), p.~190 & the $A$-process; $\zeta(\sigma+it)\ll|t|^{(\kappa+\lambda-\sigma)/2}\log|t|$ for $\frac12\le\sigma\le\lambda-\kappa$\\
+Theorem~\CGref{thm:known_exponents}(c) & \CGcite{Bourgain2017}, \S5, Thm.~6 & $(\frac{13}{84}+\varepsilon,\frac{55}{84}+\varepsilon)$ is an exponent pair; $\varepsilon$ kept in both coordinates\\
+Theorem~\CGref{thm:known_fujii}(a) & \CGcite{Fujii1974}, \S3, pp.~232--233, with Lemma~5; corrections \CGcite[\S5]{Fujii1981} & modulus $1$; used with $\mathsf k=2$, $\alpha_{\rm F}=\frac15$, $H=T=U$, $Y=U^{1/200}$ (Lemma~\CGref{lem:fourth}) and, in Section~\CGref{subsec:literature}, with $\mathsf k=1$, $\alpha_{\rm F}=\frac12$, $H=T$, $Y=T^{1/40}$\\
+Theorem~\CGref{thm:known_fujii}(b) & \CGcite{Fujii1974}, Main Theorem, p.~225 ($0<a_i\le\frac12$, $T^{1/2+a_2}\le H\le T$); \CGcite{Fujii1981}, \S1 ($\alpha$) (the case $q=1$, $H=T$) and \S5 & modulus $1$, $\alpha_{\rm F}=a_2$; used with $\mathsf k=2$, $\alpha_{\rm F}=\frac12$, $H=T$, $0<h\le1$ (Lemma~\CGref{lem:gaps}); $\log(3+x)\le\frac{\log3}{\log2}\log(2+x)$\\
+Theorem~\CGref{thm:known_MV} & \CGcite{MontgomeryVaughan1974}, Cor.~3 & finite sums only, shifted to $[U,2U]$; applied to $\mathscr D_1^2$ and, as a Dirichlet polynomial in $v^2$, to $\mathscr D_2^2$\\
+Theorem~\CGref{thm:known_mertens} & \CGcite{Mertens1874}; \CGcite[Ch.~I.1]{Tenenbaum2015} & as stated\\
+$(s-1)\zeta(s)=s-s(s-1)\int_1^\infty\{u\}u^{-s-1}du$ & \CGcite[(2.1.4)]{Titchmarsh1986} & for $\sigma>0$; used for $|t|\le3$ in Lemma~\CGref{lem:explicit_zeta} and Section~\CGref{subsec:proof_bourgain}\\
+$\zeta(\sigma+it)\ll\log t$ for $1\le\sigma\le3$ & \CGcite[Thm.~3.5]{Titchmarsh1986} & proof of Theorem~\CGref{thm:asymptotic}\\
+bathtub principle & \CGcite[Thm.~1.14]{LiebLoss2001} & used in Theorem~\CGref{thm:transfer} in the elementary form stated there\\
+rising sun lemma & \CGcite{Riesz1932} & discrete form, proved in Lemma~\CGref{lem:maximal}\\
+Theorem~\CGref{thm:known_selberg} & \CGcite{Selberg1946a}; \CGcite[Notes for Chapter~9, (9.25.1), p.~245]{Titchmarsh1986}; quoted with remainder in \CGcite[p.~225]{Fujii1974} & asymptotic form only; $\mathsf k=1$ in dyadic form \CGeqref{eq:selberg_dyadic} (Proposition~\CGref{prop:s_meansquare}), $\mathsf k=2$ in Remark~\CGref{rem:bare_point}\\
+Gram points, Selberg's moments of $\Delta^{\rm G}_k$ & \CGcite[Thm.~4.2]{Korolev2012} & Remark~\CGref{rem:bare_point} only, as a consistency check of Proposition~\CGref{prop:s_meansquare}\\
+Gram's law for $\gamma_k$, its failures & \CGcite[Def.~1.4 and p.~58]{Korolev2012} & Section~\CGref{subsec:tau_intro} only\\
+increasing rearrangement & \CGcite[\S10.12, pp.~276--278]{HardyLittlewoodPolya1934} (first edition) & defined there in decreasing order; terminology in Sections~\CGref{subsec:literature} and~\CGref{subsec:transfer}\\
+\end{longtable}
+\end{center}
+
+\section*{Data availability}
+The programs of Appendix~\CGref{app:code} and their outputs are reproduced in that appendix. No other data were used.
+
+%======================================================================
+\begin{thebibliography}{99}
+
+\bibitem{Backlund1918} R.J. Backlund, \"Uber die Nullstellen der Riemannschen Zetafunktion, Acta Math. 41 (1916) 345--375, \href{https://doi.org/10.1007/BF02422950}{doi:10.1007/BF02422950}.
+
+\bibitem{Bellotti2024} C. Bellotti, Explicit bounds for the Riemann zeta function and a new zero-free region, J. Math. Anal. Appl. 536 (2024) 128249, \href{https://doi.org/10.1016/j.jmaa.2024.128249}{doi:10.1016/j.jmaa.2024.128249}.
+
+\bibitem{BellottiWong2025} C. Bellotti, P.-J. Wong, Improved estimates for the argument and zero-counting function of the Riemann zeta-function, Math. Comp. (2025, published online 14 November 2025), statements numbered as in arXiv:2412.15470v2 (\href{https://doi.org/10.48550/arXiv.2412.15470}{doi:10.48550/arXiv.2412.15470}), \href{https://doi.org/10.1090/mcom/4133}{doi:10.1090/mcom/4133}.
+
+\bibitem{BennettEtAl2021} M.A. Bennett, G. Martin, K. O'Bryant, A. Rechnitzer, Counting zeros of Dirichlet $L$-functions, arXiv:2005.02989v1, 2020, cited with its numbering, \href{https://doi.org/10.48550/arXiv.2005.02989}{doi:10.48550/arXiv.2005.02989}; published version: Math. Comp. 90 (2021) 1455--1482, \href{https://doi.org/10.1090/mcom/3599}{doi:10.1090/mcom/3599}.
+
+\bibitem{Bourgain2017} J. Bourgain, Decoupling, exponential sums and the Riemann zeta function, J. Amer. Math. Soc. 30 (2017) 205--224, theorems numbered as in arXiv:1408.5794v2 (\href{https://doi.org/10.48550/arXiv.1408.5794}{doi:10.48550/arXiv.1408.5794}), \href{https://doi.org/10.1090/jams/860}{doi:10.1090/jams/860}.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions, \S5.11(ii), Release 1.2.4 of 2025-03-15, F.W.J. Olver et al., eds., \url{https://dlmf.nist.gov/5.11.ii}.
+
+\bibitem{FazzariGerspachMinelli2025} A. Fazzari, M. Gerspach, P. Minelli, Selberg\'s central limit theorem weighted by linear statistics of zeta zeros, arXiv:2507.04150v1, 2025, cited with its numbering, \href{https://doi.org/10.48550/arXiv.2507.04150}{doi:10.48550/arXiv.2507.04150}.
+
+\bibitem{FrancaLeClair2015} G. Fran\c{c}a, A. LeClair, Transcendental equations satisfied by the individual zeros of Riemann $\zeta$, Dirichlet and modular $L$-functions, Commun. Number Theory Phys. 9 (2015) 1--50, \href{https://doi.org/10.4310/CNTP.2015.v9.n1.a1}{doi:10.4310/CNTP.2015.v9.n1.a1}.
+
+\bibitem{Fiori2025} A. Fiori, A note on the Phragm\'en--Lindel\"of theorem, arXiv:2502.13282v3, 2026, \href{https://doi.org/10.48550/arXiv.2502.13282}{doi:10.48550/arXiv.2502.13282}.
+
+\bibitem{Fujii1974} A. Fujii, On the zeros of Dirichlet $L$-functions. I, Trans. Amer. Math. Soc. 196 (1974) 225--235, \href{https://doi.org/10.1090/S0002-9947-1974-0349603-2}{doi:10.1090/S0002-9947-1974-0349603-2}.
+
+\bibitem{Fujii1981} A. Fujii, On the zeros of Dirichlet $L$-functions. II (with corrections to ``On the zeros of Dirichlet $L$-functions. I'' and the subsequent papers), Trans. Amer. Math. Soc. 267 (1981) 33--40, \href{https://doi.org/10.1090/S0002-9947-1981-0621970-5}{doi:10.1090/S0002-9947-1981-0621970-5}.
+
+\bibitem{Gonek2012} S.M. Gonek, Finite Euler products and the Riemann hypothesis, Trans. Amer. Math. Soc. 364 (2012) 2157--2191, \href{https://doi.org/10.1090/S0002-9947-2011-05546-7}{doi:10.1090/S0002-9947-2011-05546-7}.
+
+\bibitem{Grossmann1913} J. Grossmann, \"Uber die Nullstellen der Riemannschen Zeta-Funktion und der Dirichletschen $L$-Funktionen, doctoral thesis, Georg-August-Universit\"at G\"ottingen, 1913.
+
+\bibitem{HardyLittlewoodPolya1934} G.H. Hardy, J.E. Littlewood, G. P\'olya, Inequalities, first ed., Cambridge University Press, Cambridge, 1934.
+
+\bibitem{HasanalizadeShenWong2021} E. Hasanalizade, Q. Shen, P.-J. Wong, Counting zeros of Dedekind zeta functions, Math. Comp. 91 (2022) 277--293, \href{https://doi.org/10.1090/mcom/3665}{doi:10.1090/mcom/3665}.
+
+\bibitem{HasanalizadeShenWong2022} E. Hasanalizade, Q. Shen, P.-J. Wong, Counting zeros of the Riemann zeta function, arXiv:2107.06506v1, 2021, cited with its numbering, \href{https://doi.org/10.48550/arXiv.2107.06506}{doi:10.48550/arXiv.2107.06506}; published version: J. Number Theory 235 (2022) 219--241, \href{https://doi.org/10.1016/j.jnt.2021.06.032}{doi:10.1016/j.jnt.2021.06.032}.
+
+\bibitem{HiaryLeongYang2024} G.A. Hiary, N. Leong, A. Yang, Explicit bounds for the Riemann zeta-function on the $1$-line, arXiv:2306.13289v2, 2024, cited with its numbering, \href{https://doi.org/10.48550/arXiv.2306.13289}{doi:10.48550/arXiv.2306.13289}; published version: Funct. Approx. Comment. Math. 73 (2025) 53--89, \href{https://doi.org/10.7169/facm/240711-13-8}{doi:10.7169/facm/240711-13-8}.
+
+\bibitem{HiaryPatelYang2024} G.A. Hiary, D. Patel, A. Yang, An improved explicit estimate for $\zeta(1/2+it)$, J. Number Theory 256 (2024) 195--217, \href{https://doi.org/10.1016/j.jnt.2023.09.003}{doi:10.1016/j.jnt.2023.09.003}.
+
+\bibitem{Ivic1985} A. Ivi\'c, The Riemann Zeta-Function, Wiley, New York, 1985; reprinted by Dover, Mineola, NY, 2003.
+
+\bibitem{Kargin2013} V. Kargin, On fluctuations of Riemann's zeta zeros, Probab. Theory Related Fields 157 (2013) 575--604, theorems numbered as in arXiv:1203.5309v2 (\href{https://doi.org/10.48550/arXiv.1203.5309}{doi:10.48550/arXiv.1203.5309}), \href{https://doi.org/10.1007/s00440-012-0465-9}{doi:10.1007/s00440-012-0465-9}.
+
+\bibitem{Korolev2012} M.A. Korolev, Gram's law and the argument of the Riemann zeta function, Publ. Inst. Math. (Beograd) (N.S.) 92(106) (2012) 53--78, \href{https://doi.org/10.2298/PIM1206053K}{doi:10.2298/PIM1206053K}.
+
+\bibitem{LeClair2016} A. LeClair, Riemann hypothesis and random walks: the zeta case, arXiv:1601.00914v1 (\href{https://doi.org/10.48550/arXiv.1601.00914}{doi:10.48550/arXiv.1601.00914}), 2016, cited with its numbering; published version: Symmetry 13 (2021) 2014, \href{https://doi.org/10.3390/sym13112014}{doi:10.3390/sym13112014}.
+
+\bibitem{Leong2024} N. Leong, Explicit estimates for the logarithmic derivative and the reciprocal of the Riemann zeta function, arXiv:2405.04869v5, 2026, cited with its numbering, \href{https://doi.org/10.48550/arXiv.2405.04869}{doi:10.48550/arXiv.2405.04869}.
+
+\bibitem{LiebLoss2001} E.H. Lieb, M. Loss, Analysis, second ed., Grad. Stud. Math. 14, Amer. Math. Soc., Providence, RI, 2001, \href{https://doi.org/10.1090/gsm/014}{doi:10.1090/gsm/014}.
+
+\bibitem{Mertens1874} F. Mertens, Ein Beitrag zur analytischen Zahlentheorie, J. Reine Angew. Math. 78 (1874) 46--62, \href{https://doi.org/10.1515/crll.1874.78.46}{doi:10.1515/crll.1874.78.46}.
+
+\bibitem{MontgomeryVaughan1974} H.L. Montgomery, R.C. Vaughan, Hilbert's inequality, J. Lond. Math. Soc. (2) 8 (1974) 73--82, \href{https://doi.org/10.1112/jlms/s2-8.1.73}{doi:10.1112/jlms/s2-8.1.73}.
+
+\bibitem{Patel2022} D. Patel, An explicit upper bound for $|\zeta(1+it)|$, arXiv:2009.00769v1, 2020, cited with its numbering, \href{https://doi.org/10.48550/arXiv.2009.00769}{doi:10.48550/arXiv.2009.00769}; published version: Indag. Math. 33 (2022) 1012--1032, \href{https://doi.org/10.1016/j.indag.2022.04.007}{doi:10.1016/j.indag.2022.04.007}.
+
+\bibitem{PatelYang2023} D. Patel, A. Yang, An explicit sub-Weyl bound for $\zeta(1/2+it)$, J. Number Theory 262 (2024) 301--334, \href{https://doi.org/10.1016/j.jnt.2024.03.011}{doi:10.1016/j.jnt.2024.03.011}.
+
+\bibitem{Platt2017} D.J. Platt, Isolating some non-trivial zeros of zeta, Math. Comp. 86 (2017) 2449--2467, \href{https://doi.org/10.1090/mcom/3198}{doi:10.1090/mcom/3198}.
+
+\bibitem{PlattTrudgian2015} D.J. Platt, T.S. Trudgian, An improved explicit bound on $|\zeta(\frac12+it)|$, arXiv:1402.3953, version dated 4 July 2018, cited with its numbering, \href{https://doi.org/10.48550/arXiv.1402.3953}{doi:10.48550/arXiv.1402.3953}; published version: J. Number Theory 147 (2015) 842--851, \href{https://doi.org/10.1016/j.jnt.2014.08.019}{doi:10.1016/j.jnt.2014.08.019}.
+
+\bibitem{Rademacher1959} H. Rademacher, On the Phragm\'en--Lindel\"of theorem and some applications, Math. Z. 72 (1959) 192--204, \href{https://doi.org/10.1007/BF01162949}{doi:10.1007/BF01162949}.
+
+\bibitem{Revers2026} M. Revers, A new improved explicit estimate for $\zeta(1/2+it)$, preprint, arXiv:2602.05614v1, 2026, \href{https://doi.org/10.48550/arXiv.2602.05614}{doi:10.48550/arXiv.2602.05614}.
+
+\bibitem{Riesz1932} F. Riesz, Sur un th\'eor\`eme de maximum de MM. Hardy et Littlewood, J. London Math. Soc. 7 (1932) 10--13, \href{https://doi.org/10.1112/jlms/s1-7.1.10}{doi:10.1112/jlms/s1-7.1.10}.
+
+\bibitem{Rosser1941} J.B. Rosser, Explicit bounds for some functions of prime numbers, Amer. J. Math. 63 (1941) 211--232, \href{https://doi.org/10.2307/2371291}{doi:10.2307/2371291}.
+
+\bibitem{Selberg1946a} A. Selberg, Contributions to the theory of the Riemann zeta-function, Arch. Math. Naturvid. 48 (5) (1946) 89--155.
+
+\bibitem{Tenenbaum2015} G. Tenenbaum, Introduction to Analytic and Probabilistic Number Theory, third ed., Grad. Stud. Math. 163, Amer. Math. Soc., Providence, RI, 2015, \href{https://doi.org/10.1090/gsm/163}{doi:10.1090/gsm/163}.
+
+\bibitem{Titchmarsh1986} E.C. Titchmarsh, The Theory of the Riemann Zeta-Function, second ed., revised by D.R. Heath-Brown, Clarendon Press, Oxford, 1986.
+
+\bibitem{Trudgian2012} T.S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on the critical line, Math. Comp. 81 (2012) 1053--1061, \href{https://doi.org/10.1090/S0025-5718-2011-02537-8}{doi:10.1090/S0025-5718-2011-02537-8}.
+
+\bibitem{Trudgian2014} T.S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on the critical line II, arXiv:1208.5846v2, 2012, cited with its numbering and constants, \href{https://doi.org/10.48550/arXiv.1208.5846}{doi:10.48550/arXiv.1208.5846}; published version: J. Number Theory 134 (2014) 280--292, \href{https://doi.org/10.1016/j.jnt.2013.07.017}{doi:10.1016/j.jnt.2013.07.017}.
+
+\bibitem{Tsang1984} K.-M. Tsang, The distribution of the values of the Riemann zeta function, Ph.D. thesis, Princeton University, 1984; cited as in \CGcite[\S3]{FazzariGerspachMinelli2025}.
+
+\bibitem{VonMangoldt1905} H. von Mangoldt, Zur Verteilung der Nullstellen der Riemannschen Funktion $\xi(t)$, Math. Ann. 60 (1905) 1--19, \href{https://doi.org/10.1007/BF01447494}{doi:10.1007/BF01447494}.
+
+\bibitem{Yang2024} A. Yang, Explicit bounds on $\zeta(s)$ in the critical strip and a zero-free region, J. Math. Anal. Appl. 534 (2024) 128124, \href{https://doi.org/10.1016/j.jmaa.2024.128124}{doi:10.1016/j.jmaa.2024.128124}.
+
+\end{thebibliography}
+
+\end{document}

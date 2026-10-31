@@ -1,0 +1,156 @@
+--- casanya_ordinal_primes_v45.tex	2026-10-30 12:48:35.556624715 +0000
++++ casanya_ordinal_primes_v46.tex	2026-10-30 14:34:30.806153339 +0000
+@@ -77,7 +77,7 @@
+ \expandafter\gdef\csname CGTip@eq:backlund_Z\endcsname{Eq. (3.4), p. 12: mathcal Z\_n(c,R)=1/n sum \_wlog R/(|w-c|) ,}
+ \expandafter\gdef\csname CGTip@thm:known_exponents\endcsname{Theorem 3.7 (Exponent pairs) (p. 13): beginenumerate[label=(alph*)] item If (kappa,lambda) is an exponent pair, so is A(kappa,lambda)= (kappa/(2kappa+2) ,1/2 +lambda/(2kappa+2) ) [Ivic1985]. item If (kappa,lambda) is an exponent pair and 1/2 <=sigma<=lambda-kappa, then zeta(sigma+it)<<|t|\textasciicircum{}(kappa+lambda-sigma)/2log |t| for |t|>=2 [Ivic1985]; in particular ...}
+ \expandafter\gdef\csname CGTip@sec:explicit_lemmas\endcsname{Section 4: Explicit lemmas (p. 14)}
+-\expandafter\gdef\csname CGTip@lem:varpi\endcsname{Lemma 4.1 (p. 14): For t>0, vartheta(t)=t/2 log t/(2pi e) -pi/8 +varpi(t) with |varpi(t)|<=0.53/t. Consequently [eq:intro\_RvM] holds for t>0 not an imaginary part.}
++\expandafter\gdef\csname CGTip@lem:varpi\endcsname{Lemma 4.1 (p. 14): For t>0, vartheta(t)=t/2 log t/(2pi e) -pi/8 +varpi(t) with |varpi(t)|<=0.53/t. Consequently [eq:intro\_RvM] holds for t>0, tnotingamma\_k.}
+ \expandafter\gdef\csname CGTip@eq:disp_10\endcsname{Eq. (4.1), p. 14: ImLogGamma(z)=ylog |z|-1/4 phz-y+Immathcal R(z), log |z|=log y+1/2 log (1+1/(16y\textasciicircum{}2) ).}
+ \expandafter\gdef\csname CGTip@lem:chi\endcsname{Lemma 4.3 (p. 14): For -0.01<=sigma<=1/2 and t>=98, |chi(sigma+it)|<=1.0070 (t/2pi)\textasciicircum{}1/2-sigma.}
+ \expandafter\gdef\csname CGTip@eq:stirling_modulus\endcsname{Eq. (4.3), p. 14: log |Gamma(z)|=(omega-1/2 )log y-pi/2 y+1/2 log 2pi+phi(omega,y)+Remathcal R(z), phi(omega,y)=(omega-1/2 )/2 log (1+(omega\textasciicircum{}2)/(y\textasciicircum{}2) )+yarctanomega/y -omega . endgathered}
+@@ -90,7 +90,7 @@
+ \expandafter\gdef\csname CGTip@eq:right_profile\endcsname{Eq. (4.8), p. 15: |zeta(s)| <=2 (1+84.5/(98\textasciicircum{}2) )\textasciicircum{}1+27/164 (1+(84.5/98\textasciicircum{}2+pi/2)/log 98 )t\textasciicircum{}eE\textasciicircum{}*(sigma)log t <=2.7167 t\textasciicircum{}eE\textasciicircum{}*(sigma)log t (1/2 <=sigma<=3). endsplit}
+ \expandafter\gdef\csname CGTip@rem:robust\endcsname{Remark 4.5 (Robustness of the inputs) (p. 15): Theorem [thm:known\_zeta] enters Theorem [thm:explicit] only through [eq:boundary], that is, through bounds with constant 2 on the lines sigma=varsigma\_i, and each input has room. (i) On sigma=1/2 , the bound of [HiaryPatelYang2024] alone gives [eq:boundary] for 3<|t|<= e\textasciicircum{}577, since |t|\textasciicircum{}1/492<= e\textasciicircum{}577/492<2/0.618. Above ...}
+ \expandafter\gdef\csname CGTip@sec:backlund\endcsname{Section 5: A disc-based estimate for S(T) (p. 16)}
+-\expandafter\gdef\csname CGTip@prop:master\endcsname{Proposition 5.1 (p. 16): Let c,R satisfy [eq:backlund\_conditions] with c<=2 and R<=2, and let T>=3 be outside gamma\_k. Suppose that, for a nonnegative measurable function mathfrak h on [c-R,c+R] with int \_0\textasciicircum{}pimathfrak h(c+Rcostheta) dtheta<inf , a constant K>=1 and a function Omega>=1 on [T-2,T+2] such that tmapsto t\textasciicircum{}mathfrak h(sigma)Omega(t) ...}
++\expandafter\gdef\csname CGTip@prop:master\endcsname{Proposition 5.1 (p. 16): Let c,R satisfy [eq:backlund\_conditions] with c<=2 and R<=2, and let T>=3, Tnotingamma\_k. Suppose that, for a nonnegative measurable function mathfrak h on [c-R,c+R] with int \_0\textasciicircum{}pimathfrak h(c+Rcostheta) dtheta<inf , a constant K>=1 and a function Omega>=1 on [T-2,T+2] such that tmapsto t\textasciicircum{}mathfrak h(sigma)Omega(t) is ...}
+ \expandafter\gdef\csname CGTip@eq:zeta_hyp\endcsname{Eq. (5.1), p. 16: |zeta(sigma+it)|<= K t\textasciicircum{}mathfrak h(sigma)Omega(t) (c-R<=sigma<= c+R, T-2<= t<= T+2).}
+ \expandafter\gdef\csname CGTip@eq:master\endcsname{Eq. (5.2), p. 16: |S(T)|<= 1/(2mathfrak d) [log (zeta(c))/(zeta(2c)) +log (T+3)/T +(mathcal I\_mathfrak h)/pi log (T+2)+log Omega(T+2)+log K ] +(log zeta(sigma\textasciicircum{}sharp))/pi +(sigma\textasciicircum{}sharp-1/2 )/(pi T) +(mathcal E(T,delta\textasciicircum{}sharp))/2pi +1/4 , endsplit}
+ \expandafter\gdef\csname CGTip@eq:disp_13\endcsname{Eq. (5.3), p. 16: pi S(T)=argzeta(sigma\textasciicircum{}sharp+iT)+Delta\_sigma=sigma\textasciicircum{}sharp\textasciicircum{}1/2arg ((sigma+iT-1)zeta(sigma+iT) )-Delta\_sigma=sigma\textasciicircum{}sharp\textasciicircum{}1/2arg(sigma+iT-1)}
+@@ -301,12 +301,12 @@
+ The present article is unconditional, uses about $\sqrt t$ primes, tied to the height (imaginary parts of the zeta zeros), and bounds the mean-square error of the approximations $\tau_{k}^{\mathrm C}$ to the imaginary parts, which are increasing and indexed by construction.
+ 
+ \subsection{Inverting the Riemann--von Mangoldt formula}\label{subsec:tau_intro}
+-Let $\rho_k=\beta_k+i\gamma_k$ be the nontrivial zeros of the Riemann zeta function with positive imaginary parts, listed with multiplicity and $0<\gamma_1\le\gamma_2\le\cdots$, and let $N(t)=\#\{k:\gamma_k\le t\}$. For $t>0$ not an imaginary part the Riemann--von Mangoldt formula reads \CGcite[\S9.3]{Titchmarsh1986}
++Let $\rho_k=\beta_k+i\gamma_k$ be the nontrivial zeros of the Riemann zeta function with positive imaginary parts, listed with multiplicity and $0<\gamma_1\le\gamma_2\le\cdots$, and let $N(t)=\#\{k:\gamma_k\le t\}$. For $t>0$, $t\notin\{\gamma_k\}$, the Riemann--von Mangoldt formula reads \CGcite[\S9.3]{Titchmarsh1986}
+ \begin{equation}
+ N(t)=\Nz(t)+S(t)+\frac{\varpi(t)}\pi,\qquad \Nz(t)=\frac t{2\pi}\log\frac t{2\pi e}+\frac78,\qquad S(t)=\frac1\pi\arg\zeta\bigl(\tfrac12+it\bigr),
+ \label{eq:intro_RvM}
+ \end{equation}
+-where $\varpi(t)=O(1/t)$ is the Stirling remainder of the Riemann--Siegel theta function (Lemma~\CGref{lem:varpi}). At an imaginary part $t$ this paper uses the right-hand convention $S(t)=S(t^+)$, compatible with the right-continuous counting function $N$. Different conventions are used in the literature (see \CGcite[\S9.3]{Titchmarsh1986}). All bounds below have continuous majorants and extend to both one-sided limits by approximation through values outside $\{\gamma_k\}$. The function $\Nz$ is strictly increasing on $(2\pi,\infty)$, with $\Nz(2\pi)=-\frac18$ and $\Nz(t)\to\infty$ as $t\to\infty$. Thus for every integer $k\ge1$ there is exactly one $\tau_k>2\pi$ with
++where $\varpi(t)=O(1/t)$ is the Stirling remainder of the Riemann--Siegel theta function (Lemma~\CGref{lem:varpi}). At $t\in\{\gamma_k\}$ this paper uses the right-hand convention $S(t)=S(t^+)$, compatible with the right-continuous counting function $N$. Different conventions are used in the literature (see \CGcite[\S9.3]{Titchmarsh1986}). All bounds below have continuous majorants and extend to both one-sided limits by approximation through $t\notin\{\gamma_k\}$. The function $\Nz$ is strictly increasing on $(2\pi,\infty)$, with $\Nz(2\pi)=-\frac18$ and $\Nz(t)\to\infty$ as $t\to\infty$. Thus for every integer $k\ge1$ there is exactly one $\tau_k>2\pi$ with
+ \begin{equation}
+ \Nz(\tau_k)=k-\tfrac12 .
+ \label{eq:intro_tau}
+@@ -542,13 +542,13 @@
+ \paragraph{Conventions at the imaginary parts.}
+ The zeros are listed with multiplicity, so $N$ is right continuous, $N(\gamma^+)=N(\gamma)$, and $N(\gamma^+)-N(\gamma^-)$ is the multiplicity of the imaginary part $\gamma$ (the number of zeros with that imaginary part).
+ 
+-For $t>0$ not an imaginary part, $S(t)=\frac1\pi\arg\zeta(\frac12+it)$ with the argument obtained by continuous variation along the segments from $2$ to $2+it$ and from $2+it$ to $\frac12+it$, so $S$ is continuous on each open interval between consecutive distinct imaginary parts.
++For $t>0$, $t\notin\{\gamma_k\}$, $S(t)=\frac1\pi\arg\zeta(\frac12+it)$ with the argument obtained by continuous variation along the segments from $2$ to $2+it$ and from $2+it$ to $\frac12+it$, so $S$ is continuous on each open interval between consecutive distinct imaginary parts.
+ 
+ At an imaginary part $\gamma$ the one-sided limits $S(\gamma^\pm)$ exist, $S(\gamma^+)-S(\gamma^-)$ is the multiplicity of $\gamma$ (because $\Nz$ and $\varpi$ are continuous in \CGeqref{eq:intro_RvM}), and this article adopts the right-continuous convention $S(\gamma)=S(\gamma^+)$. This convention is chosen to agree with $N(\gamma)=\#\{k:\gamma_k\le\gamma\}$; alternative conventions, including midpoint values, occur in the literature (see \CGcite[\S9.3]{Titchmarsh1986}).
+ 
+ Other conventions at the imaginary parts (such as the mean of the two limits) change $S$ on a null set and do not affect the integrals of Theorems~\CGref{thm:known_fujii} and~\CGref{thm:known_MV}.
+ 
+-All bounds for $|S(T)|$ in this article are proved first for $T$ not an imaginary part and have right sides continuous in $T$. Taking sequences of points outside $\{\gamma_k\}$ tending to each imaginary part $\gamma$ from either side yields the same bounds for $S(\gamma^-)$ and $S(\gamma^+)$. Hence, by \CGeqref{eq:intro_RvM}, they apply to the corresponding one-sided values $G(\gamma^\pm)=S(\gamma^\pm)+\varpi(\gamma)/\pi$, where $G=N-\Nz$.
++All bounds for $|S(T)|$ in this article are proved first for $T\notin\{\gamma_k\}$ and have right sides continuous in $T$. Taking sequences in $(0,\infty)\setminus\{\gamma_k\}$ tending to each $\gamma\in\{\gamma_k\}$ from either side yields the same bounds for $S(\gamma^-)$ and $S(\gamma^+)$. Hence, by \CGeqref{eq:intro_RvM}, they apply to the corresponding one-sided values $G(\gamma^\pm)=S(\gamma^\pm)+\varpi(\gamma)/\pi$, where $G=N-\Nz$.
+ 
+ Multiplicities enter Lemma~\CGref{lem:s_bounds} and Proposition~\CGref{prop:distance_sharp} only through the inequalities $N(\gamma_k^-)+1\le k\le N(\gamma_k^+)$.
+ 
+@@ -603,7 +603,7 @@
+ The following statements are used as they stand; each was checked in the source indicated. Within this section the letters $\sigma_\pm$, $A$, $B$, $C$, $C'$, $\alpha_i$, $\beta_i$, $\Xi$, $\varkappa$ and $b_n$ are local. The letters $\mathsf k$, $\alpha_{\rm F}$, $H$ and $h$ have the meaning of Section~\CGref{sec:notation}.
+ 
+ \begin{theorem}[\CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12]\label{thm:known_basic}
+-For $t>0$ not an imaginary part, $N(t)=\frac1\pi\vartheta(t)+1+S(t)$, where $\vartheta(t)=\operatorname{Im}\operatorname{Log}\Gamma(\frac14+\frac{it}2)-\frac t2\log\pi$ (the branch of $\operatorname{Log}\Gamma$ that is real on $(0,\infty)$). Moreover $S(t)=O(\log t)$ and $\gamma_{k+1}-\gamma_k\to0$ as $k\to\infty$.
++For $t>0$, $t\notin\{\gamma_k\}$, $N(t)=\frac1\pi\vartheta(t)+1+S(t)$, where $\vartheta(t)=\operatorname{Im}\operatorname{Log}\Gamma(\frac14+\frac{it}2)-\frac t2\log\pi$ (the branch of $\operatorname{Log}\Gamma$ that is real on $(0,\infty)$). Moreover $S(t)=O(\log t)$ and $\gamma_{k+1}-\gamma_k\to0$ as $k\to\infty$.
+ \end{theorem}
+ 
+ \begin{theorem}[{Stirling's formula with remainder, \CGcite[\S5.11(ii)]{DLMF}}]\label{thm:known_stirling}
+@@ -657,7 +657,7 @@
+ \limsup_{m\to\infty}\mathcal Z_{n_m}(c,R)\le\log\frac{\zeta(c)}{\sqrt{(c-1)^2+T^2}\,\zeta(2c)}+\frac1\pi\int_0^\pi\Psi(\theta)\,d\theta .
+ \label{eq:disp_05}
+ \end{equation}
+-\item For every $n\ge1$, if $T$ is not an imaginary part,
++\item For every $n\ge1$, if $T\notin\{\gamma_k\}$,
+ \begin{equation}
+ \Bigl|\Delta_{\sigma=\sigma^\sharp}^{1/2}\arg\bigl((\sigma+iT-1)\zeta(\sigma+iT)\bigr)\Bigr|\le\frac{\pi\mathcal Z_n(c,R)}{2\mathfrak d}+\frac{\mathcal E(T,\delta^\sharp)}2+\frac{3\pi}{2n}+\frac\pi4,\qquad\mathfrak d=\log\frac R{c-\frac12},
+ \label{eq:disp_06}
+@@ -722,7 +722,7 @@
+ \section{Explicit lemmas}\label{sec:explicit_lemmas}
+ 
+ \begin{lemma}\label{lem:varpi}
+-For $t>0$, $\vartheta(t)=\frac t2\log\frac t{2\pi e}-\frac\pi8+\varpi(t)$ with $|\varpi(t)|\le0.53/t$. Consequently \CGeqref{eq:intro_RvM} holds for $t>0$ not an imaginary part.
++For $t>0$, $\vartheta(t)=\frac t2\log\frac t{2\pi e}-\frac\pi8+\varpi(t)$ with $|\varpi(t)|\le0.53/t$. Consequently \CGeqref{eq:intro_RvM} holds for $t>0$, $t\notin\{\gamma_k\}$.
+ \end{lemma}
+ 
+ \begin{proof}
+@@ -821,7 +821,7 @@
+ \section{A disc-based estimate for $S(T)$}\label{sec:backlund}
+ 
+ \begin{proposition}\label{prop:master}
+-Let $c,R$ satisfy \CGeqref{eq:backlund_conditions} with $c\le2$ and $R\le2$, and let $T\ge3$ be outside $\{\gamma_k\}$. Suppose that, for a nonnegative measurable function $\mathfrak h$ on $[c-R,c+R]$ with $\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta<\infty$, a constant $K\ge1$ and a function $\Omega\ge1$ on $[T-2,T+2]$ such that $t\mapsto t^{\mathfrak h(\sigma)}\Omega(t)$ is nondecreasing there for every $\sigma$,
++Let $c,R$ satisfy \CGeqref{eq:backlund_conditions} with $c\le2$ and $R\le2$, and let $T\ge3$, $T\notin\{\gamma_k\}$. Suppose that, for a nonnegative measurable function $\mathfrak h$ on $[c-R,c+R]$ with $\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta<\infty$, a constant $K\ge1$ and a function $\Omega\ge1$ on $[T-2,T+2]$ such that $t\mapsto t^{\mathfrak h(\sigma)}\Omega(t)$ is nondecreasing there for every $\sigma$,
+ \begin{equation}
+ |\zeta(\sigma+it)|\le K\,t^{\mathfrak h(\sigma)}\Omega(t)\qquad(c-R\le\sigma\le c+R,\ T-2\le t\le T+2).
+ \label{eq:zeta_hyp}
+@@ -864,7 +864,7 @@
+ \label{eq:disp_15}
+ \end{equation}
+ 
+-\emph{Passage to the limit.} The limits are taken in the order $T\to\infty$, then $\varepsilon\to0$, then $\eta\to0$. The parameters $\eta$ and $\varepsilon$ do not depend on $T$. For fixed $\varepsilon$ and $\eta$ the term $O_{\varepsilon,\eta}(1)$ is bounded, so dividing by $\log T$ and letting $T\to\infty$ through values outside $\{\gamma_k\}$ (at an imaginary part $S(T)=S(T^+)$ is a limit of values at points outside $\{\gamma_k\}$, so the $\limsup$ over points outside $\{\gamma_k\}$ is $\mathfrak a$) gives
++\emph{Passage to the limit.} The limits are taken in the order $T\to\infty$, then $\varepsilon\to0$, then $\eta\to0$. The parameters $\eta$ and $\varepsilon$ do not depend on $T$. For fixed $\varepsilon$ and $\eta$ the term $O_{\varepsilon,\eta}(1)$ is bounded, so dividing by $\log T$ and letting $T\to\infty$ through $T\notin\{\gamma_k\}$ (at $T\in\{\gamma_k\}$, $S(T)=S(T^+)$ is a limit of values at $t\notin\{\gamma_k\}$, so the $\limsup$ over $T\notin\{\gamma_k\}$ is $\mathfrak a$) gives
+ \begin{equation}
+ \mathfrak a\le\frac1{2\pi\log2}\Bigl(\int_0^\pi\mathfrak e^*\bigl(1+\eta+(1+2\eta)\cos\theta\bigr)d\theta+\pi\varepsilon\Bigr).
+ \label{eq:disp_16}
+@@ -899,7 +899,7 @@
+ Appendix~\CGref{app:code} computes these values (40-digit arithmetic, two independent evaluations) and gives $0.096816006\le\Lambda(\eB)\le0.096816007$ and $2\pi\Lambda(\eB)\le0.60832$.\qed
+ 
+ \subsection{Proof of Theorem~\ref{thm:explicit}}\label{subsec:proof_explicit}
+-Take $c=1.000002$ and $R=1.000005$. Then $c-R=-3\cdot10^{-6}$, $\sigma^\sharp=1.25000275\ldots$, $\delta^\sharp=0.2500012499\ldots\in[\frac14,\frac58]$, $c<R$, and \CGeqref{eq:backlund_conditions} holds. Let $T\ge100$ be outside $\{\gamma_k\}$. For $\sigma\in[c-R,c+R]\subset[-0.01,3]$ and $t\in[T-2,T+2]\subset[98,\infty)$, Lemma~\CGref{lem:explicit_zeta} gives \CGeqref{eq:zeta_hyp} with $\mathfrak h=\eE^*$, $K=2.74$ and $\Omega(t)=\log t$.
++Take $c=1.000002$ and $R=1.000005$. Then $c-R=-3\cdot10^{-6}$, $\sigma^\sharp=1.25000275\ldots$, $\delta^\sharp=0.2500012499\ldots\in[\frac14,\frac58]$, $c<R$, and \CGeqref{eq:backlund_conditions} holds. Let $T\ge100$, $T\notin\{\gamma_k\}$. For $\sigma\in[c-R,c+R]\subset[-0.01,3]$ and $t\in[T-2,T+2]\subset[98,\infty)$, Lemma~\CGref{lem:explicit_zeta} gives \CGeqref{eq:zeta_hyp} with $\mathfrak h=\eE^*$, $K=2.74$ and $\Omega(t)=\log t$.
+ 
+ The integral $\mathcal I_{\eE^*}$ has a closed form. Write $\varsigma_0=\frac12<\varsigma_1<\dots<\varsigma_7=1$ for the abscissae in \CGeqref{eq:explicit_nodes}, $e_i$ for the second coordinates and $\varrho_i=(e_{i+1}-e_i)/(\varsigma_{i+1}-\varsigma_i)$ for the slopes, so that
+ \begin{equation}
+@@ -953,9 +953,9 @@
+ \begin{proof}[Proof of Corollary~\ref{cor:distance}]
+ The function $\Nz$ is increasing on $(2\pi,\infty)$ with increasing derivative $\lL(t)=\frac1{2\pi}\log\frac t{2\pi}$, and $\gamma_1>14>2\pi$, $\tau_k>2\pi$, so $\mathfrak m_k>2\pi$. By the mean value theorem, $|s_k|=\lL(\xi_k)|\tau_k-\gamma_k|\ge\lL(\mathfrak m_k)|\tau_k-\gamma_k|$ for some $\xi_k$ between $\tau_k$ and $\gamma_k$.
+ 
+-(b) Inequality \CGeqref{eq:explicit_N} holds for $G(t)$ at points $t\ge e$ outside $\{\gamma_k\}$ and, since its right side is continuous and increasing in $t$, for $G_k^\pm$ (note $\gamma_k>14>e$). With Lemma~\CGref{lem:s_bounds} it gives $|s_k|\le0.09783\log\gamma_k+0.7214\log\log\gamma_k+10.2$, and \CGeqref{eq:distance_explicit} follows from $\lL(\mathfrak m_k)=\frac1{2\pi}\log\frac{\mathfrak m_k}{2\pi}>0$.
++(b) Inequality \CGeqref{eq:explicit_N} holds for $G(t)$ at $t\ge e$, $t\notin\{\gamma_k\}$, and, since its right side is continuous and increasing in $t$, for $G_k^\pm$ (note $\gamma_k>14>e$). With Lemma~\CGref{lem:s_bounds} it gives $|s_k|\le0.09783\log\gamma_k+0.7214\log\log\gamma_k+10.2$, and \CGeqref{eq:distance_explicit} follows from $\lL(\mathfrak m_k)=\frac1{2\pi}\log\frac{\mathfrak m_k}{2\pi}>0$.
+ 
+-(a) First, $\mathfrak m_k\ge\gamma_k/2$ for large $k$: if $\tau_k<\gamma_k/2$, then $|s_k|=\Nz(\gamma_k)-\Nz(\tau_k)\ge\Nz(\gamma_k)-\Nz(\gamma_k/2)\ge\frac{\gamma_k}2\lL(\frac{\gamma_k}2)$, which exceeds the bound $O(\log\gamma_k)$ of (b) for large $k$. Hence $\log\mathfrak m_k=\log\gamma_k+O(1)$, so $|\tau_k-\gamma_k|=O(1)$ by (b), and then $\log\mathfrak m_k=\log\gamma_k+o(1)$. For $\varepsilon>0$, Corollary~\CGref{cor:bourgain} and $\varpi(t)\to0$ give $|G(t)|\le(\Lambda(\eB)+\varepsilon)\log t$ for large $t$ outside $\{\gamma_k\}$, hence $|G_k^\pm|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$, $|s_k|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$ and $|\tau_k-\gamma_k|\le|s_k|/\lL(\mathfrak m_k)\le2\pi(\Lambda(\eB)+\varepsilon)(1+o(1))$. Let $\varepsilon\to0$. Finally, $2\pi\cdot0.0968160063238\ldots=0.6083129\ldots$.
++(a) First, $\mathfrak m_k\ge\gamma_k/2$ for large $k$: if $\tau_k<\gamma_k/2$, then $|s_k|=\Nz(\gamma_k)-\Nz(\tau_k)\ge\Nz(\gamma_k)-\Nz(\gamma_k/2)\ge\frac{\gamma_k}2\lL(\frac{\gamma_k}2)$, which exceeds the bound $O(\log\gamma_k)$ of (b) for large $k$. Hence $\log\mathfrak m_k=\log\gamma_k+O(1)$, so $|\tau_k-\gamma_k|=O(1)$ by (b), and then $\log\mathfrak m_k=\log\gamma_k+o(1)$. For $\varepsilon>0$, Corollary~\CGref{cor:bourgain} and $\varpi(t)\to0$ give $|G(t)|\le(\Lambda(\eB)+\varepsilon)\log t$ for large $t\notin\{\gamma_k\}$, hence $|G_k^\pm|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$, $|s_k|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$ and $|\tau_k-\gamma_k|\le|s_k|/\lL(\mathfrak m_k)\le2\pi(\Lambda(\eB)+\varepsilon)(1+o(1))$. Let $\varepsilon\to0$. Finally, $2\pi\cdot0.0968160063238\ldots=0.6083129\ldots$.
+ \end{proof}
+ 
+ \begin{proposition}[Limit superior of $\lvert\tau_k-\gamma_k\rvert$]\label{prop:distance_sharp}
+@@ -963,9 +963,9 @@
+ \end{proposition}
+ 
+ \begin{proof}
+-\emph{Upper bound.} By the definition of $\mathfrak a$, for every $\varepsilon>0$ and all large $t$ outside $\{\gamma_k\}$, $|S(t)|\le(\mathfrak a+\varepsilon)\log t$. The proof of Corollary~\CGref{cor:distance}(a), with $\Lambda(\eB)$ replaced by $\mathfrak a$, gives $\limsup_k|\tau_k-\gamma_k|\le2\pi\mathfrak a$. It uses Lemma~\CGref{lem:s_bounds}, which allows multiple imaginary parts.
++\emph{Upper bound.} By the definition of $\mathfrak a$, for every $\varepsilon>0$ and all large $t\notin\{\gamma_k\}$, $|S(t)|\le(\mathfrak a+\varepsilon)\log t$. The proof of Corollary~\CGref{cor:distance}(a), with $\Lambda(\eB)$ replaced by $\mathfrak a$, gives $\limsup_k|\tau_k-\gamma_k|\le2\pi\mathfrak a$. It uses Lemma~\CGref{lem:s_bounds}, which allows multiple imaginary parts.
+ 
+-\emph{Lower bound.} One may assume $\mathfrak a>0$. Let $t>\gamma_1$ be outside $\{\gamma_k\}$ and $k=N(t)$, so that $\gamma_k<t<\gamma_{k+1}$. If the imaginary part $\gamma_k$ is multiple, $k$ is the largest index with that imaginary part, and $\gamma_{k+1}$ is the next distinct imaginary part, whatever its multiplicity. Since no imaginary part lies in $(\gamma_k,\gamma_{k+1})$, $N(\gamma_k^+)=k=N(\gamma_{k+1}^-)$.
++\emph{Lower bound.} One may assume $\mathfrak a>0$. Let $t>\gamma_1$, $t\notin\{\gamma_k\}$, and $k=N(t)$, so that $\gamma_k<t<\gamma_{k+1}$. If the imaginary part $\gamma_k$ is multiple, $k$ is the largest index with that imaginary part, and $\gamma_{k+1}$ is the next distinct imaginary part, whatever its multiplicity. Since no imaginary part lies in $(\gamma_k,\gamma_{k+1})$, $N(\gamma_k^+)=k=N(\gamma_{k+1}^-)$.
+ 
+ By the definition of $s_k$, $s_k=N(\gamma_k^+)-\frac12-\Nz(\gamma_k)=G_k^+-\frac12$ and $s_{k+1}=N(\gamma_{k+1}^-)+\frac12-\Nz(\gamma_{k+1})=G_{k+1}^-+\frac12$. On $(\gamma_k,\gamma_{k+1})$, $G=k-\Nz$ is decreasing, so $G_k^+\ge G(t)\ge G_{k+1}^-$, hence $s_k\ge G(t)-\frac12$ and $s_{k+1}\le G(t)+\frac12$.
+ 
+@@ -973,7 +973,7 @@
+ 
+ For $j\in\{k,k+1\}$ the mean value theorem gives $|s_j|=\lL(\xi_j)|\tau_j-\gamma_j|$ with $\xi_j$ between $\tau_j$ and $\gamma_j$, and $\lL$ increases, so $|\tau_j-\gamma_j|\ge|s_j|/\lL(\max(\tau_j,\gamma_j))$. By the proof of Corollary~\CGref{cor:distance}(a), $|\tau_j-\gamma_j|=O(1)$, and $\gamma_{k+1}-\gamma_k\to0$ as $t\to\infty$ (Theorem~\CGref{thm:known_basic}; $k=N(t)\to\infty$), so $\max(\tau_j,\gamma_j)=t+O(1)$ and $2\pi\lL(\max(\tau_j,\gamma_j))=\log t-\log2\pi+O(1/t)$. Finally $G(t)=S(t)+\varpi(t)/\pi$ with $\varpi(t)\to0$ (Lemma~\CGref{lem:varpi}).
+ 
+-Choose $t\to\infty$ outside $\{\gamma_k\}$ with $|S(t)|\ge(\mathfrak a-\varepsilon)\log t$, which exist by the definition of $\mathfrak a$ and the convention $S(T)=S(T^+)$. Then, for one of $j=k,k+1$,
++Choose $t\to\infty$, $t\notin\{\gamma_k\}$, with $|S(t)|\ge(\mathfrak a-\varepsilon)\log t$, which exist by the definition of $\mathfrak a$ and the convention $S(T)=S(T^+)$. Then, for one of $j=k,k+1$,
+ \begin{equation}
+ |\tau_j-\gamma_j|\ge\frac{2\pi\bigl((\mathfrak a-\varepsilon)\log t-\frac12-o(1)\bigr)}{\log t-\log2\pi+O(1/t)}\longrightarrow2\pi(\mathfrak a-\varepsilon),
+ \label{eq:disp_19}
+@@ -1071,7 +1071,7 @@
+ \end{lemma}
+ 
+ \begin{proof}
+-Write $D_\ell=\gamma_{\ell+1}-\gamma_\ell$ and $L_T=\log\frac T{2\pi}$. By Theorem~\CGref{thm:known_basic}, $D_\ell\to0$, so there is $T_0$ with $D_\ell\le1$ whenever $\gamma_\ell>T\ge T_0$. For $0<h\le1$ let $\mathcal A_h=\{t\in[T,4T]:N(t+h)=N(t)\}$. For every $t\in\mathcal A_h$ such that neither $t$ nor $t+h$ is an imaginary part (a null set is excluded), \CGeqref{eq:intro_RvM} at $t$ and $t+h$ gives $|S(t+h)-S(t)|=|\Nz(t+h)-\Nz(t)+\frac{\varpi(t+h)-\varpi(t)}\pi|\ge\frac{hL_T}{2\pi}-O\bigl(\frac1T\bigr)\ge\frac{hL_T}{4\pi}$ when $hL_T\ge1$ and $T\ge T_0$. Theorem~\CGref{thm:known_fujii}(b) with $\mathsf k=2$, $\alpha_{\rm F}=\frac12$ and $H=T$ (the endpoints of its ranges, admitted there; this is the case ($\alpha$) of \CGcite{Fujii1981}), on $[T,2T]$ and on $[2T,4T]$, together with $\log(2+h\log4T)\le2\log(2+hL_T)$, gives, by Chebyshev's inequality,
++Write $D_\ell=\gamma_{\ell+1}-\gamma_\ell$ and $L_T=\log\frac T{2\pi}$. By Theorem~\CGref{thm:known_basic}, $D_\ell\to0$, so there is $T_0$ with $D_\ell\le1$ whenever $\gamma_\ell>T\ge T_0$. For $0<h\le1$ let $\mathcal A_h=\{t\in[T,4T]:N(t+h)=N(t)\}$. For every $t\in\mathcal A_h$ such that $t,t+h\notin\{\gamma_k\}$ (a null set is excluded), \CGeqref{eq:intro_RvM} at $t$ and $t+h$ gives $|S(t+h)-S(t)|=|\Nz(t+h)-\Nz(t)+\frac{\varpi(t+h)-\varpi(t)}\pi|\ge\frac{hL_T}{2\pi}-O\bigl(\frac1T\bigr)\ge\frac{hL_T}{4\pi}$ when $hL_T\ge1$ and $T\ge T_0$. Theorem~\CGref{thm:known_fujii}(b) with $\mathsf k=2$, $\alpha_{\rm F}=\frac12$ and $H=T$ (the endpoints of its ranges, admitted there; this is the case ($\alpha$) of \CGcite{Fujii1981}), on $[T,2T]$ and on $[2T,4T]$, together with $\log(2+h\log4T)\le2\log(2+hL_T)$, gives, by Chebyshev's inequality,
+ \begin{equation}
+ \meas\mathcal A_h\le\Bigl(\frac{4\pi}{hL_T}\Bigr)^4\int_T^{4T}\bigl(S(t+h)-S(t)\bigr)^4dt\ll\frac{T\log^2(2+hL_T)}{(hL_T)^4}\qquad(1\le hL_T,\ 0<h\le1).
+ \label{eq:disp_24}
+@@ -1624,7 +1624,7 @@
+ \toprule used as & source and place & form there; adaptation here\\\midrule\endfirsthead
+ \toprule used as & source and place & form there; adaptation here\\\midrule\endhead
+ \bottomrule\endfoot
+-Theorem~\CGref{thm:known_basic} & \CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12 (formula for $N$ and one-sided limits at imaginary parts; $S=O(\log t)$; gaps $\to0$; the convention $S(t)=S(t^+)$ at an imaginary part is adopted in this paper) & $N(t)=\frac1\pi\vartheta(t)+1+S(t)$ with $\vartheta$ through $\operatorname{Log}\Gamma(\frac14+\frac{it}2)$; Lemma~\CGref{lem:varpi} rewrites $\frac1\pi\vartheta+1=\Nz+\varpi/\pi$\\
++Theorem~\CGref{thm:known_basic} & \CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12 (formula for $N$ and one-sided limits at imaginary parts; $S=O(\log t)$; gaps $\to0$; the convention $S(t)=S(t^+)$ at $t\in\{\gamma_k\}$ is adopted in this paper) & $N(t)=\frac1\pi\vartheta(t)+1+S(t)$ with $\vartheta$ through $\operatorname{Log}\Gamma(\frac14+\frac{it}2)$; Lemma~\CGref{lem:varpi} rewrites $\frac1\pi\vartheta+1=\Nz+\varpi/\pi$\\
+ Theorem~\CGref{thm:known_stirling} & \CGcite[\S5.11(ii)]{DLMF} & $|\mathcal R(z)|\le\sec^2(\frac12\operatorname{ph}z)/(12|z|)$, $|\operatorname{ph}z|<\pi$; used at $z=\frac14+\frac{it}2$ (Lemma~\CGref{lem:varpi}) and at $z=\frac{1-s}2,\frac s2$ (Lemma~\CGref{lem:chi})\\
+ Theorem~\CGref{thm:known_zeta}(a) & \CGcite{HiaryPatelYang2024}, Thm.~1.1; \CGcite{PatelYang2023}, Thm.~1.1; both as quoted in \CGcite[\S2, display before (2.3)]{BellottiWong2025} & $0.618|t|^{1/6}\log|t|$ and $66.7|t|^{27/164}$ for $|t|\ge3$; used only through \CGeqref{eq:boundary}, with constant $2$ on $\sigma=\frac12$ (Remark~\CGref{rem:robust}(i))\\
+ Theorem~\CGref{thm:known_zeta}(b) & \CGcite{Yang2024}, Thm.~1.1; quoted in \CGcite[(2.4)]{BellottiWong2025} & $1.546|t|^{1/(2^m-2)}\log|t|$ on $\sigma=\sigma_m$, $|t|\ge3$; used with constant $2$ for $4\le m\le9$ after Remark~\CGref{rem:robust}(ii)\\

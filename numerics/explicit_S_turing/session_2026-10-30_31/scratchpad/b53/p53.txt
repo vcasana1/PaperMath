@@ -1,0 +1,4848 @@
+Bounds for the argument of the Riemann zeta function and a
+prime-corrected Riemann–von Mangoldt approximation of its
+zeros
+Vı́ctor Casaña-Giner∗
+30 October 2026
+
+Abstract
+The imaginary parts γk of all nontrivial zeros of the Riemann zeta function, counted with
+C
+multiplicity, are approximated by a strictly increasing sequence
+√ τk defined by the Riemann–
+von Mangoldt main term and the phases of approximately T Euler factors at height T .
+The points are defined by sublevel measures rather than by choosing roots of a possibly
+nonmonotone equation. Without assuming the Riemann hypothesis (RH),
+1 X C
+|τk − γk |2 = O(log−2 T ),
+KT = {k : T < γk ≤ 2T }.
+#KT
+k∈KT
+
+Thus the root-mean-square error is bounded by a constant multiple of the mean spacing
+2π/ log T between zeros at height T . Combined with Selberg’s second-moment theorem, an
+exact integral identity valid without RH and retaining repeated imaginary parts gives
+1 X
+2 log log T
+|γk − τk |2 =
+(1 + o(1)),
+N0 (τk ) = k − 21 .
+2
+#KT
+log
+T
+k∈K
+T
+
+Consequently, the arithmetic correction τkC − τk has the same leading second-moment asymptotic, and the corrected ordinal equation has an O(1) mean-square defect at the actual
+imaginary parts γk .
+Independently, an admissible-exponent-profile version of Backlund’s method gives
+lim sup
+T →∞
+
+|S(T )|
+≤ 0.0968160 . . . ,
+log T
+
+lim sup |τk − γk | ≤ 0.60832,
+k→∞
+
+and the explicit unconditional estimate
+|S(T )| ≤ 0.09783 log T + 0.7214 log log T + 10.6
+
+(T ≥ e).
+
+Its leading coefficient is smaller than that of Bellotti–Wong, while the complete bound is
+smaller only for log T > 2425.8385 . . ..
+
+MSC 2020: 11M06, 11M26. Keywords: Riemann zeta function; Riemann hypothesis (RH);
+argument of the zeta function; Backlund’s method; exponent pairs; zeros of the zeta function;
+Euler phases.
+
+Contents
+1 Introduction
+1.1 Inverting the Riemann–von Mangoldt formula . . . . . . . . . . . . . . . . . . . .
+1.2 Results . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3 Relation to the literature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.4 Organization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+2
+3
+4
+6
+9
+
+∗
+Universidad Nacional de Educación a Distancia, Madrid, Spain. Email: vcasana1@alumno.uned.es. ORCID
+0000-0002-8252-2608.
+
+1
+
+2 Notation
+
+10
+
+3 Results from the literature
+
+12
+
+4 Explicit lemmas
+4.1 The explicit profile . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+14
+15
+
+5 A disc-based estimate for S(T )
+5.1 Proof of Theorem 1.1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5.2 Proof of Corollary 1.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5.3 Proof of Theorem 1.3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+16
+17
+18
+18
+
+6 Distance from τk to the imaginary parts
+
+19
+
+7 Localization by primes
+7.1 The construction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.2 A deterministic transfer inequality . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.3 The arithmetic inputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7.4 Proof of Theorem 1.5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+20
+20
+21
+23
+24
+
+8 The mean square of τk − γk
+
+25
+
+9 Further consequences of ordinal localization
+
+28
+
+10 Conclusion
+
+31
+
+A Computation of the constants
+
+32
+
+B Correspondence with the sources
+
+44
+
+1
+
+Introduction
+
+The imaginary parts γk of the nontrivial zeros of the Riemann zeta function are located only on
+average by the Riemann–von Mangoldt formula: the points τk defined by N0 (τk ) = k − 12 (1.2),
+where N0 is the smooth main term of the zero-counting function, discard the oscillating term
+S(t) = π1 arg ζ( 21 + it). The primes enter through S. The Euler product writes ζ(s) as a product
+of one factor (1−p−s )−1 for each prime p. The Euler phase of the prime p is − π1 arg(1−p−1/2−it ),
+the normalized phase of this factor at s = 12 + it, and S(t) is, formally, the sum of the Euler
+phases of all primes. Truncated at the primes p ≤ x, with x a small power of t, this sum
+approximates S in mean square, unconditionally
+(Selberg [37], Tsang [42], Fujii [11]; see below).
+√
+Lemma 7.6 extends this to about t primes. The arithmetic correction studied here adds the
+Euler phases of finitely many primes to the main term (Φm in (1.10), interpolated as Φ in (1.11)).
+The zeros are then approximated by points τkC attached to the levels N0 + Φ = k − 12 , instead of
+the roots τk of N0 (t) = k − 21 .
+The main result constructs the strictly increasing sequence τkC through the sublevel measures
+(1.12) of N0 +Φ, where Φ is defined by the Euler phases of finitely many primes. Unconditionally,
+the root-mean-square error of τkC with respect to γk on dyadic blocks is O(1/ log T ), a bounded
+multiple of the mean zero spacing (Theorem 1.5). The key technical feature is the sublevel-set
+definition: it remains valid even when the prime-corrected counting function N0 + Φ is not
+monotone, where the equation N0 + Φ = k − 21 may have no unique root.
+An exact defect identity supplies an independent
+√ comparison. Without RH, the uncorrected
+points τk differ from the γk by root-mean-square 2 log log T / log T (1+o(1)), the factor log log T
+coming from Selberg’s mean square of S [37]. Thus the arithmetic correction removes the factor
+2
+
+log log T from the proved mean-square upper order. Further consequences proved below describe
+the arithmetic correction itself and the defect of the ordinal equation when evaluated at the
+actual imaginary parts γk .
+The other results concern the argument S(T ) of the zeta function. A profile-based application
+of Backlund’s method yields an asymptotic coefficient 0.0968160 . . ., a resulting upper limit
+0.60832 for the distance between the points τk of the Riemann–von Mangoldt equation and the
+actual imaginary parts γk , and a fully explicit estimate |S(T )| ≤ 0.09783 log T +0.7214 log log T +
+10.6. The leading coefficient is smaller than Bellotti–Wong’s; the complete estimate improves
+upon theirs only for log T > 2425.8385 . . ..
+T
+T
+Several related approaches supplement the main term N0 (T ) = 2π
+log 2πe
++ 87 of the Riemann–
+von Mangoldt formula using primes or values of ζ. They differ from the present construction in
+the correcting term and in whether RH is assumed.
+For approaches that use ζ, explicit bounds in the critical strip (Yang [44]; Bellotti [2]) give
+unconditional bounds for S(T ) and hence for N − N0 (Trudgian [40], [41]; Bellotti and Wong [3,
+Thm. 1.1, Cor. 1.5]). These control the size of N − N0 , not the position of the imaginary parts.
+França and LeClair [8, eq. (20)] write the n-th imaginary part as a solution of N0 (t) + S(t) =
+n − 21 with the exact S; they do not assume RH, but they assume that limδ→0+ arg ζ( 12 + δ + it)
+exists for every t, and they do not prove that the equation has exactly one solution for each n
+[8, §9]. In approaches using primes, S is approximated by a sum over primes p ≤ x, in mean
+square and unconditionally (Selberg [37], Tsang [42], Fujii [11]).
+Kargin [22, Thm. 1.1] takes tk with N0 (tk ) = k − 21 and proves, without RH, that γk − tk ,
+suitably normalized, is asymptotically Gaussian (for his enumeration of the zeros, which agrees
+with the one used here when RH holds; see Section 1.2), a limit law over windows of k and not
+a bound for each imaginary part.
+Korolev [23, Thm. 4.2] proves, without RH, Selberg’s formulas for the moments of the Gram
+displacements ∆G
+k , the integers that locate each γk among the Gram points, where the smooth
+term N0 takes integer values up to the Stirling remainder.
+Gonek [13] builds from a finite Euler product a function ζX whose zeros up to height t
+P
+log n)
+t
+t
+t
+number 2π
+log 2π
+− 2π
+− π1 n≤X 2 ΛX (n) sin(t
++ OX (1) for X < exp(C3 log t/Φ(t)), in his
+n1/2 log n
+notation, under RH [13, Thm. 7.5, p. 2175], and these zeros converge to those of ζ as X → ∞,
+again under RH and without a rate [13, Thm. 9.1, p. 2181].
+LeClair [24] replaces S by a finite number of Euler factors, a free parameter, on the basis of
+a conjectured random-walk behavior of sums over primes; that work is primarily numerical and
+does not state an error bound.
+√
+The present article is unconditional, uses about t primes at height t, a number tied to the
+height rather than a free parameter, and bounds the mean-square error of approximations τkC
+that are increasing and indexed by construction.
+
+1.1
+
+Inverting the Riemann–von Mangoldt formula
+
+Let ρk = βk + iγk be the nontrivial zeros of the Riemann zeta function with positive imaginary
+parts, listed with multiplicity and 0 < γ1 ≤ γ2 ≤ · · · , and let N (t) = #{k : γk ≤ t}. For t > 0,
+t∈
+/ {γk }, the Riemann–von Mangoldt formula reads [39, §9.3]
+N (t) = N0 (t) + S(t) +
+
+ϖ(t)
+,
+π
+
+N0 (t) =
+
+t
+t
+7
+log
++ ,
+2π
+2πe 8
+
+S(t) =
+
+
+1
+arg ζ 12 + it ,
+π
+
+(1.1)
+
+where ϖ(t) = O(1/t) is the Stirling remainder of the Riemann–Siegel theta function (Lemma 4.1).
+At t ∈ {γk } this paper uses the right-hand convention S(t) = S(t+ ), compatible with the
+right-continuous counting function N . Different conventions are used in the literature (see [39,
+§9.3]). All bounds below have continuous majorants and extend to both one-sided limits by
+approximation through points t ∈
+/ {γk }. The function N0 is strictly increasing on (2π, ∞), with
+
+3
+
+N0 (2π) = − 18 and N0 (t) → ∞ as t → ∞. Thus for every integer k ≥ 1 there is exactly one
+τk > 2π with
+N0 (τk ) = k − 21 .
+(1.2)
+The sequence (τk ) solves the counting equation with the oscillating term S removed. In terms
+of the Gram points gm , defined by ϑ(gm ) = mπ for m ≥ −1 (g−1 = 9.66 . . .), one has N0 (gm ) =
+m + 1 − ϖ(gm )/π, because ϑ/π + 1 = N0 + ϖ/π (Lemma 4.1). Since |ϖ|/π < 12 , we have
+N0 (gk−2 ) < k − 12 < N0 (gk−1 ) for every k ≥ 1. Strict monotonicity thus gives gk−2 < τk < gk−1 .
+The imaginary part γk lies in the same Gram interval, γk ∈ (gk−2 , gk−1 ], exactly when the
+displacement ∆G
+k of Remark 7.7 vanishes. This is Gram’s law in the index convention adopted
+here for the k-th imaginary part (the Gram–Selberg phenomenon of [23, Def. 1.4]), and it fails
+for a positive proportion of k [23, p. 58]. The resulting sequence gives a continuous counterpart
+of the Gram scale, read at the half-integer levels.
+The object of this paper is to determine how far these points lie from the imaginary parts γk ,
+and how much arithmetic information can bring them, in root-mean-square, within a bounded
+number of mean spacings 2π/ log γk , with the intermediate objective of obtaining a better approximation of τk (or modifications thereof) to γk . The first question concerns the size of S; the
+second concerns its approximation by the Euler phases of the primes.
+
+1.2
+
+Results
+
+Throughout, write a = lim supT →∞ |S(T )|/ log T . An admissible profile is a continuous function
+e : [ 21 , 1] → [0, ∞) with e(1) = 0 such that, for every ε > 0,
+ζ(σ + it) ≪ε |t|e(σ)+ε
+
+uniformly for 21 ≤ σ ≤ 1, |t| ≥ 2.
+
+(1.3)
+
+Its reflected extension is
+
+1
+
+
+2 − σ,
+
+
+ 1 − σ + e(1 − σ),
+e∗ (σ) = 2
+
+e(σ),
+
+
+
+0,
+
+σ < 0,
+0 ≤ σ < 12 ,
+1
+2 ≤ σ ≤ 1,
+σ > 1,
+
+(1.4)
+
+a continuous function on R (at σ = 0 both formulas give 21 because e(1) = 0).
+Theorem 1.1 (Asymptotic bound). For every admissible profile e,
+Z 1
+e∗ (σ)
+1
+p
+a ≤ Λ(e) :=
+dσ.
+2π log 2 0
+σ(2 − σ)
+Let eB be the piecewise linear function through the nine points
+ 139 13  173 13  773 13  820 13 
+1 13
+, 854 , 854 , 867 , 1734 ,
+2 , 84 , 194 , 194 , 207 , 414
+
+
+3387 13
+1149 13
+13921
+13
+,
+,
+,
+,
+,
+3494 3494
+1169 7014
+14054 14054 , (1, 0).
+
+(1.5)
+
+(1.6)
+
+55
+The nodes are the points (λj − κj , κj ) for (κj , λj ) = Aj ( 13
+84 , 84 ), 0 ≤ j ≤ 7, followed by (1, 0).
+Bourgain’s cited exponent pairs include an arbitrary positive ε in both coordinates; the limiting
+profile is obtained after taking ε → 0+ , as justified in the proof of Corollary 1.2.
+
+Corollary 1.2 (Bourgain profile). a ≤ Λ(eB ) = 0.0968160063 . . .
+Theorem 1.3 (Explicit bound). For every T ≥ e,
+|S(T )| ≤ 0.09783 log T + 0.7214 log log T + 10.6,
+
+(1.7)
+
+N (T ) − N0 (T ) ≤ 0.09783 log T + 0.7214 log log T + 10.7.
+
+(1.8)
+
+4
+
+The coefficient 0.09783 comes from the value 0.0978292318 . . . of the Backlund quotient (5.10)
+for the explicit profile eE of Section 4.1, at fixed parameters c = 1.000002, R = 1.000005. Among
+the explicit unconditional bounds compared in Table 1, the coefficient 0.09783 is the smallest
+leading coefficient in a bound of the form |S(T )| ≤ A1 log T + A2 log log T + A3 for all T ≥ e.
+The previous values are 0.112 (Trudgian [41]), 0.110 (Platt and Trudgian [32]), 0.1038
+(Hasanalizade, Shen and Wong [17]) and 0.10076 (Bellotti and Wong [3]). Table 1 lists the
+whole history, from von Mangoldt [43].
+For S, Bellotti and Wong [3, Cor. 1.5] prove |S(T )| ≤ 0.10076 log T + min{0.24460 log log T +
+7.20844, 1.68845 log log T + 1.50956} for T ≥ e (their Theorem 1.1, for N , is discussed in Section 1.3). The bound (1.7) is the smaller of the two exactly when log T > 2425.8385 . . .. The
+minimum of the two bounds holds for all T ≥ e.
+Corollary 1.4 (Distance to the imaginary parts).
+
+(a) lim sup |τk − γk |
+
+≤
+
+2πΛ(eB )
+
+=
+
+k→∞
+
+0.6083129 . . . < 0.60832.
+(b) For every k ≥ 1, with mk := min(τk , γk ) > 2π,
+
+
+2π 0.09783 log γk + 0.7214 log log γk + 10.2
+|τk − γk | ≤
+.
+log(mk /2π)
+
+(1.9)
+
+Now, for the localization by primes let p1 < p2 < · · · be the primes, let
+Φm (t) = −
+
+m
+
+m
+
+ν=1
+
+ν=1 r≥1
+
+
+1 X X sin(rt log pν )
+1X
+arg 1 − pν−1/2−it = −
+r/2
+π
+π
+r pν
+
+(1.10)
+
+be the sum of the Euler phases of the first m primes, the Euler phase of the prime p being
+− π1 arg(1 − p−1/2−it ) (principal argument; m ≥ 0, and Φ0 = 0 as an empty sum). For every
+−1/2−it | < 1 and ℜ(1 − p−1/2−it ) > 0, so the
+fixed m, the series over r converges absolutely:
+P |p r
+principal logarithm satisfies Log(1 − z) = − r≥1 z /r. Let mj = ⌊2j/2 ⌋ ≥ 0 for j ∈ Z, and on
+the dyadic block 2j ≤ t ≤ 2j+1 let
+
+
+t
+t
+Φ(t) = 2 − j Φmj (t) + j − 1 Φmj+1 (t),
+F(t) = N0 (t) + Φ(t).
+(1.11)
+2
+2
+We define the corrected points by
+τkC =
+
+Z ∞
+0
+
+1{F (t)<k− 1 } dt
+
+(k ≥ 1).
+
+(1.12)
+
+2
+
+Theorem 1.5 (Localization by primes). The numbers τkC are finite and 0 < τ1C < τ2C < · · · .
+For k ≥ 2 (equivalently τk ≥ 2πe, since N0 (2πe) = 87 ), τkC is determined by k and by the primes
+√
+pν with ν ≤ ⌊2 τk ⌋. There are absolute constants C and T0 such that, with KT = {k : T < γk ≤
+2T },
+X
+
+(τkC − γk )2 ≤ C
+
+k∈KT
+
+T
+,
+log T
+
+hence
+
+1 X C
+C′
+(τk − γk )2 ≤
+#KT
+log2 T
+
+(T ≥ T0 ), (1.13)
+
+k∈KT
+
+with C ′ absolute.
+′′
+
+2π
+C
+Corollary 1.6. For every A > 0 and T ≥ T0 , #{k ∈ KT : |τkC − γk | > A · log
+T } ≤ A2 #KT ,
+with C ′′ absolute.
+
+The sequence τk does not attain this mean-square order, and its leading mean-square asymptotic is known.
+
+5
+
+Theorem 1.7 (Mean square without primes). Without any hypothesis on the zeros, as T → ∞,
+
+1 X
+2 log log T
+(τk −γk )2 =
+1+o(1) ,
+2
+#KT
+log T
+
+hence
+
+k∈KT
+
+X
+k∈KT
+
+(τk −γk )2 ≍
+
+T log log T
+. (1.14)
+log T
+√
+
+log T
+Theorem 1.7 is an asymptotic equality: the root-mean-square of τk − γk is 2 log
+mean
+2π
+spacings, no more and no less. The Euler phases of the primes in Theorem 1.5 remove the factor
+log log T from the proved mean-square upper order.
+The proof (Section 8) rests on an exact identity, valid for every absolutely continuous function
+F , between the sum of (k − 21 − F (γk ))2 over the imaginary parts and the integral of (N − F )2 F ′ ,
+together with Selberg’s mean square of S. It does not use the transfer inequality of Section 7.
+Kargin [22, Thm. 1.1] considers the points tk defined by N0 (tk ) = k − 12 , which are the τk of
+(1.2), and proves, without assuming RH, that
+
+(γk − τk ) log τk
+√
+2 log log τk
+
+(1.15)
+
+is asymptotically standard normal, with convergence of moments, when k is uniform in a window
+N ≤ k ≤ N + ⌊N θ ⌋ − 1, 21 < θ ≤ 1. His γk enumerate the zeros with real part at least 21 , which
+is the enumeration used here when RH holds.
+Korolev [23, Thm. 4.2] proves Selberg’s formulas for the moments of the Gram displacements
+∆G
+k over short ranges of k. Since
+|sk + ∆G
+(1.16)
+k|<1
+(Remark 7.7), his second moment leads to the same value of ⟨s2k ⟩KT . Neither work states (1.14)
+for the full enumeration of the zeros. The present route of Section 8 uses neither Gram intervals
+nor probabilistic limit theorems, and the identity behind it holds for every C 1 function in place
+of N0 , monotone or not. These antecedents address the same scale of ordinal fluctuations but
+do not state the present full-multiplicity mean-square identity.
+Theorem 1.5 is unconditional and makes no assumption about the real parts of the zeros
+(RH) or about their multiplicities. The order of the points follows from the inclusion of sublevel
+sets as the level increases. In this way, no root selection or Newton step is needed.
+
+1.3
+
+Relation to the literature
+
+T
+T
+Bounds of the form A1 log T + A2 log log T + A3 for |N (T ) − 2π
+log 2πe
+| go back to von Mangoldt
+[43], and for |S(T )| to Backlund [1]. Table 1 lists them.
+The leading coefficient was lowered by Trudgian to 0.112 (the value of the published version,
+as listed in [17, Table 1] and [3, Table 1]; the preprint [41, Thm. 1] states 0.111), by Platt and
+Trudgian to 0.110 [32, Cor. 1], by Hasanalizade, Shen and Wong to 0.1038 [17, Cor. 1.2], and
+by Bellotti and Wong to 0.10076 [3, Cor. 1.5].
+The proof of [32, Cor. 1] rests on [41] (see [3, §5, footnote 8]) and on the bound for ζ( 12 + it)
+of [32, Thm. 1], which is affected by the error in the lemma of Cheng and Graham pointed out
+in [34, p. 3]. (Fiori [9] corrected the Phragmén–Lindelöf lemma [41, Lemma 3]; the version used
+here is his Corollary 3, stated as Theorem 3.4.) These proofs use a disc argument together with
+Jensen’s formula. The present proof changes the treatment of the reflected exponents on the left
+of the critical line.
+Bellotti and Wong give two separate bounds. Their Theorem 1.1 is for the counting function
+T
+T
+without the constant 78 : |N (T ) − 2π
+log 2πe
+| ≤ 0.10076 log T + 0.24460 log log T + 8.08344 for
+T ≥ e. Their Corollary 1.5 is the bound for |S(T )| quoted after Theorem 1.3, with the constant
+7.20844 in the first term of the minimum, and 8.08344 − 7.20844 = 78 .
+T
+T
+By (1.1), N (T )− 2π
+log 2πe
+= S(T )+ 78 +ϖ(T )/π with |ϖ(T )|/π < 0.07 (Lemma 4.1), so (1.7)
+is to be compared with their Corollary 1.5, and (1.8), in which N0 contains 78 , with the bound
+
+6
+
+year
+
+authors
+
+1905
+1913
+1916
+1941
+2012
+2014
+2015
+2022
+2025
+2026
+
+von Mangoldt [43]
+Grossmann [14]
+Backlund [1]
+Rosser [36]
+Trudgian [40]
+Trudgian [41]
+Platt, Trudgian [32]
+Hasanalizade, Shen, Wong [17]
+Bellotti, Wong [3]
+Casaña-Giner [This work]
+
+A1
+
+A2
+
+A3
+
+0.4320
+0.2907
+0.1370
+0.1370
+0.1700
+0.1120
+0.1100
+0.1038
+0.10076
+0.09783
+
+1.9167
+1.7862
+0.4430
+0.4430
+0
+0.2780
+0.2900
+0.2573
+0.24460
+0.7214
+
+13.0788
+7.0120
+5.2250
+2.4630
+2.8730
+3.3850
+3.165
+9.4925
+8.08344
+11.55
+
+range
+T ≥ 28.558
+T ≥ 50
+T ≥2
+T ≥2
+T ≥e
+T ≥e
+T ≥e
+T ≥e
+T ≥e
+T ≥e
+
+T
+T
+Table 1: Explicit bounds N (T )− 2π
+log 2πe
+≤ A1 log T +A2 log log T +A3 . The rows up to 2025
+are those of [3, Table 1], with the year of publication, checked against [43, p. 1] (0.43200, 1.91662,
+13.07873), [1, (39) and pp. 355, 375] (0.137, 0.443, 4.350 + 78 ; Backlund’s Q(T ) is N (T ) − N0 (T ),
+p. 354), Grossmann’s constants as quoted in [1, p. 355] (0.29062, 1.7862, 6.13695 + 78 ), and [40,
+Thm. 1] (0.17, 1.998 + 87 ). Backlund states his inequality (39) for every T ≥ 2 [1, p. 375]; [3,
+Table 1] lists T ≥ 200, the range of his earlier bound [1, p. 355]; for [17] the constant term is the
+corrected value of [3, §1, footnote 1] (9.3675 in [17, Cor. 1.2]); the preprint [41] has 0.111 and
+0.275 in place of 0.1120 and 0.2780 [41, Thm. 1, Cor. 1]. The last row follows from (1.7), (1.1)
+and |ϖ(T )|/π < 0.07 for T ≥ e (Lemma 4.1): 10.6 + 78 + 0.07 = 11.545 < 11.55.
+
+|N (T ) − N0 (T )| ≤ 0.10076 log T + 0.24460 log log T + 7.28 that follows from their Corollary 1.5
+and Lemma 4.1.
+The version arXiv:2412.15470v2 of 7 July 2025 (with an appendix by A. Fiori), published in
+Math. Comp., is cited with its original numbering.
+Bellotti and Wong already take the center and the radius of the disc close to 1 (c = 1.000225,
+r = 1.000605 in [3, Table 2], chosen numerically at fixed T0 ; the limit c, R → 1 of Theorem 1.1
+is the asymptotic form of the same choice, and is not taken there) and use on [ 21 , 1] the same
+explicit profile eE as Theorem 1.3.
+To the left of 12 , they bound ζ by linear interpolation of exponents between σ = 0 and
+σ = 21 [3, §3.1]. The improvement comes from the exact reflection (1.4) given by the functional
+equation, pointwise (Lemma 4.3). It lies below the chord because eE is convex.
+With c, R → 1 the Backlund quotient of the profile of [3] tends to 0.10073687 . . ., that of the
+reflected profile to 0.09782899 . . . (Appendix A). Of the reduction of the leading coefficient from
+0.10076 to 0.09783, the limit c, R → 1 accounts for 0.10076 − 0.10073687 . . . = 0.0000231 . . . and
+the reflected profile for 0.10073687 . . . − 0.09782899 . . . = 0.0029078 . . . (the remaining 0.09783 −
+0.09782899 . . . = 0.0000010 . . . is the cost of fixed c, R and of rounding). The improvement is
+thus essentially due to the reflected profile.
+Bellotti and Wong remark that 0.10076 is nearly optimal among the values that their general
+theorem gives with the explicit bounds for ζ now available [3, §1].
+Theorem 1.3 agrees with that remark: it uses the same bounds for ζ on [ 12 , 1] and a disc of
+the same kind, and lowers the coefficient only through the treatment of ζ to the left of 21 , which
+lies outside the scope of the remark. Below a value that is nearly optimal for the established
+method, a further gain requires a change in the method.
+The reduction obtained, 0.00293, is of the same size as the previous step 0.1038 → 0.10076.
+At fixed c, R very close to 1, this gives a larger constant term. For the Lindelöf profile e = 0 the
+functional (1.5) is 0.0786252 . . ., and Λ(e) ≥ Λ(0) for every admissible e (Remark 5.2).
+The present analysis does not determine whether other choices of disc parameters yield a
+smaller asymptotic coefficient.
+The approximation of S by Euler phases is Selberg’s [37].
+
+7
+
+Its mean-value form, the continuous counterpart of Theorem 1.5, is classical: for x a small
+fixed power of T , the moments of S(t) minus the phase of the primes p ≤ x are bounded on
+average over [T, 2T ], a result attributed to Selberg and Tsang in [7, §3, before (3.6)], with
+reference to [42, Thm. 5.1].
+It is used here in Fujii’s form, Theorem 3.8(a), assembled from [11, §3],
+√ together with Fujii’s
+moments for S(t + h) − S(t) [11, Main Theorem]. Its extension to about t primes, counted by
+number, follows from the mean value theorem of Montgomery and Vaughan (Theorem 3.9) and
+is carried out in Lemma 7.6.
+The new ingredient of Theorem 1.5 is the passage from the counting function to the imaginary
+parts themselves: the sum is over the zeros, and neither the monotonicity of F nor any hypothesis
+on the zeros is used. This passage is Theorem 7.3. França and LeClair [8] study equations
+N0 (t) + S(t) = k − 12 for the individual imaginary parts, with the exact S. That each of them
+has exactly one solution is not proved there.
+Two prime-based constructions provide a comparison with Theorem 1.5. LeClair [24, §VI,
+eq. (49)] replaces S by the phase of a finite number of Euler factors, that number being a free
+numerical parameter, and computes very high zeros by root-finding near the previous approximation. The aim there is numerical, and no error bound is stated. Gonek [13] builds functions
+ζX from a smoothed Euler product over n ≤ X 2 (in this paragraph X is his parameter); for
+large t the zeros of ζX ( 12 + it) are the points where a phase function built from primes crosses
+the levels (2k + 1)π [13, §10]. His results on these zeros assume RH: their number and simplicity
+when X is small with respect to t [13, Thm. 8.1], and their convergence to the imaginary parts
+of the zeros of ζ as X → ∞, on a fixed compact interval and without a rate [13, Thm. 9.1].
+Theorem 1.5 has the following properties:
+1. it is unconditional;
+2. it is quantitative: the root-mean-square error is O(1/ log T ), and Corollary 1.6 bounds the
+proportion of large deviations;
+√
+3. the number of primes is tied to the height, about t primes at height t, instead of being
+a free parameter;
+4. τkC is the measure of a sublevel set, so the points are increasing and carry the index k by
+construction; in [24] and [13] the solutions are indexed by selection or by counting.
+By comparison, Theorem 1.5 controls only the mean square, whereas Gonek’s Theorem 9.1,
+under RH, concerns every imaginary part.
+Monotonicity. The bound (1.13) does not follow directly from the results of Gonek [13] and
+LeClair [24]: deducing it from them would require, among other things, a proof that F is
+monotone. The available arguments for monotonicity assume RH [13, Thm. 8.1 and §10]; the
+present criterion avoids RH and does not require monotonicity. In this paragraph X denotes a
+cutoff for the primes, as in [13]. If F, which is continuous, were strictly increasing on [2π, ∞),
+then for k ≥ 2 the equation F(t) = k − 21 would have exactly one solution, equal to τkC (on (0, 2π],
+F < 87 + 12 < 32 by (7.1)); monotonicity alone does not bound τkC − γk , since F ′ may be small
+in a long gap, and the passage from the counting error N − F to the positions is Theorem 7.3
+in either case. For points defined as solutions, however, monotonicity is needed, and the two
+requirements, bounded error and monotonicity, pull in opposite directions.
+1. Few primes give monotonicity but not bounded error. Gonek’s zeros of ζX ( 12 +it) are simple
+and are counted because his phase is increasing, which he proves for X small with respect
+to t and under RH [13, Thm. 8.1 and §10]. In that range the prime approximation does
+not have bounded error: by Selberg’s
+approximation [11, §3] and Theorem 3.9, the mean
+P
+log T
+log T 1/2
+square over [T, 2T ] of S plus π1 p≤X p−1/2 sin(t log p) is 2π1 2 log log
+X +O 1+(log log X )
+8
+
+for 2 ≤ X ≤ T 1/40 (Theorem 3.8(a) with k = 1, αF = 12 , H = T , Y = T 1/40 , and
+P
+−1/2−it , the sine sum is
+Theorem 3.9 for the primes in (X, Y ); with P (t) =
+X<p<Y p
+R
+2T
+− Im P , (Im P )2 = 12 |P |2 − 12 Re P 2 , and | T P (t)2 dt| ≪ Y as in item 2). This tends to
+infinity when log X = o(log T ).
+2. Many primes give bounded error without establishing monotonicity. Bounded error needs
+log X ≫ log T . Then the derivative of the sum of the Euler phases of the primes is
+not negligible relative to N0′ in mean square: by Theorem 3.9, the mean square over
+P
+P
+2
+[T, 2T ] of π1 p≤X p−1/2 log p cos(t log p) is 2π1 2 p≤X logp p (1+O( Tp )) ≍ log2 X ≍ log2 T for
+P
+2 ≤ X ≤ T with log X ≍ log T , the order of N0′ (T )2 . (With P (t) = p≤X p−1/2 log p p−it ,
+the cosine sum is Re P and (Re P )2 = 12 |P |2 + 12 Re P 2 . Theorem 3.9 gives the mean of |P |2 ,
+
+R 2T
+R
+P
+−1/2 log p 2 ≪ X, since | 2T (pq)−it dt| ≤ 2/ log(pq).
+and | T P (t)2 dt| ≤ log2 4
+p≤X p
+T
+P
+log2 p
+Divided by T , this is absorbed in the remainder p≤X p O( Tp ) ≫ X
+T .) No argument
+presently available establishes monotonicity of F in this range and the derivative estimate
+gives little information about whether F is monotone.
+At a level where F is not monotone, the equation may have several solutions. If solutions are
+indexed by counting, every spurious pair shifts all the later indices, so the errors accumulate
+along the sequence. Theorem 1.5 neither proves nor uses monotonicity of F. The number τkC is
+the distribution function λ 7→ meas{t > 0 : F(t) < λ} evaluated at λ = k − 21 . Equivalently, it is
+the position at which the increasing rearrangement of F reaches this level, with the generalizedinverse convention ([15, §10.12] define the rearrangement in decreasing order as the inverse of
+the distribution function; the increasing one is defined in the same way). If F is replaced on
+a bounded interval I by another function with the same minimum and maximum on I, then
+τkC changes only for the levels k − 12 with minI F < k − 12 ≤ maxI F: for the other levels
+meas(I ∩ {F < k − 21 }) is 0 or |I| in both cases. Theorem 7.3, which holds for every measurable
+f , bounds the total effect by the fourth moment of ⌊F + 12 ⌋ − N and the third moment of the
+gaps. The sublevel construction thus takes the place of a monotonicity argument.
+Precedents of the construction. The definition (1.12) evaluates the distribution function
+DF (λ) = meas{t > 0 : F(t) < λ} at λ = k− 12 . With the standard generalized-inverse convention,
+the increasing rearrangement reaches this level at the position DF (k − 12 ) (Remark 7.4).
+The imaginary parts themselves are the same construction applied to N , since γk =
+meas{N < k − 21 }, and Theorem 7.3 compares the two. Rearrangements and quantile functions
+are classical [15, Ch. X]. An application of this construction to the imaginary parts of the zeros,
+or an inequality of the form (7.5), is not known to the author to have been published as of 30
+October 2026.
+As of 30 October 2026, the author is not aware of published results that combine the unconditional construction by the Euler phases of finitely many primes, increasing sublevel-defined
+approximations of the imaginary parts, and the mean-square localization in Theorem 1.5. The
+bounds in Theorems 1.1 and 1.3 are compared quantitatively with their cited antecedents above.
+
+1.4
+
+Organization
+
+Section 2 fixes the notation. Section 3 collects the results from the literature, with the precise
+form in which they are used. Section 4 proves the explicit lemmas on ϖ, χ and ζ.
+Section 5 proves Theorems 1.1 and 1.3 and Corollary 1.2; Section 6 proves Corollary 1.4;
+Section 7 proves Theorem 1.5 and Corollary 1.6. Section 8 proves the exact defect identity and
+Theorem 1.7.
+Section 9 proves consequences for the prime correction, the ordinal defect and a deterministic
+certificate for simple critical-line zeros. Section 10 records the scope and limitations of these
+results.
+9
+
+Appendix A contains the program that computes the constants, with its output; Appendix B
+lists, for each result taken from the literature, where it is stated and how it is used.
+Dependence of the results. Theorem 1.1 follows from Proposition 5.1 (Backlund’s method,
+Theorem 3.5) and Lemma 4.3; Corollary 1.2 from Theorem 1.1 and Theorems 3.4, 3.7; Theorem 1.3 from Proposition 5.1, Lemma 4.4 (which uses Theorems 3.3, 3.4 and Lemma 4.3),
+Theorem 3.5(c), Theorem 3.6 and Lemma 4.1; Corollary 1.4 and Proposition 6.2 from Theorem 1.3, Corollary 1.2, Lemma 6.1, Theorem 3.1 and Lemma 4.1.
+Theorem 1.5 follows from Theorem 3.1, Lemma 4.1 (in the weak form of Remark 4.2), Proposition 7.1, Theorem 7.3 (a deterministic estimate based on Lemma 7.2), Lemma 7.5 (Theorems 3.1,
+3.8(b)) and Lemma 7.6 (Theorems 3.8(a), 3.9, 3.10); Corollary 1.6 from Theorem 1.5.
+Theorem 1.7 follows from Theorem 8.1 (a deterministic identity), Theorem 3.11, Theorem 3.1,
+Lemma 4.1, Lemma 6.1 and the proof of Corollary 1.4(a).
+
+2
+
+Notation
+
+Every symbol listed below has one meaning throughout, except the symbols explicitly declared
+local where they are introduced (the paragraph on Gonek in Section 1, Section 3, two paragraphs
+of Section 1.3, Remark 4.2, Lemma 7.2 and its proof, Theorem 7.3 and Remark 7.4, Section 8,
+Section 9, and Theorem 9.5).
+Dummy variables of integration and summation are local. The letter π denotes only
+3.14159 . . .. Log and ph are the principal logarithm and argument (−π < ph ≤ π). The implied
+constants in ≪ and O are absolute unless a subscript indicates a dependence. In the definition
+of an admissible exponent profile, the constant may also depend on the chosen profile.
+Conventions at the imaginary parts. The zeros are listed with multiplicity, so N is right
+continuous, N (γ + ) = N (γ), and N (γ + ) − N (γ − ) is the multiplicity of the imaginary part γ (the
+number of zeros with that imaginary part, counted with multiplicity).
+For t > 0, t ∈
+/ {γk }, S(t) = π1 arg ζ( 12 + it) with the argument obtained by continuous
+variation along the segments from 2 to 2 + it and from 2 + it to 21 + it, so S is continuous on
+each open interval between consecutive distinct imaginary parts.
+At an imaginary part γ the one-sided limits S(γ ± ) exist, S(γ + ) − S(γ − ) is the multiplicity
+of γ (because N0 and ϖ are continuous in (1.1)), and this article adopts the right-continuous
+convention S(γ) = S(γ + ). This convention is chosen to agree with N (γ) = #{k : γk ≤ γ};
+alternative conventions, including midpoint values, occur in the literature (see [39, §9.3]).
+Other conventions at the imaginary parts (such as the mean of the two limits) change S on
+a null set and do not affect the integrals of Theorems 3.8 and 3.9.
+Lemma 2.1. Let B be a continuous function on an open interval J ⊂ (0, ∞). If |S(t)| ≤ B(t)
+for every t ∈ J \ {γk }, then |S(γ − )| ≤ B(γ) and |S(γ + )| ≤ B(γ) for every γ ∈ J ∩ {γk }.
+Proof. The set {γk } has no accumulation point in (0, ∞), and the one-sided limits S(γ ± ) exist.
+Take tn → γ from the left (from the right) with tn ∈ J \ {γk }. Then |S(tn )| ≤ B(tn ), and n → ∞
+gives the claim, since B is continuous at γ.
+All bounds for |S(T )| in this article are proved first for T ∈
+/ {γk } and have right sides
+continuous in T , so Lemma 2.1 gives the same bounds for S(γ − ) and S(γ + ). Hence, by (1.1),
+they apply to the corresponding one-sided values G(γ ± ) = S(γ ± ) + ϖ(γ)/π, where G = N − N0 .
+Multiplicities enter Lemma 6.1 and Proposition 6.2 only through the inequalities N (γk− )+1 ≤
+k ≤ N (γk+ ).
+
+10
+
+symbol
+
+meaning (where defined)
+
+s = σ + it
+ρk = βk + iγk
+N (t), N (t± )
+ϑ, ϖ
+
+complex variable, σ, t ∈ R
+zeros with γk > 0, nondecreasing, with multiplicity
+#{k : γk ≤ t} (right continuous); one-sided limits
+t
+Riemann–Siegel theta function; ϖ(t) = ϑ(t) − 2t log 2πe
++ π8
+(Lemma 4.1)
+t
+t
+1
+t
+N0 (t) = 2π
+log 2πe
++ 87 ; L = N0′ , L(t) = 2π
+log 2π
+1
+1
+1
+π arg ζ( 2 + it), by continuous variation from 2 to 2 + it to 2 + it;
+±
+G = N − N0 = S + ϖ/π; G(γk )
+point defined by N0 (τk ) = k − 21 (1.2); N0 (τk ) − N0 (γk ); mean-value
+point; min(τk , γk ) (Section 6)
+Gram points; displacement of γk with respect to them (Remark 7.7)
+factor of the functional equation, ζ(s) = χ(s)ζ(1 − s); Stirling remainder (Theorem 3.2)
+local variables of Lemmas 4.1–4.3
+lim supT →∞ |S(T )|/ log T
+admissible profile (1.3); reflected extension (1.4); bounding functional (1.5); max( 21 − σ, 0)
+Bourgain profile (1.6); explicit profile (4.5); approximating profile
+(Section 5.2)
+exponent pairs; Bourgain’s pair and its images; van der Corput’s
+A-process
+1 − m/(2m − 2), m ≥ 4 (Yang’s lines); nodes and exponents in
+Lemma 4.4; nodes in Section 5.2
+shift in Theorem 3.4 (Q = 10 in all uses); Ξ(s) = (s − 1)ζ(s) in
+Lemma 4.4
+center, radius and disc of Backlund’s method; c = 1 + η, R = 1 + 2η
+in Section 5.1
+c + (c − 12 )2 /R; 2c − σ ♯ − 21 ; log(R/(c − 12 ))
+Backlund function (3.3); its zeros; weighted zero count (3.4)
+error term of Bennett et al. in Backlund’s trick (Theorem 3.5)
+even majorant in Theorem 3.5(a); angle, s = c +RReiθ
+π
+exponent function, constant and factor in (5.1); 0 h(c + R cos θ) dθ
+Ie∗E /(2πd), 1/(2d), constant term (Section 5.3)
+generic coefficients of explicit bounds for S and for N (Section 1.3)
+primes; the ν-th prime; 3.14159 . . .
+Euler phase (1.10), prime budget ⌊2j/2 ⌋, interpolated phase (1.11),
+prime powers r ≥ 3 in (7.11)
+sublevel function N0 + Φ; sublevel construction (1.12); τkC = T (τk )
+{k : T < γk ≤ 2T }; mean over KT
+window endpoints; N (a), N (b) (Theorem 7.3)
+gaps γℓ+1 − γℓ ; discrete maximal function over intervals inside a
+window [A, B], level (Lemma 7.2)
+measurable model of N , its sublevel points; |⌊f + 21 ⌋ − N |, disagreement set; its measures to the right and left of γk (Theorem 7.3)
+absolutely continuous model of N , its defects k − 21 − F (γk ), and
+R u+1/2
+Ψj (u) = u−1/2 x2j dx (Theorem 8.1)
+log(T /2π), {t ∈ [T, 4T ] : N (t +Ph) = N (t)}, hLT (Lemma 7.5)
+dyadic height 2j ; U 1/200 , pm ; Y ≤p≤X 1/p (Lemma 7.6)
+prime polynomials (7.11); numbers of ordered prime factorizations,
+coefficients (Lemma 7.6)
+order, exponent, interval length and shift in Fujii’s theorem (Theorem 3.8)
+absolute constants and thresholds, not the same at each occurrence;
+A is the multiplier of the mean spacing in Corollary 1.6
+
+N0 , L
+S(t), G, G±
+k
+τk , sk , ξk , mk
+gm , ∆G
+k
+χ(s), R(z)
+z, zi , y, ωi , ϕ
+a
+e, e∗ , Λ(e), 0∗
+eB , eE , eε′
+(κ, λ), (κj , λj ), A(·)
+σm , ςi , ei , ςj′
+Q, Ξ
+c, R, D(c, R), η
+σ♯ , δ♯ , d
+fn , w, Zn (c, R)
+E(T, d)
+Ψ, θ
+h, K, Ω, Ih
+C1 , C2 , C3 (T )
+A1 , A2 , A3
+p, pν , π
+Φm , mj , Φ, Φ(3)
+F, τkC , T
+KT , ⟨·⟩KT
+a, b, ℓ0 , ℓ1
+Dℓ , MD, Θ
+f , xfk , qf , Ek , uk , vk
+F , uk , Ψj
+LT , Ah , v
+U , Y , X, V
+D1 , D2 , d1 , d2 , cn , c′v
+k, αF , H, h
+C, C ′ , C ′′ , C0 , T0 , A
+
+11
+
+3
+
+Results from the literature
+
+The following statements are used as they stand; each was checked in the source indicated.
+Within this section the letters σ± , A, B, C, C ′ , αi , βi , Ξ, κ and bn are local. The letters k, αF ,
+H and h have the meaning of Section 2.
+Theorem 3.1 ([39], §§9.3, 9.4, 9.12). For t > 0, t ∈
+/ {γk }, N (t) = π1 ϑ(t) + 1 + S(t), where
+1
+it
+t
+ϑ(t) = Im Log Γ( 4 + 2 ) − 2 log π (the branch of Log Γ that is real on (0, ∞)). Moreover S(t) =
+O(log t) and γk+1 − γk → 0 as k → ∞.
+Theorem 3.2 (Stirling’s formula with remainder, [6, §5.11(ii)]). For | ph z| < π, Log Γ(z) =
+(z − 12 ) Log z − z + 21 log(2π) + R(z) with |R(z)| ≤ sec2 ( 12 ph z)/(12|z|).
+Theorem 3.3 (Explicit bounds for ζ). For real t:
+(a) |ζ( 21 + it)| ≤ 0.618|t|1/6 log |t| for 3 < |t| ≤ e105 [19], and |ζ( 12 + it)| ≤ 66.7|t|27/164 for
+|t| > e105 [30];
+(b) for every integer m with 4 ≤ m ≤ 9, with σm = 1 − m/(2m − 2) and Tm the threshold of
+m
+[44, (3.4)]: |ζ(σm + it)| ≤ 1.546|t|1/(2 −2) log |t| for |t| ≥ Tm [44, §3.2], and |ζ(σm + it)| ≤
+m
+1.878|t|1/(2 −2) log |t| for 3 ≤ |t| ≤ Tm ([44, §3.1] with the correction of Remark 4.5(ii));
+m
+in particular |ζ(σm + it)| ≤ 2|t|1/(2 −2) log |t| for |t| ≥ 3. [44, Thm. 1.1] states the first
+bound for |t| ≥ 3 and every m ≥ 4; only the form given here is used;
+(c) |ζ(1 + it)| ≤ log |t| for |t| ≥ 3 [29, Thm. 1.1].
+Inputs (a) and (b) are the display preceding (2.3) and the bound (2.4) in [3, §2]. For the 1line, [3, (2.1)] combines [29] with [18, Thm. 1] for exp(3070) < t ≤ exp(3.69 · 108 ) and with
+|ζ(1 + it)| ≤ 58.096 log2/3 t for t > exp(3.69 · 108 ), which they call a direct consequence of [2,
+3/2
+Theorem 1]. That theorem, [2, Thm. 1.1], states |ζ(σ + it)| ≤ 70.6995 |t|4.43795(1−σ) log2/3 |t|
+for 21 ≤ σ ≤ 1, |t| ≥ 3, which at σ = 1 gives the constant 70.6995; the constant 58.096 is
+[25, Lemma 5] (|t| ≥ 3), obtained there by running the argument of [2] with other parameters.
+On the 1-line only (c) is needed, which holds for every |t| ≥ 3, so none of these bounds enters
+Theorem 1.3.
+Theorem 3.4 (Phragmén–Lindelöf principle, [9, Cor. 3]). Let σ− < σ+ and Q > 1 − σ− be real.
+Let Ξ be holomorphic on σ− ≤ Re s ≤ σ+ with |Ξ(s)| < C exp(C ′ eκ|t| ) there, for some C, C ′ > 0
+and 0 < κ < π/(σ+ − σ− ). Suppose that, with A, B, α1 , α2 , β1 ≥ 0 and α1 ≥ β1 ,
+(
+A|Q + s|α1 | Log(Q + s)|α2 (Re s = σ− ),
+|Ξ(s)| ≤
+(3.1)
+B|Q + s|β1 | Log(Q + s)|α2 (Re s = σ+ ).
+Then for σ− ≤ Re s ≤ σ+ ,
+|Ξ(s)| ≤ A|Q + s|α1
+
+s
+ σσ+ −Re
+−σ
++
+
+−
+
+B|Q + s|β1
+
+s−σ−
+ Re
+σ −σ
++
+
+−
+
+| Log(Q + s)|α2 .
+
+(3.2)
+
+The same power α2 of the logarithm on both lines is essential: the version with different
+powers [41, Lemma 3] has a gap in its proof, corrected in [9]. With equal powers, Theorem 3.4
+also follows from its case α2 = 0, which is Rademacher’s theorem [33], applied to Ξ(s) (Log(Q +
+s))−α2 : since Re(Q + s) > 1 on the strip, Log(Q + s) has positive real part, so its principal
+power is holomorphic there, has modulus | Log(Q + s)|−α2 , and is bounded by (log(Q + σ− ))−α2 .
+Since log |Q + s| ≤ | Log(Q + s)|, a boundary bound with log |Q + s| implies the hypothesis.
+12
+
+For T > 0, integers n ≥ 1 and the disc D(c, R) = {s : |s − c| < R} put
+h
+n
+n i
+fn (s) = 21 (s + iT − 1)ζ(s + iT ) + (s − iT − 1)ζ(s − iT ) ,
+Zn (c, R) =
+
+(3.3)
+
+1X
+R
+log
+,
+n w
+|w − c|
+
+(3.4)
+
+the sum over the zeros w of fn in D(c, R), with multiplicity.
+Theorem 3.5 (Backlund’s method, [3, Lemmas 2.1, 2.3, 2.4]). Let c, R be real, σ ♯ = c + (c −
+1 2
+1
+♯
+♯
+2 ) /R, δ = 2c − σ − 2 , and suppose
+c − R < 12 < 1 < c < σ ♯ < c + R,
+
+c < R,
+
+0 < δ ♯ < 21 .
+
+(3.5)
+
+(a) If Ψ : [−π, π] → R is even and Ψ(θ) ≥ n1 log |fn (c + Reiθ )| for all n ≥ 1 and θ, there are
+n1 < n2 < · · · with
+Z
+ζ(c)
+1 π
+p
+lim sup Znm (c, R) ≤ log
+Ψ(θ) dθ.
+(3.6)
++
+m→∞
+(c − 1)2 + T 2 ζ(2c) π 0
+(b) For every n ≥ 1, if T ∈
+/ {γk },
+
+πZn (c, R) E(T, δ ♯ ) 3π π
+1/2
+∆σ=σ♯ arg (σ + iT − 1)ζ(σ + iT ) ≤
++
++
++ ,
+2d
+2
+2n 4
+
+d = log
+
+R
+,
+c − 12
+(3.7)
+
+where E(T, d) (0 ≤ d < 29 , T ≥ 57 ) is the explicit function E(0, d, T ) of [4, Fig. 2].
+(c) For d ∈ [ 41 , 85 ] and T ≥ 57 , E(T, d)/π ≤ (640d − 112)/(1536(3T − 1)) + 2−10 .
+Bellotti and Wong state (a) and (b) as [3, Lemmas 2.1, 2.3] and take them from [16, Props. 3.5,
+3.7], which are stated for Dedekind zeta functions ζK (here K = Q). Their function E(T, d) is
+the function E(a, d, T ) of [4, Def. 3.3 and Fig. 2] at a = 0 (the two expressions agree term by
+term), and (c) is [4, Lemma 3.4] at a = 0.
+Theorem 3.6 ([3, (1.2)], from Platt’s computation [31]). |S(T )| ≤ 2.5167 for 0 ≤ T ≤
+30 610 046 000.
+Theorem 3.7 (Exponent pairs).
+
+λ
+2κ+2 [20, Lemma 2.8].
+
+(a) If (κ, λ) is an exponent pair, so is A(κ, λ) =
+
+κ
+1
+2κ+2 , 2 +
+
+(b) If (κ, λ) is an exponent pair and 21 ≤ σ ≤ λ − κ, then ζ(σ + it) ≪ |t|(κ+λ−σ)/2 log |t| for
+|t| ≥ 2 [20, (7.57), p. 190]; in particular ζ(λ − κ + it) ≪ |t|κ log |t|.
+13
++ ε, 55
+(c) For every ε > 0, ( 84
+84 + ε) is an exponent pair [5, §5, Thm. 6].
+
+Statement (c) is the form in which the result is stated in [5]. The bound ζ( 12 +it) ≪ |t|13/84+ε
+is its consequence by (b). Part (c) is used only through (a) and (b), with ε kept in both
+coordinates (Section 5.2).
+Theorem 3.8 (Fujii [11], for the modulus 1, with the corrections of [12, §5]). Let k ≥ 1 be
+an integer and 0 < αF ≤ 21 be fixed, and let T 1/2+αF ≤ H ≤ T . (The Main Theorem of [11,
+p. 225] is stated for a primitive character χ modulo q and fixed a1 , a2 with 0 < ai ≤ 21 , under
+√
+the hypotheses q ≤ T 1/4−a1 , T 1/2+a2 ≤ H ≤ T and 0 < h ≤ H − (H/ T )1/8 ; both endpoints
+a2 = 21 and H = T are admitted. Here q = 1, χ is the principal character, S(t, χ) = S(t), and
+√
+αF = a2 ; √
+the condition on h holds for 0 < h ≤ 1 as soon as T ≥ 9, since then H ≥ T ≥ 3 and
+H − (H/ T )1/8 ≥ H − H 1/8 ≥ 1.)
+13
+
+(a) (Selberg’s approximation, [11, §3, pp. 232–233]: Selberg’s expression with x = T αF /(60k) ,
+the bounds ∥Bi ∥ ≪ k2 H 1/(2k) for its five error terms (with k1/2 for i = 1, 4 and k3/2 for
+i = 5), and [11, Lemma 5] for the primes in [x3 , Y ].) For T αF /(20k) ≤ Y ≤ H 1/k ,
+Z T +H
+X
+2k
+1
+p−1/2−it dt ≪k,αF H.
+(3.8)
+S(t) − Im
+π
+T
+p<Y
+
+(b) (Main Theorem, [11, p. 225].) For 0 < h ≤ 1 and T ≥ T0 (k, αF ),
+S(t))2k dt ≪k,αF H (log(2 + h log T ))k .
+
+R T +H
+T
+
+(S(t + h) −
+
+The corrections in [12, §5] require h to be bounded in the Main Theorem and change the
+dependence on k of some remainder terms. Neither affects (a) or (b) as stated, since 0 < h ≤ 1
+and k ≤ 2 is fixed in all applications below. In [12, §1, (α)] the Main Theorem is restated for
+q = 1 and H = T , exactly the case of (b), with log(3 + h log T ) in place of log(2 + h log T ) and
+with the remainder O((Ak)2k T (log(3 + h log T ))k−1/2 ). Since log(3 + x)/ log(2 + x) decreases for
+log 3
+x ≥ 0, log(3 + x) ≤ log
+2 log(2 + x), and that form also gives (b).
+RH
+In (a), [11, Lemma 5] is stated for 0 and for coefficients with |a(p)| ≤ A log p/ log y. The
+shift t 7→ t + T replaces a(p) by a(p)p−iT , and for a(p) = 1 on x3 ≤ p < Y one has log p/ log Y ≥
+αF /(20k)
+= α20F , so A = 20/αF .
+1/k
+Theorem 3.9 (Montgomery–Vaughan [28, Cor. 3]). For complex b1 , . . . , bM ,
+Z 2U X
+X
+2
+
+bn n−it dt =
+|bn |2 U + O(n) ,
+U
+
+n≤M
+
+(3.9)
+
+n≤M
+
+RU
+with
+implied constant. (Stated in [28, Cor. 3] for 0 and for every sequence with
+P an absolute
+2
+−iU .)
+n n|bn | < ∞; we use only finite sums, and the integral over [U, 2U ] is the case bn 7→ bn n
+Theorem 3.10
+P(Mertens and the prime number theorem; see [27] and [38, Ch. I.1]). Mertens’
+theorem gives p≤y 1/p = log log y + O(1) for y ≥ 2. The prime number theorem gives pm ≍
+m log m for m ≥ 2.
+Theorem 3.11 (Selberg [37]; see [39, Notes for Chapter 9, (9.25.1), p. 245]). For every integer
+k ≥ 1, as T → ∞,
+Z T
+(2k)!
+S(t)2k dt ∼
+T (log log T )k .
+(3.10)
+k! (2π)2k
+0
+R T +H 1/2+a
+Fujii [11, p. 225] quotes Selberg’s theorem for T
+,T
+≤ H ≤ T , with the remainder
+Ok (H(log log T )k−1/2 ). Only the asymptotic form is used: with k = 1, in the dyadic form (8.9)
+(Proposition 8.4), with k = 2 in Remark 7.7, and with every k in Proposition 8.6.
+
+4
+
+Explicit lemmas
+
+t
+Lemma 4.1. For t > 0, ϑ(t) = 2t log 2πe
+− π8 + ϖ(t) with |ϖ(t)| ≤ 0.53/t. Consequently (1.1)
+holds for t > 0, t ∈
+/ {γk }.
+1
+Proof. Put z = 14 + iy, y = t/2 > 0, so ph z = π2 − arctan 4y
+∈ (0, π2 ) and sec2 ( 21 ph z) < 2. By
+Theorem 3.2,
+
+1 
+Im Log Γ(z) = y log |z| − 14 ph z − y + Im R(z),
+. (4.1)
+log |z| = log y + 12 log 1 +
+16y 2
+t
+1
+1
+1
+Since y log y − y − 2t log π = 2t log 2πe
+, this gives ϖ(t) = y2 log(1 + 16y
+2 ) + 4 arctan 4y + Im R(z).
+1
+1
+1
+1
+2
+The first term lies in [0, 32y
+] = [0, 16t
+], the second in [0, 16y
+] = [0, 8t
+], and |R(z)| ≤ 12|z|
+≤
+1
+1
+1
+1
+1 1
+25
+0.53
+6y = 3t . Hence |ϖ(t)| ≤ ( 16 + 8 + 3 ) t = 48t < t . The last assertion is Theorem 3.1, since
+1
+ϖ
+π ϑ + 1 = N0 + π .
+
+14
+
+Remark 4.2 (Weak form of Lemma 4.1). The explicit constant 0.53 is needed only for (1.8) and
+for the inequalities |ϖ|/π < 12 of Section 1.1 and Remark 7.7. Theorem 1.5 and Corollary 1.6
+use Lemma 4.1 only through the weak form
+ϖ(t) = O(1/t)
+
+(t → ∞),
+
+(4.2)
+
+and in fact only through the boundedness of ϖ on [1, ∞) and the bound ϖ(t+h)−ϖ(t) = O(1/t)
+for 0 < h ≤ 1 in the proof of Lemma 7.5. The weak form does not need the remainder bound
+of Theorem 3.2. In this remark E and z are local. Put E(z) = Log Γ(z) − (z − 12 ) Log z + z.
+′
+1
+The partial-fraction series of Γ′ /Γ gives E′ (z) = ΓΓ (z) − Log z + 2z
+= O(|z|−2 ) uniformly for
+√
+Re z ≥ 14 . Hence E(n + iy) − E(n) = O(y/n2 ), and Stirling’s formula for n! gives E(n) → log 2π,
+so limn→∞ E(n + iy) is real. Integrating E′ along the half-line from 14 + iy to +∞ + iy then
+gives Im E( 14 + iy) = O(1/y). With y = t/2, this is (4.2), by the computation in the proof of
+√
+Lemma 4.1 with R = E − log 2π.
+Lemma 4.3. For −0.01 ≤ σ ≤ 21 and t ≥ 98, |χ(σ + it)| ≤ 1.0070 (t/2π)1/2−σ .
+s
+1−σ
+Proof. Recall that χ(s) = π s−1/2 Γ( 1−s
+2 )/Γ( 2 ). Put y = t/2 ≥ 49, z1 =
+2 + iy, z2 =
+σ
+1
+1
++
+iy,
+with
+real
+parts
+ω
+∈
+[
+,
+0.505]
+and
+ω
+∈
+[−0.005,
+].
+Since
+|Γ(z̄)|
+=
+|Γ(z)|,
+|χ(s)| =
+1
+2
+2
+4
+4
+π
+σ−1/2
+π
+|Γ(z1 )|/|Γ(z2 )|. For z = ω + iy with y > 0 one has ph z = 2 − arctan(ω/y), and Theorem 3.2 gives
+
+log |Γ(z)| = (ω − 12 ) log y − π2 y + 12 log 2π + ϕ(ω, y) + Re R(z),
+
+ω − 12
+ω2 
+ω
+ϕ(ω, y) =
+log 1 + 2 + y arctan − ω.
+2
+y
+y
+
+(4.3)
+
+Subtracting, and using ω1 − ω2 = 21 − σ,
+log |χ(s)| = ( 12 − σ) log
+
+
+t
++ ϕ(ω1 , y) − ϕ(ω2 , y) + Re R(z1 ) − R(z2 ) .
+2π
+
+(4.4)
+
+2
+
+For |ω| ≤ 0.505 and |ω − 21 | ≤ 0.505, | ω−1/2
+log(1 + ωy2 )| ≤ 0.505·0.256
+and |y arctan ωy − ω| ≤
+2
+2y 2
+|ω|3
+3y 2
+
+≤ 0.043
+, so |ϕ(ωi , y)| ≤ 0.108
+≤ 0.435
+. Next ph z1 ∈ (0, π2 ) and ph z2 ≤ π2 + arctan 0.005
+49 ,
+y2
+y2
+t2
+1
+2.0005
+2.0005
+1
+t
+2
+so sec ( 2 ph zi ) ≤ 2.0005 and |R(zi )| ≤ 12y = 6t . Hence log |χ(s)| − ( 2 − σ) log 2π ≤
+0.6669
++ 0.87
+≤ 0.00690 for t ≥ 98, and e0.0069 < 1.0070.
+t
+t2
+
+4.1
+
+The explicit profile
+
+Let eE be the piecewise linear function on [ 12 , 1] through
+
+
+1 27
+σm , 2m1−2 (4 ≤ m ≤ 9),
+2 , 164 ,
+
+(1, 0),
+
+(4.5)
+
+1
+1
+28 1
+17 1
+1
+167 1
+∗
+that is, through ( 57 , 14
+), ( 56 , 30
+), ( 31
+, 62 ), ( 18
+, 126 ), ( 123
+127 , 254 ), ( 170 , 510 ), and let eE be its reflected
+extension (1.4).
+∗
+
+Lemma 4.4. For −0.01 ≤ σ ≤ 3 and |t| ≥ 98, |ζ(σ + it)| ≤ 2.74 |t|eE (σ) log |t|.
+Proof. By ζ(s̄) = ζ(s) it suffices to take t > 0. Let ς0 < ς1 < · · · < ς8 be 21 , σ4 , . . . , σ9 , 1, 3, with
+27
+exponents e0 = 164
+, ei = 2i+31 −2 (1 ≤ i ≤ 6), e7 = e8 = 0. The ei are nonincreasing, and e∗E is
+the linear interpolation of (ςi , ei ) on [ 21 , 3]. Put Q = 10 and Ξ(s) = (s − 1)ζ(s), an entire function
+with |Ξ(σ + it)| ≪ |t|2 for 21 ≤ σ ≤ 3, |t| ≥ 1.
+Boundary values. It is enough to show that for every i and every real t,
+|Ξ(ςi + it)| ≤ 2|Q + s|1+ei log |Q + s|
+15
+
+(s = ςi + it).
+
+(4.6)
+
+Suppose first that |t| > 3. On σ = 21 , Theorem 3.3(a) gives |ζ| ≤ 2|t|27/164 log |t|: for |t| ≤ e105
+because |t|1/6−27/164 = |t|1/492 ≤ e105/492 < 2/0.618, and for |t| > e105 because log |t| > 105 >
+66.7/2. On σ = ςi = σi+3 (1 ≤ i ≤ 6), (b) gives |ζ| ≤ 2|t|ei log |t|. On σ = 1, (c) gives |ζ(1+it)| ≤
+log |t|. On σ = 3, |ζ| ≤ ζ(3) < 2 log 3. Since |s − 1| ≤ |Q + s| and
++ s|, (4.6) follows for
+R ∞|t| ≤ |Q
+−s−1
+|t| >R3. Now let |t| ≤ 3. For σ > 0, (s − 1)ζ(s) = s − s(s − 1) 1 {u}u
+du, by [39, (2.1.4)]
+∞
+and 1 u−s−1 du = 1s , so for 21 ≤ σ ≤ 3, |Ξ(s)| ≤ |s| + 2|s||s − 1| ≤ 4.243 + 2 · 4.243 · 3.606 < 34.9,
+whereas the right side of (4.6) is at least 2 · 10.5 log 10.5 > 49.
+Interpolation. Theorem 3.4 on each strip ςi ≤ σ ≤ ςi+1 (Q > 1 − ςi , A = B = 2, α1 = 1 + ei ≥
+β1 = 1 + ei+1 , α2 = 1; the bounds (4.6) imply its hypotheses because log |Q + s| ≤ | Log(Q + s)|)
+gives, for 12 ≤ σ ≤ 3 and all t,
+∗
+
+|Ξ(s)| ≤ 2|Q + s|1+eE (σ) | Log(Q + s)|.
+
+(4.7)
+
+For t ≥ 98, |Q + s| ≤ (169 + t2 )1/2 ≤ t(1 + 84.5/t2 ), | Log(Q + s)| ≤ log |Q + s| + π2 ≤
+27
+log t + 84.5/t2 + π2 and |s − 1| ≥ t. Since e∗E ≤ 164
+on [ 12 , 3],
+27 
+
+84.5 1+ 164
+84.5/982 + π/2  e∗ (σ)
+|ζ(s)| ≤ 2 1 +
+1
++
+t E log t
+982
+log 98
+
+e∗E (σ)
+
+≤ 2.7167 t
+
+log t
+
+(4.8)
+
+( 21 ≤ σ ≤ 3).
+
+Reflection. For −0.01 ≤ σ < 21 , ζ(s) = χ(s)ζ(1 − s) and |ζ(1 − s)| = |ζ(1 − σ + it)| with
+1
+∗
+1−σ ∈ ( 21 , 1.01]. By the previous step and Lemma 4.3, |ζ(s)| ≤ 1.0070·2.7167 t 2 −σ+eE (1−σ) log t ≤
+∗
+2.74 teE (σ) log t, because 21 − σ + e∗E (1 − σ) = e∗E (σ) by (1.4) (for σ < 0 both sides equal 12 − σ).
+Remark 4.5 (Robustness of the inputs). Theorem 3.3 enters Theorem 1.3 only through (4.6),
+that is, through bounds with constant 2 on the lines σ = ςi , and each input has room. (i) On
+σ = 12 , the bound of [19] alone gives (4.6) for 3 < |t| ≤ e577 , since |t|1/492 ≤ e577/492 < 2/0.618.
+Above e577 any bound C|t|27/164 with C ≤ 1154 suffices in place of [30]. Revers [34, Thm. 1.1]
+gives |ζ( 12 + it)| ≤ 0.611|t|1/6 log |t| for |t| ≥ 3, with a detailed treatment of the intermediate
+range of [19].
+(ii) On σ = σm , the bound of [44] is proved for |t| ≥ Tm , the threshold of [44, (3.4)]
+(with k = m), by exponential sums [44, §3.2], and for 3 ≤ |t| ≤ Tm by a Phragmén–Lindelöf
+interpolation of (s − 1)ζ(s) between σ = 21 and σ = 1 with Q0 = 1.31 [44, §3.1, (3.9)–(3.13)],
+whose conclusion is stated there with log |Q0 + s|. Theorem 3.4 gives it with | Log(Q0 + s)|.
+Redoing [44, (3.9)–(3.13)] with this factor, with A(t0 ) as defined there and t0 on a fine
+partition of [3, Tm ], interval arithmetic (the interval-arithmetic program of Appendix A) gives
+on 3 ≤ t ≤ Tm the constant 1.878 (precisely ≤ 1.87781, attained for m = 9) in place of 1.546 for
+4 ≤ m ≤ 9, the only values of m used in Lemma 4.4.
+Hence (b) holds for these m with constant 2, which is all that (4.6) uses.
+(iii) On σ = 1, [18, §2] give independently |ζ(1 + it)| ≤ log |t| − 0.45 for |t| ≥ 3.
+
+5
+
+A disc-based estimate for S(T )
+
+Proposition 5.1. Let c, R satisfy (3.5) with c ≤ 2 and R ≤ 2, and letR T ≥ 3, T ∈
+/ {γk }. Suppose
+π
+that, for a nonnegative measurable function h on [c − R, c + R] with 0 h(c + R cos θ) dθ < ∞, a
+constant K ≥ 1 and a function Ω ≥ 1 on [T − 2, T + 2] such that t 7→ th(σ) Ω(t) is nondecreasing
+there for every σ,
+|ζ(σ + it)| ≤ K th(σ) Ω(t)
+
+(c − R ≤ σ ≤ c + R, T − 2 ≤ t ≤ T + 2).
+
+16
+
+(5.1)
+
+Then
+i
+1h
+ζ(c)
+T + 3 Ih
+log
++ log
++
+log(T + 2) + log Ω(T + 2) + log K
+2d
+ζ(2c)
+T
+π
+1
+log ζ(σ ♯ ) σ ♯ − 2
+E(T, δ ♯ ) 1
++
++
++
++ ,
+π
+πT
+2π
+4
+
+|S(T )| ≤
+
+where Ih =
+
+(5.2)
+
+Rπ
+
+1
+0 h(c + R cos θ) dθ and d = log(R/(c − 2 )).
+
+Proof. Decomposition of the argument. On the segments from 2 to 2 + iT and from 2 + iT to
+σ ♯ + iT one has Re s > 1, where log ζ is holomorphic. Hence
+
+1/2
+1/2
+πS(T ) = arg ζ(σ ♯ + iT ) + ∆σ=σ♯ arg (σ + iT − 1)ζ(σ + iT ) − ∆σ=σ♯ arg(σ + iT − 1) (5.3)
+(this is the decomposition used in [3, §3]). Here | arg ζ(σ ♯ + iT )| ≤ | log ζ(σ ♯ + iT )| ≤ log ζ(σ ♯ ),
+♯
+♯
+1
+≤ σ −1/2
+.
+and the change of arg(σ − 1 + iT ) from σ = σ ♯ to 12 is arctan σ T−1 + arctan 2T
+T
+The majorant Ψ. For s = c + Reiθ one has σ = Re s ∈ [c − R, c + R] and | Im s| ≤ R ≤ 2,
+so s + iT has imaginary
+p part in [T − 2, T + 2], s − iT has imaginary part in [−T − 2, −T + 2],
+and |s ± iT − 1| ≤ 9 + (T + 2)2 ≤ T + 3. Since |ζ(s̄)| = |ζ(s)|, (5.1)
+n and the monotonicity
+assumption bound both terms in (3.3) by (T + 3)K(T + 2)h(σ) Ω(T + 2) , so n1 log |fn (s)| ≤ Ψ(θ)
+with
+Ψ(θ) = log(T + 3) + h(c + R cos θ) log(T + 2) + log Ω(T + 2) + log K,
+(5.4)
+∗
+an even function of θ. Theorem 3.5(a)
+p gives a sequence nm with lim supm Znm (c, R) ≤ Z , where
+∗
+Z is the bracket in (5.2) (using (c − 1)2 + T 2 ≥ T ).
+1/2
+Backlund’s trick. Theorem 3.5(b) at n = nm , letting m → ∞, gives |∆σ=σ♯ arg((σ + iT −
+♯
+
+∗
+
+E(T,δ )
+1)ζ(σ + iT ))| ≤ πZ
++ π4 . Dividing the decomposition by π gives (5.2).
+2d +
+2
+
+5.1
+
+Proof of Theorem 1.1
+
+Let e be admissible, 0 < η < 10−2 , c = 1 + η, R = 1 + 2η. Then c − R = −η, σ ♯ = 54 + 32 η <
+c + R = 2 + 3η, δ ♯ = 14 + η2 ∈ [ 14 , 85 ] and R/(c − 12 ) = 2. So (3.5) holds and d = log 2.
+∗
+Let ε ∈ (0, 1). It is enough to establish |ζ(σ + it)| ≤ Kε te (σ)+ε for −0.01 ≤ σ ≤ 3 and
+t ≥ 98, with Kε depending on ε only (not on η). For 12 ≤ σ ≤ 1 this is (1.3). For 1 ≤ σ ≤ 3,
+ζ(σ + it) ≪ log t ≪ε tε [39, Thm. 3.5]. For −0.01 ≤ σ < 12 it follows from Lemma 4.3,
+ζ(s) = χ(s)ζ(1 − s) and the two previous cases at 1 − σ ∈ ( 21 , 1.01], as in the last step of
+the proof of Lemma 4.4. Since [c − R, c + R] = [−η, 2 + 3η] ⊂ [−0.01, 3], the claim covers
+the disc for every η < 10−2 . For T ≥ 100, Proposition 5.1 applies with h = e∗ + ε, K = Kε
+♯ −1/2
+ζ(c)
+and Ω = 1. In (5.2) the terms log ζ(2c)
+, log T T+3 , log Kε , log ζ(σ ♯ ) and σ πT
+are Oε,η (1), and
+♯
+
+640δ −112
+−10 ) = O(1) by Theorem 3.5(c). Hence
+E(T, δ ♯ )/(2π) ≤ 21 ( 1536(3T
+−1) + 2
+
+log T
+|S(T )| ≤
+2π log 2
+
+Z π
+
+
+e∗ (1 + η + (1 + 2η) cos θ) + ε dθ + Oε,η (1).
+
+(5.5)
+
+0
+
+Passage to the limit. The limits are taken in the order T → ∞, then ε → 0, then η → 0.
+The parameters η and ε do not depend on T . For fixed ε and η the term Oε,η (1) is bounded, so
+dividing by log T and letting T → ∞ through T ∈
+/ {γk } (at T ∈ {γk }, S(T ) = S(T + ) is a limit
+of values at t ∈
+/ {γk }, so the lim sup over T ∈
+/ {γk } is a) gives
+Z
+
+
+1  π ∗
+a≤
+e 1 + η + (1 + 2η) cos θ dθ + πε .
+(5.6)
+2π log 2 0
+The right side no longer involves Kε . Let ε → 0. Finally, e∗ is continuous on R: at σ = 12
+both formulas in (1.4) give e( 12 ), at σ = 1 both give e(1) = 0, and at σ = 0 both give 21 .
+17
+
+Hence e∗ is uniformly continuous on [−1, 4], and since the arguments 1 + η + (1 + 2η) cos θ and
+1 + cos θ differ
+R π ∗by at most 3η, the integrand converges uniformly in πθ as η →π 0. Therefore
+1
+a ≤ 2π log 2 0 e (1 + cos θ) dθ. The integrand vanishes for 0 ≤ θ ≤ 2 . On [ 2 , π] substitute
+p
+p
+σ = 1 + cos θ ∈ [0, 1], dσ = − sin θ dθ, sin θ = 1 − (σ − 1)2 = σ(2 − σ). This is (1.5).
+Remark 5.2. Admissible profiles are nonnegative by definition, so e∗ ≥ 0∗ pointwise, where
+0∗ (σ) = max( 21 − σ, 0) is the reflected extension of the zero profile, and
+√
+Z 1/2
+1
+(1/2 − σ) dσ
+3 3−π
+p
+Λ(e) ≥ Λ(0) =
+=
+= 0.0786252 . . .
+(5.7)
+2π log 2 0
+12π log 2
+σ(2 − σ)
+The Lindelöf hypothesis would give a ≤ 0.0786253 by Theorem 1.1, and no admissible profile
+makes the right side of (1.5) smaller. Whether a disc with (c, R) away from (1, 1) could
+give less
+√
+Rπ
+is not addressed here. (With σ = 1 + cos θ the integral is 2π/3 (− 21 − cos θ) dθ = 23 − π6 .)
+
+5.2
+
+Proof of Corollary 1.2
+
+Let 0 < ε′ < ε0 , where ε0 > 0 is small enough that the nodes ςj′ defined below increase and
+ς7′ < 1 (this holds at ε′ = 0, where they are the nodes (1.6), hence for all small ε′ by continuity),
+′ 55
+′
+j
+(κ0 , λ0 ) = ( 13
+84 + ε , 84 + ε ) and (κj , λj ) = A (κ0 , λ0 ), 1 ≤ j ≤ 7.
+By Theorem 3.7(c),(a) these are exponent pairs, and λj − κj ≥ 12 (it equals 21 for j = 0, and
+λ−κ
+A maps λ − κ to 12 + 2κ+2
+). Put ςj′ = λj − κj (0 ≤ j ≤ 7), ς8′ = 1, κ8 = 0.
+′
+The ςj increase by the choice of ε0 , and the κj decrease since κj+1 = κj /(2κj + 2) < κj . By
+Theorem 3.7(b) and ζ(1+it) ≪ log |t| there is a constant Aε′ ≥ 2 with |ζ(ςj′ +it)| ≤ Aε′ |t|κj log |t|
+for |t| ≥ 3 and 0 ≤ j ≤ 8.
+With Q = 10 and Ξ(s) = (s − 1)ζ(s), the argument of the proof of Lemma 4.4 (for |t| ≤ 3
+the bound |Ξ| < 34.9 from [39, (2.1.4)]; the pole of ζ at s = 1 is removed by the factor s − 1)
+gives |Ξ(ςj′ + it)| ≤ Aε′ |Q + s|1+κj | Log(Q + s)| for all real t.
+′
+Theorem 3.4 on each strip ςj′ ≤ σ ≤ ςj+1
+, with α2 = 1 on both lines, then shows that the
+piecewise linear function eε′ through the points (ςj′ , κj ), 0 ≤ j ≤ 8, is an admissible profile. By
+Theorem 1.1, a ≤ Λ(eε′ ).
+As ε′ → 0 the nodes tend to (1.6), e∗ε′ → e∗B uniformly, and Λ(eε′ ) → Λ(eB ).
+The value Λ(eB ) = 0.0968160063238 . . . is computed in Appendix A in two ways: by 40-digit
+quadrature on each
+R π linear piece, and by the closed form (5.9) with c = R = 1, which expresses
+2π log 2 · Λ(eB ) = 0 e∗B (1 + cos θ) dθ as a combination with rational coefficients of π and of values
+of arccos and of square roots at rational points (here θh = 2π
+3 ).
+The certified ball-arithmetic computation of Appendix A gives 0.096816006 ≤ Λ(eB ) ≤
+0.096816007 and 2πΛ(eB ) ≤ 0.60832.
+
+5.3
+
+Proof of Theorem 1.3
+
+Take c = 1.000002 and R = 1.000005. Then c − R = −3 · 10−6 , σ ♯ = 1.25000275 . . ., δ ♯ =
+0.2500012499 . . . ∈ [ 41 , 85 ], c < R, and (3.5) holds. Let T ≥ 100, T ∈
+/ {γk }. For σ ∈ [c−R, c+R] ⊂
+[−0.01, 3] and t ∈ [T − 2, T + 2] ⊂ [98, ∞), Lemma 4.4 gives (5.1) with h = e∗E , K = 2.74 and
+Ω(t) = log t.
+The integral Ie∗E has a closed form. Write ς0 = 12 < ς1 < · · · < ς7 = 1 for the abscissae in
+(4.5), ei for the second coordinates and ϱi = (ei+1 − ei )/(ςi+1 − ςi ) for the slopes, so that
+eE (σ) = e0 + ϱ0 σ − 12
+
+
+
+6
+X
++
+(ϱi − ϱi−1 ) max(0, σ − ςi ) − ϱ6 max(0, σ − 1)
+
+(σ ≥ 12 ), (5.8)
+
+i=1
+
+and by (1.4) e∗E (σ) = 21 − σ + eE (1 − σ) for σ ≤ 12 , the right side being 12 − σ for σ < 0. As θ runs
+over [0, π], σ = c+R cos θ decreases from c+R to c−R < 0. Split the integral at θh = arccos 1/2−c
+R ,
+18
+
+where σ = 12 . The linear terms integrate to multiples of θh , π − θh and sin θh , and each hinge
+1−ς−c
+′
+integrates exactly: for 12 ≤ ς ≤ 1, with θς = arccos ς−c
+≥ θh ,
+R ≤ θh and θς = arccos
+R
+Z θh
+max(0, c + R cos θ − ς) dθ = (c − ς) θς + R sin θς ,
+Z π 0
+max(0, 1 − c − R cos θ − ς) dθ = (1 − c − ς)(π − θς′ ) + R sin θς′ ,
+
+(5.9)
+
+θh
+
+p
+with sin θς = 1 − ((ς − c)/R)2 and likewise for θς′ . Hence Ie∗E is a combination, with rational
+coefficients, of π, fifteen values of arccos at rational points and fifteen square roots of rational
+numbers. Evaluating it with certified ball arithmetic (Appendix A) gives
+C1 :=
+
+Ie∗E
+= 0.0978292318785 . . . ,
+2πd
+
+C2 :=
+
+1
+= 0.7213464797 . . . ,
+2d
+
+log
+
+ζ(c)
+= 12.6246665 . . .
+ζ(2c)
+(5.10)
+
+By Proposition 5.1,
+i
+h
+T +3
++ log 2.74
+|S(T )| ≤ C1 log(T + 2) + C2 log log(T + 2) + C2 12.62467 + log
+T
+log ζ(σ ♯ ) 0.7501 E(T, δ ♯ ) 1
++
++
++ .
++
+π
+πT
+2π
+4
+
+(5.11)
+
+
+♯ −112
+−10 <
+Here log ζ(σ ♯ ) = 1.52498 . . .,1 and by Theorem 3.5(c), E(T, δ ♯ )/(2π) ≤ 21 640δ
+1536·299 + 2
+2C2
+1
+0.00055. Replacing log(T + 2) by log T and log log(T + 2) by log log T costs at most 2C
+T + T log T ,
+2
+2
+by the mean value theorem (log(T + 2) − log T ≤ T , and log log(T + 2) − log log T ≤ T log
+T
+because (log log u)′ = 1/(u log u) decreases).
+Let C3 (T ) be the sum of these two costs and of all terms of (5.11) other than C1 log(T +
+2) + C2 log log(T + 2), with E(T, δ ♯ ) replaced by the majorant of Theorem 3.5(c). Every term of
+2C1
+2C2
+C3 (T ) is constant or decreasing in T : log T T+3 , 0.7501
+πT , T and T log T decrease.
+
+640δ ♯ −112
+−10
+The majorant 12 1536(3T
+of E(T, δ ♯ )/(2π) decreases because 640δ ♯ − 112 =
+−1) + 2
+♯
+
+)
+48.0007 . . . > 0. The remaining terms C2 (12.62467 + log 2.74), log ζ(σ
+and 14 are constants.
+π
+With the rounded values displayed, C3 (100) ≤ 10.5987.
+The program of Appendix A gives C3 (100) = 10.598602 . . ., and 10.598545 . . . for the same
+sum with the exact differences log 102 − log 100 and log log 102 − log log 100 in place of the two
+costs.
+Hence |S(T )| ≤ C1 log T +C2 log log T +C3 (100) for T ≥ 100, and (1.7) follows from 0.09783 >
+C1 , 0.7214 > C2 , 10.6 > C3 (100). For e ≤ T ≤ 100, Theorem 3.6 gives |S(T )| ≤ 2.5167, smaller
+than the right side of (1.7). Finally (1.8) follows from (1.1) and |ϖ(T )|/π ≤ 0.53/(πe) < 0.07
+(Lemma 4.1).
+
+6
+
+Distance from τk to the imaginary parts
+
+For k ≥ 1 put sk = k − 12 − N0 (γk ) = N0 (τk ) − N0 (γk ), and write G = N − N0 = S + ϖ/π
+±
+(Lemma 4.1), G±
+k = G(γk ).
++
+−
++
+1
+1
+1
+Lemma 6.1. For every k ≥ 1, G−
+k + 2 ≤ sk ≤ Gk − 2 ; in particular |sk | ≤ max(|Gk |, |Gk |) − 2 .
+1
+
+♯
+Appendix A certifies
+) = 1.5249835586 . . . by ball arithmetic. The bound log ζ(σ ♯ ) ≤ 1.52499 also
+P log ζ(σ
+−σ
+follows from ζ(σ) ≤ n<N n + (N − 21 )1−σ /(σ − 1) with N = 104 , which gives log ζ(σ ♯ ) ≤ 1.5249836. This
+−σ/2
+R n+1/2
+inequality follows from n−σ ≤ n−1/2 x−σ dx, which follows from (x − h)−σ + (x + h)−σ ≥ 2 (x − h)(x + h)
+≥
+2x−σ for 0 ≤ h < x.
+
+19
+
+Proof. The indices j with γj = γk are exactly N (γk− )+1, . . . , N (γk+ ), so N (γk− )+1 ≤ k ≤ N (γk+ ).
++
++ 1
+1
+Subtract 21 +N0 (γk ) and use the continuity of N0 . With g = max(|G−
+k |, |Gk |), sk ≤ Gk − 2 ≤ g− 2
+1
+1
+and sk ≥ G−
+k + 2 ≥ −g + 2 .
+Proof of Corollary 1.4. The function N0 is increasing on (2π, ∞) with increasing derivative
+1
+t
+L(t) = 2π
+log 2π
+, and γ1 > 14 > 2π, τk > 2π, so mk > 2π. By the mean value theorem,
+|sk | = L(ξk )|τk − γk | ≥ L(mk )|τk − γk | for some ξk between τk and γk .
+(b) Inequality (1.8) holds for G(t) at t ≥ e, t ∈
+/ {γk }, and, since its right side is continuous
+±
+and increasing in t, for Gk (note γk > 14 > e). With Lemma 6.1 it gives |sk | ≤ 0.09783 log γk +
+1
+k
+0.7214 log log γk + 10.2, and (1.9) follows from L(mk ) = 2π
+log m
+2π > 0.
+(a) First, mk ≥ γk /2 for large k: if τk < γk /2, then |sk | = N0 (γk ) − N0 (τk ) ≥ N0 (γk ) −
+N0 (γk /2) ≥ γ2k L( γ2k ), which exceeds the bound O(log γk ) of (b) for large k. Hence log mk =
+log γk +O(1), so |τk −γk | = O(1) by (b), and then log mk = log γk +o(1). For ε > 0, Corollary 1.2
+and ϖ(t) → 0 give |G(t)| ≤ (Λ(eB ) + ε) log t for large t ∈
+/ {γk }, hence |G±
+k | ≤ (Λ(eB ) + ε) log γk ,
+|sk | ≤ (Λ(eB )+ε) log γk and |τk −γk | ≤ |sk |/L(mk ) ≤ 2π(Λ(eB )+ε)(1+o(1)). Let ε → 0. Finally,
+2π · 0.0968160063238 . . . = 0.6083129 . . ..
+Proposition 6.2 (Limit superior of |τk − γk |). lim supk→∞ |τk − γk | = 2πa. In particular the
+bound lim supk |τk − γk | ≤ 2πΛ(eB ) of Corollary 1.4(a) is equivalent, through this identity, to the
+bound a ≤ Λ(eB ) of Corollary 1.2, and the Lindelöf hypothesis would give lim supk |τk − γk | ≤
+2πΛ(0) = 0.49401 . . . (Remark 5.2).
+Proof. Upper bound. By the definition of a, for every ε > 0 and all large t ∈
+/ {γk }, |S(t)| ≤
+(a+ε) log t. The proof of Corollary 1.4(a), with Λ(eB ) replaced by a, gives lim supk |τk −γk | ≤ 2πa.
+It uses Lemma 6.1, which allows multiple imaginary parts.
+Lower bound. One may assume a > 0. Let t > γ1 , t ∈
+/ {γk }, and k = N (t), so that
+γk < t < γk+1 . If the imaginary part γk is multiple, k is the largest index with that imaginary
+part, and γk+1 is the next distinct imaginary part, whatever its multiplicity. Since no imaginary
+−
+).
+part lies in (γk , γk+1 ), N (γk+ ) = k = N (γk+1
++
+−
+1
+1
+1
+By the definition of sk , sk = N (γk ) − 2 − N0 (γk ) = G+
+k − 2 and sk+1 = N (γk+1 ) + 2 −
++
+−
+1
+N0 (γk+1 ) = G−
+k+1 + 2 . On (γk , γk+1 ), G = k − N0 is decreasing, so Gk ≥ G(t) ≥ Gk+1 , hence
+1
+1
+sk ≥ G(t) − 2 and sk+1 ≤ G(t) + 2 .
+If G(t) ≥ 21 , then |sk | ≥ G(t) − 12 , and if G(t) ≤ − 12 then |sk+1 | ≥ |G(t)| − 21 , so in all cases
+max(|sk |, |sk+1 |) ≥ |G(t)| − 21 .
+For j ∈ {k, k + 1} the mean value theorem gives |sj | = L(ξj )|τj − γj | with ξj between τj
+and γj , and L increases, so |τj − γj | ≥ |sj |/L(max(τj , γj )). By the proof of Corollary 1.4(a),
+|τj − γj | = O(1), and γk+1 − γk → 0 as t → ∞ (Theorem 3.1; k = N (t) → ∞), so max(τj , γj ) =
+t + O(1) and 2πL(max(τj , γj )) = log t − log 2π + O(1/t). Finally G(t) = S(t) + ϖ(t)/π with
+ϖ(t) → 0 (Lemma 4.1).
+Choose t → ∞, t ∈
+/ {γk }, with |S(t)| ≥ (a − ε) log t, which exist by the definition of a and
+the convention S(T ) = S(T + ). Then, for one of j = k, k + 1,
+
+2π (a − ε) log t − 21 − o(1)
+|τj − γj | ≥
+−→ 2π(a − ε),
+(6.1)
+log t − log 2π + O(1/t)
+and j → ∞ with t. Let ε → 0. Thus the limit superior of the displacement is determined by
+that of |S(T )|/ log T .
+
+7
+
+Localization by primes
+
+7.1
+
+The construction
+
+Each summand in (1.10) is − π1 arg(1 − p−1/2−it ) with |p−1/2−it | ≤ 2−1/2 , so its modulus is at
+most π1 arcsin(2−1/2 ) = 41 . For every fixed m, the inner series over r converges absolutely. The
+20
+
+argument bound follows geometrically by maximizing the angle of 1 − z over |z| ≤ 2−1/2 , which
+gives | arg(1 − z)| ≤ arcsin |z|. Therefore
+|Φm (t)| ≤
+
+m
+.
+4
+
+(7.1)
+
+On [2j , 2j+1 ] the two definitions of Φ in (1.11) at the endpoints agree, so Φ and F are continuous
+on (0, ∞), and F(t) = N0 (t) → 87 as t → 0+ (for t < 12 one has mj = mj+1 = 0). Since
+m2j+1 ≤ 2j+1 ≤ 2t on the block,
+√
+|Φ(t)| ≤ 41 2t
+
+(t > 0).
+
+Since N0 (τk ) = k − 12 , (1.12) reads τkC = T (τk ) with T (τ ) =
+point is a function of the original point.
+
+(7.2)
+R∞
+0
+
+1{F (t)<N0 (τ )} dt: the corrected
+
+C . If τ ≥ 2πe, the integral
+Proposition 7.1. For every k ≥ 1, τkC is finite and 0 < τkC < τk+1
+k
+√
+(1.12) may be truncated at 2τk , and its integrand uses only the primes pν with ν ≤ ⌊2 τk ⌋.
+√
+Proof. By (7.2), F(t) ≥ N0 (t) − 14 2t → ∞, so each sublevel set is bounded and τkC < ∞. The
+block containing 2π is [4, 8], with m2 = m3 = 2, so F(2π) ≤ N0 (2π) + 42 = − 18 + 21 = 38 . Fix
+k ≥ 1. Then F(2π) < 12 ≤ k − 12 , and since F(t) → ∞ there is t1 > 2π with F(t1 ) > k + 21 . By
+1
+1
+the intermediate value
+ theorem F takes the value k in (2π, t1 ), so the set {k − 2 < F < k + 2 } =
+1
+1
+−1
+F
+(k − 2 , k + 2 ) is nonempty, and it is open because F is continuous. Every nonempty
+open subset of R contains a nondegenerate interval and therefore has positive Lebesgue measure.
+C − τ C = meas{k − 1 ≤ F < k + 1 } ≥ meas{k − 1 < F < k + 1 } > 0. Likewise
+Hence τk+1
+k
+2
+2
+2
+2
+C
+τ1 ≥ meas{F < 21 } > 0, because {F < 12 } is open and contains 2π.
+√
+t
+If τk ≥ 2πe and t ≥ 2τk , then N0 (t)−N0 (τk ) ≥ (t−τk )L(τk ) ≥ 4π
+> 14 2t (as t ≥ 4πe > 2π 2 ),
+√
+so F(t) > k − 12 . For t ≤ 2τk the budgets used satisfy m2 ≤ 4τk , hence m ≤ 2 τk .
+
+7.2
+
+A deterministic transfer inequality
+
+Lemma 7.2. Let A ≤ B be integers and D = (Dℓ )A≤ℓ≤B nonnegative. For A ≤ ℓ ≤ B let
+PB
+Pb
+PB
+1
+3
+3
+(MD)ℓ = max{ b−a+1
+ℓ=A Dℓ .
+r=a Dr : A ≤ a ≤ ℓ ≤ b ≤ B}. Then
+ℓ=A (MD)ℓ ≤ 24
+Proof. Rising sun. In this proof g, G and P± are
+Pblocal. Let g be real on [A, B] ∩ Z, and
+′
+′
+let P+ (A , B)
+P be the set of j ∈ [A , B] for which r=j gr ≥ 0 for some b ∈ [j, B]. One can
+show that j∈P+ (A′ ,B) gj ≥ 0 by induction on B − A′ (this is the discrete form of F. Riesz’s
+rising sun lemma [35]). If A′ ∈
+/P
+P+ (A′ , B), then P+ (A′ , B) = P+ (A′ + 1, B). Otherwise
+P ∗choose
+∗
+′
+b ∈ [A , B] maximizing G(b) = br=A′ gr . Then G(b∗ ) ≥ 0, and for A′ < j ≤ b∗ also br=j gr =
+∗
+G(b
+0.PHence [A′ , b∗ ] ⊂ P+ (A′ , B), P+ (A′ , B) = [A′ , b∗ ] ∪ P+ (b∗P
++ 1, B), and
+P ) − G(j − 1) ≥
+∗
+P+ (A′ ,B) g = G(b )+
+P+ (b∗ +1,B) g ≥ 0. The same argument from the right gives
+j∈P− gj ≥ 0
+Pℓ
+for the set P− of ℓ ∈ [A, B] with r=a gr ≥ 0 for some a ∈ [A,
+P ℓ].
+P
+Weak type. Let Θ > 0 and g = D − Θ. Then Θ #P+ ≤ P+ D ≤
+D and likewise for P− .
+Pb
+Pℓ
+If (MD)ℓ ≥ Θ, some [a, b] ∋ ℓ has r=a gr ≥ 0. Splitting at ℓ, either r=a gr ≥ 0, so ℓ ∈ P− ,
+P
+P
+or ℓ < b and br=ℓ+1 gr > 0, so ℓ + 1 ∈ P+ . Hence Θ #{ℓ : (MD)ℓ ≥ Θ} ≤ 2 ℓ Dℓ .
+Strong type. Let Dℓ′′ = Dℓ 1{2Dℓ ≥Θ} . Every term of the remaining part D − D′′ is < Θ/2, so
+every average of D−D′′ over an interval of indices is < Θ/2, that is, M(D−D′′ ) <PΘ/2. Since M
+is subadditive, (MD)ℓ ≥ Θ implies (MD′′ )ℓ ≥ Θ/2, and Θ #{MD ≥ Θ} ≤ 4 ℓ Dℓ 1{2Dℓ ≥Θ} .
+Hence
+Z 2Dℓ
+Z ∞
+X
+X
+X
+3
+2
+(MD)ℓ =
+3Θ #{MD ≥ Θ} dΘ ≤ 12
+Dℓ
+Θ dΘ = 24
+Dℓ3 .
+(7.3)
+ℓ
+
+0
+
+ℓ
+
+21
+
+0
+
+ℓ
+
+Theorem 7.3 (Sublevel transfer). In this theorem (γk ), N and Dℓ are general: let (γk )k≥1 be any
+nondecreasing real sequence with finitely many terms in each bounded set, N (t) = #{k : γk ≤ t},
+and a < b with ℓ0 = N (a) ≥ 1, ℓ1 = N (b). Put Dℓ = γℓ+1 − γℓ for ℓ0 ≤ ℓ ≤ ℓ1 . Let f be a
+measurable real function on [a, b], and for k with a < γk ≤ b put
+xfk = a +
+
+Z b
+a
+
+qf (t) = ⌊f (t) + 12 ⌋ − N (t) .
+
+1{f (t)<k− 1 } dt,
+2
+
+(7.4)
+
+Here qf is the integer discrepancy between the levels of f and of N , not the continuous error
+f − N ; note that qf ≤ |f − N | + 21 . Then
+X
+
+(xfk − γk )2 ≤ 2 · 241/3
+
+ℓ1
+X
+
+a<γk ≤b
+
+Dℓ3
+
+1/2 Z b
+
+1/2
+qf4 dt
+,
+
+(7.5)
+
+a
+
+ℓ=ℓ0
+
+and qf4 ≤ (1+|f −N |)4 . (The right side may be +∞; its first factor is positive, since
+γℓ1 +1 − γℓ0 > b − a. We do not claim that the constant 2 · 241/3 is optimal.)
+
+Pℓ1
+
+ℓ=ℓ0 Dℓ =
+
+Proof. Fix k with a < γk ≤ b. Then ℓ0 + 1 ≤ k ≤ ℓ1 . (A term γk equal to a has index ≤ ℓ0
+and is not counted. The last gap Dℓ1 = γℓ1 +1 − γℓ1 , to the first term beyond b, is included in
+(7.5) because {t ∈ [a, b] : N (t) = ℓ1 } ⊂ [γℓ1 , γℓ1 +1 ) reaches b.) Since N (t) < k − 21 exactly when
+Rb
+t < γk , γk = a + a 1{N <k−1/2} , and xfk − γk = uk − vk with uk = meas{t ∈ [γk , b] : f (t) < k − 12 }
+and vk = meas{t ∈ [a, γk ) : f (t) ≥ k − 12 }.
+Let Ek ⊂ [a, b] be the set where 1{f <k−1/2} ̸= 1{N <k−1/2} . By the bathtub principle [26,
+R
+R γ +u
+Thm. 1.14], a measurable set U ⊂ [γk , b] of measure u satisfies U (t − γk ) dt ≥ γkk (t − γk ) dt =
+u2
+2 : on U \ [γk , γk + u] the integrand is ≥ u, on [γk , γk + u] \ U it is ≤ u, and the two sets have
+
+the same measure. Likewise on the left. Hence
+(xfk − γk )2 ≤ u2k + vk2 ≤ 2
+
+Z
+|t − γk | dt.
+
+(7.6)
+
+Ek
+
+Let t ∈ [a, b] and ℓ = N (t) ∈ [ℓ0 , ℓ1 ], so γℓ ≤ t < γℓ+1 . If t ∈ Ek , the level k − 12 lies between
+N (t) and f (t): either N (t) + 1 ≤ k ≤ ⌊f (t) + 12 ⌋ or ⌊f (t) + 12 ⌋ + 1 ≤ k ≤ N (t). So at most
+P
+Dr ≤
+qf (t) indices k have t ∈ Ek . If k > ℓ, then k ≤ ⌊f (t) + 12 ⌋ and |t − γk | ≤ γk − γℓ = k−1
+Pr=ℓ
+(k −ℓ)(MD)ℓ ≤ qf (t)(MD)ℓ . If k ≤ ℓ, then k > ⌊f (t)+ 12 ⌋ and |t−γk | ≤ γℓ+1 −γk = ℓr=k Dr ≤
+(ℓ − k + 1)(MD)ℓ ≤ qf (t)(MD)ℓ . Here M is taken with A = ℓ0 , B = ℓ1 : the index intervals lie
+in [ℓ0 , ℓ1 ] and contain ℓ. Therefore
+X
+1Ek (t)|t − γk | ≤ qf (t)2 (MD)N (t) .
+(7.7)
+a<γk ≤b
+
+Sum (7.6) over k, integrate, and apply Cauchy–Schwarz in t. Since {t ∈ [a, b] : N (t) = ℓ} ⊂
+[γℓ , γℓ+1 ), Hölder’s inequality and Lemma 7.2 give
+Z b
+a
+
+(MD)2N (t) dt ≤
+
+ℓ1
+X
+
+Dℓ (MD)2ℓ ≤
+
+X
+
+Dℓ3
+
+ℓ=ℓ0
+
+ℓ1
+1/3 X
+2/3
+X
+3
+2/3
+(MD)ℓ
+≤ 24
+Dℓ3 ,
+
+(7.8)
+
+ℓ=ℓ0
+
+which proves (7.5). Finally qf ≤ |f − N | + 21 .
+Remark 7.4 (Quantile form). In this remark mf and mN are local. Let mf be the image of
+Lebesgue measure on [a, b] under f , a measure of mass b − a on R, and mN the image under N ,
+which is the sum of the point masses meas{t ∈ [a, b] : N (t) = ℓ} δℓ , ℓ0 ≤ ℓ ≤ ℓ1 . Then xfk − a =
+mf (−∞, k − 21 ) and γk − a = mN (−∞, k − 21 ) : the left side of (7.5) compares the distribution
+22
+
+functions of mf and mN at the half-integer levels, the thresholds between consecutive integer
+counting levels (with multiplicities, N may skip levels). Equivalently, xfk is the point where the
+increasing rearrangement of f on [a, b] ([15, §10.12], in increasing order), the generalized inverse
+of the distribution function, reaches the level k − 12 , and γk is the same point for N . The left
+side of (7.5) is thus a discrete form of the squared L2 distance between the two distribution
+functions. It is not the squared Wasserstein distance W22 , which compares their inverses, the
+increasing rearrangements of f and N . The right side has no counterpart known to the author:
+one factor is a moment of the gaps Dℓ , which are, up to the truncation at a and b, the masses
+of the atoms of mN (the atoms themselves sit at the integers ℓ), the other a moment of the
+pointwise difference f − N .
+
+7.3
+
+The arithmetic inputs
+
+Lemma 7.5 (Third moment of the gaps).
+
+2
+3
+T <γℓ ≤2T (γℓ+1 − γℓ ) ≪ T / log T for T ≥ T0 .
+
+P
+
+T
+Proof. Write Dℓ = γℓ+1 − γℓ and LT = log 2π
+. By Theorem 3.1, Dℓ → 0, so there is T0 with
+Dℓ ≤ 1 whenever γℓ > T ≥ T0 . For 0 < h ≤ 1 let Ah = {t ∈ [T, 4T ] : N (t + h) = N (t)}.
+For every t ∈ Ah such that t, t + h ∈
+/ {γk } (a null set is excluded), (1.1) at t and t + h gives
+ hL
+1
+T
+T
+| ≥ hL
+|S(t + h) − S(t)| = |N0 (t + h) − N0 (t) + ϖ(t+h)−ϖ(t)
+π
+2π − O T ≥ 4π when hLT ≥ 1 and
+1
+T ≥ T0 . Theorem 3.8(b) with k = 2, αF = 2 and H = T (the endpoints of its ranges, admitted
+there; this is the case (α) of [12]), on [T, 2T ] and on [2T, 4T ], together with log(2 + h log 4T ) ≤
+2 log(2 + hLT ), gives, by Chebyshev’s inequality,
+
+meas Ah ≤
+
+ 4π 4 Z 4T
+hLT
+
+T
+
+4
+T log2 (2 + hLT )
+S(t + h) − S(t) dt ≪
+(hLT )4
+
+(1 ≤ hLT , 0 < h ≤ 1).
+
+(7.9)
+If T < γℓ ≤ 2T and Dℓ ≥ 2h, the interval (γℓ , γℓ+1 −h) lies in [T, 4T ] (as γℓ+1 ≤ γℓ +1 ≤ 4T ) and
+in Ah (for t in it, γℓ < t < t + h < γℓ+1 , so N (t + h) = N (t) = ℓ), and has length Dℓ − h ≥ Dℓ /2.
+These intervals are disjoint. Hence, with v = hLT ,
+X
+
+Dℓ ≪
+
+T <γℓ ≤2T
+Dℓ ≥2v/LT
+
+T log2 (2 + v)
+v4
+
+(1 ≤ v ≤ LT ).
+
+(7.10)
+
+Split according to Dℓ < 2/LT and 2j+1 /LT ≤ Dℓ < 2j+2 /LT for j ≥ 0 with 2j ≤ LT /2. The
+largest such j is J = ⌊log2 (LT /2)⌋, and 2J+1 > LT /2 gives 2J+2 /LT > 1, so these ranges
+cover [2/LT , 1] ∋ Dℓ ; moreover
+for each of them v = 2j satisfies 1 ≤ v ≤ LT . The first part
+4 P
+contributes at most L2
+Dℓ ≤ L42 (T + 1). The j-th part, with v = 2j , contributes at most
+T
+T
+2
+P
+16·4j T (j+2)2
+j+2
+2
+(2 /LT )
+= 16 T4j(j+2)
+, and the sum over j converges.
+Dℓ ≥2j+1 /LT Dℓ ≪ L2 ·
+16j
+L2
+T
+
+T
+
+Lemma 7.6 (Fourth moment of the counting error). For U = 2j with j ≥ j0 ,
+N (t)|4 dt ≪ U .
+
+R 2U
+U
+
+|F(t) −
+
+Proof. On [U, 2U ], F − N = (2 − Ut )(N0 + Φmj − N ) + ( Ut − 1)(N0 + Φmj+1 − N ). By convexity
+of | · |4 it√suffices to prove √
+the bound for N0 + Φm − N = Φm − S − ϖ/π with m ∈ {mj , mj+1 },
+so that U − 1 ≤ m ≤ 2U . Put X = pm , so that p ≤ X means p ∈ {p1 , . . . , pm }, and
+Y = U 1/200 . The ranges p < Y and Y ≤ p ≤ X below partition the primes√ p ≤ X. For U
+large, P
+X ≥ m ≥ Y and log X ≍ log U (Theorem 3.10: X = pm ≍ m log m ≍ U log U ), hence
+V := Y ≤p≤X p1 = log log X − log log Y + O(1) = O(1) by Mertens’ theorem (Theorem 3.10).
+
+23
+
+Expanding (1.10),
+X
+1
+1
+1
+Im
+p−1/2−it + Im D1 (t) +
+Im D2 (t) + Φ(3) (t),
+π
+π
+2π
+p<Y
+X
+X
+D1 (t) =
+p−1/2−it ,
+D2 (t) =
+p−1−2it ,
+
+Φm (t) =
+
+Y ≤p≤X
+
+with |Φ(3) (t)| ≤ π1
+
+(7.11)
+
+p≤X
+
+1
+1
+r≥3 rpr/2 < ∞. By Theorem 3.8(a) with k = 2, αF = 5 and H = T = U
+(its hypotheses hold: U 1/2+αF = U 7/10 ≤ H = U , and U αF /(20k) = U 1/200 = Y ≤ U 1/2 = H 1/k ),
+
+P P
+p
+
+R 2U
+
+P
+|S − π1 Im p<Y p−1/2−it |4 ≪ U .
+P
+The square D12 = n cn n−it has cn = d1 (n)n−1/2 , where d1 (n) is the number of ordered pairs
+(p, p′ ) of primes of [Y, X] with pp′ = n: d1 (n) =P
+2 if n = pp′ with p ̸= p′ , 1 if n = p2 , 0 otherwise,
+2
+2
+2
+so d1 ∈ {0, P
+1, 2}, whence P
+d1 (n) ≤ 2d1 (n), and
+n d1 (n) = #{p ∈ [Y, X]} ≤ m . P
+P
+2 =
+2
+2 =
+Hence
+= 2V 2 = O(1) and
+n |cn |
+n d1 (n) /n ≤ 2
+n d1 (n)/n
+n n|cn |
+R 2U
+P
+2
+2
+4
+n d1 (n) ≤ 2m ≤ 4U , and Theorem 3.9 gives U |D1 | ≪ U . (The weight n of Theorem 3.9 is compensated by the factor n−1 in |cn |2 : the relevant bound is O(m2 ) = O(U ), not
+O(X 2 ) = O(U log2 U ).)
+P
+In the same way D22 = v c′v v −2it with c′vP
+= d2 (v)/v, where d2 (v) ≤ 2 counts the ordered
+pairs of primes of [2, X] with product v, and v d2 (v) = m2 . Since v −2it = (v 2 )−it , D22 is the
+Dirichlet polynomial in n−it whose coefficient is c′v at n = v 2 and 0 at the other n, and TheoP
+P −2 2
+P
+P
+P
+and v v 2 |c′v |2 = v d2 (v)2 ≤
+rem 3.9 applies to it with v |c′v |2 = v d2 (v)2 /v 2 ≤ 2
+pp
+R 2U
+2m2 ≤ 4U , so U |D2 |4 ≪ U .
+Finally |ϖ| ≤ 0.53/t and |Φ(3) | is bounded, so their L4 [U, 2U ] norms are ≪ U 1/4 . Minkowski’s
+inequality in L4 [U, 2U ] combines the five pieces:
+U
+
+Φm − S − ϖ
+π 4 ≤ S−
+
+X
+1
+1
+1
+1
+Im
+p−1/2−it + ∥D1 ∥4 +
+∥D2 ∥4 + ∥Φ(3) ∥4 + ∥ϖ∥4 ≪ U 1/4 .
+π
+π
+2π
+π
+4
+p<Y
+
+Since k = 2 and αF = 15 are fixed, and m ∈ {mj , mj+1 } enters only through m ≤
+implied constants are absolute.
+
+√
+
+(7.12)
+2U , all the
+
+In the present argument, the number of primes P
+is dictated by
+moment. In the
+Pthe fourth
+2
+2
+2
+proof above, the remainder in Theorem 3.9 for D1 is n n|cn | = n d1 (n) , which lies between
+#{p ∈ [Y, X]}2 and 2m2 . With
+application of Theorem 3.9, it is
+√ this expansion and this direct
+2
+O(U ) exactly when m = O( U ), and the same holds for D2 . This is why
+√ the primes are counted
+by number and not by size: the bound depends on m, not on pm ≍ U log U . The restriction
+comes from the method. The present argument does not exclude the use of a larger number of
+primes.
+
+7.4
+
+Proof of Theorem 1.5
+
+Finiteness, order and the prime budget are Proposition 7.1. Let T ≥ T0 , a = T /2, b = 3T , and
+k ∈ KT . By (1.1), Theorem 3.1 and Lemma 4.1, there is an absolute constant C0 ≥ 1 with
+|N (t) − N0 (t)| ≤ C0 log t for t ≥ T /4 and T ≥ T0 . Since k > N (T ), for 0 < t ≤ a it follows, by
+(7.2) and the monotonicity of N0 on [2π, ∞) (and N0 ≤ 78 on (0, 2π]),
+√
+
+F(t) ≤ max 87 , N0 ( T2 ) + 14 T < N0 (T ) − C0 log T ≤ N (T ) < k − 21 ,
+
+(7.13)
+
+√
+because N0 (T ) − N0 (T /2) ≥ T2 L( T2 ) ≫ T log T . For t ≥ b, similarly, F(t) ≥ N0 (t) − 41 2t ≥
+√
+√
+N0 (3T ) − 14 6T > N0 (2T ) + C0 log(2T ) ≥ N (2T ) ≥ k (the function N0 (t) − 41 2t increases for
+Rb
+t ≥ 2πe). Hence τkC = a + a 1{F <k−1/2} dt, and γk ∈ (a, b].
+24
+
+Theorem 7.3 with f = F applies to the indices k ∈ KT , a subset of {k : a < γk ≤ b}. The
+gaps Dℓ , ℓ0 ≤ ℓ ≤ ℓ1 , have γℓ ∈ (T /4, 3T ]: γℓ ≤ γℓ1 ≤ b = 3T , and γℓ0 > T /4 because, by
+Theorem 3.1, there is ℓ∗ with Dℓ < 1 for all ℓ ≥ ℓ∗ , and for T ≥ T0 one has ℓ0 = N (T /2) ≥
+ℓ∗ , so γℓ0 > γℓ0 +1 − 1 > T /2 − 1 ≥ T /4. Lemma 7.5
+on the four dyadic intervals (T ′ , 2T ′ ],
+P
+2
+3
+T ′ = T /4, T /2, T, 2T , which cover (T /4, 4T ], gives
+ℓ0 ≤ℓ≤ℓ1 Dℓ ≪ T / log T . The interval
+[a, b] is covered by at most four blocks [2j , 2j+1 ] with T /4 ≤ 2j ≤ 3T , so Lemma 7.6 gives
+Rb
+4
+a (1 + |F − N |) ≪ T . By (7.5),
+X
+
+(τkC − γk )2 ≪
+
+
+
+k∈KT
+
+T
+T 1/2 1/2
+T
+=
+.
+2
+log T
+log T
+
+(7.14)
+
+For the mean-square bound, (1.1) with S = O(log T ) (Theorem 3.1) and ϖ = O(1) (Lemma 4.1)
+gives
+#KT = N (2T ) − N (T ) = N0 (2T ) − N0 (T ) + O(log T )
+
+T log T
+T
+log T + 2 log 2 − log(2πe) + O(log T ) ≥
+=
+2π
+8π
+
+(T ≥ T0 ),
+
+(7.15)
+2T
+T
+T
+because N0 (2T ) − N0 (T ) = 2T
+log
+−
+log
+and
+2
+log
+2
+−
+log(2πe)
+=
+−1.45
+.
+.
+..
+Hence
+the
+2π
+2πe
+2π
+2πe
+2
+2
+′
+C
+mean of (τk − γk ) over KT is at most 8πC/ log T , and C = 8πC.
+Proof of Corollary 1.6. Chebyshev’s inequality applied to (1.13).
+Remark 7.7. The uncorrected sequence τk is, for k ≥ 2, the case Φ = 0. Then qf is governed by
+S, and (7.5), with Selberg’s fourth moment (Theorem 3.11 with k = 2, in dyadic form) in place
+of Lemma 7.6
+P and with the window [T /2, 3T ] localized exactly as in the proof of Theorem 1.5,
+only yields k∈KT (τk − γk )2 ≪ T log log T / log T . This is the right order: Theorem 1.7 gives
+the asymptotic equality, by a route that does not pass through the transfer inequality. The
+< γk ≤
+same value has a reading in terms of Gram points. If ∆G
+k is the integer with gk+∆G
+k −2
+G
+G
+gk+∆G −1 (gm the Gram points, ϑ(gm ) = mπ), then ϑ(γk )/π ∈ (k + ∆k − 2, k + ∆k − 1] and
+k
+G
+ϑ/π = N0 − 1 + ϖ/π give |sk + ∆G
+k | < 1 for γk ≥ 14. Selberg’s moments of ∆k over short ranges
+of k, in the form of Korolev [23, Thm. 4.2], are therefore consistent with Proposition 8.4: both
+give ⟨s2k ⟩KT ∼ 2π1 2 log log T , the former through the Gram intervals and the latter through the
+exact identity (8.5). The Euler phases of finitely many primes in Theorem 1.5 remove the factor
+log log T .
+
+8
+
+The mean square of τk − γk
+
+In this section F , uk , Ψj , k1 and k2 are local. The symbols sk , G = N − N0 = S + ϖ/π and
+L = N0′ are those of Section 6, and KT , ⟨·⟩KT those of Theorem 1.5. Section 6 compared τk with
+γk one index at a time. Here the comparison is in mean square, and it rests on an identity that
+turns a sum over the imaginary parts into an integral of the counting function. Nothing about
+the zeros is assumed.
+Theorem 8.1 (Exact defect identity). Let 1 ≤ k1 < k2 be indices, let F be a real absolutely
+continuous function on a compact interval containing [γk1 , γk2 ], and put uk = k − 12 − F (γk ) for
+k1 ≤ k ≤ k2 . For every integer j ≥ 1,
+Z γk
+
+2
+
+γk1
+
+N (t) − F (t)
+
+2j
+
+′
+
+F (t) dt =
+
+kX
+2 −1
+
+Ψj (uk ) +
+
+k=k1 +1
+
+25
+
+( 21 + uk1 )2j+1 + ( 12 − uk2 )2j+1
+,
+2j + 1
+
+(8.1)
+
+where
+Ψj (u) =
+
+
+j−1 
+X
+( 12 + u)2j+1 + ( 12 − u)2j+1
+2j + 1 4l−j 2l
+= u2j +
+u .
+2j + 1
+2l
+2j + 1
+
+(8.2)
+
+l=0
+
+1
+In particular, since Ψ1 (u) = u2 + 12
+,
+kX
+2 −1
+
+u2k =
+
+Z γk
+
+2
+
+γk1
+
+k=k1 +1
+
+2
+k2 − k1 − 1 ( 12 + uk1 )3 + ( 12 − uk2 )3
+N (t) − F (t) F ′ (t) dt −
+−
+.
+12
+3
+
+(8.3)
+
+Proof. Existence of the integral. On [γk1 , γk2 ] the function N is a step function with finitely
+many jumps, since N (γk2 ) is finite, F is bounded, and F ′ is integrable. Hence the integrand is
+integrable.
+One gap. Fix k with k1 ≤ k < k2 . Suppose first that γk < γk+1 . Then N (t) = k for
+t ∈ (γk , γk+1 ), because exactly k imaginary parts counted with multiplicity are ≤ t. The function
+t 7→ −(k − F (t))2j+1 /(2j + 1) is absolutely continuous, as the composition of the C 1 function
+x 7→ −(k − x)2j+1 /(2j + 1) with F , and its derivative is (k − F (t))2j F ′ (t) almost everywhere; no
+monotonicity of F is needed. By the fundamental theorem of calculus for absolutely continuous
+functions,
+Z γk+1
+2j
+(k − F (γk ))2j+1 − (k − F (γk+1 ))2j+1
+k − F (t) F ′ (t) dt =
+2j + 1
+γk
+(8.4)
+1
+2j+1
++ ( 21 − uk+1 )2j+1
+( 2 + uk )
+=
+,
+2j + 1
+because k − F (γk ) = 21 + uk and k − F (γk+1 ) = − 21 + uk+1 . Now let γk = γk+1 . The left side
+of (8.4)is 0. On the other hand uk+1 = uk + 1, so the right side equals ( 12 + uk )2j+1 + (− 21 −
+uk )2j+1 /(2j + 1) = 0. So (8.4) holds for every k, and the values of N at the finitely many
+imaginary parts do not affect the integrals.
+Summation. Sum (8.4) over k1 ≤ k < k2 , a finite sum. Each k with k1 < k < k2 contributes
+1
+( 2 + uk )2j+1 from the gap starting at γk and ( 12 − uk )2j+1 from the gap ending at γk , that
+is, Ψj (uk ). The unmatched terms are ( 21 + uk1 )2j+1 and ( 12 − uk2 )2j+1 . This is (8.1). In
+the binomial expansion of ( 12 + u)2j+1 + ( 12 − u)2j+1 the odd powers of u cancel and u2l has
+ 2l−2j−1
+
+coefficient 2 2j+1
+, which gives (8.2); the leading coefficient is 2j+1
+2l 2
+2j /(2j + 1) = 1. For
+1
+j = 1, Ψ1 (u) = u2 + 12
+, and (8.3) follows.
+R u+1/2
+Remark 8.2. Ψj (u) = u−1/2 x2j dx is the mean of x2j over the unit interval centered at u,
+R 1/2
+1
+and 12
+= −1/2 x2 dx. The constant is associated with each unit increment in the enumeration
+counting multiplicities; repeated imaginary parts are handled by the degenerate-gap cancellation
+in the proof. When F is not monotone, N − F need not run through an interval of length one
+between consecutive zeros, and the identity remains exact with the integral counted with sign.
+Corollary 8.3. For 1 ≤ k1 < k2 ,
+kX
+2 −1
+k=k1 +1
+
+s2k =
+
+Z γk
+
+2
+
+G(t)2 L(t) dt −
+
+γk1
+
+k2 − k1 − 1 ( 12 + sk1 )3 + ( 12 − sk2 )3
+−
+.
+12
+3
+
+(8.5)
+
+Proof. Take F = N0 in Theorem 8.1 with j = 1. The function N0 is C ∞ on (0, ∞) with N0′ = L,
+uk = k − 21 − N0 (γk ) = sk , and N − N0 = G.
+Proposition 8.4. As T → ∞,
+⟨s2k ⟩KT =
+
+
+log log T
+1 + o(1) .
+2
+2π
+26
+
+(8.6)
+
+Proof. Let T ≥ T0 , k1 = N (T ) and k2 = N (2T ) + 1. Since γk ≤ T exactly when k ≤ N (T ), and
+likewise at 2T , the indices k with k1 < k < k2 are exactly those of KT , and k2 −k1 −1 = #KT . By
+Theorem 3.1 (Littlewood’s zero-gap theorem, as in [39, Thm. 9.12]) the gaps γℓ+1 − γℓ tend to 0,
+so for T ≥ T0 one has T −1 ≤ γk1 ≤ T and 2T < γk2 ≤ 2T +1: indeed γk1 ≤ T < γk1 +1 ≤ γk1 +1,
+and γk2 −1 ≤ 2T < γk2 ≤ γk2 −1 + 1. Apply Corollary 8.3 and estimate the three terms on the
+right of (8.5).
+The integral. By Theorem 3.1 and Lemma 4.1, |G(t)| ≤ |S(t)| + |ϖ(t)|/π ≪ log t for t ≥ 2,
+and L(t) ≪ log t. The parts of the integral over [γk1 , T ] and over [2T, γk2 ], two intervals of
+length at most 1, are therefore O(log3 T ). On [T, 2T ] write G2 = S 2 + 2Sϖ/π + ϖ2 /π 2 . Since
+|ϖ(t)| ≤ 0.53/t,
+Z 2T
+Z
+
+ϖ ϖ2
+log T 2T
+2S + 2 L dt ≪
+|S(t)| + 1 dt ≪ log2 T.
+(8.7)
+π
+π
+T
+T
+T
+2
+1
+Next, 0 ≤ L(t) − L(T ) = 2π
+log Tt ≤ log
+2π on [T, 2T ], so
+Z 2T
+Z 2T
+
+Z 2T
+2
+2
+S 2 dt .
+S dt + O
+S L dt = L(T )
+T
+
+(8.8)
+
+T
+
+T
+
+RT
+RX
+Theorem 3.11 with k = 1 gives 0 S 2 dt = 2πT 2 log log T (1 + o(1)). Write 0 S 2 dt =
+X
+log log X + R(X) with R(X) = o(X log log X). Subtracting the integrals over [0, 2T ] and
+2π 2
+[0, T ], using R(2T ) − R(T ) = o(T log log T ) and log log 2T − log log T = O(1/ log T ),
+Z 2T
+
+T
+S(t)2 dt = 2 log log T 1 + o(1) .
+(8.9)
+2π
+T
+Altogether, as L(T ) → ∞,
+Z γk
+
+2
+T L(T )
+log log T 1 + o(1) + O(T log log T ) + O(log3 T )
+G2 L dt =
+2
+2π
+γk1
+
+T L(T )
+=
+log
+log
+T
+1
++
+o(1)
+.
+2π 2
+
+(8.10)
+
+The other two terms. The second term is #KT /12. For the third, Lemma 6.1 gives |sk | ≤
++
+3
+max(|G−
+k |, |Gk |) ≪ log γk , so the two cubes are O(log T ).
+The size of KT . By (1.1), Theorem 3.1 and Lemma 4.1,
+#KT = N (2T ) − N (T ) = N0 (2T ) − N0 (T ) + O(log T )
+
+ 1 
+T
+= T L(T ) +
+(2 log 2 − 1) + O(log T ) = T L(T ) 1 + O
+,
+2π
+log T
+(8.11)
+
+T
+T
+because N0 (2T ) − N0 (T ) = 2π
+log 2π
+− 1 + 2 log 2 .
+Conclusion. Dividing (8.5) by #KT ,
+⟨s2k ⟩KT =
+
+ log3 T  log log T
+
+
+log log T
+1
+1
++
+o(1)
+−
++
+O
+=
+1 + o(1) ,
+2
+2
+2π
+12
+T log T
+2π
+
+(8.12)
+
+since log log T → ∞.
+Proof of Theorem 1.7. By the mean value theorem, as in the proof of Corollary 1.4, sk =
+N0 (τk ) − N0 (γk ) = L(ξk )(τk − γk ) for some ξk between γk and τk . By the proof of Corollary 1.4(a), |τk − γk | ≤ C for all k ≥ 1, with C absolute. For k ∈ KT one has γk ∈ (T, 2T ], hence
+ξk ∈ [T − C, 2T + C] and L(ξk ) = L(T ) + O(1) = L(T ) 1 + O(1/ log T ) , uniformly in k ∈ KT .
+Therefore
+ 1 
+s2k
+s2k 
+(τk − γk )2 =
+=
+1
++
+O
+(k ∈ KT ),
+(8.13)
+L(ξk )2
+L(T )2
+log T
+27
+
+and, averaging over KT and applying Proposition 8.4,
+ 1 
+⟨s2 ⟩K 
+(τk − γk )2 K = k T2 1 + O
+T
+L(T )
+log T
+(8.14)
+
+ 2 log log T
+log log T
+4π 2
+·
+1 + o(1) ,
+=
+1 + o(1) =
+2π 2
+log2 (T /2π)
+log2 T
+P
+because log(T /2π) = log T (1 + O(1/ log T )). Finally k∈KT (τk − γk )2 = #KT · ⟨(τk − γk )2 ⟩KT
+P
+and #KT ≍ T log T , which gives k∈KT (τk − γk )2 ≍ T log log T / log T .
+Remark 8.5. Theorem 1.7 is an asymptotic equality, so the factor log log T is a property of the
+sequence τk and not of the method. Theorem 1.5 gives ⟨(τkC − γk )2 ⟩KT ≤ C ′ / log2 T for the
+points corrected by the Euler phases of the primes: the primes remove this factor from the
+proved mean-square upper order. With F = N0 and the higher moments of Theorem 3.11, the
+identity (8.1) gives in the same way all the even moments of sk (Proposition 8.6). Only the case
+j = 1 is used here.
+Proposition 8.6 (Higher moments of sk ). For every fixed integer j ≥ 1, ⟨s2j
+k ⟩KT ∼
+(2j)!
+j
+(log log T ) as T → ∞.
+j!(2π)2j
+Proof. The proof is by induction on j, the case j = 1 being Proposition 8.4. Take k1 = N (T )
+and k2 = N (2T ) + 1, so that the sum in (8.1) runs over KT , and uk = sk . The boundary terms are O(log2j+1 T ), because sk ≪ log γk by Lemma 6.1. On the left side, the intervals [γk1 , T ] and [2T, γk2 ] have length o(1) by Theorem 3.1, and the integrand is O(log2j+1 T )
+there. On [T, 2T ], L(t) = L(T )(1 + O(1/ log T )) and G = S + ϖ/π with |ϖ|/π ≤ 0.53/(πt)
+R 2T
+(Lemma 4.1). By Hölder’s inequality and Theorem 3.11, T |S|2j−i t−i dt ≪ T 1−i (log log T )j−i/2
+R 2T
+R 2T
+for 1 ≤ i ≤ 2j, so T G2j dt = T S 2j dt + o(T ). Theorem 3.11 at 2T and at T gives
+R 2T 2j
+(2j)!
+(2j)!
+j
+j
+T S dt ∼ j!(2π)2j T (log log T ) . Hence the left side of (8.1) is L(T ) T j!(2π)2j (log log T ) (1 +
+
+P
+2j+1 4l−j 2l
+o(1)). On the right side, Ψj (sk ) = sk2j + j−1
+l=0
+2l
+2j+1 sk by (8.2), and the induction hyP
+l
+2l
+pothesis gives k∈KT sk ≪ #KT (log log T ) = o(#KT (log log T )j ) for l < j. Since #KT =
+T L(T )(1 + O(1/ log T )) (proof of Proposition 8.4), dividing by #KT gives the claim.
+
+9
+
+Further consequences of ordinal localization
+
+The results of this section follow from the estimates already established in this article. The final
+theorem, a certificate for simple critical-line zeros, holds for any real test function evaluated at
+the imaginary parts. No conclusion about RH or a positive proportion of simple zeros is inferred
+from the bounds presently available.
+Proposition 9.1 (Second moment and asymptotic correlation of the arithmetic correction).
+Write
+δk = γk − τk ,
+bk = τkC − τk ,
+εk = γk − τkC ,
+nT = #KT ,
+(9.1)
+where KT = {k : T < γk ≤ 2T }, as above. Then, without RH,
+1 X 2
+2 log log T
+bk =
+(1 + o(1)),
+nT
+log2 T
+k∈K
+
+(9.2)
+
+T
+
+and
+
+P
+
+k∈KT δk bk
+=1−O
+
+
+P
+P
+2 1/2
+2 1/2
+δ
+b
+k∈KT k
+k∈KT k
+
+
+
+1
+log log T
+
+
+.
+
+(9.3)
+
+Furthermore,
+2
+1 X i(γk −τk )
+1
+C
+e
+− ei(τk −τk ) ≪
+.
+nT
+log2 T
+k∈KT
+
+28
+
+(9.4)
+
+Proof. The exact relation δk = bk + εk yields ∥δ − b∥2 = ∥ε∥2 on KT . Theorem 1.5 gives
+∥ε∥22 ≪ nT / log2 T , whereas Theorem 1.7 gives ∥δ∥22 ∼ 2nT log log T / log2 T . By the reverse
+triangle inequality,
+
+
+∥δ∥2
+∥b∥2 − ∥δ∥2 ≤ ∥ε∥2 = O √
+.
+(9.5)
+log log T
+Put D = ∥δ∥2 , B = ∥b∥2 and E = ∥ε∥2 . Since E/D = O((log log T )−1/2 ) = o(1), the preceding
+inequality gives |B/D − 1| ≤ E/D = o(1). Hence B2 = D2 (1 + o(1)), and Theorem 1.7 proves
+(9.2). To prove the alignment, use the same D, B and E = ∥δ − b∥2 . The polarization identity
+gives
+
+
+⟨δ, b⟩
+E2 − (D − B)2
+E2
+1
+1−
+,
+(9.6)
+=
+≤
+=O
+DB
+2DB
+2DB
+log log T
+using B/D → 1. Finally, |eiv − eiw | ≤ |v − w| for real v, w; apply it with v = δk , w = bk and sum
+the squares.
+Lemma 9.2 (Control of the derivative and of the endpoint phases). For T sufficiently large,
+the continuous, piecewise C 1 function F = N0 + Φ satisfies
+Z 3T
+
+|Φ(t)| ≪ T 1/4 ,
+
+sup
+
+|F ′ (t)|2 dt ≪ T log2 T.
+
+(9.7)
+
+T /2
+
+T /2≤t≤3T
+
+Derivatives are interpreted almost everywhere at the finitely many dyadic junctions.
+Proof.
+On a dyadic interval
+the two prime counts in the definition of Φ are at most
+√
+P [U, 2U ], r/2
+2U . For every prime p, r≥1 1/(rp ) ≤ C0 p−1/2 with an absolute C0 . Since pν ≥ ν + 1, the
+P
+√
+triangle inequality gives |Φm (t)| ≪ ν≤m ν −1/2 ≪ m ≪ U 1/4 . Convex interpolation preserves
+this bound.
+Differentiate Φm termwise.
+m the remaining series over r and its derivative
+P For a fixed
+−r/2
+converge uniformly, because r≥1 (log p)p
+< ∞ for each prime p:
+Φ′m (t) = −
+
+1 X X log pν
+cos(rt log pν ).
+r/2
+π
+pν
+
+(9.8)
+
+ν≤m r≥1
+
+For r = 1, the cosine sum is the real part of the complex Dirichlet polynomial with frequencies
+p and coefficients (log p)p−1/2 . The Montgomery–Vaughan mean-value inequality, Theorem 3.9,
+and | Re z|2 ≤ |z|2 show that its integral square on [U, 2U ] is bounded by
+≪U
+
+X log2 p
+p≤pm
+
+p
+
++
+
+X
+
+log2 p ≪ U log2 U.
+
+(9.9)
+
+p≤pm
+
+√
+Here pm ≪ m log(2m) ≪ U log U follows from Theorem 3.10 as used in Lemma 7.6. For r = 2,
+the cosine sum is likewise the real part of a complex Dirichlet polynomial with frequencies p2 ,
+so the same inequality applies:
+Z 2U X
+X log2 p
+X
+2
+log p
+cos(2t log p) dt ≪ U
++
+log2 p ≪ U log2 U.
+2
+p
+p
+U
+p
+p≤pm
+
+(9.10)
+
+p≤pm
+
+P
+−3/2 . On
+The sum over r ≥ 3 is uniformly bounded by absolute convergence of
+p (log p)p
+[U, 2U ], differentiating the interpolation weights adds U −1 (Φmj+1 − Φmj ) = O(U −3/4 ), so the
+same √
+estimate holds for Φ′ . All these bounds hold uniformly for m ∈ {mj , mj+1 }, since only
+m ≤ 2U is used. Finally, N0′ (t) = (2π)−1 log(t/2π) = O(log T ) on [T /2, 3T ]. The interval
+intersects a uniformly bounded number of dyadic blocks; summing their bounds proves (9.7).
+29
+
+Theorem 9.3 (The corrected ordinal defect at the actual zeros). For k ∈ KT define
+
+
+1
+1
+dC
+=
+k
+−
+−
+F(γ
+)
+=
+k
+−
+−
+N
+(γ
+)
+− Φ(γk ).
+0 k
+k
+k
+2
+2
+
+(9.11)
+
+Then, without RH,
+1 X C2
+|dk | ≪ 1.
+#KT
+
+(9.12)
+
+k∈KT
+
+Proof. Theorem 8.1 applies to absolutely continuous F . The function F is absolutely continuous
+on every compact interval: it is continuous and piecewise C 1 with finitely many dyadic junctions.
+Take k1 = N (T ) and k2 = N (2T ) + 1 in (8.3), with F = F. The interior indices are exactly
+KT and, as in the proof of Proposition 8.4, the two endpoints lie in [T − 1, 2T + 1] for large
+T . The terms |k − 12 − N0 (γk )| at those endpoints are O(log T ) by Lemma 6.1, and Lemma 9.2
+gives |Φ(γk )| ≪ T 1/4 . Using (a + b)3 ≤ 4(a3 + b3 ) for a, b ≥ 0, the cubic boundary terms are
+O(T 3/4 + log3 T ) = o(T log T ).
+Cauchy–Schwarz, Lemmas 7.6 and 9.2, and a covering by finitely many dyadic intervals give
+Z 2T +1
+1/2 Z 2T +1
+1/2
+Z γk
+2
+2 ′
+4
+′ 2
+(N (t) − F(t)) F (t) dt ≤
+|N − F | dt
+|F | dt
+(9.13)
+γk1
+T −1
+T −1
+≪ T log T.
+The integral need not be nonnegative because F ′ may change sign. Taking absolute values in
+the quadratic identity yields
+Z γk
+X
+2
+#KT
+C 2
+(N (t) − F(t))2 F ′ (t) dt +
+|dk | ≤
++ O(T 3/4 + log3 T ) ≪ T log T.
+(9.14)
+12
+γk
+k∈KT
+
+1
+
+Division by #KT ≍ T log T proves (9.12).
+Corollary 9.4 (Second moment of the prime phases at the imaginary parts). With sk = k −
+1
+2 − N0 (γk ) as in Proposition 8.4, one has, without RH,
+1 X
+log log T
+Φ(γk )2 ∼
+,
+(9.15)
+#KT
+2π 2
+k∈KT
+
+and
+
+1 X
+log log T
+sk Φ(γk ) ∼
+.
+#KT
+2π 2
+
+(9.16)
+
+k∈KT
+
+C 2
+Proof. The relation sk = Φ(γk ) + dC
+k is exact. Theorem 9.3 gives ⟨|dk | ⟩KT = O(1), while
+Proposition 8.4 gives ⟨s2k ⟩KT ∼ (2π 2 )−1 log log T . The√reverse triangle inequality in the Euclidean norm therefore gives ⟨Φ(γk )2 ⟩KT = ⟨s2k ⟩KT + O( log log T + 1), proving
+(9.15). Finally,
+√
+⟨sk Φ(γk )⟩ = ⟨s2k ⟩ − ⟨sk dC
+⟩,
+and
+Cauchy–Schwarz
+makes
+the
+last
+term
+O(
+log
+log
+T ).
+k
+
+Theorem 9.5 (A deterministic certificate for simple critical-line zeros). In this theorem vk is a
+local symbol, unrelated to vk in the proof of Theorem 7.3. Let Ftest be any real-valued function
+defined at the imaginary parts, let j ≥ 1 be an integer, and set
+1
+KT = {k : T < γk ≤ 2T }.
+(9.17)
+vk = k − − Ftest (γk ),
+2
+Let Nsimple,1/2 (T, 2T ) count the simple zeros on the critical line in this block, with no repeated
+imaginary parts. Then
+X
+Nsimple,1/2 (T, 2T ) ≥ #KT −
+(2vk )2j .
+(9.18)
+k∈KT
+
+P
+
+2j
+k∈KT (2vk ) < #KT , a condition on the defects vk as a
+
+The right side is positive exactly when
+whole; the bounds of this article do not achieve it (Remark 9.6).
+30
+
+Proof. At an imaginary part γ of total multiplicity m ≥ 2, the consecutive indices can be written
+as k, k + 1, . . . , k + m − 1. Because Ftest has the same value at all these indices, vk+i = vk + i.
+Among all m-tuples of consecutive real numbers spaced by one,
+min
+a∈R
+
+1
+Hence m
+gives
+
+m−1
+X
+
+2
+
+(a + i) =
+
+i=0
+
+m−1
+X
+i=0
+
+m−1
+i−
+2
+
+2
+=
+
+m(m2 − 1)
+.
+12
+
+(9.19)
+
+Pm−1
+
+2
+2
+p
+i=0 (2vk+i ) ≥ (m −1)/3 ≥ 1. The monotonicity of normalized ℓ norms, for 2j ≥ 2,
+m−1
+
+1 X
+|2vk+i |2j
+m
+
+!1/(2j)
+
+m−1
+
+≥
+
+i=0
+
+1 X
+|2vk+i |2
+m
+
+!1/2
+≥ 1.
+
+(9.20)
+
+i=0
+
+Pm−1
+2j ≥ m. The functional equation and conjugation symmetry give ρ =
+Hence
+i=0 (2vk+i )
+β + iγ 7→ 1 − ρ = 1 − β + iγ. If β ̸= 12 these are distinct zeros with the same imaginary part.
+Thus every imaginary part of total multiplicity one corresponds to a simple zero on the critical
+line. The indices of KT form a disjoint union of complete multiplicity blocks.PThe number
+of indices belonging to blocks of multiplicity at least two is therefore at most k∈KT (2vk )2j .
+Subtracting this quantity from #KT proves the claim.
+Remark 9.6. It is a certificate, not an unconditional positive-proportion result: Theorem 9.3
+bounds the second moment of dC
+k but does not provide a sufficiently small explicit constant for
+(9.18) to be positive.
+
+10
+
+Conclusion
+
+The principal conclusion is the unconditional, fully ordinally indexed construction τkC from
+finitely many Euler phases. The sublevel measures remain strictly increasing even though the
+underlying prime-corrected counting function need not be monotone. Theorem 1.5 proves a rootmean-square localization error O(1/ log T ) over the complete list of zeros, including multiplicities.
+The exact defect identity provides a separate unconditional asymptotic: the uncorrected
+Riemann–von Mangoldt points τk have mean-square error 2 log log T / log2 T (1 + o(1)). The
+arithmetic correction removes the divergent factor log log T from the proved upper bound of the
+mean square, which is O(1/ log2 T ) for the corrected points; no asymptotic of the corrected error
+is claimed. Proposition 9.1 shows that the correction has the same leading second moment and
+is asymptotically aligned with the actual displacement vector.
+Theorem 9.3 and Corollary 9.4 demonstrate the related bounded ordinal defect and the
+leading second-moment asymptotic of the prime phases at the imaginary parts.
+Independently, the argument estimates yield lim supk |τk − γk | ≤ 0.60832 and the explicit
+bound |S(T )| ≤ 0.09783 log T +0.7214 log log T +10.6 for T ≥ e. The improved leading coefficient
+comes essentially from pointwise reflection by the functional equation on the left of the critical
+line. As explained in Section 1.2, it improves the complete estimate of Bellotti–Wong only
+beyond the stated crossing height.
+Theorem 9.5 gives a deterministic criterion for certifying simple critical-line zeros from individual ordinal defects. The available bounds do not satisfy the numerical threshold required to
+deduce RH, simplicity, or any stated positive proportion from this certificate.
+Limitations of this work. The constant in Theorem 1.5 is not explicit, so the result gives
+no numerical guarantee at any finite height; it controls the mean square, not every individual
+imaginary part, and the explicit bound of Theorem 1.3 improves on Bellotti–Wong only for
+log T > 2425.8385 . . ., as it trades the constant term for the leading coefficient (for comparison,
+
+31
+
+(1.8) is smaller than the bound |N (t)−N0 (t)| ≤ 0.11 log t+0.29 log log t+2.29+0.2/t0 , t ≥ t0 ≥ e,
+used by Yang [44, (4.29)] in the proof of his zero-free region, as soon as log t > 933.5).
+An explicit version of Theorem 1.5 would require explicit forms of Selberg’s approximation
+and of Fujii’s theorem.
+
+A
+
+Computation of the constants
+
+The constants Λ(eB ), C1 , C2 , log(ζ(c)/ζ(2c)), the constant term C3 (100) = 10.5986 . . . at T =
+100 (and the same sum with the exact differences, 10.5985 . . .), Λ(0), the crossing point log T =
+2425.8385 . . . with [3] and the crossing point log t = 933.4678 . . . with [44, (4.29)] are computed
+in floating point by the following program (Python 3.13.17 with mpmath 1.4.1, working precision
+40 decimal digits), and certified by the last program of this appendix.
+It only evaluates integrals of piecewise linear functions, elementary constants and values
+of ζ at real points, and finds the two crossing points by bisection and by the secant method
+(mpmath.findroot).
+The integrals are computed piece by piece, with breakpoints at the nodes, and also by the
+closed form (5.9) (function closed form), for e∗E at (c, R) = (1.000002, 1.000005) and for e∗B at
+(c, R) = (1, 1); the program checks that the two evaluations agree.
+The decimals printed by this program are floating-point values. Every constant and every
+numerical inequality used in the proofs is certified by the ball-arithmetic program at the end of
+this appendix. The output follows the program.
+# Constants of the article (Appendix A).
+# Bourgain profile and explicit profile: the angular integrals by
+# quadrature and by the closed form, the constants C_1, C_2, log(zeta(c)/zeta(2c)), log zeta(sigma#),
+# C_3(100) as defined in the article (with the costs 2C_1/T and 2C_2/(T log T)) and the same sum with the
+exact
+# differences, Lambda(0), and the crossing points with Bellotti-Wong and with Yang’s (4.29).
+# Python 3.13.17, mpmath 1.4.1, 40 decimal digits.
+import sys, mpmath
+from mpmath import mp, mpf, quad, sqrt, log, pi, acos, cos, sin, zeta, nstr
+mp.dps = 40
+print(’Python’, sys.version.split()[0], ’ mpmath’, mpmath.__version__, ’ mp.dps =’, mp.dps)
+def closed_form(nodes, c, R):
+"""int_0^pi e*(c+R cos th) dth by the hinge formulas: nodes (sigma_i, e_i), sigma_0 = 1/2 < ... <
+sigma_n = 1"""
+n = len(nodes)-1
+xs = [a for a,_ in nodes]; es = [b for _,b in nodes]
+s = [(es[i+1]-es[i])/(xs[i+1]-xs[i]) for i in range(n)]
+# slopes
+hinges = [(xs[i], s[i]-s[i-1]) for i in range(1,n)] + [(mpf(1), -s[n-1])]
+th_h = acos((mpf(1)/2 - c)/R)
+# sigma = 1/2
+e0, s0 = es[0], s[0]
+I = (e0 + s0*(c-mpf(1)/2))*th_h + s0*R*sin(th_h)
+# linear part, sigma >= 1/2
+I += ((1+s0)*(mpf(1)/2-c) + e0)*(pi-th_h) + (1+s0)*R*sin(th_h)
+# linear part of 1/2-sigma+e(1sigma), sigma <= 1/2
+for a, coef in hinges:
+th_a = acos((a-c)/R);
+I += coef*((c-a)*th_a + R*sin(th_a))
+# int_0^th_h max(0, sigma-a)
+th_b = acos((1-a-c)/R); I += coef*((1-c-a)*(pi-th_b) + R*sin(th_b))
+# int_th_h^pi max(0, 1-sigmaa)
+return I
+def pl(nodes):
+"""piecewise linear function through the nodes (sigma, e), increasing sigma, 0 to the right of the last
+node"""
+def e(s):
+if s >= nodes[-1][0]: return mpf(0)
+for (a,ea),(b,eb) in zip(nodes, nodes[1:]):
+if a <= s <= b: return ea + (eb-ea)*(s-a)/(b-a)
+raise ValueError(s)
+return e
+def reflect(e):
+"""reflected extension"""
+def es(s):
+
+32
+
+s = mpf(s)
+if s >= 1: return mpf(0)
+if s >= mpf(1)/2: return e(s)
+if s >= 0: return mpf(1)/2 - s + e(1-s)
+return mpf(1)/2 - s
+return es
+# --- Corollary 1.2: Bourgain profile via the A-process --k, l = mpf(13)/84, mpf(55)/84
+nodesB = []
+for j in range(8):
+nodesB.append((l-k, k)); k, l = k/(2*k+2), mpf(1)/2 + l/(2*k+2)
+nodesB.append((mpf(1), mpf(0)))
+from fractions import Fraction as Fr
+kf, lf = Fr(13,84), Fr(55,84); nf=[]
+for j in range(8):
+nf.append((lf-kf, kf)); kf, lf = kf/(2*kf+2), Fr(1,2)+lf/(2*kf+2)
+print(’Bourgain nodes (1.6):’, [(str(a),str(b)) for a,b in nf])
+eB = reflect(pl(nodesB))
+brk = sorted(set([mpf(0)]+[1-a for a,_ in nodesB]+[a for a,_ in nodesB]+[mpf(1)/2]))
+brk = [b for b in brk if 0 <= b <= 1]
+A = quad(lambda s: eB(s)/sqrt(s*(2-s)), brk) / (2*pi*log(2))
+print(’Cor 1.2: Lambda(e_B) =’, nstr(A, 20), ’ Cor 1.4(a): 2*pi*Lambda(e_B) =’, nstr(2*pi*A, 20))
+AB_closed = closed_form(nodesB, mpf(1), mpf(1))/(2*pi*log(2))
+print(’Cor 1.2 by the closed form (5.9) with c = R = 1: Lambda(e_B) =’, nstr(AB_closed, 20))
+assert abs(AB_closed - A) < mpf(10)**-20
+# the sigma-quadrature has an integrable singularity at 0
+# --- explicit profile and its constants --nodesE = [(mpf(1)/2, mpf(27)/164)] + [(1 - mpf(m)/(2**m-2), mpf(1)/(2**m-2)) for m in range(4,10)] + [(mpf
+(1), mpf(0))]
+print(’explicit nodes (4.5):’, [(nstr(a,8), nstr(b,8)) for a,b in nodesE])
+eE = reflect(pl(nodesE))
+c, R = mpf(’1.000002’), mpf(’1.000005’)
+sig1 = c + (c-mpf(1)/2)**2/R; delta = 2*c - sig1 - mpf(1)/2
+D = log(R/(c-mpf(1)/2))
+print(’sigma1 =’, nstr(sig1,15), ’ delta =’, nstr(delta,15), ’ c-R =’, nstr(c-R,5), ’ D =’, nstr(D,20))
+# integral I = int_0^pi eE(c+R cos th) dth, split at the angles of the nodes
+pts = set([mpf(0), pi])
+for a,_ in nodesE + [(1-a,0) for a,_ in nodesE] + [(mpf(0),0)]:
+x = (a - c)/R
+if -1 < x < 1: pts.add(acos(x))
+pts = sorted(pts)
+I = quad(lambda th: eE(c + R*cos(th)), pts)
+C1 = I/(2*pi*D); C2 = 1/(2*D)
+print(’I =’, nstr(I,25)); print(’C1 = I/(2 pi D) =’, nstr(C1,25)); print(’C2 = 1/(2D) =’, nstr(C2,25))
+I_closed = closed_form(nodesE, c, R)
+print(’I by the closed form (5.9) =’, nstr(I_closed,25), ’ C1 =’, nstr(I_closed/(2*pi*D),25))
+assert abs(I_closed - I) < mpf(10)**-25
+print(’log zeta(sigma1) =’, nstr(log(zeta(sig1)),15), ’ zeta(c) <=’, nstr(c/(c-1),10), ’ zeta(c)/zeta(2c)=’
+, nstr(zeta(c)/zeta(2*c),12))
+# --- the constant term C_3(100) --t0 = mpf(98)
+eps_chi = (mpf(1)/3 + mpf(’2.0005’)/6)/t0 + mpf(’0.87’)/t0**2
+# |R1|+|R2| + |phi1|+|phi2|
+chi_fac = mp.e**eps_chi
+K1 = 2*(1+mpf(’84.5’)/t0**2)**(1+mpf(27)/164) * (1 + (mpf(’84.5’)/t0**2 + pi/2)/log(t0))
+K = chi_fac*K1
+print(’factor chi <=’, nstr(chi_fac,8), ’ K1 <=’, nstr(K1,8), ’ K = chi*K1 <=’, nstr(K,8))
+Kr = mpf(’2.74’); assert K <= Kr and K1 <= Kr
+T = mpf(100)
+lzr = log(zeta(c)/zeta(2*c))
+Eterm = ((640*delta-112)/(1536*(3*T-1)) + mpf(2)**-10)/2
+# E/(2 pi)
+C3base = C2*(lzr + log(1+3/T) + log(Kr)) + (log(zeta(sig1)) + (sig1-mpf(1)/2)/T)/pi + Eterm + mpf(1)/4
+C3T = C3base + 2*C1/T + 2*C2/(T*log(T))
+# C_3(T)
+C3exact = C3base + C1*(log(T+2)-log(T)) + C2*(log(log(T+2))-log(log(T))) # same sum, exact differences
+print(’log(zeta(c)/zeta(2c)) =’, nstr(lzr,12), ’ E/(2pi) <=’, nstr(Eterm,8))
+print(’C_3(100) =’, nstr(C3T,12), ’ (with the costs 2C_1/T + 2C_2/(T log T)); with exact differences:’,
+nstr(C3exact,12))
+print(’Lemma 4.1: 1/16+1/8+1/3 =’, nstr(mpf(1)/16+mpf(1)/8+mpf(1)/3,8))
+print(’Cor 1.4(a): 2*pi*0.0968160064 =’, nstr(2*pi*mpf(’0.0968160064’),10))
+# --- Lindelof profile (e=0 on [1/2,1]) --eL = reflect(lambda s: mpf(0))
+
+33
+
+AL = quad(lambda s: eL(s)/sqrt(s*(2-s)), [0, mpf(1)/2, 1])/(2*pi*log(2))
+print(’Lindelof: a_L =’, nstr(AL,12), ’ 2pi a_L =’, nstr(2*pi*AL,12))
+# --- crossing with Bellotti-Wong for S(T): 0.10076 L + min(0.24460 LL + 7.20844, 1.68845 LL + 1.50956) --from mpmath import findroot
+def diff(L):
+L = mpf(L); BW = mpf(’0.10076’)*L + min(mpf(’0.24460’)*log(L)+mpf(’7.20844’), mpf(’1.68845’)*log(L)+mpf
+(’1.50956’))
+ours = mpf(’0.09783’)*L + mpf(’0.7214’)*log(L) + mpf(’10.6’)
+return ours - BW
+lo, hi = mpf(10), mpf(10**6)
+for _ in range(200):
+mid = (lo+hi)/2
+if diff(mid) > 0: lo = mid
+else: hi = mid
+print(’crossing: (1.7) < Bellotti-Wong for log T >’, nstr(hi,8))
+# --- crossing with Yang’s (4.29): |N - N_0| <= 0.11 log t + 0.29 log log t + 2.29 + 0.2/t_0 (t >= t_0 >= e)
+--yang = lambda L: mpf(’0.11’)*L + mpf(’0.29’)*log(L) + mpf(’2.29’) - (mpf(’0.09783’)*L + mpf(’0.7214’)*log(L
+) + mpf(’10.7’))
+print(’crossing: (1.8) < Yang (4.29) (without the term 0.2/t_0) for log t >’, nstr(findroot(yang, 933),8))
+# --- Remark: Bellotti-Wong left profile (linear on [0,1/2]) with c,R -> 1 --eR = pl(nodesE)
+def eBWl(s):
+s = mpf(s)
+if s >= 1: return mpf(0)
+if s >= mpf(1)/2: return eR(s)
+if s >= 0: return mpf(1)/2 - s + 2*s*mpf(27)/164
+return mpf(1)/2 - s
+brkE = sorted(set([mpf(0), mpf(1)/2, mpf(1)] + [a for a,_ in nodesE] + [1-a for a,_ in nodesE]))
+ABW = quad(lambda s: eBWl(s)/sqrt(s*(2-s)), [b for b in brkE if 0 <= b <= 1])/(2*pi*log(2))
+AEr = quad(lambda s: eE(s)/sqrt(s*(2-s)), [b for b in brkE if 0 <= b <= 1])/(2*pi*log(2))
+print(’limit c,R->1: BW linear-left profile =’, nstr(ABW,10), ’ reflected explicit profile =’, nstr(AEr,10)
+)
+Python 3.13.17 mpmath 1.4.1 mp.dps = 40
+Bourgain nodes (1.6): [(’1/2’, ’13/84’), (’139/194’, ’13/194’), (’173/207’, ’13/414’), (’773/854’,
+’13/854’), (’820/867’, ’13/1734’), (’3387/3494’, ’13/3494’), (’1149/1169’, ’13/7014’), (’13921/14054’,
+’13/14054’)]
+Cor 1.2: Lambda(e_B) = 0.096816006323848965603 Cor 1.4(a): 2*pi*Lambda(e_B) = 0.60831290843381374985
+Cor 1.2 by the closed form (5.9) with c = R = 1: Lambda(e_B) = 0.096816006323848965603
+explicit nodes (4.5): [(’0.5’, ’0.16463415’), (’0.71428571’, ’0.071428571’), (’0.83333333’, ’0.033333333’),
+(’0.90322581’, ’0.016129032’), (’0.94444444’, ’0.0079365079’), (’0.96850394’, ’0.0039370079’),
+(’0.98235294’, ’0.0019607843’), (’1.0’, ’0.0’)]
+sigma1 = 1.25000275000025 delta = 0.25000124999975 c-R = -3.0e-6 D = 0.69314818055544532975
+I = 0.4260637638039191338740744
+C1 = I/(2 pi D) = 0.09782923187851794633876744
+C2 = 1/(2D) = 0.7213464797661756345979781
+I by the closed form (5.9) = 0.4260637638039191338740744 C1 = 0.09782923187851794633876744
+log zeta(sigma1) = 1.5249835586892 zeta(c) <= 500001.0 zeta(c)/zeta(2c)= 303964.594821
+factor chi <= 1.006918
+K1 <= 2.7166063
+K = chi*K1 <= 2.7353997
+log(zeta(c)/zeta(2c)) = 12.6246665092 E/(2pi) <= 0.00054053965
+C_3(100) = 10.5986023483 (with the costs 2C_1/T + 2C_2/(T log T)); with exact differences: 10.5985454733
+Lemma 4.1: 1/16+1/8+1/3 = 0.52083333
+Cor 1.4(a): 2*pi*0.0968160064 = 0.6083129089
+Lindelof: a_L = 0.0786252790902 2pi a_L = 0.494017198352
+crossing: (1.7) < Bellotti-Wong for log T > 2425.8386
+crossing: (1.8) < Yang (4.29) (without the term 0.2/t_0) for log t > 933.4679
+limit c,R->1: BW linear-left profile = 0.1007368703 reflected explicit profile = 0.09782899554
+
+The constant 1.878 of Remark 4.5(ii) is certified by the following program (Python 3.13.17
+with python-flint 0.9.0, Arb ball arithmetic [21] at 120 bits with outward rounding, so that
+every printed value is an upper bound).
+For 4 ≤ m ≤ 9 (the variables k and K of the program are m and 2m−1 , as in [44, §3]) it covers
+log 3 ≤ log t ≤ log Tm by intervals [a, b] of length 0.002(1 + a/10).
+On each interval it encloses | Log(Q0 + s)|/ log |Q0 + s| = 1 + arg(Q0 + s)2 / log2 |Q0 +
+1/2
+s|
+, s = σm + it, over the whole interval, takes t0 = ea in [44, (3.12)], and bounds
+0.618m/(K−1) A(ea ) t(m−3)/(6K−6) at t = eb , where the exponent is positive. The maximum over
+all intervals and all m is 1.87781.
+34
+
+# Interval-arithmetic certificate for the constant 1.878 of the article (Appendix A).
+# Python 3.13.17, python-flint 0.9.0 (Arb ball arithmetic, 120 bits, outward rounding).
+# Rigorous redo of Yang (JMAA 534 (2024) 128124), Sec. 3.1, eqs. (3.9)-(3.13), for 4<=k<=9,
+# with |Log(Q0+s)| = rho(s)*log|Q0+s| in the Phragmen-Lindelof conclusion (Fiori Cor.3 / Trudgian Lemma 3),
+# A(t0) as printed in (3.12), t0 on a partition of [3, T_k]. On a piece t in [e^a, e^b], t0=e^a:
+#
+|zeta(sigma_k+it)| <= 0.618^{k/(K-1)} * rho_max(piece) * A(e^a) * t^{(1-sigma_k)/3} log t
+#
+<= C_piece * t^{1/(2K-2)} log t, C_piece = 0.618^{k/(K-1)} rho_max A(e^a) e^{b(k-3)
+/(6K-6)}.
+from flint import arb, ctx
+ctx.prec = 120
+Q0 = arb(’1.31’); c231 = arb(’2.31’)**2
+def A(u):
+# (3.12) with t0 = e^u
+q = c231*(-2*u).exp()
+return (q+1)**(arb(23)/42) * (1 + (q+1).log()/(2*u))
+def rho(u0, u1, sk): # max of |Log(Q0+s)|/log|Q0+s| for s = sk+it, t in [e^u0, e^u1]
+t = u0.exp().union(u1.exp()); x = Q0 + sk
+L = (x*x + t*t).log()/2; Ar = (t/x).atan()
+return (1 + (Ar/L)**2).sqrt()
+out = []
+for k in range(4, 10):
+K = 2**(k-1); sk = 1 - arb(k)/(2*K-2)
+uT = (arb(’2.6134’)*(K-1) + arb(’2.8876’)*k)/(k-3)
+base = arb(’0.618’)**(arb(k)/(K-1)); ex = arb(k-3)/(6*K-6)
+a = arb(3).log(); worst = arb(0); n = 0
+while (a < uT):
+b = a + arb(’0.002’)*(1 + a/10)
+if b > uT: b = uT
+C = base*rho(a, b, sk)*A(a)*(b*ex).exp()
+if C.upper() > worst.upper(): worst = C
+a = b; n += 1
+out.append((k, float(uT.upper()), n, float(worst.upper())))
+print(’k=%d T_k=exp(%.3f) pieces=%d constant on [3,T_k] <= %.5f’ % out[-1])
+m = max(o[3] for o in out)
+print(’max over 4<=k<=9: %.5f (<= 2: %s); for t>=T_k Yang Sec.3.2 gives 1.546’ % (m, m <= 2))
+k=4 T_k=exp(29.844) pieces=6392 constant on [3,T_k] <= 1.54798
+k=5 T_k=exp(26.820) pieces=5997 constant on [3,T_k] <= 1.68940
+k=6 T_k=exp(32.780) pieces=6747 constant on [3,T_k] <= 1.77986
+k=7 T_k=exp(46.214) pieces=8113 constant on [3,T_k] <= 1.83178
+k=8 T_k=exp(71.001) pieces=9940 constant on [3,T_k] <= 1.86126
+k=9 T_k=exp(115.401) pieces=12125 constant on [3,T_k] <= 1.87781
+max over 4<=k<=9: 1.87781 (<= 2: True); for t>=T_k Yang Sec.3.2 gives 1.546
+
+The construction of Section 7.1 is implemented, as an illustration, by the following program
+(numpy, mpmath 1.4.1): it evaluates F = N0 + Φ on a grid of step 10−3 on (0, 120], computes
+τkC = meas{t > 0 : F(t) < k − 12 } for k ≤ 20 by counting grid cells, and prints τkC , the imaginary
+part γk (mpmath.zetazero) and the point τk of (1.2).
+Theorem 1.5 bounds the mean square of τkC −γk for T large; the table makes no claim beyond
+what it prints.
+# Casana’s method (Section on the construction in the article): the k-th imaginary part of a
+# zero of zeta is approximated by the sublevel measure
+#
+tauC_k = |{t > 0 : F(t) < k - 1/2}|,
+F = N_0 + Phi,
+# where N_0(t) = (t/2pi) log(t/(2 pi e)) + 7/8 is the Riemann-von Mangoldt main term and Phi is the finite
+Euler
+# phase of the article: on the dyadic block 2^j <= t <= 2^{j+1}, Phi interpolates linearly between Phi_{m_j}
+and
+# Phi_{m_{j+1}}, m_j = floor(2^{j/2}), Phi_m(t) = -(1/pi) sum_{nu<=m} arg(1 - p_nu^{-1/2-it}) (principal
+argument).
+# This program evaluates tauC_k on a grid (step h) for k <= K and compares it with the imaginary part
+gamma_k (mpmath) and
+# with the bare point tau_k, N_0(tau_k) = k - 1/2. Illustration only: the article proves a mean-square
+bound
+# (Theorem on the sublevel construction), not a bound for each k. Python 3.13.17, numpy, mpmath 1.4.1.
+import numpy as np
+from mpmath import mp, zetazero, lambertw, mpf, exp, pi as mpi
+K, TMAX, H = 20, 120.0, 0.001
+primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+
+35
+
+def N0(t):
+return t / (2 * np.pi) * np.log(t / (2 * np.pi * np.e)) + 7 / 8
+def phi_m(m, t):
+"""Phi_m(t) = -(1/pi) sum_{nu<=m} arg(1 - p_nu^{-1/2-it})."""
+s = np.zeros_like(t)
+for p in primes[:m]:
+z = p ** (-0.5) * np.exp(-1j * t * np.log(p))
+s -= np.angle(1 - z)
+return s / np.pi
+def F(t):
+j = np.floor(np.log2(t)).astype(int)
+# block index: 2^j <= t < 2^{j+1}
+out = np.empty_like(t)
+for jj in np.unique(j):
+sel = j == jj
+tt = t[sel]
+mj, mj1 = int(np.floor(2 ** (jj / 2))), int(np.floor(2 ** ((jj + 1) / 2)))
+lam = tt / 2.0 ** jj - 1
+# 0 at 2^j, 1 at 2^{j+1}
+out[sel] = N0(tt) + (1 - lam) * phi_m(mj, tt) + lam * phi_m(mj1, tt)
+return out
+def tau(k):
+"""Bare point: N_0(tau_k) = k - 1/2, by Lambert’s W."""
+a = (k - mpf(1) / 2 - mpf(7) / 8)
+return 2 * mpi * a / lambertw(a / exp(1))
+t = np.arange(H / 2, TMAX, H)
+# midpoints of the grid cells (0, TMAX]
+Ft = F(t)
+assert Ft[-1] > K - 0.5 + 2, "TMAX too small"
+print(’Casana method: tauC_k = |{t > 0 : N_0(t) + Phi(t) < k - 1/2}|, grid step h = %g on (0, %g]’ % (H,
+TMAX))
+print(’%3s %12s %12s %12s %12s %12s’ % (’k’, ’tauC_k’, ’gamma_k’, ’tauC_k-gamma_k’, ’tau_k’, ’tau_k-gamma_k
+’))
+mp.dps = 15
+for k in range(1, K + 1):
+xk = H * np.count_nonzero(Ft < k - 0.5)
+gk = float(zetazero(k).imag)
+tk = float(tau(k))
+print(’%3d %12.4f %12.4f %12.4f %12.4f %12.4f’ % (k, xk, gk, xk - gk, tk, tk - gk))
+Casana method: tauC_k = |{t > 0 : N_0(t) + Phi(t) < k - 1/2}|, grid step h = 0.001 on (0, 120]
+k
+tauC_k
+gamma_k tauC_k-gamma_k
+tau_k tau_k-gamma_k
+1
+13.5500
+14.1347
+-0.5847
+14.5213
+0.3866
+2
+21.0590
+21.0220
+0.0370
+20.6557
+-0.3663
+3
+24.9140
+25.0109
+-0.0969
+25.4927
+0.4818
+4
+30.3330
+30.4249
+-0.0919
+29.7394
+-0.6855
+5
+32.9760
+32.9351
+0.0409
+33.6245
+0.6895
+6
+37.6060
+37.5862
+0.0198
+37.2574
+-0.3288
+7
+40.9130
+40.9187
+-0.0057
+40.7006
+-0.2182
+8
+43.4220
+43.3271
+0.0949
+43.9940
+0.6669
+9
+48.0050
+48.0052
+-0.0002
+47.1651
+-0.8400
+10
+49.7900
+49.7738
+0.0162
+50.2337
+0.4598
+11
+52.9500
+52.9703
+-0.0203
+53.2144
+0.2441
+12
+56.4150
+56.4462
+-0.0312
+56.1189
+-0.3273
+13
+59.3500
+59.3470
+0.0030
+58.9563
+-0.3908
+14
+60.7590
+60.8318
+-0.0728
+61.7338
+0.9021
+15
+65.1240
+65.1125
+0.0115
+64.4577
+-0.6548
+16
+67.1430
+67.0798
+0.0632
+67.1330
+0.0532
+17
+69.5590
+69.5464
+0.0126
+69.7640
+0.2176
+18
+72.0010
+72.0672
+-0.0662
+72.3544
+0.2872
+19
+75.7050
+75.7047
+0.0003
+74.9073
+-0.7973
+20
+77.0400
+77.1448
+-0.1048
+77.4257
+0.2808
+
+All constants and numerical inequalities of this article are certified by the following program.
+It uses the ball arithmetic of Arb [21], through python-flint 0.9.0 (FLINT 3.6.0 [10]), with
+working precision 256 bits. Every quantity is a ball [m ± r] that contains the exact value, all
+operations round outward, and every inequality is checked by an assertion on the whole ball.
+The angular integrals are computed both by the closed form (5.9) and by rigorous integration
+(acb.integral) on the arcs where the integrand is analytic. Statements valid on a range of t
+36
+
+are certified by monotonicity together with balls at the endpoints, or by covering the range with
+balls. The values are printed with 20 significant digits.
+# Certification of the numerical statements of the paper by Arb ball arithmetic.
+# Arb (midpoint-radius balls with outward rounding) is used through python-flint.
+# Every computed quantity is a ball that contains the exact value; every inequality
+# is checked on the whole ball with assert (an Arb comparison is True only if it holds
+# for every point of the balls). Decimal constants of the paper are exact rationals.
+# Digits followed by an ellipsis mean truncation: x = d... means d <= x < d + 10^-k.
+# The angular integrals over Backlund’s circle are computed both by the closed form (5.9)
+# and by rigorous Arb integration (acb.integral) on the arcs where the integrand is analytic.
+# Statements on ranges of t are certified by monotonicity (argued in a comment) plus
+# endpoint balls, or by covering the range with balls; never by sampling.
+# Checks are labelled by the numbering of the paper (theorems, equations, sections).
+import sys, flint
+from flint import arb, acb, ctx
+from fractions import Fraction as Fr
+from math import comb
+ctx.prec = 256
+print(’Python %s, python-flint %s, FLINT %s, precision %d bits’
+% (sys.version.split()[0], flint.__version__, flint.__FLINT_VERSION__, ctx.prec))
+def A(q):
+# exact rational (or decimal string) -> ball
+q = Fr(q); return arb(q.numerator) / q.denominator
+def show(name, x): print(’
+%s = %s’ % (name, x.str(20, radius=True)))
+NCHK = NCALL = 0
+def check(ref, text, *conds):
+global NCHK, NCALL
+for c in conds: assert c is True, ref + ’: ’ + text
+NCHK += len(conds); NCALL += 1; print(’ ok [%s] %s’ % (ref, text))
+def lt(x, q): return bool(x < A(q))
+def le(x, q): return bool(x <= A(q))
+def gt(x, q): return bool(x > A(q))
+def ge(x, q): return bool(x >= A(q))
+def tr(x, s):
+# x = s... (truncated digits)
+d = Fr(s); u = Fr(1, 10**len(s.split(’.’)[1]))
+return (ge(x, d) and lt(x, d + u)) if d >= 0 else (le(x, d) and gt(x, d - u))
+def tiny(x): return bool(x.abs_upper() < A(Fr(1, 10**60)))
+def cover(pred, a, b, n):
+# pred(ball) for n balls covering [a, b]
+a, b = A(a), A(b)
+return all(pred((a + (b - a)*i/n).union(a + (b - a)*(i + 1)/n)) for i in range(n))
+PI, LOG2, HALF, E = arb.pi(), arb(2).log(), A(Fr(1, 2)), arb(1).exp()
+# ---- integrals of reflected piecewise linear profiles over sigma = c + R cos(theta), 0 <= theta <= pi ---def closed_form(nodes, c, R):
+# hinge closed form (5.9); nodes (varsigma_i, e_i) exact
+c, R = A(c), A(R); n = len(nodes) - 1
+xs = [a for a, _ in nodes]; es = [b for _, b in nodes]
+s = [(es[i+1] - es[i]) / (xs[i+1] - xs[i]) for i in range(n)]
+hinges = [(xs[i], s[i] - s[i-1]) for i in range(1, n)] + [(Fr(1), -s[n-1])]
+th = ((HALF - c)/R).acos(); e0, s0 = A(es[0]), A(s[0])
+I = (e0 + s0*(c - HALF))*th + s0*R*th.sin() + ((1 + s0)*(HALF - c) + e0)*(PI - th) + (1 + s0)*R*th.sin
+()
+for a, k in hinges:
+a, k = A(a), A(k); ta = ((a - c)/R).acos(); tb = ((1 - a - c)/R).acos()
+I += k*((c - a)*ta + R*ta.sin()) + k*((1 - c - a)*(PI - tb) + R*tb.sin())
+return I
+def pieces(nodes, left=None):
+# affine pieces (lo, hi, a0, a1) of e*(sigma) = a0 + a1 sigma
+P = [(None, Fr(0), Fr(1, 2), Fr(-1)), (Fr(1), None, Fr(0), Fr(0))]
+for (x0, e0), (x1, e1) in zip(nodes, nodes[1:]):
+s = (e1 - e0)/(x1 - x0); P.append((x0, x1, e0 - s*x0, s))
+if left is None: P.append((1 - x1, 1 - x0, Fr(1, 2) + e0 + s*(1 - x0), -1 - s))
+# reflection
+(1.4)
+if left is not None: P.append((Fr(0), Fr(1, 2)) + left)
+# affine on [0,
+1/2]
+return P
+def arb_integral(P, c, R):
+# rigorous integration piece by piece
+c, R = Fr(c), Fr(R); tot = arb(0)
+for lo, hi, a0, a1 in P:
+u1 = Fr(1) if hi is None else min(max((hi - c)/R, Fr(-1)), Fr(1))
+u2 = Fr(-1) if lo is None else min(max((lo - c)/R, Fr(-1)), Fr(1))
+if u1 == u2: continue
+f = lambda t, analytic: acb(A(a0) + A(a1)*A(c)) + A(a1)*A(R)*t.cos()
+
+37
+
+tot += acb.integral(f, acb(A(u1).acos()), acb(A(u2).acos())).real
+return tot
+print(’\nBourgain profile’)
+k, l = Fr(13, 84), Fr(55, 84); nodesB = []; kap = []
+for j in range(8):
+nodesB.append((l - k, k)); kap.append(k); k, l = k/(2*k + 2), Fr(1, 2) + l/(2*k + 2)
+nodesB.append((Fr(1), Fr(0))); xB = [a for a, _ in nodesB]
+check(’(1.6)’, ’the nine nodes are (lambda_j-kappa_j, kappa_j), (kappa_j, lambda_j) = A^j(13/84, 55/84),
+and (1,0) (exact)’,
+[str(a) + ’,’ + str(b) for a, b in nodesB] == [’1/2,13/84’, ’139/194,13/194’, ’173/207,13/414’, ’
+773/854,13/854’,
+’820/867,13/1734’, ’3387/3494,13/3494’, ’1149/1169,13/7014’, ’13921/14054,13/14054’, ’1,0’])
+check(’Section 5.2’, ’the nodes increase, 1/2 <= varsigma_j, varsigma_7 < 1, kappa_j decrease (exact)’,
+all(x < y for x, y in zip(xB, xB[1:])) and xB[0] == Fr(1, 2) and xB[7] < 1 and all(a > b for a, b in
+zip(kap, kap[1:])))
+IB = closed_form(nodesB, 1, 1); IB2 = arb_integral(pieces(nodesB), 1, 1)
+LB = IB/(2*PI*LOG2); show(’Lambda(e_B), closed form (5.9)’, LB); show(’Lambda(e_B), Arb integration’, IB2
+/(2*PI*LOG2))
+show(’2 pi Lambda(e_B)’, 2*PI*LB)
+check(’(5.9)’, ’closed form and Arb integration of e_B* agree to 1e-60’, tiny(IB - IB2))
+check(’Section 5.2’, ’theta_h = arccos((1/2-c)/R) = 2 pi/3 at c = R = 1’, tiny((-HALF).acos() - 2*PI/3))
+check(’Corollary 1.2’, ’Lambda(e_B) = 0.0968160063...’, tr(LB, ’0.0968160063’))
+check(’Abstract’, ’Lambda(e_B) = 0.0968160... and 2 pi Lambda(e_B) <= 0.60832’, tr(LB, ’0.0968160’), lt(2*
+PI*LB, ’0.60832’))
+check(’Section 5.2’, ’Lambda(e_B) = 0.0968160063238..., 0.096816006 <= Lambda(e_B) <= 0.096816007’,
+tr(LB, ’0.0968160063238’), ge(LB, ’0.096816006’), le(LB, ’0.096816007’))
+check(’Corollary 1.4(a)’, ’2 pi Lambda(e_B) = 0.6083129... < 0.60832’, tr(2*PI*LB, ’0.6083129’), lt(2*PI*LB
+, ’0.60832’))
+print(’\nLindelof profile’)
+I0 = closed_form([(Fr(1, 2), Fr(0)), (Fr(1), Fr(0))], 1, 1); L0 = I0/(2*PI*LOG2)
+show(’Lambda(0)’, L0); show(’2 pi Lambda(0)’, 2*PI*L0)
+check(’Remark 5.2’, ’int_{2pi/3}^{pi} (-1/2 - cos t) dt = sqrt3/2 - pi/6 equals the circle integral of 0*’,
+tiny(I0 - (arb(3).sqrt()/2 - PI/6)), tiny(arb_integral(pieces([(Fr(1, 2), Fr(0)), (Fr(1), Fr(0))]),
+1, 1) - I0))
+check(’(5.7)’, ’Lambda(0) = (3 sqrt3 - pi)/(12 pi log 2) = 0.0786252...’, tiny(L0 - (3*arb(3).sqrt() - PI)
+/(12*PI*LOG2)),
+tr(L0, ’0.0786252’))
+check(’Remark 5.2’, ’Lindelof gives a <= 0.0786253’, le(L0, ’0.0786253’))
+check(’Proposition 6.2’, ’2 pi Lambda(0) = 0.49401...’, tr(2*PI*L0, ’0.49401’))
+print(’\nExplicit profile and Theorem 1.3’)
+sm = {m: 1 - Fr(m, 2**m - 2) for m in range(4, 10)}
+nodesE = [(Fr(1, 2), Fr(27, 164))] + [(sm[m], Fr(1, 2**m - 2)) for m in range(4, 10)] + [(Fr(1), Fr(0))]
+vs = [a for a, _ in nodesE] + [Fr(3)]; es = [b for _, b in nodesE] + [Fr(0)]
+check(’(4.5)’, ’sigma_m = 1 - m/(2^m-2) = 5/7, 5/6, 28/31, 17/18, 123/127, 167/170 with exponents 1/(2^m-2)
+(exact)’,
+[sm[m] for m in range(4, 10)] == [Fr(5, 7), Fr(5, 6), Fr(28, 31), Fr(17, 18), Fr(123, 127), Fr(167,
+170)])
+check(’Lemma 4.4’, ’varsigma_i increase, e_i = 1/(2^{i+3}-2) nonincreasing, max e_i = 27/164, Q = 10 > 1varsigma_i’,
+all(x < y for x, y in zip(vs, vs[1:])), all(es[i] == Fr(1, 2**(i+3) - 2) for i in range(1, 7)),
+all(x >= y for x, y in zip(es, es[1:])), max(es) == Fr(27, 164), all(10 > 1 - v for v in vs))
+c, R = Fr(’1.000002’), Fr(’1.000005’); sigF = c + (c - Fr(1, 2))**2/R; delF = 2*c - sigF - Fr(1, 2)
+sig, dl = A(sigF), A(delF); D = (A(R)/(A(c) - HALF)).log()
+show(’sigma#’, sig); show(’delta#’, dl); show(’d = log(R/(c-1/2))’, D)
+check(’Section 5.3’, ’c - R = -3e-6, sigma# = 1.25000275..., delta# = 0.2500012499...’,
+c - R == Fr(-3, 10**6), tr(sig, ’1.25000275’), tr(dl, ’0.2500012499’))
+check(’(3.5)’, ’c-R < 1/2 < 1 < c < sigma# < c+R, c < R, 0 < delta# < 1/2, delta# in [1/4,5/8], [c-R,c+R]
+in [-0.01,3]’,
+c - R < Fr(1, 2) < 1 < c < sigF < c + R, c < R, 0 < delF < Fr(1, 2), Fr(1, 4) <= delF <= Fr(5, 8),
+c - R >= Fr(’-0.01’), c + R <= 3)
+IE = closed_form(nodesE, c, R); IE2 = arb_integral(pieces(nodesE), c, R)
+show(’I_{e_E*}, closed form (5.9)’, IE); show(’I_{e_E*}, Arb integration’, IE2)
+check(’(5.9)’, ’closed form and Arb integration of e_E* agree to 1e-60’, tiny(IE - IE2))
+args = set([(Fr(1, 2) - c)/R] + [(a - c)/R for a, _ in nodesE[1:]] + [(1 - a - c)/R for a, _ in nodesE
+[1:]])
+check(’Section 5.3’, ’the closed form uses fifteen arccos values at distinct rational points of (-1,1)’,
+len(args) == 15, all(-1 < u < 1 for u in args))
+C1, C2 = IE/(2*PI*D), 1/(2*D)
+lzr = (A(c).zeta()/(2*A(c)).zeta()).log(); lzs = sig.zeta().log()
+show(’C_1’, C1); show(’C_2’, C2); show(’log(zeta(c)/zeta(2c))’, lzr); show(’log zeta(sigma#)’, lzs)
+
+38
+
+check(’(5.10)’, ’C_1 = 0.0978292318785..., C_2 = 1/(2d) = 0.7213464797..., log(zeta(c)/zeta(2c)) =
+12.6246665...’,
+tr(C1, ’0.0978292318785’), tr(C2, ’0.7213464797’), tr(lzr, ’12.6246665’))
+check(’Section 1.2’, ’Backlund quotient of e_E: 0.0978292318...’, tr(C1, ’0.0978292318’))
+check(’(5.11)’, ’log(zeta(c)/zeta(2c)) <= 12.62467, sigma# - 1/2 <= 0.7501’, le(lzr, ’12.62467’), le(sig HALF, ’0.7501’))
+check(’Section 5.3’, ’log zeta(sigma#) = 1.52498... <= 1.52499’, tr(lzs, ’1.52498’), le(lzs, ’1.52499’))
+N = 10**4; zb = sum(((-sig)*arb(n).log()).exp() for n in range(1, N)) + ((1 - sig)*A(Fr(2*N - 1, 2)).log())
+.exp()/(sig - 1)
+show(’log of the bound with N = 10^4’, zb.log())
+check(’Section 5.3’, ’footnote: N = 10^4 gives log zeta(sigma#) <= 1.5249836 (and the bound is >= zeta(
+sigma#))’,
+le(zb.log(), ’1.5249836’), bool(sig.zeta() <= zb))
+m640 = 640*dl - 112; show(’640 delta# - 112’, m640)
+check(’Section 5.3’, ’640 delta# - 112 = 48.0007... > 0: the majorant of E/(2 pi) decreases in T’,
+tr(m640, ’48.0007’), gt(m640, 0))
+T = A(100); Emaj = (m640/(1536*299) + A(Fr(1, 1024)))/2; show(’E(100, delta#)/(2 pi) majorant’, Emaj)
+check(’Section 5.3’, ’E(T,delta#)/(2pi) <= ((640 delta#-112)/(1536*299) + 2^-10)/2 < 0.00055 at T = 100’,
+lt(Emaj, ’0.00055’))
+print(’\nLemma 4.3, Lemma 4.4 and the constant K’)
+check(’Lemma 4.3’, ’omega_1 in [1/4,0.505], omega_2 in [-0.005,1/4], y >= 49 (affine in sigma, endpoints
+exact)’,
+(1 - Fr(’-0.01’))/2 == Fr(’0.505’), Fr(’-0.01’)/2 == Fr(’-0.005’), Fr(98, 2) == 49)
+check(’Lemma 4.3’, ’|phi| <= (0.505*0.256/2 + 0.043)/y^2 <= 0.108/y^2 <= 0.435/t^2 (log(1+x) <= x, arctan
+series)’,
+Fr(’0.505’)**2 <= Fr(’0.256’), Fr(’0.505’)**3/3 <= Fr(’0.043’), Fr(’0.505’)*Fr(’0.256’)/2 + Fr(’0.043
+’) <= Fr(’0.108’),
+4*Fr(’0.108’) <= Fr(’0.435’))
+sec2 = 1/((PI/2 + (A(’0.005’)/49).atan())/2).cos()**2; show(’sec^2(ph z_2 / 2)’, sec2)
+check(’Lemma 4.3’, ’sec^2(ph z_i / 2) <= 2.0005 (ph z_2 <= pi/2 + arctan(0.005/49), ph z_1 < pi/2)’, le(
+sec2, ’2.0005’))
+eps = A(’0.6669’)/98 + A(’0.87’)/98**2; show(’0.6669/98 + 0.87/98^2’, eps); show(’e^0.0069’, A(’0.0069’).
+exp())
+check(’Lemma 4.3’, ’2*2.0005/6 <= 0.6669; 0.6669/t + 0.87/t^2 <= 0.0069 for t >= 98 (decreasing); e^0.0069
+< 1.0070’,
+2*Fr(’2.0005’)/6 <= Fr(’0.6669’), le(eps, ’0.0069’), lt(A(’0.0069’).exp(), ’1.0070’))
+check(’Lemma 4.4’, ’e^{105/492} < 2/0.618 (1/6 - 27/164 = 1/492), 105 > 66.7/2, zeta(3) < 2 log 3’,
+bool(A(Fr(105, 492)).exp() < 2/A(’0.618’)), 105 > Fr(’66.7’)/2, bool(arb(3).zeta() < 2*arb(3).log()))
+check(’Lemma 4.4’, ’|t| <= 3: sqrt 18 <= 4.243, sqrt 13 <= 3.606, 4.243 + 2*4.243*3.606 < 34.9 < 49 <
+2*10.5 log 10.5’,
+le(arb(18).sqrt(), ’4.243’), le(arb(13).sqrt(), ’3.606’), Fr(’4.243’) + 2*Fr(’4.243’)*Fr(’3.606’) <
+Fr(’34.9’),
+gt(21*A(’10.5’).log(), 49))
+# each factor of K_1(t) = 2(1+84.5/t^2)^{1+27/164}(1+(84.5/t^2+pi/2)/log t) decreases in t, so t = 98 is the
+worst case
+t0 = A(98); K1 = 2*(1 + A(’84.5’)/t0**2)**(1 + A(Fr(27, 164)))*(1 + (A(’84.5’)/t0**2 + PI/2)/t0.log())
+K = eps.exp()*K1; show(’K_1(98)’, K1); show(’K = exp(0.6669/98 + 0.87/98^2) K_1(98)’, K)
+check(’(4.8)’, ’K_1(98) <= 2.7167’, le(K1, ’2.7167’))
+check(’Lemma 4.4’, ’1.0070 * 2.7167 <= 2.74 and K <= 2.74’, Fr(’1.0070’)*Fr(’2.7167’) <= Fr(’2.74’), le(K,
+’2.74’))
+check(’Remark 4.5(i)’, ’each input has room: e^{577/492} < 2/0.618 on 3 < |t| <= e^577; above e^577 any C
+<= 1154 = 2*577’,
+bool(A(Fr(577, 492)).exp() < 2/A(’0.618’)), 2*577 == 1154)
+check(’Remark 4.5(ii)’, ’(1 - sigma_m)/3 = 1/(2K-2) + (m-3)/(6K-6) with K = 2^{m-1}, exponent (m-3)/(6K-6)
+> 0, 4 <= m <= 9’,
+all(Fr(m, 2**m - 2)/3 == Fr(1, 2**m - 2) + Fr(m - 3, 3*2**m - 6) and m > 3 for m in range(4, 10)))
+print(’\nconstant term C_3(100)’)
+L274 = A(’2.74’).log()
+def C3(c1, c2, lr, ls, st):
+# the sum C_3(100): costs 2C_1/T + 2C_2/(T log T), or exact
+differences
+base = c2*(lr + (1 + 3/T).log() + L274) + ls/PI + st/(PI*T) + Emaj + A(Fr(1, 4))
+return (base + 2*c1/T + 2*c2/(T*T.log()),
+base + c1*((T + 2).log() - T.log()) + c2*((T + 2).log().log() - T.log().log()))
+C3T, C3x = C3(C1, C2, lzr, lzs, sig - HALF)
+C3d = C3(C1, C2, A(’12.62467’), lzs, A(’0.7501’))[0]
+C3u = C3(A(’0.0978292318786’), A(’0.7213464798’), A(’12.62467’), A(’1.52499’), A(’0.7501’))[0]
+show(’C_3(100)’, C3T); show(’C_3(100) with exact differences’, C3x)
+show(’C_3(100) with 12.62467 and 0.7501’, C3d); show(’C_3(100) with all displayed values rounded up’, C3u)
+check(’Section 5.3’, ’C_3(100) = 10.598602..., and 10.598545... with exact differences’,
+tr(C3T, ’10.598602’), tr(C3x, ’10.598545’))
+check(’Appendix A’, ’C_3(100) = 10.5986..., 10.5985...’, tr(C3T, ’10.5986’), tr(C3x, ’10.5985’))
+
+39
+
+check(’Section 5.3’, ’with the rounded values displayed C_3(100) <= 10.5987’, le(C3d, ’10.5987’), le(C3u, ’
+10.5987’))
+check(’Section 5.3’, ’0.09783 > C_1, 0.7214 > C_2, 10.6 > C_3(100) (all variants)’, lt(C1, ’0.09783’), lt(
+C2, ’0.7214’),
+lt(C3T, ’10.6’), lt(C3x, ’10.6’), lt(C3d, ’10.6’), lt(C3u, ’10.6’))
+# C_3(T) is nonincreasing on [100, oo): each term is constant or decreasing (the majorant since 640 delta# 112 > 0).
+# For e <= T <= 100 the right side of (1.7) increases in T, so its value at T = e is the minimum.
+check(’Section 5.3’, ’e <= T <= 100: 2.5167 < 0.09783 log T + 0.7214 loglog T + 10.6; |varpi(T)|/pi <=
+0.53/(pi e) < 0.07’,
+gt(A(’0.09783’) + A(’10.6’), ’2.5167’), lt(A(’0.53’)/(PI*E), ’0.07’))
+check(’Corollary 1.2, (5.10), (5.11)’, ’the inequalities used for Lambda(e_B), 2 pi Lambda(e_B), C_1, C_2,
+C_3(100), log zeta(sigma#) hold with margin >= 3e-10’,
+*[ge(m, Fr(3, 10**10)) for m in (LB - A(’0.096816006’), A(’0.096816007’) - LB, A(’0.60832’) - 2*PI*LB
+,
+A(’0.09783’) - C1, A(’0.7214’) - C2, A(’10.6’) - C3T, A(’1.52499’) - lzs)])
+print(’\nlimit c, R -> 1 of the Backlund quotients’)
+LE1 = arb_integral(pieces(nodesE), 1, 1)/(2*PI*LOG2)
+LBW = arb_integral(pieces(nodesE, left=(Fr(1, 2), -1 + 2*Fr(27, 164))), 1, 1)/(2*PI*LOG2)
+show(’profile of Bellotti-Wong (chord on [0,1/2])’, LBW); show(’reflected profile e_E*’, LE1)
+check(’Section 1.3’, ’quotients 0.10073687... (Bellotti-Wong profile) and 0.09782899... (reflected profile)
+’,
+tr(LBW, ’0.10073687’), tr(LE1, ’0.09782899’), tiny(LE1*2*PI*LOG2 - closed_form(nodesE, 1, 1)))
+check(’Section 1.3’, ’the reflection lies below the chord on [0,1/2] (both piecewise linear: checked at all
+kinks, exact)’,
+all(a - Fr(1, 2) + b <= Fr(1, 2) + (-1 + 2*Fr(27, 164))*(1 - a) for a, b in nodesE))
+print(’\nmain term, Gram points and the construction’)
+def N0(t): return t/(2*PI)*(t/(2*PI*E)).log() + A(Fr(7, 8))
+check(’Section 1.1’, ’N_0(2 pi) = -1/8’, tiny(N0(2*PI) + A(Fr(1, 8))))
+check(’Theorem 1.5’, ’N_0(2 pi e) = 7/8, so k >= 2 iff tau_k >= 2 pi e (1/2 < 7/8 <= 3/2)’, tiny(N0(2*PI*E)
+- A(Fr(7, 8))))
+def theta(t): return acb(A(Fr(1, 4)), t/2).lgamma().imag - t/2*PI.log()
+def dtheta(t): return acb(A(Fr(1, 4)), t/2).digamma().real/2 - PI.log()/2
+def dtheta_pos(lo, hi, n):
+# theta’ > 0 on [lo, hi]: |theta’’| = |Im psi’(1/4+it/2)|/4 <=
+M on 40 balls
+lo, hi = A(lo), A(hi); M = max((acb(A(Fr(1, 4)), ((lo + (hi - lo)*i/40).union(lo + (hi - lo)*(i + 1)
+/40))/2)
+.polygamma(1).imag/4).abs_upper() for i in range(40))
+return all(bool(dtheta(lo + (hi - lo)*i/n) > M*(hi - lo)/(2*n)) for i in range(n + 1))
+# grid spacing
+(hi-lo)/n
+show(’theta(9.66) + pi’, theta(A(’9.66’)) + PI); show(’theta(9.67) + pi’, theta(A(’9.67’)) + PI)
+check(’Section 1.1’, "g_{-1} = 9.66...: theta’ > 0 on [6.5, 9.67]; theta(6.5), theta(9.66) < -pi < theta
+(9.67)",
+dtheta_pos(Fr(’6.5’), Fr(’9.67’), 400), bool(theta(A(’6.5’)) + PI < 0),
+bool(theta(A(’9.66’)) + PI < 0), bool(theta(A(’9.67’)) + PI > 0))
+check(’Section 1.1’, ’|varpi|/pi < 1/2 at the Gram points: 0.53/(9.66 pi) < 1/2’, lt(A(’0.53’)/(A(’9.66’)*
+PI), Fr(1, 2)))
+g1 = acb.zeta_zero(1).imag; show(’gamma_1’, g1)
+check(’proof of Corollary 1.4’, ’gamma_1 > 14 > 2 pi > e (rigorous isolation of the first zero)’,
+gt(g1, 14), bool(A(14) > 2*PI > E))
+check(’Remark 7.7’, ’|varpi(gamma_k)|/pi <= 0.53/(14 pi) < 1/2 for gamma_k >= 14’, lt(A(’0.53’)/(14*PI), Fr
+(1, 2)))
+def mj(j):
+# m_j = floor(2^{j/2}); for odd j the ball decides the floor
+if j % 2 == 0: return int(Fr(2)**(j//2))
+x = (A(Fr(j, 2))*LOG2).exp(); f = int(x.mid().floor().unique_fmpz())
+assert bool(x > f) and bool(x < f + 1); return f
+check(’Section 7.1’, ’(1/pi) arcsin(2^{-1/2}) = 1/4; m_j = 0 for j < 0, m_j nondecreasing, m_j <= 2 for j
+<= 3’,
+tiny((1/arb(2).sqrt()).asin()/PI - A(Fr(1, 4))), all(mj(j) == 0 for j in range(-6, 0)),
+all(mj(j) <= mj(j + 1) for j in range(-6, 12)), max(mj(j) for j in range(-6, 4)) == 2)
+check(’Proposition 7.1’, ’4 <= 2 pi <= 8, m_2 = m_3 = 2, F(2 pi) <= N_0(2 pi) + 1/2 = 3/8 < 1/2; 4 pi e > 2
+pi^2’,
+bool(A(4) <= 2*PI <= A(8)), mj(2) == 2, mj(3) == 2, lt(N0(2*PI) + HALF, Fr(1, 2)), bool(4*PI*E > 2*PI
+**2))
+# d/dt [N_0(t) - sqrt(2t)/4] = (1/2pi) log(t/2pi) - 1/(4 sqrt(2t)) increases in t
+dd = 1/(2*PI) - 1/(4*(4*PI*E).sqrt()); show("d/dt [N_0(t) - sqrt(2t)/4] at t = 2 pi e", dd)
+check(’Section 7.4’, ’N_0(t) - sqrt(2t)/4 increases for t >= 2 pi e; 2 log 2 - log(2 pi e) = -1.45...’,
+bool(dd > 0), tr(2*LOG2 - (2*PI*E).log(), ’-1.45’))
+check(’Theorem 3.8’, ’Fujii side condition: T >= 9 gives H >= 3 and H - H^{1/8} >= 3 - 3^{1/8} >= 1 (
+increasing in H)’,
+bool(3 - (arb(3).log()/8).exp() >= 1))
+
+40
+
+check(’Lemma 7.5’, ’log(2 + h log 4T) <= 2 log(2 + h L_T) for h L_T >= 1, h <= 1: 6 > log(8 pi)’,
+bool(A(6) > (8*PI).log()))
+print(’\nproof of Theorem 1.1: c = 1 + eta, R = 1 + 2 eta, 0 < eta < 1/100’)
+def sg(e): return 1 + e + (Fr(1, 2) + e)**2/(1 + 2*e)
+ends = (Fr(0), Fr(1, 100))
+# all quantities affine in eta: >= 0 at both ends and > 0 at one end gives > 0
+inside
+check(’Section 5.1’, ’sigma# = 5/4 + 3 eta/2, delta# = 1/4 + eta/2, R/(c-1/2) = 2 (affine identities at
+three points)’,
+all(sg(e) == Fr(5, 4) + Fr(3, 2)*e and 2*(1 + e) - sg(e) - Fr(1, 2) == Fr(1, 4) + e/2 and (1 + 2*e)/(
+Fr(1, 2) + e) == 2
+for e in ends + (Fr(1, 7),)))
+check(’Section 5.1’, ’(3.5) holds, delta# in [1/4, 5/8], [c-R, c+R] = [-eta, 2+3 eta] in [-0.01, 3] for 0 <
+eta < 1/100’,
+all(-e < Fr(1, 2) and e >= 0 and Fr(5, 4) + Fr(3, 2)*e > 1 + e and 2 + 3*e > Fr(5, 4) + Fr(3, 2)*e
+and Fr(1, 4) <= Fr(1, 4) + e/2 <= Fr(5, 8) and Fr(1, 4) + e/2 < Fr(1, 2) and -e >= Fr(’-0.01’)
+and 2 + 3*e <= 3
+for e in ends))
+print(’\ncrossing points’)
+def ours(L): return A(’0.09783’)*L + A(’0.7214’)*L.log() + A(’10.6’)
+# (1.7), L = log T
+def bw1(L): return ours(L) - A(’0.10076’)*L - A(’0.24460’)*L.log() - A(’7.20844’)
+# minus Bellotti-Wong
+Cor. 1.5,
+def bw2(L): return ours(L) - A(’0.10076’)*L - A(’1.68845’)*L.log() - A(’1.50956’)
+# first and second
+branch
+def yg(L):
+# Yang (4.29) without 0.2/t_0 minus (1.8), L = log t
+return A(’0.11’)*L + A(’0.29’)*L.log() + A(’2.29’) - A(’0.09783’)*L - A(’0.7214’)*L.log() - A(’10.7’)
+def root(f, lo, hi):
+# f(lo) > 0 > f(hi); bisection on balls, returns a ball
+containing the root
+lo, hi = A(lo), A(hi); assert f(lo) > 0 and f(hi) < 0
+for _ in range(240):
+m = (lo + hi)/2; v = f(m)
+if v > 0: lo = m
+elif v < 0: hi = m
+else: break
+return lo.union(hi)
+xb = root(bw1, 2000, 3000); xy = root(lambda L: -yg(L), 900, 1000)
+show(’crossing with Bellotti-Wong, log T’, xb); show(’crossing with Yang (4.29), log t’, xy)
+# Sign structure for L = log T >= 1. For L >= 52 the first branch is the minimum (log 52 > 3.95 >
+5.69888/1.44385).
+# d/dL bw1 = -0.00293 + 0.4768/L < 0 for L > 163, so bw1 > 0 on [163, xb) and bw1 < 0 on (xb, oo).
+# On [1, 163], (1.7) exceeds one branch, hence the minimum: covered by balls.
+check(’Section 1.2’, ’(1.7) is smaller than Bellotti-Wong exactly for log T > 2425.8385... (unique crossing
+on log T >= 1)’,
+tr(xb, ’2425.8385’), bool(A(52).log() > A(’3.95’)), Fr(’5.69888’)/Fr(’1.44385’) < Fr(’3.95’),
+Fr(’0.4768’)/Fr(’0.00293’) < 163, cover(lambda x: bool(bw1(x) > 0) or bool(bw2(x) > 0), 1, 163, 2000)
+)
+check(’Abstract’, ’the complete bound is smaller only for log T > 2425.8385...’, tr(xb, ’2425.8385’))
+check(’Section 1’, ’the complete estimate improves upon Bellotti-Wong only for log T > 2425.8385...’, tr(xb
+, ’2425.8385’))
+# yg(L) <= 0.01217 L - 8.41 < 0 for 1 <= L <= 35.5; d/dL yg = 0.01217 - 0.4314/L > 0 for L >= 35.5: one sign
+change.
+# The term 0.2/t_0 of Yang’s bound is positive and only enlarges his bound.
+check(’Section 10’, ’(1.8) is smaller than Yang (4.29) as soon as log t > 933.5 (unique crossing on log t
+>= 1)’,
+Fr(’0.01217’)*Fr(’35.5’) < Fr(’8.41’), Fr(’0.4314’)/Fr(’0.01217’) < Fr(’35.5’), bool(yg(A(’933.5’)) >
+0),
+lt(xy, ’933.5’))
+check(’Appendix A’, ’crossing points log T = 2425.8385... and log t = 933.4678...’, tr(xb, ’2425.8385’), tr
+(xy, ’933.4678’))
+# ---- exact rational arithmetic and identities (Table 1, Sections 1.2, 1.3, Lemma 4.1, Lemma 7.6, Theorems
+8.1, 9.5) ---for stated, src in [(’0.4320’, ’0.43200’), (’1.9167’, ’1.91662’), (’13.0788’, ’13.07873’), (’0.2907’, ’
+0.29062’),
+(’7.0120’, Fr(’6.13695’) + Fr(7, 8)), (’5.225’, Fr(’4.35’) + Fr(7, 8)), (’2.873’, Fr(’
+1.998’) + Fr(7, 8)),
+(’8.08344’, Fr(’7.20844’) + Fr(7, 8)), (’11.55’, Fr(’10.6’) + Fr(7, 8) + Fr(’0.07’))]:
+assert Fr(stated) >= Fr(src)
+# Table 1: upper bounds rounded up
+assert Fr(’10.7’) - Fr(1, 2) == Fr(’10.2’) and Fr(’10.6’) + Fr(’0.07’) <= Fr(’10.7’)
+assert Fr(’7.20844’) + Fr(’0.07’) <= Fr(’7.28’) and Fr(’8.08344’) - Fr(’7.20844’) == Fr(7, 8)
+assert Fr(’0.10076’) - Fr(’0.09783’) == Fr(’0.00293’) and Fr(’0.1038’) - Fr(’0.10076’) == Fr(’0.00304’)
+assert Fr(1, 16) + Fr(1, 8) + Fr(1, 3) == Fr(25, 48) < Fr(’0.53’) and Fr(13**2, 2) == Fr(’84.5’)
+
+41
+
+assert Fr(’1.87781’) <= Fr(’1.878’) <= 2 and Fr(’1.546’) <= 2
+assert Fr(1, 2) + Fr(1, 5) == Fr(7, 10) and Fr(1, 5)/40 == Fr(1, 200) <= Fr(1, 2) and Fr(1, 2)/20 == Fr(1,
+40)
+assert all(((Fr(1, 2) + u)**(2*j+1) + (Fr(1, 2) - u)**(2*j+1))/(2*j+1)
+# Theorem 8.1: Psi_j, degree 2j+1,
+2j+2 points
+== u**(2*j) + sum(Fr(comb(2*j+1, 2*i))*Fr(4)**(i-j)/(2*j+1)*u**(2*i) for i in range(j))
+for j in range(1, 9) for u in [Fr(i, 3) for i in range(2*j + 2)])
+assert all(sum((i - Fr(m - 1, 2))**2 for i in range(m)) == Fr(m*(m*m - 1), 12) for m in range(1, 7)) and Fr
+(2*2 - 1, 3) == 1
+print(’\n%d checks, %d asserted conditions’ % (NCALL, NCHK))
+print(’all checks passed’)
+Python 3.13.18, python-flint 0.9.0, FLINT 3.6.0, precision 256 bits
+Bourgain profile
+ok [(1.6)] the nine nodes are (lambda_j-kappa_j, kappa_j), (kappa_j, lambda_j) = A^j(13/84, 55/84), and
+(1,0) (exact)
+ok [Section 5.2] the nodes increase, 1/2 <= varsigma_j, varsigma_7 < 1, kappa_j decrease (exact)
+Lambda(e_B), closed form (5.9) = [0.096816006323848965603 +/- 1.85e-22]
+Lambda(e_B), Arb integration = [0.096816006323848965603 +/- 1.85e-22]
+2 pi Lambda(e_B) = [0.60831290843381374985 +/- 1.57e-21]
+ok [(5.9)] closed form and Arb integration of e_B* agree to 1e-60
+ok [Section 5.2] theta_h = arccos((1/2-c)/R) = 2 pi/3 at c = R = 1
+ok [Corollary 1.2] Lambda(e_B) = 0.0968160063...
+ok [Abstract] Lambda(e_B) = 0.0968160... and 2 pi Lambda(e_B) <= 0.60832
+ok [Section 5.2] Lambda(e_B) = 0.0968160063238..., 0.096816006 <= Lambda(e_B) <= 0.096816007
+ok [Corollary 1.4(a)] 2 pi Lambda(e_B) = 0.6083129... < 0.60832
+Lindelof profile
+Lambda(0) = [0.078625279090205377185 +/- 4.37e-22]
+2 pi Lambda(0) = [0.49401719835247279041 +/- 2.48e-21]
+ok [Remark 5.2] int_{2pi/3}^{pi} (-1/2 - cos t) dt = sqrt3/2 - pi/6 equals the circle integral of 0*
+ok [(5.7)] Lambda(0) = (3 sqrt3 - pi)/(12 pi log 2) = 0.0786252...
+ok [Remark 5.2] Lindelof gives a <= 0.0786253
+ok [Proposition 6.2] 2 pi Lambda(0) = 0.49401...
+Explicit profile and Theorem 1.3
+ok [(4.5)] sigma_m = 1 - m/(2^m-2) = 5/7, 5/6, 28/31, 17/18, 123/127, 167/170 with exponents 1/(2^m-2) (
+exact)
+ok [Lemma 4.4] varsigma_i increase, e_i = 1/(2^{i+3}-2) nonincreasing, max e_i = 27/164, Q = 10 > 1varsigma_i
+sigma# = [1.2500027500002499988 +/- 5.00e-20]
+delta# = [0.25000124999975000125 +/- 6.5e-24]
+d = log(R/(c-1/2)) = [0.69314818055544532975 +/- 4.74e-22]
+ok [Section 5.3] c - R = -3e-6, sigma# = 1.25000275..., delta# = 0.2500012499...
+ok [(3.5)] c-R < 1/2 < 1 < c < sigma# < c+R, c < R, 0 < delta# < 1/2, delta# in [1/4,5/8], [c-R,c+R] in
+[-0.01,3]
+I_{e_E*}, closed form (5.9) = [0.42606376380391913387 +/- 4.08e-21]
+I_{e_E*}, Arb integration = [0.42606376380391913387 +/- 4.08e-21]
+ok [(5.9)] closed form and Arb integration of e_E* agree to 1e-60
+ok [Section 5.3] the closed form uses fifteen arccos values at distinct rational points of (-1,1)
+C_1 = [0.097829231878517946339 +/- 2.33e-22]
+C_2 = [0.72134647976617563460 +/- 2.03e-21]
+log(zeta(c)/zeta(2c)) = [12.624666509201434702 +/- 2.16e-19]
+log zeta(sigma#) = [1.5249835586891991530 +/- 3.15e-20]
+ok [(5.10)] C_1 = 0.0978292318785..., C_2 = 1/(2d) = 0.7213464797..., log(zeta(c)/zeta(2c)) =
+12.6246665...
+ok [Section 1.2] Backlund quotient of e_E: 0.0978292318...
+ok [(5.11)] log(zeta(c)/zeta(2c)) <= 12.62467, sigma# - 1/2 <= 0.7501
+ok [Section 5.3] log zeta(sigma#) = 1.52498... <= 1.52499
+log of the bound with N = 10^4 = [1.5249835587005347825 +/- 2.23e-20]
+ok [Section 5.3] footnote: N = 10^4 gives log zeta(sigma#) <= 1.5249836 (and the bound is >= zeta(sigma#)
+)
+640 delta# - 112 = [48.000799999840000800 +/- 4.02e-21]
+ok [Section 5.3] 640 delta# - 112 = 48.0007... > 0: the majorant of E/(2 pi) decreases in T
+E(100, delta#)/(2 pi) majorant = [0.00054053964604218924279 +/- 1.55e-24]
+ok [Section 5.3] E(T,delta#)/(2pi) <= ((640 delta#-112)/(1536*299) + 2^-10)/2 < 0.00055 at T = 100
+Lemma 4.3, Lemma 4.4 and the constant K
+ok [Lemma 4.3] omega_1 in [1/4,0.505], omega_2 in [-0.005,1/4], y >= 49 (affine in sigma, endpoints exact
+)
+ok [Lemma 4.3] |phi| <= (0.505*0.256/2 + 0.043)/y^2 <= 0.108/y^2 <= 0.435/t^2 (log(1+x) <= x, arctan
+
+42
+
+series)
+sec^2(ph z_2 / 2) = [2.0002041024583719369 +/- 3.98e-20]
+ok [Lemma 4.3] sec^2(ph z_i / 2) <= 2.0005 (ph z_2 <= pi/2 + arctan(0.005/49), ph z_1 < pi/2)
+0.6669/98 + 0.87/98^2 = [0.0068956892961266139109 +/- 2.96e-23]
+e^0.0069 = [1.0069238598460768235 +/- 2.01e-20]
+ok [Lemma 4.3] 2*2.0005/6 <= 0.6669; 0.6669/t + 0.87/t^2 <= 0.0069 for t >= 98 (decreasing); e^0.0069 <
+1.0070
+ok [Lemma 4.4] e^{105/492} < 2/0.618 (1/6 - 27/164 = 1/492), 105 > 66.7/2, zeta(3) < 2 log 3
+ok [Lemma 4.4] |t| <= 3: sqrt 18 <= 4.243, sqrt 13 <= 3.606, 4.243 + 2*4.243*3.606 < 34.9 < 49 < 2*10.5
+log 10.5
+K_1(98) = [2.7166062888678559009 +/- 4.21e-20]
+K = exp(0.6669/98 + 0.87/98^2) K_1(98) = [2.7354038985273522633 +/- 4.22e-20]
+ok [(4.8)] K_1(98) <= 2.7167
+ok [Lemma 4.4] 1.0070 * 2.7167 <= 2.74 and K <= 2.74
+ok [Remark 4.5(i)] each input has room: e^{577/492} < 2/0.618 on 3 < |t| <= e^577; above e^577 any C <=
+1154 = 2*577
+ok [Remark 4.5(ii)] (1 - sigma_m)/3 = 1/(2K-2) + (m-3)/(6K-6) with K = 2^{m-1}, exponent (m-3)/(6K-6) >
+0, 4 <= m <= 9
+constant term C_3(100)
+C_3(100) = [10.598602348349442860 +/- 1.76e-19]
+C_3(100) with exact differences = [10.598545473327798800 +/- 4.84e-19]
+C_3(100) with 12.62467 and 0.7501 = [10.598605175981063029 +/- 4.86e-19]
+C_3(100) with all displayed values rounded up = [10.598607226776234255 +/- 1.43e-19]
+ok [Section 5.3] C_3(100) = 10.598602..., and 10.598545... with exact differences
+ok [Appendix A] C_3(100) = 10.5986..., 10.5985...
+ok [Section 5.3] with the rounded values displayed C_3(100) <= 10.5987
+ok [Section 5.3] 0.09783 > C_1, 0.7214 > C_2, 10.6 > C_3(100) (all variants)
+ok [Section 5.3] e <= T <= 100: 2.5167 < 0.09783 log T + 0.7214 loglog T + 10.6; |varpi(T)|/pi <= 0.53/(
+pi e) < 0.07
+ok [Corollary 1.2, (5.10), (5.11)] the inequalities used for Lambda(e_B), 2 pi Lambda(e_B), C_1, C_2, C_3
+(100), log zeta(sigma#) hold with margin >= 3e-10
+limit c, R -> 1 of the Backlund quotients
+profile of Bellotti-Wong (chord on [0,1/2]) = [0.10073687033405844994 +/- 1.61e-21]
+reflected profile e_E* = [0.097828995542983327128 +/- 4.25e-22]
+ok [Section 1.3] quotients 0.10073687... (Bellotti-Wong profile) and 0.09782899... (reflected profile)
+ok [Section 1.3] the reflection lies below the chord on [0,1/2] (both piecewise linear: checked at all
+kinks, exact)
+main term, Gram points and the construction
+ok [Section 1.1] N_0(2 pi) = -1/8
+ok [Theorem 1.5] N_0(2 pi e) = 7/8, so k >= 2 iff tau_k >= 2 pi e (1/2 < 7/8 <= 3/2)
+theta(9.66) + pi = [-0.0014853253998891945298 +/- 2.22e-24]
+theta(9.67) + pi = [0.00066561014798622068761 +/- 1.32e-24]
+ok [Section 1.1] g_{-1} = 9.66...: theta’ > 0 on [6.5, 9.67]; theta(6.5), theta(9.66) < -pi < theta(9.67)
+ok [Section 1.1] |varpi|/pi < 1/2 at the Gram points: 0.53/(9.66 pi) < 1/2
+gamma_1 = [14.134725141734693790 +/- 4.58e-19]
+ok [proof of Corollary 1.4] gamma_1 > 14 > 2 pi > e (rigorous isolation of the first zero)
+ok [Remark 7.7] |varpi(gamma_k)|/pi <= 0.53/(14 pi) < 1/2 for gamma_k >= 14
+ok [Section 7.1] (1/pi) arcsin(2^{-1/2}) = 1/4; m_j = 0 for j < 0, m_j nondecreasing, m_j <= 2 for j <= 3
+ok [Proposition 7.1] 4 <= 2 pi <= 8, m_2 = m_3 = 2, F(2 pi) <= N_0(2 pi) + 1/2 = 3/8 < 1/2; 4 pi e > 2 pi
+^2
+d/dt [N_0(t) - sqrt(2t)/4] at t = 2 pi e = [0.11638015805286826912 +/- 1.48e-21]
+ok [Section 7.4] N_0(t) - sqrt(2t)/4 increases for t >= 2 pi e; 2 log 2 - log(2 pi e) = -1.45...
+ok [Theorem 3.8] Fujii side condition: T >= 9 gives H >= 3 and H - H^{1/8} >= 3 - 3^{1/8} >= 1 (
+increasing in H)
+ok [Lemma 7.5] log(2 + h log 4T) <= 2 log(2 + h L_T) for h L_T >= 1, h <= 1: 6 > log(8 pi)
+proof of Theorem 1.1: c = 1 + eta, R = 1 + 2 eta, 0 < eta < 1/100
+ok [Section 5.1] sigma# = 5/4 + 3 eta/2, delta# = 1/4 + eta/2, R/(c-1/2) = 2 (affine identities at three
+points)
+ok [Section 5.1] (3.5) holds, delta# in [1/4, 5/8], [c-R, c+R] = [-eta, 2+3 eta] in [-0.01, 3] for 0 <
+eta < 1/100
+crossing points
+crossing with Bellotti-Wong, log T = [2425.8385801225889471 +/- 2.63e-17]
+crossing with Yang (4.29), log t = [933.46789604929362221 +/- 4.21e-18]
+ok [Section 1.2] (1.7) is smaller than Bellotti-Wong exactly for log T > 2425.8385... (unique crossing on
+log T >= 1)
+ok [Abstract] the complete bound is smaller only for log T > 2425.8385...
+ok [Section 1] the complete estimate improves upon Bellotti-Wong only for log T > 2425.8385...
+ok [Section 10] (1.8) is smaller than Yang (4.29) as soon as log t > 933.5 (unique crossing on log t >=
+
+43
+
+1)
+ok [Appendix A] crossing points log T = 2425.8385... and log t = 933.4678...
+61 checks, 136 asserted conditions
+all checks passed
+
+B
+
+Correspondence with the sources
+
+The following table lists every statement taken from the literature (Section 3 and the proofs),
+where it is stated in the source, and the normalization or adaptation used here. Within the
+table, k, αF , H and h are as in Theorem 3.8.
+
+used as
+
+source and place
+
+form there; adaptation here
+
+Theorem 3.1
+
+[39], §§9.3, 9.4, 9.12 (formula
+for N and one-sided limits at
+imaginary parts; S = O(log t);
+gaps → 0; the convention
+S(t) = S(t+ ) at t ∈ {γk } is
+adopted in this paper)
+[6, §5.11(ii)]
+
+N (t) = π1 ϑ(t) + 1 + S(t) with ϑ through
+Log Γ( 14 + it2 ); Lemma 4.1 rewrites π1 ϑ +
+1 = N0 + ϖ/π
+
+Theorem 3.2
+
+Theorem 3.3(a)
+
+[19], Thm. 1.1; [30], Thm. 1.1;
+both as quoted in [3, §2, display
+before (2.3)]
+[44], Thm. 1.1; quoted in [3,
+(2.4)]
+
+Theorem 3.3(b)
+
+Theorem 3.3(c)
+comment after
+rem 3.3
+
+Theo-
+
+[29], Thm. 1.1
+[3], (2.1); [2], Thm. 1.1; [25],
+Lemma 5
+
+Theorem 3.4
+
+[9], Cor. 3
+
+Theorem 3.5
+
+Remark 4.5(i)
+
+[3], Lemmas 2.1, 2.3, 2.4,
+which take (a), (b) from [16],
+Props. 3.5, 3.7 (for ζK , here
+K = Q); E(T, d) = E(0, d, T )
+of [4], Def. 3.3 and Fig. 2, and
+(c) its Lemma 3.4 at a = 0
+[34], Thm. 1.1
+
+Remark 4.5(ii)
+
+[44], §3.1, (3.9)–(3.13), §3.2
+
+Remark 4.5(iii)
+
+[18], §2
+
+Table 1
+
+[43], p. 1; [1], (39), pp. 354–355,
+375 (also for Grossmann); [40],
+Thm. 1; the other rows as listed
+in [3], Table 1
+
+44
+
+|R(z)| ≤ sec2 ( 12 ph z)/(12|z|), | ph z| <
+π; used at z = 14 + it2 (Lemma 4.1) and
+s
+at z = 1−s
+2 , 2 (Lemma 4.3)
+1/6
+0.618|t| log |t| and 66.7|t|27/164 for
+|t| ≥ 3; used only through (4.6), with
+constant 2 on σ = 12 (Remark 4.5(i))
+m
+stated there as 1.546|t|1/(2 −2) log |t| on
+σ = σm , |t| ≥ 3, m ≥ 4; used only for
+4 ≤ m ≤ 9, with 1.546 for |t| ≥ Tm
+(§3.2) and 1.878 for 3 ≤ |t| ≤ Tm (§3.1
+corrected in Remark 4.5(ii)), hence constant 2
+|ζ(1 + it)| ≤ log |t|, |t| ≥ 3; as stated
+58.096 log2/3 t is Leong’s, not a direct
+consequence of Bellotti’s 70.6995; not
+used
+equal powers of the logarithm on both
+lines; here Q = 10, Ξ(s) = (s − 1)ζ(s),
+α2 = 1
+fn as in (3.3), with the factor 12 ; (c) is
+the majorant of E(T, d)/π for d ∈ [ 14 , 58 ];
+the decomposition of πS(T ) in the proof
+of Proposition 5.1 is that of [3, §3]
+
+0.611|t|1/6 log |t| for |t| ≥ 3; mentioned
+only
+recomputed with | Log(Q0 + s)|, constant 1.878 for 4 ≤ m ≤ 9 (intervalarithmetic program, Appendix A)
+|ζ(1 + it)| ≤ log |t| − 0.45 for |t| ≥ 3;
+mentioned only
+T
+T
+normalization N (T ) − 2π
+log 2πe
+: 78
+added to the constants stated for N −N0
+or for S
+
+used as
+leading coefficients
+Section 1.3
+
+source and place
+in
+
+Theorem 3.6
+Theorem 3.7(a),(b)
+Theorem 3.7(c)
+Theorem 3.8(a)
+
+Theorem 3.8(b)
+
+Theorem 3.9
+
+Theorem 3.10
+(s R− 1)ζ(s) = s − s(s −
+∞
+1) 1 {u}u−s−1 du
+ζ(σ + it) ≪ log t for 1 ≤
+σ≤3
+bathtub principle
+rising sun lemma
+Theorem 3.11
+
+Gram points, Selberg’s
+moments of ∆G
+k
+Gram’s law for γk , its failures
+increasing rearrangement
+
+form there; adaptation here
+
+[41], Thm. 1; [32], Cor. 1;
+[17], Cor. 1.2 and Table 1; [3],
+Cor. 1.5 and Table 1
+[3, (1.2)], from [31]
+
+0.111 in the preprint of Trudgian, 0.112
+in its published version (as listed in both
+tables); 0.110; 0.1038; 0.10076
+|S(T )| ≤ 2.5167 for 0 ≤ T ≤
+30 610 046 000; used on [e, 100]
+[20], Lemma 2.8 and (7.57), the A-process;
+ζ(σ + it)
+≪
+p. 190
+|t|(κ+λ−σ)/2 log |t| for 12 ≤ σ ≤ λ − κ
+55
+[5], §5, Thm. 6
+( 13
+84 + ε, 84 + ε) is an exponent pair; ε
+kept in both coordinates
+[11], §3, pp. 232–233, with modulus 1; used with k = 2, αF = 15 ,
+Lemma 5; corrections [12, §5]
+H = T = U , Y = U 1/200 (Lemma 7.6)
+and, in Section 1.3, with k = 1, αF = 21 ,
+H = T , Y = T 1/40
+[11], Main Theorem, p. 225 modulus 1, αF = a2 ; used with k =
+(0 < ai ≤ 21 , T 1/2+a2 ≤ H ≤ 2, αF = 21 , H = T , 0 < h ≤ 1
+T ); [12], §1 (α) (the case q = 1, (Lemma 7.5); log(3+x) ≤ log 3 log(2+x)
+log 2
+H = T ) and §5
+[28], Cor. 3
+finite sums only, shifted to [U, 2U ]; applied to D12 and, as a Dirichlet polynomial in v 2 , to D22 ; also in Section 1.3 and
+Lemma 9.2
+[27]; [38, Ch. I.1]
+as stated
+[39, (2.1.4)]
+for σ > 0; used for |t| ≤ 3 in Lemma 4.4
+and Section 5.2
+[39, Thm. 3.5]
+proof of Theorem 1.1
+[26, Thm. 1.14]
+
+[23, Def. 1.4 and p. 58]
+
+used in Theorem 7.3 in the elementary
+form stated there
+discrete form, proved in Lemma 7.2
+asymptotic form only; k = 1 in dyadic
+form (8.9) (Proposition 8.4), k = 2 in
+Remark 7.7, every k in Proposition 8.6
+Remark 7.7 only, as a consistency check
+of Proposition 8.4
+Section 1.1 only
+
+[15, §10.12, pp. 276–278] (first
+edition)
+
+defined there in decreasing order; terminology in Sections 1.3 and 7.2
+
+[35]
+[37]; [39, Notes for Chapter 9,
+(9.25.1), p. 245]; quoted with remainder in [11, p. 225]
+[23, Thm. 4.2]
+
+Data availability
+The programs of Appendix A and their outputs are reproduced in that appendix. No other data
+were used.
+
+AI Declaration
+The ideas of this article, the constructions and the strategy of the proofs are the author’s. Generative AI tools were used during the work and the preparation of the manuscript: Claude
+(Anthropic), models Claude Fable 5.1, Claude Opus 5.5 and Claude Sonnet 5.5; ChatGPT (OpenAI), model Astra 6; and Microsoft 365 Copilot, based on the GPT-5 reasoning model. Under the
+author’s direction, Claude and ChatGPT were used to draft and revise the LATEX text, to check
+
+45
+
+proofs, constants and citations against the sources, and to search the literature. The Python
+programs of Appendix A were written with Claude, which was also used to formalize parts of
+the proofs in Lean 4; the Lean 4 formalization is not presented in this article. Microsoft 365
+Copilot was used only to review drafts of the manuscript, not to write the Python programs or
+the Lean 4 code. The author has checked the whole article and takes full responsibility for its
+content. No AI tool is an author.
+
+Mathematical software
+The computations of Appendix A use Python 3.13 with mpmath 1.4.1, numpy and python-flint 0.9.0
+(Arb ball arithmetic [21], FLINT 3.6.0 [10]).
+
+References
+[1] R. J. Backlund, Über die Nullstellen der Riemannschen Zetafunktion, Acta Math. 41 (1916)
+345–375, doi:10.1007/BF02422950. (Cited on pp. 6, 7, and 44.)
+[2] C. Bellotti, Explicit bounds for the Riemann zeta function and a new zero-free region, J.
+Math. Anal. Appl. 536 (2024) 128249, doi:10.1016/j.jmaa.2024.128249. (Cited on pp. 3,
+12, and 44.)
+[3] C. Bellotti and P.-J. Wong, Improved estimates for the argument and zero-counting function of the Riemann zeta-function, Math. Comp. (2025, published online 14 November
+2025), statements numbered as in arXiv:2412.15470v2 (doi:10.48550/arXiv.2412.15470),
+doi:10.1090/mcom/4133. (Cited on pp. 3, 5, 6, 7, 12, 13, 17, 32, 44, and 45.)
+[4] M. A. Bennett, G. Martin, K. O’Bryant and A. Rechnitzer, Counting zeros of Dirichlet L-functions, arXiv:2005.02989v1, 2020, cited with its numbering,
+doi:10.48550/arXiv.2005.02989; published version: Math. Comp. 90 (2021) 1455–1482,
+doi:10.1090/mcom/3599. (Cited on pp. 13 and 44.)
+[5] J. Bourgain, Decoupling, exponential sums and the Riemann zeta function, J.
+Amer. Math. Soc. 30 (2017) 205–224, theorems numbered as in arXiv:1408.5794v2
+(doi:10.48550/arXiv.1408.5794), doi:10.1090/jams/860. (Cited on pp. 13 and 45.)
+[6] NIST Digital Library of Mathematical Functions, §5.11(ii), Release 1.2.4 of 2025-03-15, F.
+W. J. Olver et al., eds., https://dlmf.nist.gov/5.11.ii. (Cited on pp. 12 and 44.)
+[7] A. Fazzari, M. Gerspach and P. Minelli, Selberg’s central limit theorem weighted
+by linear statistics of zeta zeros, arXiv:2507.04150v1, 2025, cited with its numbering,
+doi:10.48550/arXiv.2507.04150. (Cited on pp. 8 and 48.)
+[8] G. França and A. LeClair, Transcendental equations satisfied by the individual zeros of
+Riemann ζ, Dirichlet and modular L-functions, Commun. Number Theory Phys. 9 (2015)
+1–50, doi:10.4310/CNTP.2015.v9.n1.a1. (Cited on pp. 3 and 8.)
+[9] A. Fiori, A note on the Phragmén–Lindelöf theorem, arXiv:2502.13282v3, 2026,
+doi:10.48550/arXiv.2502.13282. (Cited on pp. 6, 12, and 44.)
+[10] The FLINT team, FLINT: Fast Library for Number Theory, version 3.6.0, https://
+flintlib.org. (Cited on pp. 36 and 46.)
+[11] A. Fujii, On the zeros of Dirichlet L-functions. I, Trans. Amer. Math. Soc. 196 (1974)
+225–235, doi:10.1090/S0002-9947-1974-0349603-2. (Cited on pp. 2, 3, 8, 13, 14, and 45.)
+
+46
+
+[12] A. Fujii, On the zeros of Dirichlet L-functions. II (with corrections to “On the zeros of
+Dirichlet L-functions. I” and the subsequent papers), Trans. Amer. Math. Soc. 267 (1981)
+33–40, doi:10.1090/S0002-9947-1981-0621970-5. (Cited on pp. 13, 14, 23, and 45.)
+[13] S. M. Gonek, Finite Euler products and the Riemann hypothesis, Trans. Amer. Math. Soc.
+364 (2012) 2157–2191, doi:10.1090/S0002-9947-2011-05546-7. (Cited on pp. 3 and 8.)
+[14] J. Grossmann, Über die Nullstellen der Riemannschen Zeta-Funktion und der Dirichletschen
+L-Funktionen, Ph.D. thesis, Georg-August-Universität Göttingen (1913). (Cited on p. 7.)
+[15] G. H. Hardy, J. E. Littlewood and G. Pólya, Inequalities, 1st edn. (Cambridge University
+Press, Cambridge, 1934). (Cited on pp. 9, 23, and 45.)
+[16] E. Hasanalizade, Q. Shen and P.-J. Wong, Counting zeros of Dedekind zeta functions, Math.
+Comp. 91 (2022) 277–293, doi:10.1090/mcom/3665. (Cited on pp. 13 and 44.)
+[17] E. Hasanalizade, Q. Shen and P.-J. Wong, Counting zeros of the Riemann zeta function, arXiv:2107.06506v1, 2021, cited with its numbering, doi:10.48550/arXiv.2107.06506;
+published version: J. Number Theory 235 (2022) 219–241, doi:10.1016/j.jnt.2021.06.032.
+(Cited on pp. 5, 6, 7, and 45.)
+[18] G. A. Hiary, N. Leong and A. Yang, Explicit bounds for the Riemann zetafunction on the 1-line, arXiv:2306.13289v2, 2024, cited with its numbering,
+doi:10.48550/arXiv.2306.13289; published version: Funct. Approx. Comment. Math. 73
+(2025) 53–89, doi:10.7169/facm/240711-13-8. (Cited on pp. 12, 16, and 44.)
+[19] G. A. Hiary, D. Patel and A. Yang, An improved explicit estimate for ζ(1/2+it), J. Number
+Theory 256 (2024) 195–217, doi:10.1016/j.jnt.2023.09.003. (Cited on pp. 12, 16, and 44.)
+[20] A. Ivić, The Riemann Zeta-Function (Wiley, New York, 1985); reprinted (Dover, Mineola,
+NY, 2003). (Cited on pp. 13 and 45.)
+[21] F. Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, IEEE
+Trans. Comput. 66 (2017) 1281–1292, doi:10.1109/TC.2017.2690633. (Cited on pp. 34, 36,
+and 46.)
+[22] V. Kargin, On fluctuations of Riemann’s zeta zeros, Probab. Theory Related Fields 157 (2013) 575–604, theorems numbered as in arXiv:1203.5309v2
+(doi:10.48550/arXiv.1203.5309), doi:10.1007/s00440-012-0465-9. (Cited on pp. 3 and 6.)
+[23] M. A. Korolev, Gram’s law and the argument of the Riemann zeta function, Publ. Inst.
+Math. (Beograd) (N.S.) 92(106) (2012) 53–78, doi:10.2298/PIM1206053K. (Cited on pp. 3,
+4, 6, 25, and 45.)
+[24] A. LeClair, Riemann hypothesis and random walks: the zeta case, arXiv:1601.00914v1
+(doi:10.48550/arXiv.1601.00914), 2016, cited with its numbering; published version: Symmetry 13 (2021) 2014, doi:10.3390/sym13112014. (Cited on pp. 3 and 8.)
+[25] N. Leong, Explicit estimates for the logarithmic derivative and the reciprocal of
+the Riemann zeta function, arXiv:2405.04869v5, 2026, cited with its numbering,
+doi:10.48550/arXiv.2405.04869. (Cited on pp. 12 and 44.)
+[26] E. H. Lieb and M. Loss, Analysis, 2nd edn., Graduate Studies in Mathematics, Vol. 14
+(American Mathematical Society, Providence, RI, 2001), doi:10.1090/gsm/014. (Cited on
+pp. 22 and 45.)
+
+47
+
+[27] F. Mertens, Ein Beitrag zur analytischen Zahlentheorie, J. Reine Angew. Math. 78 (1874)
+46–62, doi:10.1515/crll.1874.78.46. (Cited on pp. 14 and 45.)
+[28] H. L. Montgomery and R. C. Vaughan, Hilbert’s inequality, J. Lond. Math. Soc. (2) 8
+(1974) 73–82, doi:10.1112/jlms/s2-8.1.73. (Cited on pp. 14 and 45.)
+[29] D. Patel, An explicit upper bound for |ζ(1 + it)|, arXiv:2009.00769v1, 2020, cited with
+its numbering, doi:10.48550/arXiv.2009.00769; published version: Indag. Math. 33 (2022)
+1012–1032, doi:10.1016/j.indag.2022.04.007. (Cited on pp. 12 and 44.)
+[30] D. Patel and A. Yang, An explicit sub-Weyl bound for ζ(1/2 + it), J. Number Theory 262
+(2024) 301–334, doi:10.1016/j.jnt.2024.03.011. (Cited on pp. 12, 16, and 44.)
+[31] D. J. Platt, Isolating some non-trivial zeros of zeta, Math. Comp. 86 (2017) 2449–2467,
+doi:10.1090/mcom/3198. (Cited on pp. 13 and 45.)
+[32] D. J. Platt and T. S. Trudgian, An improved explicit bound on |ζ( 12 + it)|, arXiv:1402.3953,
+version dated 4 July 2018, cited with its numbering, doi:10.48550/arXiv.1402.3953; published version: J. Number Theory 147 (2015) 842–851, doi:10.1016/j.jnt.2014.08.019.
+(Cited on pp. 5, 6, 7, and 45.)
+[33] H. Rademacher, On the Phragmén–Lindelöf theorem and some applications, Math. Z. 72
+(1959) 192–204, doi:10.1007/BF01162949. (Cited on p. 12.)
+[34] M. Revers, A new improved explicit estimate for ζ(1/2 + it), preprint, arXiv:2602.05614v1,
+2026, doi:10.48550/arXiv.2602.05614. (Cited on pp. 6, 16, and 44.)
+[35] F. Riesz, Sur un théorème de maximum de MM. Hardy et Littlewood, J. London Math.
+Soc. 7 (1932) 10–13, doi:10.1112/jlms/s1-7.1.10. (Cited on pp. 21 and 45.)
+[36] J. B. Rosser, Explicit bounds for some functions of prime numbers, Amer. J. Math. 63
+(1941) 211–232, doi:10.2307/2371291. (Cited on p. 7.)
+[37] A. Selberg, Contributions to the theory of the Riemann zeta-function, Arch. Math. Naturvid.
+48 (5) (1946) 89–155. (Cited on pp. 2, 3, 7, 14, and 45.)
+[38] G. Tenenbaum, Introduction to Analytic and Probabilistic Number Theory, 3rd edn., Graduate Studies in Mathematics, Vol. 163 (American Mathematical Society, Providence, RI,
+2015), doi:10.1090/gsm/163. (Cited on pp. 14 and 45.)
+[39] E. C. Titchmarsh, The Theory of the Riemann Zeta-Function, 2nd edn., revised by D. R.
+Heath-Brown (Clarendon Press, Oxford, 1986). (Cited on pp. 3, 10, 12, 14, 16, 17, 18, 27,
+44, and 45.)
+[40] T. S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function on
+the critical line, Math. Comp. 81 (2012) 1053–1061, doi:10.1090/S0025-5718-2011-02537-8.
+(Cited on pp. 3, 7, and 44.)
+[41] T. S. Trudgian, An improved upper bound for the argument of the Riemann zeta-function
+on the critical line II, arXiv:1208.5846v2, 2012, cited with its numbering and constants,
+doi:10.48550/arXiv.1208.5846; published version: J. Number Theory 134 (2014) 280–292,
+doi:10.1016/j.jnt.2013.07.017. (Cited on pp. 3, 5, 6, 7, 12, and 45.)
+[42] K.-M. Tsang, The distribution of the values of the Riemann zeta function, Ph.D. thesis,
+Princeton University (1984); cited as in [7, §3]. (Cited on pp. 2, 3, and 8.)
+[43] H. von Mangoldt, Zur Verteilung der Nullstellen der Riemannschen Funktion ξ(t), Math.
+Ann. 60 (1905) 1–19, doi:10.1007/BF01447494. (Cited on pp. 5, 6, 7, and 44.)
+48
+
+[44] A. Yang, Explicit bounds on ζ(s) in the critical strip and a zero-free region, J. Math. Anal.
+Appl. 534 (2024) 128124, doi:10.1016/j.jmaa.2024.128124. (Cited on pp. 3, 12, 16, 32, 34,
+and 44.)
+
+49
+
+

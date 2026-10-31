@@ -1,0 +1,85 @@
+diff -ru ../build/code/casanya_method.py code/casanya_method.py
+--- ../build/code/casanya_method.py	2026-10-30 12:47:51.209534631 +0000
++++ code/casanya_method.py	2026-10-30 15:04:11.439479872 +0000
+@@ -1,10 +1,10 @@
+ # Casana's method (Section on the construction in the article): the k-th imaginary part of a
+ # zero of zeta is approximated by the sublevel measure
+-#     x_k = |{t > 0 : F(t) < k - 1/2}|,   F = N_0 + Phi,
++#     tauC_k = |{t > 0 : F(t) < k - 1/2}|,   F = N_0 + Phi,
+ # where N_0(t) = (t/2pi) log(t/(2 pi e)) + 7/8 is the Riemann-von Mangoldt main term and Phi is the finite Euler
+ # phase of the article: on the dyadic block 2^j <= t <= 2^{j+1}, Phi interpolates linearly between Phi_{m_j} and
+ # Phi_{m_{j+1}}, m_j = floor(2^{j/2}), Phi_m(t) = -(1/pi) sum_{nu<=m} arg(1 - p_nu^{-1/2-it}) (principal argument).
+-# This program evaluates x_k on a grid (step h) for k <= K and compares it with the imaginary part gamma_k (mpmath) and
++# This program evaluates tauC_k on a grid (step h) for k <= K and compares it with the imaginary part gamma_k (mpmath) and
+ # with the bare point tau_k, N_0(tau_k) = k - 1/2.  Illustration only: the article proves a mean-square bound
+ # (Theorem on the sublevel construction), not a bound for each k.  Python 3.13.17, numpy, mpmath 1.4.1.
+ import numpy as np
+@@ -43,8 +43,8 @@
+ t = np.arange(H / 2, TMAX, H)                         # midpoints of the grid cells (0, TMAX]
+ Ft = F(t)
+ assert Ft[-1] > K - 0.5 + 2, "TMAX too small"
+-print('Casana method: x_k = |{t > 0 : N_0(t) + Phi(t) < k - 1/2}|, grid step h = %g on (0, %g]' % (H, TMAX))
+-print('%3s %12s %12s %12s %12s %12s' % ('k', 'x_k', 'gamma_k', 'x_k-gamma_k', 'tau_k', 'tau_k-gamma_k'))
++print('Casana method: tauC_k = |{t > 0 : N_0(t) + Phi(t) < k - 1/2}|, grid step h = %g on (0, %g]' % (H, TMAX))
++print('%3s %12s %12s %12s %12s %12s' % ('k', 'tauC_k', 'gamma_k', 'tauC_k-gamma_k', 'tau_k', 'tau_k-gamma_k'))
+ mp.dps = 15
+ for k in range(1, K + 1):
+     xk = H * np.count_nonzero(Ft < k - 0.5)
+diff -ru ../build/code/casanya_method_output.txt code/casanya_method_output.txt
+--- ../build/code/casanya_method_output.txt	2026-10-30 12:13:29.470381114 +0000
++++ code/casanya_method_output.txt	2026-10-30 15:04:11.439443839 +0000
+@@ -1,5 +1,5 @@
+-Casana method: x_k = |{t > 0 : N_0(t) + Phi(t) < k - 1/2}|, grid step h = 0.001 on (0, 120]
+-  k          x_k      gamma_k  x_k-gamma_k        tau_k tau_k-gamma_k
++Casana method: tauC_k = |{t > 0 : N_0(t) + Phi(t) < k - 1/2}|, grid step h = 0.001 on (0, 120]
++  k       tauC_k      gamma_k tauC_k-gamma_k        tau_k tau_k-gamma_k
+   1      13.5500      14.1347      -0.5847      14.5213       0.3866
+   2      21.0590      21.0220       0.0370      20.6557      -0.3663
+   3      24.9140      25.0109      -0.0969      25.4927       0.4818
+diff -ru ../build/code/constantes_v5.py code/constantes_v5.py
+--- ../build/code/constantes_v5.py	2026-10-30 12:16:39.833116420 +0000
++++ code/constantes_v5.py	2026-10-30 15:04:11.439408013 +0000
+@@ -60,12 +60,12 @@
+ A = quad(lambda s: eB(s)/sqrt(s*(2-s)), brk) / (2*pi*log(2))
+ print('Cor 1.2: Lambda(e_B) =', nstr(A, 20), ' Cor 1.4(a): 2*pi*Lambda(e_B) =', nstr(2*pi*A, 20))
+ AB_closed = closed_form(nodesB, mpf(1), mpf(1))/(2*pi*log(2))
+-print('Cor 1.2 by the closed form (5.3) with c = R = 1: Lambda(e_B) =', nstr(AB_closed, 20))
++print('Cor 1.2 by the closed form (5.9) with c = R = 1: Lambda(e_B) =', nstr(AB_closed, 20))
+ assert abs(AB_closed - A) < mpf(10)**-20   # the sigma-quadrature has an integrable singularity at 0
+ 
+ # --- explicit profile and its constants ---
+ nodesE = [(mpf(1)/2, mpf(27)/164)] + [(1 - mpf(m)/(2**m-2), mpf(1)/(2**m-2)) for m in range(4,10)] + [(mpf(1), mpf(0))]
+-print('explicit nodes (4.3):', [(nstr(a,8), nstr(b,8)) for a,b in nodesE])
++print('explicit nodes (4.5):', [(nstr(a,8), nstr(b,8)) for a,b in nodesE])
+ eE = reflect(pl(nodesE))
+ c, R = mpf('1.000002'), mpf('1.000005')
+ sig1 = c + (c-mpf(1)/2)**2/R; delta = 2*c - sig1 - mpf(1)/2
+@@ -81,7 +81,7 @@
+ C1 = I/(2*pi*D); C2 = 1/(2*D)
+ print('I =', nstr(I,25)); print('C1 = I/(2 pi D) =', nstr(C1,25)); print('C2 = 1/(2D) =', nstr(C2,25))
+ I_closed = closed_form(nodesE, c, R)
+-print('I by the closed form (5.3) =', nstr(I_closed,25), ' C1 =', nstr(I_closed/(2*pi*D),25))
++print('I by the closed form (5.9) =', nstr(I_closed,25), ' C1 =', nstr(I_closed/(2*pi*D),25))
+ assert abs(I_closed - I) < mpf(10)**-25
+ print('log zeta(sigma1) =', nstr(log(zeta(sig1)),15), ' zeta(c) <=', nstr(c/(c-1),10), ' zeta(c)/zeta(2c)=', nstr(zeta(c)/zeta(2*c),12))
+ 
+diff -ru ../build/code/constantes_v5_output.txt code/constantes_v5_output.txt
+--- ../build/code/constantes_v5_output.txt	2026-10-30 12:13:29.470323482 +0000
++++ code/constantes_v5_output.txt	2026-10-30 15:04:11.439452846 +0000
+@@ -1,13 +1,13 @@
+ Python 3.13.17  mpmath 1.4.1  mp.dps = 40
+ Bourgain nodes (1.6): [('1/2', '13/84'), ('139/194', '13/194'), ('173/207', '13/414'), ('773/854', '13/854'), ('820/867', '13/1734'), ('3387/3494', '13/3494'), ('1149/1169', '13/7014'), ('13921/14054', '13/14054')]
+ Cor 1.2: Lambda(e_B) = 0.096816006323848965603  Cor 1.4(a): 2*pi*Lambda(e_B) = 0.60831290843381374985
+-Cor 1.2 by the closed form (5.3) with c = R = 1: Lambda(e_B) = 0.096816006323848965603
+-explicit nodes (4.3): [('0.5', '0.16463415'), ('0.71428571', '0.071428571'), ('0.83333333', '0.033333333'), ('0.90322581', '0.016129032'), ('0.94444444', '0.0079365079'), ('0.96850394', '0.0039370079'), ('0.98235294', '0.0019607843'), ('1.0', '0.0')]
++Cor 1.2 by the closed form (5.9) with c = R = 1: Lambda(e_B) = 0.096816006323848965603
++explicit nodes (4.5): [('0.5', '0.16463415'), ('0.71428571', '0.071428571'), ('0.83333333', '0.033333333'), ('0.90322581', '0.016129032'), ('0.94444444', '0.0079365079'), ('0.96850394', '0.0039370079'), ('0.98235294', '0.0019607843'), ('1.0', '0.0')]
+ sigma1 = 1.25000275000025  delta = 0.25000124999975  c-R = -3.0e-6  D = 0.69314818055544532975
+ I = 0.4260637638039191338740744
+ C1 = I/(2 pi D) = 0.09782923187851794633876744
+ C2 = 1/(2D) = 0.7213464797661756345979781
+-I by the closed form (5.3) = 0.4260637638039191338740744  C1 = 0.09782923187851794633876744
++I by the closed form (5.9) = 0.4260637638039191338740744  C1 = 0.09782923187851794633876744
+ log zeta(sigma1) = 1.5249835586892  zeta(c) <= 500001.0  zeta(c)/zeta(2c)= 303964.594821
+ factor chi <= 1.006918   K1 <= 2.7166063   K = chi*K1 <= 2.7353997
+ log(zeta(c)/zeta(2c)) = 12.6246665092  E/(2pi) <= 0.00054053965

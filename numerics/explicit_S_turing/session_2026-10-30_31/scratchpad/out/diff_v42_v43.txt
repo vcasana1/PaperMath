@@ -1,0 +1,13 @@
+--- casanya_ordinal_primes_v42.tex	2026-10-30 12:20:40.811970872 +0000
++++ casanya_ordinal_primes_v43.tex	2026-10-30 12:35:21.274575464 +0000
+@@ -451,8 +451,8 @@
+ 2014 & Trudgian \CGcite{Trudgian2014} & $0.1120$ & $0.2780$ & $3.3850$ & $T\ge e$\\
+ 2015 & Platt, Trudgian \CGcite{PlattTrudgian2015} & $0.1100$ & $0.2900$ & $3.165$ & $T\ge e$\\
+ 2022 & Hasanalizade, Shen, Wong \CGcite{HasanalizadeShenWong2022} & $0.1038$ & $0.2573$ & $9.4925$ & $T\ge e$\\
+-2025 & Bellotti, Wong \CGcite{BellottiWong2025} & $0.10076$ & $0.24460$ & $8.08344$ & $T\ge e$\\\midrule
+-2026 & this article, Theorem~\CGref{thm:explicit} & $0.09783$ & $0.7214$ & $11.55$ & $T\ge e$\\
++2025 & Bellotti, Wong \CGcite{BellottiWong2025} & $0.10076$ & $0.24460$ & $8.08344$ & $T\ge e$\\
++2026 & Casa\~na-Giner [This work] & $0.09783$ & $0.7214$ & $11.55$ & $T\ge e$\\
+ \bottomrule
+ \end{tabular}
+ \caption{Explicit bounds $\bigl|N(T)-\frac T{2\pi}\log\frac T{2\pi e}\bigr|\le A_1\log T+A_2\log\log T+A_3$. The rows up to 2025 are those of \CGcite[Table~1]{BellottiWong2025}, with the year of publication, checked against \CGcite[p.~1]{VonMangoldt1905} ($0.43200$, $1.91662$, $13.07873$), \CGcite[(39) and pp.~355, 375]{Backlund1918} ($0.137$, $0.443$, $4.350+\frac78$; Backlund's $Q(T)$ is $N(T)-\Nz(T)$, p.~354), Grossmann's constants as quoted in \CGcite[p.~355]{Backlund1918} ($0.29062$, $1.7862$, $6.13695+\frac78$), and \CGcite[Thm.~1]{Trudgian2012} ($0.17$, $1.998+\frac78$). Backlund states his inequality (39) for every $T\ge2$ \CGcite[p.~375]{Backlund1918}; \CGcite[Table~1]{BellottiWong2025} lists $T\ge200$, the range of his earlier bound \CGcite[p.~355]{Backlund1918}; for \CGcite{HasanalizadeShenWong2022} the constant term is the corrected value of \CGcite[\S1, footnote~1]{BellottiWong2025} ($9.3675$ in \CGcite[Cor.~1.2]{HasanalizadeShenWong2022}); the preprint \CGcite{Trudgian2014} has $0.111$ and $0.275$ in place of $0.1120$ and $0.2780$ \CGcite[Thm.~1, Cor.~1]{Trudgian2014}. The last row follows from \CGeqref{eq:explicit_S}, \CGeqref{eq:intro_RvM} and $|\varpi(T)|/\pi<0.07$ for $T\ge e$ (Lemma~\CGref{lem:varpi}): $10.6+\frac78+0.07=11.545<11.55$.}

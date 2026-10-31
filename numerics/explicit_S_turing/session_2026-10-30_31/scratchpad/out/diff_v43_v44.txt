@@ -1,0 +1,14 @@
+--- casanya_ordinal_primes_v43.tex	2026-10-30 12:35:21.274575464 +0000
++++ casanya_ordinal_primes_v44.tex	2026-10-30 12:39:16.602254437 +0000
+@@ -230,9 +230,9 @@
+ \newcommand{\R}{\mathbb R}
+ \newcommand{\Kc}{\mathcal K}
+ 
+-\hypersetup{pdftitle={Prime-defined approximation of Riemann zeta ordinates and bounds for the argument of the zeta function},pdfauthor={Víctor Casaña-Giner}}
++\hypersetup{pdftitle={Prime-corrected Riemann--von Mangoldt approximation of Riemann zeta imaginary parts and bounds for its argument},pdfauthor={Víctor Casaña-Giner}}
+ 
+-\title{Prime-defined approximation of Riemann zeta ordinates and bounds for the argument of the zeta function}
++\title{Prime-corrected Riemann--von Mangoldt approximation of Riemann zeta imaginary parts and bounds for its argument}
+ \author{V\'ictor Casa\~na-Giner\thanks{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain. Email: \href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es}. ORCID \href{https://orcid.org/0000-0002-8252-2608}{0000-0002-8252-2608}.}}
+ \date{30 October 2026}
+ 

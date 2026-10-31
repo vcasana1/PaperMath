@@ -1,0 +1,1306 @@
+                                                                 COUNTING ZEROS OF ARTIN L-FUNCTIONS
+
+                                                                           CHIARA BELLOTTI AND PENG-JIE WONG
+
+
+                                                   Abstract. In this article, assuming Artin’s (holomorphy) conjecture, we establish an explicit
+                                                   asymptotic formula for the number of non-trivial zeros, up to any given height T ≥ 1, of Artin
+                                                   L-functions. As a consequence, our result yields an unconditional explicit zero-counting formula
+                                                   for Hecke L-functions over any number field. In addition, our result improves the recent work
+arXiv:2606.31441v1 [math.NT] 30 Jun 2026
+
+
+
+
+                                                   of Amberger on Dedekind and Riemann zeta functions and the previous work of Bennett-Martin-
+                                                   O’Bryant-Rechnitzer on Dirichlet L-functions for sufficiently large T .
+
+
+
+
+                                                                                        1. Introduction
+                                               Let L/K be a Galois extension of number fields with Galois group G = Gal(L/K). For any
+                                           irreducible representation ρ : G → GL(V ), we let χ = trρ denote its character, and we recall the
+                                           Artin L-function attached to χ is defined by
+                                                                                    Y             IP
+                                           (1.1)                     L(s, χ, L/K) =    det(I − ρ|V (σP )N(p)−s )−1 ,
+                                                                                          p
+
+                                           for Re(s) > 1, where the product runs over primes p of K, V IP is the subspace of V fixed by the
+                                           inertia group IP of a prime P of L above p, and σP is the Frobenius element at P. It follows
+                                           from the works of Artin, Brauer, and Hecke that L(s, χ, L/K) has an analytic continuation to a
+                                           meromorphic function on C. Artin’s (holomorphy) conjecture asserts that if χ is non-trivial, then
+                                           L(s, χ, L/K) further extends to an entire function.
+                                               When χ(1) = 1, Artin’s conjecture is proven as L(s, χ, L/K) corresponds to a Hecke L-function.
+                                           More generally, Artin showed that his conjecture holds for all representations induced from 1-
+                                           dimensional representations. Furthermore, if ρ is 2-dimensional and admits a solvable image, Artin’s
+                                           conjecture is valid by the works of Langlands [Lan80] and Tunnell [Tun81]. Moreover, when ρ is
+                                           odd 2-dimensional over Q, Artin’s conjecture follows from Serre’s modularity conjecture proven by
+                                           Khare and Wintenberger [KW09a; KW09b]. Furthermore, Ramakrishnan [Ram02] proved Artin’s
+                                           conjecture for solvable representations ρ of GO(4)-type. In general, Artin’s conjecture remains open
+                                           and is an active area of research within the Langlands programme. (For a more detailed discussion,
+                                           we shall refer the interested reader to [Won18] and the references therein.)
+                                               It is worth noting that Artin L-functions are vast generalisations of Dedekind zeta functions and
+                                           Hecke L-functions. In particular, when L = K = Q, one recovers the Dedekind zeta function ζK (s)
+                                           of K, and the case L = K = Q yields the Riemann zeta function. Meanwhile, when L = Q(ζq ),
+                                           the q-th cyclotomic field, they are Dirichlet L-functions (modulo q). Similar to Dedekind zeta
+                                           functions and Hecke L-functions, the (non-trivial) zeros of Artin L-functions encode deep arithmetic
+
+                                             2020 Mathematics Subject Classification. Primary 11R42; Secondary 11M06, 11M26, 11Y35.
+                                             Key words and phrases. Artin L-functions, Hecke L-functions, zero-density estimates, explicit estimates.
+                                             P.J.W. is currently supported by the NSTC grant 114-2628-M-110-006-MY4. C.B. was supported by Australian
+                                           Research Council Discovery Project DP240100186 and by an Australian Mathematical Society Lift-off Fellowship.
+
+
+                                                                                                  1
+information of L/K and help one to establish the strongest effective forms of the Chebotarev density
+theorem under Artin’s conjecture (see [MMS88; Mur97; MMW18]).
+    An elementary but prominent question is to count the zeros of L(s, χ, L/K) in the critical strip
+0 < Re(s) < 1. For T ≥ 0, we set
+
+                   N (T, χ) = #{ρ ∈ C | L(ρ, χ, L/K) = 0, 0 < β < 1, |γ| ≤ T },
+
+counted with multiplicity if any multiple zeros appear. Indeed, to make the aforementioned effective
+results explicit, it is natural to require a precise determination of the implied constants for the
+estimate of N (T, χ).
+    Throughout, for a number field F , we will denote its degree and absolute discriminant by nF
+and dF , respectively. The main objective of this article is to prove the following theorem.
+Theorem 1.1. Let L/K be a Galois extension of number fields, and let χ be a non-trivial irreducible
+character of Gal(L/K). Assume Artin’s conjecture for L(s, χ, L/K). Put
+                                       χ(1)
+                             A(χ) = dK N(f(χ))          and   mχ = nK χ(1).
+
+For every T ≥ 1, the following estimates hold
+                                    T mχ
+                                      
+                    T
+         N (T, χ) − log A(χ)                  ≤ 0.1892 (log A(χ) + mχ log T ) + 9.484 mχ ,
+                    π              2πe
+and
+                                     T mχ
+                                       
+                       T
+          N (T, χ) −     log A(χ)           ≤ 0.194 (log A(χ) + mχ log T ) + 7.907 mχ .
+                       π            2πe
+   Table 1 lists further admissible pairs (C1 , C2 ), where C1 is the coefficient of log A(χ) + mχ log T
+and C2 is the coefficient of mχ in the estimate of Theorem 1.1.
+
+                                               C1        C2
+                                              0.200 6.751
+                                              0.240 3.976
+                                              0.280 2.941
+
+             Table 1. Further admissible pairs (C1 , C2 ) in the estimate for N (T, χ).
+
+Remark 1. (i) It is well-known that Artin’s conjecture for L(s, χ, L/K) implies that L(s, χ, L/K)
+belongs to the Selberg class. In addition, we note that general explicit bounds for the number
+of zeros of L-functions in the Selberg class were established by Palojärvi [Pal19, Corollary 5.3
+and Remark 5.4], which implies a version of Theorem 1.1, with weaker (C1 , C2 ), under Artin’s
+conjecture.
+(ii) Our argument is a refinement of Amberger’s method [Amb25] on counting zeros of Dedekind
+zeta functions, which is rooted in Turing’s work [Tur53], and extends it to a broader class of L-
+functions (that are not “self-dual”). The main new ingredient is the introduction of an additional
+parameter a4 , extending the three-parameter approach used in [Amb25, Lemma 3.1]. This extra
+parameter is the main source of the improvements in our final constants, especially the leading
+constant C1 .
+
+                                                    2
+    When χ is the trivial character χ0 , the associated Artin L-function is the Dedekind zeta function
+of K, defined as
+                                                Y
+(1.2)                                ζK (s) =      (1 − N(p)−s )−1
+                                                     p
+
+for Re(s) > 1. Our argument also leads to the following improvement of the recent work of
+Amberger [Amb25] (indeed, the second estimate in the theorem below is always sharper than
+[Amb25, Thm. 2.1]).
+Theorem 1.2. Let K be a number field of degree nK and absolute discriminant dK . Let
+
+                          NK (T ) = #{ρ ∈ C | ζK (s) = 0, 0 < β < 1, |γ| ≤ T }.
+
+For every T ≥ 1, the following estimates hold:
+
+                                T nK
+                                  
+                  T
+        NK (T ) − log dK                  ≤ 0.1892 (log dK + nK log T ) + 9.484 nK + 2.007,
+                  π            2πe
+
+and
+                            T nK
+                              
+                   T
+          NK (T ) − log dK         ≤ 0.194 (log dK + nK log T ) + 7.907 nK + 2.001.
+                   π       2πe
+
+Remark 2. In [KN12], extending the arguments of Backlund [Bac16], McCurley [McC84], and
+Rosser [Ros41] to Dedekind zeta functions, Kadiri and Ng showed that for T ≥ 1, one has
+
+                            T      T nK 
+(1.3)           NK (T ) −     log dK         ≤ C1 (log dK + nK log T ) + C2 nK + C3 ,
+                            π        2πe
+with admissible (C1 , C2 , C3 ) = (0.506, 16.950, 7.663); also, C1 can be taken as small as (π log 2)−1 ≈
+0.459 at the expense of larger C2 nK +C3 . This was improved by Trudgian [Tru15], who showed that
+the estimate (1.3) is valid with (C1 , C2 , C3 ) = (0.316, 5.872, 3.655), and the constant C1 in (1.3)
+could be made as small as 0.247 with (C2 , C3 ) = (8.851, 3.024). In [HSW21, Theorem 1.1], adapting
+the techniques developed in [Ben+21], Hasanalizade-Shen-Wong showed that for any T ≥ 1, one
+has
+                T        T nK  r                           d (T + 2)nK 
+                                             1                   K
+(1.4) NK (T )− log dK                   +      ≤ 0.22737 log                   +23.02528nK +4.51954,
+                π              2πe          4                      (2π)nK
+
+where r1 is the number of real places of K. Furthermore, Amberger [Amb25] improved all the
+previous results (including the ones in [HSW21, Table 1]) with admissible (C1 , C2 , C3 ) recorded in
+Table 2.1
+    An important consequence of Theorem 1.2 is the following explicit bound for N (T ), the number
+of non-trivial zeros ρ, with 0 < Im(ρ) ≤ T , of the Riemann zeta function ζ(s).
+  1The values of C
+                      3 reported in [Amb25, Theorem 2.1 and Table 4] appear to rely on a sign convention for the
+a3 -term that is inconsistent with the one used earlier in the proof. More precisely, the signs of the a3 -terms in
+equations (3.11) and (3.12) do not appear to be compatible with the kernel inequality in Lemma 3.1. Consequently,
+the values of C3 listed in Table 4 may require further verification.
+
+
+                                                         3
+                             Amberger [Amb25]              Our improvement
+                             C1      C2          C3         C1     C2      C3
+                            0.194 8.161 2.001              0.194 7.907 2.001
+                            0.200 6.803 2.001              0.200 6.751 2.015
+                            0.240 4.155 2.001              0.240 3.976 2.067
+                            0.280 3.055 2.001              0.280 2.941 2.127
+
+             Table 2. Comparison of explicit constants in the estimates for NK (T ).
+
+Corollary 1.3. Let N (T ) = 12 NQ (T ). For all T ≥ 1, the following estimates hold:
+                                                
+                                   T          T
+                         N (T ) −      log         ≤ 0.0946 log T + 5.746,
+                                   2π        2πe
+and                                                   
+                                    T             T
+                           N (T ) −    log                 ≤ 0.097 log T + 4.954.
+                                    2π           2πe
+In particular, the first estimate is sharper for T ≥ exp(330).
+Remark 3. The study of N (T ) has a long and rich history. For the convenience of the reader,
+writing
+                                        
+                            T         T
+(1.5)              N (T ) −    log         ≤ C1 log T + C2 log log T + C3 ,
+                            2π       2πe
+for T ≥ T0 , we summarise the advances that have been made in Table 3 below.
+
+                                                                    C1      C2      C3    T0
+               von Mangoldt [VM05] (1905)                         0.4320 1.9167 13.0788 28.5580
+                Grossmann [Gro13] (1913)                          0.2907 1.7862 7.0120    50
+                 Backlund [Bac16] (1918)                          0.1370 0.4430 5.2250    200
+                  Rosser [Ros41] (1941)                           0.1370 0.4430 2.4630     2
+                 Trudgian [Tru12] (2012)                          0.1700    0    2.8730    e
+                 Trudgian [Tru14] (2014)                          0.1120 0.2780 3.3850     e
+              Platt–Trudgian [PT15] (2015)                        0.1100 0.2900   3.165    e
+      Hasanalizade, Shen, and Wong [HSW22] (2022)                 0.1038 0.2573 9.4925     e
+              Bellotti–Wong [BW25] (2025)                        0.10076 0.24460 8.08344   e
+                Amberger [Amb25] (2025)                           0.097     0     5.081    1
+
+                       Table 3. Previous explicit bounds for N (T ) in (1.5)
+
+   Now, let ψ be a Hecke character (of finite order), and let L(s, ψ) and f(ψ) be its associated
+Hecke L-function and conductor, respectively. By class field theory, there is a Galois extension
+L/K with a character χ ∈ Gal(L/K) of degree 1 (i.e. χ(1) = 1) such that L(s, χ, L/K) = L(s, ψ)
+and f(χ) = f(ψ). (See [Neu99, Ch. VII, §10] for more details.) From this correspondence, applying
+Theorem 1.1, we then derive the following zero-counting result for Hecke L-functions.
+
+                                                       4
+Theorem 1.4. Let K be a number field of degree nK and absolute discriminant dK . Let ψ be a
+non-trivial Hecke character (of finite order), and let f(ψ) be its conductor. Define
+                     N (T, ψ) = #{ρ ∈ C | L(ρ, ψ) = 0, 0 < β < 1, |γ| ≤ T }.
+For every T ≥ 1, the following estimates hold:
+                                     T nK
+                                       
+               T
+    N (T, ψ) − log dK N(f(ψ))                  ≤ 0.1892 (log(dK Nf(ψ)) + nK log T ) + 9.484 nK
+               π                    2πe
+and
+                                   T nK
+                                     
+                T
+      N (T, ψ) − log dK N(f(ψ))           ≤ 0.194 (log(dK Nf(ψ)) + nK log T ) + 7.907nK .
+                π                 2πe
+Remark 4. Previously, for any fixed totally imaginary field K, adapting Trudgian’s argument in
+[Tru15], Grześkowiak [Grz17, Theorem 1.1] proved a version of Theorem 1.4, where the leading
+term in the bound is C1 n2K log(dK Nf(ψ)) + nK log T , with C1 ≥ (π log 4)−1 ≈ 0.229612.
+   When K = Q, this theorem yields the following zero-counting result for Dirichlet L-functions.
+Corollary 1.5. Let χ be a non-trivial Dirichlet character modulo q, and let L(s, χ) be the Dirichlet
+L-function of χ. Set
+                      Nχ (T ) = #{ρ ∈ C | L(ρ, χ) = 0, 0 < β < 1, |γ| ≤ T }.
+For every T ≥ 1, the following estimates hold:
+                                             
+                                   T      qT
+                         Nχ (T ) − log          ≤ 0.1892 log(qT ) + 9.484,
+                                   π      2πe
+and                                                
+                                   T          qT
+                          Nχ (T ) − log                 ≤ 0.194 log(qT ) + 7.907.
+                                   π          2πe
+Remark 5. (i) We remark that Theorem 1.4 and Corollary 1.5 remain valid with (0.1892, 9.484)
+and (0.194, 7.907) replaced by any of the admissible pairs (C1 , C2 ) listed in Table 1.
+(ii) The explicit bounds for Nχ (T ) have been established by McCurley [McC84], Trudgian [Tru15],
+and then Bennett-Martin-O’Bryant-Rechnitzer [Ben+21]. McCurley and Trudgian obtained bounds
+of the form                                        
+                                        T       qT
+                               Nχ (T ) − log           ≤ C1 log(qT ) + C2
+                                         π      2πe
+for positive constants C1 and C2 . In [McC84, Theorem 2.1], McCurley gave a general formulation
+for C1 = C1 (η) and C2 = C2 (η), as functions of a parameter η ∈ (0, 12 ], with all C1 > 1/π log 2 >
+0.45. In [Tru15, Theorem 1], Trudgian refined McCurley’s techniques and gave ten pairs of values
+(C1 , C2 ) with all C1 ≥ 0.247; in his proof, it was asserted that C1 could be taken as small as
+(π log 4)−1 ≈ 0.229612. In [Ben+21, Theorem 1.1], a slightly more complicated bound
+                                                                                       
+                T        qT      χ(−1)                   q(T + 2)                  q(T + 2)
+    Nχ (T ) −      log         −           ≤ 0.22737 log          + 2 log 1 + log             − 0.5
+                π        2πe        4                       2π                        2π
+was established for T ≥ 5/7 with log q(T2π+2) > 1.567. As a direct consequence, in [Ben+21, Corollary
+1.2] Bennett-Martin-O’Bryant-Rechnitzer showed that (C1 , C2 ) can be taken as (0.247, 6.894) and
+(0.298, 4.358), for T ≥ 5/7, which improve all results of Trudgian as well as the parametric bound
+of McCurley. Moreover, it is worth remarking that from our main theorem, one can even take
+(C1 , C2 ) = (0.240, 3.976) for T ≥ 1.
+
+                                                        5
+                          2. The main term and the gamma factor
+2.1. The main term. For a number field F , we let nF = [F : Q] and dF denote its degree and
+absolute discriminant, respectively. Let L/K be a Galois extension of number fields with Galois
+group G. In this section, we shall collect some preliminaries for Artin L-functions (mainly from
+[Mar77] and [Neu99, Ch. VII]). For any irreducible character χ of G, we let L(s, χ, L/K) be the
+Artin L-functions attached to χ defined in (1.1). For 1 ≤ j ≤ dim V IP , let λj,p be eigenvalues of
+    IP
+ρ|V (σP ), and we set λj,p = 0 for dim V IP < j ≤ dim V = χ(1). Then we have
+                           Y              IP                 Y Y
+(2.1)      L(s, χ, L/K) =     det(I − ρ|V (σP )N(p)−s )−1 =             (1 − λj,p N(p)−s )−1
+                             p                                         p 1≤j≤χ(1)
+
+for Re(s) > 1. Consequently, we have the following result.
+Lemma 2.1. For s = σ + it with σ > 1, one has
+                   ζK (2σ) χ(1)
+                          
+                                ≤ |L(s, χ, L/K)| ≤ ζK (σ)χ(1) ≤ ζ(σ)nK χ(1) ,
+                    ζK (σ)
+where, as usual, ζ(s) denotes the Riemann zeta function. In particular, when χ is the trivial
+character of G = Gal(L/K), then
+                                    ζK (2σ)
+                                            ≤ |ζK (s)| ≤ ζ(σ)nK
+                                     ζK (σ)
+for s = σ + it with σ > 1.
+Proof. Observe that
+             Y                                Y
+                  (1 − λj,p N(p)−s )−1 ≤              (1 − N(p)−σ )−1 ≤ ((1 − N(p)−σ )−1 )χ(1)
+           1≤j≤χ(1)                        1≤j≤χ(1)
+
+and
+             Y                               Y
+                  (1 − λj,p N(p)−s )−1 ≥          (1 + N(p)−σ )−1
+          1≤j≤χ(1)                         1≤j≤χ(1)
+                                                                                                  χ(1)
+                                                                               (1 − N(p)−2σ )−1
+                                                                           
+                                                          −σ −1 χ(1)
+                                       ≥ ((1 + N(p)         )   )      =                                  .
+                                                                               (1 − N(p)−σ )−1
+We then conclude the proof by recalling (2.1) and the definition of ζK (s) in (1.2).                          □
+   Furthermore, following [Mar77, pp. 10–11], for any prime P of L that is above p, we define
+                                        m     1 X
+                                    χ(σP  )=          χ(g),
+                                              e     m g7→σP
+
+where e is the ramification index of P, and the sum is over the e elements g ∈ DP that map onto
+ m ∈ D /I . (Note that the order of the inertia group I equals e, so the sum “takes an average”.)
+σP     P P                                             P
+One has
+                                                      ∞       m)
+                                                  XX       χ(σP
+                               log L(s, χ, L/K) =                  ,
+                                                  p
+                                                         mN(p)ms
+                                                            m=1
+where, for Re(s) > 1, we take the branch defined by the absolutely convergent Dirichlet series.
+                                   m )| ≤ χ(1), we then have the following handy corollary.
+Consequently, by the fact that |χ(σP
+
+                                                      6
+Corollary 2.2. Let s = σ + it with σ > 1. Then
+                       | log L(s, χ, L/K)| ≤ χ(1) log ζK (σ) ≤ nK χ(1) log ζ(σ),
+where the branch of the logarithm is defined by the absolutely convergent Euler product. Moreover,
+for every integer k ≥ 0, one has
+                         dk L′                                  k
+                                                                    ′
+                                                          k+1 d     ζ
+                           k
+                               (s, χ, L/K) ≤ nK χ(1)(−1)         k
+                                                                        (σ),
+                         ds L                                 dσ    ζ
+where the right-hand side is positive for σ > 1. The same estimates hold with χ replaced by χ̄.
+Remark 6. The estimates in Lemma 2.1 and Corollary 2.2 are deliberately uniform in the extension
+L/K and the character χ. In special situations, one may be able to obtain sharper bounds by
+using more detailed information about L/K or χ, or by exploiting the pairing between L(s, χ) and
+L(s, χ̄). This may be particularly relevant for special classes of characters, such as quadratic or
+cubic characters. However, we do not pursue such refinements here, since the presented uniform
+estimates are simpler to state and apply, and are sufficient for the general bounds proved in this
+paper.
+                                                                      χ(1)
+    Let f(χ) denote the Artin conductor of χ, and set A(χ) = dK N(f(χ)). In addition, we set
+δ(χ) = 1 if χ is the trivial character; otherwise δ(χ) = 0. The completed function ξ(s, χ) =
+ξ(s, χ, L/K) is defined by
+(2.2)                    ξ(s, χ) = (s(s − 1))δ(χ) A(χ)s/2 γχ (s)L(s, χ, L/K),
+where
+                                    s  s c0 (χ)  s+1  s + 1 c1 (χ)
+(2.3)                      γχ (s) = π − 2 Γ          π− 2 Γ                ,
+                                            2                 2
+with c0 (χ), c1 (χ) ∈ Z≥0 such that
+                                      c0 (χ) + c1 (χ) = nK χ(1).
+By the works of Artin and Brauer (see, e.g., [Neu99, Ch. VII, §12]), it is known that ξ(s, χ) satisfies
+the functional equation
+(2.4)                                ξ(s, χ) = W (χ)ξ(1 − s, χ̄),
+where W (χ) is the global root number of L(s, χ, L/K) such that |W (χ)| = 1. In addition, it is
+known that A(χ̄) = A(χ) and γχ̄ = γχ . Consequently, one has
+(2.5)                                     ξ(s, χ) = ξ(s̄, χ̄).
+Remark 7. Let r1 and r2 be the numbers of real and complex places, respectively, of K; note
+that nK = r1 + 2r2 . For Dedekind zeta functions, namely, χ = χ0 is the trivial character of
+G = Gal(L/K), we then have the completed zeta function ξK (s) defined as
+                                                       s/2
+(2.6)                             ξK (s) = s(s − 1)dK γK (s)ζK (s),
+where                               s+1  s + 1 r2  s  s r1 +r2
+                          γK (s) = π − 2 Γ               π− 2 Γ           .
+                                               2                2
+We recall that ξK (s) extends to an entire function of order 1 and satisfies the functional equation
+(2.7)                                    ξK (s) = ξK (1 − s).
+
+                                                   7
+    From now on, unless otherwise stated, we first assume Artin’s conjecture for L(s, χ, L/K)
+attached to a non-trivial irreducible character χ. Note that for such an instance, the functional
+equation (2.4) implies Artin’s conjecture for L(s, χ̄, L/K). Hence, ξ(s, χ) and ξ(s, χ̄) are entire
+functions of order one. The case of trivial character, for which L(s, χ, L/K) = ζK (s), will be
+treated separately by using the completed Dedekind zeta-function ξK (s).
+    Moreover, we also assume initially that T is not the ordinate of a zero of either L(s, χ, L/K) or
+L(s, χ̄, L/K). The general case follows by the usual limiting argument (see, e.g., [HSW21, p. 279,
+Footnote 1]). Denote
+
+                       Lχ (s) := L(s, χ, L/K)         and        Lχ̄ (s) := L(s, χ̄, L/K).
+
+For the zero-counting argument, we will use the auxiliary symmetrized completed function
+
+                                            Ξχ (s) := ξ(s, χ)ξ(s, χ̄).
+
+This is not a new completion of Lχ (s) but a useful function for packaging the pair χ, χ̄, which will
+ease the notation throughout the proof. Since
+
+                       A(χ̄) = A(χ),           γχ̄ (s) = γχ (s),        W (χ)W (χ̄) = 1,
+
+we have
+
+(2.8)                                  Ξχ (s) = Ξχ (1 − s) = Ξχ (s̄).
+
+Thus, Ξχ admits the same formal symmetry as completed Dedekind zeta functions. Its zeros are
+the multiset union of the zeros of Lχ (s) and Lχ̄ (s). Since complex conjugation gives a multiplicity-
+preserving bijection between the zeros of Lχ (s) and those of Lχ̄ (s), this multiset has twice as many
+zeros as Lχ (s) alone. More precisely, let Zχ denote the multiset union of the non-trivial zeros of
+Lχ (s) and Lχ̄ (s). If ρ = β + iγ ∈ Zχ , then 1 − ρ̄ = 1 − β + iγ also belongs to Zχ , with the same
+multiplicity.
+Although Ξχ has twice as many zeros as Lχ , the operators defined below are normalized so as to
+count N (T, χ), not the full zero count NΞχ (T ). Equivalently, they are one half of the operators one
+would obtain by applying the Dedekind-zeta argument directly to the function Ξχ .
+By the argument principle applied to ξ(s, χ), for any d > 12 , we have
+
+                                                               ξ ′ (s, χ)
+                                                             I
+                                                      1
+                                       N (T, χ) =                         ds,
+                                                     2πi     R ξ(s, χ)
+
+where R is the rectangular contour with vertices
+
+                       1                   1                 1                  1
+                         − d − iT,           + d − iT,         + d + iT,          − d + iT.
+                       2                   2                 2                  2
+
+Using the functional equation (2.4), we have
+
+                                          ξ ′ (s, χ) ξ ′ (s, χ̄)                    Ξ′χ (s)
+                                       Z                                         Z
+                                  1                                    1
+                    N (T, χ) =                      +            ds =                       ds,
+                                 2πi    P ξ(s,   χ)   ξ(s,  χ̄)       2πi         P Ξχ (s)
+
+
+                                                         8
+where P is the part of the contour R on Re(s) ≥ 0 (i.e., the path connecting 12 − iT , 12 + d − iT ,
+1                1
+2 + d + iT , and 2 + d). In addition, by (2.8), the symmetry of complex conjugation, we obtain
+                                          Z 1 +d+iT                 Z 1 +iT
+                                     1       2        Ξ′χ (s)   1        2   Ξ′χ (s)
+                          N (T, χ) =                          +                      ds.
+                                     πi     1
+                                              +d      Ξχ (s) πi      1
+                                                                       +d+iT Ξχ (s)
+                                            2                        2
+
+
+Hence, similar to [Amb25, Eq. (3.3)] (which is rooted in a method of Turing [Tur53, Sec. 4, Lemma
+1]), we arrive at
+
+                         1 1/2+d       Ξ′χ               Ξ′χ
+                          Z                                            
+(2.9)       N (T, χ) = −           Im (σ + iT ) − Im (σ + d + iT ) dσ + E1 (Ξχ ; T, d),
+                         π 1/2         Ξχ                Ξχ
+
+where
+                                                                                     
+                                  1                 1                        1
+(2.10)           E1 (Ξχ ; T, d) =      2Im log Ξχ     + d + iT − Im log Ξχ     + 2d + iT    .
+                                  π                 2                        2
+Equivalently,
+                            E1 (Ξχ ; T, d) = E1 (ξ(s, χ); T, d) + E1 (ξ(s, χ̄); T, d),
+where                                                                            
+                                1                1                       1
+                E1 (F ; T, d) =      2Im log F     + d + iT − Im log F     + 2d + iT    .
+                                π                2                       2
+By the Hadamard factorization for the entire function Ξχ , which is of order one, we can write
+
+                              Ξ′χ              X 1            
+                                                            1
+                                  (s) = Bχ +          +          ,
+                              Ξχ                     ρ s−ρ
+                                                      ρ∈Zχ
+
+where Bχ ∈ R. This follows from (2.8). Hence, for s = σ + it,
+
+                       Ξ′χ
+                                                                        
+                                  X                γ−t             γ
+                   Im (s) =                                   −            .
+                       Ξχ                  (σ − β)2 + (t − γ)2 β 2 + γ 2
+                                       ρ=β+iγ∈Zχ
+
+Substituting this into (2.9), the terms involving γ/(β 2 + γ 2 ) cancel, and we get
+(2.11)
+   N (T, χ)
+       1 1/2+d
+                                                                                        
+                                          T −γ                    T −γ
+        Z             X
+    =                                     2          2
+                                                       −                                     dσ + E1 (Ξχ ; T, d).
+       π 1/2                       (σ − β) + (T − γ)     (σ + d − β)2 + (T − γ)2
+                   ρ=β+iγ∈Zχ
+
+For b, t ∈ R and d > 1/2, define
+                                                                                     
+                           −1 b + d          −1 −b + d         −1 b + 2d         −1 −b + 2d
+(2.12) f (b, t; d) = 2 tan            + 2 tan            − tan             − tan              .
+                                t                 t                  t                 t
+Pairing each zero ρ = β + iγ with 1 − ρ̄, and using the symmetry of Zχ , we obtain
+                                                              
+                               1    X           1
+(2.13)             N (T, χ) =               f     − β, T − γ; d + E1 (Ξχ ; T, d).
+                              2π                2
+                                        ρ=β+iγ∈Zχ
+
+
+                                                        9
+We now introduce a fourth parameter a4 . The operators E1 , E2 , E3 are the same as in the three-
+parameter argument of [Amb25]; the new contribution is the operator E4 defined below.
+For a meromorphic function F , write
+                                              ′ ′                     ′ ′′
+                        F′           ′        F              ′′          F
+              DF (s) :=    (s),    DF (s) :=        (s),    DF (s) :=          (s).
+                        F                     F                          F
+Let
+                                                       1
+                                               s0 :=     + d + iT.
+                                                       2
+Define
+                                               da1              d2 a2
+(2.14)                     E2 (F ; T, d) :=        ReDF (s0 ) −       ReDF′ (s0 ),
+                                                4                4
+
+                                                          a3
+(2.15)                                E3 (F ; T, d) :=       ImDF′ (s0 ),
+                                                          4
+and
+                                                          d3 a4
+(2.16)                              E4 (F ; T, d) := −          ImDF′′ (s0 ).
+                                                           8
+Here, E4 is the only new operator. It corresponds to the term appearing in Lemma 2.3.
+Lemma 2.3. Let
+                                                          3x2 t − t3
+                                           I3 (x, t) :=               .
+                                                          (x2 + t2 )3
+Then
+                                                                 1
+                                          I3 (x, t) = −Im              .
+                                                             (x + it)3
+Moreover, for F = Ξχ ,
+                                                     ′ ′′             ′ ′′
+                                         d3 a4
+                                                                                         
+                                                      ξ                  ξ
+                      E4 (Ξχ ; T, d) = −       Im            (s0 , χ) +         (s0 , χ̄) .
+                                          8           ξ                  ξ
+Proof. The identity
+                                          I3 (x, t) = −Im(x + it)−3
+follows by expanding
+                                 (x − it)3 = (x3 − 3xt2 ) − i(3x2 t − t3 ).
+Since Ξχ (s) = ξ(s, χ)ξ(s, χ̄), we have
+                                                ′ ′′           ′ ′′
+                                                ξ                ξ
+                                DΞ′′ χ (s) =           (s, χ) +         (s, χ̄).
+                                                ξ                ξ
+Substituting this identity into the definition
+                                                          d3 a4
+                                    E4 (F ; T, d) = −           ImDF′′ (s0 )
+                                                           8
+gives the claimed formula for F = Ξχ .                                                         □
+
+                                                        10
+   For x, t ∈ R, put
+
+                                x                            x2 − t 2                           2xt
+              R1 (x, t) :=          ,      R2 (x, t) :=                 ,     I2 (x, t) :=                 .
+                             x + t2
+                              2                             (x2 + t2 )2                      (x2 + t2 )2
+
+We say that the tuple (d, a1 , a2 , a3 , a4 ) is admissible if d > 1/2 and, for every |b| ≤ 1/2 and every
+t ̸= 0, one has
+                        πh
+          f (b, t; d) ≤    da1 {R1 (d + b, t) + R1 (d − b, t)} + d2 a2 {R2 (d + b, t) + R2 (d − b, t)}
+                        4                                                                           i
+(2.17)                  + a3 {I2 (d + b, t) + I2 (d − b, t)} + d3 a4 {I3 (d + b, t) + I3 (d − b, t)} .
+
+The upper inequality implies the lower bound
+                     πh
+       f (b, t; d) ≥    − da1 {R1 (d + b, t) + R1 (d − b, t)} − d2 a2 {R2 (d + b, t) + R2 (d − b, t)}
+                     4                                                                           i
+(2.18)               + a3 {I2 (d + b, t) + I2 (d − b, t)} + d3 a4 {I3 (d + b, t) + I3 (d − b, t)} .
+
+Indeed, this follows from (2.17) upon replacing t by −t, since f (b, t; d), I2 (x, t), and I3 (x, t) are odd
+in t, whereas R1 (x, t) and R2 (x, t) are even in t.
+Proposition 2.4 (Four-parameter zero-sum bound). Assume that (d, a1 , a2 , a3 , a4 ) is admissible.
+Then
+                                    
+            1 X       1
+(2.19)            f     − β, T − γ; d ≤ E2 (Ξχ ; T, d) + E3 (Ξχ ; T, d) + E4 (Ξχ ; T, d),
+           2π         2
+                 ρ∈Zχ
+
+and
+                                                  
+                 1 X             1
+(2.20)               f             − β, T − γ; d       ≥ −E2 (Ξχ ; T, d) + E3 (Ξχ ; T, d) + E4 (Ξχ ; T, d).
+                2π               2
+                   ρ∈Zχ
+
+
+Proof. We prove the upper bound; the lower bound follows from (2.18). Put
+
+                                                1
+                                           b=     − β,           t = T − γ.
+                                                2
+For a zero ρ = β + iγ, we have
+                                              s0 − ρ = d + b + it.
+The zero paired with ρ by the functional equation is 1 − ρ̄ = 1 − β + iγ, and
+
+                                           s0 − (1 − ρ̄) = d − b + it.
+
+The R1 , R2 , and I2 terms give exactly the operators E2 and E3 , as in the three-parameter argument
+of [Amb25]. For the new cubic term, Lemma 2.3 gives
+                                                                                  
+                                                            1             1
+                  I3 (d + b, t) + I3 (d − b, t) = −Im            +                   .
+                                                        (s0 − ρ)3 (s0 − (1 − ρ̄))3
+
+                                                            11
+Since ρ 7→ 1 − ρ̄ permutes Zχ , summing over ρ ∈ Zχ gives
+                          X
+                              {I3 (d + b, t) + I3 (d − b, t)} = −ImDΞ′′ χ (s0 ).
+                           ρ∈Zχ
+
+Multiplying the pointwise inequality by 1/(2π), the cubic term therefore contributes
+
+                                        d3 a4
+                                    −         ImDΞ′′ χ (s0 ) = E4 (Ξχ ; T, d).
+                                         8
+This proves the upper bound.                                                                                  □
+
+    Combining (2.13) with Proposition 2.4, and recalling that our operators are normalized for the
+half-count NΞχ (T )/2 = N (T, χ), we obtain
+
+(2.21)                            Eℓ (Ξχ ; T, d) ≤ N (T, χ) ≤ Eu (Ξχ ; T, d),
+
+where
+
+(2.22)          Eu (F ; T, d) := E1 (F ; T, d) + E2 (F ; T, d) + E3 (F ; T, d) + E4 (F ; T, d),
+
+and
+
+(2.23)          Eℓ (F ; T, d) := E1 (F ; T, d) − E2 (F ; T, d) + E3 (F ; T, d) + E4 (F ; T, d).
+
+The operators E1 , E2 , E3 , E4 , and hence also Eu , Eℓ , are additive with respect to products:
+
+                       Ej (F G; T, d) = Ej (F ; T, d) + Ej (G; T, d),       j = 1, 2, 3, 4.
+
+Therefore, since χ is non-trivial and
+
+                                     Ξχ (s) = A(χ)s γχ (s)2 Lχ (s)Lχ̄ (s)
+
+we have, for ⋆ ∈ {u, ℓ},
+
+(2.24)   E⋆ (Ξχ ; T, d) = E⋆ (A(χ)s ; T, d) + 2E⋆ (γχ (s); T, d) + E⋆ (Lχ (s); T, d) + E⋆ (Lχ̄ (s); T, d) .
+
+This is the decomposition that will be estimated term by term.
+2.2. The trivial character. We now treat the case that χ = χ0 is the trivial character. In this
+case L(s, χ, L/K) = ζK (s), and we do not use the auxiliary product Ξχ (s). Instead, we work
+directly with the completed Dedekind zeta-function
+                                                             s/2
+                                     ξK (s) = s(s − 1)dK γK (s)ζK (s).
+
+Thus the zero-counting argument is the same as above, but with Ξχ replaced by ξK . Let ZK
+denote the multiset of non-trivial zeros of ζK (s). Since ξK (s) = ξK (1 − s) and ξK (s) = ξK (s̄), if
+ρ = β + iγ ∈ ZK , then 1 − ρ̄ = 1 − β + iγ also belongs to ZK , with the same multiplicity.
+Applying the same argument in the Dedekind case gives
+                                                             
+                              1     X          1
+(2.25)             NK (T ) =               f     − β, T − γ; d + E1K (ξK ; T, d),
+                              π                2
+                                    ρ=β+iγ∈ZK
+
+
+                                                        12
+where, for j = 1, 2, 3, 4, we define
+
+                                         EjK (F ; T, d) := 2Ej (F ; T, d).
+
+Then
+               EuK (F ; T, d) := E1K (F ; T, d) + E2K (F ; T, d) + E3K (F ; T, d) + E4K (F ; T, d),
+and
+               EℓK (F ; T, d) := E1K (F ; T, d) − E2K (F ; T, d) + E3K (F ; T, d) + E4K (F ; T, d).
+With this notation, it follows that
+
+                                   EℓK (ξK ; T, d) ≤ NK (T ) ≤ EuK (ξK ; T, d).
+                                                   s/2
+In addition, recalling that ξK (s) = s(s − 1)dK γK (s)ζK (s), we deduce
+                                                              s/2
+(2.26)    E⋆K (ξK ; T, d) = E⋆K (s(s − 1); T, d) + E⋆K (dK ; T, d) + E⋆K (γK (s); T, d) + E⋆K (ζK (s); T, d)
+
+for ⋆ ∈ {u, ℓ}. This is an analogue of (2.24) for the trivial character.
+Remark 8. Note that Eu ((s(s − 1))δ(χ) ) and Eℓ ((s(s − 1))δ(χ) ) are non-zero only if χ = χ0 is the
+trivial character. In light of this, we will separate the case of trivial character in the following
+sections.
+2.3. Estimating the terms. We now estimate the terms appearing in (2.24) and (2.26), following
+the strategy of [Amb25]. The parameters d, a1 , a2 , a3 , a4 are kept variable for now and will be
+optimized later. Denote
+                                                              1                       1
+                           mχ := nK χ(1),          σ1 :=        + d,         σ2 :=      + 2d.
+                                                              2                       2
+For σ > 1, define
+                                                       ′ ′                                  ′ ′′
+                           ζ′                          ζ                                      ζ
+                L1 (σ) := − (σ),          L2 (σ) :=          (σ),            L3 (σ) := −             (σ).
+                           ζ                           ζ                                      ζ
+
+Note that L1 (σ), L2 (σ), and L3 (σ) are positive for σ > 1.
+Lemma 2.5. For a non-trivial irreducible character χ, one has
+                                                       
+                                   s           T    da1
+                          Eu (A(χ) ; T, d) =     +        log A(χ),
+                                               π     4
+and                                                                    
+                                            s                T   da1
+                                   Eℓ (A(χ) ; T, d) =          −            log A(χ).
+                                                             π    4
+Proof. For F (s) = A(χ)s , we have
+                                                                             ′                          ′′
+                                       F′                               F′                          F′
+                                                                                               
+         log F (s) = s log A(χ),          (s) = log A(χ),                         (s) = 0,                     (s) = 0.
+                                       F                                F                           F
+Substituting these identities into the definitions of E1 , E2 , E3 , E4 gives the result.                                 □
+
+                                                         13
+   For the trivial character we work directly with ξK (s) rather than with Ξχ (s). To match the
+normalization of the Dedekind zeta zero-counting function, define
+                               EjK (F ; T, d) := 2Ej (F ; T, d),            j = 1, 2, 3, 4
+and
+                  EuK := E1K + E2K + E3K + E4K ,                  EℓK := E1K − E2K + E3K + E4K .
+Then
+                                    EℓK (ξK ; T, d) ≤ NK (T ) ≤ EuK (ξK ; T, d).
+Lemma 2.6. When χ = χ0 , one has
+                                                                          
+                                            s/2                  T   da1
+                                     EuK (dK ; T, d) =             +           log dK ,
+                                                                 π    4
+and                                                                       
+                                           s/2                   T   da1
+                                     EℓK (dK ; T, d) =             −           log dK .
+                                                                 π    4
+                      s/2
+Proof. For F (s) = dK , one has
+                              s                               1
+                log F (s) =     log dK ,          DF (s) =      log dK ,         DF′ (s) = DF′′ (s) = 0.
+                              2                               2
+                                                                                                       s/2
+Thus E3 (F ; T, d) = E4 (F ; T, d) = 0. Moreover, the factor 1/2 coming from dK is cancelled by
+the normalization EjK = 2Ej . Substituting into the definitions of EuK and EℓK gives the stated
+identities.                                                                                   □
+Lemma 2.7. Let
+                          1                       1                         1                       1
+               x+ := d + ,               x− := d − ,              y+ := 2d + ,            y− := 2d − .
+                          2                       2                         2                       2
+For F (s) = s(s − 1), one has
+                                                                                      
+                                 2          −1 T         −1 T        −1 T        −1 T
+(2.27)          E1K (F ; T, d) =       2 tan      + 2 tan      − tan       − tan         ,
+                                    π          x+           x−          y+          y−
+
+                                                                         d2 a2        x2+ − T 2     x2− − T 2
+                                                                                                                
+                            da1             x+        x−
+(2.28)     E2K (F ; T, d) =               2       + 2                  +                          +                    ,
+                                2        x+ + T 2  x− + T 2               2          (x2+ + T 2 )2 (x2− + T 2 )2
+                                                                                          
+                                              a3             2x+ T        2x− T
+(2.29)                       E3K (F ; T, d) =               2      2 2
+                                                                       + 2                     ,
+                                                  2       (x+ + T )     (x− + T 2 )2
+and
+                                             d3 a4         3x2+ T − T 3 3x2− T − T 3
+                                                                                            
+(2.30)                      E4K (F ; T, d) =                            +                          .
+                                                  2        (x2+ + T 2 )3 (x2− + T 2 )3
+Consequently,
+                               EuK (s(s − 1); T, d) = E1K + E2K + E3K + E4K ,
+and
+                               EℓK (s(s − 1); T, d) = E1K − E2K + E3K + E4K ,
+where all terms are evaluated at (s(s − 1); T, d).
+
+                                                             14
+Proof. For F (s) = s(s − 1), we have
+                                                                       ′
+                        F′                                        F′
+                                                              
+                                1  1                                                1      1
+                           (s) = +    ,             and                     (s) = − 2 −          .
+                        F       s s−1                             F                s    (s − 1)2
+
+Substituting s0 = 1/2+d+iT into the definitions of E1K , E2K , E3K , E4K gives the stated relations.                         □
+
+   We now adapt the Euler-product estimate of [Amb25, Lemma 3.8] to the four-parameter setting.
+The only new feature is the contribution of the operator E4 , which produces an additional third-
+order local term. For q > 1 and ϕ ∈ R, define
+
+                w1 = w1 (q, ϕ) := q −σ1 eiϕ ,         w2 = w2 (q, ϕ) := q −σ2 eiϕ ,               Lq := log q.
+
+Let
+                                                                
+                                  Aj (q, ϕ) := Im − log(1 − wj ) ,                 j = 1, 2,
+
+where the logarithm is the analytic branch in the unit disc. Further set
+
+                              w1                                 w1                                         w1 (1 + w1 )
+         B1 (q, ϕ) := −Lq          ,       B2 (q, ϕ) := L2q              ,              B3 (q, ϕ) := −L3q                .
+                            1 − w1                            (1 − w1 )2                                     (1 − w1 )3
+
+Define the quantity qu (q, ϕ) by
+
+(2.31)
+  2                            da1               d2 a2              a3             d3 a4
+    (2A1 (q, ϕ) − A2 (q, ϕ)) +     ReB1 (q, ϕ) −       ReB2 (q, ϕ) + ImB2 (q, ϕ) −       ImB3 (q, ϕ),
+ π                              2                 2                 2               4
+
+which is the four-parameter analogue of Amberger’s function q1 (q, ϕ). More precisely,
+
+                                                                  d3 a4
+                                       qu (q, ϕ) = q1 (q, ϕ) −          ImB3 (q, ϕ),
+                                                                   4
+where the extra term is the new contribution coming from E4 . Finally, define
+                                                                         
+                                                   X    
+                                                                         
+                                                                          
+(2.32)               CE (d, a1 , a2 , a3 , a4 ) :=                   m
+                                                     max 0, sup qu (p , ϕ) ,
+                                                   p
+                                                        
+                                                           m≥1           
+                                                                          
+                                                                             ϕ∈[0,2π]
+
+
+where the sum is over primes.
+
+Lemma 2.8. Let χ be a non-trivial irreducible character of Gal(L/K), and put mχ = nK χ(1).
+Then
+
+(2.33)                      Eu (Lχ ; T, d) + Eu (Lχ̄ ; T, d) ≤ mχ CE (d, a1 , a2 , a3 , a4 ),
+
+and
+
+(2.34)                      Eℓ (Lχ ; T, d) + Eℓ (Lχ̄ ; T, d) ≥ −mχ CE (d, a1 , a2 , a3 , a4 ).
+
+                                                           15
+Proof. For Res > 1, each local Artin L-function can be written as
+                                                        χ(1)
+                                                        Y                        −1
+                                        Lp (s, χ) =            1 − λj,p (Np)−s          ,
+                                                        j=1
+
+where |λj,p | ≤ 1, after adjoining zero eigenvalues if necessary. It is therefore enough to consider a
+single local factor
+                            Fz (s) := (1 − zq −s )−1 ,  |z| ≤ 1,     q = Np.
+The contribution of Fz to Eu is a real linear combination of real and imaginary parts of functions
+holomorphic in z on the disc |z| < 1 and continuous on |z| ≤ 1. Hence, by the maximum principle
+for harmonic functions, its maximum over |z| ≤ 1 is attained on the unit circle. Write z = eiθ and
+let ϕ = θ − T log q. Then
+                       1                                                 1
+                  zq −( 2 +d+iT ) = q −σ1 eiϕ = w1 ,                zq −( 2 +2d+iT ) = q −σ2 eiϕ = w2 .
+
+Moreover,
+                           Fz′ 1
+                                           
+                                                          w1
+                                   + d + iT = −(log q)         = B1 (q, ϕ),
+                           Fz 2                         1 − w1
+                          ′ ′             
+                          Fz      1                        w1
+                                    + d + iT = (log q)2            = B2 (q, ϕ),
+                          Fz      2                     (1 − w1 )2
+and                            ′′ 
+                         Fz′
+                                                   
+                                       1                                w1 (1 + w1 )
+                                         + d + iT       = −(log q)3                  = B3 (q, ϕ).
+                         Fz            2                                 (1 − w1 )3
+Substituting these identities into the definition Eu = E1 + E2 + E3 + E4 gives
+                                                             1
+                                             Eu (Fz ; T, d) = qu (q, ϕ).
+                                                             2
+Hence the paired local contribution from Lχ (s)Lχ̄ (s) is bounded above by qu (q, ϕ). For each prime
+ideal p, summing over the at most χ(1) local roots gives
+
+                                              χ(1) sup qu (Np, ϕ).
+                                                        ϕ∈[0,2π]
+
+Therefore                                                                 X
+                     Eu (Lχ ; T, d) + Eu (Lχ̄ ; T, d) ≤ χ(1)                     sup qu (Np, ϕ).
+                                                                         p⊂OK ϕ∈[0,2π]
+
+For a rational prime p, every prime ideal of K above p has norm pm for some m ≥ 1, and the
+number of prime ideals above p is at most nK . Hence
+                                                                     
+                                                     
+                                                                     
+                                                                      
+                     X                       X
+                         sup qu (Np, ϕ) ≤ nK    max 0, sup qu (pm , ϕ) .
+                                                        m≥1
+                    p⊂OK ϕ                    p
+                                                     
+                                                                     
+                                                                      
+                                                                             ϕ∈[0,2π]
+
+By the definition of CE , this proves (2.33).
+For the lower bound, let qℓ (q, ϕ) denote the contribution obtained from one prime by replacing Eu
+
+                                                               16
+with Eℓ . Since the terms coming from E1 , ImB2 , and ImB3 are odd in ϕ, whereas ReB1 and ReB2
+are even in ϕ, one has
+                                      qℓ (q, ϕ) = −qu (q, −ϕ).
+Therefore
+                                            inf      qℓ (q, ϕ) = − sup qu (q, ϕ).
+                                          ϕ∈[0,2π]                   ϕ∈[0,2π]
+
+The same summation argument gives (2.34).                                                                           □
+
+Lemma 2.9. With the notation of Lemma 2.8, one has, for the trivial character,
+
+                                      EuK (ζK ; T, d) ≤ nK CE (d, a1 , a2 , a3 , a4 ),
+
+and
+                                     EℓK (ζK ; T, d) ≥ −nK CE (d, a1 , a2 , a3 , a4 ).
+
+Proof. One applies the same majorization used in the proof of Lemma 2.8 to the Euler product of
+ζK (s), using the normalization EjK = 2Ej , for j = 1, 2, 3, 4.                              □
+
+   For completeness, we also mention two results which could be used instead of Lemma 2.8 and
+Lemma 2.9. The proofs of Lemma 2.10 and Lemma 2.11 are much simpler, but they lead to less
+sharp estimates.
+Lemma 2.10. Let χ be non-trivial. For ⋆ ∈ {u, ℓ}, the Euler-product contribution satisfies
+
+                            Eu (Lχ ; T, d) + Eu (Lχ̄ ; T, d) ≤ mχ RL (d, a1 , a2 , a3 , a4 ),
+
+and
+                           Eℓ (Lχ ; T, d) + Eℓ (Lχ̄ ; T, d) ≥ −mχ RL (d, a1 , a2 , a3 , a4 ),
+where
+             RL (d, a1 , a2 , a3 , a4 )
+(2.35)             2                               da1            d2 |a2 | + |a3 |            |d3 a4 |
+              :=     (2 log ζ(σ1 ) + log ζ(σ2 )) +     L1 (σ1 ) +                  L2 (σ1 ) +          L3 (σ1 ).
+                   π                                2                     2                     4
+Proof. For σ > 1, Corollary 2.2 implies
+                                                                      dk       L′
+                                                                                   
+            | log L(s, χ, L/K)| ≤ mχ log ζ(σ)             and                           (s, χ, L/K) ≤ mχ Lk+1 (σ)
+                                                                     dxk       L
+for k ≥ 0. The same bounds hold for Lχ̄ . Applying these estimates at σ1 = 1/2+d and σ2 = 1/2+2d
+to the definitions of E1 , E2 , E3 , E4 gives the result.                                     □
+
+Lemma 2.11. For the trivial character, one has
+
+                                      EuK (ζK ; T, d) ≤ nK RL (d, a1 , a2 , a3 , a4 ),
+
+and
+                                     EℓK (ζK ; T, d) ≥ −nK RL (d, a1 , a2 , a3 , a4 ).
+
+Proof. The proof is the same as that of Lemma 2.10, with χ = χ0 and L(s, χ, L/K) = ζK (s), using
+the normalization EjK = 2Ej .                                                                 □
+
+                                                                17
+2.4. The gamma-factor contribution. For ε ∈ {0, 1}, let
+                                                         
+                                                      s+ε
+                             Γε (s) := π −(s+ε)/2 Γ         .
+                                                       2
+
+Thus, (2.3) becomes
+                                           γχ (s) = Γ0 (s)c0 (χ) Γ1 (s)c1 (χ) .
+Define
+                               Ej (F ; T, d) := 2Ej (F ; T, d),                j = 1, 2, 3, 4,
+and
+                         Eu := E1 + E2 + E3 + E4 ,                   Eℓ := E1 − E2 + E3 + E4 .
+For ε ∈ {0, 1}, define
+                                                                                                                
+                                                                   T                 T          da1           T
+(2.36)         Gε,u (T ; d, a1 , a2 , a3 , a4 ) := Eu (Γε ; T, d) − log                       −     log                ,
+                                                                   π                2πe          4            2π
+and
+                                                                                                                
+                                                                   T                 T          da1           T
+(2.37)         Gε,ℓ (T ; d, a1 , a2 , a3 , a4 ) := Eℓ (Γε ; T, d) − log                       +     log                .
+                                                                   π                2πe          4            2π
+Finally set
+                         Gu (d, a1 , a2 , a3 , a4 ) := max sup Gε,u (T ; d, a1 , a2 , a3 , a4 ),
+                                                       ε∈{0,1} T ≥1
+
+and
+                         Gℓ (d, a1 , a2 , a3 , a4 ) := min inf Gε,ℓ (T ; d, a1 , a2 , a3 , a4 ).
+                                                       ε∈{0,1} T ≥1
+
+Remark 9. The quantities Gu and Gℓ are introduced here to keep the dependence on d, a1 , a2 , a3 , a4
+explicit, as these parameters will be optimized later. They play the same role as the uniform
+numerical bounds for the remainder terms Uj,1 (T ) + Uj,2 (T ) and Lj,1 (T ) + Lj,2 (T ) in the proof of
+[Amb25, Lemma 3.7].
+Lemma 2.12. For a non-trivial irreducible character χ, one has
+                                                                                   
+                               T        T      da1      T
+(2.38)  2Eu (γχ ; T, d) ≤ mχ     log         +     log      + Gu (d, a1 , a2 , a3 , a4 ) ,
+                               π       2πe      4       2π
+and
+                                                                                                                  
+                                         T            T          da1           T
+(2.39)        2Eℓ (γχ ; T, d) ≥ mχ         log                 −     log                + Gℓ (d, a1 , a2 , a3 , a4 ) .
+                                         π           2πe          4            2π
+Proof. Since
+                                           γχ (s) = Γ0 (s)c0 (χ) Γ1 (s)c1 (χ)
+and c0 (χ) + c1 (χ) = mχ , additivity gives
+
+                2E⋆ (γχ ; T, d) = c0 (χ)E⋆ (Γ0 ; T, d) + c1 (χ)E⋆ (Γ1 ; T, d),                  for ⋆ ∈ {u, ℓ}.
+
+The result follows from the definitions of Gu and Gℓ .                                                                     □
+
+                                                                18
+Lemma 2.13. For the trivial character, one has
+                                                                                  
+                               T        T      da1      T
+(2.40)    K
+        Eu (γK ; T, d) ≤ nK      log         +     log     + Gu (d, a1 , a2 , a3 , a4 ) ,
+                               π       2πe      4       2π
+
+and
+                                                                                                            
+                                       T            T          da1           T
+(2.41)      EℓK (γK ; T, d) ≥ nK         log                 −     log                + Gℓ (d, a1 , a2 , a3 , a4 ) .
+                                       π           2πe          4            2π
+
+Proof. For the Dedekind zeta-function,
+
+                                         γK (s) = Γ0 (s)r1 +r2 Γ1 (s)r2 ,
+
+and (r1 + r2 ) + r2 = nK . The proof is therefore identical to that of Lemma 2.12.                                     □
+
+Remark 10. (i) One may ask whether the gamma-factor estimates used in [Ben+21, Section 3] could
+improve the final constants in Theorems 1.1 and 1.2. Such an improvement would only affect the
+constants Gu and Gℓ appearing in Lemmas 2.12 and 2.13, and not the constant CE . Since (2.42)
+yields
+                                 C2 = max{CE + Gu , CE − Gℓ },
+any improvement coming only from the gamma factor is limited by the size of CE . In particular,
+for the admissible tuple (2.43) used in this paper, we have CE ≤ 9.168629168235. Thus even in the
+ideal situation where Gu = Gℓ = 0, one would still obtain C2 ≈ CE ≈ 9.169, which remains slightly
+larger than the value C2 = 8.161 found in [Amb25].
+(ii) For completeness, we also tested the gamma-factor contribution using the approach of [Ben+21,
+Section 3]. This gives essentially the same bounds as those obtained from Lemmas 2.12 and 2.13;
+see Table 4. More precisely, we obtain Gu ≤ 0.315174, and Gℓ ≥ −0.250001. Therefore, at least
+for the present choice of parameters, the estimates used to bound the gamma factor in [Ben+21,
+Section 3] do not appear to lead to a noticeable improvement in the final constant C2 .
+2.5. Combining the estimates. For a non-trivial irreducible character χ, define
+
+                                          T mχ
+                                            
+                            T
+                  Mχ (T ) := log A(χ)                ,    mχ = nK χ(1).
+                            π            2πe
+
+Proposition 2.14. Let χ be non-trivial and assume Artin’s holomorphy conjecture for χ. Let
+(d, a1 , a2 , a3 , a4 ) be admissible. Then, for T ≥ 1,
+                                                                  
+                                          da1                      T
+                    N (T, χ) ≤ Mχ (T ) +        log A(χ) + mχ log      + mχ (Gu + CE ) ,
+                                           4                       2π
+
+and                                                                                 
+                                   da1                                           T
+              N (T, χ) ≥ Mχ (T ) −                 log A(χ) + mχ log                       + mχ (Gℓ − CE ) .
+                                    4                                            2π
+Here,
+              CE = CE (d, a1 , a2 , a3 , a4 ),       G⋆ = G⋆ (d, a1 , a2 , a3 , a4 ),         for ⋆ ∈ {u, ℓ},
+and Gℓ is taken with its sign, as in the lower gamma-factor estimate.
+
+                                                              19
+Proof. By the decomposition
+            E⋆ (Ξχ ; T, d) = E⋆ (A(χ)s ; T, d) + 2E⋆ (γχ ; T, d) + E⋆ (Lχ ; T, d) + E⋆ (Lχ̄ ; T, d),
+for ⋆ ∈ {u, ℓ}, the result follows from
+                                   Eℓ (Ξχ ; T, d) ≤ N (T, χ) ≤ Eu (Ξχ ; T, d),
+together with Lemmas 2.5, 2.8, and 2.12.                                                                         □
+    For the trivial character, we define
+                                                          T nK
+                                                            
+                                                 T
+                                       MK (T ) := log dK         .
+                                                 π       2πe
+Proposition 2.15. For the trivial character χ = χ0 , one has, for T ≥ 1,
+                                              
+                        da1                    T
+    NK (T ) ≤ MK (T ) +       log dK + nK log         + nK (Gu + CE ) + EuK (s(s − 1); T, d),
+                         4                     2π
+and
+                                                                
+                             da1                             T
+      NK (T ) ≥ MK (T ) −              log dK + nK log                 + nK (Gℓ − CE ) + EℓK (s(s − 1); T, d).
+                              4                              2π
+Proof. By the decomposition
+                                                              s/2
+         E⋆K (ξK ; T, d) = E⋆K (s(s − 1); T, d) + E⋆K (dK ; T, d) + E⋆K (γK ; T, d) + E⋆K (ζK ; T, d),
+for ⋆ ∈ {u, ℓ}, the result follows from
+                                   EℓK (ξK ; T, d) ≤ NK (T ) ≤ EuK (ξK ; T, d),
+together with Lemmas 2.6, 2.7, 2.9, and 2.13.                                                                    □
+    Combining the upper and lower bounds gives the following symmetric form. For non-trivial χ,
+                                                             
+                                                               T
+                 |N (T, χ) − Mχ (T )| ≤ C1 log A(χ) + mχ log       + C2 mχ ,
+                                                              2π
+where
+                                 da1
+(2.42)                       C1 =    ,    C2 = max {CE + Gu , CE − Gℓ } .
+                                  4
+Here again Gℓ is the signed constant appearing in the lower gamma-factor estimate.
+For the trivial character,
+                                                           
+                                                             T
+                  |NK (T ) − MK (T )| ≤ C1 log dK + nK log        + C 2 nK + C 3 ,
+                                                            2π
+where C1 and C2 are as above, and
+                       C3 := sup max EuK (s(s − 1); T, d), −EℓK (s(s − 1); T, d) .
+                                    
+                              T ≥1
+
+Equivalently,
+EuK (s(s − 1); T, d) = E1K (s(s − 1); T, d) + E2K (s(s − 1); T, d) + E3K (s(s − 1); T, d) + E4K (s(s − 1); T, d),
+and
+EℓK (s(s − 1); T, d) = E1K (s(s − 1); T, d) − E2K (s(s − 1); T, d) + E3K (s(s − 1); T, d) + E4K (s(s − 1); T, d).
+
+                                                         20
+2.6. Admissible tuples. We use two admissible tuples. The first one gives a smaller leading
+constant C1 , while the second one gives a smaller value of C2 , with C1 and C3 matching the
+corresponding values in Amberger’s estimate.
+The first tuple is
+
+(2.43)        d = 0.713,        a1 = 1.061,        a2 = 0.940,        a3 = 0.315,        a4 = −0.300.
+
+The second tuple is
+(2.44)
+   d = 0.722382,    a1 = 1.074223,            a2 = 0.925936,         a3 = 0.327241,        a4 = −0.138682.
+
+The certified intermediate constants for these tuples are listed in Table 4. The resulting constants
+
+         Quantity                      Tuple (2.43)                               Tuple (2.44)
+            CE                    CE ≤ 9.168629168235                       CE ≤ 7.590620795745
+            Gu                    Gu ≤ 0.315173228521                              Gu ≤ 0.316
+            Gℓ                       Gℓ ≥ −0.250001                               Gℓ ≥ −0.251
+
+            Table 4. Certified intermediate constants for the two admissible tuples.
+
+in the final zero-counting estimates are listed in Table 5.
+
+           Tuple                       Case                    (C1 , C2 , C3 )         Improved constant
+          (2.43)               Non-trivial Artin             (0.1892, 9.484, 0)            Smaller C1
+          (2.43)               Trivial/Dedekind            (0.1892, 9.484, 2.007)          Smaller C1
+          (2.44)               Non-trivial Artin             (0.194, 7.907, 0)             Smaller C2
+          (2.44)               Trivial/Dedekind            (0.194, 7.907, 2.001)           Smaller C2
+
+                 Table 5. Final constants obtained from the two admissible tuples.
+
+
+                          3. Final remarks on possible improvements
+    We briefly indicate a possible extension of the four-parameter method. One can introduce two
+further parameters a5 and a6 by adding two additional terms to the upper bound for f (b, t; d).
+More precisely, one adds the terms
+
+                 d4 a5 {R4 (d + b, t) + R4 (d − b, t)} + d4 a6 {I4 (d + b, t) + I4 (d − b, t)},
+
+where
+                                                    1       x4 − 6x2 t2 + t4
+                               R4 (x, t) = Re             =                  ,
+                                                (x + it)4      (x2 + t2 )4
+and
+                                                      1       4xt(x2 − t2 )
+                                I4 (x, t) = −Im             =               .
+                                                  (x + it)4    (x2 + t2 )4
+
+                                                      21
+The rest of the argument is formally the same as in the four-parameter case. The two new terms
+give rise to two additional operators involving the third derivative of the logarithmic derivative,
+and the Euler and gamma contributions must then be recomputed with the corresponding extra
+local terms. For example, with the tuple
+
+                   d = 0.720,     a1 = 0.98120,         a2 = 0.95435,
+                  a3 = 0.46130, a4 = −0.29676, a5 = 0.06448, a6 = 0.14232,
+
+we obtain the constants in Table 6. These values suggest that the leading constant C1 can be
+reduced substantially by adding further parameters. However, in this particular six-parameter
+example, the lower-order constants C2 and C3 become larger than in the four-parameter version.
+Thus the four-parameter method appears to provide a better overall balance among the constants,
+while the six-parameter variant may be useful if one is primarily interested in minimizing the leading
+coefficient.
+
+                                    Case                 C1       C2    C3
+                           Non-trivial Artin case 0.1767 15.805          0
+                           Trivial/Dedekind case 0.1767 15.805 2.033
+
+          Table 6. Constants obtained from a preliminary six-parameter computation.
+
+    We emphasize that this six-parameter tuple is only preliminary. Our computation was based
+on a direct search for admissible parameters followed by rigorous certification, rather than on a
+convex-optimization formulation. For fixed d, however, the admissibility inequalities are linear in
+the parameters a1 , . . . , a6 , so the admissible region is convex. It is therefore plausible that more
+systematic fixed-d searches, for instance, based on discretized convex optimization, could lead to
+better six-parameter tuples than the preliminary example above. In particular, one might be able
+to find tuples with nonzero a5 and a6 that reduce C1 without increasing C2 as much as in our
+preliminary computation.
+    For the four-parameter family, there is a simple obstruction to making C1 arbitrarily small.
+Indeed, there are some limiting constraints obtained from the admissible inequality when |t| → 0
+and |t| → ∞ which imply
+                                                     da1     1
+                                               C1 =      > .
+                                                      4      8
+This particular obstruction disappears once further even terms, such as the R4 -term above, are
+introduced. This suggests that adding more parameters may reduce the leading constant further.
+Some preliminary computations with eight parameters show that C1 can be pushed slightly further,
+to about 0.1729, but the corresponding C2 becomes larger, around 19.4. Thus, the numerical
+evidence suggests that higher-parameter variants of our approach can reduce the leading constant,
+but at the cost of a rapid growth in the lower-order constants.
+    It would be interesting to understand the limiting behaviour of this optimization problem. In
+particular, one may ask whether the infimum of C1 , taken over all versions of this method with
+finitely many additional higher-order terms, is equal to 0. Nevertheless, we shall not pursue this
+question and the above-mentioned optimization problems further here, and reserve them as a future
+research direction.
+
+                                                   22
+                                     Acknowledgments
+   The authors thank Andrew Fiori, Nathan Ng, and Tim Trudgian for their comments and
+suggestions.
+
+                                         References
+[Amb25]    V. Amberger. “Estimating the number of zeros of Dedekind zeta-functions”. preprint,
+           arXiv:2510.27444 (2025).
+[Bac16]    R. J. Backlund. “Über die Nullstellen der Riemannschen Zetafunktion”. Acta Math.
+           41.1 (1916), pp. 345–375.
+[BW25]     C. Bellotti and P.-J. Wong. “Improved estimates for the argument and zero-counting
+           function of the Riemann zeta-function”. Mathematics of Computation (2025).
+[Ben+21]   M. A. Bennett, G. Martin, K. O’Bryant, and A. Rechnitzer. “Counting zeros of Dirichlet
+           L-functions”. Math. Comp. 90.329 (2021), pp. 1455–1482.
+[Gro13]    J. Grossmann. “Über die Nullstellen der Riemannschen Zeta-Funktion und der Dirich-
+           letschen L-Funktionen” (1913). PhD thesis, Georg-August-Universität Göttingen.
+[Grz17]    M. Grześkowiak. “Explicit zero-counting theorem for Hecke–Landau zeta-functions”.
+           Bulletin of the Australian Mathematical Society 95.3 (2017), pp. 400–411.
+[HSW21]    E. Hasanalizade, Q. Shen, and P.-J. Wong. “Counting zeros of Dedekind zeta func-
+           tions”. Math. Comp. 91 (2021), pp. 277–293.
+[HSW22]    E. Hasanalizade, Q. Shen, and P.-J. Wong. “Counting zeros of the Riemann zeta func-
+           tion”. J. Number Theory 235 (2022), pp. 219–241.
+[KN12]     H. Kadiri and N. Ng. “Explicit zero density theorems for Dedekind zeta functions”. J.
+           Number Theory 132.4 (2012), pp. 748–775.
+[KW09a]    C. Khare and J.-P. Wintenberger. “Serre’s modularity conjecture (I)”. Inventiones
+           mathematicae 178.3 (2009), pp. 485–504.
+[KW09b]    C. Khare and J.-P. Wintenberger. “Serre’s modularity conjecture (II)”. Inventiones
+           mathematicae 178.3 (2009), pp. 505–586.
+[Lan80]    R. P. Langlands. Base change for GL(2). Vol. No. 96. Annals of Mathematics Studies.
+           Princeton University Press, Princeton, NJ, 1980, pp. vii+237.
+[Mar77]    J. Martinet. “Character theory and Artin L-functions”. Algebraic Number Fields. Ed.
+           by A. Fröhlich. London: Academic Press, 1977, pp. 1–87.
+[McC84]    K. S. McCurley. “Explicit estimates for the error term in the prime number theorem
+           for arithmetic progressions”. Math. Comp. 42.165 (1984), pp. 265–285.
+[MMS88]    M. R. Murty, V. K. Murty, and N. Saradha. “Modular forms and the Chebotarev
+           density theorem”. American Journal of Mathematics 110.2 (1988), pp. 253–281.
+[MMW18] M. R. Murty, V. K. Murty, and P.-J. Wong. “The Chebotarev density theorem and
+        the pair correlation conjecture”. Journal of the Ramanujan Mathematical Society 33
+        (2018), pp. 399–426.
+[Mur97]    V. K. Murty. Modular Forms and the Chebotarev Density Theorem II. Ed. by Y. Mo-
+           tohashi. Cambridge University Press, 1997, pp. 287–308.
+
+                                               23
+[Neu99]    J. Neukirch. Algebraic number theory. Vol. 322. Grundlehren der mathematischen Wis-
+           senschaften [Fundamental Principles of Mathematical Sciences]. Translated from the
+           1992 German original and with a note by Norbert Schappacher, With a foreword by
+           G. Harder. Springer-Verlag, Berlin, 1999, pp. xviii+571.
+[Pal19]    N. Palojärvi. “On the explicit upper and lower bounds for the number of zeros of the
+           Selberg class”. Journal of Number Theory 194 (2019), pp. 218–250.
+[PT15]     D. J. Platt and T. S. Trudgian. “An improved explicit bound on |ζ(1/2 + it)|”. J.
+           Number Theory 147 (2015), pp. 842–851.
+[Ram02]    D. Ramakrishnan. “Modularity of solvable Artin representations of GO (4)-type”. In-
+           ternational Mathematics Research Notices 2002.1 (2002), pp. 1–54.
+[Ros41]    B. Rosser. “Explicit bounds for some functions of prime numbers”. Amer. J. Math. 63
+           (1941), pp. 211–232.
+[Tru12]    T. S. Trudgian. “An improved upper bound for the argument of the Riemann zeta-
+           function on the critical line”. Math. Comp. 81.278 (2012), pp. 1053–1061.
+[Tru14]    T. S. Trudgian. “An improved upper bound for the argument of the Riemann zeta-
+           function on the critical line II”. J. Number Theory 134 (2014), pp. 280–292.
+[Tru15]    T. S. Trudgian. “An improved upper bound for the error in the zero-counting formulae
+           for Dirichlet L-functions and Dedekind zeta-functions”. Math. Comp. 84.293 (2015),
+           pp. 1439–1450.
+[Tun81]    J. Tunnell. “Artin’s conjecture for representations of octahedral type”. Bull. Amer.
+           Math. Soc. (N.S.) 5.2 (1981), pp. 173–175.
+[Tur53]    A. M. Turing. “Some calculations of the Riemann zeta-function”. Proc. London Math.
+           Soc. (3) 3 (1953), pp. 99–117.
+[VM05]     H. C. F. Von Mangoldt. “Zur Verteilung der Nullstellen der Riemannschen Funktion
+           ξ(t)”. Math. Ann. 60.1 (1905), pp. 1–19.
+[Won18]    P.-J. Wong. “Applications of group theory to conjectures of Artin and Langlands”.
+           International Journal of Number Theory 14.03 (2018), pp. 881–898.
+
+
+   (Chiara Bellotti) School of Science, The University of New South Wales, Canberra, Australia
+   Email address: c.bellotti@unsw.edu.au
+
+   (Peng-Jie Wong) National Sun Yat-Sen University, Department of Applied Mathematics, Kaohsiung
+City, Taiwan
+   Email address: pjwong@math.nsysu.edu.tw
+
+
+
+
+                                               24
+

@@ -1,0 +1,471 @@
+--- casanya_ordinal_primes_v44.tex	2026-10-30 12:39:16.602254437 +0000
++++ casanya_ordinal_primes_v45.tex	2026-10-30 12:48:35.556624715 +0000
+@@ -57,7 +57,7 @@
+ \expandafter\gdef\csname CGTip@thm:explicit\endcsname{Theorem 1.3 (Explicit bound) (p. 4): For every T>= e, beginalign |S(T)| <=0.09783log T+0.7214log log T+10.6, |N(T)-Nz(T) | <=0.09783log T+0.7214log log T+10.7. endalign}
+ \expandafter\gdef\csname CGTip@eq:explicit_S\endcsname{Eq. (1.7), p. 4: |S(T)| <=0.09783log T+0.7214log log T+10.6, |N(T)-Nz(T) | <=0.09783log T+0.7214log log T+10.7.}
+ \expandafter\gdef\csname CGTip@eq:explicit_N\endcsname{Eq. (1.8), p. 4: |S(T)| <=0.09783log T+0.7214log log T+10.6, |N(T)-Nz(T) | <=0.09783log T+0.7214log log T+10.7.}
+-\expandafter\gdef\csname CGTip@cor:distance\endcsname{Corollary 1.4 (Distance to the ordinates) (p. 5): beginenumerate[label=(alph*)] item limsup \_k->inf |tau\_k-gamma\_k|<=2piLambda(eB)=0.6083129ldots<0.60832 . item For every k>=1, with mathfrak m\_k:=min(tau\_k,gamma\_k)>2pi, beginequation |tau\_k-gamma\_k|<=(2pi (0.09783log gamma\_k+0.7214log log gamma\_k+10.2 ))/(log (mathfrak m\_k/2pi)) . endequation endenumerate}
++\expandafter\gdef\csname CGTip@cor:distance\endcsname{Corollary 1.4 (Distance to the imaginary parts) (p. 5): beginenumerate[label=(alph*)] item limsup \_k->inf |tau\_k-gamma\_k|<=2piLambda(eB)=0.6083129ldots<0.60832 . item For every k>=1, with mathfrak m\_k:=min(tau\_k,gamma\_k)>2pi, beginequation |tau\_k-gamma\_k|<=(2pi (0.09783log gamma\_k+0.7214log log gamma\_k+10.2 ))/(log (mathfrak m\_k/2pi)) . endequation endenumerate}
+ \expandafter\gdef\csname CGTip@eq:distance_explicit\endcsname{Eq. (1.9), p. 5: |tau\_k-gamma\_k|<=(2pi (0.09783log gamma\_k+0.7214log log gamma\_k+10.2 ))/(log (mathfrak m\_k/2pi)) .}
+ \expandafter\gdef\csname CGTip@eq:Euler_phase\endcsname{Eq. (1.10), p. 5: Ph\_m(t)=-1/pi sum \_nu=1\textasciicircum{}marg (1-p\_nu\textasciicircum{}-1/2-it )=-1/pi sum \_nu=1\textasciicircum{}msum \_r>=1(sin(rtlog p\_nu))/(r p\_nu\textasciicircum{}r/2)}
+ \expandafter\gdef\csname CGTip@eq:F_def\endcsname{Eq. (1.11), p. 5: Ph(t)= (2-t/(2\textasciicircum{}j) )Ph\_m\_j(t)+ (t/(2\textasciicircum{}j) -1 )Ph\_m\_j+1(t), Fc(t)=Nz(t)+Ph(t).}
+@@ -77,7 +77,7 @@
+ \expandafter\gdef\csname CGTip@eq:backlund_Z\endcsname{Eq. (3.4), p. 12: mathcal Z\_n(c,R)=1/n sum \_wlog R/(|w-c|) ,}
+ \expandafter\gdef\csname CGTip@thm:known_exponents\endcsname{Theorem 3.7 (Exponent pairs) (p. 13): beginenumerate[label=(alph*)] item If (kappa,lambda) is an exponent pair, so is A(kappa,lambda)= (kappa/(2kappa+2) ,1/2 +lambda/(2kappa+2) ) [Ivic1985]. item If (kappa,lambda) is an exponent pair and 1/2 <=sigma<=lambda-kappa, then zeta(sigma+it)<<|t|\textasciicircum{}(kappa+lambda-sigma)/2log |t| for |t|>=2 [Ivic1985]; in particular ...}
+ \expandafter\gdef\csname CGTip@sec:explicit_lemmas\endcsname{Section 4: Explicit lemmas (p. 14)}
+-\expandafter\gdef\csname CGTip@lem:varpi\endcsname{Lemma 4.1 (p. 14): For t>0, vartheta(t)=t/2 log t/(2pi e) -pi/8 +varpi(t) with |varpi(t)|<=0.53/t. Consequently [eq:intro\_RvM] holds for t>0 not an ordinate.}
++\expandafter\gdef\csname CGTip@lem:varpi\endcsname{Lemma 4.1 (p. 14): For t>0, vartheta(t)=t/2 log t/(2pi e) -pi/8 +varpi(t) with |varpi(t)|<=0.53/t. Consequently [eq:intro\_RvM] holds for t>0 not an imaginary part.}
+ \expandafter\gdef\csname CGTip@eq:disp_10\endcsname{Eq. (4.1), p. 14: ImLogGamma(z)=ylog |z|-1/4 phz-y+Immathcal R(z), log |z|=log y+1/2 log (1+1/(16y\textasciicircum{}2) ).}
+ \expandafter\gdef\csname CGTip@lem:chi\endcsname{Lemma 4.3 (p. 14): For -0.01<=sigma<=1/2 and t>=98, |chi(sigma+it)|<=1.0070 (t/2pi)\textasciicircum{}1/2-sigma.}
+ \expandafter\gdef\csname CGTip@eq:stirling_modulus\endcsname{Eq. (4.3), p. 14: log |Gamma(z)|=(omega-1/2 )log y-pi/2 y+1/2 log 2pi+phi(omega,y)+Remathcal R(z), phi(omega,y)=(omega-1/2 )/2 log (1+(omega\textasciicircum{}2)/(y\textasciicircum{}2) )+yarctanomega/y -omega . endgathered}
+@@ -90,7 +90,7 @@
+ \expandafter\gdef\csname CGTip@eq:right_profile\endcsname{Eq. (4.8), p. 15: |zeta(s)| <=2 (1+84.5/(98\textasciicircum{}2) )\textasciicircum{}1+27/164 (1+(84.5/98\textasciicircum{}2+pi/2)/log 98 )t\textasciicircum{}eE\textasciicircum{}*(sigma)log t <=2.7167 t\textasciicircum{}eE\textasciicircum{}*(sigma)log t (1/2 <=sigma<=3). endsplit}
+ \expandafter\gdef\csname CGTip@rem:robust\endcsname{Remark 4.5 (Robustness of the inputs) (p. 15): Theorem [thm:known\_zeta] enters Theorem [thm:explicit] only through [eq:boundary], that is, through bounds with constant 2 on the lines sigma=varsigma\_i, and each input has room. (i) On sigma=1/2 , the bound of [HiaryPatelYang2024] alone gives [eq:boundary] for 3<|t|<= e\textasciicircum{}577, since |t|\textasciicircum{}1/492<= e\textasciicircum{}577/492<2/0.618. Above ...}
+ \expandafter\gdef\csname CGTip@sec:backlund\endcsname{Section 5: A disc-based estimate for S(T) (p. 16)}
+-\expandafter\gdef\csname CGTip@prop:master\endcsname{Proposition 5.1 (p. 16): Let c,R satisfy [eq:backlund\_conditions] with c<=2 and R<=2, and let T>=3 be a non-ordinate. Suppose that, for a nonnegative measurable function mathfrak h on [c-R,c+R] with int \_0\textasciicircum{}pimathfrak h(c+Rcostheta) dtheta<inf , a constant K>=1 and a function Omega>=1 on [T-2,T+2] such that tmapsto t\textasciicircum{}mathfrak h(sigma)Omega(t) ...}
++\expandafter\gdef\csname CGTip@prop:master\endcsname{Proposition 5.1 (p. 16): Let c,R satisfy [eq:backlund\_conditions] with c<=2 and R<=2, and let T>=3 be outside gamma\_k. Suppose that, for a nonnegative measurable function mathfrak h on [c-R,c+R] with int \_0\textasciicircum{}pimathfrak h(c+Rcostheta) dtheta<inf , a constant K>=1 and a function Omega>=1 on [T-2,T+2] such that tmapsto t\textasciicircum{}mathfrak h(sigma)Omega(t) ...}
+ \expandafter\gdef\csname CGTip@eq:zeta_hyp\endcsname{Eq. (5.1), p. 16: |zeta(sigma+it)|<= K t\textasciicircum{}mathfrak h(sigma)Omega(t) (c-R<=sigma<= c+R, T-2<= t<= T+2).}
+ \expandafter\gdef\csname CGTip@eq:master\endcsname{Eq. (5.2), p. 16: |S(T)|<= 1/(2mathfrak d) [log (zeta(c))/(zeta(2c)) +log (T+3)/T +(mathcal I\_mathfrak h)/pi log (T+2)+log Omega(T+2)+log K ] +(log zeta(sigma\textasciicircum{}sharp))/pi +(sigma\textasciicircum{}sharp-1/2 )/(pi T) +(mathcal E(T,delta\textasciicircum{}sharp))/2pi +1/4 , endsplit}
+ \expandafter\gdef\csname CGTip@eq:disp_13\endcsname{Eq. (5.3), p. 16: pi S(T)=argzeta(sigma\textasciicircum{}sharp+iT)+Delta\_sigma=sigma\textasciicircum{}sharp\textasciicircum{}1/2arg ((sigma+iT-1)zeta(sigma+iT) )-Delta\_sigma=sigma\textasciicircum{}sharp\textasciicircum{}1/2arg(sigma+iT-1)}
+@@ -126,7 +126,7 @@
+ \expandafter\gdef\csname CGTip@eq:identity_general\endcsname{Eq. (8.1), p. 25: int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-F(t) )\textasciicircum{}2jF'(t) dt=sum \_k=k\_1+1\textasciicircum{}k\_2-1Psi\_j(u\_k)+((1/2 +u\_k\_1)\textasciicircum{}2j+1+(1/2 -u\_k\_2)\textasciicircum{}2j+1)/(2j+1) ,}
+ \expandafter\gdef\csname CGTip@eq:Psi_def\endcsname{Eq. (8.2), p. 25: Psi\_j(u)=((1/2 +u)\textasciicircum{}2j+1+(1/2 -u)\textasciicircum{}2j+1)/(2j+1) =u\textasciicircum{}2j+sum \_l=0\textasciicircum{}j-1binom2j+12l(4\textasciicircum{}l-j)/(2j+1) u\textasciicircum{}2l.}
+ \expandafter\gdef\csname CGTip@eq:identity_quadratic\endcsname{Eq. (8.3), p. 25: sum \_k=k\_1+1\textasciicircum{}k\_2-1u\_k\textasciicircum{}2=int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-F(t) )\textasciicircum{}2F'(t) dt-(k\_2-k\_1-1)/12 -((1/2 +u\_k\_1)\textasciicircum{}3+(1/2 -u\_k\_2)\textasciicircum{}3)/3 .}
+-\expandafter\gdef\csname CGTip@rem:twelfth\endcsname{Remark 8.2 (p. 25): Psi\_j(u)=int \_u-1/2\textasciicircum{}u+1/2x\textasciicircum{}2j dx is the mean of x\textasciicircum{}2j over the unit interval centered at u, and 1/12 =int \_-1/2\textasciicircum{}1/2x\textasciicircum{}2 dx. The constant is associated with each unit increment in the enumeration counting multiplicities; repeated ordinates are handled by the degenerate-gap cancellation in the proof. When F is not ...}
++\expandafter\gdef\csname CGTip@rem:twelfth\endcsname{Remark 8.2 (p. 25): Psi\_j(u)=int \_u-1/2\textasciicircum{}u+1/2x\textasciicircum{}2j dx is the mean of x\textasciicircum{}2j over the unit interval centered at u, and 1/12 =int \_-1/2\textasciicircum{}1/2x\textasciicircum{}2 dx. The constant is associated with each unit increment in the enumeration counting multiplicities; repeated imaginary parts are handled by the degenerate-gap cancellation in the proof. When F is not ...}
+ \expandafter\gdef\csname CGTip@cor:identity_distance\endcsname{Corollary 8.3 (p. 25): For 1<= k\_1<k\_2, beginequation sum \_k=k\_1+1\textasciicircum{}k\_2-1s\_k\textasciicircum{}2=int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2G(t)\textasciicircum{}2lL(t) dt-(k\_2-k\_1-1)/12 -((1/2 +s\_k\_1)\textasciicircum{}3+(1/2 -s\_k\_2)\textasciicircum{}3)/3 . endequation}
+ \expandafter\gdef\csname CGTip@eq:identity_distance\endcsname{Eq. (8.5), p. 25: sum \_k=k\_1+1\textasciicircum{}k\_2-1s\_k\textasciicircum{}2=int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2G(t)\textasciicircum{}2lL(t) dt-(k\_2-k\_1-1)/12 -((1/2 +s\_k\_1)\textasciicircum{}3+(1/2 -s\_k\_2)\textasciicircum{}3)/3 .}
+ \expandafter\gdef\csname CGTip@prop:s_meansquare\endcsname{Proposition 8.4 (p. 26): As T->inf , beginequation langle s\_k\textasciicircum{}2rangle\_Kc\_T=(log log T)/(2pi\textasciicircum{}2) (1+o(1) ). endequation}
+@@ -150,13 +150,13 @@
+ \expandafter\gdef\csname CGTip@eq:corrected_ordinal_defect\endcsname{Eq. (9.12), p. 28: 1/(no.mathcal K\_T) sum \_kinmathcal K\_T |d\_k\textasciicircum{}mathrm C|\textasciicircum{}2<<1.}
+ \expandafter\gdef\csname CGTip@eq:disp_44\endcsname{Eq. (9.13), p. 29: |int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-Fc(t))\textasciicircum{}2Fc'(t) dt | <= (int \_T-1\textasciicircum{}2T+1|N-Fc|\textasciicircum{}4dt )\textasciicircum{}1/2 (int \_T-1\textasciicircum{}2T+1|Fc'|\textasciicircum{}2dt )\textasciicircum{}1/2 << Tlog T. endaligned}
+ \expandafter\gdef\csname CGTip@eq:disp_45\endcsname{Eq. (9.14), p. 29: sum \_kinmathcal K\_T|d\_k\textasciicircum{}mathrm C|\textasciicircum{}2 <= |int \_gamma\_k\_1\textasciicircum{}gamma\_k\_2 (N(t)-Fc(t))\textasciicircum{}2Fc'(t) dt | +(no.mathcal K\_T)/12 +O(T\textasciicircum{}3/4+log \textasciicircum{}3T) << Tlog T.}
+-\expandafter\gdef\csname CGTip@cor:prime_phase_second_moment\endcsname{Corollary 9.4 (Second moment of the prime phases at the ordinates) (p. 29): With s\_k=k-1/2 -Nz(gamma\_k) as in Proposition [prop:s\_meansquare], one has, without RH, beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_TPh(gamma\_k)\textasciicircum{}2 sim(log log T)/(2pi\textasciicircum{}2) , endequation and beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_T s\_kPh(gamma\_k) sim(log log T)/(2pi\textasciicircum{}2) . endequation}
++\expandafter\gdef\csname CGTip@cor:prime_phase_second_moment\endcsname{Corollary 9.4 (Second moment of the prime phases at the imaginary parts) (p. 29): With s\_k=k-1/2 -Nz(gamma\_k) as in Proposition [prop:s\_meansquare], one has, without RH, beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_TPh(gamma\_k)\textasciicircum{}2 sim(log log T)/(2pi\textasciicircum{}2) , endequation and beginequation 1/(no.mathcal K\_T) sum \_kinmathcal K\_T s\_kPh(gamma\_k) sim(log log T)/(2pi\textasciicircum{}2) . endequation}
+ \expandafter\gdef\csname CGTip@eq:prime_phase_second_moment\endcsname{Eq. (9.15), p. 29: 1/(no.mathcal K\_T) sum \_kinmathcal K\_TPh(gamma\_k)\textasciicircum{}2 sim(log log T)/(2pi\textasciicircum{}2) ,}
+ \expandafter\gdef\csname CGTip@eq:prime_phase_covariance\endcsname{Eq. (9.16), p. 29: 1/(no.mathcal K\_T) sum \_kinmathcal K\_T s\_kPh(gamma\_k) sim(log log T)/(2pi\textasciicircum{}2) .}
+-\expandafter\gdef\csname CGTip@thm:recovered_simple_certificate\endcsname{Theorem 9.5 (A deterministic certificate for simple critical-line zeros) (p. 29): In this theorem v\_k is a local symbol, unrelated to v\_k in the proof of Theorem [thm:transfer]. Let mathsf F\_test be any real-valued function defined at the ordinates, let j>=1 be an integer, and set beginequation v\_k=k-1/2 -mathsf F\_test(gamma\_k), mathcal K\_T=k:T<gamma\_k<=2T. endequation Let N\_simple,1/2(T,2T) count ...}
++\expandafter\gdef\csname CGTip@thm:recovered_simple_certificate\endcsname{Theorem 9.5 (A deterministic certificate for simple critical-line zeros) (p. 29): In this theorem v\_k is a local symbol, unrelated to v\_k in the proof of Theorem [thm:transfer]. Let mathsf F\_test be any real-valued function defined at the imaginary parts, let j>=1 be an integer, and set beginequation v\_k=k-1/2 -mathsf F\_test(gamma\_k), mathcal K\_T=k:T<gamma\_k<=2T. endequation Let N\_simple,1/2(T,2T) ...}
+ \expandafter\gdef\csname CGTip@eq:disp_46\endcsname{Eq. (9.17), p. 29: v\_k=k-1/2 -mathsf F\_test(gamma\_k), mathcal K\_T=k:T<gamma\_k<=2T.}
+ \expandafter\gdef\csname CGTip@eq:recovered_simple_certificate\endcsname{Eq. (9.18), p. 29: N\_simple,1/2(T,2T) >=no.mathcal K\_T-sum \_kinmathcal K\_T(2v\_k)\textasciicircum{}2j.}
+-\expandafter\gdef\csname CGTip@eq:disp_47\endcsname{Eq. (9.19), p. 29: min\_ainmathbb Rsum \_i=0\textasciicircum{}m-1(a+i)\textasciicircum{}2 =sum \_i=0\textasciicircum{}m-1 (i-(m-1)/2 )\textasciicircum{}2 =(m(m\textasciicircum{}2-1))/12 .}
++\expandafter\gdef\csname CGTip@eq:disp_47\endcsname{Eq. (9.19), p. 30: min\_ainmathbb Rsum \_i=0\textasciicircum{}m-1(a+i)\textasciicircum{}2 =sum \_i=0\textasciicircum{}m-1 (i-(m-1)/2 )\textasciicircum{}2 =(m(m\textasciicircum{}2-1))/12 .}
+ \expandafter\gdef\csname CGTip@eq:disp_48\endcsname{Eq. (9.20), p. 30: (1/m sum \_i=0\textasciicircum{}m-1|2v\_k+i|\textasciicircum{}2j )\textasciicircum{}1/(2j) >= (1/m sum \_i=0\textasciicircum{}m-1|2v\_k+i|\textasciicircum{}2 )\textasciicircum{}1/2>=1.}
+ \expandafter\gdef\csname CGTip@rem:certificate_scope\endcsname{Remark 9.6 (p. 30): It is a certificate, not an unconditional positive-proportion result: Theorem [thm:corrected\_ordinal\_defect] bounds the second moment of d\_k\textasciicircum{}mathrm C but does not provide a sufficiently small explicit constant for [eq:recovered\_simple\_certificate] to be positive. Further higher-moment and finite Euler-product results ...}
+ \expandafter\gdef\csname CGTip@sec:conclusion\endcsname{Section 10: Conclusion (p. 30)}
+@@ -240,20 +240,20 @@
+ \maketitle
+ 
+ \begin{abstract}
+-The ordinates $\gamma_k$ of all nontrivial zeros of the Riemann zeta function, counted with multiplicity, are approximated by a strictly increasing sequence $\tau_k^{\mathrm C}$ defined by the Riemann--von Mangoldt main term and the phases of approximately $\sqrt T$ Euler factors at height $T$. The points are defined by sublevel measures rather than by choosing roots of a possibly nonmonotone equation. Without assuming the Riemann hypothesis (RH),
++The imaginary parts $\gamma_k$ of all nontrivial zeros of the Riemann zeta function, counted with multiplicity, are approximated by a strictly increasing sequence $\tau_k^{\mathrm C}$ defined by the Riemann--von Mangoldt main term and the phases of approximately $\sqrt T$ Euler factors at height $T$. The points are defined by sublevel measures rather than by choosing roots of a possibly nonmonotone equation. Without assuming the Riemann hypothesis (RH),
+ \[
+ \frac{1}{\#\mathcal K_T}\sum_{k\in\mathcal K_T}
+ |\tau_k^{\mathrm C}-\gamma_k|^2=O(\log^{-2}T),
+ \qquad \mathcal K_T=\{k:T<\gamma_k\le2T\}.
+ \]
+-Thus the root-mean-square error is bounded by a constant multiple of the mean spacing $2\pi/\log T$ between zeros at height $T$. Combined with Selberg's second-moment theorem, an exact integral identity valid without RH and retaining repeated ordinates gives
++Thus the root-mean-square error is bounded by a constant multiple of the mean spacing $2\pi/\log T$ between zeros at height $T$. Combined with Selberg's second-moment theorem, an exact integral identity valid without RH and retaining repeated imaginary parts gives
+ \[
+ \frac1{\#\mathcal K_T}\sum_{k\in\mathcal K_T}
+ |\gamma_k-\tau_k|^2
+ =\frac{2\log\log T}{\log^2T}(1+o(1)),
+ \qquad N_0(\tau_k)=k-\tfrac12.
+ \]
+-Consequently, the arithmetic correction $\tau_k^{\mathrm C}-\tau_k$ has the same leading second-moment asymptotic, and the corrected ordinal equation has an $O(1)$ mean-square defect at the actual ordinates.
++Consequently, the arithmetic correction $\tau_k^{\mathrm C}-\tau_k$ has the same leading second-moment asymptotic, and the corrected ordinal equation has an $O(1)$ mean-square defect at the actual imaginary parts $\gamma_k$.
+ 
+ Independently, an admissible-exponent-profile version of Backlund's method gives
+ \[
+@@ -276,19 +276,21 @@
+ 
+ %======================================================================
+ \section{Introduction}\label{sec:intro}
+-The main result of this paper constructs a strictly increasing sequence of approximate ordinates $\tau_k^{\mathrm C}$ through sublevel measures of $\Nz+\Ph$, where $\Nz$ is the Riemann--von Mangoldt main term and $\Ph$ is defined by finitely many Euler phases. Unconditionally, its root-mean-square error on dyadic blocks is $O(1/\log T)$, a bounded multiple of the mean zero spacing. The key technical feature is the sublevel-set definition: it remains valid even when the prime-complemented counting function is not monotone.
++The imaginary parts $\gamma_k$ of the nontrivial zeros of the Riemann zeta function are located only on average by the Riemann--von Mangoldt formula: the points $\tau_k$ defined by $\Nz(\tau_k)=k-\frac12$ \CGeqref{eq:intro_tau}, where $\Nz$ is the smooth main term of the zero-counting function, discard the oscillating term $S(t)=\frac1\pi\arg\zeta(\frac12+it)$. The primes enter through $S$. The Euler product writes $\zeta(s)$ as a product of one factor $(1-p^{-s})^{-1}$ for each prime $p$, so that $S(t)$ is, formally, minus the sum over $p$ of the phases $\frac1\pi\arg(1-p^{-1/2-it})$ of these factors; truncated at about $\sqrt t$ primes it approximates $S$ in mean square, unconditionally (Selberg, Tsang, Fujii; see below). The \emph{arithmetic correction} studied here adds this finite prime sum, $\Ph$ in \CGeqref{eq:Euler_phase}, to the main term: the zeros are then approximated by the points $\tau_k^{\mathrm C}$ of the equation $\Nz(t)+\Ph(t)=k-\frac12$ instead of $\Nz(t)=k-\frac12$.
+ 
+-An exact defect identity supplies an independent comparison. Without RH, the original Riemann--von Mangoldt ordinates differ from the actual ordinates by root-mean-square $\sqrt{2\log\log T}/\log T\,(1+o(1))$. Thus the arithmetic correction removes the factor $\log\log T$ from the proved mean-square upper order. Further consequences proved below describe the arithmetic correction itself and the defect of the ordinal equation when evaluated at the actual ordinates.
++The main result constructs the strictly increasing sequence $\tau_k^{\mathrm C}$ through the sublevel measures \CGeqref{eq:xk_def} of $\Nz+\Ph$, where $\Ph$ is defined by finitely many Euler phases. Unconditionally, the root-mean-square error of $\tau_k^{\mathrm C}$ with respect to $\gamma_k$ on dyadic blocks is $O(1/\log T)$, a bounded multiple of the mean zero spacing (Theorem~\CGref{thm:sublevel}). The key technical feature is the sublevel-set definition: it remains valid even when the prime-corrected counting function $\Nz+\Ph$ is not monotone, where the equation $\Nz+\Ph=k-\frac12$ may have no unique root.
+ 
+-The other results concern the argument $S(T)$ of the zeta function. A profile-based application of Backlund's method yields an asymptotic coefficient $0.0968160\ldots$, a resulting upper limit $0.60832$ for the distance between the original Riemann--von Mangoldt ordinates and the actual ordinates, and a fully explicit estimate $|S(T)|\le0.09783\log T+0.7214\log\log T+10.6$. The leading coefficient is smaller than Bellotti--Wong's; the complete estimate improves upon theirs only beyond the stated crossing height.
++An exact defect identity supplies an independent comparison. Without RH, the uncorrected points $\tau_k$ differ from the $\gamma_k$ by root-mean-square $\sqrt{2\log\log T}/\log T\,(1+o(1))$, the factor $\log\log T$ coming from Selberg's mean square of $S$. Thus the arithmetic correction removes the factor $\log\log T$ from the proved mean-square upper order. Further consequences proved below describe the arithmetic correction itself and the defect of the ordinal equation when evaluated at the actual imaginary parts $\gamma_k$.
++
++The other results concern the argument $S(T)$ of the zeta function. A profile-based application of Backlund's method yields an asymptotic coefficient $0.0968160\ldots$, a resulting upper limit $0.60832$ for the distance between the points $\tau_k$ of the Riemann--von Mangoldt equation and the actual imaginary parts $\gamma_k$, and a fully explicit estimate $|S(T)|\le0.09783\log T+0.7214\log\log T+10.6$. The leading coefficient is smaller than Bellotti--Wong's; the complete estimate improves upon theirs only beyond the stated crossing height.
+ 
+ Several related approaches supplement the main term $\Nz(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+\frac78$ of the Riemann--von Mangoldt formula using primes or values of $\zeta$. They differ from the present construction in the correcting term and in whether RH is assumed.
+ 
+-For approaches that use $\zeta$, explicit bounds in the critical strip (Yang \CGcite{Yang2024}; Bellotti \CGcite{Bellotti2024}) give unconditional bounds for $S(T)$ and hence for $N-\Nz$ (Trudgian \CGcite{Trudgian2012}, \CGcite{Trudgian2014}; Bellotti and Wong \CGcite[Thm.~1.1, Cor.~1.5]{BellottiWong2025}). These control the size of $N-\Nz$, not the position of the ordinates.
++For approaches that use $\zeta$, explicit bounds in the critical strip (Yang \CGcite{Yang2024}; Bellotti \CGcite{Bellotti2024}) give unconditional bounds for $S(T)$ and hence for $N-\Nz$ (Trudgian \CGcite{Trudgian2012}, \CGcite{Trudgian2014}; Bellotti and Wong \CGcite[Thm.~1.1, Cor.~1.5]{BellottiWong2025}). These control the size of $N-\Nz$, not the position of the imaginary parts.
+ 
+-Fran\c{c}a and LeClair \CGcite[eq.~(20)]{FrancaLeClair2015} write the $n$-th ordinate as a solution of $\Nz(t)+S(t)=n-\frac12$ with the exact $S$; they do not assume RH, but they assume that $\lim_{\delta\to0^+}\arg\zeta(\frac12+\delta+it)$ exists for every $t$, and they do not prove that the equation has exactly one solution for each $n$ \CGcite[\S9]{FrancaLeClair2015}. In approaches using primes, $S$ is approximated by a sum over primes $p\le x$, in mean square and unconditionally (Selberg \CGcite{Selberg1946a}, Tsang \CGcite{Tsang1984}, Fujii \CGcite{Fujii1974}).
++Fran\c{c}a and LeClair \CGcite[eq.~(20)]{FrancaLeClair2015} write the $n$-th imaginary part as a solution of $\Nz(t)+S(t)=n-\frac12$ with the exact $S$; they do not assume RH, but they assume that $\lim_{\delta\to0^+}\arg\zeta(\frac12+\delta+it)$ exists for every $t$, and they do not prove that the equation has exactly one solution for each $n$ \CGcite[\S9]{FrancaLeClair2015}. In approaches using primes, $S$ is approximated by a sum over primes $p\le x$, in mean square and unconditionally (Selberg \CGcite{Selberg1946a}, Tsang \CGcite{Tsang1984}, Fujii \CGcite{Fujii1974}).
+ 
+-Kargin \CGcite[Thm.~1.1]{Kargin2013} takes $t_k$ with $\Nz(t_k)=k-\frac12$ and proves, without RH, that $\gamma_k-t_k$, suitably normalized, is asymptotically Gaussian, a limit law over windows of $k$ and not a bound for each ordinate.
++Kargin \CGcite[Thm.~1.1]{Kargin2013} takes $t_k$ with $\Nz(t_k)=k-\frac12$ and proves, without RH, that $\gamma_k-t_k$, suitably normalized, is asymptotically Gaussian, a limit law over windows of $k$ and not a bound for each imaginary part.
+ 
+ Korolev \CGcite[Thm.~4.2]{Korolev2012} proves, without RH, Selberg's formulas for the moments of the Gram displacements $\Delta^{\rm G}_k$, the integers that locate each $\gamma_k$ among the Gram points, where the smooth term $\Nz$ takes integer values up to the Stirling remainder.
+ 
+@@ -296,22 +298,22 @@
+ 
+ LeClair \CGcite{LeClair2016} replaces $S$ by a finite number of Euler factors, a free parameter, on the basis of a conjectured random-walk behavior of sums over primes; that work is primarily numerical and does not state an error bound.
+ 
+-The present article is unconditional, uses about $\sqrt t$ primes, tied to the height (zeta imaginary ordinates), and bounds the mean-square error of ordinates $\tau_{k}^{\mathrm C}$ that are increasing and indexed by construction.
++The present article is unconditional, uses about $\sqrt t$ primes, tied to the height (imaginary parts of the zeta zeros), and bounds the mean-square error of the approximations $\tau_{k}^{\mathrm C}$ to the imaginary parts, which are increasing and indexed by construction.
+ 
+ \subsection{Inverting the Riemann--von Mangoldt formula}\label{subsec:tau_intro}
+-Let $\rho_k=\beta_k+i\gamma_k$ be the nontrivial zeros of the Riemann zeta function with positive imaginary ordinates, listed with multiplicity and $0<\gamma_1\le\gamma_2\le\cdots$, and let $N(t)=\#\{k:\gamma_k\le t\}$. For $t>0$ not an ordinate the Riemann--von Mangoldt formula reads \CGcite[\S9.3]{Titchmarsh1986}
++Let $\rho_k=\beta_k+i\gamma_k$ be the nontrivial zeros of the Riemann zeta function with positive imaginary parts, listed with multiplicity and $0<\gamma_1\le\gamma_2\le\cdots$, and let $N(t)=\#\{k:\gamma_k\le t\}$. For $t>0$ not an imaginary part the Riemann--von Mangoldt formula reads \CGcite[\S9.3]{Titchmarsh1986}
+ \begin{equation}
+ N(t)=\Nz(t)+S(t)+\frac{\varpi(t)}\pi,\qquad \Nz(t)=\frac t{2\pi}\log\frac t{2\pi e}+\frac78,\qquad S(t)=\frac1\pi\arg\zeta\bigl(\tfrac12+it\bigr),
+ \label{eq:intro_RvM}
+ \end{equation}
+-where $\varpi(t)=O(1/t)$ is the Stirling remainder of the Riemann--Siegel theta function (Lemma~\CGref{lem:varpi}). At an ordinate $t$ this paper uses the right-hand convention $S(t)=S(t^+)$, compatible with the right-continuous counting function $N$. Different conventions are used in the literature (see \CGcite[\S9.3]{Titchmarsh1986}). All bounds below have continuous majorants and extend to both one-sided limits by approximation through non-ordinates. The function $\Nz$ is strictly increasing on $(2\pi,\infty)$, with $\Nz(2\pi)=-\frac18$ and $\Nz(t)\to\infty$ as $t\to\infty$. Thus for every integer $k\ge1$ there is exactly one $\tau_k>2\pi$ with
++where $\varpi(t)=O(1/t)$ is the Stirling remainder of the Riemann--Siegel theta function (Lemma~\CGref{lem:varpi}). At an imaginary part $t$ this paper uses the right-hand convention $S(t)=S(t^+)$, compatible with the right-continuous counting function $N$. Different conventions are used in the literature (see \CGcite[\S9.3]{Titchmarsh1986}). All bounds below have continuous majorants and extend to both one-sided limits by approximation through values outside $\{\gamma_k\}$. The function $\Nz$ is strictly increasing on $(2\pi,\infty)$, with $\Nz(2\pi)=-\frac18$ and $\Nz(t)\to\infty$ as $t\to\infty$. Thus for every integer $k\ge1$ there is exactly one $\tau_k>2\pi$ with
+ \begin{equation}
+ \Nz(\tau_k)=k-\tfrac12 .
+ \label{eq:intro_tau}
+ \end{equation}
+-The sequence $(\tau_k)$ solves the counting equation with the oscillating term $S$ removed. In terms of the Gram points $g_m$, defined by $\vartheta(g_m)=m\pi$ for $m\ge-1$ ($g_{-1}=9.66\ldots$), one has $\Nz(g_m)=m+1-\varpi(g_m)/\pi$, because $\vartheta/\pi+1=\Nz+\varpi/\pi$ (Lemma~\CGref{lem:varpi}). Since $|\varpi|/\pi<\frac12$, we have $\Nz(g_{k-2})<k-\frac12<\Nz(g_{k-1})$ for every $k\ge1$. Strict monotonicity thus gives $g_{k-2}<\tau_k<g_{k-1}$. The ordinate $\gamma_k$ lies in the same Gram interval, $\gamma_k\in(g_{k-2},g_{k-1}]$, exactly when the displacement $\Delta^{\rm G}_k$ of Remark~\CGref{rem:bare_point} vanishes. This is Gram's law in the index convention adopted here for the $k$-th ordinate (the Gram--Selberg phenomenon of \CGcite[Def.~1.4]{Korolev2012}), and it fails for a positive proportion of $k$ \CGcite[p.~58]{Korolev2012}. The resulting sequence gives a continuous counterpart of the Gram scale, read at the half-integer levels.
++The sequence $(\tau_k)$ solves the counting equation with the oscillating term $S$ removed. In terms of the Gram points $g_m$, defined by $\vartheta(g_m)=m\pi$ for $m\ge-1$ ($g_{-1}=9.66\ldots$), one has $\Nz(g_m)=m+1-\varpi(g_m)/\pi$, because $\vartheta/\pi+1=\Nz+\varpi/\pi$ (Lemma~\CGref{lem:varpi}). Since $|\varpi|/\pi<\frac12$, we have $\Nz(g_{k-2})<k-\frac12<\Nz(g_{k-1})$ for every $k\ge1$. Strict monotonicity thus gives $g_{k-2}<\tau_k<g_{k-1}$. The imaginary part $\gamma_k$ lies in the same Gram interval, $\gamma_k\in(g_{k-2},g_{k-1}]$, exactly when the displacement $\Delta^{\rm G}_k$ of Remark~\CGref{rem:bare_point} vanishes. This is Gram's law in the index convention adopted here for the $k$-th imaginary part (the Gram--Selberg phenomenon of \CGcite[Def.~1.4]{Korolev2012}), and it fails for a positive proportion of $k$ \CGcite[p.~58]{Korolev2012}. The resulting sequence gives a continuous counterpart of the Gram scale, read at the half-integer levels.
+ 
+-The object of this paper is to determine how far these points lie from the ordinates $\gamma_k$, and how much arithmetic information can bring it within a bounded number of mean spacings $2\pi/\log\gamma_k$, with the intermediate objective of obtaining a better approximation of $\tau_k$ (or modifications thereof) to $\gamma_k$. The first question concerns the size of $S$; the second concerns its approximation by Euler phases.
++The object of this paper is to determine how far these points lie from the imaginary parts $\gamma_k$, and how much arithmetic information can bring it within a bounded number of mean spacings $2\pi/\log\gamma_k$, with the intermediate objective of obtaining a better approximation of $\tau_k$ (or modifications thereof) to $\gamma_k$. The first question concerns the size of $S$; the second concerns its approximation by Euler phases.
+ 
+ \subsection{Results}\label{subsec:results}
+ Throughout, write $\mathfrak a=\limsup_{T\to\infty}|S(T)|/\log T$. An \emph{admissible profile} is a continuous function $\mathfrak e:[\frac12,1]\to[0,\infty)$ with $\mathfrak e(1)=0$ such that, for every $\varepsilon>0$,
+@@ -362,7 +364,7 @@
+ \par
+ For $S$, Bellotti and Wong \CGcite[Cor.~1.5]{BellottiWong2025} prove $|S(T)|\le0.10076\log T+\min\{0.24460\log\log T+7.20844,\,1.68845\log\log T+1.50956\}$ for $T\ge e$ (their Theorem~1.1, for $N$, is discussed in Section~\CGref{subsec:literature}). The bound \CGeqref{eq:explicit_S} is the smaller of the two exactly when $\log T>2425.8386\ldots$. The minimum of the two bounds holds for all $T\ge e$.
+ 
+-\begin{corollary}[Distance to the ordinates]\label{cor:distance}
++\begin{corollary}[Distance to the imaginary parts]\label{cor:distance}
+ \begin{enumerate}[label=(\alph*)]
+ \item $\displaystyle\limsup_{k\to\infty}|\tau_k-\gamma_k|\le2\pi\Lambda(\eB)=0.6083129\ldots<0.60832 .$
+ \item For every $k\ge1$, with $\mathfrak m_k:=\min(\tau_k,\gamma_k)>2\pi$,
+@@ -383,7 +385,7 @@
+ \Ph(t)=\Bigl(2-\frac t{2^j}\Bigr)\Ph_{m_j}(t)+\Bigl(\frac t{2^j}-1\Bigr)\Ph_{m_{j+1}}(t),\qquad \Fc(t)=\Nz(t)+\Ph(t).
+ \label{eq:F_def}
+ \end{equation}
+-We define the corrected ordinates by
++We define the corrected points by
+ \begin{equation}
+ \tau_{k}^{\mathrm C}=\int_0^\infty\Ind_{\{\Fc(t)<k-\frac12\}}\,dt\qquad(k\ge1).
+ \label{eq:xk_def}
+@@ -413,7 +415,7 @@
+ \end{theorem}
+ 
+ Theorem~\CGref{thm:meansquare} is an asymptotic equality: the root-mean-square of $\tau_k-\gamma_k$ is $\frac{\sqrt{2\log\log T}}{2\pi}$ mean spacings, no more and no less. The Euler phases of Theorem~\CGref{thm:sublevel} remove the factor $\log\log T$ from the proved mean-square upper order. \par
+-The proof (Section~\CGref{sec:meansquare}) rests on an exact identity, valid for every $C^1$ function $F$, between the sum of $(k-\frac12-F(\gamma_k))^2$ over the ordinates and the integral of $(N-F)^2F'$, together with Selberg's mean square of $S$. It does not use the transfer inequality of Section~\CGref{sec:sublevel}.
++The proof (Section~\CGref{sec:meansquare}) rests on an exact identity, valid for every $C^1$ function $F$, between the sum of $(k-\frac12-F(\gamma_k))^2$ over the imaginary parts and the integral of $(N-F)^2F'$, together with Selberg's mean square of $S$. It does not use the transfer inequality of Section~\CGref{sec:sublevel}.
+ 
+ Kargin \CGcite[Thm.~1.1]{Kargin2013} considers the points $t_k$ defined by $\Nz(t_k)=k-\frac12$, which are the $\tau_k$ of \CGeqref{eq:intro_tau}, and proves, without assuming RH, that
+ \begin{equation}
+@@ -486,18 +488,18 @@
+ 
+ It is used here in Fujii's form, Theorem~\CGref{thm:known_fujii}(a), assembled from \CGcite[\S3]{Fujii1974}, together with Fujii's moments for $S(t+h)-S(t)$ \CGcite[Main Theorem]{Fujii1974}. Its extension to about $\sqrt t$ primes, counted by number, follows from the mean value theorem of Montgomery and Vaughan (Theorem~\CGref{thm:known_MV}) and is carried out in Lemma~\CGref{lem:fourth}.
+ 
+-The new ingredient of Theorem~\CGref{thm:sublevel} is the passage from the counting function to the ordinates themselves: the sum is over the zeros, and neither the monotonicity of $\Fc$ nor any hypothesis on the zeros is used. This passage is Theorem~\CGref{thm:transfer}. Fran\c{c}a and LeClair \CGcite{FrancaLeClair2015} study equations $\Nz(t)+S(t)=k-\frac12$ for the individual ordinates, with the exact $S$.
++The new ingredient of Theorem~\CGref{thm:sublevel} is the passage from the counting function to the imaginary parts themselves: the sum is over the zeros, and neither the monotonicity of $\Fc$ nor any hypothesis on the zeros is used. This passage is Theorem~\CGref{thm:transfer}. Fran\c{c}a and LeClair \CGcite{FrancaLeClair2015} study equations $\Nz(t)+S(t)=k-\frac12$ for the individual imaginary parts, with the exact $S$.
+ 
+ That each of them has exactly one solution is not proved there.
+ 
+-Two prime-based constructions provide a comparison with Theorem~\CGref{thm:sublevel}. LeClair \CGcite[\S VI, eq.~(49)]{LeClair2016} replaces $S$ by the phase of a finite number of Euler factors, that number being a free numerical parameter, and computes very high zeros by root-finding near the previous approximation. The aim there is numerical, and no error bound is stated. Gonek \CGcite{Gonek2012} builds functions $\zeta_X$ from a smoothed Euler product over $n\le X^2$ (in this paragraph $X$ is his parameter); for large $t$ the zeros of $\zeta_X(\frac12+it)$ are the points where a phase function built from primes crosses the levels $(2k+1)\pi$ \CGcite[\S10]{Gonek2012}. His results on these zeros assume RH: their number and simplicity when $X$ is small with respect to $t$ \CGcite[Thm.~8.1]{Gonek2012}, and their convergence to the ordinates of $\zeta$ as $X\to\infty$, on a fixed compact interval and without a rate \CGcite[Thm.~9.1]{Gonek2012}. Theorem~\CGref{thm:sublevel} has the following properties:
++Two prime-based constructions provide a comparison with Theorem~\CGref{thm:sublevel}. LeClair \CGcite[\S VI, eq.~(49)]{LeClair2016} replaces $S$ by the phase of a finite number of Euler factors, that number being a free numerical parameter, and computes very high zeros by root-finding near the previous approximation. The aim there is numerical, and no error bound is stated. Gonek \CGcite{Gonek2012} builds functions $\zeta_X$ from a smoothed Euler product over $n\le X^2$ (in this paragraph $X$ is his parameter); for large $t$ the zeros of $\zeta_X(\frac12+it)$ are the points where a phase function built from primes crosses the levels $(2k+1)\pi$ \CGcite[\S10]{Gonek2012}. His results on these zeros assume RH: their number and simplicity when $X$ is small with respect to $t$ \CGcite[Thm.~8.1]{Gonek2012}, and their convergence to the imaginary parts of $\zeta$ as $X\to\infty$, on a fixed compact interval and without a rate \CGcite[Thm.~9.1]{Gonek2012}. Theorem~\CGref{thm:sublevel} has the following properties:
+ \begin{enumerate}
+ \item it is unconditional;
+ \item it is quantitative: the root-mean-square error is $O(1/\log T)$, and Corollary~\CGref{cor:proportion} bounds the proportion of large deviations;
+ \item the number of primes is tied to the height, about $\sqrt t$ primes at height $t$, instead of being a free parameter;
+ \item $\tau_{k}^{\mathrm C}$ is the measure of a sublevel set, so the points are increasing and carry the index $k$ by construction; in \CGcite{LeClair2016} and \CGcite{Gonek2012} the solutions are indexed by selection or by counting.
+ \end{enumerate}
+-By comparison, Theorem~\CGref{thm:sublevel} controls only the mean square, whereas Gonek's Theorem~9.1, under RH, concerns every ordinate.
++By comparison, Theorem~\CGref{thm:sublevel} controls only the mean square, whereas Gonek's Theorem~9.1, under RH, concerns every imaginary part.
+ 
+ \paragraph{Monotonicity.}
+ The bound \CGeqref{eq:main_sublevel} does not follow directly from the results of Gonek \CGcite{Gonek2012} and LeClair \CGcite{LeClair2016}: deducing it from them would require, among other things, a proof that $\Fc$ is monotone. The available arguments for monotonicity assume RH \CGcite[Thm.~8.1 and \S10]{Gonek2012}; the present criterion avoids RH and does not require monotonicity. In this paragraph $X$ denotes a cutoff for the primes, as in \CGcite{Gonek2012}. If $\Fc$ were increasing on $[2\pi,\infty)$, then for $k\ge2$ the equation $\Fc(t)=k-\frac12$ would have exactly one solution, equal to $\tau_{k}^{\mathrm C}$ (on $(0,2\pi]$, $\Fc<\frac78+\frac12<\frac32$ by \CGeqref{eq:phasebound}); monotonicity alone does not bound $\tau_{k}^{\mathrm C}-\gamma_k$, since $\Fc'$ may be small in a long gap, and the passage from the counting error $N-\Fc$ to the positions is Theorem~\CGref{thm:transfer} in either case. For points defined as solutions, however, monotonicity is needed, and the two requirements, bounded error and monotonicity, pull in opposite directions.
+@@ -510,9 +512,9 @@
+ \paragraph{Precedents of the construction.}
+ The definition \CGeqref{eq:xk_def} evaluates the distribution function $D_{\Fc}(\lambda)=\meas\{t>0:\Fc(t)<\lambda\}$ at $\lambda=k-\frac12$. With the standard generalized-inverse convention, the increasing rearrangement reaches this level at the position $D_{\Fc}(k-\frac12)$ (Remark~\CGref{rem:quantile}).
+ 
+-The ordinates themselves are the same construction applied to $N$, since $\gamma_k=\meas\{N<k-\frac12\}$, and Theorem~\CGref{thm:transfer} compares the two. Rearrangements and quantile functions are classical \CGcite[Ch.~X]{HardyLittlewoodPolya1934}. An application of this construction to the ordinates of the zeros, or an inequality of the form \CGeqref{eq:transfer}, is not known to the author to have been published as of 30 October 2026.
++The imaginary parts themselves are the same construction applied to $N$, since $\gamma_k=\meas\{N<k-\frac12\}$, and Theorem~\CGref{thm:transfer} compares the two. Rearrangements and quantile functions are classical \CGcite[Ch.~X]{HardyLittlewoodPolya1934}. An application of this construction to the imaginary parts of the zeros, or an inequality of the form \CGeqref{eq:transfer}, is not known to the author to have been published as of 30 October 2026.
+ 
+-As of 30 October 2026, the author is not aware of published results that combine the unconditional construction by finitely many Euler phases, increasing sublevel-defined ordinates, and the mean-square localization in Theorem~\CGref{thm:sublevel}. The bounds in Theorems~\CGref{thm:asymptotic} and~\CGref{thm:explicit} are compared quantitatively with their cited antecedents above.
++As of 30 October 2026, the author is not aware of published results that combine the unconditional construction by finitely many Euler phases, increasing sublevel-defined approximations of the imaginary parts, and the mean-square localization in Theorem~\CGref{thm:sublevel}. The bounds in Theorems~\CGref{thm:asymptotic} and~\CGref{thm:explicit} are compared quantitatively with their cited antecedents above.
+ 
+ \subsection{Organization}
+ Section~\CGref{sec:notation} fixes the notation. Section~\CGref{sec:external} collects the results from the literature, with the precise form in which they are used. Section~\CGref{sec:explicit_lemmas} proves the explicit lemmas on $\varpi$, $\chi$ and $\zeta$.
+@@ -537,16 +539,16 @@
+ 
+ Dummy variables of integration and summation are local. The letter $\pi$ denotes only $3.14159\ldots$. $\operatorname{Log}$ and $\operatorname{ph}$ are the principal logarithm and argument ($-\pi<\operatorname{ph}\le\pi$). The implied constants in $\ll$ and $O$ are absolute unless a subscript indicates a dependence. In the definition of an admissible exponent profile, the constant may also depend on the chosen profile.
+ 
+-\paragraph{Conventions at the ordinates.}
+-The zeros are listed with multiplicity, so $N$ is right continuous, $N(\gamma^+)=N(\gamma)$, and $N(\gamma^+)-N(\gamma^-)$ is the multiplicity of the ordinate $\gamma$ (the number of zeros with that imaginary part).
++\paragraph{Conventions at the imaginary parts.}
++The zeros are listed with multiplicity, so $N$ is right continuous, $N(\gamma^+)=N(\gamma)$, and $N(\gamma^+)-N(\gamma^-)$ is the multiplicity of the imaginary part $\gamma$ (the number of zeros with that imaginary part).
+ 
+-For $t>0$ not an ordinate, $S(t)=\frac1\pi\arg\zeta(\frac12+it)$ with the argument obtained by continuous variation along the segments from $2$ to $2+it$ and from $2+it$ to $\frac12+it$, so $S$ is continuous on each open interval between consecutive distinct ordinates.
++For $t>0$ not an imaginary part, $S(t)=\frac1\pi\arg\zeta(\frac12+it)$ with the argument obtained by continuous variation along the segments from $2$ to $2+it$ and from $2+it$ to $\frac12+it$, so $S$ is continuous on each open interval between consecutive distinct imaginary parts.
+ 
+-At an ordinate $\gamma$ the one-sided limits $S(\gamma^\pm)$ exist, $S(\gamma^+)-S(\gamma^-)$ is the multiplicity of $\gamma$ (because $\Nz$ and $\varpi$ are continuous in \CGeqref{eq:intro_RvM}), and this article adopts the right-continuous convention $S(\gamma)=S(\gamma^+)$. This convention is chosen to agree with $N(\gamma)=\#\{k:\gamma_k\le\gamma\}$; alternative conventions, including midpoint values, occur in the literature (see \CGcite[\S9.3]{Titchmarsh1986}).
++At an imaginary part $\gamma$ the one-sided limits $S(\gamma^\pm)$ exist, $S(\gamma^+)-S(\gamma^-)$ is the multiplicity of $\gamma$ (because $\Nz$ and $\varpi$ are continuous in \CGeqref{eq:intro_RvM}), and this article adopts the right-continuous convention $S(\gamma)=S(\gamma^+)$. This convention is chosen to agree with $N(\gamma)=\#\{k:\gamma_k\le\gamma\}$; alternative conventions, including midpoint values, occur in the literature (see \CGcite[\S9.3]{Titchmarsh1986}).
+ 
+-Other conventions at the ordinates (such as the mean of the two limits) change $S$ on a null set and do not affect the integrals of Theorems~\CGref{thm:known_fujii} and~\CGref{thm:known_MV}.
++Other conventions at the imaginary parts (such as the mean of the two limits) change $S$ on a null set and do not affect the integrals of Theorems~\CGref{thm:known_fujii} and~\CGref{thm:known_MV}.
+ 
+-All bounds for $|S(T)|$ in this article are proved first for $T$ not an ordinate and have right sides continuous in $T$. Taking sequences of non-ordinates tending to each ordinate $\gamma$ from either side yields the same bounds for $S(\gamma^-)$ and $S(\gamma^+)$. Hence, by \CGeqref{eq:intro_RvM}, they apply to the corresponding one-sided values $G(\gamma^\pm)=S(\gamma^\pm)+\varpi(\gamma)/\pi$, where $G=N-\Nz$.
++All bounds for $|S(T)|$ in this article are proved first for $T$ not an imaginary part and have right sides continuous in $T$. Taking sequences of points outside $\{\gamma_k\}$ tending to each imaginary part $\gamma$ from either side yields the same bounds for $S(\gamma^-)$ and $S(\gamma^+)$. Hence, by \CGeqref{eq:intro_RvM}, they apply to the corresponding one-sided values $G(\gamma^\pm)=S(\gamma^\pm)+\varpi(\gamma)/\pi$, where $G=N-\Nz$.
+ 
+ Multiplicities enter Lemma~\CGref{lem:s_bounds} and Proposition~\CGref{prop:distance_sharp} only through the inequalities $N(\gamma_k^-)+1\le k\le N(\gamma_k^+)$.
+ 
+@@ -601,7 +603,7 @@
+ The following statements are used as they stand; each was checked in the source indicated. Within this section the letters $\sigma_\pm$, $A$, $B$, $C$, $C'$, $\alpha_i$, $\beta_i$, $\Xi$, $\varkappa$ and $b_n$ are local. The letters $\mathsf k$, $\alpha_{\rm F}$, $H$ and $h$ have the meaning of Section~\CGref{sec:notation}.
+ 
+ \begin{theorem}[\CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12]\label{thm:known_basic}
+-For $t>0$ not an ordinate, $N(t)=\frac1\pi\vartheta(t)+1+S(t)$, where $\vartheta(t)=\operatorname{Im}\operatorname{Log}\Gamma(\frac14+\frac{it}2)-\frac t2\log\pi$ (the branch of $\operatorname{Log}\Gamma$ that is real on $(0,\infty)$). Moreover $S(t)=O(\log t)$ and $\gamma_{k+1}-\gamma_k\to0$ as $k\to\infty$.
++For $t>0$ not an imaginary part, $N(t)=\frac1\pi\vartheta(t)+1+S(t)$, where $\vartheta(t)=\operatorname{Im}\operatorname{Log}\Gamma(\frac14+\frac{it}2)-\frac t2\log\pi$ (the branch of $\operatorname{Log}\Gamma$ that is real on $(0,\infty)$). Moreover $S(t)=O(\log t)$ and $\gamma_{k+1}-\gamma_k\to0$ as $k\to\infty$.
+ \end{theorem}
+ 
+ \begin{theorem}[{Stirling's formula with remainder, \CGcite[\S5.11(ii)]{DLMF}}]\label{thm:known_stirling}
+@@ -655,7 +657,7 @@
+ \limsup_{m\to\infty}\mathcal Z_{n_m}(c,R)\le\log\frac{\zeta(c)}{\sqrt{(c-1)^2+T^2}\,\zeta(2c)}+\frac1\pi\int_0^\pi\Psi(\theta)\,d\theta .
+ \label{eq:disp_05}
+ \end{equation}
+-\item For every $n\ge1$, if $T$ is not an ordinate,
++\item For every $n\ge1$, if $T$ is not an imaginary part,
+ \begin{equation}
+ \Bigl|\Delta_{\sigma=\sigma^\sharp}^{1/2}\arg\bigl((\sigma+iT-1)\zeta(\sigma+iT)\bigr)\Bigr|\le\frac{\pi\mathcal Z_n(c,R)}{2\mathfrak d}+\frac{\mathcal E(T,\delta^\sharp)}2+\frac{3\pi}{2n}+\frac\pi4,\qquad\mathfrak d=\log\frac R{c-\frac12},
+ \label{eq:disp_06}
+@@ -720,7 +722,7 @@
+ \section{Explicit lemmas}\label{sec:explicit_lemmas}
+ 
+ \begin{lemma}\label{lem:varpi}
+-For $t>0$, $\vartheta(t)=\frac t2\log\frac t{2\pi e}-\frac\pi8+\varpi(t)$ with $|\varpi(t)|\le0.53/t$. Consequently \CGeqref{eq:intro_RvM} holds for $t>0$ not an ordinate.
++For $t>0$, $\vartheta(t)=\frac t2\log\frac t{2\pi e}-\frac\pi8+\varpi(t)$ with $|\varpi(t)|\le0.53/t$. Consequently \CGeqref{eq:intro_RvM} holds for $t>0$ not an imaginary part.
+ \end{lemma}
+ 
+ \begin{proof}
+@@ -819,7 +821,7 @@
+ \section{A disc-based estimate for $S(T)$}\label{sec:backlund}
+ 
+ \begin{proposition}\label{prop:master}
+-Let $c,R$ satisfy \CGeqref{eq:backlund_conditions} with $c\le2$ and $R\le2$, and let $T\ge3$ be a non-ordinate. Suppose that, for a nonnegative measurable function $\mathfrak h$ on $[c-R,c+R]$ with $\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta<\infty$, a constant $K\ge1$ and a function $\Omega\ge1$ on $[T-2,T+2]$ such that $t\mapsto t^{\mathfrak h(\sigma)}\Omega(t)$ is nondecreasing there for every $\sigma$,
++Let $c,R$ satisfy \CGeqref{eq:backlund_conditions} with $c\le2$ and $R\le2$, and let $T\ge3$ be outside $\{\gamma_k\}$. Suppose that, for a nonnegative measurable function $\mathfrak h$ on $[c-R,c+R]$ with $\int_0^\pi\mathfrak h(c+R\cos\theta)\,d\theta<\infty$, a constant $K\ge1$ and a function $\Omega\ge1$ on $[T-2,T+2]$ such that $t\mapsto t^{\mathfrak h(\sigma)}\Omega(t)$ is nondecreasing there for every $\sigma$,
+ \begin{equation}
+ |\zeta(\sigma+it)|\le K\,t^{\mathfrak h(\sigma)}\Omega(t)\qquad(c-R\le\sigma\le c+R,\ T-2\le t\le T+2).
+ \label{eq:zeta_hyp}
+@@ -862,7 +864,7 @@
+ \label{eq:disp_15}
+ \end{equation}
+ 
+-\emph{Passage to the limit.} The limits are taken in the order $T\to\infty$, then $\varepsilon\to0$, then $\eta\to0$. The parameters $\eta$ and $\varepsilon$ do not depend on $T$. For fixed $\varepsilon$ and $\eta$ the term $O_{\varepsilon,\eta}(1)$ is bounded, so dividing by $\log T$ and letting $T\to\infty$ through non-ordinates (at an ordinate $S(T)=S(T^+)$ is a limit of values at non-ordinates, so the $\limsup$ over non-ordinates is $\mathfrak a$) gives
++\emph{Passage to the limit.} The limits are taken in the order $T\to\infty$, then $\varepsilon\to0$, then $\eta\to0$. The parameters $\eta$ and $\varepsilon$ do not depend on $T$. For fixed $\varepsilon$ and $\eta$ the term $O_{\varepsilon,\eta}(1)$ is bounded, so dividing by $\log T$ and letting $T\to\infty$ through values outside $\{\gamma_k\}$ (at an imaginary part $S(T)=S(T^+)$ is a limit of values at points outside $\{\gamma_k\}$, so the $\limsup$ over points outside $\{\gamma_k\}$ is $\mathfrak a$) gives
+ \begin{equation}
+ \mathfrak a\le\frac1{2\pi\log2}\Bigl(\int_0^\pi\mathfrak e^*\bigl(1+\eta+(1+2\eta)\cos\theta\bigr)d\theta+\pi\varepsilon\Bigr).
+ \label{eq:disp_16}
+@@ -897,9 +899,9 @@
+ Appendix~\CGref{app:code} computes these values (40-digit arithmetic, two independent evaluations) and gives $0.096816006\le\Lambda(\eB)\le0.096816007$ and $2\pi\Lambda(\eB)\le0.60832$.\qed
+ 
+ \subsection{Proof of Theorem~\ref{thm:explicit}}\label{subsec:proof_explicit}
+-Take $c=1.000002$ and $R=1.000005$. Then $c-R=-3\cdot10^{-6}$, $\sigma^\sharp=1.25000275\ldots$, $\delta^\sharp=0.2500012499\ldots\in[\frac14,\frac58]$, $c<R$, and \CGeqref{eq:backlund_conditions} holds. Let $T\ge100$ be a non-ordinate. For $\sigma\in[c-R,c+R]\subset[-0.01,3]$ and $t\in[T-2,T+2]\subset[98,\infty)$, Lemma~\CGref{lem:explicit_zeta} gives \CGeqref{eq:zeta_hyp} with $\mathfrak h=\eE^*$, $K=2.74$ and $\Omega(t)=\log t$.
++Take $c=1.000002$ and $R=1.000005$. Then $c-R=-3\cdot10^{-6}$, $\sigma^\sharp=1.25000275\ldots$, $\delta^\sharp=0.2500012499\ldots\in[\frac14,\frac58]$, $c<R$, and \CGeqref{eq:backlund_conditions} holds. Let $T\ge100$ be outside $\{\gamma_k\}$. For $\sigma\in[c-R,c+R]\subset[-0.01,3]$ and $t\in[T-2,T+2]\subset[98,\infty)$, Lemma~\CGref{lem:explicit_zeta} gives \CGeqref{eq:zeta_hyp} with $\mathfrak h=\eE^*$, $K=2.74$ and $\Omega(t)=\log t$.
+ 
+-The integral $\mathcal I_{\eE^*}$ has a closed form. Write $\varsigma_0=\frac12<\varsigma_1<\dots<\varsigma_7=1$ for the abscissae in \CGeqref{eq:explicit_nodes}, $e_i$ for the ordinates and $\varrho_i=(e_{i+1}-e_i)/(\varsigma_{i+1}-\varsigma_i)$ for the slopes, so that
++The integral $\mathcal I_{\eE^*}$ has a closed form. Write $\varsigma_0=\frac12<\varsigma_1<\dots<\varsigma_7=1$ for the abscissae in \CGeqref{eq:explicit_nodes}, $e_i$ for the second coordinates and $\varrho_i=(e_{i+1}-e_i)/(\varsigma_{i+1}-\varsigma_i)$ for the slopes, so that
+ \begin{equation}
+ \eE(\sigma)=e_0+\varrho_0\bigl(\sigma-\tfrac12\bigr)+\sum_{i=1}^{6}(\varrho_i-\varrho_{i-1})\max(0,\sigma-\varsigma_i)-\varrho_6\max(0,\sigma-1)\qquad(\sigma\ge\tfrac12),
+ \label{eq:disp_18}
+@@ -936,7 +938,7 @@
+ Hence $|S(T)|\le C_1\log T+C_2\log\log T+C_3(100)$ for $T\ge100$, and \CGeqref{eq:explicit_S} follows from $0.09783>C_1$, $0.7214>C_2$, $10.6>C_3(100)$. For $e\le T\le100$, Theorem~\CGref{thm:known_small} gives $|S(T)|\le2.5167$, smaller than the right side of \CGeqref{eq:explicit_S}. Finally \CGeqref{eq:explicit_N} follows from \CGeqref{eq:intro_RvM} and $|\varpi(T)|/\pi\le0.53/(\pi e)<0.07$ (Lemma~\CGref{lem:varpi}).\qed
+ 
+ %======================================================================
+-\section{Distance from \texorpdfstring{$\tau_k$}{tau_k} to the ordinates}\label{sec:distance}
++\section{Distance from \texorpdfstring{$\tau_k$}{tau_k} to the imaginary parts}\label{sec:distance}
+ 
+ For $k\ge1$ put $s_k=k-\frac12-\Nz(\gamma_k)=\Nz(\tau_k)-\Nz(\gamma_k)$, and write $G=N-\Nz=S+\varpi/\pi$ (Lemma~\CGref{lem:varpi}), $G_k^\pm=G(\gamma_k^\pm)$.
+ 
+@@ -951,9 +953,9 @@
+ \begin{proof}[Proof of Corollary~\ref{cor:distance}]
+ The function $\Nz$ is increasing on $(2\pi,\infty)$ with increasing derivative $\lL(t)=\frac1{2\pi}\log\frac t{2\pi}$, and $\gamma_1>14>2\pi$, $\tau_k>2\pi$, so $\mathfrak m_k>2\pi$. By the mean value theorem, $|s_k|=\lL(\xi_k)|\tau_k-\gamma_k|\ge\lL(\mathfrak m_k)|\tau_k-\gamma_k|$ for some $\xi_k$ between $\tau_k$ and $\gamma_k$.
+ 
+-(b) Inequality \CGeqref{eq:explicit_N} holds for $G(t)$ at non-ordinates $t\ge e$ and, since its right side is continuous and increasing in $t$, for $G_k^\pm$ (note $\gamma_k>14>e$). With Lemma~\CGref{lem:s_bounds} it gives $|s_k|\le0.09783\log\gamma_k+0.7214\log\log\gamma_k+10.2$, and \CGeqref{eq:distance_explicit} follows from $\lL(\mathfrak m_k)=\frac1{2\pi}\log\frac{\mathfrak m_k}{2\pi}>0$.
++(b) Inequality \CGeqref{eq:explicit_N} holds for $G(t)$ at points $t\ge e$ outside $\{\gamma_k\}$ and, since its right side is continuous and increasing in $t$, for $G_k^\pm$ (note $\gamma_k>14>e$). With Lemma~\CGref{lem:s_bounds} it gives $|s_k|\le0.09783\log\gamma_k+0.7214\log\log\gamma_k+10.2$, and \CGeqref{eq:distance_explicit} follows from $\lL(\mathfrak m_k)=\frac1{2\pi}\log\frac{\mathfrak m_k}{2\pi}>0$.
+ 
+-(a) First, $\mathfrak m_k\ge\gamma_k/2$ for large $k$: if $\tau_k<\gamma_k/2$, then $|s_k|=\Nz(\gamma_k)-\Nz(\tau_k)\ge\Nz(\gamma_k)-\Nz(\gamma_k/2)\ge\frac{\gamma_k}2\lL(\frac{\gamma_k}2)$, which exceeds the bound $O(\log\gamma_k)$ of (b) for large $k$. Hence $\log\mathfrak m_k=\log\gamma_k+O(1)$, so $|\tau_k-\gamma_k|=O(1)$ by (b), and then $\log\mathfrak m_k=\log\gamma_k+o(1)$. For $\varepsilon>0$, Corollary~\CGref{cor:bourgain} and $\varpi(t)\to0$ give $|G(t)|\le(\Lambda(\eB)+\varepsilon)\log t$ for large non-ordinates $t$, hence $|G_k^\pm|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$, $|s_k|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$ and $|\tau_k-\gamma_k|\le|s_k|/\lL(\mathfrak m_k)\le2\pi(\Lambda(\eB)+\varepsilon)(1+o(1))$. Let $\varepsilon\to0$. Finally, $2\pi\cdot0.0968160063238\ldots=0.6083129\ldots$.
++(a) First, $\mathfrak m_k\ge\gamma_k/2$ for large $k$: if $\tau_k<\gamma_k/2$, then $|s_k|=\Nz(\gamma_k)-\Nz(\tau_k)\ge\Nz(\gamma_k)-\Nz(\gamma_k/2)\ge\frac{\gamma_k}2\lL(\frac{\gamma_k}2)$, which exceeds the bound $O(\log\gamma_k)$ of (b) for large $k$. Hence $\log\mathfrak m_k=\log\gamma_k+O(1)$, so $|\tau_k-\gamma_k|=O(1)$ by (b), and then $\log\mathfrak m_k=\log\gamma_k+o(1)$. For $\varepsilon>0$, Corollary~\CGref{cor:bourgain} and $\varpi(t)\to0$ give $|G(t)|\le(\Lambda(\eB)+\varepsilon)\log t$ for large $t$ outside $\{\gamma_k\}$, hence $|G_k^\pm|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$, $|s_k|\le(\Lambda(\eB)+\varepsilon)\log\gamma_k$ and $|\tau_k-\gamma_k|\le|s_k|/\lL(\mathfrak m_k)\le2\pi(\Lambda(\eB)+\varepsilon)(1+o(1))$. Let $\varepsilon\to0$. Finally, $2\pi\cdot0.0968160063238\ldots=0.6083129\ldots$.
+ \end{proof}
+ 
+ \begin{proposition}[Limit superior of $\lvert\tau_k-\gamma_k\rvert$]\label{prop:distance_sharp}
+@@ -961,9 +963,9 @@
+ \end{proposition}
+ 
+ \begin{proof}
+-\emph{Upper bound.} By the definition of $\mathfrak a$, for every $\varepsilon>0$ and all large non-ordinates $t$, $|S(t)|\le(\mathfrak a+\varepsilon)\log t$. The proof of Corollary~\CGref{cor:distance}(a), with $\Lambda(\eB)$ replaced by $\mathfrak a$, gives $\limsup_k|\tau_k-\gamma_k|\le2\pi\mathfrak a$. It uses Lemma~\CGref{lem:s_bounds}, which allows multiple ordinates.
++\emph{Upper bound.} By the definition of $\mathfrak a$, for every $\varepsilon>0$ and all large $t$ outside $\{\gamma_k\}$, $|S(t)|\le(\mathfrak a+\varepsilon)\log t$. The proof of Corollary~\CGref{cor:distance}(a), with $\Lambda(\eB)$ replaced by $\mathfrak a$, gives $\limsup_k|\tau_k-\gamma_k|\le2\pi\mathfrak a$. It uses Lemma~\CGref{lem:s_bounds}, which allows multiple imaginary parts.
+ 
+-\emph{Lower bound.} One may assume $\mathfrak a>0$. Let $t>\gamma_1$ be a non-ordinate and $k=N(t)$, so that $\gamma_k<t<\gamma_{k+1}$. If the ordinate $\gamma_k$ is multiple, $k$ is the largest index with that ordinate, and $\gamma_{k+1}$ is the next distinct ordinate, whatever its multiplicity. Since no ordinate lies in $(\gamma_k,\gamma_{k+1})$, $N(\gamma_k^+)=k=N(\gamma_{k+1}^-)$.
++\emph{Lower bound.} One may assume $\mathfrak a>0$. Let $t>\gamma_1$ be outside $\{\gamma_k\}$ and $k=N(t)$, so that $\gamma_k<t<\gamma_{k+1}$. If the imaginary part $\gamma_k$ is multiple, $k$ is the largest index with that imaginary part, and $\gamma_{k+1}$ is the next distinct imaginary part, whatever its multiplicity. Since no imaginary part lies in $(\gamma_k,\gamma_{k+1})$, $N(\gamma_k^+)=k=N(\gamma_{k+1}^-)$.
+ 
+ By the definition of $s_k$, $s_k=N(\gamma_k^+)-\frac12-\Nz(\gamma_k)=G_k^+-\frac12$ and $s_{k+1}=N(\gamma_{k+1}^-)+\frac12-\Nz(\gamma_{k+1})=G_{k+1}^-+\frac12$. On $(\gamma_k,\gamma_{k+1})$, $G=k-\Nz$ is decreasing, so $G_k^+\ge G(t)\ge G_{k+1}^-$, hence $s_k\ge G(t)-\frac12$ and $s_{k+1}\le G(t)+\frac12$.
+ 
+@@ -971,7 +973,7 @@
+ 
+ For $j\in\{k,k+1\}$ the mean value theorem gives $|s_j|=\lL(\xi_j)|\tau_j-\gamma_j|$ with $\xi_j$ between $\tau_j$ and $\gamma_j$, and $\lL$ increases, so $|\tau_j-\gamma_j|\ge|s_j|/\lL(\max(\tau_j,\gamma_j))$. By the proof of Corollary~\CGref{cor:distance}(a), $|\tau_j-\gamma_j|=O(1)$, and $\gamma_{k+1}-\gamma_k\to0$ as $t\to\infty$ (Theorem~\CGref{thm:known_basic}; $k=N(t)\to\infty$), so $\max(\tau_j,\gamma_j)=t+O(1)$ and $2\pi\lL(\max(\tau_j,\gamma_j))=\log t-\log2\pi+O(1/t)$. Finally $G(t)=S(t)+\varpi(t)/\pi$ with $\varpi(t)\to0$ (Lemma~\CGref{lem:varpi}).
+ 
+-Choose non-ordinates $t\to\infty$ with $|S(t)|\ge(\mathfrak a-\varepsilon)\log t$, which exist by the definition of $\mathfrak a$ and the convention $S(T)=S(T^+)$. Then, for one of $j=k,k+1$,
++Choose $t\to\infty$ outside $\{\gamma_k\}$ with $|S(t)|\ge(\mathfrak a-\varepsilon)\log t$, which exist by the definition of $\mathfrak a$ and the convention $S(T)=S(T^+)$. Then, for one of $j=k,k+1$,
+ \begin{equation}
+ |\tau_j-\gamma_j|\ge\frac{2\pi\bigl((\mathfrak a-\varepsilon)\log t-\frac12-o(1)\bigr)}{\log t-\log2\pi+O(1/t)}\longrightarrow2\pi(\mathfrak a-\varepsilon),
+ \label{eq:disp_19}
+@@ -1038,7 +1040,7 @@
+ \end{theorem}
+ 
+ \begin{proof}
+-Fix $k$ with $a<\gamma_k\le b$. Then $\ell_0+1\le k\le\ell_1$. (An ordinate equal to $a$ has index $\le\ell_0$ and is not counted. The last gap $D_{\ell_1}=\gamma_{\ell_1+1}-\gamma_{\ell_1}$, to the first ordinate beyond $b$, is included in \CGeqref{eq:transfer} because $\{t\in[a,b]:N(t)=\ell_1\}\subset[\gamma_{\ell_1},\gamma_{\ell_1+1})$ reaches $b$.) Since $N(t)<k-\frac12$ exactly when $t<\gamma_k$, $\gamma_k=a+\int_a^b\Ind_{\{N<k-1/2\}}$, and $x^f_k-\gamma_k=u_k-v_k$ with $u_k=\meas\{t\in[\gamma_k,b]:f(t)<k-\frac12\}$ and $v_k=\meas\{t\in[a,\gamma_k):f(t)\ge k-\frac12\}$.
++Fix $k$ with $a<\gamma_k\le b$. Then $\ell_0+1\le k\le\ell_1$. (An imaginary part equal to $a$ has index $\le\ell_0$ and is not counted. The last gap $D_{\ell_1}=\gamma_{\ell_1+1}-\gamma_{\ell_1}$, to the first imaginary part beyond $b$, is included in \CGeqref{eq:transfer} because $\{t\in[a,b]:N(t)=\ell_1\}\subset[\gamma_{\ell_1},\gamma_{\ell_1+1})$ reaches $b$.) Since $N(t)<k-\frac12$ exactly when $t<\gamma_k$, $\gamma_k=a+\int_a^b\Ind_{\{N<k-1/2\}}$, and $x^f_k-\gamma_k=u_k-v_k$ with $u_k=\meas\{t\in[\gamma_k,b]:f(t)<k-\frac12\}$ and $v_k=\meas\{t\in[a,\gamma_k):f(t)\ge k-\frac12\}$.
+ 
+ Let $E_k\subset[a,b]$ be the set where $\Ind_{\{f<k-1/2\}}\ne\Ind_{\{N<k-1/2\}}$. By the bathtub principle \CGcite[Thm.~1.14]{LiebLoss2001}, a measurable set $U\subset[\gamma_k,b]$ of measure $u$ satisfies $\int_U(t-\gamma_k)\,dt\ge\int_{\gamma_k}^{\gamma_k+u}(t-\gamma_k)\,dt=\frac{u^2}2$: on $U\setminus[\gamma_k,\gamma_k+u]$ the integrand is $\ge u$, on $[\gamma_k,\gamma_k+u]\setminus U$ it is $\le u$, and the two sets have the same measure. Likewise on the left. Hence
+ \begin{equation}
+@@ -1069,7 +1071,7 @@
+ \end{lemma}
+ 
+ \begin{proof}
+-Write $D_\ell=\gamma_{\ell+1}-\gamma_\ell$ and $L_T=\log\frac T{2\pi}$. By Theorem~\CGref{thm:known_basic}, $D_\ell\to0$, so there is $T_0$ with $D_\ell\le1$ whenever $\gamma_\ell>T\ge T_0$. For $0<h\le1$ let $\mathcal A_h=\{t\in[T,4T]:N(t+h)=N(t)\}$. For every $t\in\mathcal A_h$ such that neither $t$ nor $t+h$ is an ordinate (a null set is excluded), \CGeqref{eq:intro_RvM} at $t$ and $t+h$ gives $|S(t+h)-S(t)|=|\Nz(t+h)-\Nz(t)+\frac{\varpi(t+h)-\varpi(t)}\pi|\ge\frac{hL_T}{2\pi}-O\bigl(\frac1T\bigr)\ge\frac{hL_T}{4\pi}$ when $hL_T\ge1$ and $T\ge T_0$. Theorem~\CGref{thm:known_fujii}(b) with $\mathsf k=2$, $\alpha_{\rm F}=\frac12$ and $H=T$ (the endpoints of its ranges, admitted there; this is the case ($\alpha$) of \CGcite{Fujii1981}), on $[T,2T]$ and on $[2T,4T]$, together with $\log(2+h\log4T)\le2\log(2+hL_T)$, gives, by Chebyshev's inequality,
++Write $D_\ell=\gamma_{\ell+1}-\gamma_\ell$ and $L_T=\log\frac T{2\pi}$. By Theorem~\CGref{thm:known_basic}, $D_\ell\to0$, so there is $T_0$ with $D_\ell\le1$ whenever $\gamma_\ell>T\ge T_0$. For $0<h\le1$ let $\mathcal A_h=\{t\in[T,4T]:N(t+h)=N(t)\}$. For every $t\in\mathcal A_h$ such that neither $t$ nor $t+h$ is an imaginary part (a null set is excluded), \CGeqref{eq:intro_RvM} at $t$ and $t+h$ gives $|S(t+h)-S(t)|=|\Nz(t+h)-\Nz(t)+\frac{\varpi(t+h)-\varpi(t)}\pi|\ge\frac{hL_T}{2\pi}-O\bigl(\frac1T\bigr)\ge\frac{hL_T}{4\pi}$ when $hL_T\ge1$ and $T\ge T_0$. Theorem~\CGref{thm:known_fujii}(b) with $\mathsf k=2$, $\alpha_{\rm F}=\frac12$ and $H=T$ (the endpoints of its ranges, admitted there; this is the case ($\alpha$) of \CGcite{Fujii1981}), on $[T,2T]$ and on $[2T,4T]$, together with $\log(2+h\log4T)\le2\log(2+hL_T)$, gives, by Chebyshev's inequality,
+ \begin{equation}
+ \meas\mathcal A_h\le\Bigl(\frac{4\pi}{hL_T}\Bigr)^4\int_T^{4T}\bigl(S(t+h)-S(t)\bigr)^4dt\ll\frac{T\log^2(2+hL_T)}{(hL_T)^4}\qquad(1\le hL_T,\ 0<h\le1).
+ \label{eq:disp_24}
+@@ -1146,7 +1148,7 @@
+ %======================================================================
+ \section{The mean square of \texorpdfstring{$\tau_k-\gamma_k$}{tau\_k - gamma\_k}}\label{sec:meansquare}
+ 
+-In this section $F$, $u_k$, $\Psi_j$, $k_1$ and $k_2$ are local. The symbols $s_k$, $G=N-\Nz=S+\varpi/\pi$ and $\lL=\Nz'$ are those of Section~\CGref{sec:distance}, and $\Kc_T$, $\langle\cdot\rangle_{\Kc_T}$ those of Theorem~\CGref{thm:sublevel}. Section~\CGref{sec:distance} compared $\tau_k$ with $\gamma_k$ one index at a time. Here the comparison is in mean square, and it rests on an identity that turns a sum over the ordinates into an integral of the counting function. Nothing about the zeros is assumed.
++In this section $F$, $u_k$, $\Psi_j$, $k_1$ and $k_2$ are local. The symbols $s_k$, $G=N-\Nz=S+\varpi/\pi$ and $\lL=\Nz'$ are those of Section~\CGref{sec:distance}, and $\Kc_T$, $\langle\cdot\rangle_{\Kc_T}$ those of Theorem~\CGref{thm:sublevel}. Section~\CGref{sec:distance} compared $\tau_k$ with $\gamma_k$ one index at a time. Here the comparison is in mean square, and it rests on an identity that turns a sum over the imaginary parts into an integral of the counting function. Nothing about the zeros is assumed.
+ 
+ \begin{theorem}[Exact defect identity]\label{thm:identity}
+ Let $1\le k_1<k_2$ be indices, let $F$ be a real $C^1$ function on an open interval containing $[\gamma_{k_1},\gamma_{k_2}]$, and put $u_k=k-\frac12-F(\gamma_k)$ for $k_1\le k\le k_2$. For every integer $j\ge1$,
+@@ -1169,7 +1171,7 @@
+ \begin{proof}
+ \emph{Existence of the integral.} On $[\gamma_{k_1},\gamma_{k_2}]$ the function $N$ is a step function with finitely many jumps, since $N(\gamma_{k_2})$ is finite, and $F$, $F'$ are continuous. The integrand is bounded and piecewise continuous, hence Riemann integrable.
+ 
+-\emph{One gap.} Fix $k$ with $k_1\le k<k_2$. Suppose first that $\gamma_k<\gamma_{k+1}$. Then $N(t)=k$ for $t\in(\gamma_k,\gamma_{k+1})$, because exactly $k$ ordinates counted with multiplicity are $\le t$. The function $t\mapsto-(k-F(t))^{2j+1}/(2j+1)$ is $C^1$ with derivative $(k-F(t))^{2j}F'(t)$, by the chain rule, and no monotonicity of $F$ is needed. Hence
++\emph{One gap.} Fix $k$ with $k_1\le k<k_2$. Suppose first that $\gamma_k<\gamma_{k+1}$. Then $N(t)=k$ for $t\in(\gamma_k,\gamma_{k+1})$, because exactly $k$ imaginary parts counted with multiplicity are $\le t$. The function $t\mapsto-(k-F(t))^{2j+1}/(2j+1)$ is $C^1$ with derivative $(k-F(t))^{2j}F'(t)$, by the chain rule, and no monotonicity of $F$ is needed. Hence
+ \begin{equation}
+ \begin{split}
+ \int_{\gamma_k}^{\gamma_{k+1}}\bigl(k-F(t)\bigr)^{2j}F'(t)\,dt&=\frac{(k-F(\gamma_k))^{2j+1}-(k-F(\gamma_{k+1}))^{2j+1}}{2j+1}\\
+@@ -1177,13 +1179,13 @@
+ \end{split}
+ \label{eq:identity_one_gap}
+ \end{equation}
+-because $k-F(\gamma_k)=\frac12+u_k$ and $k-F(\gamma_{k+1})=-\frac12+u_{k+1}$. Now let $\gamma_k=\gamma_{k+1}$. The left side of \CGeqref{eq:identity_one_gap} is $0$. On the other hand $u_{k+1}=u_k+1$, so the right side equals $\bigl((\frac12+u_k)^{2j+1}+(-\frac12-u_k)^{2j+1}\bigr)/(2j+1)=0$. So \CGeqref{eq:identity_one_gap} holds for every $k$, and the values of $N$ at the finitely many ordinates do not affect the integrals.
++because $k-F(\gamma_k)=\frac12+u_k$ and $k-F(\gamma_{k+1})=-\frac12+u_{k+1}$. Now let $\gamma_k=\gamma_{k+1}$. The left side of \CGeqref{eq:identity_one_gap} is $0$. On the other hand $u_{k+1}=u_k+1$, so the right side equals $\bigl((\frac12+u_k)^{2j+1}+(-\frac12-u_k)^{2j+1}\bigr)/(2j+1)=0$. So \CGeqref{eq:identity_one_gap} holds for every $k$, and the values of $N$ at the finitely many imaginary parts do not affect the integrals.
+ 
+ \emph{Summation.} Sum \CGeqref{eq:identity_one_gap} over $k_1\le k<k_2$, a finite sum. Each $k$ with $k_1<k<k_2$ contributes $(\frac12+u_k)^{2j+1}$ from the gap starting at $\gamma_k$ and $(\frac12-u_k)^{2j+1}$ from the gap ending at $\gamma_k$, that is, $\Psi_j(u_k)$. The unmatched terms are $(\frac12+u_{k_1})^{2j+1}$ and $(\frac12-u_{k_2})^{2j+1}$. This is \CGeqref{eq:identity_general}. In the binomial expansion of $(\frac12+u)^{2j+1}+(\frac12-u)^{2j+1}$ the odd powers of $u$ cancel and $u^{2l}$ has coefficient $2\binom{2j+1}{2l}2^{2l-2j-1}$, which gives \CGeqref{eq:Psi_def}; the leading coefficient is $\binom{2j+1}{2j}/(2j+1)=1$. For $j=1$, $\Psi_1(u)=u^2+\frac1{12}$, and \CGeqref{eq:identity_quadratic} follows.
+ \end{proof}
+ 
+ \begin{remark}\label{rem:twelfth}
+-$\Psi_j(u)=\int_{u-1/2}^{u+1/2}x^{2j}\,dx$ is the mean of $x^{2j}$ over the unit interval centered at $u$, and $\frac1{12}=\int_{-1/2}^{1/2}x^2\,dx$. The constant is associated with each unit increment in the enumeration counting multiplicities; repeated ordinates are handled by the degenerate-gap cancellation in the proof. When $F$ is not monotone, $N-F$ need not run through an interval of length one between consecutive zeros, and the identity remains exact with the integral counted with sign.
++$\Psi_j(u)=\int_{u-1/2}^{u+1/2}x^{2j}\,dx$ is the mean of $x^{2j}$ over the unit interval centered at $u$, and $\frac1{12}=\int_{-1/2}^{1/2}x^2\,dx$. The constant is associated with each unit increment in the enumeration counting multiplicities; repeated imaginary parts are handled by the degenerate-gap cancellation in the proof. When $F$ is not monotone, $N-F$ need not run through an interval of length one between consecutive zeros, and the identity remains exact with the integral counted with sign.
+ \end{remark}
+ 
+ \begin{corollary}\label{cor:identity_distance}
+@@ -1413,7 +1415,7 @@
+ and has derivative $-(2j+1)(k-F(t))^{2j}F'(t)$ almost everywhere.
+ Thus the proof of Theorem~\CGref{thm:identity} applies to such $F$
+ by the fundamental theorem for absolutely continuous functions,
+-including degenerate intervals between repeated ordinates.
++including degenerate intervals between repeated imaginary parts.
+ The function $\Fc$ is absolutely continuous on every compact interval:
+ it is continuous and piecewise $C^1$ with finitely many dyadic junctions.
+ Take $k_1=N(T)$ and $k_2=N(2T)+1$ in
+@@ -1453,7 +1455,7 @@
+ \CGeqref{eq:corrected_ordinal_defect}.
+ \end{proof}
+ 
+-\begin{corollary}[Second moment of the prime phases at the ordinates]\label{cor:prime_phase_second_moment}
++\begin{corollary}[Second moment of the prime phases at the imaginary parts]\label{cor:prime_phase_second_moment}
+ With $s_k=k-\frac12-\Nz(\gamma_k)$ as in
+ Proposition~\CGref{prop:s_meansquare}, one has, without RH,
+ \begin{equation}
+@@ -1488,7 +1490,7 @@
+ \end{proof}
+ 
+ \begin{theorem}[A deterministic certificate for simple critical-line zeros]\label{thm:recovered_simple_certificate}
+-In this theorem $v_k$ is a local symbol, unrelated to $v_k$ in the proof of Theorem~\CGref{thm:transfer}. Let $\mathsf F_{\mathrm{test}}$ be any real-valued function defined at the ordinates,
++In this theorem $v_k$ is a local symbol, unrelated to $v_k$ in the proof of Theorem~\CGref{thm:transfer}. Let $\mathsf F_{\mathrm{test}}$ be any real-valued function defined at the imaginary parts,
+ let $j\ge1$ be an integer, and set
+ \begin{equation}
+ v_k=k-\frac12-\mathsf F_{\mathrm{test}}(\gamma_k),\qquad
+@@ -1496,7 +1498,7 @@
+ \label{eq:disp_46}
+ \end{equation}
+ Let $N_{\mathrm{simple},1/2}(T,2T)$ count the simple zeros on the
+-critical line in this block, with no repeated ordinates. Then
++critical line in this block, with no repeated imaginary parts. Then
+ \begin{equation}
+ N_{\mathrm{simple},1/2}(T,2T)
+ \ge\#\mathcal K_T-\sum_{k\in\mathcal K_T}(2v_k)^{2j}.
+@@ -1504,7 +1506,7 @@
+ \end{equation}
+ \end{theorem}
+ \begin{proof}
+-At an ordinate $\gamma$ of total multiplicity $m\ge2$, the consecutive
++At an imaginary part $\gamma$ of total multiplicity $m\ge2$, the consecutive
+ indices can be written as $k,k+1,\ldots,k+m-1$. Because $\mathsf F_{\mathrm{test}}$ has the
+ same value at all these indices, $v_{k+i}=v_k+i$.
+ Among all $m$-tuples of consecutive real numbers spaced by one,
+@@ -1525,8 +1527,8 @@
+ Hence $\sum_{i=0}^{m-1}(2v_{k+i})^{2j}\ge m$.
+ The functional equation and conjugation symmetry give
+ $\rho=\beta+i\gamma\mapsto1-\overline\rho=1-\beta+i\gamma$.
+-If $\beta\ne\frac12$ these are distinct zeros with the same ordinate.
+-Thus every ordinate of total multiplicity one corresponds to a simple
++If $\beta\ne\frac12$ these are distinct zeros with the same imaginary part.
++Thus every imaginary part of total multiplicity one corresponds to a simple
+ zero on the critical line.
+ The indices of $\mathcal K_T$ form a disjoint union of complete
+ multiplicity blocks. The number of indices belonging to blocks of
+@@ -1553,7 +1555,7 @@
+ $O(1/\log T)$ over the complete list of zeros, including multiplicities.
+ 
+ The exact defect identity provides a separate unconditional asymptotic:
+-the uncorrected Riemann--von Mangoldt ordinates have mean-square error
++the uncorrected Riemann--von Mangoldt points $\tau_k$ have mean-square error
+ $2\log\log T/\log^2T\,(1+o(1))$. The arithmetic correction removes the
+ divergent factor. Proposition~\CGref{prop:correction_second_moment} shows that
+ the correction has the same leading second moment and is asymptotically aligned with
+@@ -1562,7 +1564,7 @@
+ Theorem~\CGref{thm:corrected_ordinal_defect}
+ and Corollary~\CGref{cor:prime_phase_second_moment} demonstrate the related
+ bounded ordinal defect and the leading second-moment asymptotic of the prime phases
+-at the ordinates.
++at the imaginary parts.
+ 
+ Independently, the argument estimates yield
+ $\limsup_k|\tau_k-\gamma_k|\le0.60832$ and the explicit bound
+@@ -1578,7 +1580,7 @@
+ or any stated positive proportion from this certificate.
+ 
+ \paragraph{Limitations of this work.}
+-The constant in Theorem~\CGref{thm:sublevel} is not explicit, so the result gives no numerical guarantee at any finite height; it controls the mean square, not every individual ordinate, and the explicit bound of Theorem~\CGref{thm:explicit} improves on Bellotti--Wong only for $\log T>2425.84$, as it trades the constant term for the leading coefficient (for comparison, \CGeqref{eq:explicit_N} is smaller than the bound $|N(t)-\Nz(t)|\le0.11\log t+0.29\log\log t+2.29+0.2/t_0$, $t\ge t_0\ge e$, used by Yang \CGcite[(4.29)]{Yang2024} in the proof of his zero-free region, as soon as $\log t>933.5$).
++The constant in Theorem~\CGref{thm:sublevel} is not explicit, so the result gives no numerical guarantee at any finite height; it controls the mean square, not every individual imaginary part, and the explicit bound of Theorem~\CGref{thm:explicit} improves on Bellotti--Wong only for $\log T>2425.84$, as it trades the constant term for the leading coefficient (for comparison, \CGeqref{eq:explicit_N} is smaller than the bound $|N(t)-\Nz(t)|\le0.11\log t+0.29\log\log t+2.29+0.2/t_0$, $t\ge t_0\ge e$, used by Yang \CGcite[(4.29)]{Yang2024} in the proof of his zero-free region, as soon as $\log t>933.5$).
+ 
+ An explicit version of Theorem~\CGref{thm:sublevel} would require explicit forms of Selberg's approximation and of Fujii's theorem.
+ 
+@@ -1606,7 +1608,7 @@
+ 
+ \lstinputlisting[language={}]{code/yang_smallt_arb_output.txt}
+ 
+-The construction of Section~\CGref{subsec:construction} is implemented, as an illustration, by the following program (\texttt{numpy}, \texttt{mpmath}~1.4.1): it evaluates $\Fc=\Nz+\Ph$ on a grid of step $10^{-3}$ on $(0,120]$, computes $\tau_{k}^{\mathrm C}=\meas\{t>0:\Fc(t)<k-\frac12\}$ for $k\le20$ by counting grid cells, and prints $\tau_{k}^{\mathrm C}$, the ordinate $\gamma_k$ (\texttt{mpmath.zetazero}) and the point $\tau_k$ of \CGeqref{eq:distance_explicit}.
++The construction of Section~\CGref{subsec:construction} is implemented, as an illustration, by the following program (\texttt{numpy}, \texttt{mpmath}~1.4.1): it evaluates $\Fc=\Nz+\Ph$ on a grid of step $10^{-3}$ on $(0,120]$, computes $\tau_{k}^{\mathrm C}=\meas\{t>0:\Fc(t)<k-\frac12\}$ for $k\le20$ by counting grid cells, and prints $\tau_{k}^{\mathrm C}$, the imaginary part $\gamma_k$ (\texttt{mpmath.zetazero}) and the point $\tau_k$ of \CGeqref{eq:distance_explicit}.
+ 
+ Theorem~\CGref{thm:sublevel} bounds the mean square of $\tau_{k}^{\mathrm C}-\gamma_k$ for $T$ large; the table makes no claim beyond what it prints.
+ 
+@@ -1622,7 +1624,7 @@
+ \toprule used as & source and place & form there; adaptation here\\\midrule\endfirsthead
+ \toprule used as & source and place & form there; adaptation here\\\midrule\endhead
+ \bottomrule\endfoot
+-Theorem~\CGref{thm:known_basic} & \CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12 (formula for $N$ and one-sided limits at ordinates; $S=O(\log t)$; gaps $\to0$; the convention $S(t)=S(t^+)$ at an ordinate is adopted in this paper) & $N(t)=\frac1\pi\vartheta(t)+1+S(t)$ with $\vartheta$ through $\operatorname{Log}\Gamma(\frac14+\frac{it}2)$; Lemma~\CGref{lem:varpi} rewrites $\frac1\pi\vartheta+1=\Nz+\varpi/\pi$\\
++Theorem~\CGref{thm:known_basic} & \CGcite{Titchmarsh1986}, \S\S9.3, 9.4, 9.12 (formula for $N$ and one-sided limits at imaginary parts; $S=O(\log t)$; gaps $\to0$; the convention $S(t)=S(t^+)$ at an imaginary part is adopted in this paper) & $N(t)=\frac1\pi\vartheta(t)+1+S(t)$ with $\vartheta$ through $\operatorname{Log}\Gamma(\frac14+\frac{it}2)$; Lemma~\CGref{lem:varpi} rewrites $\frac1\pi\vartheta+1=\Nz+\varpi/\pi$\\
+ Theorem~\CGref{thm:known_stirling} & \CGcite[\S5.11(ii)]{DLMF} & $|\mathcal R(z)|\le\sec^2(\frac12\operatorname{ph}z)/(12|z|)$, $|\operatorname{ph}z|<\pi$; used at $z=\frac14+\frac{it}2$ (Lemma~\CGref{lem:varpi}) and at $z=\frac{1-s}2,\frac s2$ (Lemma~\CGref{lem:chi})\\
+ Theorem~\CGref{thm:known_zeta}(a) & \CGcite{HiaryPatelYang2024}, Thm.~1.1; \CGcite{PatelYang2023}, Thm.~1.1; both as quoted in \CGcite[\S2, display before (2.3)]{BellottiWong2025} & $0.618|t|^{1/6}\log|t|$ and $66.7|t|^{27/164}$ for $|t|\ge3$; used only through \CGeqref{eq:boundary}, with constant $2$ on $\sigma=\frac12$ (Remark~\CGref{rem:robust}(i))\\
+ Theorem~\CGref{thm:known_zeta}(b) & \CGcite{Yang2024}, Thm.~1.1; quoted in \CGcite[(2.4)]{BellottiWong2025} & $1.546|t|^{1/(2^m-2)}\log|t|$ on $\sigma=\sigma_m$, $|t|\ge3$; used with constant $2$ for $4\le m\le9$ after Remark~\CGref{rem:robust}(ii)\\

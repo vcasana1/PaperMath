@@ -1,0 +1,1 @@
+m=20 d=0.90 ndiscs=1045 hybrid(grid)=0.07515

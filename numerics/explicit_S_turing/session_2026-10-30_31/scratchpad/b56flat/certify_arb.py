@@ -1,0 +1,300 @@
+# Certification of the numerical statements of the paper by Arb ball arithmetic.
+# Arb (midpoint-radius balls with outward rounding) is used through python-flint.
+# Every computed quantity is a ball that contains the exact value; every inequality
+# is checked on the whole ball with assert (an Arb comparison is True only if it holds
+# for every point of the balls).  Decimal constants of the paper are exact rationals.
+# Digits followed by an ellipsis mean truncation: x = d... means d <= x < d + 10^-k.
+# The angular integrals over Backlund's circle are computed both by the closed form (5.9)
+# and by rigorous Arb integration (acb.integral) on the arcs where the integrand is analytic.
+# Statements on ranges of t are certified by monotonicity (argued in a comment) plus
+# endpoint balls, or by covering the range with balls; never by sampling.
+# Checks are labelled by the numbering of the paper (theorems, equations, sections).
+import sys, flint
+from flint import arb, acb, ctx
+from fractions import Fraction as Fr
+from math import comb
+
+ctx.prec = 256
+print('Python %s, python-flint %s, FLINT %s, precision %d bits'
+      % (sys.version.split()[0], flint.__version__, flint.__FLINT_VERSION__, ctx.prec))
+
+def A(q):                                   # exact rational (or decimal string) -> ball
+    q = Fr(q); return arb(q.numerator) / q.denominator
+def show(name, x): print('      %s = %s' % (name, x.str(20, radius=True)))
+NCHK = NCALL = 0
+def check(ref, text, *conds):
+    global NCHK, NCALL
+    for c in conds: assert c is True, ref + ': ' + text
+    NCHK += len(conds); NCALL += 1; print('  ok [%s] %s' % (ref, text))
+def lt(x, q): return bool(x < A(q))
+def le(x, q): return bool(x <= A(q))
+def gt(x, q): return bool(x > A(q))
+def ge(x, q): return bool(x >= A(q))
+def tr(x, s):                               # x = s... (truncated digits)
+    d = Fr(s); u = Fr(1, 10**len(s.split('.')[1]))
+    return (ge(x, d) and lt(x, d + u)) if d >= 0 else (le(x, d) and gt(x, d - u))
+def tiny(x): return bool(x.abs_upper() < A(Fr(1, 10**60)))
+def cover(pred, a, b, n):                   # pred(ball) for n balls covering [a, b]
+    a, b = A(a), A(b)
+    return all(pred((a + (b - a)*i/n).union(a + (b - a)*(i + 1)/n)) for i in range(n))
+PI, LOG2, HALF, E = arb.pi(), arb(2).log(), A(Fr(1, 2)), arb(1).exp()
+
+# ---- integrals of reflected piecewise linear profiles over sigma = c + R cos(theta), 0 <= theta <= pi ----
+def closed_form(nodes, c, R):               # hinge closed form (5.9); nodes (varsigma_i, e_i) exact
+    c, R = A(c), A(R); n = len(nodes) - 1
+    xs = [a for a, _ in nodes]; es = [b for _, b in nodes]
+    s = [(es[i+1] - es[i]) / (xs[i+1] - xs[i]) for i in range(n)]
+    hinges = [(xs[i], s[i] - s[i-1]) for i in range(1, n)] + [(Fr(1), -s[n-1])]
+    th = ((HALF - c)/R).acos(); e0, s0 = A(es[0]), A(s[0])
+    I = (e0 + s0*(c - HALF))*th + s0*R*th.sin() + ((1 + s0)*(HALF - c) + e0)*(PI - th) + (1 + s0)*R*th.sin()
+    for a, k in hinges:
+        a, k = A(a), A(k); ta = ((a - c)/R).acos(); tb = ((1 - a - c)/R).acos()
+        I += k*((c - a)*ta + R*ta.sin()) + k*((1 - c - a)*(PI - tb) + R*tb.sin())
+    return I
+def pieces(nodes, left=None):               # affine pieces (lo, hi, a0, a1) of e*(sigma) = a0 + a1 sigma
+    P = [(None, Fr(0), Fr(1, 2), Fr(-1)), (Fr(1), None, Fr(0), Fr(0))]
+    for (x0, e0), (x1, e1) in zip(nodes, nodes[1:]):
+        s = (e1 - e0)/(x1 - x0); P.append((x0, x1, e0 - s*x0, s))
+        if left is None: P.append((1 - x1, 1 - x0, Fr(1, 2) + e0 + s*(1 - x0), -1 - s))   # reflection (1.4)
+    if left is not None: P.append((Fr(0), Fr(1, 2)) + left)                              # affine on [0, 1/2]
+    return P
+def arb_integral(P, c, R):                  # rigorous integration piece by piece
+    c, R = Fr(c), Fr(R); tot = arb(0)
+    for lo, hi, a0, a1 in P:
+        u1 = Fr(1) if hi is None else min(max((hi - c)/R, Fr(-1)), Fr(1))
+        u2 = Fr(-1) if lo is None else min(max((lo - c)/R, Fr(-1)), Fr(1))
+        if u1 == u2: continue
+        f = lambda t, analytic: acb(A(a0) + A(a1)*A(c)) + A(a1)*A(R)*t.cos()
+        tot += acb.integral(f, acb(A(u1).acos()), acb(A(u2).acos())).real
+    return tot
+
+print('\nBourgain profile')
+k, l = Fr(13, 84), Fr(55, 84); nodesB = []; kap = []
+for j in range(8):
+    nodesB.append((l - k, k)); kap.append(k); k, l = k/(2*k + 2), Fr(1, 2) + l/(2*k + 2)
+nodesB.append((Fr(1), Fr(0))); xB = [a for a, _ in nodesB]
+check('(1.6)', 'the nine nodes are (lambda_j-kappa_j, kappa_j), (kappa_j, lambda_j) = A^j(13/84, 55/84), and (1,0) (exact)',
+      [str(a) + ',' + str(b) for a, b in nodesB] == ['1/2,13/84', '139/194,13/194', '173/207,13/414', '773/854,13/854',
+      '820/867,13/1734', '3387/3494,13/3494', '1149/1169,13/7014', '13921/14054,13/14054', '1,0'])
+check('Section 5.2', 'the nodes increase, 1/2 <= varsigma_j, varsigma_7 < 1, kappa_j decrease (exact)',
+      all(x < y for x, y in zip(xB, xB[1:])) and xB[0] == Fr(1, 2) and xB[7] < 1 and all(a > b for a, b in zip(kap, kap[1:])))
+IB = closed_form(nodesB, 1, 1); IB2 = arb_integral(pieces(nodesB), 1, 1)
+LB = IB/(2*PI*LOG2); show('Lambda(e_B), closed form (5.9)', LB); show('Lambda(e_B), Arb integration', IB2/(2*PI*LOG2))
+show('2 pi Lambda(e_B)', 2*PI*LB)
+check('(5.9)', 'closed form and Arb integration of e_B* agree to 1e-60', tiny(IB - IB2))
+check('Section 5.2', 'theta_h = arccos((1/2-c)/R) = 2 pi/3 at c = R = 1', tiny((-HALF).acos() - 2*PI/3))
+check('Corollary 1.2', 'Lambda(e_B) = 0.0968160063...', tr(LB, '0.0968160063'))
+check('Abstract', 'Lambda(e_B) = 0.0968160... and 2 pi Lambda(e_B) <= 0.60832', tr(LB, '0.0968160'), lt(2*PI*LB, '0.60832'))
+check('Section 5.2', 'Lambda(e_B) = 0.0968160063238..., 0.096816006 <= Lambda(e_B) <= 0.096816007',
+      tr(LB, '0.0968160063238'), ge(LB, '0.096816006'), le(LB, '0.096816007'))
+check('Corollary 1.4(a)', '2 pi Lambda(e_B) = 0.6083129... < 0.60832', tr(2*PI*LB, '0.6083129'), lt(2*PI*LB, '0.60832'))
+
+print('\nLindelof profile')
+I0 = closed_form([(Fr(1, 2), Fr(0)), (Fr(1), Fr(0))], 1, 1); L0 = I0/(2*PI*LOG2)
+show('Lambda(0)', L0); show('2 pi Lambda(0)', 2*PI*L0)
+check('Remark 5.2', 'int_{2pi/3}^{pi} (-1/2 - cos t) dt = sqrt3/2 - pi/6 equals the circle integral of 0*',
+      tiny(I0 - (arb(3).sqrt()/2 - PI/6)), tiny(arb_integral(pieces([(Fr(1, 2), Fr(0)), (Fr(1), Fr(0))]), 1, 1) - I0))
+check('(5.7)', 'Lambda(0) = (3 sqrt3 - pi)/(12 pi log 2) = 0.0786252...', tiny(L0 - (3*arb(3).sqrt() - PI)/(12*PI*LOG2)),
+      tr(L0, '0.0786252'))
+check('Remark 5.2', 'Lindelof gives a <= 0.0786253', le(L0, '0.0786253'))
+check('Proposition 6.2', '2 pi Lambda(0) = 0.49401...', tr(2*PI*L0, '0.49401'))
+
+print('\nExplicit profile and Theorem 1.3')
+sm = {m: 1 - Fr(m, 2**m - 2) for m in range(4, 10)}
+nodesE = [(Fr(1, 2), Fr(27, 164))] + [(sm[m], Fr(1, 2**m - 2)) for m in range(4, 10)] + [(Fr(1), Fr(0))]
+vs = [a for a, _ in nodesE] + [Fr(3)]; es = [b for _, b in nodesE] + [Fr(0)]
+check('(4.5)', 'sigma_m = 1 - m/(2^m-2) = 5/7, 5/6, 28/31, 17/18, 123/127, 167/170 with exponents 1/(2^m-2) (exact)',
+      [sm[m] for m in range(4, 10)] == [Fr(5, 7), Fr(5, 6), Fr(28, 31), Fr(17, 18), Fr(123, 127), Fr(167, 170)])
+check('Lemma 4.4', 'varsigma_i increase, e_i = 1/(2^{i+3}-2) nonincreasing, max e_i = 27/164, Q = 10 > 1-varsigma_i',
+      all(x < y for x, y in zip(vs, vs[1:])), all(es[i] == Fr(1, 2**(i+3) - 2) for i in range(1, 7)),
+      all(x >= y for x, y in zip(es, es[1:])), max(es) == Fr(27, 164), all(10 > 1 - v for v in vs))
+c, R = Fr('1.000002'), Fr('1.000005'); sigF = c + (c - Fr(1, 2))**2/R; delF = 2*c - sigF - Fr(1, 2)
+sig, dl = A(sigF), A(delF); D = (A(R)/(A(c) - HALF)).log()
+show('sigma#', sig); show('delta#', dl); show('d = log(R/(c-1/2))', D)
+check('Section 5.3', 'c - R = -3e-6, sigma# = 1.25000275..., delta# = 0.2500012499...',
+      c - R == Fr(-3, 10**6), tr(sig, '1.25000275'), tr(dl, '0.2500012499'))
+check('(3.5)', 'c-R < 1/2 < 1 < c < sigma# < c+R, c < R, 0 < delta# < 1/2, delta# in [1/4,5/8], [c-R,c+R] in [-0.01,3]',
+      c - R < Fr(1, 2) < 1 < c < sigF < c + R, c < R, 0 < delF < Fr(1, 2), Fr(1, 4) <= delF <= Fr(5, 8),
+      c - R >= Fr('-0.01'), c + R <= 3)
+IE = closed_form(nodesE, c, R); IE2 = arb_integral(pieces(nodesE), c, R)
+show('I_{e_E*}, closed form (5.9)', IE); show('I_{e_E*}, Arb integration', IE2)
+check('(5.9)', 'closed form and Arb integration of e_E* agree to 1e-60', tiny(IE - IE2))
+args = set([(Fr(1, 2) - c)/R] + [(a - c)/R for a, _ in nodesE[1:]] + [(1 - a - c)/R for a, _ in nodesE[1:]])
+check('Section 5.3', 'the closed form uses fifteen arccos values at distinct rational points of (-1,1)',
+      len(args) == 15, all(-1 < u < 1 for u in args))
+C1, C2 = IE/(2*PI*D), 1/(2*D)
+lzr = (A(c).zeta()/(2*A(c)).zeta()).log(); lzs = sig.zeta().log()
+show('C_1', C1); show('C_2', C2); show('log(zeta(c)/zeta(2c))', lzr); show('log zeta(sigma#)', lzs)
+check('(5.10)', 'C_1 = 0.0978292318785..., C_2 = 1/(2d) = 0.7213464797..., log(zeta(c)/zeta(2c)) = 12.6246665...',
+      tr(C1, '0.0978292318785'), tr(C2, '0.7213464797'), tr(lzr, '12.6246665'))
+check('Section 1.2', 'Backlund quotient of e_E: 0.0978292318...', tr(C1, '0.0978292318'))
+check('(5.11)', 'log(zeta(c)/zeta(2c)) <= 12.62467, sigma# - 1/2 <= 0.7501', le(lzr, '12.62467'), le(sig - HALF, '0.7501'))
+check('Section 5.3', 'log zeta(sigma#) = 1.52498... <= 1.52499', tr(lzs, '1.52498'), le(lzs, '1.52499'))
+N = 10**4; zb = sum(((-sig)*arb(n).log()).exp() for n in range(1, N)) + ((1 - sig)*A(Fr(2*N - 1, 2)).log()).exp()/(sig - 1)
+show('log of the bound with N = 10^4', zb.log())
+check('Section 5.3', 'footnote: N = 10^4 gives log zeta(sigma#) <= 1.5249836 (and the bound is >= zeta(sigma#))',
+      le(zb.log(), '1.5249836'), bool(sig.zeta() <= zb))
+m640 = 640*dl - 112; show('640 delta# - 112', m640)
+check('Section 5.3', '640 delta# - 112 = 48.0007... > 0: the majorant of E/(2 pi) decreases in T',
+      tr(m640, '48.0007'), gt(m640, 0))
+T = A(100); Emaj = (m640/(1536*299) + A(Fr(1, 1024)))/2; show('E(100, delta#)/(2 pi) majorant', Emaj)
+check('Section 5.3', 'E(T,delta#)/(2pi) <= ((640 delta#-112)/(1536*299) + 2^-10)/2 < 0.00055 at T = 100',
+      lt(Emaj, '0.00055'))
+
+print('\nLemma 4.3, Lemma 4.4 and the constant K')
+check('Lemma 4.3', 'omega_1 in [1/4,0.505], omega_2 in [-0.005,1/4], y >= 49 (affine in sigma, endpoints exact)',
+      (1 - Fr('-0.01'))/2 == Fr('0.505'), Fr('-0.01')/2 == Fr('-0.005'), Fr(98, 2) == 49)
+check('Lemma 4.3', '|phi| <= (0.505*0.256/2 + 0.043)/y^2 <= 0.108/y^2 <= 0.435/t^2 (log(1+x) <= x, arctan series)',
+      Fr('0.505')**2 <= Fr('0.256'), Fr('0.505')**3/3 <= Fr('0.043'), Fr('0.505')*Fr('0.256')/2 + Fr('0.043') <= Fr('0.108'),
+      4*Fr('0.108') <= Fr('0.435'))
+sec2 = 1/((PI/2 + (A('0.005')/49).atan())/2).cos()**2; show('sec^2(ph z_2 / 2)', sec2)
+check('Lemma 4.3', 'sec^2(ph z_i / 2) <= 2.0005 (ph z_2 <= pi/2 + arctan(0.005/49), ph z_1 < pi/2)', le(sec2, '2.0005'))
+eps = A('0.6669')/98 + A('0.87')/98**2; show('0.6669/98 + 0.87/98^2', eps); show('e^0.0069', A('0.0069').exp())
+check('Lemma 4.3', '2*2.0005/6 <= 0.6669; 0.6669/t + 0.87/t^2 <= 0.0069 for t >= 98 (decreasing); e^0.0069 < 1.0070',
+      2*Fr('2.0005')/6 <= Fr('0.6669'), le(eps, '0.0069'), lt(A('0.0069').exp(), '1.0070'))
+check('Lemma 4.4', 'e^{105/492} < 2/0.618 (1/6 - 27/164 = 1/492), 105 > 66.7/2, zeta(3) < 2 log 3',
+      bool(A(Fr(105, 492)).exp() < 2/A('0.618')), 105 > Fr('66.7')/2, bool(arb(3).zeta() < 2*arb(3).log()))
+check('Lemma 4.4', '|t| <= 3: sqrt 18 <= 4.243, sqrt 13 <= 3.606, 4.243 + 2*4.243*3.606 < 34.9 < 49 < 2*10.5 log 10.5',
+      le(arb(18).sqrt(), '4.243'), le(arb(13).sqrt(), '3.606'), Fr('4.243') + 2*Fr('4.243')*Fr('3.606') < Fr('34.9'),
+      gt(21*A('10.5').log(), 49))
+# each factor of K_1(t) = 2(1+84.5/t^2)^{1+27/164}(1+(84.5/t^2+pi/2)/log t) decreases in t, so t = 98 is the worst case
+t0 = A(98); K1 = 2*(1 + A('84.5')/t0**2)**(1 + A(Fr(27, 164)))*(1 + (A('84.5')/t0**2 + PI/2)/t0.log())
+K = eps.exp()*K1; show('K_1(98)', K1); show('K = exp(0.6669/98 + 0.87/98^2) K_1(98)', K)
+check('(4.8)', 'K_1(98) <= 2.7167', le(K1, '2.7167'))
+check('Lemma 4.4', '1.0070 * 2.7167 <= 2.74 and K <= 2.74', Fr('1.0070')*Fr('2.7167') <= Fr('2.74'), le(K, '2.74'))
+check('Remark 4.5(i)', 'each input has room: e^{577/492} < 2/0.618 on 3 < |t| <= e^577; above e^577 any C <= 1154 = 2*577',
+      bool(A(Fr(577, 492)).exp() < 2/A('0.618')), 2*577 == 1154)
+check('Remark 4.5(ii)', '(1 - sigma_m)/3 = 1/(2K-2) + (m-3)/(6K-6) with K = 2^{m-1}, exponent (m-3)/(6K-6) > 0, 4 <= m <= 9',
+      all(Fr(m, 2**m - 2)/3 == Fr(1, 2**m - 2) + Fr(m - 3, 3*2**m - 6) and m > 3 for m in range(4, 10)))
+
+print('\nconstant term C_3(100)')
+L274 = A('2.74').log()
+def C3(c1, c2, lr, ls, st):                 # the sum C_3(100): costs 2C_1/T + 2C_2/(T log T), or exact differences
+    base = c2*(lr + (1 + 3/T).log() + L274) + ls/PI + st/(PI*T) + Emaj + A(Fr(1, 4))
+    return (base + 2*c1/T + 2*c2/(T*T.log()),
+            base + c1*((T + 2).log() - T.log()) + c2*((T + 2).log().log() - T.log().log()))
+C3T, C3x = C3(C1, C2, lzr, lzs, sig - HALF)
+C3d = C3(C1, C2, A('12.62467'), lzs, A('0.7501'))[0]
+C3u = C3(A('0.0978292318786'), A('0.7213464798'), A('12.62467'), A('1.52499'), A('0.7501'))[0]
+show('C_3(100)', C3T); show('C_3(100) with exact differences', C3x)
+show('C_3(100) with 12.62467 and 0.7501', C3d); show('C_3(100) with all displayed values rounded up', C3u)
+check('Section 5.3', 'C_3(100) = 10.598602..., and 10.598545... with exact differences',
+      tr(C3T, '10.598602'), tr(C3x, '10.598545'))
+check('Appendix A', 'C_3(100) = 10.5986..., 10.5985...', tr(C3T, '10.5986'), tr(C3x, '10.5985'))
+check('Section 5.3', 'with the rounded values displayed C_3(100) <= 10.5987', le(C3d, '10.5987'), le(C3u, '10.5987'))
+check('Section 5.3', '0.09783 > C_1, 0.7214 > C_2, 10.6 > C_3(100) (all variants)', lt(C1, '0.09783'), lt(C2, '0.7214'),
+      lt(C3T, '10.6'), lt(C3x, '10.6'), lt(C3d, '10.6'), lt(C3u, '10.6'))
+# C_3(T) is nonincreasing on [100, oo): each term is constant or decreasing (the majorant since 640 delta# - 112 > 0).
+# For e <= T <= 100 the right side of (1.7) increases in T, so its value at T = e is the minimum.
+check('Section 5.3', 'e <= T <= 100: 2.5167 < 0.09783 log T + 0.7214 loglog T + 10.6; |varpi(T)|/pi <= 0.53/(pi e) < 0.07',
+      gt(A('0.09783') + A('10.6'), '2.5167'), lt(A('0.53')/(PI*E), '0.07'))
+check('Corollary 1.2, (5.10), (5.11)', 'the inequalities used for Lambda(e_B), 2 pi Lambda(e_B), C_1, C_2, C_3(100), log zeta(sigma#) hold with margin >= 3e-10',
+      *[ge(m, Fr(3, 10**10)) for m in (LB - A('0.096816006'), A('0.096816007') - LB, A('0.60832') - 2*PI*LB,
+        A('0.09783') - C1, A('0.7214') - C2, A('10.6') - C3T, A('1.52499') - lzs)])
+
+print('\nlimit c, R -> 1 of the Backlund quotients')
+LE1 = arb_integral(pieces(nodesE), 1, 1)/(2*PI*LOG2)
+LBW = arb_integral(pieces(nodesE, left=(Fr(1, 2), -1 + 2*Fr(27, 164))), 1, 1)/(2*PI*LOG2)
+show('profile of Bellotti-Wong (chord on [0,1/2])', LBW); show('reflected profile e_E*', LE1)
+check('Section 1.3', 'quotients 0.10073687... (Bellotti-Wong profile) and 0.09782899... (reflected profile)',
+      tr(LBW, '0.10073687'), tr(LE1, '0.09782899'), tiny(LE1*2*PI*LOG2 - closed_form(nodesE, 1, 1)))
+check('Section 1.3', 'the reflection lies below the chord on [0,1/2] (both piecewise linear: checked at all kinks, exact)',
+      all(a - Fr(1, 2) + b <= Fr(1, 2) + (-1 + 2*Fr(27, 164))*(1 - a) for a, b in nodesE))
+
+print('\nmain term, Gram points and the construction')
+def N0(t): return t/(2*PI)*(t/(2*PI*E)).log() + A(Fr(7, 8))
+check('Section 1.1', 'N_0(2 pi) = -1/8', tiny(N0(2*PI) + A(Fr(1, 8))))
+check('Theorem 1.5', 'N_0(2 pi e) = 7/8, so k >= 2 iff tau_k >= 2 pi e (1/2 < 7/8 <= 3/2)', tiny(N0(2*PI*E) - A(Fr(7, 8))))
+def theta(t): return acb(A(Fr(1, 4)), t/2).lgamma().imag - t/2*PI.log()
+def dtheta(t): return acb(A(Fr(1, 4)), t/2).digamma().real/2 - PI.log()/2
+def dtheta_pos(lo, hi, n):                  # theta' > 0 on [lo, hi]: |theta''| = |Im psi'(1/4+it/2)|/4 <= M on 40 balls
+    lo, hi = A(lo), A(hi); M = max((acb(A(Fr(1, 4)), ((lo + (hi - lo)*i/40).union(lo + (hi - lo)*(i + 1)/40))/2)
+                                    .polygamma(1).imag/4).abs_upper() for i in range(40))
+    return all(bool(dtheta(lo + (hi - lo)*i/n) > M*(hi - lo)/(2*n)) for i in range(n + 1))   # grid spacing (hi-lo)/n
+show('theta(9.66) + pi', theta(A('9.66')) + PI); show('theta(9.67) + pi', theta(A('9.67')) + PI)
+check('Section 1.1', "g_{-1} = 9.66...: theta' > 0 on [6.5, 9.67]; theta(6.5), theta(9.66) < -pi < theta(9.67)",
+      dtheta_pos(Fr('6.5'), Fr('9.67'), 400), bool(theta(A('6.5')) + PI < 0),
+      bool(theta(A('9.66')) + PI < 0), bool(theta(A('9.67')) + PI > 0))
+check('Section 1.1', '|varpi|/pi < 1/2 at the Gram points: 0.53/(9.66 pi) < 1/2', lt(A('0.53')/(A('9.66')*PI), Fr(1, 2)))
+g1 = acb.zeta_zero(1).imag; show('gamma_1', g1)
+check('proof of Corollary 1.4', 'gamma_1 > 14 > 2 pi > e (rigorous isolation of the first zero)',
+      gt(g1, 14), bool(A(14) > 2*PI > E))
+check('Remark 7.7', '|varpi(gamma_k)|/pi <= 0.53/(14 pi) < 1/2 for gamma_k >= 14', lt(A('0.53')/(14*PI), Fr(1, 2)))
+def mj(j):                                  # m_j = floor(2^{j/2}); for odd j the ball decides the floor
+    if j % 2 == 0: return int(Fr(2)**(j//2))
+    x = (A(Fr(j, 2))*LOG2).exp(); f = int(x.mid().floor().unique_fmpz())
+    assert bool(x > f) and bool(x < f + 1); return f
+check('Section 7.1', '(1/pi) arcsin(2^{-1/2}) = 1/4; m_j = 0 for j < 0, m_j nondecreasing, m_j <= 2 for j <= 3',
+      tiny((1/arb(2).sqrt()).asin()/PI - A(Fr(1, 4))), all(mj(j) == 0 for j in range(-6, 0)),
+      all(mj(j) <= mj(j + 1) for j in range(-6, 12)), max(mj(j) for j in range(-6, 4)) == 2)
+check('Proposition 7.1', '4 <= 2 pi <= 8, m_2 = m_3 = 2, F(2 pi) <= N_0(2 pi) + 1/2 = 3/8 < 1/2; 4 pi e > 2 pi^2',
+      bool(A(4) <= 2*PI <= A(8)), mj(2) == 2, mj(3) == 2, lt(N0(2*PI) + HALF, Fr(1, 2)), bool(4*PI*E > 2*PI**2))
+# d/dt [N_0(t) - sqrt(2t)/4] = (1/2pi) log(t/2pi) - 1/(4 sqrt(2t)) increases in t
+dd = 1/(2*PI) - 1/(4*(4*PI*E).sqrt()); show("d/dt [N_0(t) - sqrt(2t)/4] at t = 2 pi e", dd)
+check('Section 7.4', 'N_0(t) - sqrt(2t)/4 increases for t >= 2 pi e; 2 log 2 - log(2 pi e) = -1.45...',
+      bool(dd > 0), tr(2*LOG2 - (2*PI*E).log(), '-1.45'))
+check('Theorem 3.8', 'Fujii side condition: T >= 9 gives H >= 3 and H - H^{1/8} >= 3 - 3^{1/8} >= 1 (increasing in H)',
+      bool(3 - (arb(3).log()/8).exp() >= 1))
+check('Lemma 7.5', 'log(2 + h log 4T) <= 2 log(2 + h L_T) for h L_T >= 1, h <= 1: 6 > log(8 pi)',
+      bool(A(6) > (8*PI).log()))
+
+print('\nproof of Theorem 1.1: c = 1 + eta, R = 1 + 2 eta, 0 < eta < 1/100')
+def sg(e): return 1 + e + (Fr(1, 2) + e)**2/(1 + 2*e)
+ends = (Fr(0), Fr(1, 100))   # all quantities affine in eta: >= 0 at both ends and > 0 at one end gives > 0 inside
+check('Section 5.1', 'sigma# = 5/4 + 3 eta/2, delta# = 1/4 + eta/2, R/(c-1/2) = 2 (affine identities at three points)',
+      all(sg(e) == Fr(5, 4) + Fr(3, 2)*e and 2*(1 + e) - sg(e) - Fr(1, 2) == Fr(1, 4) + e/2 and (1 + 2*e)/(Fr(1, 2) + e) == 2
+          for e in ends + (Fr(1, 7),)))
+check('Section 5.1', '(3.5) holds, delta# in [1/4, 5/8], [c-R, c+R] = [-eta, 2+3 eta] in [-0.01, 3] for 0 < eta < 1/100',
+      all(-e < Fr(1, 2) and e >= 0 and Fr(5, 4) + Fr(3, 2)*e > 1 + e and 2 + 3*e > Fr(5, 4) + Fr(3, 2)*e
+          and Fr(1, 4) <= Fr(1, 4) + e/2 <= Fr(5, 8) and Fr(1, 4) + e/2 < Fr(1, 2) and -e >= Fr('-0.01') and 2 + 3*e <= 3
+          for e in ends))
+
+print('\ncrossing points')
+def ours(L): return A('0.09783')*L + A('0.7214')*L.log() + A('10.6')                # (1.7), L = log T
+def bw1(L): return ours(L) - A('0.10076')*L - A('0.24460')*L.log() - A('7.20844')   # minus Bellotti-Wong Cor. 1.5,
+def bw2(L): return ours(L) - A('0.10076')*L - A('1.68845')*L.log() - A('1.50956')   # first and second branch
+def yg(L):    # Yang (4.29) without 0.2/t_0 minus (1.8), L = log t
+    return A('0.11')*L + A('0.29')*L.log() + A('2.29') - A('0.09783')*L - A('0.7214')*L.log() - A('10.7')
+def root(f, lo, hi):                        # f(lo) > 0 > f(hi); bisection on balls, returns a ball containing the root
+    lo, hi = A(lo), A(hi); assert f(lo) > 0 and f(hi) < 0
+    for _ in range(240):
+        m = (lo + hi)/2; v = f(m)
+        if v > 0: lo = m
+        elif v < 0: hi = m
+        else: break
+    return lo.union(hi)
+xb = root(bw1, 2000, 3000); xy = root(lambda L: -yg(L), 900, 1000)
+show('crossing with Bellotti-Wong, log T', xb); show('crossing with Yang (4.29), log t', xy)
+# Sign structure for L = log T >= 1.  For L >= 52 the first branch is the minimum (log 52 > 3.95 > 5.69888/1.44385).
+# d/dL bw1 = -0.00293 + 0.4768/L < 0 for L > 163, so bw1 > 0 on [163, xb) and bw1 < 0 on (xb, oo).
+# On [1, 163], (1.7) exceeds one branch, hence the minimum: covered by balls.
+check('Section 1.2', '(1.7) is smaller than Bellotti-Wong exactly for log T > 2425.8385... (unique crossing on log T >= 1)',
+      tr(xb, '2425.8385'), bool(A(52).log() > A('3.95')), Fr('5.69888')/Fr('1.44385') < Fr('3.95'),
+      Fr('0.4768')/Fr('0.00293') < 163, cover(lambda x: bool(bw1(x) > 0) or bool(bw2(x) > 0), 1, 163, 2000))
+check('Abstract', 'the complete bound is smaller only for log T > 2425.8385...', tr(xb, '2425.8385'))
+check('Section 1', 'the complete estimate improves upon Bellotti-Wong only for log T > 2425.8385...', tr(xb, '2425.8385'))
+# yg(L) <= 0.01217 L - 8.41 < 0 for 1 <= L <= 35.5; d/dL yg = 0.01217 - 0.4314/L > 0 for L >= 35.5: one sign change.
+# The term 0.2/t_0 of Yang's bound is positive and only enlarges his bound.
+check('Section 10', '(1.8) is smaller than Yang (4.29) as soon as log t > 933.5 (unique crossing on log t >= 1)',
+      Fr('0.01217')*Fr('35.5') < Fr('8.41'), Fr('0.4314')/Fr('0.01217') < Fr('35.5'), bool(yg(A('933.5')) > 0),
+      lt(xy, '933.5'))
+check('Appendix A', 'crossing points log T = 2425.8385... and log t = 933.4678...', tr(xb, '2425.8385'), tr(xy, '933.4678'))
+
+# ---- exact rational arithmetic and identities (Table 1, Sections 1.2, 1.3, Lemma 4.1, Lemma 7.6, Theorems 8.1, 9.5) ----
+for stated, src in [('0.4320', '0.43200'), ('1.9167', '1.91662'), ('13.0788', '13.07873'), ('0.2907', '0.29062'),
+                    ('7.0120', Fr('6.13695') + Fr(7, 8)), ('5.225', Fr('4.35') + Fr(7, 8)), ('2.873', Fr('1.998') + Fr(7, 8)),
+                    ('8.08344', Fr('7.20844') + Fr(7, 8)), ('11.55', Fr('10.6') + Fr(7, 8) + Fr('0.07'))]:
+    assert Fr(stated) >= Fr(src)            # Table 1: upper bounds rounded up
+assert Fr('10.7') - Fr(1, 2) == Fr('10.2') and Fr('10.6') + Fr('0.07') <= Fr('10.7')
+assert Fr('7.20844') + Fr('0.07') <= Fr('7.28') and Fr('8.08344') - Fr('7.20844') == Fr(7, 8)
+assert Fr('0.10076') - Fr('0.09783') == Fr('0.00293') and Fr('0.1038') - Fr('0.10076') == Fr('0.00304')
+assert Fr(1, 16) + Fr(1, 8) + Fr(1, 3) == Fr(25, 48) < Fr('0.53') and Fr(13**2, 2) == Fr('84.5')
+assert Fr('1.87781') <= Fr('1.878') <= 2 and Fr('1.546') <= 2
+assert Fr(1, 2) + Fr(1, 5) == Fr(7, 10) and Fr(1, 5)/40 == Fr(1, 200) <= Fr(1, 2) and Fr(1, 2)/20 == Fr(1, 40)
+assert all(((Fr(1, 2) + u)**(2*j+1) + (Fr(1, 2) - u)**(2*j+1))/(2*j+1)    # Theorem 8.1: Psi_j, degree 2j+1, 2j+2 points
+           == u**(2*j) + sum(Fr(comb(2*j+1, 2*i))*Fr(4)**(i-j)/(2*j+1)*u**(2*i) for i in range(j))
+           for j in range(1, 9) for u in [Fr(i, 3) for i in range(2*j + 2)])
+assert all(sum((i - Fr(m - 1, 2))**2 for i in range(m)) == Fr(m*(m*m - 1), 12) for m in range(1, 7)) and Fr(2*2 - 1, 3) == 1
+
+print('\n%d checks, %d asserted conditions' % (NCALL, NCHK))
+print('all checks passed')

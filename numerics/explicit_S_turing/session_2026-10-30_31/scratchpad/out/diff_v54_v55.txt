@@ -1,0 +1,46 @@
+--- ../b54/casanya_ordinal_primes_v54.tex	2026-10-30 17:33:04.314396668 +0000
++++ casanya_ordinal_primes_v55.tex	2026-10-30 17:37:25.388259426 +0000
+@@ -1653,9 +1653,9 @@
+ 
+ The decimals printed by this program are floating-point values. Every constant and every numerical inequality used in the proofs is certified by the ball-arithmetic program at the end of this appendix. The output follows the program.
+ 
+-\lstinputlisting{code/constantes_v5.py}
++\lstinputlisting{constantes_v5.py}
+ 
+-\lstinputlisting[language={}]{code/constantes_v5_output.txt}
++\lstinputlisting[language={}]{constantes_v5_output.txt}
+ 
+ The constant $1.878$ of Remark~\CGref{rem:robust}(ii) is certified by the following program (Python~3.13.17 with \texttt{python-flint}~0.9.0, Arb ball arithmetic \CGcite{Johansson2017} at $120$ bits with outward rounding, so that every printed value is an upper bound).
+ 
+@@ -1663,25 +1663,25 @@
+ 
+ On each interval it encloses $|\operatorname{Log}(Q_0+s)|/\log|Q_0+s|=\bigl(1+\arg(Q_0+s)^2/\log^2|Q_0+s|\bigr)^{1/2}$, $s=\sigma_m+it$, over the whole interval, takes $t_0=e^a$ in \CGcite[(3.12)]{Yang2024}, and bounds $0.618^{m/(K-1)}A(e^a)\,t^{(m-3)/(6K-6)}$ at $t=e^b$, where the exponent is positive. The maximum over all intervals and all $m$ is $1.87781$.
+ 
+-\lstinputlisting{code/yang_smallt_arb.py}
++\lstinputlisting{yang_smallt_arb.py}
+ 
+-\lstinputlisting[language={}]{code/yang_smallt_arb_output.txt}
++\lstinputlisting[language={}]{yang_smallt_arb_output.txt}
+ 
+ The construction of Section~\CGref{subsec:construction} is implemented, as an illustration, by the following program (\texttt{numpy}, \texttt{mpmath}~1.4.1): it evaluates $\Fc=\Nz+\Ph$ on a grid of step $10^{-3}$ on $(0,120]$, computes $\tau_{k}^{\mathrm C}=\meas\{t>0:\Fc(t)<k-\frac12\}$ for $k\le20$ by counting grid cells, and prints $\tau_{k}^{\mathrm C}$, the imaginary part $\gamma_k$ (\texttt{mpmath.zetazero}) and the point $\tau_k$ of \CGeqref{eq:intro_tau}.
+ 
+ Theorem~\CGref{thm:sublevel} bounds the mean square of $\tau_{k}^{\mathrm C}-\gamma_k$ for $T$ large; the table makes no claim beyond what it prints.
+ 
+-\lstinputlisting{code/casanya_method.py}
++\lstinputlisting{casanya_method.py}
+ 
+-\lstinputlisting[language={}]{code/casanya_method_output.txt}
++\lstinputlisting[language={}]{casanya_method_output.txt}
+ 
+ All constants and numerical inequalities of this article are certified by the following program. It uses the ball arithmetic of Arb \CGcite{Johansson2017}, through \texttt{python-flint}~0.9.0 (FLINT~3.6.0 \CGcite{FLINT}), with working precision $256$ bits. Every quantity is a ball $[m\pm r]$ that contains the exact value, all operations round outward, and every inequality is checked by an assertion on the whole ball.
+ 
+ The angular integrals are computed both by the closed form \CGeqref{eq:hinge_integrals} and by rigorous integration (\texttt{acb.integral}) on the arcs where the integrand is analytic. Statements valid on a range of $t$ are certified by monotonicity together with balls at the endpoints, or by covering the range with balls. The values are printed with $20$ significant digits.
+ 
+-\lstinputlisting{code/certify_arb.py}
++\lstinputlisting{certify_arb.py}
+ 
+-\lstinputlisting[language={}]{code/certify_arb_output.txt}
++\lstinputlisting[language={}]{certify_arb_output.txt}
+ 
+ \section{Correspondence with the sources}\label{app:sources}
+ The following table lists every statement taken from the literature (Section~\CGref{sec:external} and the proofs), where it is stated in the source, and the normalization or adaptation used here. Within the table, $\mathsf k$, $\alpha_{\rm F}$, $H$ and $h$ are as in Theorem~\CGref{thm:known_fujii}.

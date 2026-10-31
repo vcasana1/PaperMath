@@ -1,0 +1,191 @@
+Python 3.13.18  python-flint 0.9.0  precision 256 bits
+
+=== Bourgain profile (eq:bourgain_nodes), Corollary cor:bourgain, Corollary cor:distance(a) ===
+[line 387] CERTIFIED: the nine displayed nodes equal (lambda_j-kappa_j, kappa_j), (kappa_j,lambda_j)=A^j(13/84,55/84), then (1,0) (exact)
+[line 925] CERTIFIED: at eps'=0 the nodes varsigma'_j increase, varsigma'_7 < 1, all >= 1/2, kappa_j decrease (exact)
+[line 937] CERTIFIED: Lambda(e_B): exact piecewise antiderivative and hinge closed form (5.9) agree to 1e-60
+     Lambda(e_B) = [0.09681600632384896560281568204306038999374 +/- 2.79e-42]
+     2 pi Lambda(e_B) = [0.6083129084338137498484362111735461318010 +/- 1.88e-42]
+[line 937] CERTIFIED: theta_h = arccos((1/2-c)/R) = 2pi/3 at c=R=1
+[line 394] CERTIFIED: Lambda(e_B) = 0.0968160063...
+[line 937] CERTIFIED: Lambda(e_B) = 0.0968160063238...
+[line 305] CERTIFIED: abstract: limsup |S|/log T <= 0.0968160... (value of Lambda(e_B))
+[line 939] CERTIFIED: 0.096816006 <= Lambda(e_B) <= 0.096816007
+[line 413] CERTIFIED: 2 pi Lambda(e_B) = 0.6083129... < 0.60832
+[line 998] CERTIFIED: 2 pi * 0.0968160063238... = 0.6083129...
+[line 1634] CERTIFIED: margins >= 3e-10: Lambda(e_B)-0.096816006, 0.096816007-Lambda(e_B), 0.60832-2piLambda(e_B)
+     margin Lambda(e_B) - 0.096816006 = [3.238489656028156820430603899937372179859e-10 +/- 2.97e-50]
+
+=== Lindelof profile, Remark rem:lindelof, Proposition prop:distance_sharp ===
+     Lambda(0) = [0.07862527909020537718456419378174355280896 +/- 3.03e-42]
+     2 pi Lambda(0) = [0.4940171983524727904075241696317540812922 +/- 1.67e-41]
+[line 921] CERTIFIED: int_{2pi/3}^{pi} (-1/2 - cos th) dth = sqrt3/2 - pi/6 (equals the circle integral of 0*)
+[line 917] CERTIFIED: Lambda(0) = (3 sqrt3 - pi)/(12 pi log 2) (agreement to 1e-60 with the exact circle integral)
+[line 917] CERTIFIED: Lambda(0) = 0.0786252...
+[line 525] CERTIFIED: Lambda(0) = 0.0786252...
+[line 920] CERTIFIED: Lindelof would give a <= 0.0786253 (Lambda(0) <= 0.0786253)
+[line 1002] CERTIFIED: 2 pi Lambda(0) = 0.49401...
+
+=== Explicit profile (eq:explicit_nodes), Lemma lem:explicit_zeta nodes ===
+[line 815] CERTIFIED: sigma_m = 1 - m/(2^m-2), 4<=m<=9, equal 5/7, 5/6, 28/31, 17/18, 123/127, 167/170 and 1/(2^m-2) = 1/14,...,1/510 (exact)
+[line 822] CERTIFIED: varsigma_0<...<varsigma_8 increase, e_i = 1/(2^{i+3}-2) (1<=i<=6), e_i nonincreasing, max e_i = 27/164, Q=10 > 1-varsigma_i (exact)
+
+=== Theorem thm:explicit: disc parameters c = 1.000002, R = 1.000005 ===
+     sigma# = [1.250002750000249998750006249968750156249 +/- 2.19e-40]
+     delta# = [0.2500012499997500012499937500312498437508 +/- 1.88e-41]
+[line 942] CERTIFIED: c - R = -3e-6 (exact)
+[line 942] CERTIFIED: sigma# = 1.25000275... and delta# = 0.2500012499... (sigma#, delta# exact rationals)
+[line 942] CERTIFIED: conditions (eq:backlund_conditions): c-R<1/2<1<c<sigma#<c+R, c<R, 0<delta#<1/2, and delta# in [1/4,5/8], c<=2, R<=2 (exact)
+[line 942] CERTIFIED: [c-R, c+R] in [-0.01, 3] (exact)
+[line 957] CERTIFIED: I_{e_E*}: exact piecewise antiderivative and hinge closed form (5.9) agree to 1e-60
+[line 957] CERTIFIED: the closed form uses exactly fifteen distinct arccos values at rational points in (-1,1) (and fifteen square roots)
+     I_{e_E*} = [0.4260637638039191338740744487650993330714 +/- 2.40e-41]
+     C_1 = [0.09782923187851794633876744131916691059328 +/- 2.31e-42]
+     C_2 = [0.7213464797661756345979780641285648420712 +/- 3.67e-41]
+     log(zeta(c)/zeta(2c)) = [12.62466650920143470221511866205773626761 +/- 4.07e-39]
+     log zeta(sigma#) = [1.524983558689199153031416485958837350467 +/- 7.65e-41]
+[line 959] CERTIFIED: C_1 = 0.0978292318785...
+[line 405] CERTIFIED: Backlund quotient 0.0978292318... for e_E
+[line 959] CERTIFIED: C_2 = 1/(2d) = 0.7213464797...
+[line 959] CERTIFIED: log(zeta(c)/zeta(2c)) = 12.6246665...
+[line 965] CERTIFIED: log(zeta(c)/zeta(2c)) <= 12.62467 (rounded up in eq:explicit_assembled)
+[line 966] CERTIFIED: sigma# - 1/2 <= 0.7501 (term 0.7501/(pi T))
+[line 970] CERTIFIED: log zeta(sigma#) = 1.52498... and <= 1.52499
+     footnote bound for zeta(sigma#) with N=10^4 = [4.595068019796247502458576626160516207874 +/- 1.90e-40]
+     its log = [1.524983558700534782477708633001093903322 +/- 4.63e-40]
+[line 970] CERTIFIED: footnote: zeta(sigma#) <= sum_{n<N} n^-s + (N-1/2)^{1-s}/(s-1) (consistency) and its log <= 1.5249836
+     640 delta# - 112 = [48.00079999984000079999600001999990000050 +/- 2.7e-42]
+[line 974] CERTIFIED: 640 delta# - 112 > 0 (majorant of E/(2pi) decreasing in T)
+[line 974] FAILS (certified): '640 delta# - 112 = 48.0008...' read as truncated digits (true value 48.000799999..., i.e. 48.0007...; rounded 48.0008) ; true value [48.00079999984000079999600001999990000050 +/- 2.7e-42]
+     majorant of E(100, delta#)/(2 pi) = [0.0005405396460421892427884571836895553537840 +/- 1.09e-44]
+[line 970] CERTIFIED: E(T,delta#)/(2pi) <= (1/2)((640 delta# -112)/(1536*299) + 2^-10) < 0.00055 at T = 100 (3T-1 = 299)
+
+=== constant term C_3(100) (Section subsec:proof_explicit) ===
+     C_3(100) (exact constants) = [10.59860234834944286017553471805300352143 +/- 3.63e-40]
+     C_3(100) with exact differences = [10.59854547332779879951637540896657706516 +/- 2.61e-39]
+     C_3(100) with 12.62467 and 0.7501 (eq:explicit_assembled) = [10.59860517598106302851474285603743304771 +/- 3.88e-39]
+     C_3(100) with all displayed values rounded up = [10.59860722677623425485783761757133991168 +/- 5.04e-40]
+[line 976] CERTIFIED: C_3(100) = 10.598602... (exact constants, costs 2C_1/T + 2C_2/(T log T))
+[line 976] CERTIFIED: same sum with exact differences log102-log100, loglog102-loglog100 = 10.598545...
+[line 1628] CERTIFIED: C_3(100) = 10.5986... and 10.5985... (appendix)
+[line 974] CERTIFIED: with the rounded values displayed, C_3(100) <= 10.5987 (12.62467, 0.7501, and also with C_1, C_2, log zeta(sigma#) rounded up)
+[line 978] CERTIFIED: 10.6 > C_3(100) (all variants), 0.09783 > C_1, 0.7214 > C_2
+[line 1634] CERTIFIED: margins >= 3e-10 for C_1<0.09783, C_2<0.7214, C_3(100)<10.6, log zeta(sigma#)<=1.52499
+     margin 1.52499 - log zeta(sigma#) = [6.441310800846968583514041162649532923527e-6 +/- 3.80e-46]
+[line 978] CERTIFIED: for e <= T <= 100: 2.5167 < 0.09783 log T + 0.7214 loglog T + 10.6 (value at T=e, RHS increasing); 100 <= 30 610 046 000
+[line 978] CERTIFIED: |varpi(T)|/pi <= 0.53/(pi e) < 0.07 for T >= e
+
+=== Backlund quotients in the limit c, R -> 1 (Section subsec:literature) ===
+     Lambda(e_E) (reflected explicit profile, c=R=1) = [0.09782899554298332712842442950140899405387 +/- 9.15e-43]
+     BW linear-left profile, c=R=1 = [0.1007368703340584499383981444303074611424 +/- 4.17e-41]
+[line 519] CERTIFIED: BW-profile quotient at c,R->1 = 0.10073687...
+[line 519] CERTIFIED: reflected-profile quotient at c,R->1 = 0.09782899...
+[line 516] CERTIFIED: the reflected profile lies below the chord on [0,1/2]: checked at the reflected nodes (both piecewise linear, chord affine)
+
+=== Lemma lem:chi: |chi(sigma+it)| <= 1.0070 (t/2pi)^{1/2-sigma}, -0.01<=sigma<=1/2, t>=98 ===
+[line 793] CERTIFIED: omega_1=(1-sigma)/2 in [1/4,0.505], omega_2=sigma/2 in [-0.005,1/4], omega_1-omega_2=1/2-sigma; y=t/2>=49 (exact, affine in sigma)
+[line 806] CERTIFIED: 0.505^2 <= 0.256, 0.505^3/3 <= 0.043, 0.505*0.256/2 + 0.043 <= 0.108, 0.108*4 <= 0.435 (|phi| <= 0.108/y^2 <= 0.435/t^2)
+     sec^2(ph z_2 / 2) upper = [2.000204102458371936860276030782673336719 +/- 1.36e-40]
+[line 806] CERTIFIED: sec^2(1/2 ph z_i) <= 2.0005 (ph z_2 <= pi/2 + arctan(0.005/49); sec^2 increasing on [0,pi/2))
+[line 806] CERTIFIED: |R(z_1)|+|R(z_2)| <= 2*2.0005/(6t) <= 0.6669/t and 2*0.435/t^2 = 0.87/t^2
+     0.6669/98 + 0.87/98^2 = [0.006895689296126613910870470637234485630987 +/- 8.88e-44]
+[line 806] CERTIFIED: 0.6669/t + 0.87/t^2 <= 0.00690 for t >= 98 (decreasing in t; value at 98)
+[line 806] CERTIFIED: e^{0.0069} < 1.0070
+     e^0.0069 = [1.006923859846076823479960244634326794005 +/- 2.85e-40]
+
+=== Lemma lem:explicit_zeta ===
+[line 829] CERTIFIED: 1/6 - 27/164 = 1/492 (exact)
+[line 829] CERTIFIED: sigma=1/2, |t|<=e^105: e^{105/492} < 2/0.618
+[line 829] CERTIFIED: sigma=1/2, |t|>e^105: log|t| > 105 > 66.7/2
+[line 829] CERTIFIED: Yang lines: 1.546 <= 2 (|t|>=T_m) and 1.878 <= 2 (3<=|t|<=T_m, Remark rem:robust(ii)); 1-line: constant 1 <= 2
+[line 829] CERTIFIED: sigma=3: zeta(3) < 2 log 3 (<= 2 log|t| for |t|>3)
+[line 829] CERTIFIED: |t|<=3: sqrt18 <= 4.243, sqrt13 <= 3.606, 4.243 + 2*4.243*3.606 < 34.9
+[line 829] CERTIFIED: |t|<=3: right side of (eq:boundary) >= 2*10.5*log 10.5 > 49 (|Q+s| >= Q+1/2 = 10.5 > 1, exponent >= 1)
+     K_1(98) = [2.716606288867855900942057613539621253636 +/- 1.77e-40]
+[line 836] CERTIFIED: 13^2 = 169 and 169/2 = 84.5 (exact)
+[line 840] CERTIFIED: 2(1+84.5/98^2)^{1+27/164}(1+(84.5/98^2+pi/2)/log 98) <= 2.7167
+     margin 2.7167 - K_1(98) = [9.371113214409905794238646037874636417617e-5 +/- 1.28e-45]
+[line 845] CERTIFIED: reflection: 1.0070 * 2.7167 <= 2.74; 1 - sigma in (1/2, 1.01] for sigma in [-0.01, 1/2)
+
+=== Remark rem:robust ===
+[line 849] CERTIFIED: (i) |t|^{1/492} <= e^{577/492} < 2/0.618 for 3 < |t| <= e^577
+     2/0.618 - e^{577/492} = [0.005334674149942321301727695564777908720170 +/- 2.20e-43]
+[line 849] CERTIFIED: (i) above e^577 any C <= 1154 = 2*577 suffices (C t^{27/164} <= 2 t^{27/164} log t)
+[line 1644] CERTIFIED: (ii) Yang exponent split (1-sigma_m)/3 = 1/(2K-2) + (m-3)/(6K-6), K = 2^{m-1}, and (m-3)/(6K-6) > 0, 4<=m<=9 (exact)
+[line 853] CERTIFIED: (ii) 1.87781 <= 1.878 <= 2
+
+=== Lemma lem:varpi and the Riemann-von Mangoldt main term (Sections 1, 4, 5, 6) ===
+[line 776] CERTIFIED: 1/16 + 1/8 + 1/3 = 25/48 < 0.53 (exact)
+[line 354] CERTIFIED: N_0(2 pi) = -1/8 (ball contains -1/8, radius < 1e-60)
+[line 439] CERTIFIED: N_0(2 pi e) = 7/8 (ball contains 7/8, radius < 1e-60)
+[line 439] CERTIFIED: k >= 2 iff tau_k >= 2 pi e: N_0(tau_1) = 1/2 < 7/8 <= 3/2 = N_0(tau_2), N_0 increasing on (2pi,oo)
+     theta(9.66) + pi = [-0.001485325399889194529797782442173558667174 +/- 6.20e-44]
+     theta(9.67) + pi = [0.0006656101479862206876086802048751570259018 +/- 4.46e-44]
+     theta(6.5) + pi = [-0.3876402311451943101708376105808885748384 +/- 1.10e-41]
+[line 359] CERTIFIED: g_{-1} = 9.66...: theta' > 0 on [6.5, 9.67] (grid of 4001 points + Arb bound on theta''), theta(9.66) < -pi < theta(9.67): the root of theta = -pi on the increasing branch lies in [9.66, 9.67)
+[line 359] CERTIFIED: |varpi|/pi < 1/2 at the Gram points g_m, m >= -1 (t >= g_{-1} > 9.66: 0.53/(9.66 pi) < 1/2)
+     gamma_1 (Arb acb.zeta_zero, rigorous isolation) = [14.13472514173469379045725198356247027078 +/- 4.26e-39]
+[line 994] CERTIFIED: gamma_1 > 14 > 2 pi > e (Arb rigorous first zero)
+[line 1185] CERTIFIED: |s_k + Delta_k| < 1 for gamma_k >= 14: |varpi(gamma_k)|/pi <= 0.53/(14 pi) < 1/2
+
+=== Section sec:sublevel (construction, Proposition prop:ordered, proofs) ===
+[line 1028] CERTIFIED: (1/pi) arcsin(2^{-1/2}) = 1/4
+[line 1045] CERTIFIED: block containing 2 pi is [4,8] (4 <= 2pi <= 8), m_2 = m_3 = 2 (floor of 2 and 2^{3/2})
+[line 1045] CERTIFIED: F(2pi) <= N_0(2pi) + 2/4 = -1/8 + 1/2 = 3/8 < 1/2
+[line 1033] CERTIFIED: m_j = 0 for j <= -2 and m_{-1} = 0 (so m_j = m_{j+1} = 0 on blocks with t < 1/2); m_j nondecreasing, m_j <= 2 for j <= 3
+[line 547] CERTIFIED: on (0, 2pi]: F < 7/8 + 1/2 = 11/8 < 3/2 (N_0 < 7/8 on (0, 2 pi e), |Phi| <= m/4 <= 1/2)
+[line 1047] CERTIFIED: 4 pi e > 2 pi^2 (so t/(4pi) > sqrt(2t)/4 for t >= 4 pi e, the two being equal at t = 2 pi^2)
+     d/dt [N_0(t) - sqrt(2t)/4] at t = 2 pi e = [0.1163801580528682691214773654387522297925 +/- 7.22e-42]
+[line 1163] CERTIFIED: N_0(t) - sqrt(2t)/4 increases for t >= 2 pi e (derivative at 2 pi e > 0, derivative increasing)
+[line 1178] CERTIFIED: 2 log 2 - log(2 pi e) = -1.45...
+     2 log 2 - log(2 pi e) = [-1.451582705289454864726195229894882143572 +/- 2.06e-40]
+[line 727] CERTIFIED: Fujii: H >= 3 implies H - H^{1/8} >= 3 - 3^{1/8} >= 1 (increasing in H)
+[line 1114] CERTIFIED: log(2+h log 4T) <= 2 log(2+h L_T) for h L_T >= 1, h <= 1: 6 > log(8 pi)
+
+=== Proof of Theorem thm:asymptotic: the family c = 1+eta, R = 1+2eta, 0 < eta < 1/100 ===
+[line 899] CERTIFIED: sigma# = 5/4 + 3eta/2, delta# = 1/4 + eta/2, R/(c-1/2) = 2 (exact identities checked at eta = 0, 1/100, 1/7: affine/constant)
+[line 899] CERTIFIED: conditions (eq:backlund_conditions) and delta# in [1/4,5/8], [c-R,c+R] = [-eta, 2+3eta] in [-0.01,3] for all eta in (0,1/100)
+
+=== crossing points (Abstract, Section subsec:results, subsec:literature, Conclusion, Appendix) ===
+     crossing with Bellotti-Wong, log T = [2425.838580122588947126275808494813547010 +/- 3.00e-37]
+     crossing with Yang (4.29), log t = [933.4678960492936222142007964643937543339 +/- 1.47e-38]
+[line 314] FAILS (certified): 'log T > 2425.8386...' (lines 314, 409, 1628) read as truncated digits: the crossing is 2425.83858..., i.e. 2425.8385... (2425.8386 is a rounding up; 'smaller only/exactly for log T > 2425.8386' is false on (2425.83858..., 2425.8386]) ; true value [2425.838580122588947126275808494813547010 +/- 3.00e-37]
+[line 314] CERTIFIED: the crossing lies in (2425.8385, 2425.8386) (rounded to 4 decimals: 2425.8386)
+[line 330] FAILS (certified): 'the complete estimate improves upon theirs only for log T > 2425.84' (also line 1622): the crossing is 2425.83858... < 2425.84, so (1.7) is already smaller on (2425.83858..., 2425.84]; a correct 'only for' threshold must be <= the crossing, e.g. 2425.83 or 2425.8385 ; true value [2425.838580122588947126275808494813547010 +/- 3.00e-37]
+[line 1622] CERTIFIED: (eq:explicit_N) smaller than Yang (4.29) 'as soon as log t > 933.5' (933.5 above the crossing; +0.2/t0 only helps)
+[line 1628] FAILS (certified): 'crossing point log t = 933.47...' read as truncated digits: the value is 933.4679..., i.e. 933.46... (933.47 is a rounding) ; true value [933.4678960492936222142007964643937543339 +/- 1.47e-38]
+
+=== Table tab:records and Section subsec:literature: conversions and rounding direction (upper bounds) ===
+[line 492] CERTIFIED: table 492 vM A1: stated 0.4320 >= source value 54/125 (correct rounding direction)
+[line 492] CERTIFIED: table 492 vM A2: stated 1.9167 >= source value 95831/50000 (correct rounding direction)
+[line 492] CERTIFIED: table 492 vM A3: stated 13.0788 >= source value 1307873/100000 (correct rounding direction)
+[line 493] CERTIFIED: table 493 Grossmann A1: stated 0.2907 >= source value 14531/50000 (correct rounding direction)
+[line 493] CERTIFIED: table 493 Grossmann A2: stated 1.7862 >= source value 8931/5000 (correct rounding direction)
+[line 493] CERTIFIED: table 493 Grossmann A3: stated 7.0120 >= source value 140239/20000 (correct rounding direction)
+[line 494] CERTIFIED: table 494 Backlund A3: stated 5.2250 >= source value 209/40 (correct rounding direction)
+[line 496] CERTIFIED: table 496 Trudgian 2012 A3: stated 2.8730 >= source value 2873/1000 (correct rounding direction)
+[line 500] CERTIFIED: table 500 BW A3: stated 8.08344 >= source value 101043/12500 (correct rounding direction)
+[line 501] CERTIFIED: table 501 this work A3: stated 11.55 >= source value 2309/200 (correct rounding direction)
+[line 504] CERTIFIED: 10.6 + 7/8 + 0.07 = 11.545 < 11.55
+[line 508] CERTIFIED: 8.08344 - 7.20844 = 7/8
+[line 510] CERTIFIED: N-bound from BW Cor 1.5 and |varpi|/pi < 0.07: 7.20844 + 0.07 <= 7.28
+[line 525] CERTIFIED: reduction 0.10076 - 0.09783 = 0.00293; previous step 0.1038 - 0.10076 = 0.00304
+[line 405] CERTIFIED: 0.09783 is the smallest A_1 in Table tab:records
+[line 978] CERTIFIED: (eq:explicit_N): 10.6 + 0.07 <= 10.7
+[line 416] CERTIFIED: Corollary cor:distance(b): 10.2 = 10.7 - 1/2
+
+=== polynomial and rational identities (Section sec:meansquare, Theorem thm:recovered_simple_certificate, Fujii parameters) ===
+[line 1204] CERTIFIED: Psi_1(u) = ((1/2+u)^3 + (1/2-u)^3)/3 = u^2 + 1/12 (cubic identity, 4 exact points)
+[line 1201] CERTIFIED: Psi_j(u) = u^{2j} + sum_{l<j} C(2j+1,2l) 4^{l-j}/(2j+1) u^{2l}, j = 1..8 (degree 2j+1 identities, exact points)
+[line 1228] CERTIFIED: 1/12 = int_{-1/2}^{1/2} x^2 dx (antiderivative x^3/3, exact)
+[line 1547] CERTIFIED: sum_{i<m} (i-(m-1)/2)^2 = m(m^2-1)/12 (cubic identity in m, checked at m = 1..6; both sides polynomial in m via Faulhaber)
+[line 1549] CERTIFIED: (m^2-1)/3 >= 1 for m >= 2 (increasing; m = 2 gives 1)
+[line 1140] CERTIFIED: Fujii parameters: alpha=1/5, k=2: 1/2+alpha = 7/10, alpha/(20k) = 1/200 <= 1/2; line 549: alpha=1/2, k=1: 1/40
+[line 1316] CERTIFIED: Selberg constant (2k)!/(k!(2pi)^{2k}) at k=1 is 1/(2pi^2), and 4pi^2 * 1/(2pi^2) = 2 (eq:meansquare)
+
+SUMMARY: 112 checks certified, 4 claims certified to FAIL
+  FAILS: line 974 : '640 delta# - 112 = 48.0008...' read as truncated digits (true value 48.000799999..., i.e. 48.0007...; rounded 48.0008)
+  FAILS: line 314 : 'log T > 2425.8386...' (lines 314, 409, 1628) read as truncated digits: the crossing is 2425.83858..., i.e. 2425.8385... (2425.8386 is a rounding up; 'smaller only/exactly for log T > 2425.8386' is false on (2425.83858..., 2425.8386])
+  FAILS: line 330 : 'the complete estimate improves upon theirs only for log T > 2425.84' (also line 1622): the crossing is 2425.83858... < 2425.84, so (1.7) is already smaller on (2425.83858..., 2425.84]; a correct 'only for' threshold must be <= the crossing, e.g. 2425.83 or 2425.8385
+  FAILS: line 1628 : 'crossing point log t = 933.47...' read as truncated digits: the value is 933.4679..., i.e. 933.46... (933.47 is a rounding)
+all checks done

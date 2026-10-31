@@ -1,0 +1,6 @@
+prof=E m=4 d=0.70 C1=0.08213 (kernel 0.07500, Jensen 0.00713) residual viol=4.6e-08 iters=4  114s
+prof=B m=4 d=0.70 C1=0.08188 (kernel 0.07473, Jensen 0.00715) residual viol=1.6e-08 iters=4  112s
+prof=none m=10 d=0.80 C1=0.08071 (kernel 0.08071, Jensen 0.00000) residual viol=8.5e-08 iters=4  17s
+prof=E m=10 d=0.90 C1=0.07784 (kernel 0.06914, Jensen 0.00870) residual viol=9.2e-08 iters=5  153s
+prof=B m=10 d=0.90 C1=0.07746 (kernel 0.06794, Jensen 0.00952) residual viol=7.7e-08 iters=4  127s
+prof=none m=20 d=0.90 C1=0.07996 (kernel 0.07996, Jensen 0.00000) residual viol=1.9e-06 iters=29  238s

@@ -1,0 +1,1244 @@
+                                                   estimating the number of zeros of dedekind zeta-functions
+                                                                              Victor Simon Gerard Amberger
+
+                                                                                                  Abstract
+
+                                                     Abstract. In this article, I derive a new approach to estimate the number of non-trivial zeros
+                                                  of a given Dedekind zeta function with absolute height at most T ≥ 1 counted with multiplicity. The
+                                                  error term in corresponding asymptotic formula improves all previous results, even in the case of the
+                                                  Riemann zeta function.
+arXiv:2510.27444v1 [math.NT] 31 Oct 2025
+
+
+
+
+                                           1      Introduction
+                                           In this article, we consider Dedekind zeta functions associated with a given algebraic number field. Let
+                                           K be an algebraic number field of degree nK then the associated Dedekind zeta-function is given by
+
+                                                                                       ζK (s) =     ∑       NK (I)−s ,                                    (1.1)
+                                                                                                  I⊂OK ∖0
+
+
+                                           for Re(s) > 1 [Neu99, Definition 5.1], where the sum is taken over all non-zero integer ideals of K.
+                                           Similarly to how the Riemann zeta function is related to the distribution of primes, the Dedekind zeta
+                                           functions are closely related to the distribution of prime ideals. Furthermore, the Dedekind zeta function
+                                           has properties very similar to the Riemann zeta function, in that the definition in (1.1) allows an analytic
+                                           continuation to the entire complex plane which has a simple pole at 1 and satisfies a functional equation.
+                                           We have
+                                                                                                         s/2
+                                                                                  ξK (s) ∶= s(s − 1)dK γK (s) ζK (s),                                     (1.2)
+
+                                           where
+                                                                                         s+1      s + 1 r2 − s    s r1 +r2
+                                                                            γK (s) = (π − 2 Γ (        )) (π 2 Γ ( ))      .                              (1.3)
+                                                                                                    2             2
+                                           Here, r1 and r2 denote the number of real and complex places of K/Q. So, in particular, we have
+                                           nK = r1 + 2r2 . Due to computational advantages, we will also use this representation for the gamma factor
+
+                                                                                        γK (s) = γ1 (s)r1 γ2 (s)r2                                        (1.4)
+
+                                           with
+                                                                                         s    s
+                                                                           γ1 (s) ∶= π − 2 Γ ( ) and γ2 (s) ∶= π −s 21−s Γ(s),
+                                                                                              2
+                                           which we may obtain from equation (1.3) by Legendre’s duplication formula [Wat20, Corollary 12.1.3] for
+                                           the Gamma function. The completed Dedekind zeta function satisfies the functional equation [Neu99,
+                                           Corollary 5.10] as displayed below,
+                                                                                          ξK (s) = ξK (1 − s).                                            (1.5)
+
+
+
+
+                                                                                                     1
+In this context, we strive to study the distribution of the zeros of ζK (s). From the Euler product for the
+Dedekind zeta function ζK (s) [Neu99, Proposition 5.2]
+
+                                            ζK (s) = ∏ (1 − N (p)−s )
+                                                                          −1
+                                                                                                        (1.6)
+                                                       p⊂OK
+
+
+we can see that ζK (s) and, by extension ξK (s) have no zeros with Re(s) > 1 and by the functional equation
+we can tell that all zeros of ξK (s) must be located inside the critical strip with Re(s) ∈ [0, 1]. We call
+these the non-trivial zeros of ζK (s) and throughout this thesis we will denote them by ρ = β + iω, where β
+denotes the real part of the zero and ω denotes the imaginary component. In this article, we investigate
+the horizontal distribution of the non-trivial zeros. Our goal is to estimate the quantity NK (T ) given by
+
+                               NK (T ) ∶=# {ρ ∈ C ∣ ζK (ρ) = 0, 0 ≤ β ≤ 1, ∣ω∣ ≤ T }′
+                                           1
+                                        =    # {ρ ∈ C ∣ ζK (ρ) = 0, 0 ≤ β ≤ 1, ∣ω∣ ≤ T }
+                                           2
+                                           1
+                                          + # {ρ ∈ C ∣ ζK (ρ) = 0, 0 ≤ β ≤ 1, ∣ω∣ < T }
+                                           2
+
+counted with multiplicity. Here, the prime notation indicates that ζK -zeros with imaginary part T are
+counted with half their weight. Following and improving on the work of Backlund [Bac16], McCurley
+[McC84], Rosser [Ros41], Kadiri and Ng [KN12], Hasanalizade, Shen and Wong [HSW21] were able to
+prove that
+                                T            T nK
+                    ∣NK (t) −     log (dK (     ) )∣ ≤ D1 (log dK + nK log T ) + D2 nK + D3
+                                π           2πe
+for admissible (D1 , D2 , D3 ) = (0.228, 23.108, 4.52). Inspired by Turing’s method [Tur53, Lemma 1], we
+take a different approach to estimate this quantity, yielding the following result.
+
+Theorem 1.1. Let K be a number field with degree nK and discriminant dK . Then
+
+                          T            T nK
+             ∣NK (T ) −     log (dK (     ) ) − 1.919∣ ≤ 0.194 (log dK + nK log T ) + 5.543nK + 0.462
+                          π           2πe
+
+for T ≥ 1.
+
+    In particular, this result also improves upon the best results for the Riemann zeta function.
+
+Corollary 1.2. Let N (T ) be defined by #{ρ ∈ C ∣ ζ(ρ) = 0, Re(ρ) ∈ [0, 1], Im(ρ) ∈ [0, T ]}′ counted with
+multiplicity and such that zeros with imaginary part T are counted with half weight. Then
+
+                                                T         T
+                                    ∣N (T ) −      log (     )∣ ≤ 0.097 log T + 3.962
+                                                2π       2πe
+
+for T ≥ 1.
+
+    All numerical computations throughout this paper were carried out with mathematica.
+
+
+
+
+                                                              2
+2     Proof of Theorem 1.1
+We consider a Dedekind zeta function ζK (s) and want to estimate NK (T ). Let us first only consider
+T ∈ R such that T is not the imaginary part of a ζK -zero. In the case where T is the ordinate of a ζK -zero,
+set
+                                                     NK (T + ε) + NK (T − ε)
+                                       NK (T ) = lim                         .
+                                                 ε→0            2
+                                                                                             s/2
+Now, notice that the non-trivial zeros of ζK are precisely the zeros of ξK (s) = s(s − 1)dK γK (s) ζK (s) and
+all zeros lie inside the critical strip with real part between 0 and 1. This function is holomorphic and thus
+we can apply the argument principle [Lie94, Lemma 7.1] to compute the number of zeros. We have
+
+                                                          1     ′
+                                                               ξK (s)
+                                             NK (T ) =      ∮         ds,                                (2.1)
+                                                         2πi C ξK (s)
+
+where C is any contour that surrounds the rectangle 0 ± iT , 1 ± iT in the counter clockwise direction. Let
+d > 12 and define C as the counter that connects the four points 21 ± d ± iT . Notice that by the functional
+equation (1.5) and the symmetry of the complex conjugate (2.1) simplifies to
+
+                                     ′               1                         1
+                             2      ξK         2     2
+                                                       +d+iT ξ ′         2     2
+                                                                                 +iT ξ ′
+                 NK (T ) =     ∮       (s)ds =   ∫
+                                                              K
+                                                                 (s)ds +   ∫
+                                                                                      K
+                                                                                         (s)ds,
+                             πi C ′ ξK         πi 12 +d      ξK          πi 12 +d+iT ξK
+
+where C ′ is the path that starts at s = 21 + d, goes to 12 + d + iT and then to 12 + iT . Because 12 + d > 1,
+                                                                                  ′
+we may compute the first integral with (1.2) and the Dirichlet series for ζζKK (s). To this end we want to
+expand the integral by a copy where the real part is shifted by d such that the entire integral is contained
+in the right half plane of absolute convergence. This shift enables us to apply an absolutely convergent
+sum involving the non-trivial ζK -zeros to evaluate the integral. This approach is inspired by Turing’s
+method [Tur53, Lemma 1]. We obtain
+                     1
+                2    2
+                       +iT   ξ′        2           1
+       NK (T ) = ∫ 1       Im K (s)ds + Im log ξK ( + d + iT )
+                π 2 +d+iT    ξK        π           2
+                       1        ′                  ′                        1         ′
+                  2    2
+                         +d    ξK                ξK                    π    2
+                                                                              +2d    ξK
+               =−   ∫       Im    (σ + iT ) − Im     (σ + d + iT )dσ −   ∫        Im    (σ + iT )dσ
+                  π 12         ξK                ξK                    2 12 +d       ξK
+                                                                                                         (2.2)
+                  2             1
+                 + Im log ξK ( + d + iT )
+                  π             2
+                       1
+                  2    2
+                         +d    ξ′               ξ′
+               = − ∫1       Im K (σ + it) − Im K (σ + d + iT )dσ + E1 (ξK )(T, d),
+                  π 2          ξK               ξK
+
+where E1 (f ) is an operator given by
+
+                                      2               1                        1
+                    E1 (f )(t, x) =     (2 Im log (f ( + x + it)) − Im log (f ( + 2x + it))) .
+                                      π               2                        2
+                                                                                      ′
+Here, Im log(f ) is interpreted as the imaginary part of the anti derivative of ff such that Im log(f (x)) = 0
+for all x ∈ R such that f (x) ∈ (0, ∞). Next, we need the following representation for the Dedekind zeta-
+function to express the remaining integral in (2.2) via a sum involving the non-trivial ζK -zeros. Because
+
+
+                                                           3
+ξK is an entire function of order 1, we can apply the Weierstrass factorization theorem [Con78, page 279]
+and obtain that
+                                                                     s s
+                                                ξK (s) = eQ(s) ∑ (1 − ) e ρ ,
+                                                               ρ     ρ
+
+where Q(s) is a polynomial of degree 1. Hence,
+                                                ′
+                                               ξK                  1  1
+                                                  (s) = Q′ (s) + ∑ +                                            (2.3)
+                                               ξK                ρ ρ s−ρ
+
+where the last sum is absolutely convergent, because there are OK (T log(T )) terms in the sum [HSW21]
+and
+                            1  1         s            ∣s∣
+                           ∣ +    ∣=∣          ∣=            = Os (∣ρ∣−2 ) = Os (ω −2 )
+                            ρ s−ρ     ρ(s − ρ)    ∣ρ∣∣s − ρ∣
+for large ω = Im(ρ). Notice that because Q(s) is a first degree polynomial, Q′ (s) is constant. Furthermore,
+ ′
+ξK
+ξK (s) commutes with complex conjugation, as does the sum in (2.3) because the ζK -zeros ρ occur in
+complex conjugate pairs. Therefore, Q (s) = Q (s̄) and Im Q (s) = 0. We conclude that
+                                   ′       ′            ′
+
+
+                                      ξ′                ω−t              ω
+                                    Im K (s) = ∑                     − 2     .
+                                               ρ (σ − β) + (t − ω)    β + ω2
+                                      ξK                2          2
+
+
+With this tool at our disposal, we will find that we can bound the integral in (2.2) using operators similar
+to E1 applied to ξK and evaluated at points with real parts greater than 1. Eventually, we will evaluate
+all of these operators together to take advantage of potential cancellations between these terms. Thus,
+we obtain
+
+                                        T −ω                    T −ω
+                           1
+                     2    2
+                            +d
+            NK (T ) = ∫ 1      ∑                     −                         dσ + E1 (ξK )(T, d)
+                               ρ (σ − β) + (T − ω)     (σ + d − β)2 + (T − ω)2
+                     π 2                2          2
+                                                                                                                (2.4)
+                     2
+                    = ∑ g(T, d, ρ) + E1 (ξK )(T, d),
+                     π ρ
+
+where
+
+                                                  T −ω                    T −ω
+                                    1
+                                    2
+                                      +d
+                 g(T, d, ρ) = ∫ 1                              −                         dσ
+                                2
+                                           (σ − β) + (T − ω)
+                                                  2          2   (σ + d − β)2 + (T − ω)2
+                                                                                                                (2.5)
+                                              2 + 2d − β                    2 +d−β                  2 −β
+                                              1                             1                       1
+                            = − arctan (                   ) + 2 arctan (            ) − arctan (          ).
+                                                T −ω                        T −ω                    T −ω
+
+Here we use the fact that we consider the finite integral of an absolutely convergent sum to swap the
+order of summation and integration. Now, due to the functional equation for ζK (s) and the fact that
+ζK (s) commutes with complex conjugation, we obtain ζK (1 − ρ̄) = 0 for every ζK -zero ρ. Furthermore, we
+observe that the sum in equation (2.4) is again absolutely convergent. Therefore, we may reorder terms
+and thus group terms associated with ρ and 1 − ρ̄ together. Doing so allows us to cancel the last term
+from (2.5), which yields
+                                                 1
+                                    NK (T ) =      ∑ f (b, T − ω, d) + E1 (ξK )(T, d),                          (2.6)
+                                                 π ρ
+
+
+                                                                4
+where
+
+                                      b+d                 −b + d              b + 2d              −b + 2d
+      f (b, T − ω, d) = 2 arctan (         ) + 2 arctan (        ) − arctan (        ) − arctan (         ).       (2.7)
+                                      T −ω                T −ω                T −ω                 T −ω
+
+Here b ∶= 12 − β. Now, the idea is to limit the contribution of each integral by a linear combination of
+poles of different degrees located at 12 + d + iT − ρ. We may then evaluate the sum of these poles due to
+their connection to the logarithmic derivatives of ξK ( 12 + d + iT ). This idea was inspired by a very similar
+method used by Turing to estimate S1 (T ) [Tur53]. The following lemma presents us with the required
+bounds for f (b, t, d).
+
+Lemma 2.1. Let ∣b∣ ≤ 21 and t ≠ 0. Then
+
+                     π           d+b           d−b                     (d + b)2 − t2     (d − b)2 − t2
+        f (b, t, d) ≤ [da1 (              +              ) + d 2
+                                                                 a2 (                  +                  )
+                     4       (d + b)2 + t2 (d − b)2 + t2              ((d + b)2 + t2 )2 ((d − b)2 + t2 )2
+                                 2(d + b)t         2(d − b)t
+                     + a3 (                    +                  ) ] and
+                              ((d + b)2 + t2 )2 ((d − b)2 + t2 )2
+                          π            d+b           d−b                    (d + b)2 − t2     (d − b)2 − t2
+        f (b, t, d) ≥ −     [da1 (              +              ) + d2
+                                                                      a2 (                  +                  )
+                          4        (d + b)2 + t2 (d − b)2 + t2             ((d + b)2 + t2 )2 ((d − b)2 + t2 )2
+                                 2(d + b)t         2(d − b)t
+                     − a3 (                    +                  )]
+                              ((d + b)2 + t2 )2 ((d − b)2 + t2 )2
+
+for d = 0.722, a1 = 1.07, a2 = 0.93 and a3 = 0.365.
+
+Proof. We prove the upper bound first and conclude the lower bound by symmetry. Let
+
+                                                    π           d+b            (d − b)
+                             H(b, t) ∶= f (b, t, d)− [da1 (               +               )
+                                                    4       (d + b) + t
+                                                                   2    2   (d − b)2 + t2
+                                                             (d + b)2 − t2     (d − b)2 − t2
+                                                 +d2 a2 (                    +                  )
+                                                            ((d + b)2 + t2 )2 ((d − b)2 + t2 )2
+                                                            2(d + b)t         2(d − b)t
+                                                 +a3 (                    +                  ) ].
+                                                         ((d + b)2 + t2 )2 ((d − b)2 + t2 )2
+
+For fixed a1 , a2 , and a3 this is a harmonic funciton because f (b, t, d) is a harmonic function. Notice that
+it suffices to show that
+                                                         H(b, t) ≤ 0                                               (2.8)
+
+for all (b, t) ∈ [− 21 , 12 ] × (R ∖0) in order to prove the lemma. First, notice that we obtain from the Taylor
+series of arctan(x) that
+                                                         π
+                                            H(b, t) =       (a2 − a1 ) + Ob (t−3 ).                                (2.9)
+                                                        2t2
+This verifies inequality (2.8) for large ∣t∣, say ∣t∣ ≥ T0 , because a1 > a2 . Because H(b, t) is harmonic we
+may apply the maximum principle to verify (2.8) for (b, t) ∈ [− 12 , 12 ] × ([−T0 , 0) ∪ (0, T0 ]). We conclude
+that it suffices to show that H(b, t) ≤ 0 on the boundary of this area, in order to establish the desired
+result. First consider the area with t > 0. By our choice of T0 we already know that H(b, T0 ) ≤ 0 for all
+
+
+
+                                                               5
+b ∈ [− 12 , 21 ]. Because d > 21 and ∣b∣ ≤ 12 , we have that d ± b > 0 for all b ∈ [− 12 , 21 ]. Thus,
+
+                                               π         1        1                1           1
+                          lim+ H(b, t) =π −      [da1 (      +      ) + d2 a2 (           +          )]
+                          t→0                  4        d+b d−b                 (d + b) 2   (d − b)2
+                                               π        1 1             1     1
+                                           ≤π − [da1 ( + ) + d2 a2 ( 2 + 2 )]
+                                               4        d d            d      d
+                                               π
+                                           ≤π − [2a1 + 2a2 ] = 0.
+                                               4
+
+Next, observe that H(b, t) is symmetric about b = 0. Therefore, it suffices to show that H ( 12 , t) ≤ 0 for
+all t > 0 to verify that H(b, t) ≤ 0 on the boundary of [− 21 , 12 ] × (0, T0 ]. Let
+
+             1                 d+ 2           1
+                                                   d− 2              2d + 2
+                                                                        1
+                                                                                         2d − 2     1       1
+  h(t) ∶= H ( , t) =2 arctan (      ) + 2 arctan (      ) − arctan (        ) − arctan (        )
+             2                  t                   t                   t                   t
+
+                                          d + 21         d − 12              ⎛ (d + 1 )2 − t2       (d − 21 ) − t2 ⎞
+                                                                                                             2
+                              π     ⎛                               ⎞
+                             − [da1                 +                 + d a2 ⎜
+                                                                         2
+                                                                             ⎜
+                                                                                      2
+                                                                                                 +                 ⎟
+                                                                                                                  2⎟
+                              4     ⎝ (d + 1 )2 + t2 (d − 1 )2 + t2 ⎠                1 2
+                                                                                               2
+                                                                                                         1 2
+                                           2              2                  ⎝ ((d + 2 ) + t )
+                                                                                            2      ((d − 2 ) + t ) ⎠
+                                                                                                                2
+
+
+                                  ⎛ 2 (d + 1 ) t          2 (d − 12 ) t ⎞
+                             + a3 ⎜
+                                  ⎜
+                                              2
+                                                   2
+                                                     +                    ⎟ ].
+                                                                         2⎟
+                                          1 2                1 2
+                                  ⎝ ((d + 2 ) + t )
+                                                 2     ((d − 2 ) + t ) ⎠
+                                                                       2
+
+
+
+The asymptotic behavior of this equation is already controlled by (2.9). Next we want to analyze the
+local maxima of h. For this consider the derivative with respect to t. We obtain that
+
+                   2d + 12                2d − 21               2d + 1           2d − 1
+   h′ (t) =                       +                      −                  −
+              (2d + 12 )2 + t   2     (2d − 12 )2 + t2       (d + 2 ) + t
+                                                                  1 2     2   (d − 12 )2 + t2
+                  π           (2d + 1)t           (2d − 1)t                     2t(3(d + 21 )2 − t2 ) 2t(3(d − 21 )2 − t2 )
+              +     [da1 (                    +                    ) + d 2
+                                                                           a2 (                      +                      )
+                  4        ((d + 12 )2 + t2 )2 ((d − 12 )2 + t2 )2               ((d + 12 )2 + t2 )3   ((d − 12 )2 + t2 )3
+                       2(d + 12 )((d + 12 )2 − 3t2 )         2(d − 21 )((d − 12 )2 − 3t2 )
+              − a3 (                                     +                                   ) ].
+                             ((d + 12 )2 + t2 )3                  ((d − 12 )2 + t2 )3
+
+Multiplying out this equation for our values of d, a1 , a2 , and a3 shows that the zeros of h′ (t) correspond
+to the zeros of a thirteenth-degree polynomial with seven real roots, given approximately by t1 ≈ −0.791,
+t2 ≈ −0.346, t3 ≈ 0.052, t4 ≈ 0.909, t5 ≈ 1.335, t6 ≈ 2.75, and t7 ≈ 5.863. The zeros t1 , t3 , t5 , and t7 correspond
+to local minima of h(t), the remaining extrema correspond to local maxima with values h(t2 ) ≈ −0.00019,
+h(t4 ) ≈ −0.00022, and h(t6 ) ≈ −0.00015. Hence, H ( 21 , t) = H (− 12 , t) = h(t) ≤ 0 for all t ∈ R. Thus, we
+obtain by the maximum principle that H(b, t) ≤ 0 for b ∈ [− 12 , 12 ] and 0 < t ≤ T0 . For the area with t < 0
+we obtain that H(b, −T0 ) ≤ 0 by our choice of T0 . Furthermore, notice that
+
+                                                 π         1        1                1          1
+                         lim− H(b, t) = − π −      [da1 (      +      ) + d2 a2 (          +          )]
+                        t→0                      4        d+b d−b                 (d + b)2   (d − b)2
+                                                 π        1 1             1     1
+                                          ≤ − π − [da1 ( + ) + d2 a2 ( 2 + 2 )]
+                                                 4        d d            d      d
+                                                 π
+                                          ≤ − π − [2a1 + 2a2 ] < 0.
+                                                 4
+
+
+                                                                         6
+And by the maximum principle we conclude that H(b, t) ≤ 0 for b ∈ [− 12 , 21 ] and −T0 ≤ t < 0. This proves
+                                                                       2(d+b)t
+the upper bound for f (b, t, d). Now notice that f (b, t, d) and ((d+b)2 +t2 )2 are odd functions in t, whereas
+   d+b             (d+b)2 −t2
+      2
+(d+b) +t 2  and  ((d+b)2 +t2 )2
+                                are even functions in t. Furthermore, we have established the upper bound for
+all ∣b∣ ≤ 12 and t ≠ 0. Hence, the lower bound follows from the upper bound by substituting t ↦ −t.
+
+Remark 2.2. We will see that the quality of the overall estimate of Theorem 1.1 depends linearly on the
+size of the product da1 . All we did in Lemma 2.1 was to show that these particular values for d, a1 , a2 ,
+and a3 are admissible values for the optimization problem, that is, to find values for d, a1 , a2 , and a3 such
+that da1 is minimal under the condition that H(b, t) ≤ 0 on the boundary of [− 12 , 21 ] × R. The condition
+requires a1 > a2 and a1 + a2 ≥ 2 to control the behavior of H(b, t) for ∣t∣ → ∞ and ∣t∣ → 0. We see that
+the terms associated with a1 and a2 are positive, even functions in t and that f (b, t) is an odd function
+in t that is negative for negative t. Hence, we use the a3 term to distribute the weight of the estimate
+more evenly across the positive and negative values for t. Without this wild card, inequality H(b, t) ≤ 0 is
+trivially true for all t < 0. The specific values of d, a1 , a2 , and a3 for this lemma were found by strategic
+testing.
+
+    Now, with these bounds we may estimate the sum in (2.6). We obtain the upper bound given by
+
+     1                     da1            1                    1
+       ∑ f (b, T − ω, d) ≤     Re ∑ 1              + 1
+     π ρ                    4     ρ 2 + d + iT − ρ   2 + d + iT − (1 − ρ̄)
+                                d2 a2                1                           1
+                            +         Re ∑ 1                      +
+                                          ρ ( 2 + d + iT − ρ)        ( 2 + d + iT − (1 − ρ̄))2
+                                 4                              2      1
+
+                                a3                 1                           1
+                             +      Im ∑ 1                      + 1
+                                       ρ ( 2 + d + iT − ρ)        ( 2 + d + iT − (1 − ρ̄))2
+                                4                             2
+
+                             ⎡                                           2                        2 ⎤
+                             ⎢ da1     ξ′    d2 a2     ⎛ ξ ′′      ξ′      ⎞ a3      ⎛ ξ ′′    ξ′  ⎞⎥ 1
+                          = ⎢⎢      Re K +          Re K − ( K ) +               Im K − ( K ) ⎥⎥ ( + d + iT )
+                             ⎢ 2       ξK       2      ⎝ ξK        ξK ⎠ 2            ⎝ ξK      ξK ⎠⎥ 2
+                             ⎣                                                                      ⎦
+                          =E2 (ξK )(T, d) + E3 (ξK )(T, d)
+
+and analogously the lower bound given by
+
+                           ⎡                                     2                     2 ⎤
+     1                     ⎢ da1       ′
+                                      ξK    d2 a2    ⎛ ξK
+                                                        ′′     ′
+                                                              ξK   ⎞ a3    ⎛ ξK
+                                                                              ′′     ′
+                                                                                    ξK  ⎞⎥ 1
+                           ⎢
+       ∑ f (b, T − ω, d) ≥ ⎢−     Re     −        Re       −( ) +       Im       − ( ) ⎥⎥ ( + d + iT )
+     π ρ                   ⎢ 2        ξK      2      ⎝ ξK     ξK ⎠ 2       ⎝ ξK     ξK ⎠⎥ 2
+                           ⎣                                                             ⎦
+                         = − E2 (ξK )(T, d) + E3 (ξK )(T, d).
+
+Notice that E1 , E2 and E3 are additive operators that satisfy E(f g) = E(f ) + E(g). We may now
+decompose ξK (s) according to (1.2). We thus obtain for Eu ∶= E1 + E2 + E3 and El ∶= E1 − E2 + E3 , that
+
+                                                       s/2
+           Eu (ξK )(T, d) =Eu (s(s − 1))(T, d) + Eu (dK ) (T, d) + Eu (γK )(T, d) + Eu (ζK )(T, d) and
+                                                      s/2
+           El (ξK )(T, d) =El (s(s − 1))(T, d) + El (dK ) (T, d) + El (γK )(T, d) + El (ζK )(T, d).
+
+We will estimate each term individually.
+
+
+
+
+                                                            7
+Lemma 2.3. For d, a1 , a2 , a3 as in Lemma 2.1 and T ≥ 1 we obtain
+
+                                            Eu (s(s − 1))(T, d) ≤2.381 and
+                                             El (s(s − 1))(T, d) ≥1.458.
+
+Proof. Plugging in the equation for Eu (s(s − 1))(T, d) yields
+
+                     4           T                 T       2            T                   T
+Eu (s(s − 1))(T, d) = (arctan (      ) + arctan (      )) − (arctan (        ) + arctan (         ))
+                     π          d+ 2
+                                   1
+                                                  d− 2
+                                                     1     π          2d + 2
+                                                                           1
+                                                                                          2d − 21
+                         da1    d + 12           d − 21          d2 a2    (d + 12 )2 − T 2     (d − 21 )2 − T 2
+                       +     (              +                 )−       (                     +                     )
+                          2 (d + 21 )2 + T 2 (d − 12 )2 + T 2     2      ((d + 12 )2 + T 2 )2 ((d − 12 )2 + T 2 )2
+                           a3   2(d + 21 )T          2(d − 12 )T
+                       +      (                  +                     ).
+                           2 ((d + 12 )2 + T 2 )2 ((d − 12 )2 + T 2 )2
+
+From this expression, we observe that Eu (s(s − 1))(T, d) approaches 2 as T → ∞ . Considering the
+derivative, we observe that Eu (s(s − 1))(T, d) does not have local extrema in [0, +∞) and find that
+Eu (s(s − 1))(T, d) ≤ Eu (s(s − 1))(1, d) ≤ 2.381 for T ≥ 1. For El we obtain
+
+                      4           T                 T       2            T                   T
+ El (s(s − 1))(T, d) = (arctan (      ) + arctan (      )) − (arctan (        ) + arctan (         ))
+                      π          d+ 2
+                                    1
+                                                   d− 2
+                                                      1     π          2d + 2
+                                                                            1
+                                                                                           2d − 21
+                           da1    d + 21           d − 12           d2 a2    (d + 12 )2 − T 2     (d − 12 )2 − T 2
+                      −        (              +                 ) +       (                     +                     )
+                            2 (d + 21 )2 + T 2 (d − 12 )2 + T 2      2      ((d + 21 )2 + T 2 )2 ((d − 21 )2 + T 2 )2
+                           a3   2(d + 12 )T          2(d − 12 )T
+                      +       (                  +                     ).
+                           2 ((d + 21 )2 + T 2 )2 ((d − 21 )2 + T 2 )2
+
+We observe that El (s(s − 1))(T, d) approaches 2 as T → ∞ and from the derivative we conclude that
+El (s(s−1))(T, d) has no local extrema for T ∈ [0, +∞). From comparing the boundary values we conclude
+that El (s(s − 1))(T, d) ≥ El (s(s − 1))(1, d) ≥ 1.458 for T ≥ 1.
+
+    Next, we estimate the discriminant term.
+
+Lemma 2.4. For d, a1 , a2 , a3 as in Lemma 2.1 and T ≥ 1 we obtain
+
+                                            s/2            T da1
+                                    Eu (dK ) (T, d) = (      +   ) log(dK ) and
+                                                           π   4
+                                             s/2           T da1
+                                        El (dK ) (T, d) = ( −    ) log(dK ).
+                                                           π   4
+                                                  s/2                   s/2
+Proof. Plugging in the equations for Eu (dK ) (T, d) and El (dK ) (T, d) yields the result. We have
+
+                                    1                       1
+       s/2         4      ⎛ 2 +d+iT ⎞ 2      ⎛ 2 +2d+iT ⎞ da1      log(dK )    T da1
+  Eu (dK ) (T, d) = Im log dK 2      − Im log dK 2        +   Re (          )=( +    ) log(dK ),
+                   π      ⎝         ⎠ π      ⎝          ⎠   2         2        π  4
+                                    1                       1
+        s/2         4      ⎛ 2 +d+iT ⎞ 2      ⎛ 2 +2d+iT ⎞ da1      log(dK )    T da1
+   El (dK ) (T, d) = Im log dK 2      − Im log dK 2        −   Re (          )=( −    ) log(dK ).
+                    π      ⎝         ⎠ π      ⎝          ⎠   2         2        π  4
+
+
+
+                                                            8
+    Before we estimate the contribution of the gamma term γK (s), we require some useful estimates for
+the logarithmic gamma function and its derivatives.
+
+Corollary 2.5. Let s ∈ C with Re(s) > 0, s = σ + it. We then have
+
+                                    t                        1          t              t
+                       Im log Γ(s) = log (σ 2 + t2 ) + (σ − ) arctan ( ) − t −                 + R1 (s),
+                                    2                        2          σ          12(σ + t2 )
+                                                                                       2
+
+                                    1                       σ          σ 2 − t2
+                          Re ψ(s) = log (σ 2 + t2 ) −              −               + R2 (s),
+                                    2                  2(σ 2 + t2 ) 12(σ 2 + t2 )2
+                                      σ          σ 2 − t2
+                         Re ψ1 (s) = 2 2 +                  + R3 (s), and
+                                    σ +t      2(σ 2 + t2 )2
+                                      t            σt
+                         Im ψ1 (s) = 2 2 − 2 2 2 + R4 (s).
+                                    σ +t      (σ + t )
+
+Here,
+
+                                                                           1           1
+                                                           ∣R1 (s)∣ ≤         3
+                                                                                +           ,
+                                                                       360∣s∣     1022σ∣s∣3
+                                                                            1
+                                                            ∣R2 (s)∣ ≤           , and
+                                                                       120σ∣s∣3
+                                                                         1         1
+                                                  ∣R3 (s)∣, ∣R4 (s)∣ ≤     3
+                                                                              +         .
+                                                                       6∣s∣     23σ∣s∣3
+
+Proof. These estimates rely on Binet’s first formula for the logarithmic gamma function [Wat20, Theorem
+12.31] then
+                                        t                      1          t           ∞
+                       Im log Γ(s) =      log(σ 2 + t2 ) + (σ − ) arctan ( ) + Im (∫ f (u)e−us du) ,                 (2.10)
+                                        2                      2          σ         0
+
+where f (u) = u1 ( 12 − u1 + eu1−1 ). We obtain that f (0) = 12
+                                                              1
+                                                                , f ′ (0) = 0, f ′′ (0) = − 360
+                                                                                             1
+                                                                                                , and ∣f ′′′ (u)∣ ≤ 1022
+                                                                                                                     1
+                                                                                                                         for
+u > 0. Now, take equation (2.10) and apply partial integration. We thus obtain that
+
+                 ∞    1 1 1    1                 ∞              1    1    1   ∞
+         ∫           [ ( − + u   )] e−us du = ∫ f (u)e−us du =    −     +   ∫ f (u)e du.
+                                                                                ′′′ −us
+             0        u 2 u e −1               0               12s 360s3 s3 0
+
+Hence,
+                                              ∞    1 1 1    1               1         1          1
+                      ∣R1 (s)∣ = ∣Im (∫           [ ( − + u   )] e−us du −     )∣ ≤         +           .
+                                          0        u 2 u e −1              12s      360∣s∣3   1022σ∣s∣3
+
+Considering the derivative of Binet’s first formula for the logarithmic gamma function yields that
+
+                                              1                      σ               ∞
+                                  Re ψ(s) =     log(σ 2 + t2 ) −           − Re (∫     g(u)e−us du) ,                (2.11)
+                                              2                  2(σ + t )
+                                                                    2   2          0
+
+
+where g(u) = 12 − u1 + eu1−1 . We then have g(0) = 0, g ′ (0) = 12
+                                                                1
+                                                                   , g ′′ (0) = 0 and ∣g ′′′ (u)∣ ≤ 120
+                                                                                                     1
+                                                                                                        for u > 0. Now,
+if we take equation (2.11), we obtain
+
+                           ∞    1 1    1                ∞               1    1   ∞
+                 −∫            ( − + u   ) e−us du = ∫ g(u)e−us du = −     −   ∫   g ′′′ (u)e−us du.
+                       0        2 u e −1              0                12s2 s3 0
+
+                                                                        9
+Hence,
+                                                   ∞    1 1    1              1           1
+                          ∣R2 (s)∣ ≤ ∣Re (∫            ( − + u   ) e−us du −      )∣ ≤          .
+                                               0        2 u e −1             12s2      120σ∣s∣3
+Lastly, consider the second derivative of Binet’s first formula for the logarithmic gamma function. From
+this we obtain that
+
+                                           σ        σ 2 − t2              ∞
+                             Re ψ1 (s) =        +              + Re (∫      h(u)e−us du) , and
+                                        σ 2 + t2 2(σ 2 + t2 )2          0
+                                                                                                               (2.12)
+                                            t         σt                ∞
+                             Im ψ1 (s) = 2 2 − 2 2 2 + Im (∫ h(u)e−us du) ,
+                                        σ +t      (σ + t )            0
+
+
+where h(u) = u ( 21 − u1 + eu1−1 ). Then h(0) = 0, h′ (0) = 0, h′′ (0) = 16 and ∣h′′′ (u)∣ ≤ 23
+                                                                                             1
+                                                                                                for u > 0. Therefore,
+
+                   ∞       1 1    1                 ∞            1   1  ∞
+             ∫         [u ( − + u   )] e−us du = ∫ h(u)e−us du = 3 + 3 ∫ h′′′ (u)e−us du.
+               0           2 u e −1               0             6s  s 0
+
+And in sight of (2.12),
+
+                                           ∞  1 1    1                 1       1
+                         ∣R3 (s)∣ ≤ ∣∫    [u ( − + u   )] e−us du∣ ≤       +           and
+                                      0       2 u e −1               6∣s∣3   23σ∣s∣3
+                                        ∞     1 1    1                 1       1
+                         ∣R4 (s)∣ ≤ ∣∫ [u ( − + u      )] e−us du∣ ≤       +         .
+                                      0       2 u e −1               6∣s∣3 23σ∣s∣3
+
+
+
+    Now we can estimate the contribution of the gamma factor γK (s).
+
+Lemma 2.6. For d, a1 , a2 , a3 as in Lemma 2.1 and T ≥ 1 we obtain
+
+                                          nK T        T     nK da1      T
+                         Eu (γK )(T, d) ≤      log (     )+        log ( ) + 0.258nK and
+                                           π         2πe      4         2π
+                                          nK T        T     nK da1      T
+                         El (γK )(T, d) ≥      log (     )−        log ( ) − 0.25nK .
+                                           π         2πe      4         2π
+
+Proof. First, use (1.4) to decompose the gamma factor into its r1 - and r2 -dependent parts. We first
+estimate the γ1 term. Plugging in the equation yields
+
+                     4             1                 + d + iT
+                                                            1
+                                                                  2             1                  + 2d + iT
+                                                                                                     1
+     Eu (γ1 )(T, d) = Im log (π −( 2 +d+iT )/2 Γ ( 2          )) − Im log (π −( 2 +2d+iT )/2 Γ ( 2           ))
+                     π                                 2          π                                   2
+                             da1       log(π) 1    + d + iT     1
+                                                                 d2 a2     1       + d + iT
+                                                                                          1
+                         +       Re (−       + ψ(2          )) +       Re ( ψ1 ( 2          ))
+                              2           2   2      2            2        4         2
+                             a3     1       + d + iT
+                                               1
+                         +      Im ( ψ1 ( 2          )) .
+                             2      4         2
+
+The exponential terms equal − ( Tπ + da41 ) log(π) and by Corollary 2.5 we obtain that
+
+                                               T        T     da1      T
+                          Eu (γ1 )(T, d) =       log (     )+     log ( ) + U1,1 (T ) + U1,2 (T ),
+                                               π       2πe     4       2π
+
+
+
+                                                                    10
+where
+
+                T            1 + 2d 2   T             1 + 4d 2   da1            1 + 2d 2
+  U1,1 (T ) =     log (1 + (       ) )−    log (1 + (       ) )+     log (1 + (       ) )
+                π              2T       2π              2T        8               2T
+                    2d − 1            T     4d − 1            T               2T                    T
+                +          arctan ( 1    )−        arctan ( 1      )−                     +
+                                    2 +d                    2 + 2d    3π(( 2 + d)2 + T 2 ) 3π(( 2 + 2d)2 + T 2 )
+                      π                      2π                            1                    1
+
+                    da1
+                            1
+                              +d        ( 21 + d)2 − T 2        d2 a2         2 +d
+                                                                              1
+                                                                                          ( 21 + d)2 − T 2
+                −       ( 1 2 2      +                      ) +       (                 +                     )
+                     4 ( 2 + d) + T 2 3(( 12 + d)2 + T 2 )2      4      ( 12 + d)2 + T 2 (( 12 + d)2 + T 2 )2
+                  a3        T               2( 21 + d)T
+                +    (                −                     ),
+                  4 ( 12 + d)2 + T 2 ) (( 12 + d)2 + T 2 )2
+
+and
+
+                 4    1 d   T    2   1       T    da1     1 d   T    d2 a2     1 d   T
+      U1,2 (T ) = R1 ( + + i ) − R1 ( + d + i ) +     R2 ( + + i ) +       R4 ( + + i )
+                 π    4 2   2    π   4       2     4      4 2   2     8        4 2   2
+                   a3   1 d   T
+                 + R5 ( + + i ) .
+                   8    4 2    2
+
+Invoking Corollary 2.5 yields that
+
+                   4 1        1                1             2 1      1                1
+        U1,2 (T ) ≤ (   +            )                   3 +  (  +           )
+                   π 360 1022( 2 + d) (( 1 + d)2 + T 2 ) 2 π 360 1022( 4 + d) (( 1 + d)2 + T 2 ) 32
+                               1                                       1
+                                                      2                                             4           4
+                        da1          1               d a2 a3 ⎛ 1  2
+                                                                      1       ⎞           1
+                      +                         3 +(     + )     +
+                                             2
+                         4 120(( 1 + d )2 + T ) 2     8   8 ⎝ 6 23( 14 + d2 ) ⎠ (( 1 + d )2 + T 2 ) 23
+                                     4   2        4                                       4   2             4
+                    =∶U B1 (T ).
+
+Computing the range for U1,1 (T ) + U B1 (T ) with mathematica yields that
+
+                                                       T        T     da1      T
+                                    Eu (γ1 )(T, d) ≤     log (     )+     log ( ) + 0.049
+                                                       π       2πe     4       2π
+
+for T ≥ 1. Similarly, we obtain
+
+                      4             1                 + d + iT
+                                                          1
+                                                                   2             1                  + 2d + iT
+                                                                                                        1
+      El (γ1 )(T, d) = Im log (π −( 2 +d+iT )/2 Γ ( 2          )) − Im log (π −( 2 +2d+iT )/2 Γ ( 2           ))
+                      π                                 2          π                                   2
+                              da1       log(π) 1    + d + iT  1
+                                                                  d2 a2     1       + d + iT
+                                                                                          1
+                          −       Re (−       + ψ(2          )) −       Re ( ψ1 ( 2          ))
+                               2           2   2      2            2        4         2
+                              a3     1       + d + iT
+                                             1
+                          +      Im ( ψ1 ( 2          )) ,
+                              2      4         2
+
+and
+
+                                                 T      T    da1      T
+                              El (γ1 )(T, d) =     log ( ) −     log ( ) + L1,1 (T ) + L1,2 (T ),
+                                                 π      2π    4       2π
+
+
+
+
+                                                                      11
+where
+
+                 T            1 + 2d 2   T             1 + 4d 2   da1            1 + 2d 2
+   L1,1 (T ) =     log (1 + (       ) )−    log (1 + (       ) )−     log (1 + (       ) )
+                 π              2T       2π              2T        8               2T
+                     2d − 1            T     4d − 1            T               2T                    T
+                 +          arctan ( 1    )−        arctan ( 1      )−                     +
+                                     2 +d                    2 + 2d    3π(( 2 + d)2 + T 2 ) 3π(( 2 + 2d)2 + T 2 )
+                       π                      2π                            1                    1
+
+                     da1
+                             1
+                               +d        ( 12 + d)2 − T 2        d2 a2         2 +d
+                                                                               1
+                                                                                           ( 12 + d)2 − T 2
+                 +       ( 1 2 2      +                      ) −       (                 +                     )
+                      4 ( 2 + d) + T 2 3(( 12 + d)2 + T 2 )2      4      ( 12 + d)2 + T 2 (( 12 + d)2 + T 2 )2
+                   a3        T               2( 12 + d)T
+                 +    (                −                     ),
+                   4 ( 21 + d)2 + T 2 ) (( 12 + d)2 + T 2 )2
+
+and
+
+                 4    1 d   T    2   1       T    da1     1 d   T    d2 a2     1 d   T
+      L1,2 (T ) = R1 ( + + i ) − R1 ( + d + i ) −     R2 ( + + i ) −       R4 ( + + i )
+                 π    4 2   2    π   4       2     4      4 2   2     8        4 2   2
+                   a3   1 d   T
+                 + R5 ( + + i ) .
+                   8    4 2    2
+
+Invoking Corollary 2.5 yields that
+
+                       4 1        1                1             2 1      1                1
+      L1,2 (T ) ≥ −     (   +            )                   3 −  (  +           )
+                       π 360 1022( 2 + d) (( 1 + d)2 + T 2 ) 2 π 360 1022( 4 + d) (( 1 + d)2 + T 2 ) 23
+                                   1                                       1
+                                                         2                                         4          4
+                       da1          1               d a2 a3 ⎛ 1
+                                                             2
+                                                                     1       ⎞           1
+                     −                         3 −(     + )     +
+                                            2
+                        4 120(( 1 + d )2 + T ) 2     8   8 ⎝ 6 23( 14 + d2 ) ⎠ (( 1 + d )2 + T 2 ) 32
+                                  4     2      4                                         4   2      4
+                 =∶LB1 (T ).
+
+We conclude that L1,1 (T ) + L1,2 (T ) ≥ L1,1 (T ) + LB1 (T ) and computing the range for this function with
+mathematica shows that
+                                                                            1
+                                                   L1,1 (T ) + L1,2 (T ) ≥ − .
+                                                                            4
+We deduce that
+
+                                                         T        T     da1      T
+                                      El (γ1 )(T, d) ≥     log (     )−     log ( ) − 0.25
+                                                         π       2πe     4       2π
+
+for T ≥ 1. Next, consider the γ2 terms. Plugging in the equation yields
+
+                 4             1              1             1
+ Eu (γ2 )(T, d) = Im log (π −( 2 +d+iT ) 21−( 2 +d+iT ) Γ ( + d + iT ))
+                 π                                          2
+                   2           −( 21 +2d+iT ) 1−( 12 +2d+iT )    1
+                 − Im log (π                 2                Γ ( + 2d + iT ))
+                   π                                             2
+                   da1                          1                  d2 a2        1             a3
+                                                                                                         1
+                                                                                                           + d + iT
+                 +     Re (− log(2π) + ψ ( + d + iT )) +                 Re ψ1 ( + d + iT ) +    Im ψ1 ( 2          ).
+                    2                           2                   2           2             2              2
+
+
+
+
+                                                                 12
+The contribution of the exponential term is − ( 2T
+                                                 π + 2
+                                                    da1
+                                                        ) log(2π) and by Corollary 2.5 we obtain that
+
+                                              2T        T     da1      T
+                           Eu (γ2 )(T, d) =      log (     )+     log ( ) + U2,1 (T ) + U2,2 (T ),
+                                               π       2πe     2       2π
+
+where
+
+                    2T            1 + 2d 2   T           1 + 4d 2   da1            1 + 2d 2
+      U2,1 (T ) =      log (1 + (       ) ) − log (1 + (       ) )+     log (1 + (       ) )
+                     π              2T       π             2T        4               2T
+                        4d            T     4d            T               T                  T
+                    +      arctan ( 1    )−    arctan ( 1      )−                  +
+                                    2 +d                2 + 2d    3π(( 2 + d) + T ) 6π(( 2 + 2d)2 + T 2 )
+                        π                   π                          1     2   2       1
+
+                        da1
+                                1
+                                  +d        ( 12 + d)2 − T 2        d2 a2         2 +d
+                                                                                  1
+                                                                                               ( 21 + d)2 − T 2
+                    −       ( 1 2 2      +                      ) +       (                 +                      )
+                         4 ( 2 + d) + T 2 6(( 21 + d)2 + T 2 )2      2      ( 12 + d)2 + T 2 2(( 12 + d)2 + T 2 )2
+                        a3       T                ( 21 + d)T
+                    +      ( 1             −                     ),
+                        2 ( 2 + d)2 + T 2 ) (( 12 + d)2 + T 2 )2
+
+and
+
+                   4    1            2    1              da1     1             d2 a2     1
+        U2,2 (T ) = R1 ( + d + iT ) − R1 ( + 2d + iT ) +     R2 ( + d + iT ) +       R4 ( + d + iT )
+                   π    2            π    2               2      2              2        2
+                     a3   1
+                   + R5 ( + d + iT ) .
+                     2    2
+
+Invoking Corollary 2.5 yields that
+
+                 4 1        1                1             2 1       1                1
+      U2,2 (T ) ≤ (   +            )                   3 +  (  +            )
+                 π 360 1022( 2 + d) (( 1 + d)2 + T 2 ) 2 π 360 1022( 2 + 2d) (( 1 + 2d)2 + T 2 ) 32
+                             1                                       1
+                                                   2                                              2
+                      da1          1                 d2 a2 a3 1      1              1
+                    +                            + (      + )( +          )
+                                               3
+                       2 120(( 1 + d)2 + T 2 ) 2      2    2  6 23( 2 + d) (( 1 + d)2 + T 2 ) 32
+                                                                    1
+                                   2                                                    2
+               =∶U B2 (T ).
+
+We compute the range with mathematica and obtain that
+
+                                                       2T        T     da1      T
+                                   Eu (γ2 )(T, d) ≤       log (     )+     log ( ) + 0.515
+                                                        π       2πe     2       2π
+
+for T ≥ 1. Plugging γ2 into the equation for the lower estimate yields
+
+                 4             1              1            1
+ El (γ2 )(T, d) = Im log (π −( 2 +d+iT ) 21−( 2 +d+iT ) Γ ( + d + iT ))
+                 π                                         2
+                   2              1               1           1
+                 − Im log (π −( 2 +2d+iT ) 21−( 2 +2d+iT ) Γ ( + 2d + iT ))
+                   π                                          2
+                   da1                          1               d2 a2        1             a3
+                                                                                                      1
+                                                                                                        + d + iT
+                 −     Re (− log(2π) + ψ ( + d + iT )) −              Re ψ1 ( + d + iT ) +    Im ψ1 ( 2          ).
+                    2                           2                 2          2             2              2
+
+
+
+
+                                                                13
+The contribution of the exponential term is − ( 2T
+                                                 π − 2
+                                                    da1
+                                                        ) log(2π) and by Corollary 2.5 we obtain that
+
+                                                2T        T     da1      T
+                             El (γ2 )(T, d) =      log (     )+     log ( ) + L2,1 (T ) + L2,2 (T ),
+                                                 π       2πe     2       2π
+
+where
+
+                     2T            1 + 2d 2   T           1 + 4d 2   da1            1 + 2d 2
+       L2,1 (T ) =      log (1 + (       ) ) − log (1 + (       ) )−     log (1 + (       ) )
+                      π              2T       π             2T        4               2T
+                         4d            T     4d            T               T                  T
+                     +      arctan ( 1    )−    arctan ( 1      )−                  +
+                                     2 +d                2 + 2d    3π(( 2 + d) + T ) 6π(( 2 + 2d)2 + T 2 )
+                         π                   π                          1     2   2       1
+
+                         da1
+                                 1
+                                   +d        ( 21 + d)2 − T 2        d2 a2         2 +d
+                                                                                   1
+                                                                                                ( 12 + d)2 − T 2
+                     +       ( 1 2 2      +                      ) −       (                 +                      )
+                          4 ( 2 + d) + T 2 6(( 21 + d)2 + T 2 )2      2      ( 12 + d)2 + T 2 2(( 12 + d)2 + T 2 )2
+                         a3       T                ( 12 + d)T
+                     +      ( 1             −                     ),
+                         2 ( 2 + d)2 + T 2 ) (( 12 + d)2 + T 2 )2
+
+and
+
+                    4    1            2    1              da1     1             d2 a2     1
+         L2,2 (T ) = R1 ( + d + iT ) − R1 ( + 2d + iT ) −     R2 ( + d + iT ) −       R4 ( + d + iT )
+                    π    2            π    2               2      2              2        2
+                      a3   1
+                    + R5 ( + d + iT ) .
+                      2    2
+
+Invoking Corollary 2.5 yields that
+
+                  4 1        1                1             2 1       1                1
+       L2,2 (T ) ≤ (   +            )                   3 +  (  +            )
+                  π 360 1022( 2 + d) (( 1 + d)2 + T 2 ) 2 π 360 1022( 2 + 2d) (( 1 + 2d)2 + T 2 ) 32
+                              1                                       1
+                                                     2                                                 2
+                       da1          1                 d2 a2 a3 1      1              1
+                     +                            + (      + )( +          )
+                                                3
+                        2 120(( 1 + d)2 + T 2 ) 2      2    2  6 23( 2 + d) (( 1 + d)2 + T 2 ) 32
+                                                                     1
+                                    2                                                      2
+                =∶LB2 (T ).
+
+Then L2,1 (T ) + L2,2 (T ) ≥ L2,1 + LB2 (T ). Analyzing the range of this function with mathematica yields
+that
+                                                         L2,1 (T ) + L2,2 (T ) ≥ 0
+
+for T ≥ 1. Altogether, we then obtain
+
+                                                             2T        T     da1      T
+                                        El (γ2 )(T, d) ≥        log (     )−     log ( )
+                                                              π       2πe     2       2π
+
+for T ≥ 1. Collecting the estimate for γ1 and γ2 gives
+
+                                             nK T        T     nK da1      T
+                            Eu (γK )(T, d) ≤      log (     )+        log ( ) + 0.258nK and
+                                              π         2πe      4         2π
+                                             nK T        T     nK da1      T
+                             El (γK (T, d) ≥      log (     )−        log ( ) − 0.25nK
+                                              π         2πe      4         2π
+
+for T ≥ 1, as desired.
+
+
+                                                                    14
+    Lastly, we need to estimate the contribution of the zeta terms.
+
+Lemma 2.7. For d, a1 , a2 , a3 as in Lemma 2.1 and T ≥ 1 we obtain
+
+                                          Eu (ζK )(T, d) ≤5.633nK and
+                                             El (ζK )(T, d) ≥ − 5.633nK .
+
+Proof. Because 12 + d > 1 and 21 + 2d > 1 we may express ζK ( 21 + d), ζK ( 12 + 2d) and related functions with
+the help of the Euler product (1.6). We obtain that
+
+                                               log ζK (s) = − ∑ log(1 − (N p)−s ),
+                                                             p⊂OK
+                                                      ′
+                                                  ζK            log(N p)
+                                                     (s) = ∑              , and
+                                                          p⊂OK 1 − (N p)
+                                                  ζK                    s
+
+                                                  2
+                                ⎛ ζK ′′    ζK ′ ⎞          (log(N p))2 (N p)s
+                                        −(     ) (s) = ∑                      ,
+                                ⎝ ζK       ζK ⎠       p⊂OK    (1 − (N p)s )2
+
+                                                               ′
+where log ζK (s) is defined as the anti-derivative of ζζKK such that log ζK (x) = log(ζK (x)) for such x that
+ζK (x) takes real value in (0, +∞). We will use these expressions to compute Eu applied to ζK . We obtain
+
+                     4             sin φ      2            sin φ
+Eu (ζK )(T, d) = ∑     arctan ( 1          ) − arctan ( 1             )
+                p⊂OK π         α 2 − cos φ
+                                  +d          π        α2 +2d
+                                                              − cos φ
+                                                  1                                 1                            1
+                         da1             1 − α 2 +d cos φ       d2 a2           α 2 +d ((1 + α1+2d ) cos φ − 2α 2 +d )
+                       +     log(α)        1                  +       (log(α))2              1
+                          2         1 − 2α 2 +d cos φ + α1+2d    2                  (1 − 2α 2 +d cos φ + α1+2d )2
+                                              1
+                        a3            α 2 +d (1 − α1+2d ) sin φ
+                       + (log(α))2         1
+                        2          (1 − 2α 2 +d cos(φ) + α1+2d )2
+              = ∑ q1 (α, φ) ≤ ∑ max q1 (α, x),
+                                         x
+                p⊂OK              p⊂OK
+
+
+where α ∶= N p and φ ∶= T log(N p). Next, we want to show that
+
+                                       1
+                                         max(q1 (αm , x)) ≤ max(q1 (α, x))                                      (2.13)
+                                       m x                   x
+
+
+holds for all α ≥ 2 and positive integers m. With this inequality and an application of the fundamental
+formula for the splitting behavior of primes in a field extension K/Q we may replace the sum over the
+prime ideals of OK with a sum involving the prime numbers. Observe that (2.13) is trivially true for
+m = 1. So we may consider m ≥ 2. Write
+
+    q1 (α, φ) =f1 (α, φ) + f2 (α, φ), where
+                                                                                                    1
+               4             sin φ        2             sin φ         da1             1 − α 2 +d cos φ
+   f1 (α, φ) ∶= arctan ( 1             ) − arctan ( 1              )+     log(α)        1
+               π        α 2 +d − cos φ    π        α 2 +2d − cos φ     2         1 − 2α 2 +d cos φ + α1+2d
+                                 1                                 1                     1
+                d2 a2           α 2 +d ((1 + α1+2d ) cos φ − 2α 2 +d ) a3             α 2 +d (1 − α1+2d ) sin φ
+   f2 (α, φ) ∶=       (log(α))2              1                        +   (log(α))2
+                                                                                             1                    .
+                 2                  (1 − 2α 2 +d cos φ + α1+2d )2       2           (1 − 2α 2 +d cos φ + α1+2d )2
+
+                                                          15
+                                             1                                           1
+Notice that f1 (α, φ) = O (log(α)α− 2 −d ) and f2 (α, φ) = O ((log(α))2 α− 2 −d ). So the contribution of
+f2 (α, φ) dominates q1 (α, φ) for large α. Notice further that the for large α, f1 (α, φ) oscillates like − cos φ
+                                2
+and f2 (α, φ) oscillates like d 2a2 cos φ − a23 sin φ and conclude that for large α0 , f1 (α0 , ⋅) is negative around
+the maximum of f2 (α0 , ⋅). We may conclude that maxx q1 (α, x) ≤ maxx f2 (α, x) for large α. Following a
+mathematica computation shows that this inequality holds for relatively small α > 0 too. We have that
+
+                                                 max q1 (α, x) ≤ max f2 (α, x)                                (2.14)
+                                                   x                   x
+
+
+for all α ≥ 4. Notice further that
+                                                       1                             1                 1
+                       d2 a2    ⎛ (log(α))2 α 2 +d+it ⎞ a3    ⎛ (log(α))2 α 2 +d+it ⎞     (log(α))2 α 2 +d
+  max f2 (α, x) = max        Re                        +   Im                         ≤ c                  , (2.15)
+    x              t∈R  2       ⎝ (1 − α 12 +d+it )2 ⎠ 2      ⎝ (1 − α 12 +d+it )2 ⎠               1
+                                                                                            (1 − α 2 +d )2
+
+                     d2 a2       a
+                           Re(s)+ 23 Im(s)
+where c = maxs∈C {     2
+                              ∣s∣            } ≤ 0.304. By equations (2.14) and (2.15) we obtain that
+
+                                                                                             1
+                         1                  1                     (log(α))2 αm( 2 +d)
+                           max q1 (αm , x) ≤ max f2 (αm , x) ≤ mc            1
+                         m x                m x                     (1 − αm( 2 +d) )2
+
+for α ≥ 2 and m ≥ 2. Notice that the expression on the right hand side is decreasing in m for all α ≥ 2.
+We deduce that
+                                          1                    (log(α))2 α1+2d
+                                            max q1 (α, x) ≤ 2c                 .
+                                          m x                    (1 − α1+2d )2
+Next, observe that
+
+                                       (log(α))2 α1+2d            π
+                                    2c                   ≤q1 (α, ) for α ∈ [2, 6] and
+                                         (1 − α 1+2d ) 2          2
+                                       (log(α)) α2 1+2d
+                                    2c                   ≤q1 (α, 0) for α ≥ 7.
+                                         (1 − α1+2d )2
+
+Hence, we obtain (2.13) for all α ≥ 2 and positive integers m. Now, equation (2.13) and the fundamental
+identity for the decomposition of prime ideals [Neu99, proposition 8.2] imply that
+
+                                          Eu (ζK )(T, d) ≤ nK ∑ max q1 (p, x).                                (2.16)
+                                                                            x
+                                                                      p∈P
+
+
+We now compute the first 22 terms numerically and obtain that
+
+                                                   ∑       max q1 (p, x) ≤ 1.1084,
+                                                            x
+                                                 p∈P,p≤M
+
+
+with M = p22 = 79. This cut off was chosen to comply with the accuracy tolerance of the mathematica
+operation that we use to compute maxx q1 (p, x) in each summand of (2.16). The overall estimate may
+certainly be improved slightly by evaluating more terms. We may estimate the remaining terms by
+
+
+
+
+                                                                 16
+equations (2.14) and (2.15), yielding that
+                                                              1                    2                                1
+                                                  (log(p))2 p 2 +d      ⎛ ζ ′′    ζ′ ⎞ 1              (log(p))2 p 2 +d
+        ∑      max q1 (p, x) ≤        ∑       c                      =c        − ( ) ( + d) − c ∑
+     p∈P,p>M
+                x
+                                    p∈P,p>M
+                                                          1
+                                                   (1 − p 2 +d )2       ⎝ζ        ζ ⎠ 2                       1
+                                                                                               p∈P,p≤M (1 − p 2 )2
+                                                                                                                +d
+
+                         ≤ 4.5243
+
+for M = p1000 = 79. Altogether, we obtain that Eu (ζK )(T, d) ≤ 5.633nK . We obtain the lower bound for
+El (ζK )(T, d) from the upper bound by observing that it is exactly the odd part of Eu (ζK )(T, d) minus
+the even part of Eu (ζK )(T, d). Then
+
+                    min q2 (α, x) = − max(−q2 (α, x)) = q2 (α, x0 ) = −q1 (α, −x0 ) ≥ − max q1 (α, x),
+                     x                    x                                                     x
+
+
+where x0 is a maximizer of −q2 (α, x). Hence, the minimum of q2 (α, x) is lower bounded by minus the
+maximum of q1 (α, x) and we may lower bound El (ζK )(T, d) by the upper bound for Eu (ζK )(T, d). This
+concludes the proof of the lemma.
+
+    Combining Lemmas 2.3, 2.4, 2.6 and 2.7 yields the following inequalities. We have
+
+                            T            T nK    da1          T nK
+            Eu (ξK )(T, d) ≤  log (dK (     ) )+     log (dK ( ) ) + 5.899nK + 2.381 and
+                            π           2πe       4           2π
+                            T            T nK    da1          T nK
+            El (ξK )(T, d) ≥ log (dK (      ) )−     log (dK ( ) ) − 5.891nK + 1.458
+                            π           2πe       4           2π
+
+for T ≥ 1. Plugging in d = 0.722 and a1 = 1.07 then yields
+
+                            T            T nK                            T nK
+            ∣NK (T ) −        log (dK (     ) ) − 1.919∣ ≤0.194 log (dK ( ) ) + 5.899nK + 0.462
+                            π           2πe                              2π
+                                                                     =0.194(log dK + nK log T ) + 5.543nK + 0.462
+
+for T ≥ 1, where T satisfies ζK (x + iT ) ≠ 0 for all x ∈ R. Theorem 1.1 follows from this and equation (2).
+
+Proof of Corollary 1.2. We apply Theorem 1.1 in the case where K = Q, yielding that
+
+                                                   T        T
+                                    ∣NQ (T ) −       log (     ) − 1.919∣ ≤ 0.194 log T + 6.005.
+                                                   π       2πe
+
+Now, we observe that due to the complex symmetry of the zeros of ζ(s) and because ζ(σ) ≠ 0 for all real
+σ ∈ [0, 1], NQ (T ) = 2N (T ) for all T ≥ 0. Hence,
+
+                                                       T         T
+                                        ∣N (T ) −         log (     )∣ ≤ 0.097 log T + 3.962
+                                                       2π       2πe
+
+for T ≥ 1, as desired.
+
+Remark 2.8. Notice that this method to estimate the error in the zero counting function of a L-function
+predominantly depends on Lemma 2.1. However, to apply this lemma, we simply require that 21 + iT − ρ is
+within the critical strip. Hence the method is principle amenable to any L-function in the Selberg class.
+
+
+
+                                                                      17
+                                             Acknowledgment
+    The author thanks Valentin Blomer for his guidance and suggestions, which helped simplify the
+                                                argument.
+
+
+References
+[Bac16]    R.J. Backlund. “Über die Nullstellen der Riemannschen Zetafunktion”. In: Acta Mathematica
+           (1916), pp. 345–375.
+[Wat20]    E.T. Whittaker; G.N. Watson. A course of modern Analysis. 3rd ed. Cambridge University
+           Press, 1920.
+[Ros41]    Barkley Rosser. “Explicit Bounds for Some Functions of Prime Numbers”. In: American Jour-
+           nal of Mathematics 63.1 (1941), pp. 211–232. (Visited on 04/01/2025).
+[Tur53]    A. Turing. “Some calculations of the Riemann zeta-function”. In: Proc. London Math. Soc. 3
+           (1953), pp. 99–117.
+[Con78]    John B. Conway. Functions of one complex variable I. 2nd ed. Springer New York, NY, 1978.
+[McC84]    K.S. McCurley. “Explicit Estimates for the Error Term in the Prime Number Theorem for
+           Arithmetic Progressions”. In: Mathematics of Computation 42.165 (1984), pp. 265–285.
+[Lie94]    W. Fischer; I. Lieb. Funktionentheorie. 5th ed. Vieweg+Taubner Verlag, 1994.
+[Neu99]    J. Neukirch. Algebraic Number Theory. Trans. by N. Schappacher. Springer-Verlag, 1999.
+[KN12]     Habiba Kadiri and Nathan Ng. “Explicit zero density theorems for Dedekind zeta functions”.
+           In: Journal of Number Theory 132.4 (2012), pp. 748–775.
+[HSW21]    Elchin Hasanalizade, Quanli Shen, and PENG-JIE Wong. “Counting zeros of Dedekind zeta
+           functions”. In: Math. Comput. 91 (2021), pp. 277–293.
+
+    Mathematisches Institut, Endenicher Allee 60, 53115 Bonn, Germany
+    E-mail address: victor.amberger@gmx.de
+
+
+
+
+                                                   18
+

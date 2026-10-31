@@ -1,0 +1,149 @@
+--- ../b47/casanya_ordinal_primes_v47.tex	2026-10-30 15:04:20.325445126 +0000
++++ casanya_ordinal_primes_v48.tex	2026-10-30 15:51:20.810006713 +0000
+@@ -206,7 +206,7 @@
+ \expandafter\gdef\csname CGTip@rem:certificate_scope\endcsname{Remark 9.6 (p. 30): It is a certificate, not an unconditional positive-proportion result: Theorem 9.3 bounds the second moment of d\_k\textasciicircum{}mathrm C but does not provide a sufficiently small explicit constant for (9.18) to be positive.}
+ \expandafter\gdef\csname CGTip@sec:conclusion\endcsname{Section 10: Conclusion (p. 30)}
+ \expandafter\gdef\csname CGTip@app:code\endcsname{Section A: Computation of the constants (p. 31)}
+-\expandafter\gdef\csname CGTip@app:sources\endcsname{Section B: Correspondence with the sources (p. 35)}
++\expandafter\gdef\csname CGTip@app:sources\endcsname{Section B: Correspondence with the sources (p. 43)}
+ \expandafter\gdef\csname CGBib@Backlund1918\endcsname{R.J. Backlund, "Uber die Nullstellen der Riemannschen Zetafunktion, Acta Math. 41 (1916) 345--375, doi:10.1007/BF02422950.}
+ \expandafter\gdef\csname CGBib@Bellotti2024\endcsname{C. Bellotti, Explicit bounds for the Riemann zeta function and a new zero-free region, J. Math. Anal. Appl. 536 (2024) 128249, doi:10.1016/j.jmaa.2024.128249.}
+ \expandafter\gdef\csname CGBib@BellottiWong2025\endcsname{C. Bellotti, P.-J. Wong, Improved estimates for the argument and zero-counting function of the Riemann zeta-function, Math. Comp. (2025, published online 14 November 2025), statements numbered as in arXiv:2412.15470v2 (doi:10.48550/arXiv.2412.15470), doi:10.1090/mcom/4133.}
+@@ -216,6 +216,7 @@
+ \expandafter\gdef\csname CGBib@FazzariGerspachMinelli2025\endcsname{A. Fazzari, M. Gerspach, P. Minelli, Selberg's central limit theorem weighted by linear statistics of zeta zeros, arXiv:2507.04150v1, 2025, cited with its numbering, doi:10.48550/arXiv.2507.04150.}
+ \expandafter\gdef\csname CGBib@FrancaLeClair2015\endcsname{G. Francca, A. LeClair, Transcendental equations satisfied by the individual zeros of Riemann zeta, Dirichlet and modular L-functions, Commun. Number Theory Phys. 9 (2015) 1--50, doi:10.4310/CNTP.2015.v9.n1.a1.}
+ \expandafter\gdef\csname CGBib@Fiori2025\endcsname{A. Fiori, A note on the Phragm'en--Lindel"of theorem, arXiv:2502.13282v3, 2026, doi:10.48550/arXiv.2502.13282.}
++\expandafter\gdef\csname CGBib@FLINT\endcsname{The FLINT team, FLINT: Fast Library for Number Theory, version 3.6.0, https://flintlib.org.}
+ \expandafter\gdef\csname CGBib@Fujii1974\endcsname{A. Fujii, On the zeros of Dirichlet L-functions. I, Trans. Amer. Math. Soc. 196 (1974) 225--235, doi:10.1090/S0002-9947-1974-0349603-2.}
+ \expandafter\gdef\csname CGBib@Fujii1981\endcsname{A. Fujii, On the zeros of Dirichlet L-functions. II (with corrections to ``On the zeros of Dirichlet L-functions. I'' and the subsequent papers), Trans. Amer. Math. Soc. 267 (1981) 33--40, doi:10.1090/S0002-9947-1981-0621970-5.}
+ \expandafter\gdef\csname CGBib@Gonek2012\endcsname{S.M. Gonek, Finite Euler products and the Riemann hypothesis, Trans. Amer. Math. Soc. 364 (2012) 2157--2191, doi:10.1090/S0002-9947-2011-05546-7.}
+@@ -226,6 +227,7 @@
+ \expandafter\gdef\csname CGBib@HiaryLeongYang2024\endcsname{G.A. Hiary, N. Leong, A. Yang, Explicit bounds for the Riemann zeta-function on the 1-line, arXiv:2306.13289v2, 2024, cited with its numbering, doi:10.48550/arXiv.2306.13289; published version: Funct. Approx. Comment. Math. 73 (2025) 53--89, doi:10.7169/facm/240711-13-8.}
+ \expandafter\gdef\csname CGBib@HiaryPatelYang2024\endcsname{G.A. Hiary, D. Patel, A. Yang, An improved explicit estimate for zeta(1/2+it), J. Number Theory 256 (2024) 195--217, doi:10.1016/j.jnt.2023.09.003.}
+ \expandafter\gdef\csname CGBib@Ivic1985\endcsname{A. Ivi'c, The Riemann Zeta-Function, Wiley, New York, 1985; reprinted by Dover, Mineola, NY, 2003.}
++\expandafter\gdef\csname CGBib@Johansson2017\endcsname{F. Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, IEEE Trans. Comput. 66 (2017) 1281--1292, doi:10.1109/TC.2017.2690633.}
+ \expandafter\gdef\csname CGBib@Kargin2013\endcsname{V. Kargin, On fluctuations of Riemann's zeta zeros, Probab. Theory Related Fields 157 (2013) 575--604, theorems numbered as in arXiv:1203.5309v2 (doi:10.48550/arXiv.1203.5309), doi:10.1007/s00440-012-0465-9.}
+ \expandafter\gdef\csname CGBib@Korolev2012\endcsname{M.A. Korolev, Gram's law and the argument of the Riemann zeta function, Publ. Inst. Math. (Beograd) (N.S.) 92(106) (2012) 53--78, doi:10.2298/PIM1206053K.}
+ \expandafter\gdef\csname CGBib@LeClair2016\endcsname{A. LeClair, Riemann hypothesis and random walks: the zeta case, arXiv:1601.00914v1 (doi:10.48550/arXiv.1601.00914), 2016, cited with its numbering; published version: Symmetry 13 (2021) 2014, doi:10.3390/sym13112014.}
+@@ -311,7 +313,7 @@
+ |S(T)|\le0.09783\log T+0.7214\log\log T+10.6
+ \qquad (T\ge e).
+ \]
+-Its leading coefficient is smaller than that of Bellotti--Wong, while the complete bound is smaller only for $\log T>2425.8386\ldots$.
++Its leading coefficient is smaller than that of Bellotti--Wong, while the complete bound is smaller only for $\log T>2425.8385\ldots$.
+ \end{abstract}
+ 
+ \medskip
+@@ -327,7 +329,7 @@
+ 
+ An exact defect identity supplies an independent comparison. Without RH, the uncorrected points $\tau_k$ differ from the $\gamma_k$ by root-mean-square $\sqrt{2\log\log T}/\log T\,(1+o(1))$, the factor $\log\log T$ coming from Selberg's mean square of $S$. Thus the arithmetic correction removes the factor $\log\log T$ from the proved mean-square upper order. Further consequences proved below describe the arithmetic correction itself and the defect of the ordinal equation when evaluated at the actual imaginary parts $\gamma_k$.
+ 
+-The other results concern the argument $S(T)$ of the zeta function. A profile-based application of Backlund's method yields an asymptotic coefficient $0.0968160\ldots$, a resulting upper limit $0.60832$ for the distance between the points $\tau_k$ of the Riemann--von Mangoldt equation and the actual imaginary parts $\gamma_k$, and a fully explicit estimate $|S(T)|\le0.09783\log T+0.7214\log\log T+10.6$. The leading coefficient is smaller than Bellotti--Wong's; the complete estimate improves upon theirs only for $\log T>2425.84$.
++The other results concern the argument $S(T)$ of the zeta function. A profile-based application of Backlund's method yields an asymptotic coefficient $0.0968160\ldots$, a resulting upper limit $0.60832$ for the distance between the points $\tau_k$ of the Riemann--von Mangoldt equation and the actual imaginary parts $\gamma_k$, and a fully explicit estimate $|S(T)|\le0.09783\log T+0.7214\log\log T+10.6$. The leading coefficient is smaller than Bellotti--Wong's; the complete estimate improves upon theirs only for $\log T>2425.8385\ldots$.
+ 
+ Several related approaches supplement the main term $\Nz(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+\frac78$ of the Riemann--von Mangoldt formula using primes or values of $\zeta$. They differ from the present construction in the correcting term and in whether RH is assumed.
+ 
+@@ -406,7 +408,7 @@
+ 
+ The previous values are $0.112$ (Trudgian, 2014), $0.110$ (Platt and Trudgian, 2015), $0.1038$ (Hasanalizade, Shen and Wong, 2022) and $0.10076$ (Bellotti and Wong, 2025). Table~\CGref{tab:records} lists the whole history, from von Mangoldt (1905).
+ 
+-For $S$, Bellotti and Wong \CGcite[Cor.~1.5]{BellottiWong2025} prove $|S(T)|\le0.10076\log T+\min\{0.24460\log\log T+7.20844,\,1.68845\log\log T+1.50956\}$ for $T\ge e$ (their Theorem~1.1, for $N$, is discussed in Section~\CGref{subsec:literature}). The bound \CGeqref{eq:explicit_S} is the smaller of the two exactly when $\log T>2425.8386\ldots$. The minimum of the two bounds holds for all $T\ge e$.
++For $S$, Bellotti and Wong \CGcite[Cor.~1.5]{BellottiWong2025} prove $|S(T)|\le0.10076\log T+\min\{0.24460\log\log T+7.20844,\,1.68845\log\log T+1.50956\}$ for $T\ge e$ (their Theorem~1.1, for $N$, is discussed in Section~\CGref{subsec:literature}). The bound \CGeqref{eq:explicit_S} is the smaller of the two exactly when $\log T>2425.8385\ldots$. The minimum of the two bounds holds for all $T\ge e$.
+ 
+ \begin{corollary}[Distance to the imaginary parts]\label{cor:distance}
+ \begin{enumerate}[label=(\alph*)]
+@@ -936,7 +938,7 @@
+ 
+ The value $\Lambda(\eB)=0.0968160063238\ldots$ is computed in Appendix~\CGref{app:code} in two ways: by $40$-digit quadrature on each linear piece, and by the closed form \CGeqref{eq:hinge_integrals} with $c=R=1$, which expresses $2\pi\log2\cdot\Lambda(\eB)=\int_0^\pi\eB^*(1+\cos\theta)\,d\theta$ as a combination with rational coefficients of $\pi$ and of values of $\arccos$ and of square roots at rational points (here $\theta_h=\frac{2\pi}3$).
+ 
+-Appendix~\CGref{app:code} computes these values with $40$-digit floating-point arithmetic and two independent evaluations, which agree to more than $20$ digits, and gives $0.096816006\le\Lambda(\eB)\le0.096816007$ and $2\pi\Lambda(\eB)\le0.60832$.\qed
++The certified ball-arithmetic computation of Appendix~\CGref{app:code} gives $0.096816006\le\Lambda(\eB)\le0.096816007$ and $2\pi\Lambda(\eB)\le0.60832$.\qed
+ 
+ \subsection{Proof of Theorem~\ref{thm:explicit}}\label{subsec:proof_explicit}
+ Take $c=1.000002$ and $R=1.000005$. Then $c-R=-3\cdot10^{-6}$, $\sigma^\sharp=1.25000275\ldots$, $\delta^\sharp=0.2500012499\ldots\in[\frac14,\frac58]$, $c<R$, and \CGeqref{eq:backlund_conditions} holds. Let $T\ge100$, $T\notin\{\gamma_k\}$. For $\sigma\in[c-R,c+R]\subset[-0.01,3]$ and $t\in[T-2,T+2]\subset[98,\infty)$, Lemma~\CGref{lem:explicit_zeta} gives \CGeqref{eq:zeta_hyp} with $\mathfrak h=\eE^*$, $K=2.74$ and $\Omega(t)=\log t$.
+@@ -954,7 +956,7 @@
+ \end{aligned}
+ \label{eq:hinge_integrals}
+ \end{equation}
+-with $\sin\theta_\varsigma=\sqrt{1-((\varsigma-c)/R)^2}$ and likewise for $\theta'_\varsigma$. Hence $\mathcal I_{\eE^*}$ is a combination, with rational coefficients, of $\pi$, fifteen values of $\arccos$ at rational points and fifteen square roots of rational numbers. Evaluating it (Appendix~\CGref{app:code}) gives
++with $\sin\theta_\varsigma=\sqrt{1-((\varsigma-c)/R)^2}$ and likewise for $\theta'_\varsigma$. Hence $\mathcal I_{\eE^*}$ is a combination, with rational coefficients, of $\pi$, fifteen values of $\arccos$ at rational points and fifteen square roots of rational numbers. Evaluating it with certified ball arithmetic (Appendix~\CGref{app:code}) gives
+ \begin{equation}
+ C_1:=\frac{\mathcal I_{\eE^*}}{2\pi\mathfrak d}=0.0978292318785\ldots,\quad C_2:=\frac1{2\mathfrak d}=0.7213464797\ldots,\quad \log\frac{\zeta(c)}{\zeta(2c)}=12.6246665\ldots
+ \label{eq:C1_value}
+@@ -967,11 +969,11 @@
+ \end{split}
+ \label{eq:explicit_assembled}
+ \end{equation}
+-Here $\log\zeta(\sigma^\sharp)=1.52498\ldots$,\footnote{Appendix~\CGref{app:code} evaluates $\zeta(\sigma^\sharp)$ directly. The bound $\log\zeta(\sigma^\sharp)\le1.52499$ also follows from $\zeta(\sigma)\le\sum_{n<N}n^{-\sigma}+(N-\frac12)^{1-\sigma}/(\sigma-1)$ with $N=10^4$, which gives $\log\zeta(\sigma^\sharp)\le1.5249836$. This inequality follows from $n^{-\sigma}\le\int_{n-1/2}^{n+1/2}x^{-\sigma}\,dx$, which follows from $(x-h)^{-\sigma}+(x+h)^{-\sigma}\ge2\bigl((x-h)(x+h)\bigr)^{-\sigma/2}\ge2x^{-\sigma}$ for $0\le h<x$.} and by Theorem~\CGref{thm:known_backlund}(c), $\mathcal E(T,\delta^\sharp)/(2\pi)\le\frac12\bigl(\frac{640\delta^\sharp-112}{1536\cdot299}+2^{-10}\bigr)<0.00055$. Replacing $\log(T+2)$ by $\log T$ and $\log\log(T+2)$ by $\log\log T$ costs at most $\frac{2C_1}T+\frac{2C_2}{T\log T}$, by the mean value theorem ($\log(T+2)-\log T\le\frac2T$, and $\log\log(T+2)-\log\log T\le\frac2{T\log T}$ because $(\log\log u)'=1/(u\log u)$ decreases).
++Here $\log\zeta(\sigma^\sharp)=1.52498\ldots$,\footnote{Appendix~\CGref{app:code} certifies $\log\zeta(\sigma^\sharp)=1.5249835586\ldots$ by ball arithmetic. The bound $\log\zeta(\sigma^\sharp)\le1.52499$ also follows from $\zeta(\sigma)\le\sum_{n<N}n^{-\sigma}+(N-\frac12)^{1-\sigma}/(\sigma-1)$ with $N=10^4$, which gives $\log\zeta(\sigma^\sharp)\le1.5249836$. This inequality follows from $n^{-\sigma}\le\int_{n-1/2}^{n+1/2}x^{-\sigma}\,dx$, which follows from $(x-h)^{-\sigma}+(x+h)^{-\sigma}\ge2\bigl((x-h)(x+h)\bigr)^{-\sigma/2}\ge2x^{-\sigma}$ for $0\le h<x$.} and by Theorem~\CGref{thm:known_backlund}(c), $\mathcal E(T,\delta^\sharp)/(2\pi)\le\frac12\bigl(\frac{640\delta^\sharp-112}{1536\cdot299}+2^{-10}\bigr)<0.00055$. Replacing $\log(T+2)$ by $\log T$ and $\log\log(T+2)$ by $\log\log T$ costs at most $\frac{2C_1}T+\frac{2C_2}{T\log T}$, by the mean value theorem ($\log(T+2)-\log T\le\frac2T$, and $\log\log(T+2)-\log\log T\le\frac2{T\log T}$ because $(\log\log u)'=1/(u\log u)$ decreases).
+ 
+ Let $C_3(T)$ be the sum of these two costs and of all terms of \CGeqref{eq:explicit_assembled} other than $C_1\log(T+2)+C_2\log\log(T+2)$, with $\mathcal E(T,\delta^\sharp)$ replaced by the majorant of Theorem~\CGref{thm:known_backlund}(c). Every term of $C_3(T)$ is constant or decreasing in $T$: $\log\frac{T+3}T$, $\frac{0.7501}{\pi T}$, $\frac{2C_1}T$ and $\frac{2C_2}{T\log T}$ decrease.
+ 
+-The majorant $\frac12\bigl(\frac{640\delta^\sharp-112}{1536(3T-1)}+2^{-10}\bigr)$ of $\mathcal E(T,\delta^\sharp)/(2\pi)$ decreases because $640\delta^\sharp-112=48.0008\ldots>0$. The remaining terms $C_2(12.62467+\log2.74)$, $\frac{\log\zeta(\sigma^\sharp)}\pi$ and $\frac14$ are constants. With the rounded values displayed, $C_3(100)\le10.5987$.
++The majorant $\frac12\bigl(\frac{640\delta^\sharp-112}{1536(3T-1)}+2^{-10}\bigr)$ of $\mathcal E(T,\delta^\sharp)/(2\pi)$ decreases because $640\delta^\sharp-112=48.0007\ldots>0$. The remaining terms $C_2(12.62467+\log2.74)$, $\frac{\log\zeta(\sigma^\sharp)}\pi$ and $\frac14$ are constants. With the rounded values displayed, $C_3(100)\le10.5987$.
+ 
+ The program of Appendix~\CGref{app:code} gives $C_3(100)=10.598602\ldots$, and $10.598545\ldots$ for the same sum with the exact differences $\log102-\log100$ and $\log\log102-\log\log100$ in place of the two costs.
+ 
+@@ -1619,25 +1621,25 @@
+ or any stated positive proportion from this certificate.
+ 
+ \paragraph{Limitations of this work.}
+-The constant in Theorem~\CGref{thm:sublevel} is not explicit, so the result gives no numerical guarantee at any finite height; it controls the mean square, not every individual imaginary part, and the explicit bound of Theorem~\CGref{thm:explicit} improves on Bellotti--Wong only for $\log T>2425.84$, as it trades the constant term for the leading coefficient (for comparison, \CGeqref{eq:explicit_N} is smaller than the bound $|N(t)-\Nz(t)|\le0.11\log t+0.29\log\log t+2.29+0.2/t_0$, $t\ge t_0\ge e$, used by Yang \CGcite[(4.29)]{Yang2024} in the proof of his zero-free region, as soon as $\log t>933.5$).
++The constant in Theorem~\CGref{thm:sublevel} is not explicit, so the result gives no numerical guarantee at any finite height; it controls the mean square, not every individual imaginary part, and the explicit bound of Theorem~\CGref{thm:explicit} improves on Bellotti--Wong only for $\log T>2425.8385\ldots$, as it trades the constant term for the leading coefficient (for comparison, \CGeqref{eq:explicit_N} is smaller than the bound $|N(t)-\Nz(t)|\le0.11\log t+0.29\log\log t+2.29+0.2/t_0$, $t\ge t_0\ge e$, used by Yang \CGcite[(4.29)]{Yang2024} in the proof of his zero-free region, as soon as $\log t>933.5$).
+ 
+ An explicit version of Theorem~\CGref{thm:sublevel} would require explicit forms of Selberg's approximation and of Fujii's theorem.
+ 
+ \appendix
+ \section{Computation of the constants}\label{app:code}
+-The constants $\Lambda(\eB)$, $C_1$, $C_2$, $\log(\zeta(c)/\zeta(2c))$, the constant term $C_3(100)=10.5986\ldots$ at $T=100$ (and the same sum with the exact differences, $10.5985\ldots$), $\Lambda(0)$, the crossing point $\log T=2425.8386\ldots$ with \CGcite{BellottiWong2025} and the crossing point $\log t=933.47\ldots$ with \CGcite[(4.29)]{Yang2024} are computed by the following program (Python~3.13.17 with \texttt{mpmath}~1.4.1, working precision $40$ decimal digits).
++The constants $\Lambda(\eB)$, $C_1$, $C_2$, $\log(\zeta(c)/\zeta(2c))$, the constant term $C_3(100)=10.5986\ldots$ at $T=100$ (and the same sum with the exact differences, $10.5985\ldots$), $\Lambda(0)$, the crossing point $\log T=2425.8385\ldots$ with \CGcite{BellottiWong2025} and the crossing point $\log t=933.4678\ldots$ with \CGcite[(4.29)]{Yang2024} are computed in floating point by the following program (Python~3.13.17 with \texttt{mpmath}~1.4.1, working precision $40$ decimal digits), and certified by the last program of this appendix.
+ 
+ It only evaluates integrals of piecewise linear functions, elementary constants and values of $\zeta$ at real points, and finds the two crossing points by bisection and by the secant method (\texttt{mpmath.findroot}).
+ 
+ The integrals are computed piece by piece, with breakpoints at the nodes, and also by the closed form \CGeqref{eq:hinge_integrals} (function \texttt{closed\_form}), for $\eE^*$ at $(c,R)=(1.000002,1.000005)$ and for $\eB^*$ at $(c,R)=(1,1)$; the program checks that the two evaluations agree.
+ 
+-The decimals printed below are $40$-digit floating-point values, not certified by interval arithmetic. The two independent evaluations agree to more than $20$ digits, and every inequality used in the proofs ($C_1<0.09783$, $C_2<0.7214$, $C_3(100)<10.6$, $\log\zeta(\sigma^\sharp)\le1.52499$, $0.096816006\le\Lambda(\eB)\le0.096816007$, $2\pi\Lambda(\eB)\le0.60832$) holds with margin at least $3\cdot10^{-10}$. The output follows the program.
++The decimals printed by this program are floating-point values. Every constant and every numerical inequality used in the proofs is certified by the ball-arithmetic program at the end of this appendix. The output follows the program.
+ 
+ \lstinputlisting{code/constantes_v5.py}
+ 
+ \lstinputlisting[language={}]{code/constantes_v5_output.txt}
+ 
+-The constant $1.878$ of Remark~\CGref{rem:robust}(ii) is certified by the following program (Python~3.13.17 with \texttt{python-flint}~0.9.0, Arb ball arithmetic at $120$ bits with outward rounding, so that every printed value is an upper bound).
++The constant $1.878$ of Remark~\CGref{rem:robust}(ii) is certified by the following program (Python~3.13.17 with \texttt{python-flint}~0.9.0, Arb ball arithmetic \CGcite{Johansson2017} at $120$ bits with outward rounding, so that every printed value is an upper bound).
+ 
+ For $4\le m\le9$ (the variables \texttt{k} and \texttt{K} of the program are $m$ and $2^{m-1}$, as in \CGcite[\S3]{Yang2024}) it covers $\log3\le\log t\le\log T_m$ by intervals $[a,b]$ of length $0.002(1+a/10)$.
+ 
+@@ -1655,6 +1657,14 @@
+ 
+ \lstinputlisting[language={}]{code/casanya_method_output.txt}
+ 
++All constants and numerical inequalities of this article are certified by the following program. It uses the ball arithmetic of Arb \CGcite{Johansson2017}, through \texttt{python-flint}~0.9.0 (FLINT~3.6.0 \CGcite{FLINT}), with working precision $256$ bits. Every quantity is a ball $[m\pm r]$ that contains the exact value, all operations round outward, and every inequality is checked by an assertion on the whole ball.
++
++The angular integrals are computed both by the closed form \CGeqref{eq:hinge_integrals} and by rigorous integration (\texttt{acb.integral}) on the arcs where the integrand is analytic. Statements valid on a range of $t$ are certified by monotonicity together with balls at the endpoints, or by covering the range with balls. The values are printed with $20$ significant digits.
++
++\lstinputlisting{code/certify_arb.py}
++
++\lstinputlisting[language={}]{code/certify_arb_output.txt}
++
+ \section{Correspondence with the sources}\label{app:sources}
+ The following table lists every statement taken from the literature (Section~\CGref{sec:external} and the proofs), where it is stated in the source, and the normalization or adaptation used here. Within the table, $\mathsf k$, $\alpha_{\rm F}$, $H$ and $h$ are as in Theorem~\CGref{thm:known_fujii}.
+ 
+@@ -1718,6 +1728,8 @@
+ 
+ \bibitem{Fiori2025} A. Fiori, A note on the Phragm\'en--Lindel\"of theorem, arXiv:2502.13282v3, 2026, \href{https://doi.org/10.48550/arXiv.2502.13282}{doi:10.48550/arXiv.2502.13282}.
+ 
++\bibitem{FLINT} The FLINT team, FLINT: Fast Library for Number Theory, version 3.6.0, \url{https://flintlib.org}.
++
+ \bibitem{Fujii1974} A. Fujii, On the zeros of Dirichlet $L$-functions. I, Trans. Amer. Math. Soc. 196 (1974) 225--235, \href{https://doi.org/10.1090/S0002-9947-1974-0349603-2}{doi:10.1090/S0002-9947-1974-0349603-2}.
+ 
+ \bibitem{Fujii1981} A. Fujii, On the zeros of Dirichlet $L$-functions. II (with corrections to ``On the zeros of Dirichlet $L$-functions. I'' and the subsequent papers), Trans. Amer. Math. Soc. 267 (1981) 33--40, \href{https://doi.org/10.1090/S0002-9947-1981-0621970-5}{doi:10.1090/S0002-9947-1981-0621970-5}.
+@@ -1738,6 +1750,8 @@
+ 
+ \bibitem{Ivic1985} A. Ivi\'c, The Riemann Zeta-Function, Wiley, New York, 1985; reprinted by Dover, Mineola, NY, 2003.
+ 
++\bibitem{Johansson2017} F. Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, IEEE Trans. Comput. 66 (2017) 1281--1292, \href{https://doi.org/10.1109/TC.2017.2690633}{doi:10.1109/TC.2017.2690633}.
++
+ \bibitem{Kargin2013} V. Kargin, On fluctuations of Riemann's zeta zeros, Probab. Theory Related Fields 157 (2013) 575--604, theorems numbered as in arXiv:1203.5309v2 (\href{https://doi.org/10.48550/arXiv.1203.5309}{doi:10.48550/arXiv.1203.5309}), \href{https://doi.org/10.1007/s00440-012-0465-9}{doi:10.1007/s00440-012-0465-9}.
+ 
+ \bibitem{Korolev2012} M.A. Korolev, Gram's law and the argument of the Riemann zeta function, Publ. Inst. Math. (Beograd) (N.S.) 92(106) (2012) 53--78, \href{https://doi.org/10.2298/PIM1206053K}{doi:10.2298/PIM1206053K}.

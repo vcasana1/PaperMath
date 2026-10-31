@@ -1,0 +1,12 @@
+--- casanya_ordinal_primes_v55.tex	2026-10-30 17:37:25.388259426 +0000
++++ casanya_ordinal_primes_v56.tex	2026-10-30 17:57:36.274457785 +0000
+@@ -8,7 +8,8 @@
+ \usepackage{listings}
+ \usepackage[pagebackref=true,colorlinks=true,linkcolor=MidnightBlue,citecolor=OliveGreen,urlcolor=MidnightBlue]{hyperref}
+ \usepackage{bookmark}
+-\newif\ifCGplain\CGplainfalse % \CGplaintrue: submission copy without tooltips (no pdfcomment, no tips file)
++\pdfminorversion=4 \pdfobjcompresslevel=0
++\newif\ifCGplain\CGplaintrue % \CGplaintrue: submission copy without tooltips (no pdfcomment, no tips file)
+ \ifCGplain\else\usepackage{pdfcomment}\fi
+ \numberwithin{equation}{section}
+ \DeclareTextSymbolDefault{\textsection}{OMS}
