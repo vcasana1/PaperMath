@@ -1,3 +1,5 @@
 L*=60 d=0.80 m=(10,10) A1=0.09564 A3=2.7162 val=8.4544 67s
 L*=60 d=0.85 m=(10,10) A1=0.09693 A3=2.5585 val=8.3746 50s
 L*=60 d=0.90 m=(10,10) A1=0.09763 A3=2.4954 val=8.3533 49s
+/home/claude/papermath/numerics/explicit_S_turing/family/opt_line_pp.py:104: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob = cp.Problem(cp.Minimize(obj), cons); prob.solve(solver=cp.CLARABEL)
