@@ -1,0 +1,5 @@
+per-prime phase maximum for p <= 1000 : gain [0.31528277 +/- 3.82e-9]
+primes 5761455  partial sum (n<=100000000) = [4.82814232479369 +/- 3.16e-16]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  107s
+g monotone on [2000, oo): crude bound [+/- 0.0138] < sigma1
+tail <= [1.106140239 +/- 1.10e-10]  (integral [1.059594603 +/- 4.38e-10] , far tail [1.9726e-80 +/- 1.66e-85] )
+C_zeta < 5.93428256390    time 107s
