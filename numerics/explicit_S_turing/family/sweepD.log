@@ -30,3 +30,4 @@ L*=6000 d=0.85 m=(10,10) A1=0.08381 A3=5.3017 val=508.1868 46s
 L*=6000 d=0.90 m=(10,10) A1=0.08411 A3=4.7040 val=509.3715 271s
 L*=6000 d=0.95 m=(10,10) A1=0.08437 A3=4.5468 val=510.7575 51s
 L*=6000 d=1.00 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
+L*=20000 d=0.80 m=(10,10) A1=0.08407 A3=6.0382 val=1687.3546 156s
