@@ -4,3 +4,4 @@ L*=60 d=0.90 m=(10,10) A1=0.09763 A3=2.4954 val=8.3533 49s
 /home/claude/papermath/numerics/explicit_S_turing/family/opt_line_pp.py:104: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
   prob = cp.Problem(cp.Minimize(obj), cons); prob.solve(solver=cp.CLARABEL)
 L*=60 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
+L*=60 d=1.00 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
