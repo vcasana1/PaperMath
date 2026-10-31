@@ -119,6 +119,9 @@ def nodes_of(p):
     if p=='T':   # ANTEDB Table 6.2 (Tao-Trudgian-Yang) + Heath-Brown nodes, see profile_tty.py
         from profile_tty import nodes_tty
         return nodes_tty()
+    if p=='P':   # published-source nodes only (lower convex hull), see profile_published.py
+        from profile_published import nodes_published
+        return nodes_published()
     if p=='B':
         for _ in range(8):
             nodes.append((l-k,k)); k,l=k/(2*k+2),Fr(1,2)+l/(2*k+2)
