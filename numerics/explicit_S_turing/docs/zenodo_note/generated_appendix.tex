@@ -808,7 +808,131 @@ kernel part c_R1/(2pi) = 0.0656118899398
 limit t^2 U at |t|->inf = [0.001761888763 +/- 9.16e-14] True
 t in (0,T1]: certified, boxes 1648951
 \end{lstlisting}
-\subsection*{Line A: kernel inequality}
+\subsection*{Line $\ell_{5}$: kernel inequality}
+\begin{lstlisting}
+d = 1  m = 5  profile B  discs used: 0
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.20175655042691417704  (ball [0.20176 +/- 3.45e-6] )
+kernel part c_R1/(2pi) = 0.201756550427
+limit t^2 U at |t|->inf = [1.133488684 +/- 3.74e-10] True
+t in (0,T1]: certified, boxes 10255
+t in [-T1,0): certified, boxes 4207
+|t|>=T1: certified, boxes 2
+all certified;  C < 0.201756550427   time 1s
+\end{lstlisting}
+\subsection*{Line $\ell_{5}$: $C_\zeta$}
+\begin{lstlisting}
+per-prime phase maximum for p <= 1000 : gain [0.13567339 +/- 3.39e-9]
+primes 5761455  partial sum (n<=100000000) = [0.700266525818397 +/- 2.62e-16]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  102s
+g monotone on [2000, oo): crude bound [+/- 4.40e-3] < sigma1
+tail <= [0.003333488646 +/- 2.02e-13]  (integral [0.003174276158 +/- 3.32e-14] , far tail [2.6758e-167 +/- 3.15e-172] )
+C_zeta < 0.703600014464    time 103s
+\end{lstlisting}
+\subsection*{Line $\ell_{5}$: elementary part, mode N}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= 0.6653662947   sup F_l <= -0.7495389120
+T>=T0: F_u <= 0.5045914643  F_l <= -1.245408536  (K= [3.95201 +/- 3.63e-6] )
+SUP over T>=1 of max(F_u,F_l) <= 0.665366294652
+\end{lstlisting}
+\subsection*{Line $\ell_{5}$: elementary part, mode S}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= -0.2236678259   sup F_l <= 0.1395021165
+T>=T0: F_u <= -0.3703919570  F_l <= -0.3703919570  (K= [4.11780 +/- 2.69e-8] )
+SUP over T>=1 of max(F_u,F_l) <= 0.139502116497
+\end{lstlisting}
+\subsection*{Line $\ell_{20}$: kernel inequality}
+\begin{lstlisting}
+d = 6/5  m = 5  profile B  discs used: 0
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.10822193548420830108  (ball [0.10822 +/- 1.94e-6] )
+kernel part c_R1/(2pi) = 0.108221935484
+limit t^2 U at |t|->inf = [0.02372706155 +/- 2.76e-12] True
+t in (0,T1]: certified, boxes 473575
+t in [-T1,0): certified, boxes 279773
+|t|>=T1: certified, boxes 1022
+all certified;  C < 0.108221935484   time 54s
+\end{lstlisting}
+\subsection*{Line $\ell_{20}$: $C_\zeta$}
+\begin{lstlisting}
+per-prime phase maximum for p <= 1000 : gain [0.21171880 +/- 3.25e-9]
+primes 5761455  partial sum (n<=100000000) = [1.46785649757579 +/- 4.11e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  100s
+g monotone on [2000, oo): crude bound [+/- 0.0145] < sigma1
+tail <= [0.0002188390453 +/- 1.36e-15]  (integral [0.0002060161219 +/- 1.10e-14] , far tail [7.2489e-238 +/- 1.12e-244] )
+C_zeta < 1.46807533662    time 101s
+\end{lstlisting}
+\subsection*{Line $\ell_{20}$: elementary part, mode N}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= 0.7020709510   sup F_l <= -1.072389150
+T>=T0: F_u <= 0.6766231015  F_l <= -1.073376898  (K= [5.21715 +/- 1.54e-6] )
+SUP over T>=1 of max(F_u,F_l) <= 0.702070950967
+\end{lstlisting}
+\subsection*{Line $\ell_{20}$: elementary part, mode S}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= -0.1827863047   sup F_l <= -0.1965944845
+T>=T0: F_u <= -0.1983603198  F_l <= -0.1983603198  (K= [5.38293 +/- 4.87e-6] )
+SUP over T>=1 of max(F_u,F_l) <= -0.182786304679
+\end{lstlisting}
+\subsection*{Line $\ell_{60}$: kernel inequality}
+\begin{lstlisting}
+d = 1  m = 5  profile B  discs used: 0
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.094721574236353990059  (ball [0.094722 +/- 4.26e-7] )
+kernel part c_R1/(2pi) = 0.0947215742364
+limit t^2 U at |t|->inf = [0.008043907939 +/- 4.87e-13] True
+t in (0,T1]: certified, boxes 1441685
+t in [-T1,0): certified, boxes 483889
+|t|>=T1: certified, boxes 4434
+all certified;  C < 0.0947215742364   time 115s
+\end{lstlisting}
+\subsection*{Line $\ell_{60}$: $C_\zeta$}
+\begin{lstlisting}
+per-prime phase maximum for p <= 1000 : gain [0.24105429 +/- 2.19e-10]
+primes 5761455  partial sum (n<=100000000) = [2.09743955289942 +/- 3.84e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  104s
+g monotone on [2000, oo): crude bound [+/- 0.0149] < sigma1
+tail <= [0.006829934351 +/- 6.03e-14]  (integral [0.006476069071 +/- 3.90e-13] , far tail [1.7143e-168 +/- 4.48e-173] )
+C_zeta < 2.10426948725    time 105s
+\end{lstlisting}
+\subsection*{Line $\ell_{60}$: elementary part, mode N}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= 0.7289418077   sup F_l <= -1.047579459
+T>=T0: F_u <= 0.7013136726  F_l <= -1.048686327  (K= [4.00282 +/- 3.70e-6] )
+SUP over T>=1 of max(F_u,F_l) <= 0.728941807706
+\end{lstlisting}
+\subsection*{Line $\ell_{60}$: elementary part, mode S}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= -0.1584755869   sup F_l <= -0.1717847945
+T>=T0: F_u <= -0.1736697487  F_l <= -0.1736697487  (K= [4.16860 +/- 2.71e-6] )
+SUP over T>=1 of max(F_u,F_l) <= -0.158475586900
+\end{lstlisting}
+\subsection*{Line $\ell_{150}$: kernel inequality}
+\begin{lstlisting}
+d = 17/20  m = 5  profile B  discs used: 0
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.093480628436037879597  (ball [0.093481 +/- 3.72e-7] )
+kernel part c_R1/(2pi) = 0.0934806284360
+limit t^2 U at |t|->inf = [0.007450671016 +/- 2.69e-13] True
+t in (0,T1]: certified, boxes 1658655
+t in [-T1,0): certified, boxes 353921
+|t|>=T1: certified, boxes 3198
+all certified;  C < 0.0934806284360   time 127s
+\end{lstlisting}
+\subsection*{Line $\ell_{150}$: $C_\zeta$}
+\begin{lstlisting}
+per-prime phase maximum for p <= 1000 : gain [0.25085637 +/- 3.02e-9]
+primes 5761455  partial sum (n<=100000000) = [2.21455819652827 +/- 4.70e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  107s
+g monotone on [2000, oo): crude bound [+/- 7.01e-3] < sigma1
+tail <= [0.04122525901 +/- 2.13e-12]  (integral [0.03953310421 +/- 1.61e-12] , far tail [3.6826e-115 +/- 3.45e-120] )
+C_zeta < 2.25578345554    time 107s
+\end{lstlisting}
+\subsection*{Line $\ell_{150}$: elementary part, mode N}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= 0.7303170966   sup F_l <= -1.045307483
+T>=T0: F_u <= 0.7035135754  F_l <= -1.046486425  (K= [3.19479 +/- 4.84e-6] )
+SUP over T>=1 of max(F_u,F_l) <= 0.730317096644
+\end{lstlisting}
+\subsection*{Line $\ell_{150}$: elementary part, mode S}
+\begin{lstlisting}
+intervals 9215  sup F_u on [1,T0] <= -0.1575762200   sup F_l <= -0.1695128190
+T>=T0: F_u <= -0.1714698460  F_l <= -0.1714698460  (K= [3.36057 +/- 1.57e-6] )
+SUP over T>=1 of max(F_u,F_l) <= -0.157576220006
+\end{lstlisting}
+\subsection*{Line $\ell_{400}$: kernel inequality}
 \begin{lstlisting}
 d = 17/20  m = 10  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083986018406625982801  (ball [0.083986 +/- 1.86e-8] )
@@ -819,7 +943,7 @@ t in [-T1,0): certified, boxes 9801985
 |t|>=T1: certified, boxes 4194302
 all certified;  C < 0.0839860184066   time 2716s
 \end{lstlisting}
-\subsection*{Line A: $C_\zeta$}
+\subsection*{Line $\ell_{400}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.28179774 +/- 3.28e-9]
 primes 5761455  partial sum (n<=100000000) = [4.01127229118254 +/- 1.94e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  163s
@@ -827,13 +951,13 @@ g monotone on [5000, oo): crude bound [+/- 0.0114] < sigma1
 tail <= [0.4524693305 +/- 1.73e-11]  (integral [0.4325160730 +/- 4.01e-11] , far tail [2.8606e-111 +/- 3.11e-116] )
 C_zeta < 4.46374162170    time 164s
 \end{lstlisting}
-\subsection*{Line A: elementary part, mode N}
+\subsection*{Line $\ell_{400}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.7375657198   sup F_l <= -1.027807129
 T>=T0: F_u <= 0.7209635502  F_l <= -1.029036450  (K= [3.19527 +/- 2.94e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.737565719751
 \end{lstlisting}
-\subsection*{Line A: elementary part, mode S}
+\subsection*{Line $\ell_{400}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.1458266308   sup F_l <= -0.1520124642
 T>=T0: F_u <= -0.1540198712  F_l <= -0.1540198712  (K= [3.36106 +/- 6.67e-7] )
@@ -1552,7 +1676,279 @@ The following files hold the coefficients as exact binary floating-point numbers
  "note": "c_R1 increased by 2e-4 (fine-grid violation -8.9e-5 repaired by eps*G_R1, G_R1>0)"
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_C400/sol.json} (line A)}
+\subsection*{\texttt{line\_L5/sol.json} (line $\ell_{5}$)}
+\begin{lstlisting}
+{
+ "d": 1.0,
+ "B": [
+  [
+   "R",
+   1
+  ],
+  [
+   "R",
+   2
+  ],
+  [
+   "R",
+   3
+  ],
+  [
+   "R",
+   4
+  ],
+  [
+   "R",
+   5
+  ],
+  [
+   "I",
+   2
+  ],
+  [
+   "I",
+   3
+  ],
+  [
+   "I",
+   4
+  ],
+  [
+   "I",
+   5
+  ]
+ ],
+ "c": [
+  1.2676737932696245,
+  0.7009294514561635,
+  -0.4946330486621655,
+  0.09751555052498845,
+  -0.0005893962931625271,
+  -0.3784073335097401,
+  0.13473062893139318,
+  -0.01708382778797021,
+  0.0001003433684765934
+ ],
+ "C1": 0.20175655042691418,
+ "Cz_est": 0.8391011111542401,
+ "z_est": 0.665362725928392,
+ "A3_est": 1.504463837082632,
+ "Lstar": 5.0,
+ "eta": 0.0002,
+ "prof": "B",
+ "discs": [],
+ "kappa": [],
+ "J": [],
+ "m": 5,
+ "val": 2.5132465892172027,
+ "time": 8.346621751785278
+}
+\end{lstlisting}
+\subsection*{\texttt{line\_L20/sol.json} (line $\ell_{20}$)}
+\begin{lstlisting}
+{
+ "d": 1.2,
+ "B": [
+  [
+   "R",
+   1
+  ],
+  [
+   "R",
+   2
+  ],
+  [
+   "R",
+   3
+  ],
+  [
+   "R",
+   4
+  ],
+  [
+   "R",
+   5
+  ],
+  [
+   "I",
+   2
+  ],
+  [
+   "I",
+   3
+  ],
+  [
+   "I",
+   4
+  ],
+  [
+   "I",
+   5
+  ]
+ ],
+ "c": [
+  0.6799784749489147,
+  0.8041106391650762,
+  0.7774270907421565,
+  -0.008448613496901295,
+  2.955972158446658e-05,
+  1.1843502097112268,
+  -0.576537489831307,
+  0.00610293149500534,
+  -2.1076986306361527e-05
+ ],
+ "C1": 0.1082219354842083,
+ "Cz_est": 1.6797641910534995,
+ "z_est": 0.7020688851693405,
+ "A3_est": 2.38183307622284,
+ "Lstar": 20.0,
+ "eta": 0.0002,
+ "prof": "B",
+ "discs": [],
+ "kappa": [],
+ "J": [],
+ "m": 5,
+ "val": 4.546271785907006,
+ "time": 7.479561805725098
+}
+\end{lstlisting}
+\subsection*{\texttt{line\_L60/sol.json} (line $\ell_{60}$)}
+\begin{lstlisting}
+{
+ "d": 1.0,
+ "B": [
+  [
+   "R",
+   1
+  ],
+  [
+   "R",
+   2
+  ],
+  [
+   "R",
+   3
+  ],
+  [
+   "R",
+   4
+  ],
+  [
+   "R",
+   5
+  ],
+  [
+   "I",
+   2
+  ],
+  [
+   "I",
+   3
+  ],
+  [
+   "I",
+   4
+  ],
+  [
+   "I",
+   5
+  ]
+ ],
+ "c": [
+  0.5951532035147798,
+  0.5911312495450366,
+  0.3889216428262093,
+  -0.004325167636924481,
+  1.5378902475155497e-05,
+  0.8079466147098463,
+  -0.3400480079099986,
+  0.003649167179891613,
+  -1.2750467413103112e-05
+ ],
+ "C1": 0.094721574236354,
+ "Cz_est": 2.344884047970574,
+ "z_est": 0.7289397780667036,
+ "A3_est": 3.0738238260372777,
+ "Lstar": 60.0,
+ "eta": 0.0002,
+ "prof": "B",
+ "discs": [],
+ "kappa": [],
+ "J": [],
+ "m": 5,
+ "val": 8.757118280218517,
+ "time": 8.941782712936401
+}
+\end{lstlisting}
+\subsection*{\texttt{line\_L150/sol.json} (line $\ell_{150}$)}
+\begin{lstlisting}
+{
+ "d": 0.85,
+ "B": [
+  [
+   "R",
+   1
+  ],
+  [
+   "R",
+   2
+  ],
+  [
+   "R",
+   3
+  ],
+  [
+   "R",
+   4
+  ],
+  [
+   "R",
+   5
+  ],
+  [
+   "I",
+   2
+  ],
+  [
+   "I",
+   3
+  ],
+  [
+   "I",
+   4
+  ],
+  [
+   "I",
+   5
+  ]
+ ],
+ "c": [
+  0.5873561110952275,
+  0.4955273589230774,
+  0.17191023951649326,
+  -0.04515429156322006,
+  0.00027174675540190917,
+  0.5292986070563637,
+  -0.26974254048270235,
+  0.03950670966367516,
+  -0.00023459073769482711
+ ],
+ "C1": 0.09348062843603788,
+ "Cz_est": 2.5047342757708364,
+ "z_est": 0.7303153300893256,
+ "A3_est": 3.235049605860162,
+ "Lstar": 150.0,
+ "eta": 0.0002,
+ "prof": "B",
+ "discs": [],
+ "kappa": [],
+ "J": [],
+ "m": 5,
+ "val": 17.257143871265846,
+ "time": 13.073456287384033
+}
+\end{lstlisting}
+\subsection*{\texttt{line\_C400/sol.json} (line $\ell_{400}$)}
 \begin{lstlisting}
 {
  "d": 0.85,

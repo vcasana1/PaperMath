@@ -77,16 +77,16 @@ with open('generated_tables.tex', 'w') as f:
         f.write('%d & $%s$ & $%s$ & %s\\\\\n' % (i, fr(s), fr(e), src))
     f.write('\\end{longtable}\n')
     # line coefficients
-    for tag, name in [('C400', 'lineA'), ('D6000', 'lineB')]:
+    for tag, name in [('L5', 'line5'), ('L20', 'line20'), ('L60', 'line60'), ('L150', 'line150'), ('C400', 'line400'), ('D6000', 'line6000')]:
         p = FAM+'line_%s/sol.json' % tag
         if not os.path.exists(FAM+'line_%s/summary_pp.json' % tag): continue
         s = json.load(open(p)); Bl = [tuple(x) for x in s['B']]; cl = s['c']
         f.write('%%%%TAB_%s\n' % name)
         f.write('\\begin{tabular}{@{}cr@{\\quad}cr@{}}\\toprule $\\iota$ & $c_\\iota$ & $\\iota$ & $c_\\iota$\\\\\\midrule\n')
         Rs = [(b, cc) for b, cc in zip(Bl, cl) if b[0] == 'R']; Is = [(b, cc) for b, cc in zip(Bl, cl) if b[0] == 'I']
-        for i in range(10):
+        for i in range(len(Rs)):
             l = '$(\\mathrm R,%d)$ & $%.12g$' % (Rs[i][0][1], Rs[i][1])
-            l += (' & $(\\mathrm I,%d)$ & $%.12g$' % (Is[i][0][1], Is[i][1])) if i < 9 else ' & & '
+            l += (' & $(\\mathrm I,%d)$ & $%.12g$' % (Is[i][0][1], Is[i][1])) if i < len(Is) else ' & & '
             f.write(l.replace('e-0', '\\cdot10^{-').replace('e-', '\\cdot10^{-')+'\\\\\n')
         f.write('\\bottomrule\\end{tabular}\n')
 print('C_H =', CH.str(16))
@@ -111,7 +111,7 @@ with open('generated_appendix.tex', 'w') as f:
         f.write(verb(fn, '\\texttt{%s}' % esc(t)))
     f.write('\\section{Outputs of the certification programs}\\label{app:cert}\n')
     f.write(verb(HYB+'cert_m10P.txt', 'Hybrid: \\texttt{certify\\_hybrid.py hyb\\_m10\\_P.json 40}', 'app:out_hybrid'))
-    for tag, nm in [('C400', 'A'), ('D6000', 'B')]:
+    for tag, nm in [('L5', '$\\ell_{5}$'), ('L20', '$\\ell_{20}$'), ('L60', '$\\ell_{60}$'), ('L150', '$\\ell_{150}$'), ('C400', '$\\ell_{400}$'), ('D6000', '$\\ell_{6000}$')]:
         if not os.path.exists(FAM+'line_%s/summary_pp.json' % tag): continue
         for fn, t in [('cert_kernel.txt', 'kernel inequality'), ('cert_czeta_pp.txt', '$C_\\zeta$'), ('cert_elem.txt', 'elementary part, mode N'), ('cert_elem_S.txt', 'elementary part, mode S')]:
             f.write(verb(FAM+'line_%s/%s' % (tag, fn), 'Line %s: %s' % (nm, t)))
@@ -121,6 +121,6 @@ with open('generated_appendix.tex', 'w') as f:
         s = json.load(open(path)); txt = json.dumps(s, indent=1)
         return '\\subsection*{%s}\n\\begin{lstlisting}\n%s\n\\end{lstlisting}\n' % (title, txt)
     f.write(jverb(HYB+'hyb_m10_P.json', '\\texttt{hyb\\_m10\\_P.json} (hybrid)'))
-    for tag, nm in [('C400', 'A'), ('D6000', 'B')]:
+    for tag, nm in [('L5', '$\\ell_{5}$'), ('L20', '$\\ell_{20}$'), ('L60', '$\\ell_{60}$'), ('L150', '$\\ell_{150}$'), ('C400', '$\\ell_{400}$'), ('D6000', '$\\ell_{6000}$')]:
         if os.path.exists(FAM+'line_%s/summary_pp.json' % tag): f.write(jverb(FAM+'line_%s/sol.json' % tag, '\\texttt{line\\_%s/sol.json} (line %s)' % (tag, nm)))
 print('done')
