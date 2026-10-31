@@ -12,6 +12,10 @@ def Gcol(bb, tt, X, j, dp, tau): return F(dp+bb, tt+tau, X, j)+F(dp-bb, tt+tau, 
 def basis(d, m, extra):
     B = [('R', j, d, 0.0) for j in range(1, m+1)]+[('I', j, d, 0.0) for j in range(2, m+1)]
     if extra == 'none': return B
+    if extra == 'tsmall':   # t-translates at the same abscissa d only
+        for tau in [-1.5, -1, -0.6, -0.3, 0.3, 0.6, 1, 1.5]:
+            for (X, j) in [('R', 1), ('R', 2), ('I', 2)]: B.append((X, j, d, float(tau)))
+        return B
     taus = [-2, -1.5, -1, -0.6, -0.3, 0.3, 0.6, 1, 1.5, 2]; dps = [0.6, 0.75, d, 1.2, 1.6]
     for dp in dps:
         for tau in ([0.0] if dp != d else [])+taus:
