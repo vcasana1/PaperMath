@@ -2,3 +2,4 @@ d = 9/10  m = 10  profile T  discs used: 85
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074887139824084981818  (ball [0.074887 +/- 1.40e-7] )
 kernel part c_R1/(2pi) = 0.0656118899398
 limit t^2 U at |t|->inf = [0.001761888763 +/- 9.16e-14] True
+t in (0,T1]: certified, boxes 1648951
