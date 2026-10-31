@@ -1,0 +1,6 @@
+primes 5761455  partial sum (n<=100000000) = [1.67957530081646 +/- 1.29e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  67s
+Traceback (most recent call last):
+  File "/home/claude/papermath/numerics/explicit_S_turing/family/cz_gen.py", line 45, in <module>
+    assert v < 0, ('monotonicity fails near L=', x, v)
+           ^^^^^
+AssertionError: ('monotonicity fails near L=', 443.8403963975933, nan)

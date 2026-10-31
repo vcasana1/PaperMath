@@ -34,15 +34,24 @@ for p in P.tolist():
 print('primes', len(P), ' partial sum (n<=%d) =' % N0, tot.str(15), ' psi(N0) =', psi.str(15), ' %.0fs' % (time.time()-t0), flush=True)
 L0 = arb(N0).log()
 # monotonicity: d/dL log g = (A0 A0' + B0 B0')/h^2 - sigma1 < 0 on [L0, LB] (boxes), and for L >= LB by a crude ratio bound
+def cpoly(p, Lb):   # centred form: p(m) + p'(Lb)(Lb - m)
+    m = arb(Lb.mid()); dp = [p[i]*i for i in range(1, len(p))]
+    return poly(p, m)+poly(dp, Lb)*(Lb-m)
 def dlogg_upper(Lb):
-    A0 = poly(pa, Lb)/PI; B0 = (((-dA*Lb).exp()-2)/Lb+poly(pb, Lb))/PI
     dpa = [pa[i]*i for i in range(1, len(pa))]; dpb = [pb[i]*i for i in range(1, len(pb))]
-    A1_ = poly(dpa, Lb)/PI; B1_ = (-((-dA*Lb).exp()-2)/(Lb*Lb)-dA*(-dA*Lb).exp()/Lb+poly(dpb, Lb))/PI
+    e = (-dA*Lb).exp()
+    A0 = cpoly(pa, Lb)/PI; B0 = ((e-2)/Lb+cpoly(pb, Lb))/PI
+    A1_ = cpoly(dpa, Lb)/PI; B1_ = (-(e-2)/(Lb*Lb)-dA*e/Lb+cpoly(dpb, Lb))/PI
     return (A0*A1_+B0*B1_)/(A0*A0+B0*B0)-s1
 LB = 2000.0; x = float(L0.upper()); nbox = 0
 while x < LB:
     y = min(x*1.002+0.01, LB); v = dlogg_upper(arb(x).union(arb(y))); nbox += 1
-    assert v < 0, ('monotonicity fails near L=', x, v)
+    if not (v < 0):    # refine the box
+        z = x
+        while z < y:
+            w = min(z+(y-x)/64, y); vv = dlogg_upper(arb(z).union(arb(w))); nbox += 1
+            assert vv < 0, ('monotonicity fails near L=', z, vv)
+            z = w
     x = y
 # L >= LB: (log h)' <= (|A0'|+|B0'|)/h and h >= |P| for the one of A0, B0 of larger degree D.
 # In u = 1/L in [0, 1/LB]: num/L^D and low/L^D are polynomials in u, evaluated on the u-ball.
