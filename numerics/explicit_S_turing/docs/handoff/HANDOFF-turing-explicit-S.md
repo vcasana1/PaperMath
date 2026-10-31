@@ -23,6 +23,22 @@ Folder: `numerics/explicit_S_turing/` of this branch (`explicit-S-turing`). Pyth
 4. Hybrid asymptotic (kernel + Jensen discs + Bourgain profile): limsup|S|/log T < 0.0775422804104 (m=10), below
    Λ(0)=0.0786253 (Lindelöf floor of Backlund's method). Grid (uncertified): 0.07603 (m=10, 1045 discs), 0.07515 (m=20).
 
+## Update 31 Oct 2026 (evening)
+5. CERTIFIED (Arb): limsup |S|/log T <= C_H < 0.0748871398241. m=10, d=0.9, 85 Jensen discs (centres up to log 5,
+   vertical offsets |v| <= 2), mu-profile = ANTEDB Table 6.2 (Tao-Trudgian-Yang; profile_tty.py). Data:
+   hybrid_asymptotic/expl_m10_d0.90_vwide_T_eta0.001_fix.json (LP solution with c_R1 + 2e-4: first certification found a
+   true violation -8.9e-5, cert_m10T_vwide.txt); certificate hybrid_asymptotic/cert_m10T_vwide_fix.txt.
+   Uncertified explorations: m=20 TTY 0.07404 (cut planes not converged), explicit profile E 0.07571, Bourgain 0.07531.
+6. Per-prime phase maximum in C_zeta (Amberger 2025, Lemma 2.7; cz_gen_pp.py, p <= 1000 certified on 4096-point grid +
+   Lipschitz): all lines recertified (family/line_*/summary_pp.json). Best single line for all T >= 1:
+   |N - main| <= 0.08399 log T + 5.202, |S| <= 0.08399 log T + 4.318 (line_C400, m=10, d=0.85).
+   Envelope beats Bellotti-Wong by >= 2.232 for all T >= 1.
+7. Attribution correction: the combined cos/sin Euler constant is Amberger's (per prime, max over the phase); own:
+   hybrid method, LP/SOCP optimisation, Arb certification.
+8. In progress: explicit hybrid (hybrid_explicit/: Hiary-Patel-Yang 0.618 t^{1/6} log t, Yang 1.546 t^{1/(2^k-2)} log t,
+   Trudgian (3/4) log t, Trudgian JNT 2014 Lemma 3 PL; PL hypothesis for |t|<=3 checked with Q=3), lower-slope lines
+   (sweepD candidates 0.08381 L + 5.302 at L*=6000, uncertified).
+
 ## Code (family/)
 opt_line.py (SOCP optimizer), sweep.py, pick.py, certify_line.py, cz_gen.py (exact sum n ≤ 1e8 + tail with non-increasing
 step majorant on [log N0, 2000], certified monotonicity beyond), elem_gen.py (mode N or S), finalize_line.py.
