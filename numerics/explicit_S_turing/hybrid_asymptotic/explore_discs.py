@@ -9,6 +9,12 @@ import os
 PROF = os.environ.get('PROF', 'B')
 if PROF == 'T':
     from profile_tty import nodes_tty; nodes = nodes_tty()
+elif PROF == 'E':   # explicit-capable nodes: Patel 27/164 at 1/2, Yang sigma_k (k=4..9), (1,0)  (lpm.explicit_nodes)
+    from lpm import explicit_nodes; nodes = explicit_nodes()
+elif PROF == 'C':   # convexity (1-sigma)/2 (explicit forms: Rademacher 1959)
+    nodes = [(0.5, 0.25), (1.0, 0.0)]
+elif PROF == 'W':   # Weyl exponent 1/6 at 1/2, linear to (1,0) (explicit: Hiary 2016 + explicit Phragmen-Lindelof)
+    nodes = [(0.5, 1/6), (1.0, 0.0)]
 else: nodes = bourgain_nodes()
 XS = np.array([float(a) for a, _ in nodes]); ES = np.array([float(e) for _, e in nodes])
 def prof(s):

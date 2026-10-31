@@ -115,6 +115,9 @@ def Jexact(nodes,cc,R):
     return tot/PI
 def nodes_of(p):
     k,l=Fr(13,84),Fr(55,84); nodes=[]
+    if p=='T':   # ANTEDB Table 6.2 (Tao-Trudgian-Yang) + Heath-Brown nodes, see profile_tty.py
+        from profile_tty import nodes_tty
+        return nodes_tty()
     if p=='B':
         for _ in range(8):
             nodes.append((l-k,k)); k,l=k/(2*k+2),Fr(1,2)+l/(2*k+2)
