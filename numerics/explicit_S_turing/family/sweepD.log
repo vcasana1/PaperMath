@@ -7,3 +7,5 @@ L*=60 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with 
 L*=60 d=1.00 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
 L*=150 d=0.80 m=(10,10) A1=0.09353 A3=2.9247 val=16.9547 114s
 L*=150 d=0.85 m=(10,10) A1=0.09372 A3=2.8735 val=16.9314 207s
+L*=150 d=0.90 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
+L*=150 d=0.95 FAILED Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.
