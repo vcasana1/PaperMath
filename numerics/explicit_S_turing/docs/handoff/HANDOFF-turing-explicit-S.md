@@ -39,6 +39,20 @@ Folder: `numerics/explicit_S_turing/` of this branch (`explicit-S-turing`). Pyth
    Trudgian (3/4) log t, Trudgian JNT 2014 Lemma 3 PL; PL hypothesis for |t|<=3 checked with Q=3), lower-slope lines
    (sweepD candidates 0.08381 L + 5.302 at L*=6000, uncertified).
 
+## Update 31 Oct 2026 (night): Zenodo note v1
+- docs/zenodo_note/: casanya_turing_jensen_v1_l.tex (= .txt), .pdf (49 pp.), casanya_turing_jensen_v1_zenodo.zip (flat: pdf, tex,
+  txt, code, certificates, JSON). Built by build.py from body.tex + gen_appendix.py + gen_values.py (tables, macros, appendices).
+  Template: Amberger v5 (2510.27444v5, 12 Oct 2026: 0.097 log T + 4.807). No mention of tau^C / Theorem D by user's order.
+- Certified results in the note: (i) six lines for all T >= 1 (per-prime phase maximum in C_zeta): l5 0.20176L+1.369,
+  l20 0.10823L+2.171, l60 0.09473L+2.834, l150 0.09349L+2.987, l400 0.08399L+5.202, l6000 0.08382L+5.326 (S: 0.844, 1.286,
+  1.946, 2.099, 4.318, 4.444); envelope below BW by >= 2.231 (L=49.1) and below Amberger v5 Table 6 by >= 0.291 (L=8.57).
+  (ii) limsup |S|/log T < 0.0748883899703 with profile e_P from PUBLISHED sources only (Bourgain; Trudgian-Yang 2306.05599v3
+  Thm 2.4; Tao-Trudgian-Yang 2501.16779v1 Thm 20 + Lemma 23; Heath-Brown 2017 Thm 2 nodes n=6..399), lower convex hull
+  (profile_published.py). The ANTEDB table also uses two 'Cushing (2025)' nodes with no citable source: NOT used
+  (loss 1.25e-6). Certificate: hybrid_asymptotic/cert_m10P.txt, data hyb_m10_P.json.
+- Rigour notes: Lemma 4.7 needs T0 >= 2 (used 1e4); tail lemma proved by layer-cake (no Stieltjes parts); Rademacher PL
+  (alpha2 = 0) for the interpolation lemma; Jensen with zeros on the circle allowed (Rudin 15.18).
+
 ## Code (family/)
 opt_line.py (SOCP optimizer), sweep.py, pick.py, certify_line.py, cz_gen.py (exact sum n ≤ 1e8 + tail with non-increasing
 step majorant on [log N0, 2000], certified monotonicity beyond), elem_gen.py (mode N or S), finalize_line.py.

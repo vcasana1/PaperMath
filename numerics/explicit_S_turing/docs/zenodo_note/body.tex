@@ -71,6 +71,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
+\newcommand{\appsub}[1]{\par\medskip\noindent\textbf{#1}\par\nobreak\smallskip}
 \newcommand{\R}{\mathbb R}
 \newcommand{\C}{\mathbb C}
 \newcommand{\main}{\mathcal M}
@@ -234,7 +235,7 @@ Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count
 \end{remark}
 
 \begin{remark}[On the infimum of the leading constant]\label{rem:infimum}
-Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ over all majorants of the type used in the method, with finitely many kernel functions, is $0$. The computations of Section~\CGref{sec:methods} give, for the family \CGeqref{eq:kernel_def} with $d=\frac9{10}$, the optimal leading constants $0.08831$, $0.08071$, $0.0800$ and $0.0795$ for $m=4,10,20,40$ (grid optima, not certified), which suggest a positive limit near $0.079$. The same computations with the admissibility constraint imposed only at $\beta=\frac12$, as would suffice under the Riemann hypothesis, give $0.050$, $0.020$ and $0.0126$ for $m=4,10,20$. The obstruction thus comes from hypothetical zeros near $\beta\in\{0,1\}$, and it is exactly what the hybrid of Theorem~\CGref{thm:hybrid} removes, at the price of using subconvexity bounds for $\zeta$ inside the strip.
+Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ over all majorants of the type used in the method, with finitely many kernel functions, is $0$. The computations of Section~\CGref{sec:methods} give, for the family \CGeqref{eq:kernel_def} optimised also over $d\in\{0.7,0.8,0.9\}$, the leading constants $0.08831$, $0.08071$, $0.0800$ and $0.0795$ for $m=4,10,20,40$ (grid optima, not certified), which suggest a positive limit near $0.079$. The same computations with the admissibility constraint imposed only at $\beta=\frac12$, as would suffice under the Riemann hypothesis, give $0.050$, $0.020$ and $0.0126$ for $m=4,10,20$. The obstruction thus comes from hypothetical zeros near $\beta\in\{0,1\}$, and it is exactly what the hybrid of Theorem~\CGref{thm:hybrid} removes, at the price of using subconvexity bounds for $\zeta$ inside the strip.
 \end{remark}
 
 %======================================================================
@@ -299,8 +300,13 @@ F(\sigma)-F(\sigma+d)=\sum_\rho\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+i
 \end{equation}
 a difference of two absolutely convergent series. For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an ordinate, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
 \begin{equation}
-\int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),\qquad g(b,t)=-2\arctan\frac{b+d}t+\arctan\frac bt+\arctan\frac{b+2d}t ,
+\int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),
 \label{eq:g_def}
+\end{equation}
+where
+\begin{equation}
+g(b,t)=-2\arctan\frac{b+d}t+\arctan\frac bt+\arctan\frac{b+2d}t ,
+\label{eq:g_formula}
 \end{equation}
 since $\sigma-\beta$ runs from $b_\rho$ to $b_\rho+d$ in the first term and $\sigma+d-\beta$ from $b_\rho+d$ to $b_\rho+2d$ in the second. For $|b|\le\frac12$ and $|t|\ge1$, the expansion $\arctan(y/t)=y/t-y^3/(3t^3)+O(|t|^{-5})$ gives $g(b,t)=O(|t|^{-3})$, because $-2(b+d)+b+(b+2d)=0$; hence $\sum_\rho g(b_\rho,t_\rho)$ converges absolutely.
 
@@ -313,7 +319,7 @@ because $g(b,t)+g(-b,t)=-f(b,t)$: the terms $\arctan\frac bt$ and $\arctan\frac{
 
 For an index $\iota=(\mathrm X,j)$ with $\mathrm X\in\{\mathrm R,\mathrm I\}$ and $j\ge1$, and for $x>0$, $t\in\R$, put
 \begin{equation}
-F_{\mathrm R,j}(x,t)=\Rp(x+it)^{-j},\qquad F_{\mathrm I,j}(x,t)=-\Ip(x+it)^{-j},\qquad G_\iota(b,t)=F_\iota(d+b,t)+F_\iota(d-b,t)\quad(|b|<d).
+F_{\mathrm R,j}(x,t)=\Rp(x+it)^{-j},\quad F_{\mathrm I,j}(x,t)=-\Ip(x+it)^{-j},\quad G_\iota(b,t)=F_\iota(d+b,t)+F_\iota(d-b,t)\ \ (|b|<d).
 \label{eq:G_def}
 \end{equation}
 A \emph{kernel} is a real linear combination
@@ -375,9 +381,11 @@ For $s=\sigma+iT$ with $\sigma>1$ and $T>0$ put
 \end{equation}
 and
 \begin{equation}
-\mathcal E(T)=\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)-\main(T),\qquad
+\begin{gathered}
+\mathcal E(T)=\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)-\main(T),\\
 \mathcal E_u(T)=\mathcal E(T)+\frac1\pi\sum_{\iota\in\mathcal B}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr),\qquad
 \mathcal E_\ell(T)=\mathcal E(T)-\frac1\pi\sum_{\iota\in\mathcal B}\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr).
+\end{gathered}
 \label{eq:E_def}
 \end{equation}
 
@@ -406,17 +414,28 @@ Since $n^{-\sigma_2}=n^{-\sigma_1}e^{-d\log n}$,
 \end{equation}
 
 \emph{Upper bound.} By \CGeqref{eq:K} at $(b_\rho,t_\rho)$, $f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)$ for every zero, and the series $\sum_\rho U(b_\rho,t_\rho)$ converges absolutely by Lemma~\CGref{lem:kernel_sums}. Hence, by Lemma~\CGref{lem:identity} and \CGeqref{eq:kernel_sum},
-\[
-\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\le\frac1{2\pi}\sum_{\iota}c_\iota\sum_\rho G_\iota(b_\rho,t_\rho)
+\begin{multline*}
+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\le\frac1{2\pi}\sum_{\iota}c_\iota\sum_\rho G_\iota(b_\rho,t_\rho)\\
 =\frac1\pi\sum_\iota c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)-\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr),
-\]
-and $\Phi_{\mathrm R}(e^{-iT\log n})=\cos(T\log n)$, $\Phi_{\mathrm I}(e^{-iT\log n})=\sin(T\log n)$. Adding \CGeqref{eq:argxi_comb} and comparing with \CGeqref{eq:ab_def} gives the first line of \CGeqref{eq:twosided}.
+\end{multline*}
+and $\Phi_{\mathrm R}(e^{-iT\log n})=\cos(T\log n)$, $\Phi_{\mathrm I}(e^{-iT\log n})=\sin(T\log n)$, so, with $Q(L)=\sum_{(\mathrm I,j)}c_{\mathrm I,j}L^{j-1}/(j-1)!=\frac{e^{-dL}-2}L-\pi b(L)$, the inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)+Q(\log n)\sin(T\log n)$ and the right side equals
+\begin{multline*}
+\frac1\pi\sum_\iota c_\iota\Phi_{\mathrm X}(D_j(s_1))+\sum_n\Lambda(n)n^{-\sigma_1}\bigl(a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr)\\
+-\frac1\pi\sum_n\Lambda(n)n^{-\sigma_1}\frac{e^{-d\log n}-2}{\log n}\sin(T\log n).
+\end{multline*}
+Adding \CGeqref{eq:argxi_comb} cancels the last sum and gives the first line of \CGeqref{eq:twosided}.
 
 \emph{Lower bound.} Since $f(b,-t)=-f(b,t)$, \CGeqref{eq:K} at $(b_\rho,-t_\rho)$ gives $f(b_\rho,t_\rho)\ge-U(b_\rho,-t_\rho)$, and $U(b,-t)=\sum_\iota\varepsilon_{\mathrm X}c_\iota G_\iota(b,t)$ by the parity of the $G_\iota$ in $t$. Hence
-\[
-\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\ge-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)+\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota\varepsilon_{\mathrm X}c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr).
-\]
-The inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)-(-\pi b(\log n)-\frac{e^{-d\log n}-2}{\log n})\sin(T\log n)$, by \CGeqref{eq:ab_def} and $\varepsilon_{\mathrm I}=-1$. Adding \CGeqref{eq:argxi_comb} gives the second line of \CGeqref{eq:twosided}. Absolute convergence follows from $\sigma_1>1$ and the polynomial growth of $a$ and $b$.
+\begin{multline*}
+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\ge-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)\\
++\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota\varepsilon_{\mathrm X}c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr).
+\end{multline*}
+Here the inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)-Q(\log n)\sin(T\log n)$, by \CGeqref{eq:ab_def} and $\varepsilon_{\mathrm I}=-1$, so the right side equals
+\begin{multline*}
+-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}(D_j(s_1))+\sum_n\Lambda(n)n^{-\sigma_1}\bigl(-a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr)\\
+-\frac1\pi\sum_n\Lambda(n)n^{-\sigma_1}\frac{e^{-d\log n}-2}{\log n}\sin(T\log n).
+\end{multline*}
+Adding \CGeqref{eq:argxi_comb} cancels the last sum and gives the second line of \CGeqref{eq:twosided}. Absolute convergence follows from $\sigma_1>1$ and the polynomial growth of $a$ and $b$.
 \end{proof}
 
 For a prime $p$ write $\lambda_k=(\log p)\,p^{-k\sigma_1}$, $a_k=a(k\log p)$, $b_k=b(k\log p)$ and
@@ -454,7 +473,7 @@ Let $h(L)=\sqrt{a(L)^2+b(L)^2}$ and $H_{p,k}=\lambda_kh(k\log p)$. Then
 \end{proof}
 
 \begin{lemma}[The tail]\label{lem:tail}
-Let $N_0\ge2$, $g(x)=h(\log x)\,x^{-\sigma_1}$ for $x\ge N_0$, and let $G\colon[N_0,\infty)\to[0,\infty)$ be non-increasing with $G\ge g$ and $xG(x)\to0$ as $x\to\infty$. Then
+Let $N_0\ge2$, $g(x)=h(\log x)\,x^{-\sigma_1}$ for $x\ge N_0$, and let $G\colon[N_0,\infty)\to[0,\infty)$ be non-increasing, integrable, with $G\ge g$. Then
 \begin{equation}
 \sum_{n>N_0}\Lambda(n)g(n)\le G(N_0)\bigl(1.03883\,N_0-\psi(N_0)\bigr)+1.03883\int_{N_0}^\infty G(x)\,dx ,
 \label{eq:tail_bound}
@@ -463,11 +482,11 @@ where $\psi(x)=\sum_{n\le x}\Lambda(n)$.
 \end{lemma}
 
 \begin{proof}
-Since $G\ge g\ge0$, $\sum_{n>N_0}\Lambda(n)g(n)\le\int_{(N_0,\infty)}G\,d\psi$, a Stieltjes integral with respect to the non-decreasing function $\psi$. Integration by parts on $[N_0,X]$ gives $G(X)\psi(X)-G(N_0)\psi(N_0)+\int_{N_0}^X\psi(x)\,d(-G)(x)$, where $-G$ is non-decreasing so $d(-G)\ge0$. By $\psi(x)<1.03883x$ for all $x>0$ \cite[Thm.~12]{RosserSchoenfeld1962} and $G(X)\psi(X)\le1.03883XG(X)\to0$,
+For $0<y<G(N_0)$ put $X_y=\sup\{x\ge N_0:G(x)>y\}$, which is finite because $G$ is integrable and non-increasing. If $n>N_0$ and $G(n)>y$ then $n\le X_y$, so $\sum_{n>N_0,\,G(n)>y}\Lambda(n)\le\psi(X_y)-\psi(N_0)<1.03883X_y-\psi(N_0)$ by $\psi(x)<1.03883x$ for all $x>0$ \cite[Thm.~12]{RosserSchoenfeld1962}; for $y\ge G(N_0)$ the set is empty. By Tonelli's theorem,
 \[
-\int_{(N_0,\infty)}G\,d\psi\le-G(N_0)\psi(N_0)+1.03883\int_{N_0}^\infty x\,d(-G)(x)=-G(N_0)\psi(N_0)+1.03883\Bigl(N_0G(N_0)+\int_{N_0}^\infty G(x)\,dx\Bigr),
+\sum_{n>N_0}\Lambda(n)g(n)\le\sum_{n>N_0}\Lambda(n)G(n)=\int_0^{\infty}\sum_{\substack{n>N_0\\ G(n)>y}}\Lambda(n)\,dy\le\int_0^{G(N_0)}\bigl(1.03883X_y-\psi(N_0)\bigr)dy .
 \]
-the last step by integration by parts again, using $XG(X)\to0$. This is \CGeqref{eq:tail_bound}.
+Finally $\int_0^{G(N_0)}X_y\,dy=N_0G(N_0)+\int_0^{G(N_0)}(X_y-N_0)\,dy$, and for $x>N_0$ one has $X_y\ge x$ if $G(x)>y$, while $X_y\ge x$ implies $G(x)\ge y$ (there are $x'\ge x$ with $G(x')>y$, and $G(x)\ge G(x')$); hence $\{y:X_y\ge x\}$ and $\{y:y<G(x)\}$ differ by a set of measure zero, and $\int_0^{G(N_0)}(X_y-N_0)\,dy=\int_{N_0}^\infty\int_0^{G(N_0)}\mathbf 1_{X_y\ge x}\,dy\,dx=\int_{N_0}^\infty G(x)\,dx$. This is \CGeqref{eq:tail_bound}.
 \end{proof}
 
 The majorant $G$ is built as follows. Let $L_0=\log N_0$ and let $L_{\rm B}>L_0$ be such that $g$ is non-increasing on $[e^{L_{\rm B}},\infty)$; then on $[e^{L_{\rm B}},\infty)$ take $G=g$. On $[L_0,L_{\rm B}]$ choose points $L_0=u_0<u_1<\dots<u_r=L_{\rm B}$, let $\bar g_i$ be an upper bound of $g$ on $[e^{u_i},e^{u_{i+1}}]$ computed in ball arithmetic, and put $G=\max(\bar g_i,\bar g_{i+1},\dots,\bar g_{r-1},g(e^{L_{\rm B}}))$ on $[e^{u_i},e^{u_{i+1}})$; this $G$ is non-increasing and $G\ge g$, and $\int_{N_0}^{e^{L_{\rm B}}}G\,dx$ is a finite sum. The condition on $L_{\rm B}$ is verified by the next lemma. Write $a(L)=\frac1\pi P_a(L)$ and $b(L)=\frac1\pi\bigl(P_b(L)+\frac{e^{-dL}-2}L\bigr)$ with polynomials $P_a=\sum_i\mathsf a_iL^i$, $P_b=\sum_i\mathsf b_iL^i$ read off from \CGeqref{eq:ab_def}, let $D$ be the larger of their degrees, $P$ the one of $P_a$, $P_b$ of degree $D$ (if both have degree $D$, take $P=P_a$), and $q_i=|\mathsf a_i|+|\mathsf b_i|$.
@@ -488,7 +507,10 @@ On $[e^{L_{\rm B}},\infty)$ one has $h>0$ (because $\mathrm{low}>0$ gives $P\ne0
 \begin{proposition}[Certified value of $C_\zeta$]\label{prop:Cz}
 Let $N_0=10^8$, $P_0=1000$, $\mathsf M=4096$. Then $\sum_pM_p\le C_\zeta$ with
 \begin{equation}
-C_\zeta=\sum_{p\le P_0}\min\Bigl(\max_{i<\mathsf M}\sum_{k:\,p^k\le N_0}\lambda_k(a_k\cos kx_i+b_k\sin kx_i)+\frac\pi{\mathsf M}\sum_{k:\,p^k\le N_0}kH_{p,k},\ \sum_{k:\,p^k\le N_0}H_{p,k}\Bigr)+\sum_{\substack{P_0<p\le N_0\\ p^k\le N_0}}H_{p,k}+\mathrm{Tail},
+\begin{split}
+C_\zeta=\sum_{p\le P_0}\min\Bigl(\max_{i<\mathsf M}\sum_{k:\,p^k\le N_0}\lambda_k(a_k\cos kx_i+b_k\sin kx_i)&+\frac\pi{\mathsf M}\sum_{k:\,p^k\le N_0}kH_{p,k},\ \sum_{k:\,p^k\le N_0}H_{p,k}\Bigr)\\
+&+\sum_{\substack{P_0<p\le N_0\\ p^k\le N_0}}H_{p,k}+\mathrm{Tail},
+\end{split}
 \label{eq:Cz_def}
 \end{equation}
 where $\mathrm{Tail}$ is the right side of \CGeqref{eq:tail_bound} with $L_{\rm B}$ verified by Lemma~\CGref{lem:monotone}. The program \texttt{cz\_gen\_pp.py} (Appendix~\CGref{app:cert_cz}) evaluates every term of \CGeqref{eq:Cz_def} in ball arithmetic and reports an upper bound of the resulting ball. For the six kernels of Theorem~\CGref{thm:explicit} the values are in Table~\CGref{tab:lines}.
@@ -519,7 +541,7 @@ Since $\psi=(\Lo\Gamma)'$, Lemma~\CGref{lem:stirling} gives $\psi(z)=\Lo z-\frac
 \end{equation}
 
 \begin{lemma}[The elementary part for large $T$]\label{lem:elem_large}
-Let $T\ge T_0\ge1$, $z_1=s_1/2$, $C_1=c_{\mathrm R,1}/(2\pi)$ and suppose $A_1\ge C_1$. Then
+Let $T\ge T_0\ge2$, $z_1=s_1/2$, $C_1=c_{\mathrm R,1}/(2\pi)$ and suppose $A_1\ge C_1$. Then
 \begin{equation}
 F_u(T)\le\frac78-C_1\log(2\pi)+\frac{\mathsf K}T,\qquad F_\ell(T)\le-\frac78-C_1\log(2\pi)+\frac{\mathsf K}T,
 \label{eq:F_large}
@@ -537,12 +559,12 @@ where
 \begin{proof}
 \emph{The term $\mathcal E(T)$.} For $s=\sigma+iT$ with $\sigma>1$, $\arg s=\frac\pi2-\arctan\frac\sigma T$ and $\arg(s-1)=\frac\pi2-\arctan\frac{\sigma-1}T$, so $\arg s+\arg(s-1)=\pi-\theta_\sigma$ with $0\le\theta_\sigma\le\frac{2\sigma-1}T$. With $z=s/2$, Lemma~\CGref{lem:stirling} gives
 \[
-\Ip\Lo\Gamma(z)=\Bigl(\frac\sigma2-\frac12\Bigr)\arg z+\frac T2\log|z|-\frac T2+\Ip\mathcal R(z),\qquad
-\arg z=\frac\pi2-\arctan\frac\sigma T,\qquad\log|z|=\log\frac T2+\frac12\log\Bigl(1+\frac{\sigma^2}{T^2}\Bigr),
+\Ip\Lo\Gamma(z)=\Bigl(\frac\sigma2-\frac12\Bigr)\arg z+\frac T2\log|z|-\frac T2+\Ip\mathcal R(z),
 \]
+with $\arg z=\frac\pi2-\arctan\frac\sigma T$ and $\log|z|=\log\frac T2+\frac12\log\bigl(1+\frac{\sigma^2}{T^2}\bigr)$,
 and $|\mathcal R(z)|\le\frac1{3T}$ since $|\ph z|<\frac\pi2$ and $|z|\ge\frac T2$. Hence
 \[
-\mathcal A(s)=\pi+\frac T2\log\frac T{2\pi}-\frac T2+\frac{(\sigma-1)\pi}4+\delta_\sigma,\qquad
+\mathcal A(s)=\pi+\frac T2\log\frac T{2\pi}-\frac T2+\frac{(\sigma-1)\pi}4+\delta_\sigma,\quad
 \delta_\sigma=-\theta_\sigma-\frac{\sigma-1}2\arctan\frac\sigma T+\frac T4\log\Bigl(1+\frac{\sigma^2}{T^2}\Bigr)+\Ip\mathcal R(z),
 \]
 with $0\le\frac{\sigma-1}2\arctan\frac\sigma T\le\frac{\sigma(\sigma-1)}{2T}$ and $0\le\frac T4\log(1+\frac{\sigma^2}{T^2})\le\frac{\sigma^2}{4T}$. Since $2(\sigma_1-1)-(\sigma_2-1)=-\frac12$ and $2(2\sigma_1-1)=2\sigma_2-1=4d$,
@@ -557,9 +579,9 @@ where $\mathsf K_\Gamma$ is the first bracket of \CGeqref{eq:K_def} (which is la
 
 \emph{The term $j=1$.} By \CGeqref{eq:psi_k} with $k=0$, $\Rp D_1(s_1)=\Rp\frac1{s_1}+\Rp\frac1{s_1-1}-\frac12\log\pi+\frac12\log|z_1|-\frac12\Rp\frac1{s_1}+\frac12\Rp\mathcal R'(z_1)$, and $\log|z_1|=\log\frac T2+\frac12\log(1+\frac{\sigma_1^2}{T^2})$, so
 \[
-\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+\delta_1,\qquad|\delta_1|\le\frac1{T^2}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr)\le\frac1{T_0T}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr),
+\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+\delta_1,\qquad|\delta_1|\le\frac1{T^2}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr)\le\frac1{2T}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr),
 \]
-using $0\le\Rp\frac1{s}\le\frac\sigma{T^2}$, $0\le\Rp\frac1{s-1}\le\frac{\sigma-1}{T^2}$ and $|\mathcal R'(z_1)|\le\frac4{3|z_1|^2}\le\frac{16}{3T^2}$ from \CGeqref{eq:R_deriv}. Since $T_0\ge1$, $|c_{\mathrm R,1}|\,|\delta_1|/\pi$ is at most the second term of \CGeqref{eq:K_def} divided by $T$, with room to spare.
+using $0\le\Rp\frac1{s}\le\frac\sigma{T^2}$, $0\le\Rp\frac1{s-1}\le\frac{\sigma-1}{T^2}$, $|\mathcal R'(z_1)|\le\frac4{3|z_1|^2}\le\frac{16}{3T^2}$ from \CGeqref{eq:R_deriv}, and $T\ge2$. Since $\frac{\sigma_1}2\le(2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83$ for $\sigma_1>1$, the last bracket halved is at most $(2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83$, so $|c_{\mathrm R,1}|\,|\delta_1|/\pi$ is at most the second term of \CGeqref{eq:K_def} divided by $T$.
 
 \emph{The terms $j\ge2$.} $|D_j(s_1)|\le\frac2{T^j}+\frac{|\psi^{(j-1)}(z_1)|}{(j-1)!\,2^j}$, and by \CGeqref{eq:psi_k} with $k=j-1\ge1$, \CGeqref{eq:R_deriv} and $|z_1|\ge\frac T2$,
 \[
@@ -673,7 +695,7 @@ Let $\frac12=\varsigma_0<\varsigma_1<\dots<\varsigma_n=1$ and $e_0\ge e_1\ge\dot
 \end{lemma}
 
 \begin{proof}
-Fix $\varepsilon>0$ and $i<n$, and put $\Xi(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\Xi$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\Xi(s)|\le|s|+|s||s-1|/\Rp s\le2|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\Xi(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\Xi$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\Xi(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
+Fix $\varepsilon>0$ and $i<n$, and put $\Xi(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\Xi$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\Xi(s)|\le|s|+|s||s-1|/\Rp s\le3|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\Xi(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\Xi$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\Xi(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
 \[
 |\Xi(s)|\le\bigl(A_i|Q+s|^{1+e_i+\varepsilon}\bigr)^{\frac{\varsigma_{i+1}-\sigma}{\varsigma_{i+1}-\varsigma_i}}\bigl(B_i|Q+s|^{1+e_{i+1}+\varepsilon}\bigr)^{\frac{\sigma-\varsigma_i}{\varsigma_{i+1}-\varsigma_i}}\le\max(A_i,B_i)\,|Q+s|^{1+\mathfrak e(\sigma)+\varepsilon},
 \]
@@ -732,7 +754,7 @@ Let $s_0=c+i(T+v)$ and, for a zero $\rho$, let $\rho^*$ be the one of $\rho$, $1
 \sum_\rho W(b_\rho,t_\rho)\le2\sum_{w\in\mathbb D}\log\frac R{|w-s_0|},
 \label{eq:W_to_jensen}
 \end{equation}
-the sum over the zeros of $\zeta$ in $\mathbb D$ with multiplicity. For $T>R+|v|+1$ the closed disc $\bar{\mathbb D}$ does not contain $s=1$, so $\zeta$ is holomorphic on it, and $\zeta(s_0)\ne0$ because $\Rp s_0=c>1$. Jensen's formula \cite[\S3.61]{Titchmarsh1939} gives
+the sum over the zeros of $\zeta$ in $\mathbb D$ with multiplicity. For $T>R+|v|+1$ the closed disc $\bar{\mathbb D}$ does not contain $s=1$, so $\zeta$ is holomorphic on it, and $\zeta(s_0)\ne0$ because $\Rp s_0=c>1$. Jensen's formula \cite[\S3.61]{Titchmarsh1939}, \cite[Thm.~15.18]{Rudin1987} (which allows zeros on the circle) gives
 \begin{equation}
 \sum_{w\in\mathbb D}\log\frac R{|w-s_0|}=\frac1{2\pi}\int_0^{2\pi}\log|\zeta(s_0+Re^{i\theta})|\,d\theta-\log|\zeta(s_0)| .
 \label{eq:jensen}
@@ -793,7 +815,7 @@ since $\sigma=c_k+R_k\cos\theta$ and $d\sigma=-R_k\sin\theta\,d\theta$; the argu
 \begin{proof}[Proof of Theorem~\CGref{thm:hybrid}]
 Let $\varepsilon>0$ and let $T\to\infty$ through values that are not ordinates. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
 \[
--U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,-t_\rho)\Big|_{t_\rho\to t_\rho}=U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
+-U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
 \]
 Summing over $\rho$ (all series converge absolutely: those of $U$ by Lemma~\CGref{lem:kernel_sums}, those of $W_k$ because only finitely many zeros lie in each disc) and using Lemmas~\CGref{lem:kernel_asym} and~\CGref{lem:jensen} with the admissible profile $\eP$ of Lemma~\CGref{lem:profile},
 \[
@@ -809,12 +831,18 @@ for $T\ge\max_kT_\varepsilon(k)$. By Lemma~\CGref{lem:identity} and Lemma~\CGref
 For fixed coefficients, $U-f$ is harmonic in $(b,t)$ on each of the half-strips $|b|<d$, $t>0$ and $|b|<d$, $t<0$: each $\arctan\frac yt$ is an argument of $t+iy$, hence harmonic in $(y,t)$ and in $(b,t)$, and each $F_\iota(d\pm b,t)$ is the real or imaginary part of a holomorphic function of $(d\pm b)+it$. By the maximum principle, $f\le U$ on $|b|\le\frac12$, $t\ne0$ holds as soon as it holds on the lines $b=\pm\frac12$ and in the limits $t\to0^\pm$ and $|t|\to\infty$. The constraints that fix the optimum of the kernel are therefore those at $b=\pm\frac12$, that is, at hypothetical zeros with $\beta$ arbitrarily close to $0$ or $1$. The values of $\zeta$ on $\Rp s>1$, which are all the method uses, cannot exclude clusters of order $\log T$ of such zeros near height $T$, and the numerical optima of Remark~\CGref{rem:infimum} reflect this. The weights $W_k$ relax exactly these constraints: in Table~\CGref{tab:hybrid_discs} every disc has $c_k-R_k\ge\frac12$, and only the values of $\eP$ on $[\frac12,1]$ enter $C_{\rm H}$.
 
 \subsection{Optimisation}\label{subsec:optimisation}
-For fixed $d$ the set of admissible $(c_\iota)$ in \CGeqref{eq:K}, and of admissible $(c_\iota,\kappa_k)$ in \CGeqref{eq:hybrid_ineq}, is convex, being defined by linear inequalities indexed by $(b,t)$. For Theorem~\CGref{thm:explicit}, the quantity minimised at a target height $L^*$ is $A_1L^*+C_\zeta+\sup F$, where $C_\zeta$ is approximated by $\sum_{p\le300}\max_{x\text{ on a grid}}f_p(x)+\sum_{p>300}\sum_kH_{p,k}$ over prime powers up to $2\cdot10^4$ plus a quadrature of the tail, a convex function of the coefficients (a sum of pointwise maxima of linear functions and of Euclidean norms), and $\sup F$ by its maximum on a grid of $260$ heights in $[1,10^6]$ and its limit at $T=\infty$. The problem is a second-order cone programme, solved with \texttt{cvxpy} and Clarabel; the constraint \CGeqref{eq:K} is imposed on a grid of $26\times1399$ points $(b,t)$ with a margin $\eta/(1+t^2)$, $\eta=2\cdot10^{-4}$, and the points where the current solution violates it on a finer grid ($201\times24000$) are added as cutting planes, until no violation remains. The optimisation was run for $d\in\{0.65,0.75,0.8,0.85,0.9,0.95,1,1.2\}$, $m\in\{2,3,4,5,7,10\}$ and $L^*\in\{5,20,60,150,400,1000,2500,6000,20000\}$; the six kernels of Theorem~\CGref{thm:explicit} are the best found for $L^*=5,20,60,150,400,6000$. Longer kernels did not lower the leading constant below $0.0838$: for $L^*=20000$ the optimum is again $A_1=0.08381$.
+For fixed $d$ the set of admissible $(c_\iota)$ in \CGeqref{eq:K}, and of admissible $(c_\iota,\kappa_k)$ in \CGeqref{eq:hybrid_ineq}, is convex, being defined by linear inequalities indexed by $(b,t)$. For Theorem~\CGref{thm:explicit}, the quantity minimised at a target height $L^*$ is $A_1L^*+C_\zeta+\sup F$, where $C_\zeta$ is approximated by $\sum_n\Lambda(n)n^{-\sigma_1}h(\log n)$ over the prime powers $n\le2\cdot10^4$ plus a quadrature of the tail (for $\ell_{6000}$, with the maximum over a grid of $96$ phases in place of $h$ for the primes $p\le300$), a convex function of the coefficients (a sum of Euclidean norms and of pointwise maxima of linear functions), and $\sup F$ by its maximum on a grid of $260$ heights in $[1,10^6]$ and its limit at $T=\infty$. The problem is a second-order cone programme, solved with \texttt{cvxpy} and Clarabel; the constraint \CGeqref{eq:K} is imposed on a grid of $26\times2200$ points $(b,t)$ with a margin $\eta/(1+t^2)$, $\eta=2\cdot10^{-4}$, and the points where the current solution violates it on a finer grid ($201\times24000$) are added as cutting planes, until no violation remains. The optimisation was run for $d\in\{0.65,0.75,0.8,0.85,0.9,0.95,1,1.2\}$, $m\in\{2,3,4,5,7,10\}$ and $L^*\in\{5,20,60,150,400,1000,2500,6000,20000\}$; the six kernels of Theorem~\CGref{thm:explicit} are the best found for $L^*=5,20,60,150,400,6000$. Longer kernels did not lower the leading constant below $0.0838$: for $L^*=20000$ the optimum is again $A_1=0.08381$.
 
-For Theorem~\CGref{thm:hybrid} the objective is \CGeqref{eq:CH}, linear in $(c_\iota,\kappa_k)$, so the problem is a linear programme (HiGHS through \texttt{scipy}), with the same grid, cutting planes and a margin $\eta=10^{-3}$. The candidate discs were all $(c,R,v)$ with $c\in\{1.03,1.06,1.1,\log3,1.15,1.2,1.25,1.3,1.4,1.5,\log5,2,e,3\}$, $R\in\{c-1+x:x=0.05,0.1,\dots,0.5\}$ with $R\le c-\frac12$, and $v\in\{0,\pm0.2,\pm0.35,\pm0.5,\pm0.65,\pm0.8,\pm1,\pm1.3,\pm1.6,\pm2\}$; the optimum uses $85$ of the $2660$ candidates. The first certification of the LP solution found a true violation of \CGeqref{eq:hybrid_ineq}, of size $-8.9\cdot10^{-5}$ at $(b,t)\approx(0.467,-0.450)$, between two cutting planes; it was repaired by adding $2\cdot10^{-4}$ to $c_{\mathrm R,1}$, which adds $2\cdot10^{-4}G_{\mathrm R,1}>0$ to $U$ and $3.2\cdot10^{-5}$ to $C_{\rm H}$. The repaired kernel is the one of Table~\CGref{tab:hybrid_kernel}. With the Bourgain profile (the piecewise linear function through the points $(\lambda_j-\kappa_j,\kappa_j)$, $(\kappa_j,\lambda_j)=A^j(\frac{13}{84},\frac{55}{84})$, $0\le j\le7$, and $(1,0)$, where $A$ is the $A$-process) in place of $\eP$ the same construction gives, on the grid, $0.07531$; with $\eP$ it gives $0.07477$ before the margin and the repair; with $m=20$ the grid value is $0.0740$ (cutting planes not converged); none of these is certified. The grid values quoted in Remark~\CGref{rem:infimum} are from the same programs.
+For Theorem~\CGref{thm:hybrid} the objective is \CGeqref{eq:CH}, linear in $(c_\iota,\kappa_k)$, so the problem is a linear programme (HiGHS through \texttt{scipy}), with the same grid, cutting planes and a margin $\eta=10^{-3}$. The candidate discs were all $(c,R,v)$ with
+\[
+\begin{gathered}
+c\in\{1.03,1.06,1.1,\log3,1.15,1.2,1.25,1.3,1.4,1.5,\log5,2,e,3\},\\ R=c-1+x,\quad x\in\{0.05,0.1,\dots,0.5\},\quad R\le c-\tfrac12,
+\end{gathered}
+\]
+and $v\in\{0,\pm0.2,\pm0.35,\pm0.5,\pm0.65,\pm0.8,\pm1,\pm1.3,\pm1.6,\pm2\}$; the optimum uses $85$ of the $2660$ candidates. The first certification of the LP solution found a true violation of \CGeqref{eq:hybrid_ineq}, of size $-8.9\cdot10^{-5}$ at $(b,t)\approx(0.467,-0.450)$, between two cutting planes; it was repaired by adding $2\cdot10^{-4}$ to $c_{\mathrm R,1}$, which adds $2\cdot10^{-4}G_{\mathrm R,1}>0$ to $U$ and $3.2\cdot10^{-5}$ to $C_{\rm H}$. The repaired kernel is the one of Table~\CGref{tab:hybrid_kernel}. With the Bourgain profile (the piecewise linear function through the points $(\lambda_j-\kappa_j,\kappa_j)$, $(\kappa_j,\lambda_j)=A^j(\frac{13}{84},\frac{55}{84})$, $0\le j\le7$, and $(1,0)$, where $A$ is the $A$-process) in place of $\eP$ the same construction gives, on the grid, $0.07531$; with $\eP$ it gives $0.07477$ before the margin and the repair; with $m=20$ the grid value is $0.0740$ (cutting planes not converged); none of these is certified. The grid values quoted in Remark~\CGref{rem:infimum} are from the same programs.
 
 \subsection{Certification}\label{subsec:certification}
-All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits of precision; a ball computed by Arb contains the exact value of the expression evaluated, and the programs only ever use the endpoints of balls in the direction that makes the final statement weaker. The kernel inequality for the hybrid ($T_1=40$) took $716$ seconds; for the longest explicit kernel ($\ell_{400}$, $T_1=100$) the three parts of Proposition~\CGref{prop:kernel_cert} needed $11\,835\,193$, $9\,801\,985$ and $4\,194\,302$ boxes and $2716$ seconds. The constant $C_\zeta$ for each kernel takes about $165$ seconds (the sum over the $5\,761\,455$ primes below $10^8$ and their powers, and the tail), and the elementary part about $120$ seconds per mode. The coefficients are passed to the certifiers as the exact binary numbers written by the optimiser (the JSON files of Appendix~\CGref{app:data}, whose decimal strings round-trip), so there is no rounding between search and certificate other than the rational rounding of the disc data described before \CGeqref{eq:CH}, which is itself part of the certified data.
+All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits of precision; a ball computed by Arb contains the exact value of the expression evaluated, and the programs only ever use the endpoints of balls in the direction that makes the final statement weaker. The kernel inequality for the hybrid ($T_1=40$) took $716$ seconds; for the kernel of $\ell_{400}$ the three parts of Proposition~\CGref{prop:kernel_cert} needed $11\,835\,193$, $9\,801\,985$ and $4\,194\,302$ boxes and $2716$ seconds, and for that of $\ell_{6000}$, $3243$ seconds. The constant $C_\zeta$ for each kernel takes between $80$ and $165$ seconds (the sum over the $5\,761\,455$ primes below $10^8$ and their powers, and the tail), and the elementary part about $120$ seconds per mode. The coefficients are passed to the certifiers as the exact binary numbers written by the optimiser (the JSON files of Appendix~\CGref{app:data}, whose decimal strings round-trip), so there is no rounding between search and certificate other than the rational rounding of the disc data described before \CGeqref{eq:CH}, which is itself part of the certified data.
 
 \subsection{Comparison of the two methods}\label{subsec:comparison_methods}
 Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Making Theorem~\CGref{thm:hybrid} explicit requires versions of \CGeqref{eq:admissible} with explicit constants, for which the available bounds are those of Hiary, Patel and Yang \cite{HiaryPatelYang2024} on the critical line, of Yang \cite{Yang2024} on the lines $\sigma=1-m/(2^m-2)$, and of Bellotti \cite{Bellotti2024} in the strip; with them the method gives bounds of the form $A_1\log T+B\log\log T+C$ with $A_1$ near $0.076$, valid from a computable height, and this is left for a later article.
@@ -863,6 +891,8 @@ The programs, the coefficient files and the outputs of all certificates are repr
 \bibitem{PlattTrudgian2015} D. J. Platt and T. S. Trudgian, An improved explicit bound on $|\zeta(\frac12+it)|$, \textit{J. Number Theory} \textbf{147} (2015) 842--851, \href{https://doi.org/10.1016/j.jnt.2014.08.019}{doi:10.1016/j.jnt.2014.08.019}.
 
 \bibitem{Rademacher1959} H. Rademacher, On the Phragm\'en--Lindel\"of theorem and some applications, \textit{Math. Z.} \textbf{72} (1959) 192--204, \href{https://doi.org/10.1007/BF01162949}{doi:10.1007/BF01162949}.
+
+\bibitem{Rudin1987} W. Rudin, \textit{Real and Complex Analysis}, 3rd edn. (McGraw-Hill, New York, 1987).
 
 \bibitem{Rosser1941} J. B. Rosser, Explicit bounds for some functions of prime numbers, \textit{Amer. J. Math.} \textbf{63} (1941) 211--232, \href{https://doi.org/10.2307/2371291}{doi:10.2307/2371291}.
 

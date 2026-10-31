@@ -45,17 +45,17 @@
 \CGtip{eq:Cz_def}{Definition of the certified constant C_zeta (per-prime phase maximum for p <= 1000, hypot for the other prime powers <= 1e8, tail).}
 \CGtip{eq:R_deriv}{|R^(k+1)(z)| <= (k+1)! (2/(3|z|)) (2/|z|)^(k+1) for Re z > 0 (Cauchy estimate of Stirling's remainder).}
 \CGtip{eq:psi_k}{psi^(k)(z) = (-1)^(k-1)(k-1)!/z^k + (-1)^k k!/(2 z^(k+1)) + R^(k+1)(z).}
-\CGtip{eq:F_large}{Lemma 4.6: for T >= T0, F_u <= 7/8 - C1 log(2pi) + K/T and F_l <= -7/8 - C1 log(2pi) + K/T.}
-\CGtip{eq:K_def}{The constant K of Lemma 4.6 (Gamma and argument part, j=1 part, j>=2 part).}
+\CGtip{eq:F_large}{Lemma 4.7: for T >= T0, F_u <= 7/8 - C1 log(2pi) + K/T and F_l <= -7/8 - C1 log(2pi) + K/T.}
+\CGtip{eq:K_def}{The constant K of Lemma 4.7 (Gamma and argument part, j=1 part, j>=2 part).}
 \CGtip{eq:master_S}{|S(T)| <= A1 log T + C_zeta + max(F_u^S, F_l^S).}
 \CGtip{eq:f_regular}{f(b,t) = sgn(t) pi - 2atan(t/(d+b)) - 2atan(t/(d-b)) + atan(t/(2d+b)) + atan(t/(2d-b)), continuous up to t=0 on each side.}
-\CGtip{eq:f_tail}{Lemma 4.9: t^2 f(b,t) <= 4 d^3 u + K5 |u|^3, u = 1/t, |t| >= T1 >= 2d+1/2.}
+\CGtip{eq:f_tail}{Lemma 4.10: t^2 f(b,t) <= 4 d^3 u + K5 |u|^3, u = 1/t, |t| >= T1 >= 2d+1/2.}
 \CGtip{eq:U_tail}{t^2 U as a real-analytic function of (b,u); value 2 d c_R1 - 2 c_R2 at u = 0.}
 \CGtip{eq:admissible}{Admissible profile: |zeta(sigma+it)| <= K_eps |t|^(e(sigma)+eps) for 1/2 <= sigma <= 1, |t| >= 2.}
 \CGtip{eq:pair_to_mu}{If (k,l) is an exponent pair then mu(l-k) <= k.}
 \CGtip{eq:W_def}{W(b,t) = log^+ ( R / sqrt((c-1/2-|b|)^2 + (t+v)^2) ).}
 \CGtip{eq:J_def}{J(e;c,R) = (1/2pi) int_0^(2pi) e(c + R cos theta) d theta.}
-\CGtip{eq:jensen_bound}{Lemma 5.5: sum over rho of W(b_rho, t_rho) <= 2 (J(e;c,R) + eps) log T for T >= T_eps.}
+\CGtip{eq:jensen_bound}{Lemma 5.4: sum over rho of W(b_rho, t_rho) <= 2 (J(e;c,R) + eps) log T for T >= T_eps.}
 \CGtip{eq:CH}{C_H = c_R1/(2pi) + (1/pi) sum_k kappa_k J(e_P; c_k, R_k).}
 \CGtip{eq:hybrid_ineq}{Proposition 6.3: f(b,t) <= U(b,t) + sum_k kappa_k W_k(b,t) for 0 <= b <= 1/2, t != 0.}
 \CGtip{eq:CH_value}{C_H = 0.0748883899702... < 0.0748883899703.}
@@ -101,11 +101,11 @@
 \CGtip{sec:results}{Section 2: Results.}
 \CGtip{subsec:euler}{Section 4.2: The Euler product.}
 \CGtip{subsec:kernel_cert}{Section 4.4: The kernel inequality.}
-\CGtip{tab:lines}{Table 2: the six kernels and their certified constants.}
-\CGtip{tab:history}{Table 1: history of explicit bounds for |N(T) - M(T)|.}
-\CGtip{tab:nodes}{Table A.3: vertices of the profile e_P with sources.}
-\CGtip{tab:hybrid_kernel}{Table A.1: coefficients of the hybrid kernel.}
-\CGtip{tab:hybrid_discs}{Table A.2: the 85 disc data, weights and J_k.}
+\CGtip{tab:lines}{Table: the six kernels and their certified constants.}
+\CGtip{tab:history}{Table: history of explicit bounds for |N(T) - M(T)|.}
+\CGtip{tab:nodes}{Table: vertices of the profile e_P with sources.}
+\CGtip{tab:hybrid_kernel}{Table: coefficients of the hybrid kernel.}
+\CGtip{tab:hybrid_discs}{Table: the 85 disc data, weights and J_k.}
 \CGtip{app:code}{Appendix B: programs.}
 \CGtip{app:cert}{Appendix C: outputs of the certification programs.}
 \CGtip{app:data}{Appendix D: exact data (JSON files).}
@@ -160,6 +160,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
+\newcommand{\appsub}[1]{\par\medskip\noindent\textbf{#1}\par\nobreak\smallskip}
 \newcommand{\R}{\mathbb R}
 \newcommand{\C}{\mathbb C}
 \newcommand{\main}{\mathcal M}
@@ -198,7 +199,7 @@
 \newcommand{\GapAmbat}{8.57}
 \newcommand{\CHval}{0.074888389970261}
 \newcommand{\CHup}{0.0748883899703}
-\newcommand{\CHball}{[0.074888390 +/- 3.00e-11]}
+\newcommand{\CHball}{[0.07488838997026060\pm2.75\cdot10^{-18}]}
 \newcommand{\CHkernel}{0.0656118899398}
 \newcommand{\CHdiscs}{0.009276500030}
 \newcommand{\Kfive}{19.039314}
@@ -360,7 +361,7 @@ Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count
 \end{remark}
 
 \begin{remark}[On the infimum of the leading constant]\label{rem:infimum}
-Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ over all majorants of the type used in the method, with finitely many kernel functions, is $0$. The computations of Section~\CGref{sec:methods} give, for the family \CGeqref{eq:kernel_def} with $d=\frac9{10}$, the optimal leading constants $0.08831$, $0.08071$, $0.0800$ and $0.0795$ for $m=4,10,20,40$ (grid optima, not certified), which suggest a positive limit near $0.079$. The same computations with the admissibility constraint imposed only at $\beta=\frac12$, as would suffice under the Riemann hypothesis, give $0.050$, $0.020$ and $0.0126$ for $m=4,10,20$. The obstruction thus comes from hypothetical zeros near $\beta\in\{0,1\}$, and it is exactly what the hybrid of Theorem~\CGref{thm:hybrid} removes, at the price of using subconvexity bounds for $\zeta$ inside the strip.
+Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ over all majorants of the type used in the method, with finitely many kernel functions, is $0$. The computations of Section~\CGref{sec:methods} give, for the family \CGeqref{eq:kernel_def} optimised also over $d\in\{0.7,0.8,0.9\}$, the leading constants $0.08831$, $0.08071$, $0.0800$ and $0.0795$ for $m=4,10,20,40$ (grid optima, not certified), which suggest a positive limit near $0.079$. The same computations with the admissibility constraint imposed only at $\beta=\frac12$, as would suffice under the Riemann hypothesis, give $0.050$, $0.020$ and $0.0126$ for $m=4,10,20$. The obstruction thus comes from hypothetical zeros near $\beta\in\{0,1\}$, and it is exactly what the hybrid of Theorem~\CGref{thm:hybrid} removes, at the price of using subconvexity bounds for $\zeta$ inside the strip.
 \end{remark}
 
 %======================================================================
@@ -425,8 +426,13 @@ F(\sigma)-F(\sigma+d)=\sum_\rho\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+i
 \end{equation}
 a difference of two absolutely convergent series. For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an ordinate, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
 \begin{equation}
-\int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),\qquad g(b,t)=-2\arctan\frac{b+d}t+\arctan\frac bt+\arctan\frac{b+2d}t ,
+\int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),
 \label{eq:g_def}
+\end{equation}
+where
+\begin{equation}
+g(b,t)=-2\arctan\frac{b+d}t+\arctan\frac bt+\arctan\frac{b+2d}t ,
+\label{eq:g_formula}
 \end{equation}
 since $\sigma-\beta$ runs from $b_\rho$ to $b_\rho+d$ in the first term and $\sigma+d-\beta$ from $b_\rho+d$ to $b_\rho+2d$ in the second. For $|b|\le\frac12$ and $|t|\ge1$, the expansion $\arctan(y/t)=y/t-y^3/(3t^3)+O(|t|^{-5})$ gives $g(b,t)=O(|t|^{-3})$, because $-2(b+d)+b+(b+2d)=0$; hence $\sum_\rho g(b_\rho,t_\rho)$ converges absolutely.
 
@@ -439,7 +445,7 @@ because $g(b,t)+g(-b,t)=-f(b,t)$: the terms $\arctan\frac bt$ and $\arctan\frac{
 
 For an index $\iota=(\mathrm X,j)$ with $\mathrm X\in\{\mathrm R,\mathrm I\}$ and $j\ge1$, and for $x>0$, $t\in\R$, put
 \begin{equation}
-F_{\mathrm R,j}(x,t)=\Rp(x+it)^{-j},\qquad F_{\mathrm I,j}(x,t)=-\Ip(x+it)^{-j},\qquad G_\iota(b,t)=F_\iota(d+b,t)+F_\iota(d-b,t)\quad(|b|<d).
+F_{\mathrm R,j}(x,t)=\Rp(x+it)^{-j},\quad F_{\mathrm I,j}(x,t)=-\Ip(x+it)^{-j},\quad G_\iota(b,t)=F_\iota(d+b,t)+F_\iota(d-b,t)\ \ (|b|<d).
 \label{eq:G_def}
 \end{equation}
 A \emph{kernel} is a real linear combination
@@ -501,9 +507,11 @@ For $s=\sigma+iT$ with $\sigma>1$ and $T>0$ put
 \end{equation}
 and
 \begin{equation}
-\mathcal E(T)=\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)-\main(T),\qquad
+\begin{gathered}
+\mathcal E(T)=\frac1\pi\bigl(2\mathcal A(s_1)-\mathcal A(s_2)\bigr)-\main(T),\\
 \mathcal E_u(T)=\mathcal E(T)+\frac1\pi\sum_{\iota\in\mathcal B}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr),\qquad
 \mathcal E_\ell(T)=\mathcal E(T)-\frac1\pi\sum_{\iota\in\mathcal B}\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr).
+\end{gathered}
 \label{eq:E_def}
 \end{equation}
 
@@ -532,17 +540,28 @@ Since $n^{-\sigma_2}=n^{-\sigma_1}e^{-d\log n}$,
 \end{equation}
 
 \emph{Upper bound.} By \CGeqref{eq:K} at $(b_\rho,t_\rho)$, $f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)$ for every zero, and the series $\sum_\rho U(b_\rho,t_\rho)$ converges absolutely by Lemma~\CGref{lem:kernel_sums}. Hence, by Lemma~\CGref{lem:identity} and \CGeqref{eq:kernel_sum},
-\[
-\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\le\frac1{2\pi}\sum_{\iota}c_\iota\sum_\rho G_\iota(b_\rho,t_\rho)
+\begin{multline*}
+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\le\frac1{2\pi}\sum_{\iota}c_\iota\sum_\rho G_\iota(b_\rho,t_\rho)\\
 =\frac1\pi\sum_\iota c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)-\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr),
-\]
-and $\Phi_{\mathrm R}(e^{-iT\log n})=\cos(T\log n)$, $\Phi_{\mathrm I}(e^{-iT\log n})=\sin(T\log n)$. Adding \CGeqref{eq:argxi_comb} and comparing with \CGeqref{eq:ab_def} gives the first line of \CGeqref{eq:twosided}.
+\end{multline*}
+and $\Phi_{\mathrm R}(e^{-iT\log n})=\cos(T\log n)$, $\Phi_{\mathrm I}(e^{-iT\log n})=\sin(T\log n)$, so, with $Q(L)=\sum_{(\mathrm I,j)}c_{\mathrm I,j}L^{j-1}/(j-1)!=\frac{e^{-dL}-2}L-\pi b(L)$, the inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)+Q(\log n)\sin(T\log n)$ and the right side equals
+\begin{multline*}
+\frac1\pi\sum_\iota c_\iota\Phi_{\mathrm X}(D_j(s_1))+\sum_n\Lambda(n)n^{-\sigma_1}\bigl(a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr)\\
+-\frac1\pi\sum_n\Lambda(n)n^{-\sigma_1}\frac{e^{-d\log n}-2}{\log n}\sin(T\log n).
+\end{multline*}
+Adding \CGeqref{eq:argxi_comb} cancels the last sum and gives the first line of \CGeqref{eq:twosided}.
 
 \emph{Lower bound.} Since $f(b,-t)=-f(b,t)$, \CGeqref{eq:K} at $(b_\rho,-t_\rho)$ gives $f(b_\rho,t_\rho)\ge-U(b_\rho,-t_\rho)$, and $U(b,-t)=\sum_\iota\varepsilon_{\mathrm X}c_\iota G_\iota(b,t)$ by the parity of the $G_\iota$ in $t$. Hence
-\[
-\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\ge-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)+\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota\varepsilon_{\mathrm X}c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr).
-\]
-The inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)-(-\pi b(\log n)-\frac{e^{-d\log n}-2}{\log n})\sin(T\log n)$, by \CGeqref{eq:ab_def} and $\varepsilon_{\mathrm I}=-1$. Adding \CGeqref{eq:argxi_comb} gives the second line of \CGeqref{eq:twosided}. Absolute convergence follows from $\sigma_1>1$ and the polynomial growth of $a$ and $b$.
+\begin{multline*}
+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\ge-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}\bigl(D_j(s_1)\bigr)\\
++\frac1\pi\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\sum_\iota\varepsilon_{\mathrm X}c_\iota\frac{(\log n)^{j-1}}{(j-1)!}\Phi_{\mathrm X}\bigl(e^{-iT\log n}\bigr).
+\end{multline*}
+Here the inner sum over $\iota$ is $-\pi a(\log n)\cos(T\log n)-Q(\log n)\sin(T\log n)$, by \CGeqref{eq:ab_def} and $\varepsilon_{\mathrm I}=-1$, so the right side equals
+\begin{multline*}
+-\frac1\pi\sum_\iota\varepsilon_{\mathrm X}c_\iota\Phi_{\mathrm X}(D_j(s_1))+\sum_n\Lambda(n)n^{-\sigma_1}\bigl(-a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr)\\
+-\frac1\pi\sum_n\Lambda(n)n^{-\sigma_1}\frac{e^{-d\log n}-2}{\log n}\sin(T\log n).
+\end{multline*}
+Adding \CGeqref{eq:argxi_comb} cancels the last sum and gives the second line of \CGeqref{eq:twosided}. Absolute convergence follows from $\sigma_1>1$ and the polynomial growth of $a$ and $b$.
 \end{proof}
 
 For a prime $p$ write $\lambda_k=(\log p)\,p^{-k\sigma_1}$, $a_k=a(k\log p)$, $b_k=b(k\log p)$ and
@@ -580,7 +599,7 @@ Let $h(L)=\sqrt{a(L)^2+b(L)^2}$ and $H_{p,k}=\lambda_kh(k\log p)$. Then
 \end{proof}
 
 \begin{lemma}[The tail]\label{lem:tail}
-Let $N_0\ge2$, $g(x)=h(\log x)\,x^{-\sigma_1}$ for $x\ge N_0$, and let $G\colon[N_0,\infty)\to[0,\infty)$ be non-increasing with $G\ge g$ and $xG(x)\to0$ as $x\to\infty$. Then
+Let $N_0\ge2$, $g(x)=h(\log x)\,x^{-\sigma_1}$ for $x\ge N_0$, and let $G\colon[N_0,\infty)\to[0,\infty)$ be non-increasing, integrable, with $G\ge g$. Then
 \begin{equation}
 \sum_{n>N_0}\Lambda(n)g(n)\le G(N_0)\bigl(1.03883\,N_0-\psi(N_0)\bigr)+1.03883\int_{N_0}^\infty G(x)\,dx ,
 \label{eq:tail_bound}
@@ -589,11 +608,11 @@ where $\psi(x)=\sum_{n\le x}\Lambda(n)$.
 \end{lemma}
 
 \begin{proof}
-Since $G\ge g\ge0$, $\sum_{n>N_0}\Lambda(n)g(n)\le\int_{(N_0,\infty)}G\,d\psi$, a Stieltjes integral with respect to the non-decreasing function $\psi$. Integration by parts on $[N_0,X]$ gives $G(X)\psi(X)-G(N_0)\psi(N_0)+\int_{N_0}^X\psi(x)\,d(-G)(x)$, where $-G$ is non-decreasing so $d(-G)\ge0$. By $\psi(x)<1.03883x$ for all $x>0$ \cite[Thm.~12]{RosserSchoenfeld1962} and $G(X)\psi(X)\le1.03883XG(X)\to0$,
+For $0<y<G(N_0)$ put $X_y=\sup\{x\ge N_0:G(x)>y\}$, which is finite because $G$ is integrable and non-increasing. If $n>N_0$ and $G(n)>y$ then $n\le X_y$, so $\sum_{n>N_0,\,G(n)>y}\Lambda(n)\le\psi(X_y)-\psi(N_0)<1.03883X_y-\psi(N_0)$ by $\psi(x)<1.03883x$ for all $x>0$ \cite[Thm.~12]{RosserSchoenfeld1962}; for $y\ge G(N_0)$ the set is empty. By Tonelli's theorem,
 \[
-\int_{(N_0,\infty)}G\,d\psi\le-G(N_0)\psi(N_0)+1.03883\int_{N_0}^\infty x\,d(-G)(x)=-G(N_0)\psi(N_0)+1.03883\Bigl(N_0G(N_0)+\int_{N_0}^\infty G(x)\,dx\Bigr),
+\sum_{n>N_0}\Lambda(n)g(n)\le\sum_{n>N_0}\Lambda(n)G(n)=\int_0^{\infty}\sum_{\substack{n>N_0\\ G(n)>y}}\Lambda(n)\,dy\le\int_0^{G(N_0)}\bigl(1.03883X_y-\psi(N_0)\bigr)dy .
 \]
-the last step by integration by parts again, using $XG(X)\to0$. This is \CGeqref{eq:tail_bound}.
+Finally $\int_0^{G(N_0)}X_y\,dy=N_0G(N_0)+\int_0^{G(N_0)}(X_y-N_0)\,dy$, and for $x>N_0$ one has $X_y\ge x$ if $G(x)>y$, while $X_y\ge x$ implies $G(x)\ge y$ (there are $x'\ge x$ with $G(x')>y$, and $G(x)\ge G(x')$); hence $\{y:X_y\ge x\}$ and $\{y:y<G(x)\}$ differ by a set of measure zero, and $\int_0^{G(N_0)}(X_y-N_0)\,dy=\int_{N_0}^\infty\int_0^{G(N_0)}\mathbf 1_{X_y\ge x}\,dy\,dx=\int_{N_0}^\infty G(x)\,dx$. This is \CGeqref{eq:tail_bound}.
 \end{proof}
 
 The majorant $G$ is built as follows. Let $L_0=\log N_0$ and let $L_{\rm B}>L_0$ be such that $g$ is non-increasing on $[e^{L_{\rm B}},\infty)$; then on $[e^{L_{\rm B}},\infty)$ take $G=g$. On $[L_0,L_{\rm B}]$ choose points $L_0=u_0<u_1<\dots<u_r=L_{\rm B}$, let $\bar g_i$ be an upper bound of $g$ on $[e^{u_i},e^{u_{i+1}}]$ computed in ball arithmetic, and put $G=\max(\bar g_i,\bar g_{i+1},\dots,\bar g_{r-1},g(e^{L_{\rm B}}))$ on $[e^{u_i},e^{u_{i+1}})$; this $G$ is non-increasing and $G\ge g$, and $\int_{N_0}^{e^{L_{\rm B}}}G\,dx$ is a finite sum. The condition on $L_{\rm B}$ is verified by the next lemma. Write $a(L)=\frac1\pi P_a(L)$ and $b(L)=\frac1\pi\bigl(P_b(L)+\frac{e^{-dL}-2}L\bigr)$ with polynomials $P_a=\sum_i\mathsf a_iL^i$, $P_b=\sum_i\mathsf b_iL^i$ read off from \CGeqref{eq:ab_def}, let $D$ be the larger of their degrees, $P$ the one of $P_a$, $P_b$ of degree $D$ (if both have degree $D$, take $P=P_a$), and $q_i=|\mathsf a_i|+|\mathsf b_i|$.
@@ -614,7 +633,10 @@ On $[e^{L_{\rm B}},\infty)$ one has $h>0$ (because $\mathrm{low}>0$ gives $P\ne0
 \begin{proposition}[Certified value of $C_\zeta$]\label{prop:Cz}
 Let $N_0=10^8$, $P_0=1000$, $\mathsf M=4096$. Then $\sum_pM_p\le C_\zeta$ with
 \begin{equation}
-C_\zeta=\sum_{p\le P_0}\min\Bigl(\max_{i<\mathsf M}\sum_{k:\,p^k\le N_0}\lambda_k(a_k\cos kx_i+b_k\sin kx_i)+\frac\pi{\mathsf M}\sum_{k:\,p^k\le N_0}kH_{p,k},\ \sum_{k:\,p^k\le N_0}H_{p,k}\Bigr)+\sum_{\substack{P_0<p\le N_0\\ p^k\le N_0}}H_{p,k}+\mathrm{Tail},
+\begin{split}
+C_\zeta=\sum_{p\le P_0}\min\Bigl(\max_{i<\mathsf M}\sum_{k:\,p^k\le N_0}\lambda_k(a_k\cos kx_i+b_k\sin kx_i)&+\frac\pi{\mathsf M}\sum_{k:\,p^k\le N_0}kH_{p,k},\ \sum_{k:\,p^k\le N_0}H_{p,k}\Bigr)\\
+&+\sum_{\substack{P_0<p\le N_0\\ p^k\le N_0}}H_{p,k}+\mathrm{Tail},
+\end{split}
 \label{eq:Cz_def}
 \end{equation}
 where $\mathrm{Tail}$ is the right side of \CGeqref{eq:tail_bound} with $L_{\rm B}$ verified by Lemma~\CGref{lem:monotone}. The program \texttt{cz\_gen\_pp.py} (Appendix~\CGref{app:cert_cz}) evaluates every term of \CGeqref{eq:Cz_def} in ball arithmetic and reports an upper bound of the resulting ball. For the six kernels of Theorem~\CGref{thm:explicit} the values are in Table~\CGref{tab:lines}.
@@ -645,7 +667,7 @@ Since $\psi=(\Lo\Gamma)'$, Lemma~\CGref{lem:stirling} gives $\psi(z)=\Lo z-\frac
 \end{equation}
 
 \begin{lemma}[The elementary part for large $T$]\label{lem:elem_large}
-Let $T\ge T_0\ge1$, $z_1=s_1/2$, $C_1=c_{\mathrm R,1}/(2\pi)$ and suppose $A_1\ge C_1$. Then
+Let $T\ge T_0\ge2$, $z_1=s_1/2$, $C_1=c_{\mathrm R,1}/(2\pi)$ and suppose $A_1\ge C_1$. Then
 \begin{equation}
 F_u(T)\le\frac78-C_1\log(2\pi)+\frac{\mathsf K}T,\qquad F_\ell(T)\le-\frac78-C_1\log(2\pi)+\frac{\mathsf K}T,
 \label{eq:F_large}
@@ -663,12 +685,12 @@ where
 \begin{proof}
 \emph{The term $\mathcal E(T)$.} For $s=\sigma+iT$ with $\sigma>1$, $\arg s=\frac\pi2-\arctan\frac\sigma T$ and $\arg(s-1)=\frac\pi2-\arctan\frac{\sigma-1}T$, so $\arg s+\arg(s-1)=\pi-\theta_\sigma$ with $0\le\theta_\sigma\le\frac{2\sigma-1}T$. With $z=s/2$, Lemma~\CGref{lem:stirling} gives
 \[
-\Ip\Lo\Gamma(z)=\Bigl(\frac\sigma2-\frac12\Bigr)\arg z+\frac T2\log|z|-\frac T2+\Ip\mathcal R(z),\qquad
-\arg z=\frac\pi2-\arctan\frac\sigma T,\qquad\log|z|=\log\frac T2+\frac12\log\Bigl(1+\frac{\sigma^2}{T^2}\Bigr),
+\Ip\Lo\Gamma(z)=\Bigl(\frac\sigma2-\frac12\Bigr)\arg z+\frac T2\log|z|-\frac T2+\Ip\mathcal R(z),
 \]
+with $\arg z=\frac\pi2-\arctan\frac\sigma T$ and $\log|z|=\log\frac T2+\frac12\log\bigl(1+\frac{\sigma^2}{T^2}\bigr)$,
 and $|\mathcal R(z)|\le\frac1{3T}$ since $|\ph z|<\frac\pi2$ and $|z|\ge\frac T2$. Hence
 \[
-\mathcal A(s)=\pi+\frac T2\log\frac T{2\pi}-\frac T2+\frac{(\sigma-1)\pi}4+\delta_\sigma,\qquad
+\mathcal A(s)=\pi+\frac T2\log\frac T{2\pi}-\frac T2+\frac{(\sigma-1)\pi}4+\delta_\sigma,\quad
 \delta_\sigma=-\theta_\sigma-\frac{\sigma-1}2\arctan\frac\sigma T+\frac T4\log\Bigl(1+\frac{\sigma^2}{T^2}\Bigr)+\Ip\mathcal R(z),
 \]
 with $0\le\frac{\sigma-1}2\arctan\frac\sigma T\le\frac{\sigma(\sigma-1)}{2T}$ and $0\le\frac T4\log(1+\frac{\sigma^2}{T^2})\le\frac{\sigma^2}{4T}$. Since $2(\sigma_1-1)-(\sigma_2-1)=-\frac12$ and $2(2\sigma_1-1)=2\sigma_2-1=4d$,
@@ -683,9 +705,9 @@ where $\mathsf K_\Gamma$ is the first bracket of \CGeqref{eq:K_def} (which is la
 
 \emph{The term $j=1$.} By \CGeqref{eq:psi_k} with $k=0$, $\Rp D_1(s_1)=\Rp\frac1{s_1}+\Rp\frac1{s_1-1}-\frac12\log\pi+\frac12\log|z_1|-\frac12\Rp\frac1{s_1}+\frac12\Rp\mathcal R'(z_1)$, and $\log|z_1|=\log\frac T2+\frac12\log(1+\frac{\sigma_1^2}{T^2})$, so
 \[
-\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+\delta_1,\qquad|\delta_1|\le\frac1{T^2}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr)\le\frac1{T_0T}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr),
+\Rp D_1(s_1)=\frac12\log\frac T{2\pi}+\delta_1,\qquad|\delta_1|\le\frac1{T^2}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr)\le\frac1{2T}\Bigl((2\sigma_1-1)+\frac{\sigma_1^2}4+\frac{\sigma_1}2+\frac83\Bigr),
 \]
-using $0\le\Rp\frac1{s}\le\frac\sigma{T^2}$, $0\le\Rp\frac1{s-1}\le\frac{\sigma-1}{T^2}$ and $|\mathcal R'(z_1)|\le\frac4{3|z_1|^2}\le\frac{16}{3T^2}$ from \CGeqref{eq:R_deriv}. Since $T_0\ge1$, $|c_{\mathrm R,1}|\,|\delta_1|/\pi$ is at most the second term of \CGeqref{eq:K_def} divided by $T$, with room to spare.
+using $0\le\Rp\frac1{s}\le\frac\sigma{T^2}$, $0\le\Rp\frac1{s-1}\le\frac{\sigma-1}{T^2}$, $|\mathcal R'(z_1)|\le\frac4{3|z_1|^2}\le\frac{16}{3T^2}$ from \CGeqref{eq:R_deriv}, and $T\ge2$. Since $\frac{\sigma_1}2\le(2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83$ for $\sigma_1>1$, the last bracket halved is at most $(2\sigma_1-1)+\frac{\sigma_1^2}4+\frac83$, so $|c_{\mathrm R,1}|\,|\delta_1|/\pi$ is at most the second term of \CGeqref{eq:K_def} divided by $T$.
 
 \emph{The terms $j\ge2$.} $|D_j(s_1)|\le\frac2{T^j}+\frac{|\psi^{(j-1)}(z_1)|}{(j-1)!\,2^j}$, and by \CGeqref{eq:psi_k} with $k=j-1\ge1$, \CGeqref{eq:R_deriv} and $|z_1|\ge\frac T2$,
 \[
@@ -806,7 +828,7 @@ Let $\frac12=\varsigma_0<\varsigma_1<\dots<\varsigma_n=1$ and $e_0\ge e_1\ge\dot
 \end{lemma}
 
 \begin{proof}
-Fix $\varepsilon>0$ and $i<n$, and put $\Xi(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\Xi$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\Xi(s)|\le|s|+|s||s-1|/\Rp s\le2|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\Xi(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\Xi$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\Xi(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
+Fix $\varepsilon>0$ and $i<n$, and put $\Xi(s)=(s-1)\zeta(s)$, $Q=10$. On the strip $\varsigma_i\le\Rp s\le\varsigma_{i+1}$, $\Xi$ is holomorphic and of polynomial growth: by \cite[(2.1.4)]{Titchmarsh1986}, $\zeta(s)=\frac s{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx$ for $\Rp s>0$, so $|\Xi(s)|\le|s|+|s||s-1|/\Rp s\le3|s|(1+|s|)$ there. On the line $\Rp s=\varsigma_i$: for $|t|\ge2$, $|s-1|\le|Q+s|$ (as $Q+\varsigma_i\ge|\varsigma_i-1|$) and $|t|\le|Q+s|$, so $|\Xi(s)|\le K_{i,\varepsilon}|Q+s|^{1+e_i+\varepsilon}$; for $|t|\le2$, $\Xi$ is bounded on the compact segment and $|Q+s|\ge10$, so the same bound holds with a larger constant $A_i$. Likewise $|\Xi(s)|\le B_i|Q+s|^{1+e_{i+1}+\varepsilon}$ on $\Rp s=\varsigma_{i+1}$. Since $1+e_i+\varepsilon\ge1+e_{i+1}+\varepsilon\ge0$, the theorem of Phragm\'en--Lindel\"of type of Rademacher \cite{Rademacher1959} (also \cite[Cor.~3]{Fiori2025} with $\alpha_2=0$) gives, on the strip,
 \[
 |\Xi(s)|\le\bigl(A_i|Q+s|^{1+e_i+\varepsilon}\bigr)^{\frac{\varsigma_{i+1}-\sigma}{\varsigma_{i+1}-\varsigma_i}}\bigl(B_i|Q+s|^{1+e_{i+1}+\varepsilon}\bigr)^{\frac{\sigma-\varsigma_i}{\varsigma_{i+1}-\varsigma_i}}\le\max(A_i,B_i)\,|Q+s|^{1+\mathfrak e(\sigma)+\varepsilon},
 \]
@@ -865,7 +887,7 @@ Let $s_0=c+i(T+v)$ and, for a zero $\rho$, let $\rho^*$ be the one of $\rho$, $1
 \sum_\rho W(b_\rho,t_\rho)\le2\sum_{w\in\mathbb D}\log\frac R{|w-s_0|},
 \label{eq:W_to_jensen}
 \end{equation}
-the sum over the zeros of $\zeta$ in $\mathbb D$ with multiplicity. For $T>R+|v|+1$ the closed disc $\bar{\mathbb D}$ does not contain $s=1$, so $\zeta$ is holomorphic on it, and $\zeta(s_0)\ne0$ because $\Rp s_0=c>1$. Jensen's formula \cite[\S3.61]{Titchmarsh1939} gives
+the sum over the zeros of $\zeta$ in $\mathbb D$ with multiplicity. For $T>R+|v|+1$ the closed disc $\bar{\mathbb D}$ does not contain $s=1$, so $\zeta$ is holomorphic on it, and $\zeta(s_0)\ne0$ because $\Rp s_0=c>1$. Jensen's formula \cite[\S3.61]{Titchmarsh1939}, \cite[Thm.~15.18]{Rudin1987} (which allows zeros on the circle) gives
 \begin{equation}
 \sum_{w\in\mathbb D}\log\frac R{|w-s_0|}=\frac1{2\pi}\int_0^{2\pi}\log|\zeta(s_0+Re^{i\theta})|\,d\theta-\log|\zeta(s_0)| .
 \label{eq:jensen}
@@ -926,7 +948,7 @@ since $\sigma=c_k+R_k\cos\theta$ and $d\sigma=-R_k\sin\theta\,d\theta$; the argu
 \begin{proof}[Proof of Theorem~\CGref{thm:hybrid}]
 Let $\varepsilon>0$ and let $T\to\infty$ through values that are not ordinates. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
 \[
--U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,-t_\rho)\Big|_{t_\rho\to t_\rho}=U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
+-U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
 \]
 Summing over $\rho$ (all series converge absolutely: those of $U$ by Lemma~\CGref{lem:kernel_sums}, those of $W_k$ because only finitely many zeros lie in each disc) and using Lemmas~\CGref{lem:kernel_asym} and~\CGref{lem:jensen} with the admissible profile $\eP$ of Lemma~\CGref{lem:profile},
 \[
@@ -942,12 +964,18 @@ for $T\ge\max_kT_\varepsilon(k)$. By Lemma~\CGref{lem:identity} and Lemma~\CGref
 For fixed coefficients, $U-f$ is harmonic in $(b,t)$ on each of the half-strips $|b|<d$, $t>0$ and $|b|<d$, $t<0$: each $\arctan\frac yt$ is an argument of $t+iy$, hence harmonic in $(y,t)$ and in $(b,t)$, and each $F_\iota(d\pm b,t)$ is the real or imaginary part of a holomorphic function of $(d\pm b)+it$. By the maximum principle, $f\le U$ on $|b|\le\frac12$, $t\ne0$ holds as soon as it holds on the lines $b=\pm\frac12$ and in the limits $t\to0^\pm$ and $|t|\to\infty$. The constraints that fix the optimum of the kernel are therefore those at $b=\pm\frac12$, that is, at hypothetical zeros with $\beta$ arbitrarily close to $0$ or $1$. The values of $\zeta$ on $\Rp s>1$, which are all the method uses, cannot exclude clusters of order $\log T$ of such zeros near height $T$, and the numerical optima of Remark~\CGref{rem:infimum} reflect this. The weights $W_k$ relax exactly these constraints: in Table~\CGref{tab:hybrid_discs} every disc has $c_k-R_k\ge\frac12$, and only the values of $\eP$ on $[\frac12,1]$ enter $C_{\rm H}$.
 
 \subsection{Optimisation}\label{subsec:optimisation}
-For fixed $d$ the set of admissible $(c_\iota)$ in \CGeqref{eq:K}, and of admissible $(c_\iota,\kappa_k)$ in \CGeqref{eq:hybrid_ineq}, is convex, being defined by linear inequalities indexed by $(b,t)$. For Theorem~\CGref{thm:explicit}, the quantity minimised at a target height $L^*$ is $A_1L^*+C_\zeta+\sup F$, where $C_\zeta$ is approximated by $\sum_{p\le300}\max_{x\text{ on a grid}}f_p(x)+\sum_{p>300}\sum_kH_{p,k}$ over prime powers up to $2\cdot10^4$ plus a quadrature of the tail, a convex function of the coefficients (a sum of pointwise maxima of linear functions and of Euclidean norms), and $\sup F$ by its maximum on a grid of $260$ heights in $[1,10^6]$ and its limit at $T=\infty$. The problem is a second-order cone programme, solved with \texttt{cvxpy} and Clarabel; the constraint \CGeqref{eq:K} is imposed on a grid of $26\times1399$ points $(b,t)$ with a margin $\eta/(1+t^2)$, $\eta=2\cdot10^{-4}$, and the points where the current solution violates it on a finer grid ($201\times24000$) are added as cutting planes, until no violation remains. The optimisation was run for $d\in\{0.65,0.75,0.8,0.85,0.9,0.95,1,1.2\}$, $m\in\{2,3,4,5,7,10\}$ and $L^*\in\{5,20,60,150,400,1000,2500,6000,20000\}$; the six kernels of Theorem~\CGref{thm:explicit} are the best found for $L^*=5,20,60,150,400,6000$. Longer kernels did not lower the leading constant below $0.0838$: for $L^*=20000$ the optimum is again $A_1=0.08381$.
+For fixed $d$ the set of admissible $(c_\iota)$ in \CGeqref{eq:K}, and of admissible $(c_\iota,\kappa_k)$ in \CGeqref{eq:hybrid_ineq}, is convex, being defined by linear inequalities indexed by $(b,t)$. For Theorem~\CGref{thm:explicit}, the quantity minimised at a target height $L^*$ is $A_1L^*+C_\zeta+\sup F$, where $C_\zeta$ is approximated by $\sum_n\Lambda(n)n^{-\sigma_1}h(\log n)$ over the prime powers $n\le2\cdot10^4$ plus a quadrature of the tail (for $\ell_{6000}$, with the maximum over a grid of $96$ phases in place of $h$ for the primes $p\le300$), a convex function of the coefficients (a sum of Euclidean norms and of pointwise maxima of linear functions), and $\sup F$ by its maximum on a grid of $260$ heights in $[1,10^6]$ and its limit at $T=\infty$. The problem is a second-order cone programme, solved with \texttt{cvxpy} and Clarabel; the constraint \CGeqref{eq:K} is imposed on a grid of $26\times2200$ points $(b,t)$ with a margin $\eta/(1+t^2)$, $\eta=2\cdot10^{-4}$, and the points where the current solution violates it on a finer grid ($201\times24000$) are added as cutting planes, until no violation remains. The optimisation was run for $d\in\{0.65,0.75,0.8,0.85,0.9,0.95,1,1.2\}$, $m\in\{2,3,4,5,7,10\}$ and $L^*\in\{5,20,60,150,400,1000,2500,6000,20000\}$; the six kernels of Theorem~\CGref{thm:explicit} are the best found for $L^*=5,20,60,150,400,6000$. Longer kernels did not lower the leading constant below $0.0838$: for $L^*=20000$ the optimum is again $A_1=0.08381$.
 
-For Theorem~\CGref{thm:hybrid} the objective is \CGeqref{eq:CH}, linear in $(c_\iota,\kappa_k)$, so the problem is a linear programme (HiGHS through \texttt{scipy}), with the same grid, cutting planes and a margin $\eta=10^{-3}$. The candidate discs were all $(c,R,v)$ with $c\in\{1.03,1.06,1.1,\log3,1.15,1.2,1.25,1.3,1.4,1.5,\log5,2,e,3\}$, $R\in\{c-1+x:x=0.05,0.1,\dots,0.5\}$ with $R\le c-\frac12$, and $v\in\{0,\pm0.2,\pm0.35,\pm0.5,\pm0.65,\pm0.8,\pm1,\pm1.3,\pm1.6,\pm2\}$; the optimum uses $85$ of the $2660$ candidates. The first certification of the LP solution found a true violation of \CGeqref{eq:hybrid_ineq}, of size $-8.9\cdot10^{-5}$ at $(b,t)\approx(0.467,-0.450)$, between two cutting planes; it was repaired by adding $2\cdot10^{-4}$ to $c_{\mathrm R,1}$, which adds $2\cdot10^{-4}G_{\mathrm R,1}>0$ to $U$ and $3.2\cdot10^{-5}$ to $C_{\rm H}$. The repaired kernel is the one of Table~\CGref{tab:hybrid_kernel}. With the Bourgain profile (the piecewise linear function through the points $(\lambda_j-\kappa_j,\kappa_j)$, $(\kappa_j,\lambda_j)=A^j(\frac{13}{84},\frac{55}{84})$, $0\le j\le7$, and $(1,0)$, where $A$ is the $A$-process) in place of $\eP$ the same construction gives, on the grid, $0.07531$; with $\eP$ it gives $0.07477$ before the margin and the repair; with $m=20$ the grid value is $0.0740$ (cutting planes not converged); none of these is certified. The grid values quoted in Remark~\CGref{rem:infimum} are from the same programs.
+For Theorem~\CGref{thm:hybrid} the objective is \CGeqref{eq:CH}, linear in $(c_\iota,\kappa_k)$, so the problem is a linear programme (HiGHS through \texttt{scipy}), with the same grid, cutting planes and a margin $\eta=10^{-3}$. The candidate discs were all $(c,R,v)$ with
+\[
+\begin{gathered}
+c\in\{1.03,1.06,1.1,\log3,1.15,1.2,1.25,1.3,1.4,1.5,\log5,2,e,3\},\\ R=c-1+x,\quad x\in\{0.05,0.1,\dots,0.5\},\quad R\le c-\tfrac12,
+\end{gathered}
+\]
+and $v\in\{0,\pm0.2,\pm0.35,\pm0.5,\pm0.65,\pm0.8,\pm1,\pm1.3,\pm1.6,\pm2\}$; the optimum uses $85$ of the $2660$ candidates. The first certification of the LP solution found a true violation of \CGeqref{eq:hybrid_ineq}, of size $-8.9\cdot10^{-5}$ at $(b,t)\approx(0.467,-0.450)$, between two cutting planes; it was repaired by adding $2\cdot10^{-4}$ to $c_{\mathrm R,1}$, which adds $2\cdot10^{-4}G_{\mathrm R,1}>0$ to $U$ and $3.2\cdot10^{-5}$ to $C_{\rm H}$. The repaired kernel is the one of Table~\CGref{tab:hybrid_kernel}. With the Bourgain profile (the piecewise linear function through the points $(\lambda_j-\kappa_j,\kappa_j)$, $(\kappa_j,\lambda_j)=A^j(\frac{13}{84},\frac{55}{84})$, $0\le j\le7$, and $(1,0)$, where $A$ is the $A$-process) in place of $\eP$ the same construction gives, on the grid, $0.07531$; with $\eP$ it gives $0.07477$ before the margin and the repair; with $m=20$ the grid value is $0.0740$ (cutting planes not converged); none of these is certified. The grid values quoted in Remark~\CGref{rem:infimum} are from the same programs.
 
 \subsection{Certification}\label{subsec:certification}
-All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits of precision; a ball computed by Arb contains the exact value of the expression evaluated, and the programs only ever use the endpoints of balls in the direction that makes the final statement weaker. The kernel inequality for the hybrid ($T_1=40$) took $716$ seconds; for the longest explicit kernel ($\ell_{400}$, $T_1=100$) the three parts of Proposition~\CGref{prop:kernel_cert} needed $11\,835\,193$, $9\,801\,985$ and $4\,194\,302$ boxes and $2716$ seconds. The constant $C_\zeta$ for each kernel takes about $165$ seconds (the sum over the $5\,761\,455$ primes below $10^8$ and their powers, and the tail), and the elementary part about $120$ seconds per mode. The coefficients are passed to the certifiers as the exact binary numbers written by the optimiser (the JSON files of Appendix~\CGref{app:data}, whose decimal strings round-trip), so there is no rounding between search and certificate other than the rational rounding of the disc data described before \CGeqref{eq:CH}, which is itself part of the certified data.
+All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits of precision; a ball computed by Arb contains the exact value of the expression evaluated, and the programs only ever use the endpoints of balls in the direction that makes the final statement weaker. The kernel inequality for the hybrid ($T_1=40$) took $716$ seconds; for the kernel of $\ell_{400}$ the three parts of Proposition~\CGref{prop:kernel_cert} needed $11\,835\,193$, $9\,801\,985$ and $4\,194\,302$ boxes and $2716$ seconds, and for that of $\ell_{6000}$, $3243$ seconds. The constant $C_\zeta$ for each kernel takes between $80$ and $165$ seconds (the sum over the $5\,761\,455$ primes below $10^8$ and their powers, and the tail), and the elementary part about $120$ seconds per mode. The coefficients are passed to the certifiers as the exact binary numbers written by the optimiser (the JSON files of Appendix~\CGref{app:data}, whose decimal strings round-trip), so there is no rounding between search and certificate other than the rational rounding of the disc data described before \CGeqref{eq:CH}, which is itself part of the certified data.
 
 \subsection{Comparison of the two methods}\label{subsec:comparison_methods}
 Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Making Theorem~\CGref{thm:hybrid} explicit requires versions of \CGeqref{eq:admissible} with explicit constants, for which the available bounds are those of Hiary, Patel and Yang \cite{HiaryPatelYang2024} on the critical line, of Yang \cite{Yang2024} on the lines $\sigma=1-m/(2^m-2)$, and of Bellotti \cite{Bellotti2024} in the strip; with them the method gives bounds of the form $A_1\log T+B\log\log T+C$ with $A_1$ near $0.076$, valid from a computable height, and this is left for a later article.
@@ -1003,6 +1031,8 @@ The computations of Appendices~\CGref{app:code}--\CGref{app:cert} use Python~3.1
 
 \bibitem{Rademacher1959} H. Rademacher, On the Phragm\'en--Lindel\"of theorem and some applications, \textit{Math. Z.} \textbf{72} (1959) 192--204, \href{https://doi.org/10.1007/BF01162949}{doi:10.1007/BF01162949}.
 
+\bibitem{Rudin1987} W. Rudin, \textit{Real and Complex Analysis}, 3rd edn. (McGraw-Hill, New York, 1987).
+
 \bibitem{Rosser1941} J. B. Rosser, Explicit bounds for some functions of prime numbers, \textit{Amer. J. Math.} \textbf{63} (1941) 211--232, \href{https://doi.org/10.2307/2371291}{doi:10.2307/2371291}.
 
 \bibitem{RosserSchoenfeld1962} J. B. Rosser and L. Schoenfeld, Approximate formulas for some functions of prime numbers, \textit{Illinois J. Math.} \textbf{6} (1962) 64--94, \href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
@@ -1047,31 +1077,32 @@ $(\mathrm R,10)$ & $0.00566316150651$ & & \\
 
 \small
 \begin{center}
-\begin{longtable}{@{}rrrrrrr@{}}\toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\kappa_k$ & $J_k$ & $\kappa_kJ_k/\pi$\\\midrule\endfirsthead
+\begin{longtable}{@{}rrrrrrr@{}}\caption{The $85$ disc data $(c_k,R_k,v_k)$ (rational, as used in the certificate), the weights $\kappa_k$ (ten significant digits; exact binary values in Appendix~\ref{app:data}), $J_k=J(\mathfrak e_{\rm P};c_k,R_k)$ and the contributions $\kappa_kJ_k/\pi$ to $C_{\rm H}$. The centres include $\log3$ and $\log5$ rounded to denominators $\le10^4$.}\label{tab:hybrid_discs}\\
+\toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\kappa_k$ & $J_k$ & $\kappa_kJ_k/\pi$\\\midrule\endfirsthead
 \toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\kappa_k$ & $J_k$ & $\kappa_kJ_k/\pi$\\\midrule\endhead
 \bottomrule\endfoot
 1 & $103/100$ & $9/50$ & $-1/2$ & $0.04794121511$ & $0.0069138770$ & $0.000105507$\\
-2 & $103/100$ & $9/50$ & $1/2$ & $0.0369050143$ & $0.0069138770$ & $8.12189e-5$\\
+2 & $103/100$ & $9/50$ & $1/2$ & $0.0369050143$ & $0.0069138770$ & $8.12189\cdot10^{-5}$\\
 3 & $103/100$ & $23/100$ & $-13/20$ & $0.04834170661$ & $0.010786963$ & $0.000165986$\\
 4 & $103/100$ & $23/100$ & $13/20$ & $0.157399738$ & $0.010786963$ & $0.000540447$\\
 5 & $103/100$ & $7/25$ & $-13/20$ & $0.02587833919$ & $0.015048973$ & $0.000123963$\\
 6 & $103/100$ & $7/25$ & $13/20$ & $0.1061684833$ & $0.015048973$ & $0.000508572$\\
 7 & $103/100$ & $33/100$ & $-13/20$ & $0.0236188805$ & $0.019571517$ & $0.000147141$\\
 8 & $103/100$ & $33/100$ & $13/20$ & $0.1023900228$ & $0.019571517$ & $0.000637870$\\
-9 & $103/100$ & $33/100$ & $4/5$ & $0.003545510823$ & $0.019571517$ & $2.20878e-5$\\
+9 & $103/100$ & $33/100$ & $4/5$ & $0.003545510823$ & $0.019571517$ & $2.20878\cdot10^{-5}$\\
 10 & $103/100$ & $19/50$ & $-13/20$ & $0.0190191896$ & $0.024737703$ & $0.000149762$\\
 11 & $103/100$ & $19/50$ & $13/20$ & $0.06465743477$ & $0.024737703$ & $0.000509129$\\
-12 & $103/100$ & $43/100$ & $1$ & $0.003616521045$ & $0.030311094$ & $3.48934e-5$\\
-13 & $103/100$ & $12/25$ & $-1$ & $0.003351206341$ & $0.036143828$ & $3.85554e-5$\\
+12 & $103/100$ & $43/100$ & $1$ & $0.003616521045$ & $0.030311094$ & $3.48934\cdot10^{-5}$\\
+13 & $103/100$ & $12/25$ & $-1$ & $0.003351206341$ & $0.036143828$ & $3.85554\cdot10^{-5}$\\
 14 & $103/100$ & $12/25$ & $1$ & $0.01526810593$ & $0.036143828$ & $0.000175659$\\
-15 & $103/100$ & $53/100$ & $-8/5$ & $0.0001397445226$ & $0.042238079$ & $1.87884e-6$\\
-16 & $103/100$ & $53/100$ & $-13/10$ & $0.0002969055751$ & $0.042238079$ & $3.99184e-6$\\
-17 & $103/100$ & $53/100$ & $-1$ & $0.0009108669136$ & $0.042238079$ & $1.22464e-5$\\
-18 & $103/100$ & $53/100$ & $1$ & $0.004480174729$ & $0.042238079$ & $6.02350e-5$\\
-19 & $103/100$ & $53/100$ & $13/10$ & $0.001486648476$ & $0.042238079$ & $1.99877e-5$\\
-20 & $53/50$ & $4/25$ & $-1/2$ & $0.04885368436$ & $0.0032593311$ & $5.06846e-5$\\
+15 & $103/100$ & $53/100$ & $-8/5$ & $0.0001397445226$ & $0.042238079$ & $1.87884\cdot10^{-6}$\\
+16 & $103/100$ & $53/100$ & $-13/10$ & $0.0002969055751$ & $0.042238079$ & $3.99184\cdot10^{-6}$\\
+17 & $103/100$ & $53/100$ & $-1$ & $0.0009108669136$ & $0.042238079$ & $1.22464\cdot10^{-5}$\\
+18 & $103/100$ & $53/100$ & $1$ & $0.004480174729$ & $0.042238079$ & $6.02350\cdot10^{-5}$\\
+19 & $103/100$ & $53/100$ & $13/10$ & $0.001486648476$ & $0.042238079$ & $1.99877\cdot10^{-5}$\\
+20 & $53/50$ & $4/25$ & $-1/2$ & $0.04885368436$ & $0.0032593311$ & $5.06846\cdot10^{-5}$\\
 21 & $53/50$ & $4/25$ & $1/2$ & $0.161044244$ & $0.0032593311$ & $0.000167080$\\
-22 & $53/50$ & $21/100$ & $-1/2$ & $0.02345342409$ & $0.0063616476$ & $4.74926e-5$\\
+22 & $53/50$ & $21/100$ & $-1/2$ & $0.02345342409$ & $0.0063616476$ & $4.74926\cdot10^{-5}$\\
 23 & $53/50$ & $21/100$ & $1/2$ & $0.2275992324$ & $0.0063616476$ & $0.000460883$\\
 24 & $53/50$ & $13/50$ & $-1/2$ & $0.08939597402$ & $0.010091730$ & $0.000287166$\\
 25 & $53/50$ & $13/50$ & $1/2$ & $0.1519683713$ & $0.010091730$ & $0.000488168$\\
@@ -1080,68 +1111,68 @@ $(\mathrm R,10)$ & $0.00566316150651$ & & \\
 28 & $53/50$ & $41/100$ & $13/20$ & $0.0852639485$ & $0.023727069$ & $0.000643961$\\
 29 & $53/50$ & $41/100$ & $4/5$ & $0.01741657093$ & $0.023727069$ & $0.000131540$\\
 30 & $53/50$ & $23/50$ & $4/5$ & $0.01374894904$ & $0.029208025$ & $0.000127827$\\
-31 & $53/50$ & $14/25$ & $-8/5$ & $4.075855253e-06$ & $0.040975795$ & $5.31614e-8$\\
-32 & $53/50$ & $14/25$ & $-13/10$ & $4.409961547e-05$ & $0.040975795$ & $5.75191e-7$\\
-33 & $53/50$ & $14/25$ & $13/10$ & $0.0001588715206$ & $0.040975795$ & $2.07216e-6$\\
-34 & $11/10$ & $3/20$ & $-7/20$ & $0.0550560678$ & $0.00078557774$ & $1.37672e-5$\\
+31 & $53/50$ & $14/25$ & $-8/5$ & $4.075855253\cdot10^{-6}$ & $0.040975795$ & $5.31614\cdot10^{-8}$\\
+32 & $53/50$ & $14/25$ & $-13/10$ & $4.409961547\cdot10^{-5}$ & $0.040975795$ & $5.75191\cdot10^{-7}$\\
+33 & $53/50$ & $14/25$ & $13/10$ & $0.0001588715206$ & $0.040975795$ & $2.07216\cdot10^{-6}$\\
+34 & $11/10$ & $3/20$ & $-7/20$ & $0.0550560678$ & $0.00078557774$ & $1.37672\cdot10^{-5}$\\
 35 & $11/10$ & $1/4$ & $-1/2$ & $0.06981663463$ & $0.0057973918$ & $0.000128837$\\
 36 & $11/10$ & $1/4$ & $1/2$ & $0.1773566699$ & $0.0057973918$ & $0.000327288$\\
 37 & $11/10$ & $2/5$ & $4/5$ & $0.07198100074$ & $0.017623649$ & $0.000403798$\\
-38 & $11/10$ & $1/2$ & $-4/5$ & $0.0004564504973$ & $0.027910450$ & $4.05518e-6$\\
-39 & $11/10$ & $3/5$ & $-1$ & $0.000612420815$ & $0.039458156$ & $7.69196e-6$\\
-40 & $11/10$ & $3/5$ & $1$ & $0.002747211855$ & $0.039458156$ & $3.45048e-5$\\
-41 & $11/10$ & $3/5$ & $13/10$ & $0.000214610018$ & $0.039458156$ & $2.69548e-6$\\
-42 & $5225/4756$ & $229/1153$ & $-1/2$ & $0.0585032614$ & $0.0029087233$ & $5.41667e-5$\\
+38 & $11/10$ & $1/2$ & $-4/5$ & $0.0004564504973$ & $0.027910450$ & $4.05518\cdot10^{-6}$\\
+39 & $11/10$ & $3/5$ & $-1$ & $0.000612420815$ & $0.039458156$ & $7.69196\cdot10^{-6}$\\
+40 & $11/10$ & $3/5$ & $1$ & $0.002747211855$ & $0.039458156$ & $3.45048\cdot10^{-5}$\\
+41 & $11/10$ & $3/5$ & $13/10$ & $0.000214610018$ & $0.039458156$ & $2.69548\cdot10^{-6}$\\
+42 & $5225/4756$ & $229/1153$ & $-1/2$ & $0.0585032614$ & $0.0029087233$ & $5.41667\cdot10^{-5}$\\
 43 & $5225/4756$ & $229/1153$ & $1/2$ & $0.2549235582$ & $0.0029087233$ & $0.000236027$\\
 44 & $5225/4756$ & $2329/9368$ & $1/2$ & $0.08999758511$ & $0.0058145056$ & $0.000166569$\\
-45 & $5225/4756$ & $1743/5837$ & $-1/2$ & $0.01018159396$ & $0.0093687838$ & $3.03633e-5$\\
+45 & $5225/4756$ & $1743/5837$ & $-1/2$ & $0.01018159396$ & $0.0093687838$ & $3.03633\cdot10^{-5}$\\
 46 & $5225/4756$ & $1743/5837$ & $1/2$ & $0.190930449$ & $0.0093687838$ & $0.000569388$\\
-47 & $5225/4756$ & $2667/5945$ & $-4/5$ & $0.002973806964$ & $0.022593493$ & $2.13868e-5$\\
+47 & $5225/4756$ & $2667/5945$ & $-4/5$ & $0.002973806964$ & $0.022593493$ & $2.13868\cdot10^{-5}$\\
 48 & $5225/4756$ & $2667/5945$ & $4/5$ & $0.01658999344$ & $0.022593493$ & $0.000119311$\\
-49 & $5225/4756$ & $4132/8287$ & $-4/5$ & $0.002292772967$ & $0.027952580$ & $2.04001e-5$\\
+49 & $5225/4756$ & $4132/8287$ & $-4/5$ & $0.002292772967$ & $0.027952580$ & $2.04001\cdot10^{-5}$\\
 50 & $5225/4756$ & $4132/8287$ & $4/5$ & $0.0114306256$ & $0.027952580$ & $0.000101705$\\
-51 & $5225/4756$ & $3222/5873$ & $4/5$ & $0.001994315479$ & $0.033591760$ & $2.13244e-5$\\
-52 & $5225/4756$ & $2847/4756$ & $-13/10$ & $5.446961828e-05$ & $0.039507983$ & $6.84998e-7$\\
-53 & $23/20$ & $1/5$ & $-1/2$ & $0.08543526352$ & $0.00067784859$ & $1.84340e-5$\\
-54 & $23/20$ & $1/5$ & $-7/20$ & $0.04346495036$ & $0.00067784859$ & $9.37825e-6$\\
-55 & $23/20$ & $1/5$ & $7/20$ & $0.2263816956$ & $0.00067784859$ & $4.88455e-5$\\
-56 & $23/20$ & $9/20$ & $-4/5$ & $0.002794177723$ & $0.016543682$ & $1.47142e-5$\\
-57 & $23/20$ & $1/2$ & $-4/5$ & $0.003393622056$ & $0.021311247$ & $2.30209e-5$\\
-58 & $23/20$ & $11/20$ & $-4/5$ & $0.00693896347$ & $0.026509943$ & $5.85536e-5$\\
+51 & $5225/4756$ & $3222/5873$ & $4/5$ & $0.001994315479$ & $0.033591760$ & $2.13244\cdot10^{-5}$\\
+52 & $5225/4756$ & $2847/4756$ & $-13/10$ & $5.446961828\cdot10^{-5}$ & $0.039507983$ & $6.84998\cdot10^{-7}$\\
+53 & $23/20$ & $1/5$ & $-1/2$ & $0.08543526352$ & $0.00067784859$ & $1.84340\cdot10^{-5}$\\
+54 & $23/20$ & $1/5$ & $-7/20$ & $0.04346495036$ & $0.00067784859$ & $9.37825\cdot10^{-6}$\\
+55 & $23/20$ & $1/5$ & $7/20$ & $0.2263816956$ & $0.00067784859$ & $4.88455\cdot10^{-5}$\\
+56 & $23/20$ & $9/20$ & $-4/5$ & $0.002794177723$ & $0.016543682$ & $1.47142\cdot10^{-5}$\\
+57 & $23/20$ & $1/2$ & $-4/5$ & $0.003393622056$ & $0.021311247$ & $2.30209\cdot10^{-5}$\\
+58 & $23/20$ & $11/20$ & $-4/5$ & $0.00693896347$ & $0.026509943$ & $5.85536\cdot10^{-5}$\\
 59 & $23/20$ & $11/20$ & $4/5$ & $0.03251223251$ & $0.026509943$ & $0.000274350$\\
-60 & $23/20$ & $13/20$ & $-13/10$ & $5.267650803e-05$ & $0.037780806$ & $6.33488e-7$\\
-61 & $23/20$ & $13/20$ & $-1$ & $0.000433168236$ & $0.037780806$ & $5.20928e-6$\\
-62 & $23/20$ & $13/20$ & $1$ & $0.001776596527$ & $0.037780806$ & $2.13654e-5$\\
-63 & $23/20$ & $13/20$ & $13/10$ & $0.0002226772507$ & $0.037780806$ & $2.67792e-6$\\
-64 & $6/5$ & $1/4$ & $1/2$ & $0.334519418$ & $0.00060498120$ & $6.44189e-5$\\
-65 & $6/5$ & $7/10$ & $-13/10$ & $4.572964533e-05$ & $0.036302130$ & $5.28421e-7$\\
-66 & $6/5$ & $7/10$ & $-1$ & $0.0003445239333$ & $0.036302130$ & $3.98109e-6$\\
-67 & $6/5$ & $7/10$ & $1$ & $0.001546601473$ & $0.036302130$ & $1.78715e-5$\\
-68 & $6/5$ & $7/10$ & $13/10$ & $0.0001463592826$ & $0.036302130$ & $1.69123e-6$\\
-69 & $5/4$ & $3/10$ & $-7/20$ & $0.08907592125$ & $0.00055148537$ & $1.56367e-5$\\
-70 & $5/4$ & $3/10$ & $7/20$ & $0.3795839671$ & $0.00055148537$ & $6.66334e-5$\\
-71 & $5/4$ & $3/4$ & $-13/10$ & $3.644530876e-05$ & $0.034985511$ & $4.05863e-7$\\
-72 & $5/4$ & $3/4$ & $-1$ & $0.0003355290098$ & $0.034985511$ & $3.73653e-6$\\
-73 & $5/4$ & $3/4$ & $1$ & $0.001426333987$ & $0.034985511$ & $1.58840e-5$\\
-74 & $5/4$ & $3/4$ & $13/10$ & $0.0002927499897$ & $0.034985511$ & $3.26013e-6$\\
-75 & $13/10$ & $4/5$ & $-13/10$ & $4.556491809e-05$ & $0.033803191$ & $4.90274e-7$\\
-76 & $13/10$ & $4/5$ & $-1$ & $0.0008241713773$ & $0.033803191$ & $8.86799e-6$\\
-77 & $13/10$ & $4/5$ & $1$ & $0.003939227432$ & $0.033803191$ & $4.23857e-5$\\
-78 & $7/5$ & $9/20$ & $-7/20$ & $0.3713075056$ & $0.00044923233$ & $5.30952e-5$\\
-79 & $7/5$ & $9/20$ & $7/20$ & $0.6314222324$ & $0.00044923233$ & $9.02903e-5$\\
-80 & $7/5$ & $9/10$ & $-13/10$ & $0.0001234809797$ & $0.031760037$ & $1.24834e-6$\\
-81 & $7/5$ & $9/10$ & $13/10$ & $0.001441638426$ & $0.031760037$ & $1.45743e-5$\\
-82 & $3/2$ & $11/20$ & $-7/20$ & $0.09582582545$ & $0.00040600316$ & $1.23840e-5$\\
-83 & $3/2$ & $11/20$ & $7/20$ & $0.378111256$ & $0.00040600316$ & $4.88651e-5$\\
-84 & $9993/6209$ & $2980/4519$ & $-7/20$ & $0.1767418509$ & $0.00037055405$ & $2.08469e-5$\\
-85 & $9993/6209$ & $2980/4519$ & $7/20$ & $0.4838434428$ & $0.00037055405$ & $5.70698e-5$\\
+60 & $23/20$ & $13/20$ & $-13/10$ & $5.267650803\cdot10^{-5}$ & $0.037780806$ & $6.33488\cdot10^{-7}$\\
+61 & $23/20$ & $13/20$ & $-1$ & $0.000433168236$ & $0.037780806$ & $5.20928\cdot10^{-6}$\\
+62 & $23/20$ & $13/20$ & $1$ & $0.001776596527$ & $0.037780806$ & $2.13654\cdot10^{-5}$\\
+63 & $23/20$ & $13/20$ & $13/10$ & $0.0002226772507$ & $0.037780806$ & $2.67792\cdot10^{-6}$\\
+64 & $6/5$ & $1/4$ & $1/2$ & $0.334519418$ & $0.00060498120$ & $6.44189\cdot10^{-5}$\\
+65 & $6/5$ & $7/10$ & $-13/10$ & $4.572964533\cdot10^{-5}$ & $0.036302130$ & $5.28421\cdot10^{-7}$\\
+66 & $6/5$ & $7/10$ & $-1$ & $0.0003445239333$ & $0.036302130$ & $3.98109\cdot10^{-6}$\\
+67 & $6/5$ & $7/10$ & $1$ & $0.001546601473$ & $0.036302130$ & $1.78715\cdot10^{-5}$\\
+68 & $6/5$ & $7/10$ & $13/10$ & $0.0001463592826$ & $0.036302130$ & $1.69123\cdot10^{-6}$\\
+69 & $5/4$ & $3/10$ & $-7/20$ & $0.08907592125$ & $0.00055148537$ & $1.56367\cdot10^{-5}$\\
+70 & $5/4$ & $3/10$ & $7/20$ & $0.3795839671$ & $0.00055148537$ & $6.66334\cdot10^{-5}$\\
+71 & $5/4$ & $3/4$ & $-13/10$ & $3.644530876\cdot10^{-5}$ & $0.034985511$ & $4.05863\cdot10^{-7}$\\
+72 & $5/4$ & $3/4$ & $-1$ & $0.0003355290098$ & $0.034985511$ & $3.73653\cdot10^{-6}$\\
+73 & $5/4$ & $3/4$ & $1$ & $0.001426333987$ & $0.034985511$ & $1.58840\cdot10^{-5}$\\
+74 & $5/4$ & $3/4$ & $13/10$ & $0.0002927499897$ & $0.034985511$ & $3.26013\cdot10^{-6}$\\
+75 & $13/10$ & $4/5$ & $-13/10$ & $4.556491809\cdot10^{-5}$ & $0.033803191$ & $4.90274\cdot10^{-7}$\\
+76 & $13/10$ & $4/5$ & $-1$ & $0.0008241713773$ & $0.033803191$ & $8.86799\cdot10^{-6}$\\
+77 & $13/10$ & $4/5$ & $1$ & $0.003939227432$ & $0.033803191$ & $4.23857\cdot10^{-5}$\\
+78 & $7/5$ & $9/20$ & $-7/20$ & $0.3713075056$ & $0.00044923233$ & $5.30952\cdot10^{-5}$\\
+79 & $7/5$ & $9/20$ & $7/20$ & $0.6314222324$ & $0.00044923233$ & $9.02903\cdot10^{-5}$\\
+80 & $7/5$ & $9/10$ & $-13/10$ & $0.0001234809797$ & $0.031760037$ & $1.24834\cdot10^{-6}$\\
+81 & $7/5$ & $9/10$ & $13/10$ & $0.001441638426$ & $0.031760037$ & $1.45743\cdot10^{-5}$\\
+82 & $3/2$ & $11/20$ & $-7/20$ & $0.09582582545$ & $0.00040600316$ & $1.23840\cdot10^{-5}$\\
+83 & $3/2$ & $11/20$ & $7/20$ & $0.378111256$ & $0.00040600316$ & $4.88651\cdot10^{-5}$\\
+84 & $9993/6209$ & $2980/4519$ & $-7/20$ & $0.1767418509$ & $0.00037055405$ & $2.08469\cdot10^{-5}$\\
+85 & $9993/6209$ & $2980/4519$ & $7/20$ & $0.4838434428$ & $0.00037055405$ & $5.70698\cdot10^{-5}$\\
 \midrule \multicolumn{6}{r}{$\frac1\pi\sum_k\kappa_kJ_k=$} & $0.009276500030$\\
 \end{longtable}
 \end{center}
-\begin{table}[ht]\caption{The $85$ disc data $(c_k,R_k,v_k)$ (rational, as used in the certificate), the weights $\kappa_k$ (ten significant digits; exact binary values in Appendix~\ref{app:data}), $J_k=J(\mathfrak e_{\rm P};c_k,R_k)$ and the contributions $\kappa_kJ_k/\pi$ to $C_{\rm H}$. The centres include $\log3$ and $\log5$ rounded to denominators $\le10^4$.}\label{tab:hybrid_discs}\end{table}
 
 \begin{center}
-\begin{longtable}{@{}rllr@{}}\toprule $i$ & $\varsigma_i$ & $e_i$ & source\\\midrule\endfirsthead
+\begin{longtable}{@{}rllr@{}}\caption{The vertices $(\varsigma_i,e_i)$ of the profile $\mathfrak e_{\rm P}$ of Lemma~\ref{lem:profile}, and the source of the bound $\mu(\varsigma_i)\le e_i$. The Heath-Brown vertices $n=10,\dots,398$ are omitted from the table; they are generated by \texttt{profile\_published.py} (Appendix~\ref{app:profile}).}\label{tab:nodes}\\
+\toprule $i$ & $\varsigma_i$ & $e_i$ & source\\\midrule\endfirsthead
 \toprule $i$ & $\varsigma_i$ & $e_i$ & source\\\midrule\endhead
 \bottomrule\endfoot
 0 & $1/2$ & $13/84$ & Bourgain \cite[Thm.~5]{Bourgain2017}\\
@@ -1163,7 +1194,7 @@ $(\mathrm R,10)$ & $0.00566316150651$ & & \\
 404 & $1$ & $0$ & $\zeta(1+it)\ll\log t$ \cite[Thm.~3.5]{Titchmarsh1986}\\
 \end{longtable}
 \end{center}
-\begin{table}[ht]\caption{The vertices $(\varsigma_i,e_i)$ of the profile $\mathfrak e_{\rm P}$ of Lemma~\ref{lem:profile}, and the source of the bound $\mu(\varsigma_i)\le e_i$. The Heath-Brown vertices $n=10,\dots,398$ are omitted from the table; they are generated by \texttt{profile\_published.py} (Appendix~\ref{app:profile}).}\label{tab:nodes}\end{table}
+\normalsize
 
 \begin{table}[ht]\centering\small
 \begin{tabular}{@{}cr@{\quad}cr@{}}\toprule $\iota$ & $c_\iota$ & $\iota$ & $c_\iota$\\\midrule
@@ -1238,7 +1269,7 @@ $(\mathrm R,10)$ & $-2.0583832928\cdot10^{-11}$ & & \\
 % ---- inlined from generated_appendix.tex ----
 \section{Programs}\label{app:code}
 The programs are written in Python~3 and use \texttt{python-flint} (Arb ball arithmetic \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits, \texttt{numpy}, \texttt{scipy} and \texttt{cvxpy} with the solver Clarabel. The certification programs are those of Sections~\ref{app:cert_hybrid}--\ref{app:cert_elem}; the search programs that produced the coefficients are reproduced in Section~\ref{app:search} for completeness, but no statement of this article depends on them. All files are in the repository cited in Section~\ref{sec:methods}.
-\subsection*{\texttt{certify\_hybrid.py}: certification of the kernel inequality (with or without discs) and of $C_{\rm H}$}
+\appsub{\texttt{certify\_hybrid.py}: certification of the kernel inequality (with or without discs) and of $C_{\rm H}$}
 \label{app:cert_hybrid}
 \begin{lstlisting}
 # Certification (Arb ball arithmetic, python-flint) of the kernel inequality
@@ -1388,7 +1419,7 @@ if __name__=='__main__':
     n3=cert_tail(Fr(0),1/T1); n4=cert_tail(-1/T1,Fr(0)); print('|t|>=T1: certified, boxes',n3+n4)
     print('all certified;  C <',C.upper().str(12,radius=False),'  time %.0fs'%(time.time()-t_))
 \end{lstlisting}
-\subsection*{\texttt{profile\_published.py}: the nodes of the profile $\mathfrak e_{\rm P}$}
+\appsub{\texttt{profile\_published.py}: the nodes of the profile $\mathfrak e_{\rm P}$}
 \label{app:profile}
 \begin{lstlisting}
 # Upper bound for mu(sigma) on [1/2,1] from published sources only, as a piecewise linear function through nodes
@@ -1429,7 +1460,7 @@ if __name__ == '__main__':
     print(len(H), 'nodes; first ones:')
     for s,e in H[:14]: print('  sigma = %-20s  e = %-18s  (%.6f, %.6f)' % (s, e, s, e))
 \end{lstlisting}
-\subsection*{\texttt{cz\_gen\_pp.py}: certification of $C_\zeta$ (per-prime phase maximum)}
+\appsub{\texttt{cz\_gen\_pp.py}: certification of $C_\zeta$ (per-prime phase maximum)}
 \label{app:cert_cz}
 \begin{lstlisting}
 # Rigorous upper bound for C_zeta(c) = sum_n Lambda(n) n^(-sigma1) hypot(A0(log n), B0(log n)), any kernel basis
@@ -1543,7 +1574,7 @@ print('tail <=', tail.str(10), ' (integral', I1.str(10), ', far tail', I2.str(5)
 print('C_zeta <', Cz.upper().str(12, radius=False), '   time %.0fs' % (time.time()-t0))
 json.dump({'Czeta_upper': Cz.upper().str(15, radius=False)}, open(sys.argv[1].replace('.json', '_czpp.json'), 'w'))
 \end{lstlisting}
-\subsection*{\texttt{elem\_gen.py}: certification of $\sup F_u$, $\sup F_\ell$ (modes N and S)}
+\appsub{\texttt{elem\_gen.py}: certification of $\sup F_u$, $\sup F_\ell$ (modes N and S)}
 \label{app:cert_elem}
 \begin{lstlisting}
 # Rigorous sup over T >= 1 of F_u(T) = Elem_u(T) - A1 log T and F_l(T) = -Elem_l(T) - A1 log T, any kernel basis.
@@ -1629,7 +1660,7 @@ print('T>=T0: F_u <=', tu.upper().str(10, radius=False), ' F_l <=', tl.upper().s
 print('SUP over T>=1 of max(F_u,F_l) <=', S.str(12, radius=False))
 json.dump({'A1': sys.argv[2], 'mode': MODE, 'Fsup_upper': S.str(15, radius=False)}, open(sys.argv[1].replace('.json', '_elem%s.json' % ('' if MODE == 'N' else 'S')), 'w'))
 \end{lstlisting}
-\subsection*{\texttt{certify\_line\_pp.py}: driver for one explicit line}
+\appsub{\texttt{certify\_line\_pp.py}: driver for one explicit line}
 \label{app:cert_line}
 \begin{lstlisting}
 # Certify one line with the per-prime phase maximum in C_zeta: kernel inequality, C_zeta (cz_gen_pp), elementary part (N and S).
@@ -1658,8 +1689,8 @@ if rc1==0 and 'all certified' in o1 and rc2==0 and rc3==0 and rc4==0:
     print('LINE %s CERTIFIED: |N(T)-main| <= %s log T + %.3f ;  |S(T)| <= %s log T + %.3f  (T>=1)'%(tag,A1s,AN,A1s,AS),flush=True)
 else: print('LINE %s FAILED'%tag,flush=True)
 \end{lstlisting}
-\subsection*{Search programs}\label{app:search}
-\subsection*{\texttt{lpm.py}}
+\appsub{Search programs}\label{app:search}
+\appsub{\texttt{lpm.py}}
 \begin{lstlisting}
 # LP with margin: f <= sum c_j G_j + sum kappa_k W_k - eta/(1+t^2) on (b,t) in [0,1/2] x (R\{0}), cutting planes.
 import numpy as np, sys, json
@@ -1718,7 +1749,7 @@ if __name__=='__main__':
     print('m=%d d=%.2f prof=%s eta=%g C=%.6f kernel=%.6f viol=%.2e it=%d ndiscs_used=%d'%(m,d,prof,eta,val,x[0]/(2*np.pi),w,it,len(keep)),flush=True)
     json.dump({'m':m,'d':d,'prof':prof,'eta':eta,'B':B,'c':list(x[:len(B)]),'discs':[discs[k] for k in keep],'kappa':[x[len(B)+k] for k in keep],'J':[J[k] for k in keep],'C':val},open('sol_m%d_%s_eta%g.json'%(m,prof,eta),'w'))
 \end{lstlisting}
-\subsection*{\texttt{explore\_discs.py}}
+\appsub{\texttt{explore\_discs.py}}
 \begin{lstlisting}
 # Exploration (not a certificate): kernel + Jensen discs, wide families of centres c > 1 (incl. log 3, log 5, 2, e, 3, ...),
 # sparse LP with cutting planes. Weight per zero: W(1/2+|b|) (+ W(1/2-|b|) if the disc crosses Re s = 1/2), cost 2J log T,
@@ -1816,7 +1847,7 @@ if __name__ == '__main__':
     json.dump({'m': m, 'd': d, 'prof': PROF, 'eta': eta, 'B': B, 'c': list(x[:nB]), 'discs': [discs[k] for k in keep], 'kappa': [x[nB+k] for k in keep], 'J': [J[k] for k in keep], 'C': val},
               open('expl_m%d_d%.2f_%s_%s_eta%g.json' % (m, d, fam, PROF, eta), 'w'))
 \end{lstlisting}
-\subsection*{\texttt{opt\_line.py}}
+\appsub{\texttt{opt\_line.py}}
 \begin{lstlisting}
 # Optimize one explicit line |N(T)-main(T)| <= A1 log T + A3 for a target height L* = log T*.
 # Kernel U = sum c_i G_i (basis R1..R_mR, I2..I_mI), d fixed. Convex program (SOCP, Clarabel):
@@ -1913,7 +1944,7 @@ if __name__ == '__main__':
     print('RESULT d=%.3f mR=%d mI=%d L*=%g  A1=%.5f A3~%.4f  value@L*~%.4f  (%.0fs)' % (d, mR, mI, Ls, r['C1'], r['A3_est'], r['C1']*Ls+r['A3_est'], time.time()-t0), flush=True)
     json.dump(r, open(out, 'w'))
 \end{lstlisting}
-\subsection*{\texttt{opt\_line\_pp.py}}
+\appsub{\texttt{opt\_line\_pp.py}}
 \begin{lstlisting}
 # Optimize one explicit line |N(T)-main(T)| <= A1 log T + A3 for a target height L* = log T*.
 # Kernel U = sum c_i G_i (basis R1..R_mR, I2..I_mI), d fixed. Convex program (SOCP, Clarabel):
@@ -2037,7 +2068,7 @@ if __name__ == '__main__':
     json.dump(r, open(out, 'w'))
 \end{lstlisting}
 \section{Outputs of the certification programs}\label{app:cert}
-\subsection*{Hybrid: \texttt{certify\_hybrid.py hyb\_m10\_P.json 40}}
+\appsub{Hybrid: \texttt{certify\_hybrid.py hyb\_m10\_P.json 40}}
 \label{app:out_hybrid}
 \begin{lstlisting}
 d = 9/10  m = 10  profile P  discs used: 85
@@ -2049,7 +2080,7 @@ t in [-T1,0): certified, boxes 2054381
 |t|>=T1: certified, boxes 155116
 all certified;  C < 0.0748883899703   time 716s
 \end{lstlisting}
-\subsection*{Line $\ell_{5}$: kernel inequality}
+\appsub{Line $\ell_{5}$: kernel inequality}
 \begin{lstlisting}
 d = 1  m = 5  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.20175655042691417704  (ball [0.20176 +/- 3.45e-6] )
@@ -2060,7 +2091,7 @@ t in [-T1,0): certified, boxes 4207
 |t|>=T1: certified, boxes 2
 all certified;  C < 0.201756550427   time 1s
 \end{lstlisting}
-\subsection*{Line $\ell_{5}$: $C_\zeta$}
+\appsub{Line $\ell_{5}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.13567339 +/- 3.39e-9]
 primes 5761455  partial sum (n<=100000000) = [0.700266525818397 +/- 2.62e-16]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  102s
@@ -2068,19 +2099,19 @@ g monotone on [2000, oo): crude bound [+/- 4.40e-3] < sigma1
 tail <= [0.003333488646 +/- 2.02e-13]  (integral [0.003174276158 +/- 3.32e-14] , far tail [2.6758e-167 +/- 3.15e-172] )
 C_zeta < 0.703600014464    time 103s
 \end{lstlisting}
-\subsection*{Line $\ell_{5}$: elementary part, mode N}
+\appsub{Line $\ell_{5}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.6653662947   sup F_l <= -0.7495389120
 T>=T0: F_u <= 0.5045914643  F_l <= -1.245408536  (K= [3.95201 +/- 3.63e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.665366294652
 \end{lstlisting}
-\subsection*{Line $\ell_{5}$: elementary part, mode S}
+\appsub{Line $\ell_{5}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.2236678259   sup F_l <= 0.1395021165
 T>=T0: F_u <= -0.3703919570  F_l <= -0.3703919570  (K= [4.11780 +/- 2.69e-8] )
 SUP over T>=1 of max(F_u,F_l) <= 0.139502116497
 \end{lstlisting}
-\subsection*{Line $\ell_{20}$: kernel inequality}
+\appsub{Line $\ell_{20}$: kernel inequality}
 \begin{lstlisting}
 d = 6/5  m = 5  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.10822193548420830108  (ball [0.10822 +/- 1.94e-6] )
@@ -2091,7 +2122,7 @@ t in [-T1,0): certified, boxes 279773
 |t|>=T1: certified, boxes 1022
 all certified;  C < 0.108221935484   time 54s
 \end{lstlisting}
-\subsection*{Line $\ell_{20}$: $C_\zeta$}
+\appsub{Line $\ell_{20}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.21171880 +/- 3.25e-9]
 primes 5761455  partial sum (n<=100000000) = [1.46785649757579 +/- 4.11e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  100s
@@ -2099,19 +2130,19 @@ g monotone on [2000, oo): crude bound [+/- 0.0145] < sigma1
 tail <= [0.0002188390453 +/- 1.36e-15]  (integral [0.0002060161219 +/- 1.10e-14] , far tail [7.2489e-238 +/- 1.12e-244] )
 C_zeta < 1.46807533662    time 101s
 \end{lstlisting}
-\subsection*{Line $\ell_{20}$: elementary part, mode N}
+\appsub{Line $\ell_{20}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.7020709510   sup F_l <= -1.072389150
 T>=T0: F_u <= 0.6766231015  F_l <= -1.073376898  (K= [5.21715 +/- 1.54e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.702070950967
 \end{lstlisting}
-\subsection*{Line $\ell_{20}$: elementary part, mode S}
+\appsub{Line $\ell_{20}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.1827863047   sup F_l <= -0.1965944845
 T>=T0: F_u <= -0.1983603198  F_l <= -0.1983603198  (K= [5.38293 +/- 4.87e-6] )
 SUP over T>=1 of max(F_u,F_l) <= -0.182786304679
 \end{lstlisting}
-\subsection*{Line $\ell_{60}$: kernel inequality}
+\appsub{Line $\ell_{60}$: kernel inequality}
 \begin{lstlisting}
 d = 1  m = 5  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.094721574236353990059  (ball [0.094722 +/- 4.26e-7] )
@@ -2122,7 +2153,7 @@ t in [-T1,0): certified, boxes 483889
 |t|>=T1: certified, boxes 4434
 all certified;  C < 0.0947215742364   time 115s
 \end{lstlisting}
-\subsection*{Line $\ell_{60}$: $C_\zeta$}
+\appsub{Line $\ell_{60}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.24105429 +/- 2.19e-10]
 primes 5761455  partial sum (n<=100000000) = [2.09743955289942 +/- 3.84e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  104s
@@ -2130,19 +2161,19 @@ g monotone on [2000, oo): crude bound [+/- 0.0149] < sigma1
 tail <= [0.006829934351 +/- 6.03e-14]  (integral [0.006476069071 +/- 3.90e-13] , far tail [1.7143e-168 +/- 4.48e-173] )
 C_zeta < 2.10426948725    time 105s
 \end{lstlisting}
-\subsection*{Line $\ell_{60}$: elementary part, mode N}
+\appsub{Line $\ell_{60}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.7289418077   sup F_l <= -1.047579459
 T>=T0: F_u <= 0.7013136726  F_l <= -1.048686327  (K= [4.00282 +/- 3.70e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.728941807706
 \end{lstlisting}
-\subsection*{Line $\ell_{60}$: elementary part, mode S}
+\appsub{Line $\ell_{60}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.1584755869   sup F_l <= -0.1717847945
 T>=T0: F_u <= -0.1736697487  F_l <= -0.1736697487  (K= [4.16860 +/- 2.71e-6] )
 SUP over T>=1 of max(F_u,F_l) <= -0.158475586900
 \end{lstlisting}
-\subsection*{Line $\ell_{150}$: kernel inequality}
+\appsub{Line $\ell_{150}$: kernel inequality}
 \begin{lstlisting}
 d = 17/20  m = 5  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.093480628436037879597  (ball [0.093481 +/- 3.72e-7] )
@@ -2153,7 +2184,7 @@ t in [-T1,0): certified, boxes 353921
 |t|>=T1: certified, boxes 3198
 all certified;  C < 0.0934806284360   time 127s
 \end{lstlisting}
-\subsection*{Line $\ell_{150}$: $C_\zeta$}
+\appsub{Line $\ell_{150}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.25085637 +/- 3.02e-9]
 primes 5761455  partial sum (n<=100000000) = [2.21455819652827 +/- 4.70e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  107s
@@ -2161,19 +2192,19 @@ g monotone on [2000, oo): crude bound [+/- 7.01e-3] < sigma1
 tail <= [0.04122525901 +/- 2.13e-12]  (integral [0.03953310421 +/- 1.61e-12] , far tail [3.6826e-115 +/- 3.45e-120] )
 C_zeta < 2.25578345554    time 107s
 \end{lstlisting}
-\subsection*{Line $\ell_{150}$: elementary part, mode N}
+\appsub{Line $\ell_{150}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.7303170966   sup F_l <= -1.045307483
 T>=T0: F_u <= 0.7035135754  F_l <= -1.046486425  (K= [3.19479 +/- 4.84e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.730317096644
 \end{lstlisting}
-\subsection*{Line $\ell_{150}$: elementary part, mode S}
+\appsub{Line $\ell_{150}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.1575762200   sup F_l <= -0.1695128190
 T>=T0: F_u <= -0.1714698460  F_l <= -0.1714698460  (K= [3.36057 +/- 1.57e-6] )
 SUP over T>=1 of max(F_u,F_l) <= -0.157576220006
 \end{lstlisting}
-\subsection*{Line $\ell_{400}$: kernel inequality}
+\appsub{Line $\ell_{400}$: kernel inequality}
 \begin{lstlisting}
 d = 17/20  m = 10  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083986018406625982801  (ball [0.083986 +/- 1.86e-8] )
@@ -2184,7 +2215,7 @@ t in [-T1,0): certified, boxes 9801985
 |t|>=T1: certified, boxes 4194302
 all certified;  C < 0.0839860184066   time 2716s
 \end{lstlisting}
-\subsection*{Line $\ell_{400}$: $C_\zeta$}
+\appsub{Line $\ell_{400}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.28179774 +/- 3.28e-9]
 primes 5761455  partial sum (n<=100000000) = [4.01127229118254 +/- 1.94e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  163s
@@ -2192,19 +2223,19 @@ g monotone on [5000, oo): crude bound [+/- 0.0114] < sigma1
 tail <= [0.4524693305 +/- 1.73e-11]  (integral [0.4325160730 +/- 4.01e-11] , far tail [2.8606e-111 +/- 3.11e-116] )
 C_zeta < 4.46374162170    time 164s
 \end{lstlisting}
-\subsection*{Line $\ell_{400}$: elementary part, mode N}
+\appsub{Line $\ell_{400}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.7375657198   sup F_l <= -1.027807129
 T>=T0: F_u <= 0.7209635502  F_l <= -1.029036450  (K= [3.19527 +/- 2.94e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.737565719751
 \end{lstlisting}
-\subsection*{Line $\ell_{400}$: elementary part, mode S}
+\appsub{Line $\ell_{400}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.1458266308   sup F_l <= -0.1520124642
 T>=T0: F_u <= -0.1540198712  F_l <= -0.1540198712  (K= [3.36106 +/- 6.67e-7] )
 SUP over T>=1 of max(F_u,F_l) <= -0.145826630820
 \end{lstlisting}
-\subsection*{Line $\ell_{6000}$: kernel inequality}
+\appsub{Line $\ell_{6000}$: kernel inequality}
 \begin{lstlisting}
 d = 17/20  m = 10  profile B  discs used: 0
 C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083814170602092884236  (ball [0.083814 +/- 1.71e-7] )
@@ -2215,7 +2246,7 @@ t in [-T1,0): certified, boxes 15866017
 |t|>=T1: certified, boxes 4194302
 all certified;  C < 0.0838141706021   time 3243s
 \end{lstlisting}
-\subsection*{Line $\ell_{6000}$: $C_\zeta$}
+\appsub{Line $\ell_{6000}$: $C_\zeta$}
 \begin{lstlisting}
 per-prime phase maximum for p <= 1000 : gain [0.28466228 +/- 4.66e-10]
 primes 5761455  partial sum (n<=100000000) = [4.10087443545128 +/- 2.45e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  81s
@@ -2223,13 +2254,13 @@ g monotone on [5000, oo): crude bound [+/- 0.0108] < sigma1
 tail <= [0.4886359120 +/- 3.99e-12]  (integral [0.4671146906 +/- 3.15e-11] , far tail [2.9139e-111 +/- 4.83e-116] )
 C_zeta < 4.58951034745    time 82s
 \end{lstlisting}
-\subsection*{Line $\ell_{6000}$: elementary part, mode N}
+\appsub{Line $\ell_{6000}$: elementary part, mode N}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= 0.7357376568   sup F_l <= -1.027508246
 T>=T0: F_u <= 0.7212794331  F_l <= -1.028720567  (K= [3.19575 +/- 1.13e-6] )
 SUP over T>=1 of max(F_u,F_l) <= 0.735737656779
 \end{lstlisting}
-\subsection*{Line $\ell_{6000}$: elementary part, mode S}
+\appsub{Line $\ell_{6000}$: elementary part, mode S}
 \begin{lstlisting}
 intervals 9215  sup F_u on [1,T0] <= -0.1464102938   sup F_l <= -0.1517135820
 T>=T0: F_u <= -0.1537039882  F_l <= -0.1537039882  (K= [3.36154 +/- 2.48e-6] )
@@ -2237,7 +2268,7 @@ SUP over T>=1 of max(F_u,F_l) <= -0.146410293767
 \end{lstlisting}
 \section{Exact data}\label{app:data}
 The following files hold the coefficients as exact binary floating-point numbers (the decimal strings are the shortest that round-trip), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\le10^4$ and then replaces $R_k$ by $\min(R_k,c_k-\frac12)$, as in \texttt{certify\_hybrid.py}), and the parameters $d$, $m$, $\eta$.
-\subsection*{\texttt{hyb\_m10\_P.json} (hybrid)}
+\appsub{\texttt{hyb\_m10\_P.json} (hybrid)}
 \begin{lstlisting}
 {
  "m": 10,
@@ -2245,762 +2276,186 @@ The following files hold the coefficients as exact binary floating-point numbers
  "prof": "P",
  "eta": 0.001,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "R",
-   6
-  ],
-  [
-   "R",
-   7
-  ],
-  [
-   "R",
-   8
-  ],
-  [
-   "R",
-   9
-  ],
-  [
-   "R",
-   10
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ],
-  [
-   "I",
-   6
-  ],
-  [
-   "I",
-   7
-  ],
-  [
-   "I",
-   8
-  ],
-  [
-   "I",
-   9
-  ],
-  [
-   "I",
-   10
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["R", 6],
+  ["R", 7],
+  ["R", 8],
+  ["R", 9],
+  ["R", 10],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5],
+  ["I", 6],
+  ["I", 7],
+  ["I", 8],
+  ["I", 9],
+  ["I", 10]
  ],
- "c": [
-  0.4122516628461088,
-  0.3701455521800437,
-  0.2843954476533836,
-  0.1586739250962677,
-  0.06960218322485388,
-  -0.06144517777745324,
-  -0.04110670197918963,
-  0.07575215034770166,
-  -0.03254194251685058,
-  0.005663161506506656,
-  0.7334328542232512,
-  -0.1362131821835759,
-  0.15145172743931834,
-  -0.11733043416084597,
-  -0.03620957744808127,
-  0.10598527663641981,
-  -0.06234506214305649,
-  0.01672536385409436,
-  -0.0017975838554094834
- ],
+ "c": [0.4122516628461088, 0.3701455521800437, 0.2843954476533836, 0.1586739250962677,
+  0.06960218322485388, -0.06144517777745324, -0.04110670197918963, 0.07575215034770166,
+  -0.03254194251685058, 0.005663161506506656, 0.7334328542232512, -0.1362131821835759,
+  0.15145172743931834, -0.11733043416084597, -0.03620957744808127, 0.10598527663641981,
+  -0.06234506214305649, 0.01672536385409436, -0.0017975838554094834],
  "discs": [
-  [
-   1.03,
-   0.18000000000000002,
-   -0.5
-  ],
-  [
-   1.03,
-   0.18000000000000002,
-   0.5
-  ],
-  [
-   1.03,
-   0.23000000000000004,
-   -0.65
-  ],
-  [
-   1.03,
-   0.23000000000000004,
-   0.65
-  ],
-  [
-   1.03,
-   0.28,
-   -0.65
-  ],
-  [
-   1.03,
-   0.28,
-   0.65
-  ],
-  [
-   1.03,
-   0.33,
-   -0.65
-  ],
-  [
-   1.03,
-   0.33,
-   0.65
-  ],
-  [
-   1.03,
-   0.33,
-   0.8
-  ],
-  [
-   1.03,
-   0.38,
-   -0.65
-  ],
-  [
-   1.03,
-   0.38,
-   0.65
-  ],
-  [
-   1.03,
-   0.43000000000000005,
-   1.0
-  ],
-  [
-   1.03,
-   0.48000000000000004,
-   -1.0
-  ],
-  [
-   1.03,
-   0.48000000000000004,
-   1.0
-  ],
-  [
-   1.03,
-   0.53,
-   -1.6
-  ],
-  [
-   1.03,
-   0.53,
-   -1.3
-  ],
-  [
-   1.03,
-   0.53,
-   -1.0
-  ],
-  [
-   1.03,
-   0.53,
-   1.0
-  ],
-  [
-   1.03,
-   0.53,
-   1.3
-  ],
-  [
-   1.06,
-   0.16000000000000006,
-   -0.5
-  ],
-  [
-   1.06,
-   0.16000000000000006,
-   0.5
-  ],
-  [
-   1.06,
-   0.21000000000000005,
-   -0.5
-  ],
-  [
-   1.06,
-   0.21000000000000005,
-   0.5
-  ],
-  [
-   1.06,
-   0.26000000000000006,
-   -0.5
-  ],
-  [
-   1.06,
-   0.26000000000000006,
-   0.5
-  ],
-  [
-   1.06,
-   0.41000000000000003,
-   -0.8
-  ],
-  [
-   1.06,
-   0.41000000000000003,
-   -0.65
-  ],
-  [
-   1.06,
-   0.41000000000000003,
-   0.65
-  ],
-  [
-   1.06,
-   0.41000000000000003,
-   0.8
-  ],
-  [
-   1.06,
-   0.4600000000000001,
-   0.8
-  ],
-  [
-   1.06,
-   0.56,
-   -1.6
-  ],
-  [
-   1.06,
-   0.56,
-   -1.3
-  ],
-  [
-   1.06,
-   0.56,
-   1.3
-  ],
-  [
-   1.1,
-   0.15000000000000008,
-   -0.35
-  ],
-  [
-   1.1,
-   0.2500000000000001,
-   -0.5
-  ],
-  [
-   1.1,
-   0.2500000000000001,
-   0.5
-  ],
-  [
-   1.1,
-   0.4000000000000001,
-   0.8
-  ],
-  [
-   1.1,
-   0.5000000000000001,
-   -0.8
-  ],
-  [
-   1.1,
-   0.6000000000000001,
-   -1.0
-  ],
-  [
-   1.1,
-   0.6000000000000001,
-   1.0
-  ],
-  [
-   1.1,
-   0.6000000000000001,
-   1.3
-  ],
-  [
-   1.0986122886681098,
-   0.1986122886681098,
-   -0.5
-  ],
-  [
-   1.0986122886681098,
-   0.1986122886681098,
-   0.5
-  ],
-  [
-   1.0986122886681098,
-   0.24861228866810978,
-   0.5
-  ],
-  [
-   1.0986122886681098,
-   0.2986122886681098,
-   -0.5
-  ],
-  [
-   1.0986122886681098,
-   0.2986122886681098,
-   0.5
-  ],
-  [
-   1.0986122886681098,
-   0.44861228866810976,
-   -0.8
-  ],
-  [
-   1.0986122886681098,
-   0.44861228866810976,
-   0.8
-  ],
-  [
-   1.0986122886681098,
-   0.4986122886681098,
-   -0.8
-  ],
-  [
-   1.0986122886681098,
-   0.4986122886681098,
-   0.8
-  ],
-  [
-   1.0986122886681098,
-   0.5486122886681097,
-   0.8
-  ],
-  [
-   1.0986122886681098,
-   0.5986122886681098,
-   -1.3
-  ],
-  [
-   1.15,
-   0.1999999999999999,
-   -0.5
-  ],
-  [
-   1.15,
-   0.1999999999999999,
-   -0.35
-  ],
-  [
-   1.15,
-   0.1999999999999999,
-   0.35
-  ],
-  [
-   1.15,
-   0.4499999999999999,
-   -0.8
-  ],
-  [
-   1.15,
-   0.4999999999999999,
-   -0.8
-  ],
-  [
-   1.15,
-   0.5499999999999999,
-   -0.8
-  ],
-  [
-   1.15,
-   0.5499999999999999,
-   0.8
-  ],
-  [
-   1.15,
-   0.6499999999999999,
-   -1.3
-  ],
-  [
-   1.15,
-   0.6499999999999999,
-   -1.0
-  ],
-  [
-   1.15,
-   0.6499999999999999,
-   1.0
-  ],
-  [
-   1.15,
-   0.6499999999999999,
-   1.3
-  ],
-  [
-   1.2,
-   0.24999999999999994,
-   0.5
-  ],
-  [
-   1.2,
-   0.7,
-   -1.3
-  ],
-  [
-   1.2,
-   0.7,
-   -1.0
-  ],
-  [
-   1.2,
-   0.7,
-   1.0
-  ],
-  [
-   1.2,
-   0.7,
-   1.3
-  ],
-  [
-   1.25,
-   0.3,
-   -0.35
-  ],
-  [
-   1.25,
-   0.3,
-   0.35
-  ],
-  [
-   1.25,
-   0.75,
-   -1.3
-  ],
-  [
-   1.25,
-   0.75,
-   -1.0
-  ],
-  [
-   1.25,
-   0.75,
-   1.0
-  ],
-  [
-   1.25,
-   0.75,
-   1.3
-  ],
-  [
-   1.3,
-   0.8,
-   -1.3
-  ],
-  [
-   1.3,
-   0.8,
-   -1.0
-  ],
-  [
-   1.3,
-   0.8,
-   1.0
-  ],
-  [
-   1.4,
-   0.4499999999999999,
-   -0.35
-  ],
-  [
-   1.4,
-   0.4499999999999999,
-   0.35
-  ],
-  [
-   1.4,
-   0.8999999999999999,
-   -1.3
-  ],
-  [
-   1.4,
-   0.8999999999999999,
-   1.3
-  ],
-  [
-   1.5,
-   0.55,
-   -0.35
-  ],
-  [
-   1.5,
-   0.55,
-   0.35
-  ],
-  [
-   1.6094379124341003,
-   0.6594379124341003,
-   -0.35
-  ],
-  [
-   1.6094379124341003,
-   0.6594379124341003,
-   0.35
-  ]
+  [1.03, 0.18000000000000002, -0.5],
+  [1.03, 0.18000000000000002, 0.5],
+  [1.03, 0.23000000000000004, -0.65],
+  [1.03, 0.23000000000000004, 0.65],
+  [1.03, 0.28, -0.65],
+  [1.03, 0.28, 0.65],
+  [1.03, 0.33, -0.65],
+  [1.03, 0.33, 0.65],
+  [1.03, 0.33, 0.8],
+  [1.03, 0.38, -0.65],
+  [1.03, 0.38, 0.65],
+  [1.03, 0.43000000000000005, 1.0],
+  [1.03, 0.48000000000000004, -1.0],
+  [1.03, 0.48000000000000004, 1.0],
+  [1.03, 0.53, -1.6],
+  [1.03, 0.53, -1.3],
+  [1.03, 0.53, -1.0],
+  [1.03, 0.53, 1.0],
+  [1.03, 0.53, 1.3],
+  [1.06, 0.16000000000000006, -0.5],
+  [1.06, 0.16000000000000006, 0.5],
+  [1.06, 0.21000000000000005, -0.5],
+  [1.06, 0.21000000000000005, 0.5],
+  [1.06, 0.26000000000000006, -0.5],
+  [1.06, 0.26000000000000006, 0.5],
+  [1.06, 0.41000000000000003, -0.8],
+  [1.06, 0.41000000000000003, -0.65],
+  [1.06, 0.41000000000000003, 0.65],
+  [1.06, 0.41000000000000003, 0.8],
+  [1.06, 0.4600000000000001, 0.8],
+  [1.06, 0.56, -1.6],
+  [1.06, 0.56, -1.3],
+  [1.06, 0.56, 1.3],
+  [1.1, 0.15000000000000008, -0.35],
+  [1.1, 0.2500000000000001, -0.5],
+  [1.1, 0.2500000000000001, 0.5],
+  [1.1, 0.4000000000000001, 0.8],
+  [1.1, 0.5000000000000001, -0.8],
+  [1.1, 0.6000000000000001, -1.0],
+  [1.1, 0.6000000000000001, 1.0],
+  [1.1, 0.6000000000000001, 1.3],
+  [1.0986122886681098, 0.1986122886681098, -0.5],
+  [1.0986122886681098, 0.1986122886681098, 0.5],
+  [1.0986122886681098, 0.24861228866810978, 0.5],
+  [1.0986122886681098, 0.2986122886681098, -0.5],
+  [1.0986122886681098, 0.2986122886681098, 0.5],
+  [1.0986122886681098, 0.44861228866810976, -0.8],
+  [1.0986122886681098, 0.44861228866810976, 0.8],
+  [1.0986122886681098, 0.4986122886681098, -0.8],
+  [1.0986122886681098, 0.4986122886681098, 0.8],
+  [1.0986122886681098, 0.5486122886681097, 0.8],
+  [1.0986122886681098, 0.5986122886681098, -1.3],
+  [1.15, 0.1999999999999999, -0.5],
+  [1.15, 0.1999999999999999, -0.35],
+  [1.15, 0.1999999999999999, 0.35],
+  [1.15, 0.4499999999999999, -0.8],
+  [1.15, 0.4999999999999999, -0.8],
+  [1.15, 0.5499999999999999, -0.8],
+  [1.15, 0.5499999999999999, 0.8],
+  [1.15, 0.6499999999999999, -1.3],
+  [1.15, 0.6499999999999999, -1.0],
+  [1.15, 0.6499999999999999, 1.0],
+  [1.15, 0.6499999999999999, 1.3],
+  [1.2, 0.24999999999999994, 0.5],
+  [1.2, 0.7, -1.3],
+  [1.2, 0.7, -1.0],
+  [1.2, 0.7, 1.0],
+  [1.2, 0.7, 1.3],
+  [1.25, 0.3, -0.35],
+  [1.25, 0.3, 0.35],
+  [1.25, 0.75, -1.3],
+  [1.25, 0.75, -1.0],
+  [1.25, 0.75, 1.0],
+  [1.25, 0.75, 1.3],
+  [1.3, 0.8, -1.3],
+  [1.3, 0.8, -1.0],
+  [1.3, 0.8, 1.0],
+  [1.4, 0.4499999999999999, -0.35],
+  [1.4, 0.4499999999999999, 0.35],
+  [1.4, 0.8999999999999999, -1.3],
+  [1.4, 0.8999999999999999, 1.3],
+  [1.5, 0.55, -0.35],
+  [1.5, 0.55, 0.35],
+  [1.6094379124341003, 0.6594379124341003, -0.35],
+  [1.6094379124341003, 0.6594379124341003, 0.35]
  ],
- "kappa": [
-  0.04794121511240191,
-  0.03690501429948402,
-  0.04834170661391959,
-  0.1573997379960051,
-  0.025878339185481502,
-  0.10616848331185574,
-  0.0236188805019172,
-  0.10239002275273693,
-  0.0035455108226660923,
-  0.01901918959502707,
-  0.06465743477314946,
-  0.0036165210446881912,
-  0.003351206340933337,
-  0.015268105926847056,
-  0.00013974452258912968,
-  0.00029690557506736377,
-  0.0009108669135881503,
-  0.0044801747294262095,
-  0.0014866484759580832,
-  0.04885368436282812,
-  0.16104424399371173,
-  0.023453424086482003,
-  0.22759923236993776,
-  0.08939597402006162,
-  0.15196837128808857,
-  0.013732157713891885,
-  0.018648005594139164,
-  0.08526394849897515,
-  0.017416570930371206,
-  0.01374894904083696,
-  4.075855253142233e-06,
-  4.409961547443315e-05,
-  0.00015887152060772264,
-  0.05505606780147275,
-  0.06981663462962027,
-  0.17735666987784413,
-  0.07198100073739731,
-  0.0004564504972963723,
-  0.0006124208150023242,
-  0.0027472118552408628,
-  0.0002146100180381553,
-  0.05850326139983594,
-  0.25492355822075796,
-  0.08999758511034867,
-  0.010181593964904851,
-  0.1909304490478848,
-  0.0029738069635381367,
-  0.016589993444860514,
-  0.0022927729672325117,
-  0.011430625597017244,
-  0.0019943154789860904,
-  5.446961828302678e-05,
-  0.08543526352424897,
-  0.043464950358225625,
-  0.22638169555984836,
-  0.0027941777234533577,
-  0.0033936220562532783,
-  0.006938963470320746,
-  0.03251223251077918,
-  5.267650802806455e-05,
-  0.00043316823604372834,
-  0.0017765965271024221,
-  0.0002226772506880452,
-  0.3345194179772268,
-  4.572964532994767e-05,
-  0.00034452393334691165,
-  0.0015466014726329327,
-  0.0001463592826135654,
-  0.08907592125371844,
-  0.3795839670899206,
-  3.644530875721061e-05,
-  0.00033552900976080115,
-  0.0014263339874773812,
-  0.00029274998970148957,
-  4.5564918091396025e-05,
-  0.0008241713772743197,
-  0.003939227432175864,
-  0.37130750564186144,
-  0.6314222324457542,
-  0.00012348097971946856,
-  0.0014416384256192418,
-  0.09582582544943793,
-  0.37811125601693457,
-  0.17674185090571795,
-  0.48384344283661246
- ],
- "J": [
-  0.006913876985130073,
-  0.006913876985130073,
-  0.010786963484310835,
-  0.010786963484310835,
-  0.015047271802978894,
-  0.015047271802978894,
-  0.019561733449682445,
-  0.019561733449682445,
-  0.019561733449682445,
-  0.024731917448308403,
-  0.024731917448308403,
-  0.03030669746033152,
-  0.03614020656354029,
-  0.03614020656354029,
-  0.04223496977173971,
-  0.04223496977173971,
-  0.04223496977173971,
-  0.04223496977173971,
-  0.04223496977173971,
-  0.0032593310610211064,
-  0.0032593310610211064,
-  0.006361647634553729,
-  0.006361647634553729,
-  0.010091729993481463,
-  0.010091729993481463,
-  0.023721523851824588,
-  0.023721523851824588,
-  0.023721523851824588,
-  0.023721523851824588,
-  0.029203800126850244,
-  0.04097279256246833,
-  0.04097279256246833,
-  0.04097279256246833,
-  0.0007855777381792925,
-  0.00579739181011531,
-  0.00579739181011531,
-  0.01761480160057199,
-  0.02790642447295338,
-  0.039455280415185943,
-  0.039455280415185943,
-  0.039455280415185943,
-  0.0029087213249446332,
-  0.0029087213249446332,
-  0.005814504320743654,
-  0.009368782031364846,
-  0.009368782031364846,
-  0.02258821735546429,
-  0.02258821735546429,
-  0.02794854691757632,
-  0.02794854691757632,
-  0.03358841946708462,
-  0.03950510294401413,
-  0.0006778485850694062,
-  0.0006778485850694062,
-  0.0006778485850694062,
-  0.016535359036317563,
-  0.02130627562403806,
-  0.026506130501019225,
-  0.026506130501019225,
-  0.03777806830297255,
-  0.03777806830297255,
-  0.03777806830297255,
-  0.03777806830297255,
-  0.0006049812018696226,
-  0.036299512623474355,
-  0.036299512623474355,
-  0.036299512623474355,
-  0.036299512623474355,
-  0.0005514853690123469,
-  0.0005514853690123469,
-  0.034982998649202596,
-  0.034982998649202596,
-  0.034982998649202596,
-  0.034982998649202596,
-  0.033800772734260194,
-  0.033800772734260194,
-  0.033800772734260194,
-  0.00044923232543557626,
-  0.00044923232543557626,
-  0.03175777779183872,
-  0.03175777779183872,
-  0.000406003160664041,
-  0.000406003160664041,
-  0.00037055380885643406,
-  0.00037055380885643406
- ],
+ "kappa": [0.04794121511240191, 0.03690501429948402, 0.04834170661391959,
+  0.1573997379960051, 0.025878339185481502, 0.10616848331185574, 0.0236188805019172,
+  0.10239002275273693, 0.0035455108226660923, 0.01901918959502707, 0.06465743477314946,
+  0.0036165210446881912, 0.003351206340933337, 0.015268105926847056,
+  0.00013974452258912968, 0.00029690557506736377, 0.0009108669135881503,
+  0.0044801747294262095, 0.0014866484759580832, 0.04885368436282812, 0.16104424399371173,
+  0.023453424086482003, 0.22759923236993776, 0.08939597402006162, 0.15196837128808857,
+  0.013732157713891885, 0.018648005594139164, 0.08526394849897515, 0.017416570930371206,
+  0.01374894904083696, 4.075855253142233e-06, 4.409961547443315e-05,
+  0.00015887152060772264, 0.05505606780147275, 0.06981663462962027, 0.17735666987784413,
+  0.07198100073739731, 0.0004564504972963723, 0.0006124208150023242, 0.0027472118552408628,
+  0.0002146100180381553, 0.05850326139983594, 0.25492355822075796, 0.08999758511034867,
+  0.010181593964904851, 0.1909304490478848, 0.0029738069635381367, 0.016589993444860514,
+  0.0022927729672325117, 0.011430625597017244, 0.0019943154789860904,
+  5.446961828302678e-05, 0.08543526352424897, 0.043464950358225625, 0.22638169555984836,
+  0.0027941777234533577, 0.0033936220562532783, 0.006938963470320746, 0.03251223251077918,
+  5.267650802806455e-05, 0.00043316823604372834, 0.0017765965271024221,
+  0.0002226772506880452, 0.3345194179772268, 4.572964532994767e-05, 0.00034452393334691165,
+  0.0015466014726329327, 0.0001463592826135654, 0.08907592125371844, 0.3795839670899206,
+  3.644530875721061e-05, 0.00033552900976080115, 0.0014263339874773812,
+  0.00029274998970148957, 4.5564918091396025e-05, 0.0008241713772743197,
+  0.003939227432175864, 0.37130750564186144, 0.6314222324457542, 0.00012348097971946856,
+  0.0014416384256192418, 0.09582582544943793, 0.37811125601693457, 0.17674185090571795,
+  0.48384344283661246],
+ "J": [0.006913876985130073, 0.006913876985130073, 0.010786963484310835,
+  0.010786963484310835, 0.015047271802978894, 0.015047271802978894, 0.019561733449682445,
+  0.019561733449682445, 0.019561733449682445, 0.024731917448308403, 0.024731917448308403,
+  0.03030669746033152, 0.03614020656354029, 0.03614020656354029, 0.04223496977173971,
+  0.04223496977173971, 0.04223496977173971, 0.04223496977173971, 0.04223496977173971,
+  0.0032593310610211064, 0.0032593310610211064, 0.006361647634553729, 0.006361647634553729,
+  0.010091729993481463, 0.010091729993481463, 0.023721523851824588, 0.023721523851824588,
+  0.023721523851824588, 0.023721523851824588, 0.029203800126850244, 0.04097279256246833,
+  0.04097279256246833, 0.04097279256246833, 0.0007855777381792925, 0.00579739181011531,
+  0.00579739181011531, 0.01761480160057199, 0.02790642447295338, 0.039455280415185943,
+  0.039455280415185943, 0.039455280415185943, 0.0029087213249446332, 0.0029087213249446332,
+  0.005814504320743654, 0.009368782031364846, 0.009368782031364846, 0.02258821735546429,
+  0.02258821735546429, 0.02794854691757632, 0.02794854691757632, 0.03358841946708462,
+  0.03950510294401413, 0.0006778485850694062, 0.0006778485850694062, 0.0006778485850694062,
+  0.016535359036317563, 0.02130627562403806, 0.026506130501019225, 0.026506130501019225,
+  0.03777806830297255, 0.03777806830297255, 0.03777806830297255, 0.03777806830297255,
+  0.0006049812018696226, 0.036299512623474355, 0.036299512623474355, 0.036299512623474355,
+  0.036299512623474355, 0.0005514853690123469, 0.0005514853690123469, 0.034982998649202596,
+  0.034982998649202596, 0.034982998649202596, 0.034982998649202596, 0.033800772734260194,
+  0.033800772734260194, 0.033800772734260194, 0.00044923232543557626,
+  0.00044923232543557626, 0.03175777779183872, 0.03175777779183872, 0.000406003160664041,
+  0.000406003160664041, 0.00037055380885643406, 0.00037055380885643406],
  "C": 0.07485530842562414,
  "note": "c_R1 increased by 2e-4 (fine-grid violation -8.9e-5 repaired by eps*G_R1, G_R1>0)"
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_L5/sol.json} (line $\ell_{5}$)}
+\appsub{\texttt{line\_L5/sol.json} (line $\ell_{5}$)}
 \begin{lstlisting}
 {
  "d": 1.0,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5]
  ],
- "c": [
-  1.2676737932696245,
-  0.7009294514561635,
-  -0.4946330486621655,
-  0.09751555052498845,
-  -0.0005893962931625271,
-  -0.3784073335097401,
-  0.13473062893139318,
-  -0.01708382778797021,
-  0.0001003433684765934
- ],
+ "c": [1.2676737932696245, 0.7009294514561635, -0.4946330486621655, 0.09751555052498845,
+  -0.0005893962931625271, -0.3784073335097401, 0.13473062893139318, -0.01708382778797021,
+  0.0001003433684765934],
  "C1": 0.20175655042691418,
  "Cz_est": 0.8391011111542401,
  "z_est": 0.665362725928392,
@@ -3016,59 +2471,24 @@ The following files hold the coefficients as exact binary floating-point numbers
  "time": 8.346621751785278
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_L20/sol.json} (line $\ell_{20}$)}
+\appsub{\texttt{line\_L20/sol.json} (line $\ell_{20}$)}
 \begin{lstlisting}
 {
  "d": 1.2,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5]
  ],
- "c": [
-  0.6799784749489147,
-  0.8041106391650762,
-  0.7774270907421565,
-  -0.008448613496901295,
-  2.955972158446658e-05,
-  1.1843502097112268,
-  -0.576537489831307,
-  0.00610293149500534,
-  -2.1076986306361527e-05
- ],
+ "c": [0.6799784749489147, 0.8041106391650762, 0.7774270907421565, -0.008448613496901295,
+  2.955972158446658e-05, 1.1843502097112268, -0.576537489831307, 0.00610293149500534,
+  -2.1076986306361527e-05],
  "C1": 0.1082219354842083,
  "Cz_est": 1.6797641910534995,
  "z_est": 0.7020688851693405,
@@ -3084,59 +2504,24 @@ The following files hold the coefficients as exact binary floating-point numbers
  "time": 7.479561805725098
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_L60/sol.json} (line $\ell_{60}$)}
+\appsub{\texttt{line\_L60/sol.json} (line $\ell_{60}$)}
 \begin{lstlisting}
 {
  "d": 1.0,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5]
  ],
- "c": [
-  0.5951532035147798,
-  0.5911312495450366,
-  0.3889216428262093,
-  -0.004325167636924481,
-  1.5378902475155497e-05,
-  0.8079466147098463,
-  -0.3400480079099986,
-  0.003649167179891613,
-  -1.2750467413103112e-05
- ],
+ "c": [0.5951532035147798, 0.5911312495450366, 0.3889216428262093, -0.004325167636924481,
+  1.5378902475155497e-05, 0.8079466147098463, -0.3400480079099986, 0.003649167179891613,
+  -1.2750467413103112e-05],
  "C1": 0.094721574236354,
  "Cz_est": 2.344884047970574,
  "z_est": 0.7289397780667036,
@@ -3152,59 +2537,24 @@ The following files hold the coefficients as exact binary floating-point numbers
  "time": 8.941782712936401
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_L150/sol.json} (line $\ell_{150}$)}
+\appsub{\texttt{line\_L150/sol.json} (line $\ell_{150}$)}
 \begin{lstlisting}
 {
  "d": 0.85,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5]
  ],
- "c": [
-  0.5873561110952275,
-  0.4955273589230774,
-  0.17191023951649326,
-  -0.04515429156322006,
-  0.00027174675540190917,
-  0.5292986070563637,
-  -0.26974254048270235,
-  0.03950670966367516,
-  -0.00023459073769482711
- ],
+ "c": [0.5873561110952275, 0.4955273589230774, 0.17191023951649326, -0.04515429156322006,
+  0.00027174675540190917, 0.5292986070563637, -0.26974254048270235, 0.03950670966367516,
+  -0.00023459073769482711],
  "C1": 0.09348062843603788,
  "Cz_est": 2.5047342757708364,
  "z_est": 0.7303153300893256,
@@ -3220,109 +2570,37 @@ The following files hold the coefficients as exact binary floating-point numbers
  "time": 13.073456287384033
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_C400/sol.json} (line $\ell_{400}$)}
+\appsub{\texttt{line\_C400/sol.json} (line $\ell_{400}$)}
 \begin{lstlisting}
 {
  "d": 0.85,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "R",
-   6
-  ],
-  [
-   "R",
-   7
-  ],
-  [
-   "R",
-   8
-  ],
-  [
-   "R",
-   9
-  ],
-  [
-   "R",
-   10
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ],
-  [
-   "I",
-   6
-  ],
-  [
-   "I",
-   7
-  ],
-  [
-   "I",
-   8
-  ],
-  [
-   "I",
-   9
-  ],
-  [
-   "I",
-   10
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["R", 6],
+  ["R", 7],
+  ["R", 8],
+  ["R", 9],
+  ["R", 10],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5],
+  ["I", 6],
+  ["I", 7],
+  ["I", 8],
+  ["I", 9],
+  ["I", 10]
  ],
- "c": [
-  0.5276997168610267,
-  0.44844462233410926,
-  0.20734915440049123,
-  -0.05170881362706953,
-  0.04277439204584691,
-  -0.0021686787194867547,
-  5.225366348519004e-05,
-  -7.194711787780742e-07,
-  5.548232880956561e-09,
-  -1.890562024872484e-11,
-  0.57950165380938,
-  -0.24304154954646912,
-  0.09598460587810165,
-  -0.022316290439150017,
-  0.0010166745274645633,
-  -2.326790970420105e-05,
-  3.096452357377663e-07,
-  -2.3274894920069496e-09,
-  7.769753796000765e-12
- ],
+ "c": [0.5276997168610267, 0.44844462233410926, 0.20734915440049123, -0.05170881362706953,
+  0.04277439204584691, -0.0021686787194867547, 5.225366348519004e-05,
+  -7.194711787780742e-07, 5.548232880956561e-09, -1.890562024872484e-11, 0.57950165380938,
+  -0.24304154954646912, 0.09598460587810165, -0.022316290439150017, 0.0010166745274645633,
+  -2.326790970420105e-05, 3.096452357377663e-07, -2.3274894920069496e-09,
+  7.769753796000765e-12],
  "C1": 0.08398601840662599,
  "Cz_est": 4.723835786462193,
  "z_est": 0.7375635792618767,
@@ -3338,109 +2616,37 @@ The following files hold the coefficients as exact binary floating-point numbers
  "time": 38.073201417922974
 }
 \end{lstlisting}
-\subsection*{\texttt{line\_D6000/sol.json} (line $\ell_{6000}$)}
+\appsub{\texttt{line\_D6000/sol.json} (line $\ell_{6000}$)}
 \begin{lstlisting}
 {
  "d": 0.85,
  "B": [
-  [
-   "R",
-   1
-  ],
-  [
-   "R",
-   2
-  ],
-  [
-   "R",
-   3
-  ],
-  [
-   "R",
-   4
-  ],
-  [
-   "R",
-   5
-  ],
-  [
-   "R",
-   6
-  ],
-  [
-   "R",
-   7
-  ],
-  [
-   "R",
-   8
-  ],
-  [
-   "R",
-   9
-  ],
-  [
-   "R",
-   10
-  ],
-  [
-   "I",
-   2
-  ],
-  [
-   "I",
-   3
-  ],
-  [
-   "I",
-   4
-  ],
-  [
-   "I",
-   5
-  ],
-  [
-   "I",
-   6
-  ],
-  [
-   "I",
-   7
-  ],
-  [
-   "I",
-   8
-  ],
-  [
-   "I",
-   9
-  ],
-  [
-   "I",
-   10
-  ]
+  ["R", 1],
+  ["R", 2],
+  ["R", 3],
+  ["R", 4],
+  ["R", 5],
+  ["R", 6],
+  ["R", 7],
+  ["R", 8],
+  ["R", 9],
+  ["R", 10],
+  ["I", 2],
+  ["I", 3],
+  ["I", 4],
+  ["I", 5],
+  ["I", 6],
+  ["I", 7],
+  ["I", 8],
+  ["I", 9],
+  ["I", 10]
  ],
- "c": [
-  0.5266199652605132,
-  0.44752559745950127,
-  0.21763335933091524,
-  -0.06632610210813339,
-  0.049224751946469816,
-  -0.002454597973796714,
-  5.8415182530844107e-05,
-  -7.96150671490144e-07,
-  6.08645994127779e-09,
-  -2.0583832928014207e-11,
-  0.5834246015810649,
-  -0.23667212703027896,
-  0.09567840750457196,
-  -0.01858966229544025,
-  0.0008313848476117577,
-  -1.89384002058713e-05,
-  2.517567194510178e-07,
-  -1.8927048877024136e-09,
-  6.322548809318692e-12
- ],
+ "c": [0.5266199652605132, 0.44752559745950127, 0.21763335933091524, -0.06632610210813339,
+  0.049224751946469816, -0.002454597973796714, 5.8415182530844107e-05,
+  -7.96150671490144e-07, 6.08645994127779e-09, -2.0583832928014207e-11, 0.5834246015810649,
+  -0.23667212703027896, 0.09567840750457196, -0.01858966229544025, 0.0008313848476117577,
+  -1.89384002058713e-05, 2.517567194510178e-07, -1.8927048877024136e-09,
+  6.322548809318692e-12],
  "C1": 0.08381417060209288,
  "Cz_est": 4.566001466369842,
  "z_est": 0.7357358598268879,
