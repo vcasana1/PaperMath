@@ -126,7 +126,34 @@ cortos, variables introducidas antes de usarse). No tocar enunciados ni demostra
 
 ---
 
-## Después de las cinco órdenes (lo hace el autor con Claude): v10
+---
+
+## ORDEN 6 — Reproducción independiente de los 25 certificados (Codex o Terminal del Mac; no es para ChatGPT)
+
+Objetivo: reejecutar en otra máquina todos los certificados de la v9 y compararlos con los publicados, sin modificar ningún
+programa ni el manuscrito.
+
+    python3 -m venv ~/venv-pm && source ~/venv-pm/bin/activate
+    pip install python-flint==0.9.0 numpy
+    git clone -b explicit-S-turing https://github.com/vcasana1/PaperMath.git ~/PaperMath-repro
+    cd ~/PaperMath-repro/numerics/explicit_S_turing
+    git rev-parse HEAD                      # anotar el commit
+    ./run_certificates.sh 8                 # 8 = núcleos; ~1 h; salidas *.new
+    python3 rerun/finalize.py               # instala *.new, recalcula summary_pp.json; debe terminar en "finalize ok"
+
+Comparación, para cada uno de los 25 ficheros (`family/line_*/cert_{kernel,czeta_pp,elem,elem_S}.txt` y
+`hybrid_asymptotic/cert_m10P.txt`): `git diff` frente a la versión publicada. Deben coincidir exactamente todas las
+líneas salvo la de `python …, python-flint 0.9.0, precision 256 bits` (versión de Python) y los `time …s`; en
+particular cuentas de cajas, `C < …`, `C_zeta < …`, `SUP … <=`, las inclusiones a 20 dígitos y los SHA-256. Si una cota
+difiere en el último dígito, anotar ambas y comprobar que la nueva sigue siendo una cota válida en la misma dirección;
+si difiere más, parar e informar. Confirmar que `summary_pp.json` de las seis rectas da exactamente `A1`, `A3_N`, `A3_S`
+de la Tabla 2 de la nota.
+
+Entregable: `REPRODUCCION_<fecha>.md` con máquina y SO, versión de Python, commit, tiempos por certificado, diff por
+fichero y veredicto global. No reoptimizar, no tocar `.tex`, no crear versiones del manuscrito; dejar los `.new` en
+`repro/` y no hacer commit sobre los certificados publicados.
+
+## Después de las órdenes (lo hace el autor con Claude): v10
 
 Aplicar solo lo que venga con corrección exacta y comprobada; rehacer un certificado únicamente si cambia un programa
 (los hashes lo detectan); añadir el DOI de Zenodo a *Data availability* (ya preparado); regenerar apéndices y compilar;
