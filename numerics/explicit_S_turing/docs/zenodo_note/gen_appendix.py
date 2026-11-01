@@ -91,6 +91,10 @@ with open('generated_tables.tex', 'w') as f:
         czt.append(tcz); elt.append(tel)
         f.write('\\newcommand{\\line%sBoxesPos}{%s}\n\\newcommand{\\line%sBoxesNeg}{%s}\n\\newcommand{\\line%sBoxesTail}{%s}\n\\newcommand{\\line%sTime}{%s}\n' % (mac, f3(pos), mac, f3(neg), mac, f3(tail), mac, tm))
     f.write('\\newcommand{\\CzTimeMin}{%d}\n\\newcommand{\\CzTimeMax}{%d}\n\\newcommand{\\ElemTimeMin}{%d}\n\\newcommand{\\ElemTimeMax}{%d}\n' % (min(czt), max(czt), min(elt), max(elt)))
+    # grid values of the hybrid linear programme quoted in the Methods section (search outputs, not certified)
+    for log, mac in [('explore_B.log', 'HybGridB'), ('explore_P0.log', 'HybGridPzero'), ('explore_P.log', 'HybGridP')]:
+        m_ = re.search(r'ndiscs=(\d+) C\(grid\)=([\d.]+) kernel=[\d.]+ worst violation=\S+ it=\d+ used=(\d+)', open(HYB+log).read())
+        f.write('\\newcommand{\\%s}{%.5f}\n\\newcommand{\\%sUsed}{%s}\n\\newcommand{\\%sCand}{%s}\n' % (mac, float(m_.group(2)), mac, m_.group(3), mac, f3(m_.group(1))))
     # kernel-only optima for the Remark on the infimum
     ko = open(HYB+'kernel_only.txt').read()
     vals = {}
