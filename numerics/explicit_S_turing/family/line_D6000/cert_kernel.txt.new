@@ -3,3 +3,4 @@ C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083814170602092884236  (ball [0.083814 +
 kernel part c_R1/(2pi) = 0.08381417060209288
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002027460239 +/- 3.01e-14]  positive: True
 t in (0,T1]: certified, boxes 14760921
+t in [-T1,0): certified, boxes 15866017
