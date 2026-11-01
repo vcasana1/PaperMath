@@ -13,3 +13,19 @@
   it 12  objective 0.074860  worst violation 2.60e-06  new cutting planes 63  rows 42557
   it 13  objective 0.074860  worst violation 4.57e-07  new cutting planes 57  rows 42595
   it 14  objective 0.074860  worst violation 3.00e-07  new cutting planes 68  rows 42628
+  it 15  objective 0.074860  worst violation 1.52e-07  new cutting planes 59  rows 42671
+  it 16  objective 0.074860  worst violation 1.23e-07  new cutting planes 55  rows 42708
+  it 17  objective 0.074860  worst violation 9.34e-08  new cutting planes 58  rows 42736
+  it 18  objective 0.074860  worst violation 9.33e-08  new cutting planes 64  rows 42768
+  it 19  objective 0.074860  worst violation 9.34e-08  new cutting planes 58  rows 42802
+  it 20  objective 0.074860  worst violation 1.14e-07  new cutting planes 51  rows 42833
+  it 21  objective 0.074860  worst violation 9.69e-08  new cutting planes 67  rows 42854
+  it 22  objective 0.074860  worst violation 9.35e-08  new cutting planes 53  rows 42895
+  it 23  objective 0.074860  worst violation 9.33e-08  new cutting planes 59  rows 42916
+  it 24  objective 0.074860  worst violation 9.34e-08  new cutting planes 61  rows 42948
+  it 25  objective 0.074860  worst violation 9.34e-08  new cutting planes 62  rows 42983
+  it 26  objective 0.074860  worst violation 1.00e-07  new cutting planes 67  rows 43023
+  it 27  objective 0.074860  worst violation 9.33e-08  new cutting planes 63  rows 43062
+  it 28  objective 0.074860  worst violation 9.84e-08  new cutting planes 69  rows 43099
+  it 29  objective 0.074860  worst violation 9.33e-08  new cutting planes 57  rows 43141
+m=10 d=0.900 prof=P eta=0.001 ndiscs=2660 C(grid)=0.074860 kernel=0.065582 worst violation=9.33e-08 it=29 used=90 centres=[1.03, 1.06, 1.0986, 1.1, 1.15, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6094]  1002s
