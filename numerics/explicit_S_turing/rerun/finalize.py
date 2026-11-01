@@ -2,7 +2,7 @@
 # line exactly as certify_line_pp.finish does (exact decimal arithmetic, rounding upwards), and report every change.
 import json, os, shutil, sys
 from decimal import Decimal, ROUND_CEILING, localcontext
-FAM = '/home/claude/papermath/numerics/explicit_S_turing/family/'
+FAM = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'family') + os.sep   # works from any clone
 for tag in ['L5', 'L20', 'L60', 'L150', 'C400', 'D6000']:
     D = FAM+'line_%s/' % tag
     for fn, marker in [('cert_kernel.txt', 'all certified'), ('cert_czeta_pp.txt', 'C_zeta <'), ('cert_elem.txt', 'SUP over'), ('cert_elem_S.txt', 'SUP over')]:
