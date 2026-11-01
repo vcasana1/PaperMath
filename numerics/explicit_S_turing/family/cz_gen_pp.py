@@ -15,9 +15,10 @@ from fractions import Fraction as Fr
 from math import factorial
 from flint import arb, acb
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic'))   # certutil.py lives there (or next to this file in the flat archive)
-from certutil import A, up_str
+from certutil import A, up_str, provenance
 
 sol = json.load(open(sys.argv[1])); N0 = int(float(sys.argv[2])); P0 = int(sys.argv[3]) if len(sys.argv) > 3 else 1000
+print(provenance(sys.argv[1], __file__, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic', 'certutil.py') if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py')) else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py')), flush=True)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(b) for b in sol['B']]; c = [A(Fr(x)) for x in sol['c']]
 assert len(c) == len(B) and B[0] == ('R', 1) and ('I', 1) not in B and d > Fr(1, 2) and P0 <= N0
 PI = arb.pi(); dA = A(d); s1 = A(Fr(1, 2)+d); alpha = s1-1                 # alpha = sigma1 - 1 > 0

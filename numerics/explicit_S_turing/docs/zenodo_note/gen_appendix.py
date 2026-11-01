@@ -7,7 +7,7 @@ from fractions import Fraction as Fr
 R_ = '../../'; HYB = R_+'hybrid_asymptotic/'; FAM = R_+'family/'
 sys.path.insert(0, HYB)
 from flint import arb
-from certutil import A, up_str, down_str, exact
+from certutil import A, up_str, down_str, exact, sha256
 from profile_published import nodes_published, TY, PAIRS, hb
 PI = arb.pi()
 LINES = [('L5', '$\\ell_{5}$', 'line5', 'Five'), ('L20', '$\\ell_{20}$', 'line20', 'Twenty'), ('L60', '$\\ell_{60}$', 'line60', 'Sixty'), ('L150', '$\\ell_{150}$', 'line150', 'OneFifty'), ('C400', '$\\ell_{400}$', 'line400', 'FourH'), ('D6000', '$\\ell_{6000}$', 'line6000', 'B')]
@@ -43,6 +43,17 @@ def Jexact(nodes, cc, R):   # as in certify_hybrid.py
 J = [Jexact(nodes, cc, R) for cc, R, v in discs]
 cert = open(HYB+HYBCERT).read()
 assert 'all certified' in cert
+def check_provenance(certtext, folder):
+    # every file named in the provenance lines of a certificate must be the file published here, byte for byte
+    for name, h in re.findall(r'^(\S+) sha256 ([0-9a-f]{64})$', certtext, re.M):
+        for cand in (folder+name, HYB+name, FAM+name):
+            if os.path.exists(cand): break
+        else: raise SystemExit('provenance: file %s not found' % name)
+        assert sha256(cand) == h, 'provenance mismatch for %s (certificate %s)' % (name, folder)
+check_provenance(cert, HYB)
+for tag, nm, name, mac in LINES:
+    for fn in ('cert_kernel.txt', 'cert_czeta_pp.txt', 'cert_elem.txt', 'cert_elem_S.txt'):
+        check_provenance(open(FAM+'line_%s/%s' % (tag, fn)).read(), FAM+'line_%s/' % tag)
 
 with open('generated_tables.tex', 'w') as f:
     # kernel coefficients of the hybrid
@@ -166,7 +177,7 @@ def jverb(path, title):
 with open('generated_appendix.tex', 'w') as f:
     f.write('\\section{Programs}\\label{app:code}\n')
     f.write('The programs are written in Python~3 and use \\texttt{python-flint} (Arb ball arithmetic \\cite{Johansson2017}, FLINT \\cite{FLINT}) at $256$ bits, \\texttt{numpy}, \\texttt{scipy} and \\texttt{cvxpy} with the solver Clarabel. '
-            'The certification programs are those of Sections~\\ref{app:certutil}--\\ref{app:cert_line}; every bound they print or write to a file is converted to decimal with directed rounding (\\texttt{up\\_str} in \\texttt{certutil.py}), so that the printed decimal is itself a valid bound. '
+            'The certification programs are those of Sections~\\ref{app:certutil}--\\ref{app:cert_line}; every bound they print or write to a file is converted to decimal with directed rounding (\\texttt{up\\_str} in \\texttt{certutil.py}), so that the printed decimal is itself a valid bound. Each certificate begins with the SHA-256 digests of its input file and of the programs that produced it, and the versions of Python and \\texttt{python-flint}; the build script of this note checks that these digests are those of the files reproduced in Appendices~\\ref{app:code} and~\\ref{app:data}. '
             'The search programs that produced the coefficients are reproduced in Section~\\ref{app:search} for completeness, but no statement of this article depends on them. '
             'All files are in the repository cited in Section~\\ref{sec:methods}, in the folders \\texttt{hybrid\\_asymptotic/} and \\texttt{family/}; the deposited archive is flat, and the programs locate their helper modules in either layout.\n')
     f.write(verb(HYB+'certutil.py', '\\texttt{certutil.py}: shared helpers, directed decimal rounding of bounds', 'app:certutil'))

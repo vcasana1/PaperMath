@@ -13,10 +13,10 @@
 #   (a) on [0,1/2] x (0,T1] and [0,1/2] x [-T1,0): centred form H(centre) + grad H(box) . half-widths, bisection;
 #   (b) for |t| >= T1, u = 1/t: t^2 U - 4 d^3 u - K5 |u|^3 > 0 on [0,1/2] x [0,1/T1] and [0,1/2] x [-1/T1,0], bisection;
 #       this needs T1 >= 2d + 1/2 (convergence of the arctan series) and W_k = 0 for |t| >= T1.
-import sys, json, time
+import sys, os, json, time
 from fractions import Fraction as Fr
 from flint import arb, acb
-from certutil import A, box, up_str, down_str, exact
+from certutil import A, box, up_str, down_str, exact, provenance
 
 sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 else Fr(40)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(x) for x in sol['B']]
@@ -129,6 +129,7 @@ def Jexact(nodes, cc, R):
 
 if __name__ == '__main__':
     t_ = time.time()
+    print(provenance(sys.argv[1], __file__, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py'), *([os.path.join(os.path.dirname(os.path.abspath(__file__)), 'profile_published.py')] if sol['discs'] else [])))
     if discs:
         assert sol['prof'] == 'P', 'only the published-source profile e_P is supported'
         from profile_published import nodes_published

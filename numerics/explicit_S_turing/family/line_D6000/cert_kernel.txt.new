@@ -1,3 +1,7 @@
+sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 10  discs used: 0 
 C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.08381417060209288423629767 +/- 2.14e-27]  (ball, midpoint and radius)
    radius of the ball: [1.54e-78 +/- 3.35e-82]   enclosure of C with directed rounding: [0.083814170602092884236, 0.083814170602092884237]

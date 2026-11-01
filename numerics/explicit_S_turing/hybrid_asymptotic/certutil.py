@@ -4,10 +4,13 @@
 #   exact(x)        the rational value of an exact (zero-radius) arb
 #   up_str(x, n)    decimal string with n significant digits that is >= every point of the ball x (directed rounding)
 #   down_str(x, n)  decimal string with n significant digits that is <= every point of the ball x
+#   provenance(...) lines with the SHA-256 of the input and program files and the library versions, for the record
 # The .str() method of arb rounds to the nearest decimal, so it must not be used to print an upper or lower bound;
 # every bound printed or written to a JSON file by the certification programs goes through up_str / down_str.
+import hashlib, os, sys, platform
 from fractions import Fraction as Fr
 from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR, localcontext
+import flint
 from flint import arb, ctx
 ctx.prec = 256
 
@@ -40,6 +43,17 @@ def down_str(x, n):
     l = exact(x.lower()); s = _dir_str(l, n, ROUND_FLOOR)
     assert Fr(s) <= l, (s, l)
     return s
+
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as fh: h.update(fh.read())
+    return h.hexdigest()
+
+def provenance(*paths):
+    # one line per file (name and SHA-256), then the versions of Python and python-flint and the working precision
+    lines = ['%s sha256 %s' % (os.path.basename(p), sha256(p)) for p in paths]
+    lines.append('python %s, python-flint %s, precision %d bits' % (platform.python_version(), getattr(flint, '__version__', '?'), ctx.prec))
+    return '\n'.join(lines)
 
 if __name__ == '__main__':
     x = arb(1)/3
