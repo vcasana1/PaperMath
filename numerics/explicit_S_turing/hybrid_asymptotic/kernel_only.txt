@@ -8,7 +8,6 @@ m=20 d=0.70 all beta C1(grid)=0.07994 worst violation=3.1e-09 it=59  373s
 m=20 d=0.80 all beta C1(grid)=0.07983 worst violation=1.6e-09 it=59  378s
 m=20 d=0.90 all beta C1(grid)=0.07996 worst violation=1.9e-06 it=59  382s
 m=40 d=0.70 all beta C1(grid)=0.07978 worst violation=2.1e-02 it=59  2057s
-Terminated
 m=4 d=0.70 constraint at beta=1/2 only C1(grid)=0.04375 worst violation=3.3e-16 it=3  0s
 m=4 d=0.80 constraint at beta=1/2 only C1(grid)=0.05000 worst violation=1.6e-12 it=2  0s
 m=4 d=0.90 constraint at beta=1/2 only C1(grid)=0.05625 worst violation=2.4e-12 it=2  0s
