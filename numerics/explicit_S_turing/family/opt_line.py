@@ -7,7 +7,7 @@
 # C_zeta(c) = sum_n Lambda(n) n^{-sigma1} || (a(log n), b(log n)) ||_2  (n <= n0) + quadrature of the tail; with PPMAX > 0 the
 # primes p <= PPMAX enter through the maximum of f_p over a grid of 96 phases (per-prime phase maximum).
 # Usage:  [PPMAX=300] python3 opt_line.py <d> <mR> <mI> <L*> <out.json>
-# Output: JSON with the coefficients as exact binary numbers, the input of certify_line_pp.py.
+# Output: JSON with the coefficients as decimal strings that round-trip to the binary floats, the input of certify_line_pp.py.
 import sys, json, math, time, os, numpy as np, cvxpy as cp, mpmath as mp
 PPMAX = int(os.environ.get('PPMAX', '0'))   # per-prime phase maximum in the objective for the primes p <= PPMAX (0: none)
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic'))   # lpcommon.py lives there (or next to this file in the flat archive)

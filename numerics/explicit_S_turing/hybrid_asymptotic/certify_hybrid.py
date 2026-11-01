@@ -8,7 +8,7 @@
 # the kernel inequality f <= U alone and prints C_1 = c_R1/(2 pi).
 #
 # Usage:  python3 certify_hybrid.py <solution.json> [T1]
-#   solution.json: d, B (basis), c (coefficients, exact binary values), discs [(c_k,R_k,v_k)], kappa; T1 defaults to 40.
+#   solution.json: d, B (basis), c (coefficients, as decimal strings that round-trip to the optimiser's floats), discs [(c_k,R_k,v_k)], kappa; T1 defaults to 40.
 # Method (Proposition "Certification of the kernel inequality" and Section "The hybrid" of the article):
 #   (a) on [0,1/2] x (0,T1] and [0,1/2] x [-T1,0): centred form H(centre) + grad H(box) . half-widths, bisection;
 #   (b) for |t| >= T1, u = 1/t: t^2 U - 4 d^3 u - K5 |u|^3 > 0 on [0,1/2] x [0,1/T1] and [0,1/2] x [-1/T1,0], bisection;
@@ -20,7 +20,7 @@ from certutil import A, box, up_str, down_str, exact, provenance
 
 sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 else Fr(40)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(x) for x in sol['B']]
-c = [Fr(x) for x in sol['c']]                                           # exact binary values written by the optimiser
+c = [Fr(x) for x in sol['c']]                                           # exact rational values of the binary floats recovered from the round-tripping JSON decimals
 discs = [(Fr(cc).limit_denominator(10**4), Fr(R).limit_denominator(10**4), Fr(v).limit_denominator(10**4)) for cc, R, v in sol['discs']]
 discs = [(cc, min(R, cc-Fr(1, 2)), v) for cc, R, v in discs]            # rational rounding must keep c_k - R_k >= 1/2 (decreasing R_k lowers W_k; J_k is recomputed below from the final rational data)
 kap = [Fr(x) for x in sol['kappa']]
