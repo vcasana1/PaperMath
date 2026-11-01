@@ -1,0 +1,5 @@
+d = 17/20  m = 10  discs used: 0 
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.08398601840662598280115479 +/- 4.65e-27]  (ball, midpoint and radius)
+   radius of the ball: [1.54e-78 +/- 1.28e-81]   enclosure of C with directed rounding: [0.083986018406625982801, 0.083986018406625982802]
+kernel part c_R1/(2pi) = [0.083986018406625982801 +/- 1.55e-22]
+limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002002739955 +/- 2.69e-14]  positive: True

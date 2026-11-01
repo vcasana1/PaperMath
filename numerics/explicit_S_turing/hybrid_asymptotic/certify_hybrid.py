@@ -16,7 +16,7 @@
 import sys, json, time
 from fractions import Fraction as Fr
 from flint import arb, acb
-from certutil import A, box, up_str
+from certutil import A, box, up_str, down_str, exact
 
 sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 else Fr(40)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(x) for x in sol['B']]
@@ -137,10 +137,12 @@ if __name__ == '__main__':
     else: J = []
     C = cA[0]/(2*PI)+sum((k*j for k, j in zip(kA, J)), arb(0))/PI
     print('d =', d, ' m =', JMAX, ' discs used:', len(discs), (' profile e_P (profile_published.py)' if discs else ''))
-    print('C = c_R1/(2pi) + sum kappa_k J_k/pi =', C.str(20, radius=False), ' (ball', C.str(5), ')')
-    print('kernel part c_R1/(2pi) =', (cA[0]/(2*PI)).str(16, radius=False))
+    print('C = c_R1/(2pi) + sum kappa_k J_k/pi =', C.str(25), ' (ball, midpoint and radius)')
+    print('   radius of the ball:', C.rad().str(3), '  enclosure of C with directed rounding: [%s, %s]' % (down_str(C, 20), up_str(C, 20)))
+    print('kernel part c_R1/(2pi) =', (cA[0]/(2*PI)).str(20))
     lim = 2*dA*cA[0]-2*cA[B.index(('R', 2))]; print('limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 =', lim.str(10), ' positive:', lim > 0)
     n1 = cert_main(Fr(0), Fr(1, 2), Fr(0), T1, +1); print('t in (0,T1]: certified, boxes', n1, flush=True)
     n2 = cert_main(Fr(0), Fr(1, 2), -T1, Fr(0), -1); print('t in [-T1,0): certified, boxes', n2, flush=True)
     n3 = cert_tail(Fr(0), 1/T1); n4 = cert_tail(-1/T1, Fr(0)); print('|t|>=T1: certified, boxes', n3+n4)
-    print('all certified;  C <', up_str(C, 12), '  time %.0fs' % (time.time()-t_))
+    Cup = up_str(C, 12); assert exact(C.upper()) <= Fr(Cup)
+    print('all certified;  C <', Cup, '  time %.0fs' % (time.time()-t_))

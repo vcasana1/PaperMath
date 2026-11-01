@@ -1,5 +1,5 @@
 # Shared helpers of the certification programs (python-flint / Arb ball arithmetic at 256 bits).
-#   A(q)            exact ball of a Fraction or of a Python number
+#   A(q)            exact ball of a Fraction or of an integer (floats are refused)
 #   box(lo, hi)     ball containing the interval [lo, hi]
 #   exact(x)        the rational value of an exact (zero-radius) arb
 #   up_str(x, n)    decimal string with n significant digits that is >= every point of the ball x (directed rounding)
@@ -12,7 +12,10 @@ from flint import arb, ctx
 ctx.prec = 256
 
 def A(q):
-    return arb(q.numerator)/arb(q.denominator) if isinstance(q, Fr) else arb(q)
+    # exact ball of a Fraction or an integer; floats are refused, so that no binary approximation of a decimal enters silently
+    if isinstance(q, Fr): return arb(q.numerator)/arb(q.denominator)
+    assert isinstance(q, int), 'A() takes a Fraction or an integer, got %r' % (q,)
+    return arb(q)
 
 def box(lo, hi):
     return A(lo).union(A(hi))

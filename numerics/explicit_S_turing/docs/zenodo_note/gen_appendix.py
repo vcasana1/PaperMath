@@ -7,7 +7,7 @@ from fractions import Fraction as Fr
 R_ = '../../'; HYB = R_+'hybrid_asymptotic/'; FAM = R_+'family/'
 sys.path.insert(0, HYB)
 from flint import arb
-from certutil import A, up_str, exact
+from certutil import A, up_str, down_str, exact
 from profile_published import nodes_published, TY, PAIRS, hb
 PI = arb.pi()
 LINES = [('L5', '$\\ell_{5}$', 'line5', 'Five'), ('L20', '$\\ell_{20}$', 'line20', 'Twenty'), ('L60', '$\\ell_{60}$', 'line60', 'Sixty'), ('L150', '$\\ell_{150}$', 'line150', 'OneFifty'), ('C400', '$\\ell_{400}$', 'line400', 'FourH'), ('D6000', '$\\ell_{6000}$', 'line6000', 'B')]
@@ -71,7 +71,9 @@ with open('generated_tables.tex', 'w') as f:
     f.write('\\newcommand{\\CHval}{%s}\n' % trunc_)
     chup = up_str(CH, 12); f.write('\\newcommand{\\CHup}{%s}\n' % chup)
     assert ('C < '+chup) in cert, 'the certificate prints a different upper bound'
-    cb = CH.str(16); m_, r_ = cb.strip('[]').split(' +/- '); rm, re_ = r_.split('e'); f.write('\\newcommand{\\CHball}{[%s\\pm%s\\cdot10^{%d}]}\n' % (m_, rm, int(re_)))
+    lo20, up20 = down_str(CH, 20), up_str(CH, 20)
+    assert ('[%s, %s]' % (lo20, up20)) in cert, 'the certificate prints a different enclosure of C_H'
+    f.write('\\newcommand{\\CHball}{[%s,\\ %s]}\n' % (lo20, up20))
     f.write('\\newcommand{\\CHkernel}{%s}\n' % (A(c[0])/(2*PI)).str(12, radius=False))
     f.write('\\newcommand{\\CHdiscs}{%s}\n' % tot.str(10, radius=False))
     f.write('\\newcommand{\\Kfive}{%s}\n' % ((2*(A(d)+A(Fr(1, 2)))**5+2*A(d)**5+(2*A(d)+A(Fr(1, 2)))**5+(2*A(d))**5)/5).str(8, radius=False))
