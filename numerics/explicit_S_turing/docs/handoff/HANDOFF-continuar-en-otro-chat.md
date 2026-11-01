@@ -39,6 +39,8 @@ certificados o la nota no compila).
     # (ver el zip de la versión anterior como plantilla). Commit + push; project_write del _l.tex.
 
 ## Estado al escribir esto
+DEPOSITADO EN ZENODO: doi:10.5281/zenodo.23858827 (https://zenodo.org/records/23858827), 1 Nov 2026, v9 (solo el PDF;
+el zip con código y certificados está en GitHub; conviene subirlo también a Zenodo como fichero adicional).
 v8 ENTREGADA (1 Nov 2026, commit 9b9443b): los 25 certificados rehechos con los programas definitivos (procedencia
 SHA-256, bola con radio real, inclusión a 20 dígitos), constantes idénticas, 56 pp., cada apéndice en hoja nueva,
 "An open question" en §7.5 (sin receta; la frase-receta antigua de §7.4 se eliminó y con ella tres referencias que

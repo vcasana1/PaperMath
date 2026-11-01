@@ -1,7 +1,7 @@
 # Explicit and asymptotic bounds for S(T): Turing–Amberger–Bellotti–Wong kernels and Jensen discs
 
 V. Casaña-Giner. Numerical certificates in Arb ball arithmetic (python-flint 0.9.0, 256 bits). Not Lean files; not
-imported by the Lake project. The article is `docs/zenodo_note/` (Zenodo note, latest `casanya_turing_jensen_vN`).
+imported by the Lake project. The article is `docs/zenodo_note/` (latest `casanya_turing_jensen_vN`); deposited at Zenodo, doi:10.5281/zenodo.23858827 (v9, 1 Nov 2026).
 
 Notation: `N(T)` counts zeros with `0 < γ ≤ T`; `main(T) = (T/2π) log(T/2πe)`; `a = limsup |S(T)|/log T`.
 
