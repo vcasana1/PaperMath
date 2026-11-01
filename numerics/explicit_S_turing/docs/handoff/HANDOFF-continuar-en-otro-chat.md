@@ -2,8 +2,8 @@
 
 Repositorio: `vcasana1/PaperMath`, rama `explicit-S-turing`, carpeta `numerics/explicit_S_turing/`.
 Nota: `docs/zenodo_note/` (fuente `body.tex` + ficheros generados; se compila con `build.py vN`, que produce
-`casanya_turing_jensen_vN.pdf`, `_l.tex` (autocontenido) y `.txt`). Última entregada: v7; la v8 es la consolidación
-de los certificados rehechos con los programas definitivos (ver abajo). Handoff largo: `HANDOFF-turing-explicit-S.md`.
+`casanya_turing_jensen_vN.pdf`, `_l.tex` (autocontenido) y `.txt`). Última entregada: v11 (1 Nov 2026, commit 2668fa8; revisión larga de la v10 aplicada: texto, tooltips y apéndices;
+ningún programa de certificación ni JSON tocado, certificados y constantes idénticos a v8). Handoff largo: `HANDOFF-turing-explicit-S.md`.
 
 ## Reglas del autor (obligatorias)
 - Preguntar antes de cambiar nada que no sea una corrección evidente; nunca inventar; impersonal en el artículo.
