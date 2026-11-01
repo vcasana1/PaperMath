@@ -22,7 +22,7 @@ sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 el
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(x) for x in sol['B']]
 c = [Fr(x) for x in sol['c']]                                           # exact binary values written by the optimiser
 discs = [(Fr(cc).limit_denominator(10**4), Fr(R).limit_denominator(10**4), Fr(v).limit_denominator(10**4)) for cc, R, v in sol['discs']]
-discs = [(cc, min(R, cc-Fr(1, 2)), v) for cc, R, v in discs]            # rational rounding must keep c_k - R_k >= 1/2 (a smaller R_k only lowers W_k)
+discs = [(cc, min(R, cc-Fr(1, 2)), v) for cc, R, v in discs]            # rational rounding must keep c_k - R_k >= 1/2 (decreasing R_k lowers W_k; J_k is recomputed below from the final rational data)
 kap = [Fr(x) for x in sol['kappa']]
 # integrity of the data
 assert len(c) == len(B) and len(discs) == len(kap)
