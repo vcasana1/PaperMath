@@ -1,12 +1,5 @@
-d = 9/10  m = 10  discs used: 86  profile e_P (profile_published.py)
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074856555209626646402  (ball [0.074857 +/- 4.45e-7] )
-kernel part c_R1/(2pi) = 0.06557750674351201
-limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.001379639462 +/- 7.14e-14]  positive: True
-t in (0,T1]: certified, boxes 2080501
 Traceback (most recent call last):
-  File "/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/certify_hybrid.py", line 144, in <module>
-    n2 = cert_main(Fr(0), Fr(1, 2), -T1, Fr(0), -1); print('t in [-T1,0): certified, boxes', n2, flush=True)
-  File "/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/certify_hybrid.py", line 86, in cert_main
-    if dep >= maxdepth: raise RuntimeError('fail at b=[%s,%s] t=[%s,%s] H=%s' % (float(b0), float(b1), float(t0), float(t1), H))
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-RuntimeError: fail at b=[0.4672132842242718,0.4672132860869169] t=[-0.44921875,-0.44921874068677425] H=[+/- 9.16e-8]
+  File "/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/certify_hybrid.py", line 21, in <module>
+    sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 else Fr(40)
+                    ~~~~^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'expl_m10_d0.90_P_eta0.001.json'

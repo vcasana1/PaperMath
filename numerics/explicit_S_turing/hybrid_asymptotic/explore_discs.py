@@ -43,8 +43,10 @@ def solve(d, m, discs, eta=0.0, maxit=30, nb=26):
         if len(used): v = v-Wmat(du, bb, tt)@x[nB+used]
         return v
     for it in range(maxit):
-        r = linprog(obj, A_ub=-sparse.vstack([A, sparse.csr_matrix(arow)]), b_ub=-np.concatenate([Fv, [eta]]),
-                    bounds=[(None, None)]*nB+[(0, None)]*len(discs), method='highs')
+        for method in ('highs', 'highs-ds', 'highs-ipm'):   # the dual simplex and the interior point method are tried if HiGHS' default fails
+            r = linprog(obj, A_ub=-sparse.vstack([A, sparse.csr_matrix(arow)]), b_ub=-np.concatenate([Fv, [eta]]),
+                        bounds=[(None, None)]*nB+[(0, None)]*len(discs), method=method)
+            if r.status == 0: break
         assert r.status == 0, 'LP solver: '+r.message
         x = r.x; used = np.nonzero(x[nB:] > 1e-12)[0]; du = [discs[k] for k in used]
         nbl = []; ntl = []; worst = -1; cand = []
@@ -63,8 +65,13 @@ def solve(d, m, discs, eta=0.0, maxit=30, nb=26):
             bb_, tt_ = min(max(res.x[0], 0.0), 0.5), (res.x[1] if res.x[1]*t0 > 0 else t0)
             vv = -res.fun; worst = max(worst, vv)
             if vv > 0: nbl.append(bb_); ntl.append(tt_)
+        print('  it %d  objective %.6f  worst violation %.2e  new cutting planes %d  rows %d' % (it, r.fun, worst, len(nbl), A.shape[0]), flush=True)
         if not nbl: break
-        A2, F2 = block(np.array(nbl), np.array(ntl)); A = sparse.vstack([A, A2]).tocsr(); Fv = np.concatenate([Fv, F2])
+        # new cutting planes, without near-duplicates (which make the linear programme ill-conditioned)
+        pts = []
+        for b_, t_ in zip(nbl, ntl):
+            if all(abs(b_-b2) > 1e-6 or abs(t_-t2) > 1e-6*max(1.0, abs(t_)) for b2, t2 in pts): pts.append((b_, t_))
+        A2, F2 = block(np.array([p[0] for p in pts]), np.array([p[1] for p in pts])); A = sparse.vstack([A, A2]).tocsr(); Fv = np.concatenate([Fv, F2])
     xs = x.copy(); xs[:nB] *= sc
     return r.fun, xs, B, J, worst, it
 
