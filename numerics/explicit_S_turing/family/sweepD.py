@@ -1,7 +1,7 @@
 # Sweep with per-prime phase maximum in the objective (PPMAX=300), m=10, finer d grid.
 import json, sys, time, itertools, os
 os.environ.setdefault('PPMAX', '300')
-from opt_line_pp import optimize
+from opt_line import optimize
 Ls=[float(x) for x in sys.argv[1].split(',')]; out=sys.argv[2]
 ds=[0.8,0.85,0.9,0.95,1.0]
 for L in Ls:
