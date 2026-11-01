@@ -1,0 +1,35 @@
+  it 0  objective 0.074736  worst violation 1.53e-02  new cutting planes 294  rows 41600
+  it 1  objective 0.074773  worst violation 5.48e-03  new cutting planes 126  rows 41860
+  it 2  objective 0.074777  worst violation 2.31e-03  new cutting planes 113  rows 41954
+  it 3  objective 0.074777  worst violation 8.94e-04  new cutting planes 94  rows 42034
+  it 4  objective 0.074778  worst violation 1.54e-04  new cutting planes 83  rows 42109
+  it 5  objective 0.074778  worst violation 3.03e-04  new cutting planes 78  rows 42169
+  it 6  objective 0.074778  worst violation 2.31e-04  new cutting planes 80  rows 42228
+  it 7  objective 0.074778  worst violation 6.99e-07  new cutting planes 79  rows 42287
+  it 8  objective 0.074778  worst violation 2.29e-05  new cutting planes 77  rows 42340
+  it 9  objective 0.074778  worst violation 1.77e-05  new cutting planes 67  rows 42408
+  it 10  objective 0.074778  worst violation 5.56e-06  new cutting planes 64  rows 42458
+/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/lpcommon.py:12: RuntimeWarning: overflow encountered in power
+  z = (x+1j*t)**(-j); return z.real if k == 'R' else -z.imag
+/home/claude/papermath/numerics/explicit_S_turing/hybrid_asymptotic/lpcommon.py:12: RuntimeWarning: invalid value encountered in power
+  z = (x+1j*t)**(-j); return z.real if k == 'R' else -z.imag
+  it 11  objective 0.074778  worst violation 1.82e-06  new cutting planes 56  rows 42503
+  it 12  objective 0.074778  worst violation 1.00e-07  new cutting planes 63  rows 42536
+  it 13  objective 0.074778  worst violation 7.80e-08  new cutting planes 55  rows 42578
+  it 14  objective 0.074778  worst violation 9.66e-08  new cutting planes 55  rows 42607
+  it 15  objective 0.074778  worst violation 9.41e-08  new cutting planes 64  rows 42638
+  it 16  objective 0.074778  worst violation 3.00e-07  new cutting planes 57  rows 42676
+  it 17  objective 0.074778  worst violation 9.69e-08  new cutting planes 61  rows 42708
+  it 18  objective 0.074778  worst violation 9.69e-08  new cutting planes 55  rows 42745
+  it 19  objective 0.074778  worst violation 9.95e-08  new cutting planes 50  rows 42778
+  it 20  objective 0.074778  worst violation 7.28e-08  new cutting planes 57  rows 42800
+  it 21  objective 0.074778  worst violation 9.84e-08  new cutting planes 63  rows 42832
+  it 22  objective 0.074778  worst violation 9.69e-08  new cutting planes 48  rows 42868
+  it 23  objective 0.074778  worst violation 8.26e-08  new cutting planes 68  rows 42889
+  it 24  objective 0.074778  worst violation 7.44e-08  new cutting planes 50  rows 42928
+  it 25  objective 0.074778  worst violation 9.25e-08  new cutting planes 59  rows 42951
+  it 26  objective 0.074778  worst violation 1.42e-07  new cutting planes 56  rows 42984
+  it 27  objective 0.074778  worst violation 9.68e-08  new cutting planes 51  rows 43017
+  it 28  objective 0.074778  worst violation 9.47e-08  new cutting planes 49  rows 43041
+  it 29  objective 0.074778  worst violation 7.01e-08  new cutting planes 58  rows 43067
+m=10 d=0.900 prof=P eta=0 ndiscs=2660 C(grid)=0.074778 kernel=0.065505 worst violation=7.01e-08 it=29 used=91 centres=[1.03, 1.06, 1.0986, 1.1, 1.15, 1.2, 1.25, 1.3, 1.4, 1.5, 1.6094]  962s
