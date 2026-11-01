@@ -7,3 +7,4 @@ C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.08381417060209288423629767 +/- 2.14e-27
    radius of the ball: [1.54e-78 +/- 3.35e-82]   enclosure of C with directed rounding: [0.083814170602092884236, 0.083814170602092884237]
 kernel part c_R1/(2pi) = [0.083814170602092884236 +/- 2.98e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002027460239 +/- 3.01e-14]  positive: True
+t in (0,T1]: certified, boxes 14760921
