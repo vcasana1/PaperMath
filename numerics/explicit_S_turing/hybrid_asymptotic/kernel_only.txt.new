@@ -5,3 +5,4 @@ m=10 d=0.70 all beta C1(grid)=0.08160 worst violation=1.4e-13 it=5  33s
 m=10 d=0.80 all beta C1(grid)=0.08071 worst violation=7.4e-08 it=59  233s
 m=10 d=0.90 all beta C1(grid)=0.08100 worst violation=8.6e-09 it=59  173s
 m=20 d=0.70 all beta C1(grid)=0.07994 worst violation=3.1e-09 it=59  373s
+m=20 d=0.80 all beta C1(grid)=0.07983 worst violation=1.6e-09 it=59  378s
