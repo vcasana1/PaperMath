@@ -1,0 +1,9 @@
+sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
+per-prime phase maximum for p <= 1000 : gain [0.13567339 +/- 3.39e-9]
+primes 5761455  partial sum (n<=100000000) = [0.700266525818397 +/- 2.62e-16]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  51s
+g monotone on [2000, oo): crude bound [+/- 4.40e-3] < sigma1
+tail <= [0.003333488646 +/- 2.02e-13]  (int_{N0}^{e^LB} G = [0.003174276158 +/- 3.32e-14] , int_{e^L1}^{e^LB} g = [+/- 3.23e-163] , far tail <= [2.6758e-167 +/- 3.15e-172] )
+C_zeta < 0.703600014465    time 52s
