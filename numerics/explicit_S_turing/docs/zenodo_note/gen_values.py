@@ -84,7 +84,7 @@ head = parts[0].split('\n', 1)[1]
 sec = {}
 for p in parts[1:]:
     name, body = p.split('\n', 1); sec[name] = body
-out = ['\\begin{table}[ht]\\centering\\small\n'+head+'\\caption{Coefficients $c_\\iota$ of the hybrid kernel ($d=\\frac9{10}$, $m=10$), to twelve significant digits; the exact binary values are in Appendix~\\ref{app:data}.}\\label{tab:hybrid_kernel}\\end{table}\n',
+out = ['\\begin{table}[ht]\\centering\\small\n'+head+'\\caption{Coefficients $c_\\iota$ of the hybrid kernel ($d=\\frac9{10}$, $m=10$), to twelve significant digits; the full-precision decimal strings of the binary coefficients are in Appendix~\\ref{app:data}.}\\label{tab:hybrid_kernel}\\end{table}\n',
        '\\small\n\\begin{center}\n'+sec['TAB_HYBRID_DISCS']+'\\end{center}\n', '\\begin{center}\n'+sec['TAB_NODES']+'\\end{center}\n\\normalsize\n']
 for tag, mac in LINES:
     d = [r for r in rows if r[0] == tag][0][1]; m = [r for r in rows if r[0] == tag][0][2]
