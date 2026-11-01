@@ -235,7 +235,7 @@ C_{\rm H}=\CHval\ldots<\CHup .
 In particular $\mathfrak a<\Lambda(0)$, with $\Lambda(0)$ as in \CGeqref{eq:Lambda0}.
 \end{theorem}
 
-Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. The explicit bounds of Theorem~\CGref{thm:explicit} are not improved by it at any finite height, and Theorem~\CGref{thm:explicit} itself uses no disc. An explicit hybrid, with explicit subconvexity bounds in place of the profile $\eP$ (for instance $|\zeta(\frac12+it)|\le0.618\,t^{1/6}\log t$ of Hiary, Patel and Yang \cite{HiaryPatelYang2024} and the explicit Phragm\'en--Lindel\"of interpolation of Lemma~\CGref{lem:interpolation}), is possible in principle; in a preliminary computation at $\log T=1000$ the discs did not lower the bound of the kernel alone, and the question is left open.
+Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. The explicit bounds of Theorem~\CGref{thm:explicit} are not improved by it at any finite height, and Theorem~\CGref{thm:explicit} itself uses no disc.
 
 \begin{remark}[Conventions]\label{rem:conventions}
 Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not an ordinate and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at an ordinate, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
@@ -862,6 +862,9 @@ All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLIN
 \subsection{Comparison of the two methods}\label{subsec:comparison_methods}
 Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Making Theorem~\CGref{thm:hybrid} explicit requires versions of \CGeqref{eq:admissible} with explicit constants, for which the available bounds are those of Hiary, Patel and Yang \cite{HiaryPatelYang2024} on the critical line, of Yang \cite{Yang2024} on the lines $\sigma=1-m/(2^m-2)$, and of Bellotti \cite{Bellotti2024} in the strip; with them the method gives bounds of the form $A_1\log T+B\log\log T+C$ with $A_1$ near $0.076$, valid from a computable height, and this is left for a later article.
 
+\subsection{An open question}\label{subsec:open}
+Theorem~\CGref{thm:explicit} uses no disc and Theorem~\CGref{thm:hybrid} gives no height. An explicit hybrid, with explicit subconvexity bounds in place of the profile $\eP$ and the explicit interpolation of Lemma~\CGref{lem:interpolation}, is possible in principle, since the certificate of \CGeqref{eq:hybrid_ineq} does not depend on the profile; it would carry a term in $\log\log T$ from the logarithmic factors of the explicit bounds. In a preliminary computation at $\log T=1000$ the discs did not lower the bound of the kernel alone. The question is left open.
+
 \subsection*{Data availability}
 The programs, the coefficient files and the outputs of all certificates are reproduced in Appendices~\CGref{app:code}--\CGref{app:data} and are available at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
 
@@ -937,9 +940,11 @@ The programs, the coefficient files and the outputs of all certificates are repr
 
 \end{thebibliography}
 
+\clearpage
 \appendix
 \section{Data tables}\label{app:tables}
 \input{generated_datatables.tex}
+\clearpage
 \input{generated_appendix.tex}
 
 \end{document}

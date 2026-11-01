@@ -190,13 +190,13 @@ with open('generated_appendix.tex', 'w') as f:
     for fn, t in [(HYB+'lpcommon.py', 'lpcommon.py: helpers of the search programs'), (HYB+'explore_discs.py', 'explore_discs.py: the hybrid linear programme'),
                   (HYB+'kernel_only.py', 'kernel_only.py: kernel-only optima (Remark on the infimum)'), (FAM+'opt_line.py', 'opt_line.py: the second-order cone programme of one explicit line')]:
         f.write(verb(fn, '\\texttt{%s}' % esc(t)))
-    f.write('\\section{Outputs of the certification programs}\\label{app:cert}\n')
+    f.write('\\clearpage\n\\section{Outputs of the certification programs}\\label{app:cert}\n')
     f.write(verb(HYB+HYBCERT, 'Hybrid: \\texttt{certify\\_hybrid.py %s 40}' % esc(HYBJSON), 'app:out_hybrid'))
     for tag, nm, name, mac in LINES:
         for fn, t in [('cert_kernel.txt', 'kernel inequality'), ('cert_czeta_pp.txt', '$C_\\zeta$'), ('cert_elem.txt', 'elementary part, mode N'), ('cert_elem_S.txt', 'elementary part, mode S')]:
             f.write(verb(FAM+'line_%s/%s' % (tag, fn), 'Line %s: %s' % (nm, t)))
     f.write('\\appsub{Grid optima of \\texttt{kernel\\_only.py} (Remark~\\ref{rem:infimum}; not certified)}\\label{app:out_kernel_only}\n\\begin{lstlisting}\n'+open(HYB+'kernel_only.txt').read()+'\\end{lstlisting}\n')
-    f.write('\\section{Exact data}\\label{app:data}\n')
+    f.write('\\clearpage\n\\section{Exact data}\\label{app:data}\n')
     f.write('The following files hold the coefficients as exact binary floating-point numbers (the decimal strings are the shortest that round-trip), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\\le10^4$ and then replaces $R_k$ by $\\min(R_k,c_k-\\frac12)$, as in \\texttt{certify\\_hybrid.py}), and the parameters of the search. The fields \\texttt{J\\_grid} and \\texttt{C\\_grid\\_objective} are the floating-point values of the search programme and are not used by the certificates, which recompute $J_k$ and $C_{\\rm H}$ exactly.\n')
     f.write(jverb(HYB+HYBJSON, '\\texttt{%s} (hybrid)' % esc(HYBJSON)))
     for tag, nm, name, mac in LINES: f.write(jverb(FAM+'line_%s/sol.json' % tag, '\\texttt{line\\_%s/sol.json} (line %s)' % (tag, nm)))
