@@ -1,8 +1,8 @@
-d = 9/10  m = 10  profile P  discs used: 85
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074888389970260602744  (ball [0.074888 +/- 3.91e-7] )
-kernel part c_R1/(2pi) = 0.0656118899398
-limit t^2 U at |t|->inf = [0.001761888763 +/- 9.16e-14] True
-t in (0,T1]: certified, boxes 1648951
-t in [-T1,0): certified, boxes 2054381
-|t|>=T1: certified, boxes 155116
-all certified;  C < 0.0748883899703   time 716s
+d = 9/10  m = 10  discs used: 90  profile e_P (profile_published.py)
+C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074859614271090718755  (ball [0.074860 +/- 3.86e-7] )
+kernel part c_R1/(2pi) = 0.06558218278454444
+limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.001408437209 +/- 3.24e-13]  positive: True
+t in (0,T1]: certified, boxes 2028149
+t in [-T1,0): certified, boxes 2294869
+|t|>=T1: certified, boxes 277098
+all certified;  C < 0.0748596142711   time 822s

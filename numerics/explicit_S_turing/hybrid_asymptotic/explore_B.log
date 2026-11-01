@@ -1,0 +1,4 @@
+  it 0  objective 0.075293  worst violation 7.38e-03  new cutting planes 292  rows 41600
+  it 1  objective 0.075309  worst violation 1.08e-03  new cutting planes 151  rows 41858
+  it 2  objective 0.075310  worst violation 2.25e-04  new cutting planes 103  rows 41975
+  it 3  objective 0.075310  worst violation 6.34e-04  new cutting planes 95  rows 42056
