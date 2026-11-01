@@ -1,23 +1,29 @@
 \section{Programs}\label{app:code}
-The programs are written in Python~3 and use \texttt{python-flint} (Arb ball arithmetic \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits, \texttt{numpy}, \texttt{scipy} and \texttt{cvxpy} with the solver Clarabel. The certification programs are those of Sections~\ref{app:certutil}--\ref{app:cert_line}; every bound they print or write to a file is converted to decimal with directed rounding (\texttt{up\_str} in \texttt{certutil.py}), so that the printed decimal is itself a valid bound. The search programs that produced the coefficients are reproduced in Section~\ref{app:search} for completeness, but no statement of this article depends on them. All files are in the repository cited in Section~\ref{sec:methods}, in the folders \texttt{hybrid\_asymptotic/} and \texttt{family/}; the deposited archive is flat, and the programs locate their helper modules in either layout.
+The programs are written in Python~3 and use \texttt{python-flint} (Arb ball arithmetic \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits, \texttt{numpy}, \texttt{scipy} and \texttt{cvxpy} with the solver Clarabel. The certification programs are those of Sections~\ref{app:certutil}--\ref{app:cert_line}; every bound they print or write to a file is converted to decimal with directed rounding (\texttt{up\_str} in \texttt{certutil.py}), so that the printed decimal is itself a valid bound. Each certificate begins with the SHA-256 digests of its input file and of the programs that produced it, and the versions of Python and \texttt{python-flint}; the build script of this note checks that these digests are those of the files reproduced in Appendices~\ref{app:code} and~\ref{app:data}. The search programs that produced the coefficients are reproduced in Section~\ref{app:search} for completeness, but no statement of this article depends on them. All files are in the repository cited in Section~\ref{sec:methods}, in the folders \texttt{hybrid\_asymptotic/} and \texttt{family/}; the deposited archive is flat, and the programs locate their helper modules in either layout.
 \appsub{\texttt{certutil.py}: shared helpers, directed decimal rounding of bounds}
 \label{app:certutil}
 \begin{lstlisting}
 # Shared helpers of the certification programs (python-flint / Arb ball arithmetic at 256 bits).
-#   A(q)            exact ball of a Fraction or of a Python number
+#   A(q)            exact ball of a Fraction or of an integer (floats are refused)
 #   box(lo, hi)     ball containing the interval [lo, hi]
 #   exact(x)        the rational value of an exact (zero-radius) arb
 #   up_str(x, n)    decimal string with n significant digits that is >= every point of the ball x (directed rounding)
 #   down_str(x, n)  decimal string with n significant digits that is <= every point of the ball x
+#   provenance(...) lines with the SHA-256 of the input and program files and the library versions, for the record
 # The .str() method of arb rounds to the nearest decimal, so it must not be used to print an upper or lower bound;
 # every bound printed or written to a JSON file by the certification programs goes through up_str / down_str.
+import hashlib, os, sys, platform
 from fractions import Fraction as Fr
 from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR, localcontext
+import flint
 from flint import arb, ctx
 ctx.prec = 256
 
 def A(q):
-    return arb(q.numerator)/arb(q.denominator) if isinstance(q, Fr) else arb(q)
+    # exact ball of a Fraction or an integer; floats are refused, so that no binary approximation of a decimal enters silently
+    if isinstance(q, Fr): return arb(q.numerator)/arb(q.denominator)
+    assert isinstance(q, int), 'A() takes a Fraction or an integer, got %r' % (q,)
+    return arb(q)
 
 def box(lo, hi):
     return A(lo).union(A(hi))
@@ -43,6 +49,17 @@ def down_str(x, n):
     assert Fr(s) <= l, (s, l)
     return s
 
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as fh: h.update(fh.read())
+    return h.hexdigest()
+
+def provenance(*paths):
+    # one line per file (name and SHA-256), then the versions of Python and python-flint and the working precision
+    lines = ['%s sha256 %s' % (os.path.basename(p), sha256(p)) for p in paths]
+    lines.append('python %s, python-flint %s, precision %d bits' % (platform.python_version(), getattr(flint, '__version__', '?'), ctx.prec))
+    return '\n'.join(lines)
+
 if __name__ == '__main__':
     x = arb(1)/3
     print(x.str(12, radius=False), up_str(x, 12), down_str(x, 12))
@@ -67,10 +84,10 @@ if __name__ == '__main__':
 #   (a) on [0,1/2] x (0,T1] and [0,1/2] x [-T1,0): centred form H(centre) + grad H(box) . half-widths, bisection;
 #   (b) for |t| >= T1, u = 1/t: t^2 U - 4 d^3 u - K5 |u|^3 > 0 on [0,1/2] x [0,1/T1] and [0,1/2] x [-1/T1,0], bisection;
 #       this needs T1 >= 2d + 1/2 (convergence of the arctan series) and W_k = 0 for |t| >= T1.
-import sys, json, time
+import sys, os, json, time
 from fractions import Fraction as Fr
 from flint import arb, acb
-from certutil import A, box, up_str
+from certutil import A, box, up_str, down_str, exact, provenance
 
 sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 else Fr(40)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(x) for x in sol['B']]
@@ -183,6 +200,7 @@ def Jexact(nodes, cc, R):
 
 if __name__ == '__main__':
     t_ = time.time()
+    print(provenance(sys.argv[1], __file__, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py'), *([os.path.join(os.path.dirname(os.path.abspath(__file__)), 'profile_published.py')] if sol['discs'] else [])))
     if discs:
         assert sol['prof'] == 'P', 'only the published-source profile e_P is supported'
         from profile_published import nodes_published
@@ -191,13 +209,15 @@ if __name__ == '__main__':
     else: J = []
     C = cA[0]/(2*PI)+sum((k*j for k, j in zip(kA, J)), arb(0))/PI
     print('d =', d, ' m =', JMAX, ' discs used:', len(discs), (' profile e_P (profile_published.py)' if discs else ''))
-    print('C = c_R1/(2pi) + sum kappa_k J_k/pi =', C.str(20, radius=False), ' (ball', C.str(5), ')')
-    print('kernel part c_R1/(2pi) =', (cA[0]/(2*PI)).str(16, radius=False))
+    print('C = c_R1/(2pi) + sum kappa_k J_k/pi =', C.str(25), ' (ball, midpoint and radius)')
+    print('   radius of the ball:', C.rad().str(3), '  enclosure of C with directed rounding: [%s, %s]' % (down_str(C, 20), up_str(C, 20)))
+    print('kernel part c_R1/(2pi) =', (cA[0]/(2*PI)).str(20))
     lim = 2*dA*cA[0]-2*cA[B.index(('R', 2))]; print('limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 =', lim.str(10), ' positive:', lim > 0)
     n1 = cert_main(Fr(0), Fr(1, 2), Fr(0), T1, +1); print('t in (0,T1]: certified, boxes', n1, flush=True)
     n2 = cert_main(Fr(0), Fr(1, 2), -T1, Fr(0), -1); print('t in [-T1,0): certified, boxes', n2, flush=True)
     n3 = cert_tail(Fr(0), 1/T1); n4 = cert_tail(-1/T1, Fr(0)); print('|t|>=T1: certified, boxes', n3+n4)
-    print('all certified;  C <', up_str(C, 12), '  time %.0fs' % (time.time()-t_))
+    Cup = up_str(C, 12); assert exact(C.upper()) <= Fr(Cup)
+    print('all certified;  C <', Cup, '  time %.0fs' % (time.time()-t_))
 \end{lstlisting}
 \appsub{\texttt{profile\_published.py}: the nodes of the profile $\mathfrak e_{\rm P}$}
 \label{app:profile}
@@ -260,9 +280,10 @@ from fractions import Fraction as Fr
 from math import factorial
 from flint import arb, acb
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic'))   # certutil.py lives there (or next to this file in the flat archive)
-from certutil import A, up_str
+from certutil import A, up_str, provenance
 
 sol = json.load(open(sys.argv[1])); N0 = int(float(sys.argv[2])); P0 = int(sys.argv[3]) if len(sys.argv) > 3 else 1000
+print(provenance(sys.argv[1], __file__, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic', 'certutil.py') if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py')) else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py')), flush=True)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(b) for b in sol['B']]; c = [A(Fr(x)) for x in sol['c']]
 assert len(c) == len(B) and B[0] == ('R', 1) and ('I', 1) not in B and d > Fr(1, 2) and P0 <= N0
 PI = arb.pi(); dA = A(d); s1 = A(Fr(1, 2)+d); alpha = s1-1                 # alpha = sigma1 - 1 > 0
@@ -387,10 +408,11 @@ from fractions import Fraction as Fr
 from math import factorial
 from flint import arb, acb
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic'))   # certutil.py lives there (or next to this file in the flat archive)
-from certutil import A, up_str
+from certutil import A, up_str, provenance
 
 sol = json.load(open(sys.argv[1])); A1 = A(Fr(sys.argv[2])); T0 = int(sys.argv[3]) if len(sys.argv) > 3 else 10**4
 MODE = sys.argv[4] if len(sys.argv) > 4 else 'N'
+print(provenance(sys.argv[1], __file__, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic', 'certutil.py') if not os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py')) else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'certutil.py')), flush=True)
 assert MODE in ('N', 'S') and T0 >= 1
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(b) for b in sol['B']]; c = [A(Fr(x)) for x in sol['c']]
 assert len(c) == len(B) and B[0] == ('R', 1) and ('I', 1) not in B and d > Fr(1, 2)
@@ -821,24 +843,36 @@ if __name__ == '__main__':
     print('RESULT d=%.3f mR=%d mI=%d L*=%g  A1=%.5f A3~%.4f  value@L*~%.4f  (%.0fs)' % (d, mR, mI, Ls, r['C1'], r['A3_est'], r['C1']*Ls+r['A3_est'], time.time()-t0), flush=True)
     json.dump(r, open(out, 'w'))
 \end{lstlisting}
+\clearpage
 \section{Outputs of the certification programs}\label{app:cert}
 \appsub{Hybrid: \texttt{certify\_hybrid.py hyb\_m10\_P.json 40}}
 \label{app:out_hybrid}
 \begin{lstlisting}
+hyb_m10_P.json sha256 2b94bf5d689eee6e5688699be67d4725255aa97453d9115dcf2010b6b0e6a9fc
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+profile_published.py sha256 06a554e573fabe71b6049e704349df53cad774712423042241436500acadb4bc
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 9/10  m = 10  discs used: 90  profile e_P (profile_published.py)
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.074859614271090718755  (ball [0.074860 +/- 3.86e-7] )
-kernel part c_R1/(2pi) = 0.06558218278454444
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.07485961427109071875501645 +/- 3.78e-27]  (ball, midpoint and radius)
+   radius of the ball: [2.94e-76 +/- 2.74e-79]   enclosure of C with directed rounding: [0.074859614271090718755, 0.074859614271090718756]
+kernel part c_R1/(2pi) = [0.065582182784544440363 +/- 1.95e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.001408437209 +/- 3.24e-13]  positive: True
 t in (0,T1]: certified, boxes 2028149
 t in [-T1,0): certified, boxes 2294869
 |t|>=T1: certified, boxes 277098
-all certified;  C < 0.0748596142711   time 822s
+all certified;  C < 0.0748596142711   time 838s
 \end{lstlisting}
 \appsub{Line $\ell_{5}$: kernel inequality}
 \begin{lstlisting}
+sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 1  m = 5  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.20175655042691417704  (ball [0.20176 +/- 3.45e-6] )
-kernel part c_R1/(2pi) = 0.2017565504269142
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.2017565504269141770382886 +/- 4.65e-26]  (ball, midpoint and radius)
+   radius of the ball: [3.27e-78 +/- 1.70e-81]   enclosure of C with directed rounding: [0.20175655042691417703, 0.20175655042691417704]
+kernel part c_R1/(2pi) = [0.20175655042691417704 +/- 1.72e-21]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [1.133488684 +/- 3.74e-10]  positive: True
 t in (0,T1]: certified, boxes 10255
 t in [-T1,0): certified, boxes 4207
@@ -847,37 +881,58 @@ all certified;  C < 0.201756550427   time 1s
 \end{lstlisting}
 \appsub{Line $\ell_{5}$: $C_\zeta$}
 \begin{lstlisting}
+sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 per-prime phase maximum for p <= 1000 : gain [0.13567339 +/- 3.39e-9]
-primes 5761455  partial sum (n<=100000000) = [0.700266525818397 +/- 2.62e-16]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  52s
+primes 5761455  partial sum (n<=100000000) = [0.700266525818397 +/- 2.62e-16]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  51s
 g monotone on [2000, oo): crude bound [+/- 4.40e-3] < sigma1
 tail <= [0.003333488646 +/- 2.02e-13]  (int_{N0}^{e^LB} G = [0.003174276158 +/- 3.32e-14] , int_{e^L1}^{e^LB} g = [+/- 3.23e-163] , far tail <= [2.6758e-167 +/- 3.15e-172] )
 C_zeta < 0.703600014465    time 52s
 \end{lstlisting}
 \appsub{Line $\ell_{5}$: elementary part, mode N}
 \begin{lstlisting}
+sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= 0.6653643978   sup F_l <= -0.7495433723
 T>=T0: F_u <= 0.5045914644  F_l <= -1.245408535  (K = [3.95201 +/- 3.63e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.665364397774    time 122s
+SUP over T>=1 of max(F_u,F_l) <= 0.665364397774    time 60s
 \end{lstlisting}
 \appsub{Line $\ell_{5}$: elementary part, mode S}
 \begin{lstlisting}
+sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= -0.2236696656   sup F_l <= 0.1394908934
 T>=T0: F_u <= -0.3703919570  F_l <= -0.3703919570  (K = [4.11780 +/- 2.69e-8] )
-SUP over T>=1 of max(F_u,F_l) <= 0.139490893363    time 124s
+SUP over T>=1 of max(F_u,F_l) <= 0.139490893363    time 61s
 \end{lstlisting}
 \appsub{Line $\ell_{20}$: kernel inequality}
 \begin{lstlisting}
+sol.json sha256 a95801710718f4fdbfb80f2f66ece1d071a440f5650c2a2ae2700fc13032143f
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 6/5  m = 5  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.10822193548420830108  (ball [0.10822 +/- 1.94e-6] )
-kernel part c_R1/(2pi) = 0.1082219354842083
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.1082219354842083010770296 +/- 1.10e-26]  (ball, midpoint and radius)
+   radius of the ball: [1.67e-78 +/- 4.53e-81]   enclosure of C with directed rounding: [0.10822193548420830107, 0.10822193548420830108]
+kernel part c_R1/(2pi) = [0.10822193548420830108 +/- 2.98e-21]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.02372706155 +/- 2.76e-12]  positive: True
 t in (0,T1]: certified, boxes 473575
 t in [-T1,0): certified, boxes 279773
 |t|>=T1: certified, boxes 1022
-all certified;  C < 0.108221935485   time 45s
+all certified;  C < 0.108221935485   time 46s
 \end{lstlisting}
 \appsub{Line $\ell_{20}$: $C_\zeta$}
 \begin{lstlisting}
+sol.json sha256 a95801710718f4fdbfb80f2f66ece1d071a440f5650c2a2ae2700fc13032143f
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 per-prime phase maximum for p <= 1000 : gain [0.21171880 +/- 3.25e-9]
 primes 5761455  partial sum (n<=100000000) = [1.46785649757579 +/- 4.11e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  53s
 g monotone on [2000, oo): crude bound [+/- 0.0145] < sigma1
@@ -886,52 +941,82 @@ C_zeta < 1.46807533663    time 53s
 \end{lstlisting}
 \appsub{Line $\ell_{20}$: elementary part, mode N}
 \begin{lstlisting}
+sol.json sha256 a95801710718f4fdbfb80f2f66ece1d071a440f5650c2a2ae2700fc13032143f
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= 0.7020707094   sup F_l <= -1.072389149
 T>=T0: F_u <= 0.6766231016  F_l <= -1.073376898  (K = [5.21715 +/- 1.54e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.702070709399    time 123s
+SUP over T>=1 of max(F_u,F_l) <= 0.702070709399    time 61s
 \end{lstlisting}
 \appsub{Line $\ell_{20}$: elementary part, mode S}
 \begin{lstlisting}
+sol.json sha256 a95801710718f4fdbfb80f2f66ece1d071a440f5650c2a2ae2700fc13032143f
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= -0.1827864943   sup F_l <= -0.1965944846
 T>=T0: F_u <= -0.1983603198  F_l <= -0.1983603198  (K = [5.38293 +/- 4.87e-6] )
-SUP over T>=1 of max(F_u,F_l) <= -0.182786494342    time 125s
+SUP over T>=1 of max(F_u,F_l) <= -0.182786494342    time 62s
 \end{lstlisting}
 \appsub{Line $\ell_{60}$: kernel inequality}
 \begin{lstlisting}
+sol.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 1  m = 5  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.094721574236353990059  (ball [0.094722 +/- 4.26e-7] )
-kernel part c_R1/(2pi) = 0.09472157423635399
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.09472157423635399005850854 +/- 1.28e-27]  (ball, midpoint and radius)
+   radius of the ball: [1.60e-78 +/- 3.05e-82]   enclosure of C with directed rounding: [0.094721574236353990058, 0.094721574236353990059]
+kernel part c_R1/(2pi) = [0.094721574236353990059 +/- 4.92e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.008043907939 +/- 4.87e-13]  positive: True
 t in (0,T1]: certified, boxes 1441685
 t in [-T1,0): certified, boxes 483889
 |t|>=T1: certified, boxes 4434
-all certified;  C < 0.0947215742364   time 111s
+all certified;  C < 0.0947215742364   time 109s
 \end{lstlisting}
 \appsub{Line $\ell_{60}$: $C_\zeta$}
 \begin{lstlisting}
+sol.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 per-prime phase maximum for p <= 1000 : gain [0.24105429 +/- 2.19e-10]
-primes 5761455  partial sum (n<=100000000) = [2.09743955289942 +/- 3.84e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  86s
+primes 5761455  partial sum (n<=100000000) = [2.09743955289942 +/- 3.84e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  52s
 g monotone on [2000, oo): crude bound [+/- 0.0149] < sigma1
 tail <= [0.006829934351 +/- 6.03e-14]  (int_{N0}^{e^LB} G = [0.006476069071 +/- 3.90e-13] , int_{e^L1}^{e^LB} g = [+/- 1.23e-164] , far tail <= [1.7143e-168 +/- 4.48e-173] )
-C_zeta < 2.10426948726    time 87s
+C_zeta < 2.10426948726    time 53s
 \end{lstlisting}
 \appsub{Line $\ell_{60}$: elementary part, mode N}
 \begin{lstlisting}
+sol.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= 0.7289415578   sup F_l <= -1.047579458
 T>=T0: F_u <= 0.7013136727  F_l <= -1.048686327  (K = [4.00282 +/- 3.70e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.728941557753    time 123s
+SUP over T>=1 of max(F_u,F_l) <= 0.728941557753    time 61s
 \end{lstlisting}
 \appsub{Line $\ell_{60}$: elementary part, mode S}
 \begin{lstlisting}
+sol.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= -0.1584757589   sup F_l <= -0.1717847946
 T>=T0: F_u <= -0.1736697487  F_l <= -0.1736697487  (K = [4.16860 +/- 2.71e-6] )
-SUP over T>=1 of max(F_u,F_l) <= -0.158475758991    time 125s
+SUP over T>=1 of max(F_u,F_l) <= -0.158475758991    time 62s
 \end{lstlisting}
 \appsub{Line $\ell_{150}$: kernel inequality}
 \begin{lstlisting}
+sol.json sha256 88654e2339e4f68925dd36bb344e3ed3ea22a373bdc8fa02dec09407e7c066ea
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 5  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.093480628436037879597  (ball [0.093481 +/- 3.72e-7] )
-kernel part c_R1/(2pi) = 0.09348062843603788
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.09348062843603787959719471 +/- 2.87e-27]  (ball, midpoint and radius)
+   radius of the ball: [1.59e-78 +/- 3.49e-81]   enclosure of C with directed rounding: [0.093480628436037879597, 0.093480628436037879598]
+kernel part c_R1/(2pi) = [0.093480628436037879597 +/- 1.95e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.007450671016 +/- 2.69e-13]  positive: True
 t in (0,T1]: certified, boxes 1658655
 t in [-T1,0): certified, boxes 353921
@@ -940,85 +1025,131 @@ all certified;  C < 0.0934806284361   time 121s
 \end{lstlisting}
 \appsub{Line $\ell_{150}$: $C_\zeta$}
 \begin{lstlisting}
+sol.json sha256 88654e2339e4f68925dd36bb344e3ed3ea22a373bdc8fa02dec09407e7c066ea
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 per-prime phase maximum for p <= 1000 : gain [0.25085637 +/- 3.02e-9]
-primes 5761455  partial sum (n<=100000000) = [2.21455819652827 +/- 4.70e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  105s
+primes 5761455  partial sum (n<=100000000) = [2.21455819652827 +/- 4.70e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  53s
 g monotone on [2000, oo): crude bound [+/- 7.01e-3] < sigma1
 tail <= [0.04122525901 +/- 2.13e-12]  (int_{N0}^{e^LB} G = [0.03953310421 +/- 1.61e-12] , int_{e^L1}^{e^LB} g = [+/- 2.53e-111] , far tail <= [3.6826e-115 +/- 3.45e-120] )
-C_zeta < 2.25578345555    time 106s
+C_zeta < 2.25578345555    time 53s
 \end{lstlisting}
 \appsub{Line $\ell_{150}$: elementary part, mode N}
 \begin{lstlisting}
+sol.json sha256 88654e2339e4f68925dd36bb344e3ed3ea22a373bdc8fa02dec09407e7c066ea
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= 0.7303168470   sup F_l <= -1.045307483
 T>=T0: F_u <= 0.7035135754  F_l <= -1.046486424  (K = [3.19479 +/- 4.84e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.730316846936    time 123s
+SUP over T>=1 of max(F_u,F_l) <= 0.730316846936    time 61s
 \end{lstlisting}
 \appsub{Line $\ell_{150}$: elementary part, mode S}
 \begin{lstlisting}
+sol.json sha256 88654e2339e4f68925dd36bb344e3ed3ea22a373bdc8fa02dec09407e7c066ea
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= -0.1575763483   sup F_l <= -0.1695128192
 T>=T0: F_u <= -0.1714698460  F_l <= -0.1714698460  (K = [3.36057 +/- 1.57e-6] )
-SUP over T>=1 of max(F_u,F_l) <= -0.157576348369    time 125s
+SUP over T>=1 of max(F_u,F_l) <= -0.157576348369    time 62s
 \end{lstlisting}
 \appsub{Line $\ell_{400}$: kernel inequality}
 \begin{lstlisting}
+sol.json sha256 961b299dafd10eca996a4a542d3f9f6b3afa729cd7bbde4fd11d5759c1ab42c8
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 10  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083986018406625982801  (ball [0.083986 +/- 1.86e-8] )
-kernel part c_R1/(2pi) = 0.08398601840662598
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.08398601840662598280115479 +/- 4.65e-27]  (ball, midpoint and radius)
+   radius of the ball: [1.54e-78 +/- 1.28e-81]   enclosure of C with directed rounding: [0.083986018406625982801, 0.083986018406625982802]
+kernel part c_R1/(2pi) = [0.083986018406625982801 +/- 1.55e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002002739955 +/- 2.69e-14]  positive: True
 t in (0,T1]: certified, boxes 11835193
 t in [-T1,0): certified, boxes 9801985
 |t|>=T1: certified, boxes 4194302
-all certified;  C < 0.0839860184067   time 2272s
+all certified;  C < 0.0839860184067   time 2319s
 \end{lstlisting}
 \appsub{Line $\ell_{400}$: $C_\zeta$}
 \begin{lstlisting}
+sol.json sha256 961b299dafd10eca996a4a542d3f9f6b3afa729cd7bbde4fd11d5759c1ab42c8
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 per-prime phase maximum for p <= 1000 : gain [0.28179774 +/- 3.28e-9]
-primes 5761455  partial sum (n<=100000000) = [4.01127229118254 +/- 1.94e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  163s
+primes 5761455  partial sum (n<=100000000) = [4.01127229118254 +/- 1.94e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  80s
 g monotone on [5000, oo): crude bound [+/- 0.0114] < sigma1
 tail <= [0.4524693305 +/- 1.73e-11]  (int_{N0}^{e^LB} G = [0.4325160730 +/- 4.01e-11] , int_{e^L1}^{e^LB} g = [+/- 6.02e-102] , far tail <= [2.8606e-111 +/- 3.11e-116] )
-C_zeta < 4.46374162170    time 164s
+C_zeta < 4.46374162170    time 81s
 \end{lstlisting}
 \appsub{Line $\ell_{400}$: elementary part, mode N}
 \begin{lstlisting}
+sol.json sha256 961b299dafd10eca996a4a542d3f9f6b3afa729cd7bbde4fd11d5759c1ab42c8
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= 0.7375655061   sup F_l <= -1.027807128
 T>=T0: F_u <= 0.7209635502  F_l <= -1.029036449  (K = [3.19527 +/- 2.94e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.737565506071    time 159s
+SUP over T>=1 of max(F_u,F_l) <= 0.737565506071    time 79s
 \end{lstlisting}
 \appsub{Line $\ell_{400}$: elementary part, mode S}
 \begin{lstlisting}
+sol.json sha256 961b299dafd10eca996a4a542d3f9f6b3afa729cd7bbde4fd11d5759c1ab42c8
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= -0.1458267316   sup F_l <= -0.1520124644
 T>=T0: F_u <= -0.1540198711  F_l <= -0.1540198711  (K = [3.36106 +/- 6.67e-7] )
-SUP over T>=1 of max(F_u,F_l) <= -0.145826731639    time 162s
+SUP over T>=1 of max(F_u,F_l) <= -0.145826731639    time 81s
 \end{lstlisting}
 \appsub{Line $\ell_{6000}$: kernel inequality}
 \begin{lstlisting}
+sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 10  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.083814170602092884236  (ball [0.083814 +/- 1.71e-7] )
-kernel part c_R1/(2pi) = 0.08381417060209288
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.08381417060209288423629767 +/- 2.14e-27]  (ball, midpoint and radius)
+   radius of the ball: [1.54e-78 +/- 3.35e-82]   enclosure of C with directed rounding: [0.083814170602092884236, 0.083814170602092884237]
+kernel part c_R1/(2pi) = [0.083814170602092884236 +/- 2.98e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002027460239 +/- 3.01e-14]  positive: True
 t in (0,T1]: certified, boxes 14760921
 t in [-T1,0): certified, boxes 15866017
 |t|>=T1: certified, boxes 4194302
-all certified;  C < 0.0838141706021   time 3551s
+all certified;  C < 0.0838141706021   time 3123s
 \end{lstlisting}
 \appsub{Line $\ell_{6000}$: $C_\zeta$}
 \begin{lstlisting}
+sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+cz_gen_pp.py sha256 a16e89acdcb472cf121ae6e212f9399c774ac2fefdf731a69e919545d763ee02
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 per-prime phase maximum for p <= 1000 : gain [0.28466228 +/- 4.66e-10]
-primes 5761455  partial sum (n<=100000000) = [4.10087443545128 +/- 2.45e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  163s
+primes 5761455  partial sum (n<=100000000) = [4.10087443545128 +/- 2.45e-15]  psi(N0) = [99998242.7966268 +/- 1.77e-8]  80s
 g monotone on [5000, oo): crude bound [+/- 0.0108] < sigma1
 tail <= [0.4886359120 +/- 3.99e-12]  (int_{N0}^{e^LB} G = [0.4671146906 +/- 3.15e-11] , int_{e^L1}^{e^LB} g = [+/- 6.36e-102] , far tail <= [2.9139e-111 +/- 4.83e-116] )
-C_zeta < 4.58951034745    time 164s
+C_zeta < 4.58951034745    time 80s
 \end{lstlisting}
 \appsub{Line $\ell_{6000}$: elementary part, mode N}
 \begin{lstlisting}
+sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= 0.7357375257   sup F_l <= -1.027508246
 T>=T0: F_u <= 0.7212794332  F_l <= -1.028720566  (K = [3.19575 +/- 1.13e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.735737525685    time 159s
+SUP over T>=1 of max(F_u,F_l) <= 0.735737525685    time 80s
 \end{lstlisting}
 \appsub{Line $\ell_{6000}$: elementary part, mode S}
 \begin{lstlisting}
+sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 intervals 9215  sup F_u on [1,T0] <= -0.1464103660   sup F_l <= -0.1517135821
 T>=T0: F_u <= -0.1537039882  F_l <= -0.1537039882  (K = [3.36154 +/- 2.48e-6] )
-SUP over T>=1 of max(F_u,F_l) <= -0.146410366017    time 124s
+SUP over T>=1 of max(F_u,F_l) <= -0.146410366017    time 80s
 \end{lstlisting}
 \appsub{Grid optima of \texttt{kernel\_only.py} (Remark~\ref{rem:infimum}; not certified)}\label{app:out_kernel_only}
 \begin{lstlisting}
@@ -1042,6 +1173,7 @@ m=20 d=0.70 constraint at beta=1/2 only C1(grid)=0.01070 worst violation=5.4e-01
 m=20 d=0.80 constraint at beta=1/2 only C1(grid)=0.01257 worst violation=7.6e-02 it=59  4s
 m=20 d=0.90 constraint at beta=1/2 only C1(grid)=0.01330 worst violation=1.3e-02 it=59  4s
 \end{lstlisting}
+\clearpage
 \section{Exact data}\label{app:data}
 The following files hold the coefficients as exact binary floating-point numbers (the decimal strings are the shortest that round-trip), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\le10^4$ and then replaces $R_k$ by $\min(R_k,c_k-\frac12)$, as in \texttt{certify\_hybrid.py}), and the parameters of the search. The fields \texttt{J\_grid} and \texttt{C\_grid\_objective} are the floating-point values of the search programme and are not used by the certificates, which recompute $J_k$ and $C_{\rm H}$ exactly.
 \appsub{\texttt{hyb\_m10\_P.json} (hybrid)}

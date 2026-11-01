@@ -1,8 +1,13 @@
+sol.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 1  m = 5  discs used: 0 
-C = c_R1/(2pi) + sum kappa_k J_k/pi = 0.094721574236353990059  (ball [0.094722 +/- 4.26e-7] )
-kernel part c_R1/(2pi) = 0.09472157423635399
+C = c_R1/(2pi) + sum kappa_k J_k/pi = [0.09472157423635399005850854 +/- 1.28e-27]  (ball, midpoint and radius)
+   radius of the ball: [1.60e-78 +/- 3.05e-82]   enclosure of C with directed rounding: [0.094721574236353990058, 0.094721574236353990059]
+kernel part c_R1/(2pi) = [0.094721574236353990059 +/- 4.92e-22]
 limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.008043907939 +/- 4.87e-13]  positive: True
 t in (0,T1]: certified, boxes 1441685
 t in [-T1,0): certified, boxes 483889
 |t|>=T1: certified, boxes 4434
-all certified;  C < 0.0947215742364   time 111s
+all certified;  C < 0.0947215742364   time 109s

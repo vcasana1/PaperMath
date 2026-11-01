@@ -1,7 +1,0 @@
-sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
-elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
-certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
-python 3.13.18, python-flint 0.9.0, precision 256 bits
-intervals 9215  sup F_u on [1,T0] <= 0.6653643978   sup F_l <= -0.7495433723
-T>=T0: F_u <= 0.5045914644  F_l <= -1.245408535  (K = [3.95201 +/- 3.63e-6] )
-SUP over T>=1 of max(F_u,F_l) <= 0.665364397774    time 60s
