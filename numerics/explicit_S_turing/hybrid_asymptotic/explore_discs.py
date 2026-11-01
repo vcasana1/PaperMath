@@ -7,7 +7,7 @@
 # Bourgain profile of lpcommon.bourgain_nodes).  Candidate discs: the family 'vwide' described in the article.
 # Usage:  PROF=P python3 explore_discs.py <m> <d> [eta]      -> expl_m<m>_d<d>_<PROF>_eta<eta>.json (input of certify_hybrid.py)
 import numpy as np, sys, os, json, time, math
-from scipy.optimize import linprog
+from scipy.optimize import linprog, minimize
 from scipy import sparse
 from lpcommon import f, F, basis, tgrid, bourgain_nodes, J_float
 
@@ -37,18 +37,32 @@ def solve(d, m, discs, eta=0.0, maxit=30, nb=26):
     def block(bb, tt): return sparse.hstack([sparse.csr_matrix(Gmat(d, B, bb, tt)*sc), Wmat(discs, bb, tt)]).tocsr(), f(bb, tt, d)+eta/(1+tt**2)
     A, Fv = block(bb, tt)
     arow = np.zeros(nB+len(discs)); arow[0] = 2*d*sc[0]; arow[1] = -2*sc[1]
-    bf = np.linspace(0, 0.5, 101); tp = np.geomspace(1e-7, 3000., 6000); tf = np.concatenate([-tp[::-1], tp])
+    bf = np.linspace(0, 0.5, 101); tp = np.unique(np.concatenate([np.geomspace(1e-7, 3000., 6000), np.linspace(1e-4, 3., 30000)])); tf = np.concatenate([-tp[::-1], tp])
+    def violation(x, used, du, bb, tt):   # f + margin - U - sum kappa W at the points (bb, tt); positive = violated
+        v = f(bb, tt, d)+eta/(1+tt**2)-Gmat(d, B, bb, tt)@(x[:nB]*sc)
+        if len(used): v = v-Wmat(du, bb, tt)@x[nB+used]
+        return v
     for it in range(maxit):
         r = linprog(obj, A_ub=-sparse.vstack([A, sparse.csr_matrix(arow)]), b_ub=-np.concatenate([Fv, [eta]]),
                     bounds=[(None, None)]*nB+[(0, None)]*len(discs), method='highs')
         assert r.status == 0, 'LP solver: '+r.message
         x = r.x; used = np.nonzero(x[nB:] > 1e-12)[0]; du = [discs[k] for k in used]
-        nbl = []; ntl = []; worst = -1
-        for b in bf:   # violations on a finer grid -> new cutting planes (local maxima of the violation)
-            v = f(b, tf, d)+eta/(1+tf**2)-Gmat(d, B, np.full_like(tf, b), tf)@(x[:nB]*sc)
-            if len(used): v = v-Wmat(du, np.full_like(tf, b), tf)@x[nB+used]
+        nbl = []; ntl = []; worst = -1; cand = []
+        for b in bf:   # violations on a finer grid -> new cutting planes (local maxima of the violation along t)
+            v = violation(x, used, du, np.full_like(tf, b), tf)
             worst = max(worst, v.max()); idx = np.nonzero((v > 0) & (v >= np.roll(v, 1)) & (v >= np.roll(v, -1)))[0]
             nbl += [b]*len(idx); ntl += list(tf[idx])
+            top = np.argsort(v)[-3:]; cand += [(v[i], b, tf[i]) for i in top]
+        # the grid can miss narrow dips of U + sum kappa W - f (near the edges of the discs): refine the largest grid values
+        # of the violation, including negative ones, by a local maximisation in (b, t), and add the maxima found as cutting planes
+        cand.sort(reverse=True)
+        for v0, b0, t0 in cand[:40]:
+            if t0 == 0: continue
+            g = lambda p: -violation(x, used, du, np.array([min(max(p[0], 0.0), 0.5)]), np.array([p[1] if p[1]*t0 > 0 else t0]))[0]
+            res = minimize(g, [b0, t0], method='Nelder-Mead', options={'xatol': 1e-7, 'fatol': 1e-12, 'maxiter': 400})
+            bb_, tt_ = min(max(res.x[0], 0.0), 0.5), (res.x[1] if res.x[1]*t0 > 0 else t0)
+            vv = -res.fun; worst = max(worst, vv)
+            if vv > 0: nbl.append(bb_); ntl.append(tt_)
         if not nbl: break
         A2, F2 = block(np.array(nbl), np.array(ntl)); A = sparse.vstack([A, A2]).tocsr(); Fv = np.concatenate([Fv, F2])
     xs = x.copy(); xs[:nB] *= sc
