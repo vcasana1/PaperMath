@@ -57,7 +57,7 @@ for tag, nm, name, mac in LINES:
 
 with open('generated_tables.tex', 'w') as f:
     # kernel coefficients of the hybrid
-    f.write('% kernel coefficients of the hybrid, 12 significant digits; exact binary values in the data appendix\n')
+    f.write('% kernel coefficients of the hybrid, 12 significant digits; full-precision decimal strings of the binary coefficients in the data appendix\n')
     f.write('\\begin{tabular}{@{}cr@{\\quad}cr@{}}\\toprule $\\iota$ & $c_\\iota$ & $\\iota$ & $c_\\iota$\\\\\\midrule\n')
     Rs = [(b, cc) for b, cc in zip(B, c) if b[0] == 'R']; Is = [(b, cc) for b, cc in zip(B, c) if b[0] == 'I']
     for i in range(len(Rs)):
@@ -67,7 +67,7 @@ with open('generated_tables.tex', 'w') as f:
     f.write('\\bottomrule\\end{tabular}\n')
     # discs
     f.write('%%%%TAB_HYBRID_DISCS\n')
-    f.write('\\begin{longtable}{@{}rrrrrrr@{}}\\caption{The $%d$ disc data $(c_k,R_k,v_k)$ (rational, as used in the certificate), the weights $\\kappa_k$ (ten significant digits; exact binary values in Appendix~\\ref{app:data}), $J_k=J(\\mathfrak e_{\\rm P};c_k,R_k)$ and the contributions $\\kappa_kJ_k/\\pi$ to $C_{\\rm H}$.}\\label{tab:hybrid_discs}\\\\\n\\toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\\kappa_k$ & $J_k$ & $\\kappa_kJ_k/\\pi$\\\\\\midrule\\endfirsthead\n\\toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\\kappa_k$ & $J_k$ & $\\kappa_kJ_k/\\pi$\\\\\\midrule\\endhead\n\\bottomrule\\endfoot\n' % len(discs))
+    f.write('\\begin{longtable}{@{}rrrrrrr@{}}\\caption{The $%d$ disc data $(c_k,R_k,v_k)$ (rational, as used in the certificate), the weights $\\kappa_k$ (ten significant digits; the full-precision decimal strings of the binary floating-point weights are in Appendix~\\ref{app:data}). The rationals $c_k,R_k,v_k$ are the data used in the certificate: a centre such as $\\log3$ in the search grid of Section~\\ref{subsec:optimisation} appears here as its rounding to denominator $\\le10^4$, not as a symbolic value, $J_k=J(\\mathfrak e_{\\rm P};c_k,R_k)$ and the contributions $\\kappa_kJ_k/\\pi$ to $C_{\\rm H}$.}\\label{tab:hybrid_discs}\\\\\n\\toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\\kappa_k$ & $J_k$ & $\\kappa_kJ_k/\\pi$\\\\\\midrule\\endfirsthead\n\\toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\\kappa_k$ & $J_k$ & $\\kappa_kJ_k/\\pi$\\\\\\midrule\\endhead\n\\bottomrule\\endfoot\n' % len(discs))
     tot = arb(0)
     for k, ((cc, R, v), kk, jj) in enumerate(zip(discs, kap, J), 1):
         tot += A(kk)*jj/PI
@@ -85,10 +85,13 @@ with open('generated_tables.tex', 'w') as f:
     lo20, up20 = down_str(CH, 20), up_str(CH, 20)
     assert ('[%s, %s]' % (lo20, up20)) in cert, 'the certificate prints a different enclosure of C_H'
     f.write('\\newcommand{\\CHball}{[%s,\\ %s]}\n' % (lo20, up20))
-    f.write('\\newcommand{\\CHkernel}{%s}\n' % (A(c[0])/(2*PI)).str(12, radius=False))
-    f.write('\\newcommand{\\CHdiscs}{%s}\n' % tot.str(10, radius=False))
+    f.write('\\newcommand{\\CHkernel}{%s}\n' % down_str(A(c[0])/(2*PI), 12))   # truncated (rounded down): the text appends dots
+    f.write('\\newcommand{\\CHdiscs}{%s}\n' % down_str(tot, 12))
     f.write('\\newcommand{\\Kfive}{%s}\n' % ((2*(A(d)+A(Fr(1, 2)))**5+2*A(d)**5+(2*A(d)+A(Fr(1, 2)))**5+(2*A(d))**5)/5).str(8, radius=False))
     f.write('\\newcommand{\\HybNdiscs}{%d}\n' % len(discs))
+    mx = max(R+abs(v) for cc, R, v in discs)                     # exact rational maximum of R_k+|v_k| over the certified disc data
+    f.write('\\newcommand{\\HybMaxRv}{%s}\n' % ('\\tfrac{%d}{%d}' % (mx.numerator, mx.denominator) if mx.denominator != 1 else str(mx.numerator)))
+    f.write('\\newcommand{\\HybMaxRvDec}{%s}\n' % format(float(mx), '.4g'))
     # certificate statistics: boxes and times
     def stats(txt):
         pos = re.search(r't in \(0,T1\]: certified, boxes (\d+)', txt).group(1); neg = re.search(r't in \[-T1,0\): certified, boxes (\d+)', txt).group(1)
@@ -191,13 +194,14 @@ with open('generated_appendix.tex', 'w') as f:
                   (HYB+'kernel_only.py', 'kernel_only.py: kernel-only optima (Remark on the infimum)'), (FAM+'opt_line.py', 'opt_line.py: the second-order cone programme of one explicit line')]:
         f.write(verb(fn, '\\texttt{%s}' % esc(t)))
     f.write('\\clearpage\n\\section{Outputs of the certification programs}\\label{app:cert}\n')
+    f.write('Each output begins with the SHA-256 digests of its input file and of the programs that produced it. Only the plain decimal numbers printed after \\texttt{<} or \\texttt{<=} (without a radius) are produced by directed decimal rounding (\\texttt{up\\_str} of \\texttt{certutil.py}) and are asserted as bounds; every display of the form \\texttt{[m +/- r]} is a ball printed with the standard \\texttt{str} of \\texttt{python-flint}, which rounds the midpoint to nearest, and is diagnostic only (for the final value of $C_{\\rm H}$ the certificate also prints its radius, as a ball enclosing the radius, and a twenty-digit enclosure obtained by directed rounding). The running times printed at the end of the lines are informative only and depend on the machine; they are not part of the certified data. There are $1+6\\cdot4=25$ certificates: one for the hybrid inequality and four (kernel inequality, $C_\\zeta$, elementary part in modes N and S) for each of the six lines.\n')
     f.write(verb(HYB+HYBCERT, 'Hybrid: \\texttt{certify\\_hybrid.py %s 40}' % esc(HYBJSON), 'app:out_hybrid'))
     for tag, nm, name, mac in LINES:
         for fn, t in [('cert_kernel.txt', 'kernel inequality'), ('cert_czeta_pp.txt', '$C_\\zeta$'), ('cert_elem.txt', 'elementary part, mode N'), ('cert_elem_S.txt', 'elementary part, mode S')]:
             f.write(verb(FAM+'line_%s/%s' % (tag, fn), 'Line %s: %s' % (nm, t)))
     f.write('\\appsub{Grid optima of \\texttt{kernel\\_only.py} (Remark~\\ref{rem:infimum}; not certified)}\\label{app:out_kernel_only}\n\\begin{lstlisting}\n'+open(HYB+'kernel_only.txt').read()+'\\end{lstlisting}\n')
-    f.write('\\clearpage\n\\section{Exact data}\\label{app:data}\n')
-    f.write('The following files hold the coefficients as exact binary floating-point numbers (the decimal strings are the shortest that round-trip), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\\le10^4$ and then replaces $R_k$ by $\\min(R_k,c_k-\\frac12)$, as in \\texttt{certify\\_hybrid.py}), and the parameters of the search. The fields \\texttt{J\\_grid} and \\texttt{C\\_grid\\_objective} are the floating-point values of the search programme and are not used by the certificates, which recompute $J_k$ and $C_{\\rm H}$ exactly.\n')
+    f.write('\\clearpage\n\\section{Input data of the certificates}\\label{app:data}\n')
+    f.write('The following files hold the coefficients as decimal strings that round-trip to the binary floating-point numbers produced by the optimiser (the certifiers convert them to exact rationals), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\\le10^4$ and then replaces $R_k$ by $\\min(R_k,c_k-\\frac12)$, as in \\texttt{certify\\_hybrid.py}), and the parameters of the search. The fields \\texttt{J\\_grid} and \\texttt{C\\_grid\\_objective} are the floating-point values of the search programme and are not used by the certificates, which recompute $J_k$ and $C_{\\rm H}$ exactly; they are kept so that the file is the unaltered output of the search (its digest is part of the provenance lines of the certificate). The rational disc data actually certified are those of Table~\\ref{tab:hybrid_discs}, obtained from the decimal values below by the two lines of \\texttt{certify\\_hybrid.py} quoted in Appendix~\\ref{app:cert_hybrid}.\n')
     f.write(jverb(HYB+HYBJSON, '\\texttt{%s} (hybrid)' % esc(HYBJSON)))
     for tag, nm, name, mac in LINES: f.write(jverb(FAM+'line_%s/sol.json' % tag, '\\texttt{line\\_%s/sol.json} (line %s)' % (tag, nm)))
 print('done')

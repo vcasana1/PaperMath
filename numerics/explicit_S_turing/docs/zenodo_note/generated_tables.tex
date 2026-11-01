@@ -1,4 +1,4 @@
-% kernel coefficients of the hybrid, 12 significant digits; exact binary values in the data appendix
+% kernel coefficients of the hybrid, 12 significant digits; full-precision decimal strings of the binary coefficients in the data appendix
 \begin{tabular}{@{}cr@{\quad}cr@{}}\toprule $\iota$ & $c_\iota$ & $\iota$ & $c_\iota$\\\midrule
 $(\mathrm R,1)$ & $0.412065007285$ & $(\mathrm I,2)$ & $0.733460748935$\\
 $(\mathrm R,2)$ & $0.370154287951$ & $(\mathrm I,3)$ & $-0.136130059477$\\
@@ -12,7 +12,7 @@ $(\mathrm R,9)$ & $-0.0323507305873$ & $(\mathrm I,10)$ & $-0.00179414655284$\\
 $(\mathrm R,10)$ & $0.00563260523722$ & & \\
 \bottomrule\end{tabular}
 %%%%TAB_HYBRID_DISCS
-\begin{longtable}{@{}rrrrrrr@{}}\caption{The $90$ disc data $(c_k,R_k,v_k)$ (rational, as used in the certificate), the weights $\kappa_k$ (ten significant digits; exact binary values in Appendix~\ref{app:data}), $J_k=J(\mathfrak e_{\rm P};c_k,R_k)$ and the contributions $\kappa_kJ_k/\pi$ to $C_{\rm H}$.}\label{tab:hybrid_discs}\\
+\begin{longtable}{@{}rrrrrrr@{}}\caption{The $90$ disc data $(c_k,R_k,v_k)$ (rational, as used in the certificate), the weights $\kappa_k$ (ten significant digits; the full-precision decimal strings of the binary floating-point weights are in Appendix~\ref{app:data}). The rationals $c_k,R_k,v_k$ are the data used in the certificate: a centre such as $\log3$ in the search grid of Section~\ref{subsec:optimisation} appears here as its rounding to denominator $\le10^4$, not as a symbolic value, $J_k=J(\mathfrak e_{\rm P};c_k,R_k)$ and the contributions $\kappa_kJ_k/\pi$ to $C_{\rm H}$.}\label{tab:hybrid_discs}\\
 \toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\kappa_k$ & $J_k$ & $\kappa_kJ_k/\pi$\\\midrule\endfirsthead
 \toprule $k$ & $c_k$ & $R_k$ & $v_k$ & $\kappa_k$ & $J_k$ & $\kappa_kJ_k/\pi$\\\midrule\endhead
 \bottomrule\endfoot
@@ -113,9 +113,11 @@ $(\mathrm R,10)$ & $0.00563260523722$ & & \\
 \newcommand{\CHup}{0.0748596142711}
 \newcommand{\CHball}{[0.074859614271090718755,\ 0.074859614271090718756]}
 \newcommand{\CHkernel}{0.0655821827845}
-\newcommand{\CHdiscs}{0.009277431487}
+\newcommand{\CHdiscs}{0.00927743148654}
 \newcommand{\Kfive}{19.039314}
 \newcommand{\HybNdiscs}{90}
+\newcommand{\HybMaxRv}{\tfrac{11}{5}}
+\newcommand{\HybMaxRvDec}{2.2}
 \newcommand{\HybBoxesPos}{2\,028\,149}
 \newcommand{\HybBoxesNeg}{2\,294\,869}
 \newcommand{\HybBoxesTail}{277\,098}

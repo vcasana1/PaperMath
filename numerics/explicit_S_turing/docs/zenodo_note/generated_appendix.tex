@@ -845,6 +845,7 @@ if __name__ == '__main__':
 \end{lstlisting}
 \clearpage
 \section{Outputs of the certification programs}\label{app:cert}
+Each output begins with the SHA-256 digests of its input file and of the programs that produced it. Only the plain decimal numbers printed after \texttt{<} or \texttt{<=} (without a radius) are produced by directed decimal rounding (\texttt{up\_str} of \texttt{certutil.py}) and are asserted as bounds; every display of the form \texttt{[m +/- r]} is a ball printed with the standard \texttt{str} of \texttt{python-flint}, which rounds the midpoint to nearest, and is diagnostic only (for the final value of $C_{\rm H}$ the certificate also prints its radius, as a ball enclosing the radius, and a twenty-digit enclosure obtained by directed rounding). The running times printed at the end of the lines are informative only and depend on the machine; they are not part of the certified data. There are $1+6\cdot4=25$ certificates: one for the hybrid inequality and four (kernel inequality, $C_\zeta$, elementary part in modes N and S) for each of the six lines.
 \appsub{Hybrid: \texttt{certify\_hybrid.py hyb\_m10\_P.json 40}}
 \label{app:out_hybrid}
 \begin{lstlisting}
@@ -1174,8 +1175,8 @@ m=20 d=0.80 constraint at beta=1/2 only C1(grid)=0.01257 worst violation=7.6e-02
 m=20 d=0.90 constraint at beta=1/2 only C1(grid)=0.01330 worst violation=1.3e-02 it=59  4s
 \end{lstlisting}
 \clearpage
-\section{Exact data}\label{app:data}
-The following files hold the coefficients as exact binary floating-point numbers (the decimal strings are the shortest that round-trip), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\le10^4$ and then replaces $R_k$ by $\min(R_k,c_k-\frac12)$, as in \texttt{certify\_hybrid.py}), and the parameters of the search. The fields \texttt{J\_grid} and \texttt{C\_grid\_objective} are the floating-point values of the search programme and are not used by the certificates, which recompute $J_k$ and $C_{\rm H}$ exactly.
+\section{Input data of the certificates}\label{app:data}
+The following files hold the coefficients as decimal strings that round-trip to the binary floating-point numbers produced by the optimiser (the certifiers convert them to exact rationals), the disc data before rounding to rationals (the certificate rounds $c_k,R_k,v_k$ to denominators $\le10^4$ and then replaces $R_k$ by $\min(R_k,c_k-\frac12)$, as in \texttt{certify\_hybrid.py}), and the parameters of the search. The fields \texttt{J\_grid} and \texttt{C\_grid\_objective} are the floating-point values of the search programme and are not used by the certificates, which recompute $J_k$ and $C_{\rm H}$ exactly; they are kept so that the file is the unaltered output of the search (its digest is part of the provenance lines of the certificate). The rational disc data actually certified are those of Table~\ref{tab:hybrid_discs}, obtained from the decimal values below by the two lines of \texttt{certify\_hybrid.py} quoted in Appendix~\ref{app:cert_hybrid}.
 \appsub{\texttt{hyb\_m10\_P.json} (hybrid)}
 \begin{lstlisting}
 {
