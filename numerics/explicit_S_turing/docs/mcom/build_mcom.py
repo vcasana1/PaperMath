@@ -28,7 +28,7 @@ def cut(s, start, end, must=True):
 
 # ---------------- preamble ----------------
 s = body
-s = s.replace('\\documentclass[11pt,reqno]{amsart}', '\\documentclass[reqno]{mcom-l}')
+s = s.replace('\\documentclass[11pt,reqno]{amsart}', '\\documentclass{mcom-l}')
 s = cut(s, '% ---------- hover previews', '\\input{tips.tex}\n')                       # tooltips (pdfcomment)
 s = cut(s, '\\hypersetup{', '\n}\n')                                                    # boxed links, bookmarks, pdf metadata
 s = cut(s, '% back-references in the bibliography', '\\fi}\n')
@@ -92,7 +92,7 @@ assert '\\input{' not in article and 'CGref' not in article and 'pdftooltip' not
 
 # ---------------- supplement ----------------
 pre = body[:body.index('\\title[')]
-pre = pre.replace('\\documentclass[11pt,reqno]{amsart}', '\\documentclass[reqno]{amsart}')
+pre = pre.replace('\\documentclass[11pt,reqno]{amsart}', '\\documentclass{amsart}')
 pre = cut(pre, '% ---------- hover previews', '\\input{tips.tex}\n')
 pre = cut(pre, '\\hypersetup{', '\n}\n')
 pre = cut(pre, '% back-references in the bibliography', '\\fi}\n')
