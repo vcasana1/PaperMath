@@ -39,10 +39,12 @@ certificados o la nota no compila).
     # (ver el zip de la versión anterior como plantilla). Commit + push; project_write del _l.tex.
 
 ## Estado al escribir esto
-Cola 6 en marcha en la sesión original (rehace los 25 certificados con la impresión definitiva: bola con radio real,
-inclusión a 20 dígitos, procedencia). Al terminar: v8 = v7 + certificados definitivos + hoja nueva en apéndices +
-"An open question" en §7 + Backlund 1916 + referencia ANTEDB. Si esta sesión no llegó a entregar la v8, los pasos de
-arriba la producen; si lo hizo, la v8 ya está en GitHub y en el Project.
+v8 ENTREGADA (1 Nov 2026, commit 9b9443b): los 25 certificados rehechos con los programas definitivos (procedencia
+SHA-256, bola con radio real, inclusión a 20 dígitos), constantes idénticas, 56 pp., cada apéndice en hoja nueva,
+"An open question" en §7.5 (sin receta; la frase-receta antigua de §7.4 se eliminó y con ella tres referencias que
+quedaban sin citar), Backlund 1916, referencia ANTEDB. Ficheros: docs/zenodo_note/casanya_turing_jensen_v8{.pdf,_l.tex,
+.txt,_zenodo.zip}; Project: claude/casanya_turing_jensen_v8.tex. Siguiente paso previsto por el autor: auditoría
+bibliográfica externa (docs/zenodo_note/review_prompts/orden_verificacion_bibliografia.md) y reproducción de código.
 
 ## Pendiente (requiere modelo fuerte, no es mecánico)
 Híbrido explícito: con el mismo núcleo y los mismos 90 discos (sin reoptimizar), sustituir e_P por un perfil con
