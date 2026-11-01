@@ -8,3 +8,8 @@
   it 7  objective 0.074859  worst violation 3.13e-05  new cutting planes 79  rows 42290
   it 8  objective 0.074859  worst violation 2.38e-05  new cutting planes 70  rows 42352
   it 9  objective 0.074860  worst violation 2.30e-04  new cutting planes 71  rows 42406
+  it 10  objective 0.074860  worst violation 1.55e-05  new cutting planes 64  rows 42458
+  it 11  objective 0.074860  worst violation 1.04e-05  new cutting planes 65  rows 42512
+  it 12  objective 0.074860  worst violation 2.60e-06  new cutting planes 63  rows 42557
+  it 13  objective 0.074860  worst violation 4.57e-07  new cutting planes 57  rows 42595
+  it 14  objective 0.074860  worst violation 3.00e-07  new cutting planes 68  rows 42628
