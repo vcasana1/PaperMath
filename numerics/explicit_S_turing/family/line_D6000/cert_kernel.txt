@@ -1,5 +1,5 @@
 sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 10  discs used: 0 
@@ -10,4 +10,4 @@ limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002027460239 +/- 3.01e-14]
 t in (0,T1]: certified, boxes 14760921
 t in [-T1,0): certified, boxes 15866017
 |t|>=T1: certified, boxes 4194302
-all certified;  C < 0.0838141706021   time 3123s
+all certified;  C < 0.0838141706021   time 3125s

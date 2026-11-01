@@ -79,7 +79,7 @@ if __name__ == '__main__':
 # the kernel inequality f <= U alone and prints C_1 = c_R1/(2 pi).
 #
 # Usage:  python3 certify_hybrid.py <solution.json> [T1]
-#   solution.json: d, B (basis), c (coefficients, exact binary values), discs [(c_k,R_k,v_k)], kappa; T1 defaults to 40.
+#   solution.json: d, B (basis), c (coefficients, as decimal strings that round-trip to the optimiser's floats), discs [(c_k,R_k,v_k)], kappa; T1 defaults to 40.
 # Method (Proposition "Certification of the kernel inequality" and Section "The hybrid" of the article):
 #   (a) on [0,1/2] x (0,T1] and [0,1/2] x [-T1,0): centred form H(centre) + grad H(box) . half-widths, bisection;
 #   (b) for |t| >= T1, u = 1/t: t^2 U - 4 d^3 u - K5 |u|^3 > 0 on [0,1/2] x [0,1/T1] and [0,1/2] x [-1/T1,0], bisection;
@@ -91,9 +91,9 @@ from certutil import A, box, up_str, down_str, exact, provenance
 
 sol = json.load(open(sys.argv[1])); T1 = Fr(sys.argv[2]) if len(sys.argv) > 2 else Fr(40)
 d = Fr(sol['d']).limit_denominator(10**6); B = [tuple(x) for x in sol['B']]
-c = [Fr(x) for x in sol['c']]                                           # exact binary values written by the optimiser
+c = [Fr(x) for x in sol['c']]                                           # exact rational values of the binary floats recovered from the round-tripping JSON decimals
 discs = [(Fr(cc).limit_denominator(10**4), Fr(R).limit_denominator(10**4), Fr(v).limit_denominator(10**4)) for cc, R, v in sol['discs']]
-discs = [(cc, min(R, cc-Fr(1, 2)), v) for cc, R, v in discs]            # rational rounding must keep c_k - R_k >= 1/2 (a smaller R_k only lowers W_k)
+discs = [(cc, min(R, cc-Fr(1, 2)), v) for cc, R, v in discs]            # rational rounding must keep c_k - R_k >= 1/2 (decreasing R_k lowers W_k; J_k is recomputed below from the final rational data)
 kap = [Fr(x) for x in sol['kappa']]
 # integrity of the data
 assert len(c) == len(B) and len(discs) == len(kap)
@@ -728,7 +728,7 @@ if __name__ == '__main__':
 # C_zeta(c) = sum_n Lambda(n) n^{-sigma1} || (a(log n), b(log n)) ||_2  (n <= n0) + quadrature of the tail; with PPMAX > 0 the
 # primes p <= PPMAX enter through the maximum of f_p over a grid of 96 phases (per-prime phase maximum).
 # Usage:  [PPMAX=300] python3 opt_line.py <d> <mR> <mI> <L*> <out.json>
-# Output: JSON with the coefficients as exact binary numbers, the input of certify_line_pp.py.
+# Output: JSON with the coefficients as decimal strings that round-trip to the binary floats, the input of certify_line_pp.py.
 import sys, json, math, time, os, numpy as np, cvxpy as cp, mpmath as mp
 PPMAX = int(os.environ.get('PPMAX', '0'))   # per-prime phase maximum in the objective for the primes p <= PPMAX (0: none)
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'hybrid_asymptotic'))   # lpcommon.py lives there (or next to this file in the flat archive)
@@ -850,7 +850,7 @@ Each output begins with the SHA-256 digests of its input file and of the program
 \label{app:out_hybrid}
 \begin{lstlisting}
 hyb_m10_P.json sha256 2b94bf5d689eee6e5688699be67d4725255aa97453d9115dcf2010b6b0e6a9fc
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 profile_published.py sha256 06a554e573fabe71b6049e704349df53cad774712423042241436500acadb4bc
 python 3.13.18, python-flint 0.9.0, precision 256 bits
@@ -862,12 +862,12 @@ limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.001408437209 +/- 3.24e-13] 
 t in (0,T1]: certified, boxes 2028149
 t in [-T1,0): certified, boxes 2294869
 |t|>=T1: certified, boxes 277098
-all certified;  C < 0.0748596142711   time 838s
+all certified;  C < 0.0748596142711   time 837s
 \end{lstlisting}
 \appsub{Line $\ell_{5}$: kernel inequality}
 \begin{lstlisting}
 sol.json sha256 febfa49528729b67e8af3b65920a6682545be70e6ec46b9a5262448e9e946574
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 1  m = 5  discs used: 0 
@@ -915,7 +915,7 @@ SUP over T>=1 of max(F_u,F_l) <= 0.139490893363    time 61s
 \appsub{Line $\ell_{20}$: kernel inequality}
 \begin{lstlisting}
 sol.json sha256 a95801710718f4fdbfb80f2f66ece1d071a440f5650c2a2ae2700fc13032143f
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 6/5  m = 5  discs used: 0 
@@ -963,7 +963,7 @@ SUP over T>=1 of max(F_u,F_l) <= -0.182786494342    time 62s
 \appsub{Line $\ell_{60}$: kernel inequality}
 \begin{lstlisting}
 sol.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 1  m = 5  discs used: 0 
@@ -974,7 +974,7 @@ limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.008043907939 +/- 4.87e-13] 
 t in (0,T1]: certified, boxes 1441685
 t in [-T1,0): certified, boxes 483889
 |t|>=T1: certified, boxes 4434
-all certified;  C < 0.0947215742364   time 109s
+all certified;  C < 0.0947215742364   time 110s
 \end{lstlisting}
 \appsub{Line $\ell_{60}$: $C_\zeta$}
 \begin{lstlisting}
@@ -1011,7 +1011,7 @@ SUP over T>=1 of max(F_u,F_l) <= -0.158475758991    time 62s
 \appsub{Line $\ell_{150}$: kernel inequality}
 \begin{lstlisting}
 sol.json sha256 88654e2339e4f68925dd36bb344e3ed3ea22a373bdc8fa02dec09407e7c066ea
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 5  discs used: 0 
@@ -1022,7 +1022,7 @@ limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.007450671016 +/- 2.69e-13] 
 t in (0,T1]: certified, boxes 1658655
 t in [-T1,0): certified, boxes 353921
 |t|>=T1: certified, boxes 3198
-all certified;  C < 0.0934806284361   time 121s
+all certified;  C < 0.0934806284361   time 123s
 \end{lstlisting}
 \appsub{Line $\ell_{150}$: $C_\zeta$}
 \begin{lstlisting}
@@ -1059,7 +1059,7 @@ SUP over T>=1 of max(F_u,F_l) <= -0.157576348369    time 62s
 \appsub{Line $\ell_{400}$: kernel inequality}
 \begin{lstlisting}
 sol.json sha256 961b299dafd10eca996a4a542d3f9f6b3afa729cd7bbde4fd11d5759c1ab42c8
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 10  discs used: 0 
@@ -1070,7 +1070,7 @@ limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002002739955 +/- 2.69e-14]
 t in (0,T1]: certified, boxes 11835193
 t in [-T1,0): certified, boxes 9801985
 |t|>=T1: certified, boxes 4194302
-all certified;  C < 0.0839860184067   time 2319s
+all certified;  C < 0.0839860184067   time 2316s
 \end{lstlisting}
 \appsub{Line $\ell_{400}$: $C_\zeta$}
 \begin{lstlisting}
@@ -1107,7 +1107,7 @@ SUP over T>=1 of max(F_u,F_l) <= -0.145826731639    time 81s
 \appsub{Line $\ell_{6000}$: kernel inequality}
 \begin{lstlisting}
 sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
-certify_hybrid.py sha256 f4977c8401a8c2c35b1761b9de4d39307f6fe8a65697799b6009b1784724f55e
+certify_hybrid.py sha256 fdfe7462c1b017d4167aa7199a16a82117c74fd1a1fbb0ed5dbcc69b210402a5
 certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
 python 3.13.18, python-flint 0.9.0, precision 256 bits
 d = 17/20  m = 10  discs used: 0 
@@ -1118,7 +1118,7 @@ limit of t^2 U at |t| -> oo = 2 d c_R1 - 2 c_R2 = [0.0002027460239 +/- 3.01e-14]
 t in (0,T1]: certified, boxes 14760921
 t in [-T1,0): certified, boxes 15866017
 |t|>=T1: certified, boxes 4194302
-all certified;  C < 0.0838141706021   time 3123s
+all certified;  C < 0.0838141706021   time 3125s
 \end{lstlisting}
 \appsub{Line $\ell_{6000}$: $C_\zeta$}
 \begin{lstlisting}
@@ -1355,20 +1355,20 @@ The following files hold the coefficients as decimal strings that round-trip to 
 }
 \end{lstlisting}
 \appsub{\texttt{hyb\_m10\_P\_discs\_rational.json} (derived)}
-The rational disc data $(c_k,R_k,v_k)$ and the exact weights $\kappa_k$ used by the certificate, as pairs (numerator, denominator), obtained from \texttt{hyb\_m10\_P.json} by the conversions of \texttt{certify\_hybrid.py}; the file is generated by \texttt{gen\_appendix.py} and is not an input of any certificate. Its first lines are
+The rational disc data $(c_k,R_k,v_k)$ and the exact weights $\kappa_k$ used by the certificate, as pairs (numerator, denominator), obtained from \texttt{hyb\_m10\_P.json} by the conversions of \texttt{certify\_hybrid.py}; the file is generated deterministically by \texttt{gen\_appendix.py} (keys sorted, one value per line), is not an input of any certificate, and is included in the deposited archive; its SHA-256 is \texttt{bea13456c6d5f11359a86d8ee6b1b0a684b12e13a46bc4d12db11933e28b323a}. Its first lines are
 \begin{lstlisting}
 {
- "source": "hyb_m10_P.json",
  "d": [
   9,
   10
  ],
  "discs": [
   {
-   "k": 1,
+   "R": [
+    9,
+    50
+   ],
    "c": [
-    103,
-    100
 ...
 \end{lstlisting}
 \appsub{\texttt{line\_L5/sol.json} (line $\ell_{5}$)}

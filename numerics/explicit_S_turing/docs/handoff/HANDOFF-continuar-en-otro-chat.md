@@ -2,8 +2,11 @@
 
 Repositorio: `vcasana1/PaperMath`, rama `explicit-S-turing`, carpeta `numerics/explicit_S_turing/`.
 Nota: `docs/zenodo_note/` (fuente `body.tex` + ficheros generados; se compila con `build.py vN`, que produce
-`casanya_turing_jensen_vN.pdf`, `_l.tex` (autocontenido) y `.txt`). Última entregada: v11 (1 Nov 2026, commit 2668fa8; revisión larga de la v10 aplicada: texto, tooltips y apéndices;
-ningún programa de certificación ni JSON tocado, certificados y constantes idénticos a v8). Handoff largo: `HANDOFF-turing-explicit-S.md`.
+`casanya_turing_jensen_vN.pdf`, `_l.tex` (autocontenido) y `.txt`). Última entregada: v14 (1 Nov 2026): revisiones de v10, v11 y v13 aplicadas (texto, tooltips, apéndices, fichero racional
+derivado hyb_m10_P_discs_rational.json). En v14 se reescribieron tres comentarios de certify_hybrid.py (sin cambio de código,
+hash fdfe7462...) y se rehicieron aquí los 7 certificados que lo hashean (híbrido + 6 cert_kernel.txt): idénticos salvo digest y
+tiempo. Los otros 18 certificados son los de v8. Constantes idénticas. rerun/rerun_kernels_hybrid.sh lanza esos 7.
+NO cambiar certutil.py (lo hashean los 25; el autor rechazó registrar la versión de FLINT). Handoff largo: `HANDOFF-turing-explicit-S.md`.
 
 ## Reglas del autor (obligatorias)
 - Preguntar antes de cambiar nada que no sea una corrección evidente; nunca inventar; impersonal en el artículo.
