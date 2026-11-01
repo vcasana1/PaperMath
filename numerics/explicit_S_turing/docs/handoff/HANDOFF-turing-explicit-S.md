@@ -64,3 +64,21 @@ step majorant on [log N0, 2000], certified monotonicity beyond), elem_gen.py (mo
    subconvexity), LP/SOCP optimisation, combined Euler constant, exact elementary part. BW announce optimisation as future
    work (their §3): consider an arXiv preprint soon.
 4. Theorems A (RH, pointwise) and D (unconditional, density one): see the other two handoff notes in this folder.
+
+## Update 1 Nov 2026: programs cleaned, everything rerun, Zenodo note v7
+- Reviews of v4-v6 (three independent readers) applied: Cor 2.2 single-line claims; Lemma 3.2/4.7/5.2/6.2 fixes; C_H printed as a
+  truncation; Lemma 4.7 constant K aligned with elem_gen.py (j=1 term /T0, O(1/T^2) proof, T0>0); directed decimal rounding of
+  every printed/JSON bound (certutil.up_str) after the finding that arb.str(radius=False) rounds to nearest.
+- Programs (final set, all in the note's appendix and in the flat zip): hybrid_asymptotic/{certutil.py, certify_hybrid.py,
+  profile_published.py, lpcommon.py, explore_discs.py, kernel_only.py}, family/{cz_gen_pp.py, elem_gen.py, certify_line_pp.py,
+  opt_line.py}. Everything superseded is in hybrid_asymptotic/attic/ and family/attic/ (READMEs).
+- Hybrid: the old LP had been run with the ANTEDB profile (two uncitable nodes) and certified with e_P after a manual repair.
+  Now the LP is run with e_P and a refined violation search (fine linear t-grid in |t|<=3 + Nelder-Mead local maximisation,
+  deduplicated cutting planes, HiGHS fallbacks); certified at the first attempt: C_H < 0.0748596142711 (90 discs, 822 s;
+  hyb_m10_P.json, cert_m10P.txt). Old certified value 0.0748883899703 kept in attic/hybrid_antedb_lp/.
+- Six lines: all certificates rerun with the cleaned programs; identical boxes; constants unchanged (finalize.py asserts it);
+  elementary sups ~2e-6 tighter (arb.union is not a tight hull). Times: kernels 1 s .. 3551 s, C_zeta 52-164 s, elem 124-162 s.
+- Remark 2.4 values now from kernel_only.py (m=4: 0.08831, m=10: 0.08071, m=20: 0.07983; beta=1/2 only: 0.04375, 0.02002);
+  m=40 and m=20-RH do not converge and are not quoted.
+- Note v7: 51 pp., casanya_turing_jensen_v7{.pdf,_l.tex,.txt,_zenodo.zip}; macros for every certificate statistic
+  (gen_appendix.py), exact-decimal checks (gen_values.py). Project doc claude/casanya_turing_jensen_v7.tex.
