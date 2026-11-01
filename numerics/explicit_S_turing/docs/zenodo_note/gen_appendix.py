@@ -98,8 +98,10 @@ with open('generated_tables.tex', 'w') as f:
     # kernel-only optima for the Remark on the infimum
     ko = open(HYB+'kernel_only.txt').read()
     vals = {}
-    for m_, d_, kind, v in re.findall(r'm=(\d+) d=([\d.]+) (all beta|constraint at beta=1/2 only) C1\(grid\)=([\d.]+)', ko):
-        key = (int(m_), kind == 'all beta'); vals[key] = min(vals.get(key, 9), float(v))
+    # only runs whose cutting planes converged (residual violation on the fine grid below 1e-5) are quoted
+    for m_, d_, kind, v, viol in re.findall(r'm=(\d+) d=([\d.]+) (all beta|constraint at beta=1/2 only) C1\(grid\)=([\d.]+) worst violation=(\S+)', ko):
+        if float(viol) < 1e-5:
+            key = (int(m_), kind == 'all beta'); vals[key] = min(vals.get(key, 9), float(v))
     for m_ in (4, 10, 20, 40):
         if (m_, True) in vals: f.write('\\newcommand{\\KernelOnly%s}{%.5f}\n' % ({4: 'Four', 10: 'Ten', 20: 'Twenty', 40: 'Forty'}[m_], vals[(m_, True)]))
     for m_ in (4, 10, 20):

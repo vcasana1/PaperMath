@@ -1,0 +1,20 @@
+m=4 d=0.70 all beta C1(grid)=0.08831 worst violation=1.8e-08 it=59  120s
+m=4 d=0.80 all beta C1(grid)=0.08894 worst violation=3.0e-13 it=9  20s
+m=4 d=0.90 all beta C1(grid)=0.09061 worst violation=1.5e-10 it=3  8s
+m=10 d=0.70 all beta C1(grid)=0.08160 worst violation=1.4e-13 it=5  33s
+m=10 d=0.80 all beta C1(grid)=0.08071 worst violation=7.4e-08 it=59  233s
+m=10 d=0.90 all beta C1(grid)=0.08100 worst violation=8.6e-09 it=59  173s
+m=20 d=0.70 all beta C1(grid)=0.07994 worst violation=3.1e-09 it=59  373s
+m=20 d=0.80 all beta C1(grid)=0.07983 worst violation=1.6e-09 it=59  378s
+m=20 d=0.90 all beta C1(grid)=0.07996 worst violation=1.9e-06 it=59  382s
+m=40 d=0.70 all beta C1(grid)=0.07978 worst violation=2.1e-02 it=59  2057s
+Terminated
+m=4 d=0.70 constraint at beta=1/2 only C1(grid)=0.04375 worst violation=3.3e-16 it=3  0s
+m=4 d=0.80 constraint at beta=1/2 only C1(grid)=0.05000 worst violation=1.6e-12 it=2  0s
+m=4 d=0.90 constraint at beta=1/2 only C1(grid)=0.05625 worst violation=2.4e-12 it=2  0s
+m=10 d=0.70 constraint at beta=1/2 only C1(grid)=0.01747 worst violation=3.3e-04 it=59  2s
+m=10 d=0.80 constraint at beta=1/2 only C1(grid)=0.02002 worst violation=3.5e-14 it=3  0s
+m=10 d=0.90 constraint at beta=1/2 only C1(grid)=0.02250 worst violation=1.8e-06 it=59  2s
+m=20 d=0.70 constraint at beta=1/2 only C1(grid)=0.01070 worst violation=5.4e-01 it=59  3s
+m=20 d=0.80 constraint at beta=1/2 only C1(grid)=0.01257 worst violation=7.6e-02 it=59  4s
+m=20 d=0.90 constraint at beta=1/2 only C1(grid)=0.01330 worst violation=1.3e-02 it=59  4s
