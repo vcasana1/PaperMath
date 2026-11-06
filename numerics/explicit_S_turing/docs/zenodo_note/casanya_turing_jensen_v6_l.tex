@@ -1067,6 +1067,44 @@ $B<0.064611026099352525$ as the coefficients of
 $\log T$ and $\log\log T$; its logarithmic term is absorbed
 by the strict slack in $0.08382-A$.
 
+
+For a disc centred at $c+i(T+v)$ the weight at a
+reflected zero is
+$\log^+(R/\sqrt{(c-\frac12-|b|)^2+(t+v)^2})$.
+For a rectangle, the analogous weight is its Dirichlet
+Green function, extended by zero outside its domain.
+In either geometry, Green--Jensen gives
+\[
+\sum_{w\in D_T}{\cal G}_D(c;w)
+=\int_{\partial D_T}\log|\zeta(s)|\,d\omega_c(s)
+-\log|\zeta(c+i(T+v))|.
+\]
+Here $d\omega_c$ is harmonic measure, the sum counts
+zeros with multiplicity, and the reflection of zeros
+across $\Re s=\frac12$ introduces the factor two
+required in the original Turing identity.
+
+Each centre has $c>1$, hence its term is exactly
+\[
+-\log|\zeta(c+i(T+v))|=
+-\sum_p\sum_{k\ge1}\frac{p^{-kc}}{k}
+\cos(k(T+v)\log p).
+\]
+The centre and kernel terms are maximised with
+the same phase for each prime and all its powers.
+The certified joint Euler contribution is
+$C_\zeta^{\rm joint}<2.727505930910822688$;
+this is not the old six-line $C_\zeta$.
+The global geometric verifier treats all cell
+interfaces with rational coordinates and Arb enclosures.
+The harmonic-cost verifier handles boundary integrals
+and explicit $O(T^{-1})$ corrections, without
+discarding them. The envelope verifier maximises
+$-(0.08382-A)L+B\log L$ analytically for
+$L=\log T\ge93.077380$; the maximum is enclosed at
+$221.8858055762487512189634<L<
+221.8858055762487512189635$.
+
 A separate order-$5$ kernel controls the initial range.
 The two verified residual upper bounds are
 \begin{equation}
