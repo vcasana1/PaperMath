@@ -1042,6 +1042,56 @@ All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLIN
 \subsection{Comparison of the two methods}\label{subsec:comparison_methods}
 Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Making Theorem~\CGref{thm:hybrid} explicit requires versions of \CGeqref{eq:admissible} with explicit constants, for which the available bounds are those of Hiary, Patel and Yang \cite{HiaryPatelYang2024} on the critical line, of Yang \cite{Yang2024} on the lines $\sigma=1-m/(2^m-2)$, and of Bellotti \cite{Bellotti2024} in the strip; with them the method gives bounds of the form $A_1\log T+B\log\log T+C$ with $A_1$ near $0.076$, valid from a computable height, and this is left for a later article.
 
+
+\section{Explicit Green--Jensen certification}\label{sec:green_explicit}
+
+The new all-height estimate is obtained from the Turing identity
+of Lemma~\CGref{lem:identity} with a separately certified
+majorant: an order-$60$ kernel with $119$ coefficients, plus
+non-negative Green weights for $16$ rectangles and $7$ discs.
+The certified continuous inequality is
+\begin{equation}
+f(b,t)\le U(b,t)+\sum_{j=1}^{23}\kappa_jW_j(b,t),
+\quad 0\le b\le\tfrac12,\quad t\ne0.
+\label{eq:green_majorant}
+\end{equation}
+The global proof uses the harmonic minimum principle on all
+geometric cells, verified interfaces and both infinite tails.
+The centre terms are expanded by the Euler product in
+$\Re s>1$, and maximise jointly with the kernel at the
+same phase $T\log p$. Explicit bounds of
+Patel--Yang \cite{PatelYang2024} and Yang \cite{Yang2024}
+give certified harmonic boundary costs. The upper branch has
+$A<0.083528809556647599$ and
+$B<0.064611026099352525$ as the coefficients of
+$\log T$ and $\log\log T$; its logarithmic term is absorbed
+by the strict slack in $0.08382-A$.
+
+A separate order-$5$ kernel controls the initial range.
+The two verified residual upper bounds are
+\begin{equation}
+\begin{aligned}
+\sup_{1<T\le e^{93.077380}}
+(|S(T)|-0.08382\log T)&<2.959218418359088442,\\
+\sup_{T\ge e^{93.077380}}
+(|S(T)|-0.08382\log T)&<2.959227628288475263.
+\end{aligned}
+\label{eq:green_bounds}
+\end{equation}
+They establish Theorem~\CGref{thm:green_explicit}.
+Exact data, independent interval verifiers and execution logs
+are in the companion archive \cite{CasanaCertificate2026}.
+The numerical certificate is not claimed to be an optimality
+proof or a formal verification of its own implementation.
+
+\section{Conclusions}\label{sec:conclusions}
+
+The new bound \CGeqref{eq:green_explicit} holds for all $T>1$.
+The six older lines and the asymptotic hybrid, together with
+their proofs and numerical certificates, remain unchanged.
+The large additive improvement comes from the new
+Green--Jensen majorant and coupled prime phases.
+
 \subsection*{Data availability}
 The programs, the coefficient files and the outputs of all certificates are reproduced in Appendices~\CGref{app:code}--\CGref{app:data} and are available at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
 
