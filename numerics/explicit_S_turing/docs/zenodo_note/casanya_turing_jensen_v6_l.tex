@@ -1079,6 +1079,22 @@ reflected zero is
 $\log^+(R/\sqrt{(c-\frac12-|b|)^2+(t+v)^2})$.
 For a rectangle, the analogous weight is its Dirichlet
 Green function, extended by zero outside its domain.
+For a rectangle of width $W=b_0-a$ and half-height $H$,
+with $a\ge\frac12$ and pole $c\in(a,b_0)$,
+the normalised Green function has the representation
+\[
+{\cal G}_D(c;x,y)=\sum_{n\in\mathbb Z}
+\bigl[g_H(x-c+2nW,y)-g_H(x+c-2a+2nW,y)\bigr],
+\quad
+g_H(u,y)=\operatorname{atanh}
+\frac{\cos(\pi y/(2H))}{\cosh(\pi u/(2H))}.
+\]
+It has singularity $-\log|z-c|$, vanishes on all four sides
+by reflection and is non-negative inside by the maximum principle.
+The series and its first two derivatives have explicit exponential
+tails. On the strip of possible reflected zeros its pole is excluded
+because every geometric centre has $c>1$.
+
 In either geometry, Green--Jensen gives
 \[
 \sum_{w\in D_T}{\cal G}_D(c;w)
