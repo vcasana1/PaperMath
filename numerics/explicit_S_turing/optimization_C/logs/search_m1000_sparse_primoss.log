@@ -1,0 +1,6 @@
+local order 1000 free parameters 269 full family 1999 sparse True
+{"iteration": 0, "m": 1000, "n": 269, "C_est": 3.416498758043901, "worst": -1.4558359217577958e-07, "newcuts": 3, "phasegap": 0.00023801890313218665, "seconds": 149.51804494857788}
+{"iteration": 1, "m": 1000, "n": 269, "C_est": 3.4185270057065735, "worst": -7.788851063541528e-08, "newcuts": 3, "phasegap": 1.1348236937831768e-08, "seconds": 279.75860691070557}
+{"iteration": 2, "m": 1000, "n": 269, "C_est": 3.4185270083603214, "worst": -1.9405597012433864e-08, "newcuts": 1, "phasegap": 1.1276554459736104e-08, "seconds": 408.0330379009247}
+{"iteration": 3, "m": 1000, "n": 269, "C_est": 3.4185270096307554, "worst": -9.757239344065729e-09, "newcuts": 0, "phasegap": 1.1253912650301817e-08, "seconds": 533.5700409412384}
+saved numerical candidate candidates/d100_m1000_sparse_primoss.json

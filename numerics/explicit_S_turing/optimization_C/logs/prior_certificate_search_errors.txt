@@ -1,0 +1,5 @@
+rg: /Users/vcasana/Library/Saved Application State/com.installbuilder.appinstaller.savedState: Permission denied (os error 13)
+rg: /Users/vcasana/.config/htop: Permission denied (os error 13)
+rg: /Users/vcasana/Library/CloudStorage/OneDrive-Personal/.Trash: Operation timed out (os error 60)
+rg: /Users/vcasana/Library/Containers/com.hyperdev.joinzoom.macos/Data/Library: Interrupted system call (os error 4)
+rg: /Users/vcasana/Library/Containers/com.microsoft.teams2/Data/tmp/model_1BB59386-37F9-4D3F-9705-DC8105B025A8.mlmodelc/neural_network_optionals: Interrupted system call (os error 4)

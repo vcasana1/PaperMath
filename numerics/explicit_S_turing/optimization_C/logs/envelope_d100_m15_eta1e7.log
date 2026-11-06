@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_envelope.py", line 52, in <module>
+    ap.add_argument('--Lswitch',default='100');a=ap.parse_args();certify(a.candidate,a.arithmetic,a.low,a.low_arithmetic,a.low_elementary,a.Lswitch)
+                                                                 ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_envelope.py", line 20, in certify
+    k=json.loads(p.read_text());assert k['certified'] and k['input_sha256']==sha256(s)
+                 ~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 787, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'candidates/d100_m15_eta1e7_kernel.json'

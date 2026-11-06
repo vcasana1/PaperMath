@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "extended_Czeta_upper": "3.57358788674901528555297",
+  "direct_Czeta_upper": "3.57371860587655480284926",
+  "removed_tail_norm_lower": "0.0000713473382044129578601550",
+  "bin_excess_upper": "0.0000000000000695234754511291035619895",
+  "code_sha256": "985684591ae1792eccf131bb4e81e0a9f389b2165e930c3dcaa360d5c2d86a21"
+}

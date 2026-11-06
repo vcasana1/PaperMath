@@ -1,0 +1,2 @@
+conditioning 24960.13715523055
+SOLVER ERROR SolverError("Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.")

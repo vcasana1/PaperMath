@@ -1,0 +1,18 @@
+d110_m40_lag.json sha256 633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87
+certify_kernel.py sha256 f09761952532b4cb14a25f00591e5bda4dffffecc6b3dc5445e496f3c404e483
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+t_zero {'boxes': 23, 'positive_lower': '0.00001391405529920155', 'seconds': 0.03592514991760254}
+positive {'boxes': 4643, 'positive_lower': '0.00000000003421463367722256', 'seconds': 13.111587047576904}
+negative {'boxes': 4489, 'positive_lower': '0.00000000003392802602864072', 'seconds': 11.832368850708008}
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_kernel.py", line 108, in <module>
+    if __name__=='__main__':certify(sys.argv[1],int(sys.argv[2]) if len(sys.argv)>2 else 100)
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_kernel.py", line 101, in certify
+    t=time.time();result[label]=bisect(fn,lo,hi);result[label]['seconds']=time.time()-t
+                                ~~~~~~^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_kernel.py", line 95, in bisect
+    if dep>=65:raise RuntimeError(f'uncertified interval {l} {h}: {v}')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: uncertified interval 36893488147419103231/3689348814741910323200 1/100: [-5.080655524649654e-5 +/- 5.05e-21]

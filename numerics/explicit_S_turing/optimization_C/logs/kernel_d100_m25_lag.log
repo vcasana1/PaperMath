@@ -1,0 +1,10 @@
+d100_m25_lag.json sha256 229d35b5238c7c6e9fa101a1a0e847afa69b531a5de5bd8a9905d4267f779248
+certify_kernel.py sha256 44b43a0dd3fc667f8e1d4149b31c151dc7f6a7295d1243ae1c38f67f5a12ce85
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+t_zero {'boxes': 487, 'positive_lower': '0.000009049704602560396', 'seconds': 0.2785179615020752}
+positive {'boxes': 55075, 'positive_lower': '0.0000000002039992388106966', 'seconds': 49.68024492263794}
+negative {'boxes': 40561, 'positive_lower': '0.00000000003438848994478402', 'seconds': 35.93929600715637}
+tail_positive {'boxes': 1545, 'positive_lower': '0.00000004386685559034263', 'seconds': 0.4848439693450928}
+tail_negative {'boxes': 1715, 'positive_lower': '0.000000003461854034711464', 'seconds': 0.5321428775787354}
+ALL KERNEL BOUNDARIES AND GLOBAL (K) CERTIFIED

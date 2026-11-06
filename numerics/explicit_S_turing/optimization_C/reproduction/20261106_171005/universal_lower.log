@@ -1,0 +1,5 @@
+universal_lower_zeros.json sha256 abcea417b668a03f214fc478121ad4e964aa6df241cde61459c90a7c7eaabb7f
+verify_universal.py sha256 09401aff0a137528b6538657eb1503ff0b8b7d129ce8079da6cea89569333796
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+UNIVERSAL NECESSARY LOWER BOUND VERIFIED: 0.688655186978719794671238
+N(T) constant on the rational neighborhood of radius 1e-45: nonordinate certified

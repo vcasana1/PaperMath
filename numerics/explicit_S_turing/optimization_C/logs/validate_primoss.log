@@ -1,0 +1,22 @@
+validated to 5000001 primes 348513 seconds 0.021362781524658203
+validated to 1005000001 primes 51088682 seconds 3.1636338233947754
+validated to 2005000001 primes 98456313 seconds 7.84735894203186
+validated to 3005000001 primes 144678716 seconds 11.18360686302185
+validated to 4005000001 primes 190187956 seconds 15.547457933425903
+validated to 5005000001 primes 235178175 seconds 19.329288959503174
+validated to 6005000001 primes 279767387 seconds 23.086437702178955
+validated to 7005000001 primes 324024630 seconds 26.972461700439453
+validated to 8005000001 primes 368003137 seconds 31.19541573524475
+validated to 9005000001 primes 411741265 seconds 35.178786754608154
+{
+  "certified_complete": true,
+  "path": "/Users/vcasana/Documents/\u00b7.\u00b7 MATLAB/\u00b7.\u00b7 bin_unicos/primoss.bin",
+  "dtype": "<u8",
+  "count": 455052511,
+  "N": 10000000000,
+  "first": 2,
+  "last": 9999999967,
+  "sha256": "79b99094b72787de8c53b3b3a068956587747ef8eec5cba222ca004b95fc5272",
+  "method": "exact elementwise equality with every prime from a complete segmented sieve through N",
+  "seconds": 42.20908069610596
+}

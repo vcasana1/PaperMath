@@ -1,0 +1,38 @@
+adaptive_m10_d1.006257.json sha256 2e4c2be98a83fb3bef32a3872a2e51ff21a61617ef15559044a2587bb4337afe
+certify_kernel_critical.py sha256 b32a6b1658a5f379cfeabf8b920be61fa143385a1f53b9f771ed7b3c12f24322
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+exact derivative numerator degree 45 built in 0.011989831924438477
+all polynomial roots isolated 45 elapsed 0.023418903350830078
+GLOBAL (K) CERTIFIED BY ALL CRITICAL POINTS 17 seconds 0.02852797508239746
+adaptive_m10_d1.006257.json sha256 2e4c2be98a83fb3bef32a3872a2e51ff21a61617ef15559044a2587bb4337afe
+adaptive_m10_d1.006257_arithmetic_N100000000.json sha256 c3b6b426f13a0a3af2f8f5ebdea037cdc74059bd43e30f67b0c9e835b3bb786b
+low_L60.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+low_L60_arithmetic_N1000000.json sha256 227042a7fde7c40d7574a4f5f967980588799cb3fd30086b8bfd2b1b5c9d98bc
+low_L60_elemS.json sha256 42bb24ad1bb67431ac1586fb729d5ca8deb5d8c938d55bfcfd3fc2e53f9a93fe
+certify_envelope.py sha256 4685f907c5c188b40986a82409a836a17741fa938491539467b9e98ab7c0d485
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+{
+  "certified": true,
+  "A": "0.08382",
+  "C_upper": "3.550718881",
+  "high_upper": "3.550718880916928555090006",
+  "low_upper": "3.550718873229088441548871",
+  "Lswitch": "147.293737",
+  "Tswitch": "exp(147.293737)",
+  "C1_upper": "0.0838199999842979619933948",
+  "K_upper": "4.20147596356856127151286",
+  "high_elementary_error_upper": "0.000000000000000000000000000000000000000000000000000000000000000451382466464381141132143",
+  "convention": "right continuous S at zeros; also valid at midpoint and left limit",
+  "proof": "v11 propositions 4.1,4.5, Lemmas 4.7,4.8; harmonic boundary certificate",
+  "hashes": {
+    "candidates/adaptive_m10_d1.006257.json": "2e4c2be98a83fb3bef32a3872a2e51ff21a61617ef15559044a2587bb4337afe",
+    "candidates/adaptive_m10_d1.006257_arithmetic_N100000000.json": "c3b6b426f13a0a3af2f8f5ebdea037cdc74059bd43e30f67b0c9e835b3bb786b",
+    "inputs/low_L60.json": "79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf",
+    "inputs/low_L60_arithmetic_N1000000.json": "227042a7fde7c40d7574a4f5f967980588799cb3fd30086b8bfd2b1b5c9d98bc",
+    "inputs/low_L60_elemS.json": "42bb24ad1bb67431ac1586fb729d5ca8deb5d8c938d55bfcfd3fc2e53f9a93fe",
+    "candidates/adaptive_m10_d1.006257_kernel.json": "c7be6762e102d9672320a0eaea10bce969db554da5a9580bb0dbc1c0a7f1912c",
+    "inputs/low_L60_kernel.json": "601953c4daed3f692bc427aec5fa9c4460089cff735748cc4b6e20a8964eaa82",
+    "/Users/vcasana/Documents/ChatGPT/M\u00f6bius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_envelope.py": "4685f907c5c188b40986a82409a836a17741fa938491539467b9e98ab7c0d485"
+  }
+}

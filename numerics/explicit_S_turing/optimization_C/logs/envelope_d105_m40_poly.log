@@ -1,0 +1,31 @@
+d105_m40_repaired.json sha256 a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9
+d105_m40_repaired_arithmetic_N200000000.json sha256 e621ad0f43e25588764665eb7f6677a6cb877b835f820111cdc635eff61b7da9
+low_L60.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+low_L60_arithmetic_N1000000.json sha256 227042a7fde7c40d7574a4f5f967980588799cb3fd30086b8bfd2b1b5c9d98bc
+low_L60_elemS.json sha256 a51d646719247b6dde762f78c10931f00b0ce0ca4e3683d59f776def509c0dcd
+certify_envelope.py sha256 53ac5fd6f12fbd06d8e623f45113c2fc472835a4d4e052534706261b587ecdbe
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+{
+  "certified": true,
+  "A": "0.08382",
+  "C_upper": "3.419378367",
+  "high_upper": "3.419378366633154245274610",
+  "low_upper": "3.419378358189088441548871",
+  "Lswitch": "135.255193",
+  "Tswitch": "exp(135.255193)",
+  "C1_upper": "0.0838199999844723018650373",
+  "K_upper": "4.45396257807906972666827",
+  "high_elementary_error_upper": "0.0000000000000000000000000000000000000000000000000000000000809398872609143274798850",
+  "convention": "right continuous S at zeros; also valid at midpoint and left limit",
+  "proof": "v11 propositions 4.1,4.5, Lemmas 4.7,4.8; harmonic boundary certificate",
+  "hashes": {
+    "candidates/d105_m40_repaired.json": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
+    "candidates/d105_m40_repaired_arithmetic_N200000000.json": "e621ad0f43e25588764665eb7f6677a6cb877b835f820111cdc635eff61b7da9",
+    "inputs/low_L60.json": "79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf",
+    "inputs/low_L60_arithmetic_N1000000.json": "227042a7fde7c40d7574a4f5f967980588799cb3fd30086b8bfd2b1b5c9d98bc",
+    "inputs/low_L60_elemS.json": "a51d646719247b6dde762f78c10931f00b0ce0ca4e3683d59f776def509c0dcd",
+    "candidates/d105_m40_repaired_kernel.json": "1b93157eae8b090a5aaac60c1f9a5e624717832657cd5916ae2a578b7f289947",
+    "inputs/low_L60_kernel.json": "601953c4daed3f692bc427aec5fa9c4460089cff735748cc4b6e20a8964eaa82",
+    "/Users/vcasana/Documents/ChatGPT/M\u00f6bius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_envelope.py": "53ac5fd6f12fbd06d8e623f45113c2fc472835a4d4e052534706261b587ecdbe"
+  }
+}

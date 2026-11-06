@@ -1,0 +1,4 @@
+repair 0 min H*(1+t^2) -2.577959703486954e-07 cuts 29
+repair 1 min H*(1+t^2) 3.264485928244909e-07 cuts 17
+repair 2 min H*(1+t^2) 4.6257158192730685e-07 cuts 2
+repair 3 min H*(1+t^2) 4.908931050540133e-07 cuts 0

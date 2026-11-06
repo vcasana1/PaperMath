@@ -1,0 +1,15 @@
+{
+  "certified": true,
+  "scope": "single kernel d=1.006257,m=10,A<=0.08382; full uniform objective; not arbitrary envelopes",
+  "C_min": "3.067663739167013305989",
+  "C_max": "3.557884950122148334482751",
+  "gap": "0.4902212109551350284937501",
+  "hashes": {
+    "candidates/adaptive_m10_d1.006257.json": "2e4c2be98a83fb3bef32a3872a2e51ff21a61617ef15559044a2587bb4337afe",
+    "candidates/adaptive_m10_d1.006257_arithmetic_N100000000.json": "c3b6b426f13a0a3af2f8f5ebdea037cdc74059bd43e30f67b0c9e835b3bb786b",
+    "candidates/adaptive_m10_d1.006257_elemS.json": "e63e8b8573eb6f8726602e6eb4871782c5cc48a474f5c82a69c8eae8459cb037",
+    "candidates/adaptive_m10_d1.006257_dual_certificate.json": "654d53bd14d61fa042e3c652aed423d3654784e72a986fa9abfc3bd4e4c44011",
+    "candidates/adaptive_m10_d1.006257_dual_input.json": "3b6400dfa002270a160637177e3ff125d7a55b26792ace1b2b4815e5dae41a98",
+    "candidates/adaptive_m10_d1.006257_kernel.json": "c7be6762e102d9672320a0eaea10bce969db554da5a9580bb0dbc1c0a7f1912c"
+  }
+}

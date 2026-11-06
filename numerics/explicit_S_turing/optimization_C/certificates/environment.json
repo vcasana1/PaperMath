@@ -1,0 +1,22 @@
+{
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "architecture": "arm64",
+  "packages": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "cvxpy": "1.9.3",
+    "clarabel": "0.11.1",
+    "python-flint": "0.9.0",
+    "sympy": "1.14.0",
+    "highspy": "1.15.1"
+  },
+  "default_arb_precision": 256,
+  "high_order_arb_precision": "max(256,8*m) bits",
+  "user_date": "2026-11-06",
+  "timezone": "Europe/Madrid",
+  "flint_version_metadata": {
+    "__FLINT_VERSION__": "3.6.0",
+    "__version__": "0.9.0"
+  }
+}

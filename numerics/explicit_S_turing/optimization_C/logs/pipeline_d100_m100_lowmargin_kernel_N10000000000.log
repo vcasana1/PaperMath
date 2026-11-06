@@ -1,0 +1,7 @@
+d100_m100_lowmargin.json sha256 bc25b1e8f40e6f5a5c0d1e7dbbd6eb6ce6d7e7e55d8808eb179a65d23827b2df
+certify_kernel_critical.py sha256 b32a6b1658a5f379cfeabf8b920be61fa143385a1f53b9f771ed7b3c12f24322
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+exact derivative numerator degree 403 built in 0.4975862503051758
+all polynomial roots isolated 403 elapsed 3.062810182571411
+GLOBAL (K) CERTIFIED BY ALL CRITICAL POINTS 129 seconds 3.15604305267334

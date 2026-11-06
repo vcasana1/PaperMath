@@ -1,0 +1,15 @@
+{
+  "certified": true,
+  "C_lower": "0.656701406135441024627696",
+  "T_rational": "755000545294359162458821366112200217736411983059299707276565467454277288497218308575552862296240921283629/64277521770359611021678483693646504100888119751311713412055040000000000000000000000000000000000000000",
+  "T_decimal": "11745.9498204007249709392",
+  "N": "12216",
+  "S_lower": "1.44220073483516391707308",
+  "S_upper": "1.44220073483516391707309",
+  "zero_index": 12216,
+  "scope": "necessary lower bound for any bound |S(T)|<=.08382 log(T)+C for all T>1, including any kernel envelope",
+  "method": "Arb certified zeta_nzeros and lgamma at a rational nonordinate",
+  "search_range": "integer heights 1..20000; refine only top 20 candidates; not a global maximum claim",
+  "seconds": 9.537429809570312,
+  "code_sha256": "ef47a34a1823abb4b4b56743740923b1cc6bb04d8902cced5e00a1d90b7635c3"
+}

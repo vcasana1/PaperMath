@@ -1,0 +1,7 @@
+d100_m100_critical.json sha256 b1167d2185fc3ddd20decff3d3a25c5232536262bc727ea54dc8ea5966284731
+certify_kernel_critical.py sha256 2987bcd5130b16792a37f2651293124a1f2c57f2db34fbf3bace437bac84bfce
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+exact derivative numerator degree 403 built in 0.792402982711792
+all polynomial roots isolated 403 elapsed 4.647645950317383
+GLOBAL (K) CERTIFIED BY ALL CRITICAL POINTS 95 seconds 4.773743152618408

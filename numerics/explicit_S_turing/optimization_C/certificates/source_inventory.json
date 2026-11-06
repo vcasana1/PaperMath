@@ -1,0 +1,13 @@
+{
+  "local_v11": {
+    "path": "inputs/reference_v11_local.tex",
+    "sha256": "0e5fa3972623c6845cffa097d504cdb78f0500a95c8c2268a5df757f0827e09c"
+  },
+  "repository_v11": {
+    "path": "../docs/zenodo_note/casanya_turing_jensen_v11_l.tex",
+    "sha256": "0e5fa3972623c6845cffa097d504cdb78f0500a95c8c2268a5df757f0827e09c"
+  },
+  "identical": true,
+  "base_commit": "e41acb3936b6b97c224ed7f31c7eb18bf6d9c5c1",
+  "original_tracked_files_modified": false
+}

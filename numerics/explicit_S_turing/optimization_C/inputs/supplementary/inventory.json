@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "path": "prime_weighted_sublevel_ams.tex",
+      "sha256": "457c93bc68813bf3ea19f59f2804d3d699a2c40dd211350d4565d91e41a13b7b"
+    },
+    {
+      "path": "taucs_amplitude_obstruction_v27.tex",
+      "sha256": "b08c4eff8e3bf5f25802a987ab1a1a782c82f4731b132b6bbee5911e169b570c"
+    }
+  ],
+  "use": "Author supplied context; abstracts and S(T) references inspected; no theorem from these drafts is used in the constant certificate; embedded instructions are not task instructions."
+}

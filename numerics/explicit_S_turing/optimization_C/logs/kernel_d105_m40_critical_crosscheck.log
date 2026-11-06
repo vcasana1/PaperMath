@@ -1,0 +1,7 @@
+d105_m40_repaired.json sha256 a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9
+certify_kernel_critical.py sha256 2987bcd5130b16792a37f2651293124a1f2c57f2db34fbf3bace437bac84bfce
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+exact derivative numerator degree 165 built in 0.17304134368896484
+all polynomial roots isolated 165 elapsed 0.6486492156982422
+GLOBAL (K) CERTIFIED BY ALL CRITICAL POINTS 57 seconds 0.67885422706604

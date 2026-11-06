@@ -1,0 +1,18 @@
+[
+  {
+    "path": "../family/opt_line.py",
+    "sha256": "fb917873009780b647cedc69c3052b9a0dcc8ab9c1fbb87a7a0bf4f799d12d21"
+  },
+  {
+    "path": "../family/elem_gen.py",
+    "sha256": "25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670"
+  },
+  {
+    "path": "../hybrid_asymptotic/certutil.py",
+    "sha256": "47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220"
+  },
+  {
+    "path": "../hybrid_asymptotic/lpcommon.py",
+    "sha256": "a9da9089111b5f11a85b9c2b1299fa5356e85bb68ff0175b2201f704df7ef914"
+  }
+]

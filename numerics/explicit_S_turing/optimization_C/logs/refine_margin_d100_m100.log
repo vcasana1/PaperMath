@@ -1,0 +1,14 @@
+/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/refine_margin.py:67: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  problem=cp.Problem(cp.Minimize(objective),cons);problem.solve(solver='CLARABEL',tol_gap_abs=1e-13,tol_feas=1e-13,tol_gap_rel=1e-12,max_iter=300)
+{"iteration": 0, "arithmetic_model": 3.5729680769429084, "worst": 4.990438433605249e-07, "predicted_change": -2.058877320992187e-05, "step": 3.270791130911503e-05, "seconds": 23.228360891342163}
+{"iteration": 1, "arithmetic_model": 3.5730805787252726, "worst": -2.47675083313581e-05, "predicted_change": -0.010389918884386801, "step": 0.0010000000000013156, "seconds": 34.1859188079834}
+{"iteration": 2, "arithmetic_model": 3.597236593907938, "worst": -0.004140870423948062, "predicted_change": -0.029565805374873508, "step": 0.001000000000338357, "seconds": 44.81642198562622}
+{"iteration": 3, "arithmetic_model": 3.5939327174439044, "worst": -0.001783847869909927, "predicted_change": -0.0488692295790179, "step": 0.0010000000000774435, "seconds": 53.25231719017029}
+{"iteration": 4, "arithmetic_model": 3.6044994085076985, "worst": -0.003236334489646442, "predicted_change": -0.055254737485258505, "step": 0.0010000000000544526, "seconds": 62.35024094581604}
+{"iteration": 5, "arithmetic_model": 3.601320632090388, "worst": -0.0002673883869550586, "predicted_change": -0.06289000255833084, "step": 0.0010000000000742642, "seconds": 74.07588195800781}
+{"iteration": 6, "arithmetic_model": 3.6123307363328796, "worst": -0.0008393027907791506, "predicted_change": -0.06571619071455484, "step": 0.0010000000000015491, "seconds": 83.73089289665222}
+{"iteration": 7, "arithmetic_model": 3.6021114444247035, "worst": -4.0707192954014815e-05, "predicted_change": -0.06399248014113278, "step": 0.0010000000000770844, "seconds": 93.37373995780945}
+{"iteration": 8, "arithmetic_model": 3.6129826082782244, "worst": -0.0005058929711978521, "predicted_change": -0.071844160981824, "step": 0.0010000000000147083, "seconds": 104.40683698654175}
+{"iteration": 9, "arithmetic_model": 3.607173352304045, "worst": -7.821440780686473e-05, "predicted_change": -0.0747210033970374, "step": 0.0010000000000069517, "seconds": 114.54100704193115}
+{"iteration": 10, "arithmetic_model": 3.615836004054255, "worst": -7.823893397151949e-05, "predicted_change": -0.07785962492141629, "step": 0.0010000000000103708, "seconds": 128.95536994934082}
+{"iteration": 11, "arithmetic_model": 3.608496805229374, "worst": -4.003048717260427e-05, "predicted_change": -0.07920122262346391, "step": 0.00100000000029603, "seconds": 147.52666211128235}

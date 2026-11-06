@@ -1,0 +1,10 @@
+d105_m40_repaired.json sha256 a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9
+certify_kernel.py sha256 cf06ebf360ffd821417e92f9fc48035024558868b79876fbddedd5cc0c536dcc
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+t_zero {'boxes': 27, 'positive_lower': '0.0000001202162102213414', 'seconds': 0.0033941268920898438}
+positive {'boxes': 15105, 'positive_lower': '0.0000000000000003195377156958358', 'seconds': 3.3385372161865234}
+negative {'boxes': 18141, 'positive_lower': '0.000000000000001114865505547846', 'seconds': 4.013199090957642}
+tail_positive {'boxes': 4095, 'positive_lower': '0.000001014138824372588', 'seconds': 0.7893388271331787}
+tail_negative {'boxes': 4095, 'positive_lower': '0.0000009505374242892884', 'seconds': 0.7973790168762207}
+ALL KERNEL BOUNDARIES AND GLOBAL (K) CERTIFIED

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/universal_lower.py", line 19, in <module>
+    candidates.append((v,t,int(N),float(S)));candidates.sort(reverse=True);candidates=candidates[:20]
+                           ~~~^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'flint.types.arb.arb'

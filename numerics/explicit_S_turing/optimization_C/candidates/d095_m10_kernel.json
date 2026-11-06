@@ -1,0 +1,33 @@
+{
+  "t_zero": {
+    "boxes": 31,
+    "positive_lower": "0.00001381512772890137",
+    "seconds": 0.003996849060058594
+  },
+  "positive": {
+    "boxes": 1369,
+    "positive_lower": "0.00000000003764003507478132",
+    "seconds": 0.19120216369628906
+  },
+  "negative": {
+    "boxes": 1259,
+    "positive_lower": "0.000000000003082736466117731",
+    "seconds": 0.17498493194580078
+  },
+  "tail_positive": {
+    "boxes": 1,
+    "positive_lower": "0.005052872933128282",
+    "seconds": 0.00011897087097167969
+  },
+  "tail_negative": {
+    "boxes": 1,
+    "positive_lower": "0.005065736981706190",
+    "seconds": 6.29425048828125e-05
+  },
+  "certified": true,
+  "method": "harmonic minimum principle, Arb boundary Taylor intervals and tail",
+  "T1": 2000,
+  "input_sha256": "c7c0059af6c5b97cdc06ea098fd2b460296122b77c3b274e240a792b6535c9ee",
+  "code_sha256": "f09761952532b4cb14a25f00591e5bda4dffffecc6b3dc5445e496f3c404e483",
+  "C1_upper": "0.08381999998448679551366"
+}

@@ -1,0 +1,112 @@
+LP 0 lower numerically 2.984990934479997 active 20 boxes 0
+LP 1 lower numerically 3.03034751001956 active 20 boxes 0
+LP 2 lower numerically 3.0544723382307897 active 20 boxes 0
+LP 3 lower numerically 3.0665129532278446 active 20 boxes 0
+LP 4 lower numerically 3.0671339535236513 active 20 boxes 0
+LP 5 lower numerically 3.067447685297635 active 20 boxes 0
+LP 6 lower numerically 3.0676058608953003 active 20 boxes 0
+LP 7 lower numerically 3.0676545067869796 active 20 boxes 0
+LP 8 lower numerically 3.067658788534752 active 20 boxes 0
+LP 9 lower numerically 3.0676615278976946 active 20 boxes 0
+LP 10 lower numerically 3.0676627501013627 active 20 boxes 0
+LP 11 lower numerically 3.0676632984075702 active 20 boxes 0
+LP 12 lower numerically 3.0676636068024496 active 20 boxes 0
+LP 13 lower numerically 3.0676636188158106 active 20 boxes 0
+LP 14 lower numerically 3.067663739180425 active 20 boxes 0
+numerical input saved candidates/adaptive_m10_d1.006257_dual_input.json
+{
+  "certified": true,
+  "C_lower": "3.067663739167013305989",
+  "family": {
+    "d": "1.006257",
+    "m": 10,
+    "L0": "100"
+  },
+  "objective": "true single-kernel uniform objective, relaxed at T=exp(L0); not arbitrary envelope optimum",
+  "N": 1000000,
+  "input_sha256": "3b6400dfa002270a160637177e3ff125d7a55b26792ace1b2b4815e5dae41a98",
+  "code_sha256": "95ad0813fec5f64f2d75e362dcc51b90d65f2661b9334cf8457ad286581ec476",
+  "seconds": 22.67564296722412,
+  "dual_multipliers": [
+    {
+      "lower": "2.685191079278867092758",
+      "upper": "2.685191079278867092759"
+    },
+    {
+      "lower": "1.655456840377177440547",
+      "upper": "1.655456840377177440548"
+    },
+    {
+      "lower": "0.3406803922288767830538",
+      "upper": "0.3406803922288767830539"
+    },
+    {
+      "lower": "0.7225963840906043621528",
+      "upper": "0.7225963840906043621529"
+    },
+    {
+      "lower": "0.1797531108129628053329",
+      "upper": "0.1797531108129628053330"
+    },
+    {
+      "lower": "0.2066045159014979634888",
+      "upper": "0.2066045159014979634889"
+    },
+    {
+      "lower": "0.03474719428588841111131",
+      "upper": "0.03474719428588841111132"
+    },
+    {
+      "lower": "0.04346672678667261145452",
+      "upper": "0.04346672678667261145453"
+    },
+    {
+      "lower": "0.1079418751380597090824",
+      "upper": "0.1079418751380597090825"
+    },
+    {
+      "lower": "0.4124756887804914993460",
+      "upper": "0.4124756887804914993461"
+    },
+    {
+      "lower": "0.0002307035718258281235545",
+      "upper": "0.0002307035718258281235546"
+    },
+    {
+      "lower": "0.8674637314954659280464",
+      "upper": "0.8674637314954659280465"
+    },
+    {
+      "lower": "0.1197259320680836579707",
+      "upper": "0.1197259320680836579708"
+    },
+    {
+      "lower": "1.867822066788149546454",
+      "upper": "1.867822066788149546455"
+    },
+    {
+      "lower": "1.986076370463947746666",
+      "upper": "1.986076370463947746667"
+    },
+    {
+      "lower": "0.6542666350259819940104",
+      "upper": "0.6542666350259819940105"
+    },
+    {
+      "lower": "6.710156215017868900684",
+      "upper": "6.710156215017868900685"
+    },
+    {
+      "lower": "19.62689540759808554949",
+      "upper": "19.62689540759808554950"
+    },
+    {
+      "lower": "0.07782898740944402875950",
+      "upper": "0.07782898740944402875951"
+    },
+    {
+      "lower": "0.9221710125905559712404",
+      "upper": "0.9221710125905559712405"
+    }
+  ]
+}

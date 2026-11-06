@@ -1,0 +1,12 @@
+local order 200 free parameters 399 full family 399 sparse False
+prime moments 0 seconds 0.09805011749267578
+prime moments 100000000 seconds 9.29788589477539
+prime moments 200000000 seconds 18.780152082443237
+prime moments 300000000 seconds 28.45627498626709
+prime moments 400000000 seconds 38.204898834228516
+all file prime moments aggregated 455052511 nodes 2413
+{"iteration": 0, "m": 200, "n": 399, "C_est": 3.4168312638112788, "worst": -2.0722710158385097e-07, "newcuts": 4, "phasegap": 0.0002368399865355364, "seconds": 249.24611234664917}
+{"iteration": 1, "m": 200, "n": 399, "C_est": 3.4188572203053638, "worst": -5.058812113081216e-08, "newcuts": 2, "phasegap": 1.654583854388686e-08, "seconds": 415.59220719337463}
+{"iteration": 2, "m": 200, "n": 399, "C_est": 3.418857231720926, "worst": -1.2734047477391632e-08, "newcuts": 2, "phasegap": 1.6501072859671784e-08, "seconds": 573.9551112651825}
+{"iteration": 3, "m": 200, "n": 399, "C_est": 3.418857235757458, "worst": -6.2171711055157084e-09, "newcuts": 0, "phasegap": 1.6519198923689582e-08, "seconds": 693.9108872413635}
+saved numerical candidate candidates/d100_m200_primoss.json

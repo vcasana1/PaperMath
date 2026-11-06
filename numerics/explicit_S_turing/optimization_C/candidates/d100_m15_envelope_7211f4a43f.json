@@ -1,0 +1,24 @@
+{
+  "certified": true,
+  "A": "0.08382",
+  "C_upper": "3.451028637",
+  "high_upper": "3.451028636237572347708146",
+  "low_upper": "3.451028628219088441548871",
+  "Lswitch": "138.156226",
+  "Tswitch": "exp(138.156226)",
+  "C1_upper": "0.0838199999861767822768760",
+  "K_upper": "4.16639141203426289644010",
+  "high_elementary_error_upper": "0.00000000000000000000000000000000000000000000000000000000000416172591642610480263523",
+  "convention": "right continuous S at zeros; also valid at midpoint and left limit",
+  "proof": "v11 propositions 4.1,4.5, Lemmas 4.7,4.8; harmonic boundary certificate",
+  "hashes": {
+    "candidates/d100_m15.json": "895c3c3c5218ca96d145383653561ebc579cf11a061986d454ce6f97e6f72320",
+    "candidates/d100_m15_arithmetic_N1000000_P10000_23d74e9ff5_step0.02.json": "7211f4a43f98d6a6d14e96badd55343d1a68d29735066f60101fe535c68afc77",
+    "inputs/low_L60.json": "79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf",
+    "inputs/low_L60_arithmetic_N1000000.json": "227042a7fde7c40d7574a4f5f967980588799cb3fd30086b8bfd2b1b5c9d98bc",
+    "inputs/low_L60_elemS.json": "42bb24ad1bb67431ac1586fb729d5ca8deb5d8c938d55bfcfd3fc2e53f9a93fe",
+    "candidates/d100_m15_kernel.json": "25b2e089a13a3268f29195d1ca0c8cfcb3b7a6bb3e7be4b73bbabac569b1f046",
+    "inputs/low_L60_kernel.json": "601953c4daed3f692bc427aec5fa9c4460089cff735748cc4b6e20a8964eaa82",
+    "/Users/vcasana/Documents/ChatGPT/M\u00f6bius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_envelope.py": "4685f907c5c188b40986a82409a836a17741fa938491539467b9e98ab7c0d485"
+  }
+}

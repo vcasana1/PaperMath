@@ -1,0 +1,8 @@
+adaptive_m10_d1.006257.json sha256 2e4c2be98a83fb3bef32a3872a2e51ff21a61617ef15559044a2587bb4337afe
+elem_gen.py sha256 25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+intervals 9215  sup F_u on [1,T0] <= -0.1468847887   sup F_l <= -0.1516706385
+T>=T0: F_u <= -0.1536306875  F_l <= -0.1536306875  (K = [4.20168 +/- 7.84e-7] )
+SUP over T>=1 of max(F_u,F_l) <= -0.146884788785    time 206s
+ELEMENTARY OUTPUT BOUND TO INPUT 2e4c2be98a83fb3bef32a3872a2e51ff21a61617ef15559044a2587bb4337afe

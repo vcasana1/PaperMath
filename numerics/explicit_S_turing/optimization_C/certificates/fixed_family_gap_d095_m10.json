@@ -1,0 +1,14 @@
+{
+  "certified": true,
+  "scope": "single kernel d=0.95,m=10,A<=0.08382; full uniform objective",
+  "C_min": "3.280652819907774820834",
+  "C_max": "3.56656806163738605688624",
+  "gap": "0.28591524172961123605224",
+  "hashes": {
+    "candidates/d095_m10.json": "c7c0059af6c5b97cdc06ea098fd2b460296122b77c3b274e240a792b6535c9ee",
+    "candidates/d095_m10_kernel.json": "19107f9ee118e15fb13bcc746e73bb4d70a18a1c25bbef2329a740ee1620a69c",
+    "candidates/d095_m10_arithmetic_N1000000.json": "456fa1df919782646df6697f5ac1dce32397bf4cd4bad35d30fe398cf406c902",
+    "candidates/d095_m10_elemS.json": "a1402fc8090fd85aba7b1dae044a3930403fb4dbd0dedad79ce39295645c14b8",
+    "candidates/d095_m10_dual_certificate.json": "d1f10ffdde2800239c71b3a021703cea9053025679523eb2c2e219470e46c2e1"
+  }
+}

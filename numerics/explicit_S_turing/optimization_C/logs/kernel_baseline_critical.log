@@ -1,0 +1,7 @@
+baseline_D6000.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+certify_kernel_critical.py sha256 2987bcd5130b16792a37f2651293124a1f2c57f2db34fbf3bace437bac84bfce
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+exact derivative numerator degree 45 built in 0.01246786117553711
+all polynomial roots isolated 45 elapsed 0.03015303611755371
+GLOBAL (K) CERTIFIED BY ALL CRITICAL POINTS 9 seconds 0.034162282943725586

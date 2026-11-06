@@ -1,0 +1,34 @@
+{
+  "local_computation": true,
+  "platform": "Darwin",
+  "architecture": "arm64",
+  "threshold_improvement": 0.0001,
+  "incumbent_numerical_objective": 3.4189022398505973,
+  "experiments": [
+    {
+      "candidate": "candidates/d100_m200_primoss.json",
+      "order": 200,
+      "C_numerical": 3.4190642168578953,
+      "improvement_on_same_objective": -0.00016197700729803088
+    },
+    {
+      "candidate": "candidates/d100_m1000_sparse_primoss.json",
+      "order": 1000,
+      "C_numerical": 3.4192130740462354,
+      "improvement_on_same_objective": -0.0003108341956381544
+    },
+    {
+      "candidate": "candidates/d100_m1000_sparse_resolved.json",
+      "order": 1000,
+      "C_numerical": 3.4189070701819997,
+      "improvement_on_same_objective": -4.830331402416732e-06
+    }
+  ],
+  "full_order_200_parameters": 399,
+  "order_1000_free_parameters": 269,
+  "full_order_1000_parameters": 1999,
+  "full_order_1000_optimized": false,
+  "reason": "No improvement of 1e-4 in the denser numerical re-evaluation; retain independently proved incumbent. This is a resource-based stopping decision, not an optimality theorem.",
+  "prime_file_used": "inputs/primoss_source.json",
+  "certified": false
+}

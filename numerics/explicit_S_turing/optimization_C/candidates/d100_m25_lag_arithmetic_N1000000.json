@@ -1,0 +1,19 @@
+{
+  "certified": true,
+  "N0": 1000000,
+  "P0": 10000,
+  "Czeta_upper": "3.57763875657774687298196",
+  "partial_upper": "3.19354650572403249538333",
+  "tail_upper": "0.384092250853714377598638",
+  "integral_upper": "0.383891206516576942172832",
+  "error_upper": "0.000159503878505183890910540",
+  "boundary_correction_upper": "0.0000415404586322515348952795",
+  "phase_gain_lower": "0.279651863672228912399727",
+  "phase_boxes": 72442,
+  "error_boxes": 37237,
+  "seconds": 9.969364881515503,
+  "input_sha256": "229d35b5238c7c6e9fa101a1a0e847afa69b531a5de5bd8a9905d4267f779248",
+  "code_sha256": "0e8646ed6734533fc2d173442616b641ce2ab4fc1c8e7f3527f934239e803876",
+  "Lfar": 200,
+  "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+}

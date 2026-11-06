@@ -1,0 +1,7 @@
+d100_m200_primoss.json sha256 8988102ab2b55c1e12f7c97757ccbd72208087d5a37ad4e88a03364717c2608d
+certify_kernel_critical.py sha256 b32a6b1658a5f379cfeabf8b920be61fa143385a1f53b9f771ed7b3c12f24322
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+exact derivative numerator degree 803 built in 3.9987359046936035
+all polynomial roots isolated 803 elapsed 44.525996685028076
+GLOBAL (K) CERTIFIED BY ALL CRITICAL POINTS 109 seconds 45.04574179649353

@@ -1,0 +1,962 @@
+\documentclass[11pt,leqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,array,graphicx,microtype}
+\usepackage[margin=1.12in]{geometry}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\usepackage{xcolor}
+\hypersetup{pdftitle={Arithmetic sublevel ordinates: unconditional transport and Fourier analysis},pdfauthor={Victor Casana-Giner}}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\meas}{\operatorname{meas}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Li}{\operatorname{Li}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\tW}{\mathscr W}
+\newcommand{\wt}{\mathsf w}
+\newcommand{\Ph}{\Phi}
+\newcommand{\Sc}{\mathscr S}
+\newcommand{\Lam}{\mathcal{L}_0}
+\newcommand{\dint}{\,dt}
+\newcommand{\ceil}[1]{\lceil #1\rceil}
+\newcommand{\floor}[1]{\lfloor #1\rfloor}
+\newcommand{\LP}{\operatorname{Lip}}
+\allowdisplaybreaks[1]
+\title[Prime-weighted sublevel ordinates]{Arithmetic sublevel ordinates for the Riemann zeta function:\\ unconditional transport, prime-phase energy, and spectral identities}
+\author{V\'ictor Casa\~na-Giner}
+\address{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain}
+\email{vcasana1@alumno.uned.es}
+\date{4 November 2026}
+\subjclass[2020]{11M06, 11M26, 11N05, 42A38}
+\keywords{Riemann zeta function, zero counting, Euler product, Riemann--von Mangoldt approximation, Selberg weight, sublevel sets, Fourier transform, transport inequalities}
+\begin{document}
+\begin{abstract}
+We study a sequence of arithmetic ordinates defined by the volumes of sublevel sets of the Riemann--von Mangoldt main term corrected by the full, moving Selberg prime-power phase, with cutoff $X(t)=t$. The construction involves neither the zeros nor their real parts. We prove unconditional existence and asymptotic localization relative to the smooth Riemann--von Mangoldt ordinates, exact sublevel and transport identities, an $L^1$ contraction of sublevel distributions, quantitative signed transport between prime cutoffs, diagonal second-moment formulae in the range $2\theta<1$, a compensated-phase estimate at the moving cutoff, and fixed-frequency recovery of the prime-power coefficients. We also prove a deterministic quadratic estimate for reordering errors and Fourier--Plancherel identities relating differences of two ordinate sequences to discrepancies of their counting functions. Numerical spectral coincidence is presented separately from theorem statements. These results neither assume nor prove the Riemann hypothesis: the long-prime energy, the critical-frequency reordering defect, and an independent comparison with the genuine zeros remain unresolved.
+\end{abstract}
+\maketitle
+\tableofcontents
+\section*{Notation and symbols}
+\small
+\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{>{\(}l<{\)} p{0.73\textwidth}}
+\toprule
+\text{Symbol} & Meaning and domain\\\midrule
+\endhead
+s=\sigma+it & Complex variable, $\sigma,t\in\R$.\\
+\zeta(s),\,\xi(s) & Riemann zeta function and its completed entire version.\\
+p,\,n,\,r & Prime, positive integer and prime-power exponent ($r\ge1$).\\
+\Lambda(n),\,\vartheta_{\!p}(x) & von Mangoldt function and Chebyshev prime sum $\sum_{p\le x}\log p$; $\vartheta_{\!p}$ is \emph{not} the Riemann--Siegel theta function.\\
+\vartheta_{\!\zeta}(t) & Riemann--Siegel theta function, real for $t>0$.\\
+\rho_j=\beta_j+i\gamma_j & Nontrivial zeros of $\zeta$, $\gamma_j>0$, counted with multiplicity; no restriction on $\beta_j$.\\
+N_\zeta(t) & Right-continuous count of positive zero ordinates $\gamma_j\le t$.\\
+N_0(t),\,\mathcal L(t) & Smooth main term for $t>0$ and derivative, positive for $t>2\pi$.\\
+S_\zeta(t),\,R_\zeta(t) & Argument term and continuous Stirling remainder, away from zero ordinates.\\
+\gamma_k^{\mathrm{RvM}} & $k$th Lambert-inverted Riemann--von Mangoldt ordinate.\\
+\Lam & Principal real branch of Lambert's $W$-function (distinct from the Selberg weight).\\
+\tW(v) & Selberg taper: $1$ on $[0,1]$, $2-v$ on $(1,2]$, zero beyond $2$.\\
+\wt_{\theta,t}(n) & Moving prime-power weight, $\tW(\log n/(\theta\log t))$; $t>2\pi$, $0<\theta\le1$.\\
+\Phi_\theta(t),\,F_\theta(t) & Weighted Euler phase and $N_0+\Phi_\theta$; $\Phi_1=\Phi^W$.\\
+W_{\theta,k},\,W_k & Sublevel-volume ordinates on $[2\pi,\infty)$; $W_k=W_{1,k}$.\\
+N_\theta(t),\,N_W(t) & Counting functions of $W_{\theta,k}$ and $W_k$.\\
+\lambda_k & Half-integer level $k-\frac12$, $k\ge1$.\\
+\tau_k^{\mathrm C},\,\Phi^{\mathrm C} & A distinct finite-Euler-factor comparison family, defined in \S\ref{sec:comparison}.\\
+\Pi_X(t),\,P_X(t) & Pole compensator and compensated phase $\Phi_X(t)-\Pi_X(t)$.\\
+H_{F,I}(v) & Sublevel distribution $\meas\{t\in I:F(t)<v\}$; $I$ finite.\\
+\mathcal E_\theta(T) & Normalized quadratic phase energy on a dyadic interval.\\
+\mathcal R_{F,G,I} & Local difference between point-counting and level-counting (defined in \S\ref{sec:reorder}).\\
+Z_{A,K}(u),\,M_{A,B,K}(t) & Exponential sum and difference of finite counting functions.\\
+\widehat f(u) & Fourier transform $\int_\R f(t)e^{-iut}\,dt$.\\
+\bottomrule
+\end{longtable}
+\normalsize
+\section{Introduction and analytic preliminaries}\label{sec:intro}
+\subsection{The zeta function and its Euler product}
+For $\Re s>1$ the Riemann zeta function is defined by the absolutely convergent series
+\begin{equation}\label{eq:zeta-def}
+ \zeta(s)=\sum_{n=1}^{\infty}\frac1{n^s}=\prod_{p\ \mathrm{prime}}(1-p^{-s})^{-1}.
+\end{equation}
+It extends meromorphically to $\C$, with its only pole a simple pole at $s=1$. Its completed form
+\begin{equation}\label{eq:xi}
+ \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)
+\end{equation}
+is entire and satisfies $\xi(s)=\xi(1-s)$. The nontrivial zeros are written throughout as $\rho_j=\beta_j+i\gamma_j$ with $0<\beta_j<1$ and $\gamma_j>0$. They are listed by nondecreasing ordinate and counted with algebraic multiplicity. In particular, the identity $\beta_j=1/2$ is \emph{never assumed}. For later use the von Mangoldt function is
+\begin{equation}\label{eq:Lambda}
+ \Lambda(n)=\begin{cases}\log p,&n=p^r,\quad r\ge1,\\0,&\text{otherwise,}\end{cases}
+ \qquad -\frac{\zeta'(s)}{\zeta(s)}=\sum_{n\ge1}\frac{\Lambda(n)}{n^s}\quad(\Re s>1).
+\end{equation}
+The Euler product in \eqref{eq:zeta-def} is \emph{not} asserted to converge on the critical line; the finite sums used below are explicitly defined objects.
+\subsection{The complete Riemann--von Mangoldt formula}\label{subsec:rvm}
+Set, for $t>0$,
+\begin{equation}\label{eq:theta-zeta}
+ \vartheta_{\!\zeta}(t)=\Im\log\Gamma\left(\frac14+\frac{it}{2}\right)-\frac t2\log\pi,
+\end{equation}
+with the standard continuous branch. Away from zero ordinates the exact counting relation is
+\begin{equation}\label{eq:full-rvm}
+ N_\zeta(t)=1+\frac{\vartheta_{\!\zeta}(t)}\pi+S_\zeta(t),\qquad
+ S_\zeta(t)=\frac1\pi\arg\zeta\left(\frac12+it\right),
+\end{equation}
+with the argument continuously defined along the customary path from $2$ to $2+it$ and then to $1/2+it$. At zero ordinates one may use one-sided limits and the right-continuous $N_\zeta$. Stirling's expansion yields
+\begin{align}
+ N_0(t)&=\frac{t}{2\pi}\log\frac{t}{2\pi e}+\frac78,\label{eq:N0}\\
+ \mathcal L(t)&=N_0'(t)=\frac1{2\pi}\log\frac{t}{2\pi},\label{eq:spacing}\\
+ R_\zeta(t)&=1+\frac{\vartheta_{\!\zeta}(t)}\pi-N_0(t)=O(t^{-1}),\label{eq:R-stir}\\
+ N_\zeta(t)&=N_0(t)+S_\zeta(t)+R_\zeta(t).\label{eq:rvm-decomp}
+\end{align}
+The classical unconditional bound $S_\zeta(t)=O(\log t)$ gives $N_\zeta(t)-N_0(t)=O(\log t)$. No assertion in this paper assumes that all zeros are on $\Re s=1/2$.
+\subsection{Lambert inversion and the smooth ordinates}
+For $k\ge1$ let $\gamma_k^{\mathrm{RvM}}>2\pi$ be the unique solution of
+\begin{equation}\label{eq:lambert-implicit}
+ N_0(\gamma_k^{\mathrm{RvM}})=\lambda_k,\qquad\lambda_k=k-\frac12.
+\end{equation}
+Write $z_k=k-11/8$. The principal real branch $\Lam$ is characterized by $\Lam(x)e^{\Lam(x)}=x$ and $\Lam(x)\ge-1$ on $[-e^{-1},\infty)$. Direct inversion gives
+\begin{equation}\label{eq:lambert-explicit}
+ \boxed{\displaystyle \gamma_k^{\mathrm{RvM}}=\frac{2\pi z_k}{\Lam(z_k/e)}.}
+\end{equation}
+The quotient for $k=1$ is positive since both numerator and denominator are negative. In the asymptotic range, adjacent smooth ordinates have spacing $\mathcal L(t)^{-1}\sim2\pi/\log t$. The Lambert function $\Lam$ is unrelated to the weight $\tW$ below.
+\subsection{The full Selberg taper and the arithmetic ordinates}\label{subsec:basic-def}
+Define the compactly supported, continuous Selberg weight
+\begin{equation}\label{eq:Selberg-weight}
+ \tW(v)=\begin{cases}1,&0\le v\le1,\\2-v,&1<v\le2,\\0,&v>2.\end{cases}
+\end{equation}
+For $t\ge2\pi$ and $0<\theta\le1$, put
+\begin{align}
+ \wt_{\theta,t}(n)&=\tW\left(\frac{\log n}{\theta\log t}\right),\label{eq:mobile-weight}\\
+ \Phi_\theta(t)&=-\frac1\pi\sum_{2\le n\le t^{2\theta}}
+ \frac{\Lambda(n)\wt_{\theta,t}(n)}{\sqrt n\log n}\sin(t\log n),\label{eq:phase}\\
+ F_\theta(t)&=N_0(t)+\Phi_\theta(t).\label{eq:count-phase}
+\end{align}
+Every sum is finite; thus \eqref{eq:phase} is a definition rather than a formal Euler-product identity on the critical line. We write $\mathcal E_\theta(T)=T^{-1}\int_T^{2T}|\Phi_\theta(t)|^2dt$ for the normalized phase energy. At $\theta=1$ its weight is exactly one on $n\le t$ and decreases linearly in $\log n$ on $t<n\le t^2$. We abbreviate $\Phi^W=\Phi_1$ and $F_W=F_1$.
+\begin{definition}[Sublevel-volume ordinates]\label{def:W}
+For $k\ge1$ define
+\begin{equation}\label{eq:sublevel}
+ \boxed{\displaystyle W_{\theta,k}=2\pi+\meas\left\{t\ge2\pi:F_\theta(t)<\lambda_k\right\},\qquad W_k=W_{1,k}.}
+\end{equation}
+The associated synthetic points and counting functions are
+\begin{equation}\label{eq:synthetic}
+ \rho^W_k=\frac12+iW_k,\qquad
+ N_\theta(t)=\#\{k\ge1:W_{\theta,k}\le t\},\qquad N_W=N_1.
+\end{equation}
+The equality $p^{\rho_k^W}=\sqrt p\,e^{iW_k\log p}$ is algebraic and unconditional. It does not assert that the $\rho_k^W$ are zeros of a meromorphic function satisfying an Euler product or the Riemann functional equation.
+\end{definition}
+\section{Existence, ordering, and coarse localization}\label{sec:exist}
+\begin{lemma}[Full-cutoff amplitude]\label{lem:amplitude}
+For $t\ge3$ and fixed $0<\theta\le1$,
+\begin{equation}\label{eq:phase-amplitude}
+ |\Phi_\theta(t)|\ll_\theta 1+\frac{t^\theta}{(\log t)^2}+\frac{t^{\theta/2}}{\log t}+\log\log(3t).
+\end{equation}
+In particular $|\Phi^W(t)|\ll t/(\log t)^2$, and $F_\theta(t)\to+\infty$ for every fixed $0<\theta\le1$.
+\end{lemma}
+\begin{proof}
+Separate $n=p$ from $n=p^r$, $r\ge2$. The first-prime sum with $p\le t^\theta$ is at most $\sum_{p\le t^\theta}p^{-1/2}\ll_\theta t^{\theta/2}/\log t+1$, by partial summation and $\pi(x)\ll x/\log x$. For $t^\theta<p\le t^{2\theta}$ one has $\wt_{\theta,t}(p)=(\log(t^{2\theta}/p))/(\theta\log t)$. Splitting into $p\le t^{3\theta/2}$ and $p>t^{3\theta/2}$, and applying partial summation to the prime counting function, or equivalently estimating the corresponding monotone majorant, gives
+\[
+\sum_{t^\theta<p\le t^{2\theta}}\frac{\wt_{\theta,t}(p)}{\sqrt p}
+\ll_\theta \frac{t^\theta}{\log^2t}+\frac{t^{3\theta/4}}{\log t}.
+\]
+The intermediate term $t^{3\theta/4}/\log t$ is absorbed by $t^\theta/\log^2t$ for large $t$. For prime squares, the absolute sum is bounded by $\frac12\sum_{p\le t^\theta}p^{-1}\ll\log\log(3t)$; for higher prime powers, $\sum_p\sum_{r\ge3}(rp^{r/2})^{-1}<\infty$. The asserted estimate follows. Since $N_0(t)\asymp t\log t$ and $\theta\le1$, the final claim follows.
+\end{proof}
+\begin{proposition}[Well-defined ordered points]\label{prop:ordered}
+For every $0<\theta\le1$ and $k\ge1$, the volume in \eqref{eq:sublevel} is finite. The sequence $k\mapsto W_{\theta,k}$ is nondecreasing, and it is strictly increasing for every pair of levels both exceeding $F_\theta(2\pi)$. For fixed $\theta$,
+\begin{equation}\label{eq:coarse-NW}
+ N_\theta(t)=N_0(t)+O_\theta\left(1+\frac{t^\theta}{\log^2t}+\frac{t^{\theta/2}}{\log t}\right)
+\end{equation}
+as $t\to\infty$. In particular, $N_W(t)-N_0(t)=O(t/\log^2t)$.
+\end{proposition}
+\begin{proof}
+The phase is continuous: a summand enters or leaves its moving support with coefficient zero, and finitely many terms are active on any compact interval. The lower barrier $F_\theta\ge N_0-|\Phi_\theta|\to\infty$ makes all sublevel sets bounded. Their nesting proves nondecrease. If $F_\theta(2\pi)<\lambda_k<\lambda_{k+1}$, continuity and unboundedness provide an open set with values strictly between the two levels; this set has positive measure and gives strict increase.
+Let $A_\theta(t)$ denote a nondecreasing majorant of the right side of \eqref{eq:phase-amplitude} (with an enlarged constant). The curves $N_0\pm A_\theta$ are eventually increasing since $A_\theta'(t)=o(\mathcal L(t))$ for the displayed majorant, and the sublevel volume is bracketed by the inverse volumes of these curves. Inverting the bounds at the level $N_0(t)+O(1)$ shows $|N_\theta(t)-N_0(t)|\ll1+A_\theta(t)$; a finite initial range only contributes a bounded displacement. This is \eqref{eq:coarse-NW}.
+\end{proof}
+\begin{proposition}[Coarse displacement from the Lambert ordinates]\label{prop:coarse-displ}
+For $W_k$ and the Lambert ordinates, as $k\to\infty$,
+\begin{equation}\label{eq:coarse-displ}
+ |W_k-\gamma_k^{\mathrm{RvM}}|\ll
+ \frac{\gamma_k^{\mathrm{RvM}}}{(\log\gamma_k^{\mathrm{RvM}})^3}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Put $t_k=\gamma_k^{\mathrm{RvM}}$. On $[t_k/2,2t_k]$ the main term increases with derivative $\asymp\log t_k$. The amplitude barrier $|\Phi^W(t)|\ll t_k/(\log t_k)^2$ there implies that the sublevel set at $\lambda_k=N_0(t_k)$ contains all points below $t_k-Ct_k/\log^3t_k$ and none above $t_k+Ct_k/\log^3t_k$, for sufficiently large $C$. Outside that window the same follows from the eventual monotonicity of $N_0\pm A_1$. Taking volumes yields \eqref{eq:coarse-displ}.
+\end{proof}
+\begin{remark}[Limits of coarse localization]
+The bound \eqref{eq:coarse-displ} is far weaker than the mean zero spacing $2\pi/\log t$. It does not bound $W_k-\gamma_k$, and it supplies no estimate for $S_\zeta(t)$ stronger than the classical ones.
+\end{remark}
+\section{An optional finite-Euler-factor comparator}\label{sec:comparison}
+The following construction is included only to distinguish two arithmetic approximations, not as a necessary intermediate stage in the analysis of $W_k$. Let $p_1<p_2<\cdots$ list the primes, and let
+\begin{equation}\label{eq:Euler-compare}
+ \Phi_m^{\mathrm C}(t)=-\frac1\pi\sum_{\nu=1}^m\arg(1-p_\nu^{-1/2-it})
+ =-\frac1\pi\sum_{\nu=1}^m\sum_{r\ge1}\frac{\sin(rt\log p_\nu)}{r p_\nu^{r/2}},\qquad\Phi_0^{\mathrm C}=0.
+\end{equation}
+For every integer $j$, put $m_j=\floor{2^{j/2}}$ and, on $2^j\le t\le2^{j+1}$, set
+\begin{align}
+ \Phi^{\mathrm C}(t)&=\left(2-\frac t{2^j}\right)\Phi_{m_j}^{\mathrm C}(t)
+ +\left(\frac t{2^j}-1\right)\Phi_{m_{j+1}}^{\mathrm C}(t),\label{eq:PhiC}\\
+ F_{\mathrm C}(t)&=N_0(t)+\Phi^{\mathrm C}(t),\qquad
+ \tau_k^{\mathrm C}=\int_0^\infty\1_{\{F_{\mathrm C}(t)<\lambda_k\}}\,dt.\label{eq:tauc}
+\end{align}
+The last integral is anchored at $0$, unlike $W_k$ at $2\pi$. Since $|\arg(1-p^{-1/2-it})|\le\pi/4$, one has $|\Phi_m^{\mathrm C}|\le m/4$. Thus $\Phi^{\mathrm C}$ is continuous, $|\Phi^{\mathrm C}(t)|\ll\sqrt t$, and its sublevel points are finite; strict ordering follows from continuity and the value near $2\pi$. This comparator is mathematically distinct from the weighted moving phase $\Phi^W$. The formula for $N_0$ in \eqref{eq:N0} is extended to all $t>0$ here, although it is increasing only for $t>2\pi$. The elementary inequality
+\begin{equation}\label{eq:nonhelpful-triangle}
+ |W_k-\gamma_k|\le |W_k-\tau_k^{\mathrm C}|+|\tau_k^{\mathrm C}-\gamma_k|
+\end{equation}
+does not certify a sharper approximation by $W_k$: it discards the signed correlation between the two errors. No mean-square localization theorem for $\tau_k^{\mathrm C}$ is imported or assumed in the subsequent results.
+\section{Exact sublevel identities and measure transport}\label{sec:transport}
+\begin{proposition}[Signed sublevel identity]\label{prop:exact-areas}
+For every $k\ge1$, let
+\begin{align}
+ \mathcal A_k^+&=\meas\{t\ge2\pi:F_W(t)<\lambda_k\le N_\zeta(t)\},\label{eq:Aplus}\\
+ \mathcal A_k^-&=\meas\{t\ge2\pi:N_\zeta(t)<\lambda_k\le F_W(t)\}.\label{eq:Aminus}
+\end{align}
+Then the following identity holds exactly, counting every zero ordinate with multiplicity:
+\begin{equation}\label{eq:areas}
+ \boxed{W_k-\gamma_k=\mathcal A_k^+-\mathcal A_k^-.}
+\end{equation}
+Both areas are finite. In particular, neither smallness of their sum nor anticorrelation of the prime phase is implied by \eqref{eq:areas} alone.
+\end{proposition}
+\begin{proof}
+Because $N_\zeta$ is right-continuous, integer-valued, and counts ordinates with multiplicity, $\1_{\{N_\zeta(t)<\lambda_k\}}=\1_{[2\pi,\gamma_k)}(t)$ almost everywhere. Thus
+\[
+ \gamma_k=2\pi+\int_{2\pi}^\infty\1_{\{N_\zeta(t)<\lambda_k\}}\,dt.
+\]
+Subtract this from \eqref{eq:sublevel} and partition the difference of the two indicators into its positive and negative sets. The upper and lower barriers from Proposition~\ref{prop:ordered} and the Riemann--von Mangoldt formula localize the difference to a bounded interval.
+\end{proof}
+\begin{lemma}[Level crossing count]\label{lem:crossing}
+Let $f$ be real-valued and measurable on a finite interval $I$ and let $M(t)$ be a nonnegative integer-valued function on $I$. Define
+\begin{equation}\label{eq:cross-q}
+ Q_{f,M}(t)=\left|\max\{0,\floor{f(t)+\tfrac12}\}-M(t)\right|.
+\end{equation}
+For almost all $t$ at which $f(t)$ is not a positive half-integer,
+\begin{equation}\label{eq:cross-identity}
+ \sum_{k\ge1}\left|\1_{\{f(t)<\lambda_k\}}-\1_{\{M(t)<\lambda_k\}}\right|=Q_{f,M}(t).
+\end{equation}
+\end{lemma}
+\begin{proof}
+For a real $y$, the number of positive half-integers $\lambda_k$ not exceeding $y$ is $\max\{0,\floor{y+\frac12}\}$. For an integer $M\ge0$, that number equals $M$ when $y=M$. The two level sets of counted half-integers are initial segments; the size of their symmetric difference is the absolute difference of their cardinalities.
+\end{proof}
+\begin{theorem}[Absolute transport without RH]\label{thm:L1transport}
+For every finite set $\mathcal K\subset\N$ and every finite interval $I$ containing, up to null sets, all regions in which the two sublevel indicators at $\lambda_k$ differ for $k\in\mathcal K$,
+\begin{equation}\label{eq:L1transport}
+ \boxed{\sum_{k\in\mathcal K}|W_k-\gamma_k|
+ \le\int_I Q_{F_W,N_\zeta}(t)\,dt.}
+\end{equation}
+The same inequality holds when $W_k$ is replaced by sublevel ordinates of any measurable function with finite sublevel volumes.
+\end{theorem}
+\begin{proof}
+Take absolute values inside the integral identity of Proposition~\ref{prop:exact-areas}, sum over $\mathcal K$, and enlarge that sum to all positive half-integer levels. Apply Lemma~\ref{lem:crossing}. There is no differentiation of a crossing and no assumption on the $\beta_j$.
+\end{proof}
+\begin{theorem}[$L^1$ contraction of all real sublevels]\label{thm:contraction}
+Let $I$ be a finite interval and $f_1,f_2\in L^1(I)$ be real-valued. Write
+\begin{equation}\label{eq:H-def}
+ H_{f,I}(v)=\int_I\1_{\{f(t)<v\}}\,dt.
+\end{equation}
+Then
+\begin{align}
+ \int_\R|H_{f_2,I}(v)-H_{f_1,I}(v)|\,dv
+ &\le\int_I|f_2(t)-f_1(t)|\,dt,\label{eq:contraction}\\
+ \int_\R(H_{f_2,I}(v)-H_{f_1,I}(v))\,dv
+ &=\int_I(f_1(t)-f_2(t))\,dt.\label{eq:signed-contraction}
+\end{align}
+The second integral is absolutely convergent after taking the difference of the two sublevel distribution functions, and in particular its value is well-defined.
+\end{theorem}
+\begin{proof}
+For fixed $x,y\in\R$, the difference $\1_{\{x<v\}}-\1_{\{y<v\}}$ vanishes outside the interval with endpoints $x,y$, and
+\[
+ \int_\R\big|\1_{\{x<v\}}-\1_{\{y<v\}}\big|\,dv=|x-y|,\quad
+ \int_\R(\1_{\{x<v\}}-\1_{\{y<v\}})\,dv=y-x.
+\]
+Use Tonelli's theorem and the triangle inequality for \eqref{eq:contraction}, and Fubini's theorem for \eqref{eq:signed-contraction}. The $L^1$ hypothesis justifies the latter interchange.
+\end{proof}
+\begin{corollary}[Spectral-independent stability]\label{cor:stability}
+For $f_1,f_2\in L^2(I)$,
+\begin{equation}\label{eq:stability}
+ \int_\R|H_{f_2,I}-H_{f_1,I}|\,dv
+ \le |I|^{1/2}\left(\int_I|f_2-f_1|^2dt\right)^{1/2}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+Combine Theorem~\ref{thm:contraction} with Cauchy--Schwarz.
+\end{proof}
+\begin{lemma}[Integer-valued discrepancy and exceptional heights]\label{lem:integers}
+For two nondecreasing locally finite ordinate sequences $\{a_j\}$ and $\{b_j\}$ let $N_A,N_B$ be their counting functions. On every interval $I$,
+\begin{equation}\label{eq:exception}
+ \meas\{t\in I:N_A(t)\ne N_B(t)\}\le\int_I|N_A(t)-N_B(t)|\,dt.
+\end{equation}
+Consequently any bound $\int_T^{2T}|N_\zeta-N_W|\ll T/\log T$ implies equality of these two counting functions away from a subset of relative measure $O(1/\log T)$, but does not give pointwise equality at every height.
+\end{lemma}
+\begin{proof}
+The absolute difference is either zero or at least one. Integrate the inequality $\1_{\{N_A\ne N_B\}}\le|N_A-N_B|$.
+\end{proof}
+\section{Differentiation in the prime cutoff and diagonal energies}\label{sec:theta}
+\begin{lemma}[Exact differentiation in $\theta$]\label{lem:theta-deriv}
+For fixed $t>2\pi$ and $0<\theta\le1$, away from the finitely many parameter values at which an active prime-power reaches an endpoint of the taper,
+\begin{equation}\label{eq:theta-derivative}
+ \boxed{\frac{\partial F_\theta(t)}{\partial\theta}
+ =-\frac1{\pi\theta^2\log t}\sum_{t^\theta<n<t^{2\theta}}
+ \frac{\Lambda(n)}{\sqrt n}\sin(t\log n).}
+\end{equation}
+For every compact parameter interval in $(0,1]$ the map $\theta\mapsto F_\theta(t)$ is locally Lipschitz and the identity holds almost everywhere.
+\end{lemma}
+\begin{proof}
+On $t^\theta<n<t^{2\theta}$ the weight is $2-\log n/(\theta\log t)$ and has derivative $\log n/(\theta^2\log t)$. On the two complementary regions its derivative vanishes. Endpoints contribute no Dirac masses because the taper is continuous at both breakpoints. The support is finite for fixed $t$ and $\theta$ in a compact interval, allowing termwise differentiation.
+\end{proof}
+\begin{lemma}[Frozen weights in short dyadic blocks]\label{lem:freeze}
+Fix $0<\theta<1/2$. With
+\begin{equation}\label{eq:frozen}
+ \Phi_{\theta,T}^{\mathrm{fr}}(t)=
+ -\frac1\pi\sum_{2\le n\le(2T)^{2\theta}}
+ \frac{\Lambda(n)\tW(\log n/(\theta\log T))}{\sqrt n\log n}\sin(t\log n),
+\end{equation}
+we have
+\begin{equation}\label{eq:freeze-bound}
+ \frac1T\int_T^{2T}|\Phi_\theta(t)-\Phi_{\theta,T}^{\mathrm{fr}}(t)|^2dt
+ \ll_\theta\frac{1+\log\log T}{\log^2T}.
+\end{equation}
+The same estimate holds for a difference of two fixed cutoffs smaller than $1/2$.
+\end{lemma}
+\begin{proof}
+Put $c_n=\Lambda(n)/(\sqrt n\log n)$ and observe that $\tW$ is $1$-Lipschitz. For $T\le t\le2T$ and all $n$ appearing in the finite sum,
+\[
+ \left|\tW\left(\frac{\log n}{\theta\log t}\right)
+ -\tW\left(\frac{\log n}{\theta\log T}\right)\right|\ll_\theta\frac1{\log T}.
+\]
+More precisely, write the difference as the integral from $T$ to $t$ of the derivative of the weight with respect to the intermediate time. On $[T,2T]$ that derivative is bounded by $C_\theta/(T\log T)$ and is supported on the moving taper band. Minkowski's integral inequality followed by the Montgomery--Vaughan mean-value inequality for a Dirichlet polynomial of length $M\ll_\theta T^{2\theta}$ gives
+\[
+ \|\Phi_\theta-\Phi_{\theta,T}^{\mathrm{fr}}\|_{L^2(T,2T)}
+ \ll_\theta\frac{\sqrt T}{\log T}
+ \left(\sum_{n\le M}|c_n|^2\right)^{1/2}.
+\]
+Here $\sum_{n\le M}|c_n|^2\ll 1+\log\log T$ by Mertens' theorem, the convergence of the prime-power square sum, and $M=o(T)$. Squaring proves the claim. For two cutoffs, apply the argument twice.
+\end{proof}
+\begin{theorem}[Variance of a fixed moderate cutoff]\label{thm:variance}
+For every fixed $0<\theta<1/2$,
+\begin{equation}\label{eq:variance}
+ \boxed{\frac1T\int_T^{2T}|\Phi_\theta(t)|^2dt
+ =\frac1{2\pi^2}\log\log T+O_\theta(1).}
+\end{equation}
+The same upper order holds uniformly on any finite union of dyadic blocks whose endpoints are comparable with $T$.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:freeze}, replacing the moving taper by its frozen version changes the $L^2$ norm by $o(\sqrt T)$; this follows by Cauchy--Schwarz since the frozen norm is $O(\sqrt{T\log\log T})$. The generalized Hilbert inequality of Montgomery and Vaughan \cite{MV} gives, for coefficients $a_n$ of a polynomial of length $M=o(T)$,
+\begin{equation}\label{eq:MV}
+ \int_T^{2T}\left|\sum_{n\le M}a_nn^{-it}\right|^2dt
+ =T\sum_{n\le M}|a_n|^2+O\left(\sum_{n\le M}n|a_n|^2\right).
+\end{equation}
+Applying the corresponding real/imaginary-part identity to the sine polynomial produces one half of the diagonal sum; the oscillatory $n m$ terms contribute $o(T)$, by first-derivative bounds. For $n=p$, the diagonal is
+\[
+ \sum_{p\le T^{2\theta}}
+ \frac1p\tW\left(\frac{\log p}{\theta\log T}\right)^2
+ =\log\log T+O_\theta(1),
+\]
+by Mertens and the fact that $\tW=1$ for $p\le T^\theta$. The diagonal for $n=p^r$, $r\ge2$, is bounded by $\sum_p\sum_{r\ge2}(r^2p^r)^{-1}<\infty$. Finally, $\sum_{n\le M}n|a_n|^2\ll M=o(T)$, since $\Lambda(n)\le\log n$. This yields \eqref{eq:variance}.
+\end{proof}
+\begin{theorem}[Exact variance of an increment in cutoff]\label{thm:increment}
+For fixed $0<\theta_-<\theta_+<1/2$, define
+\begin{equation}\label{eq:increment-integral}
+ \mathfrak J(\theta_-,\theta_+)=\int_0^\infty
+ \left[\tW\left(\frac v{\theta_+}\right)-\tW\left(\frac v{\theta_-}\right)\right]^2\frac{dv}{v}.
+\end{equation}
+This is a finite, strictly positive number, and
+\begin{equation}\label{eq:increment}
+ \boxed{\lim_{T\to\infty}\frac1T\int_T^{2T}
+ |\Phi_{\theta_+}(t)-\Phi_{\theta_-}(t)|^2dt
+ =\frac{\mathfrak J(\theta_-,\theta_+)}{2\pi^2}.}
+\end{equation}
+For $\theta_+=\theta(1+\varepsilon)$ with $\theta>0$ fixed and $\varepsilon\to0$ while $\theta(1+\varepsilon)<1/2$,
+\begin{equation}\label{eq:increment-small}
+ \frac{\mathfrak J(\theta,\theta(1+\varepsilon))}{2\pi^2}
+ =\frac{3}{4\pi^2}\varepsilon^2+o(\varepsilon^2).
+\end{equation}
+\end{theorem}
+\begin{proof}
+Apply Lemma~\ref{lem:freeze} to the difference of phases. The real-sine version of \eqref{eq:MV} shows that its normalized second moment equals
+\[
+ \frac1{2\pi^2}\sum_{n\le M}
+ \frac{\Lambda(n)^2}{n(\log n)^2}
+ \left[\tW\left(\frac{\log n}{\theta_+\log T}\right)-
+ \tW\left(\frac{\log n}{\theta_-\log T}\right)\right]^2+o(1),
+\]
+where $M=(2T)^{2\theta_+}=o(T)$. The $n=p^r$ part for $r\ge2$ tends to zero by dominated convergence, as $\sum_p\sum_{r\ge2}(r^2p^r)^{-1}<\infty$ and each fixed prime-power weight difference tends to zero. For primes, partial summation and the prime number theorem transform the sum into the Riemann integral \eqref{eq:increment-integral}; the integrand vanishes for $v\le\theta_-$ and for $v\ge2\theta_+$, so it has no singularity at $0$. The error from \eqref{eq:MV} is $O(M/T)=o(1)$.
+For the small-$\varepsilon$ assertion, on $v\in(\theta,2\theta)$ the derivative of $\tW(v/\theta)$ with respect to $\log\theta$ equals $v/\theta$ almost everywhere and vanishes elsewhere. Dominated convergence in $L^2(dv/v)$ gives
+\[
+ \lim_{\varepsilon\to0}\frac{\mathfrak J(\theta,\theta(1+\varepsilon))}{\varepsilon^2}
+ =\int_\theta^{2\theta}\left(\frac v\theta\right)^2\frac{dv}{v}=\frac32.
+\]
+\end{proof}
+\begin{corollary}[Absolute transport between moderate cutoffs]\label{cor:small-theta-transport}
+For fixed $0<\theta_-<\theta_+<1/2$,
+\begin{equation}\label{eq:transport-moderate}
+ \int_\R|H_{F_{\theta_+},[T,2T]}(v)-H_{F_{\theta_-},[T,2T]}(v)|\,dv
+ \le T\left(\frac{\mathfrak J(\theta_-,\theta_+)}{2\pi^2}+o(1)\right)^{1/2}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+Apply Corollary~\ref{cor:stability} with the two phases; the $N_0$ terms cancel.
+\end{proof}
+\section{Signed transport reaches the full Selberg cutoff}\label{sec:signed}
+\begin{theorem}[Uniform signed estimate up to $\theta=1$]\label{thm:signed}
+For fixed $0<\theta_-<\theta_+\le1$, let $I_T=[T,2T]$. Then
+\begin{equation}\label{eq:signed-main}
+ \boxed{\int_\R\left(H_{F_{\theta_+},I_T}(v)-H_{F_{\theta_-},I_T}(v)\right)\,dv
+ =O_{\theta_-,\theta_+}\left(\frac{T^{\theta_+}}{\log^2T}\right).}
+\end{equation}
+This is signed transport; the estimate is not asserted for the absolute value inside the $v$-integral.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{thm:contraction} gives the exact equality
+\[
+ \int_\R(H_{F_{\theta_+},I_T}-H_{F_{\theta_-},I_T})\,dv
+ =\int_T^{2T}(\Phi_{\theta_-}-\Phi_{\theta_+})(t)dt.
+\]
+For each $n$, the difference of the two moving weights is bounded by $1$ and has total variation $O_{\theta_-,\theta_+}(1)$ on $[T,2T]$, because each weight is nondecreasing in $t$; here the bound is independent of $n$. Integration by parts against $\sin(t\log n)$ therefore gives
+\[
+ \left|\int_T^{2T}(\wt_{\theta_+,t}(n)-\wt_{\theta_-,t}(n))\sin(t\log n)\,dt\right|\ll\frac1{\log n}.
+\]
+Hence the desired signed integral is at most
+\[
+ C\sum_{2\le n\le(2T)^{2\theta_+}}\frac{\Lambda(n)}{\sqrt n(\log n)^2}.
+\]
+The prime terms are $\ll\sqrt Y/\log^2Y$, with $Y=(2T)^{2\theta_+}$, by partial summation and the prime number theorem. For $r\ge2$ the prime-power terms sum absolutely:
+\[
+ \sum_p\sum_{r\ge2}\frac{\log p}{p^{r/2}(r\log p)^2}
+ =\sum_p\sum_{r\ge2}\frac1{r^2p^{r/2}\log p}<\infty,
+\]
+where convergence of the $r=2$ term follows from the prime number theorem (or Chebyshev bounds and dyadic summation). This proves the estimate.
+\end{proof}
+\begin{proposition}[Half-integer sampling and the sawtooth term]\label{prop:saw-signed}
+For $x\in\R$, set $\sigma_*(x)=\floor{x+1/2}-x$. For fixed $\theta_-,\theta_+\in(0,1]$ and $I=[T,2T]$,
+\begin{equation}\label{eq:saw-identity}
+ \begin{aligned}
+ &\sum_{k\in\mathbb Z}
+ [H_{F_{\theta_+},I}(k-\tfrac12)-H_{F_{\theta_-},I}(k-\tfrac12)]\\
+ &\qquad=\int_I(F_{\theta_-}-F_{\theta_+})\,dt
+ +\int_I[\sigma_*(F_{\theta_-})-\sigma_*(F_{\theta_+})]dt.
+ \end{aligned}
+\end{equation}
+Only finitely many summands are nonzero. The first integral is $O_{\theta_-,\theta_+}(T^{\max(\theta_-,\theta_+)}/\log^2T)$ by Theorem~\ref{thm:signed}.
+\end{proposition}
+\begin{proof}
+For any $x,y\in\R$, counting half-integers between them gives
+\[
+ \sum_{k\in\mathbb Z}(\1_{\{x<k-1/2\}}-\1_{\{y<k-1/2\}})
+ =\floor{y+1/2}-\floor{x+1/2},
+\]
+except at the endpoints, where a consistent convention suffices. Substitute $x=F_{\theta_+}(t)$, $y=F_{\theta_-}(t)$; each fixed $t$ has finitely many nonzero terms. Since both phases are bounded on $I$, there is a common finite set of potentially active levels, permitting interchange of summation and integration. Split $\floor{x+1/2}=x+\sigma_*(x)$.
+\end{proof}
+\begin{remark}[What signed cancellation cannot establish]\label{rem:signed-limit}
+Neither \eqref{eq:signed-main} nor \eqref{eq:saw-identity} bounds any individual sublevel ordinate. Cancellations between positive and negative area changes can make the signed sum small while the absolute transport remains large. The remaining sawtooth term in \eqref{eq:saw-identity} is not known to be $o(T)$ at $\theta=1$ by the arguments developed here.
+\end{remark}
+\section{A proved anticorrelation for a band sampled at Lambert ordinates}\label{sec:band}
+The following result concerns an exact sub-sum of the arithmetic phase at the \emph{smooth} Lambert ordinates; it does not involve true zero ordinates. Its distinction from the complete sublevel spacing statistics is essential.
+Fix $\frac14<\alpha<\beta<\frac12$ and define
+\begin{align}
+ \mathscr P_T(\alpha,\beta)&=\{p\ \text{prime}:T^\alpha<p\le T^\beta\},\label{eq:Pband}\\
+ \mathscr B_T(t)&=-\frac1\pi\sum_{p\in\mathscr P_T(\alpha,\beta)}\frac{\sin(t\log p)}{\sqrt p},\label{eq:Bband}\\
+ \mathscr K_T&=\{k:T\le\gamma_k^{\mathrm{RvM}}\le2T\},\\
+ Y_k&=\mathscr B_T(\gamma_{k+1}^{\mathrm{RvM}})-\mathscr B_T(\gamma_k^{\mathrm{RvM}}),\quad k\in\mathscr K_T.\label{eq:band-Y}
+\end{align}
+Write $\langle a_k\rangle_T=(\#\mathscr K_T)^{-1}\sum_{k\in\mathscr K_T}a_k$. Pearson correlation is defined with the usual centering of both sequences.
+\begin{theorem}[Negative consecutive-band covariance]\label{thm:band-cov}
+With the above fixed exponents and without RH,
+\begin{align}
+ \langle Y_k\rangle_T&=o(1),\label{eq:band-mean}\\
+ \langle Y_k^2\rangle_T&=v_{\alpha,\beta}+O_{\alpha,\beta}(\log^{-1}T),\label{eq:band-var}\\
+ \langle Y_kY_{k+1}\rangle_T&=z_{\alpha,\beta}+O_{\alpha,\beta}(\log^{-1}T),\label{eq:band-covar}
+\end{align}
+where
+\begin{align}
+ v_{\alpha,\beta}&=\frac1{\pi^2}\int_\alpha^\beta\frac{1-\cos(2\pi v)}{v}\,dv>0,\\
+ z_{\alpha,\beta}&=\frac1{\pi^2}\int_\alpha^\beta\frac{\cos(2\pi v)[1-\cos(2\pi v)]}{v}\,dv<0.
+\end{align}
+Consequently,
+\begin{equation}\label{eq:band-corr}
+ \boxed{\operatorname{Corr}_T(Y_k,Y_{k+1})=
+ \frac{z_{\alpha,\beta}}{v_{\alpha,\beta}}+O_{\alpha,\beta}(\log^{-1}T)<0}
+\end{equation}
+for all sufficiently large $T$.
+\end{theorem}
+\begin{proof}
+Let $g(x)=N_0^{-1}(x-1/2)$ on the relevant range, and write $t_k=g(k)$. Since $g'=1/\mathcal L(g)>0$ and $g''<0$,
+\begin{equation}\label{eq:band-spacing}
+ t_{k+h}-t_k=\frac{2\pi h}{\log T}+O_h(\log^{-2}T),\qquad h=0,1,2,
+\end{equation}
+with nonincreasing increments in $k$ and total variation $O_h(\log^{-2}T)$ for $k\in\mathscr K_T$. Put $v_p=\log p/\log T\in(\alpha,\beta]$. Multiplication of \eqref{eq:band-spacing} by $\log p$ gives
+\begin{equation}\label{eq:band-phasegap}
+ (t_{k+h}-t_k)\log p=2\pi hv_p+O_h(\log^{-1}T).
+\end{equation}
+We use the Kusmin--Landau inequality for exponential sums with monotone derivative \cite{GK}: if $f'$ is monotone and stays at least $\delta>0$ away from integers, then $\sum_{k\in J}e^{2\pi if(k)}\ll\delta^{-1}$, uniformly over index intervals $J$. For $f(k)=(\log n)g(k+h)/(2\pi)$ its derivative is
+\[
+ f'(x)=\frac{\log n}{\log(g(x+h)/(2\pi))}.
+\]
+For $n=p$, this lies in $(0,1/2)$ and stays a fixed distance from the integers. For $n=pq$ with $p,q\in\mathscr P_T(\alpha,\beta)$ it lies in $(1/2,1-\delta_\beta)$, also bounded away from integers. Thus the corresponding sums are $O_{\alpha,\beta}(1)$. If $n=q/p$ with distinct primes $p,q$ in the band, the derivative is bounded away from integers by $\gg|\log(q/p)|/\log T\gg T^{-\beta}/\log T$, so the sum is $O_{\alpha,\beta}(T^\beta\log T)$. The same estimates remain valid after multiplication by $e^{\pm i(t_{k+h}-t_k)\log p}$: by \eqref{eq:band-spacing} these weights have total variation $O(\log^{-1}T)$, and summation by parts retains the same bounds.
+Expand, for $h=0,1,2$,
+\[
+ C_h(T)=\left\langle\mathscr B_T(t_k)\mathscr B_T(t_{k+h})\right\rangle_T
+ =\frac1{\pi^2}\sum_{p,q\in\mathscr P_T}\frac{\langle\sin(t_k\log p)\sin(t_{k+h}\log q)\rangle_T}{\sqrt{pq}}.
+\]
+Using $\sin x\sin y=\frac12[\cos(x-y)-\cos(x+y)]$, the diagonal $p=q$ is, by the bounds above and \eqref{eq:band-phasegap},
+\[
+ \frac1{2\pi^2}\sum_{p\in\mathscr P_T}\frac{\cos(2\pi hv_p)}p+O_{\alpha,\beta}(\log^{-1}T).
+\]
+Mertens' theorem and Stieltjes partial summation turn the sum into $(2\pi^2)^{-1}\int_\alpha^\beta\cos(2\pi hv)dv/v+O_h(\log^{-1}T)$. Since $\#\mathscr K_T\asymp T\log T$ and $\sum_{p\le T^\beta}p^{-1/2}\ll T^{\beta/2}$, the off-diagonal contributions are bounded by
+\[
+ \frac{T^\beta\log T}{T\log T}
+ \left(\sum_{p\le T^\beta}p^{-1/2}\right)^2
+ \ll T^{2\beta-1}=o(\log^{-1}T).
+\]
+We have proved
+\begin{equation}\label{eq:band-Ch}
+ C_h(T)=\frac1{2\pi^2}\int_\alpha^\beta\frac{\cos(2\pi hv)}v\,dv+O_{\alpha,\beta}(\log^{-1}T).
+\end{equation}
+The first moments are $o(1)$ by the Kusmin--Landau estimate for $n=p$. Shifting a summation endpoint by at most two indices contributes $O(T^{\beta-1})$ after normalization. Therefore
+\[
+ \langle Y_k^2\rangle_T=2C_0-2C_1+o(\log^{-1}T),\quad
+ \langle Y_kY_{k+1}\rangle_T=2C_1-C_0-C_2+o(\log^{-1}T).
+\]
+Insert \eqref{eq:band-Ch} and use $\cos4\pi v=2\cos^22\pi v-1$. This gives the stated $v_{\alpha,\beta}$ and $z_{\alpha,\beta}$. The first is positive and the second negative because $\cos2\pi v<0$ on $(1/4,1/2)$. Centering changes the result by $o(\log^{-1}T)$; dividing by the nonzero limiting variance proves \eqref{eq:band-corr}.
+\end{proof}
+\begin{remark}[Exact scope of the anticorrelation]\label{rem:band-scope}
+The quantities $Y_k$ are increments of \emph{one selected band} of $\Phi^W$, sampled at the smooth ordinates $\gamma_k^{\mathrm{RvM}}$. They are not increments of the complete sublevel points $W_k$, nor are they the errors $W_k-\gamma_k$. In particular, the theorem does not provide the sign of the covariance between the full taucw correction and the genuine zero-counting error. The restriction $\beta<1/2$ excludes the potentially resonant product frequencies $pq\asymp T$.
+\end{remark}
+
+\section{The pole compensator at the moving cutoff}\label{sec:pole}
+For a \emph{fixed} external cutoff $X\ge2$ define the finite phase and its integral compensator by
+\begin{align}
+ \Phi_X(t)&=-\frac1\pi\sum_{n\ge2}
+ \frac{\Lambda(n)}{\sqrt n\log n}
+ \tW\left(\frac{\log n}{\log X}\right)\sin(t\log n),\label{eq:fixed-X}\\
+ \Pi_X(t)&=\frac1\pi\Im\int_2^{X^2}
+ \tW\left(\frac{\log x}{\log X}\right)
+ \frac{x^{-1/2-it}}{\log x}\,dx,\label{eq:pole-def}\\
+ P_X(t)&=\Phi_X(t)-\Pi_X(t).\label{eq:compensated}
+\end{align}
+Note that $\Phi^W(t)=\Phi_{X=t}(t)$, but this identity does \emph{not} equate the moving-cutoff limit $X=t\to\infty$ with the fixed-height limit $X\to\infty$.
+\begin{theorem}[Two integrations by parts at $X=t$]\label{thm:pole-t}
+There exists an absolute constant $C$ such that, for all sufficiently large $t$,
+\begin{equation}\label{eq:pole-Ot}
+ \boxed{|\Pi_{X=t}(t)|\le\frac Ct.}
+\end{equation}
+In particular $\Phi^W(t)=P_{X=t}(t)+O(t^{-1})$. No hypothesis on the zeros is used.
+\end{theorem}
+\begin{proof}
+Set $a=\log t$, $s=\frac12-it$, $u_0=\log2$, and $f_a(u)=\tW(u/a)/u$. Substitution $x=e^u$ gives
+\begin{equation}\label{eq:pole-u}
+ \pi\Pi_t(t)=\Im\int_{u_0}^{2a}e^{su}f_a(u)\,du.
+\end{equation}
+The function $f_a$ is continuous, piecewise $C^2$, and satisfies $f_a(2a)=0$ and
+\[
+ f_a(u)=\begin{cases}u^{-1},&u_0\le u\le a,\\2u^{-1}-a^{-1},&a<u\le2a.\end{cases}
+\]
+Its derivative has a jump of magnitude $a^{-2}$ at $a$. Integration by parts twice, treating the two smooth pieces separately, shows
+\begin{equation}\label{eq:pole-IBP}
+ \left|\int_{u_0}^{2a}e^{su}f_a(u)\,du\right|
+ \le \frac{C_1}{|s|}
+ +\frac{C_2}{|s|^2}\left(1+\frac{e^a}{a^2}+\frac{e^{a/2}}{a^2}
+ +\int_{u_0}^{2a}e^{u/2}|f_a''(u)|du\right).
+\end{equation}
+Here $|f_a''(u)|\le4u^{-3}$ away from $u=a$. Splitting the last integral at $a$ and $3a/2$ yields $\int e^{u/2}|f_a''(u)|du\ll 1+e^a/a^3$. Since $e^a=t$ and $|s|\asymp t$, the right side of \eqref{eq:pole-IBP} is $O(t^{-1})+O((ta^2)^{-1})$. Taking imaginary parts proves the result.
+\end{proof}
+\begin{remark}[Order of limits]\label{rem:limits}
+For fixed $t>0$, the integral in \eqref{eq:pole-def} need not tend to zero as $X\to\infty$; its upper endpoint then grows while the frequency remains fixed. Theorem~\ref{thm:pole-t} concerns only the diagonal path $X=t\to\infty$. A pointwise limit for a compensated or clipped family is not, without an additional proof, a limit theorem for the original untruncated $W_k$.
+\end{remark}
+\section{Prime-power moments and the remaining long-prime band}\label{sec:powers}
+Fix a dyadic parameter $T\ge3$, and let $m_T=\floor{\sqrt T}$ and $Y_T=p_{m_T}$ be the $m_T$th prime. For $t\in[T,2T]$ split the complete moving phase as
+\begin{equation}\label{eq:PQR}
+ \Phi^W(t)=A_T(t)+B_T(t)+C_T(t),
+\end{equation}
+where
+\begin{align}
+ A_T(t)&=-\frac1\pi\sum_{p\le Y_T}\frac{\sin(t\log p)}{\sqrt p},\label{eq:A-small}\\
+ B_T(t)&=-\frac1\pi\sum_{\substack{r\ge2\\p^r\le t^2}}
+ \frac{\wt_{1,t}(p^r)}{r p^{r/2}}\sin(rt\log p),\label{eq:B-powers}\\
+ C_T(t)&=-\frac1\pi\sum_{Y_T<p\le t^2}\frac{\wt_{1,t}(p)}{\sqrt p}\sin(t\log p).\label{eq:C-large}
+\end{align}
+For large $T$, $Y_T\sim\frac12\sqrt T\log T<T$, so the weight in \eqref{eq:A-small} is identically one for all $t\in[T,2T]$. Each prime power appears in exactly one term of \eqref{eq:PQR}.
+\begin{theorem}[Fourth moment of all prime powers]\label{thm:prime-powers}
+The full prime-power component satisfies
+\begin{equation}\label{eq:powers-L4}
+ \boxed{\int_T^{2T}|B_T(t)|^4dt\ll T.}
+\end{equation}
+The implied constant is absolute and independent of the moving Selberg weights.
+\end{theorem}
+\begin{proof}
+The terms with $r\ge3$ are uniformly bounded in absolute value: their coefficients are dominated by the convergent series $\sum_p\sum_{r\ge3}(r p^{r/2})^{-1}$.\par
+For $r=2$, split at $Y=(T/2)^{1/4}$. If $p\le Y$, then $p^2\le\sqrt{T/2}<t$ throughout the interval, so the weight equals one. The sine coefficients are $1/(2p)$ at frequencies $\log p^2$. Squaring this sum produces a Dirichlet polynomial of length at most $Y^4=T/2$. By the mean-value inequality \eqref{eq:MV},
+\[
+ \int_T^{2T}\left|\sum_{p\le Y}\frac{\sin(2t\log p)}p\right|^4dt\ll T,
+\]
+since the sum of squares of the convolution coefficients is $\ll(\sum_pp^{-2})^2$ and the length term is $O(T)$. For $p>Y$, only $p\le2T$ can contribute at exponent $2$, and the pointwise absolute sum is at most
+\[
+ \frac12\sum_{Y<p\le2T}\frac1p=O(1)
+\]
+by Mertens' theorem; the ratio of the logarithms of the two cutoffs is bounded. Combining the small-prime fourth moment and the two bounded tails gives \eqref{eq:powers-L4}.
+\end{proof}
+\begin{lemma}[Mean of the long-prime tail]\label{lem:long-mean}
+With $C_T$ defined in \eqref{eq:C-large},
+\begin{equation}\label{eq:long-mean}
+ \boxed{\left|\int_T^{2T}C_T(t)dt\right|\ll\frac{T}{\log^2T}.}
+\end{equation}
+This signed estimate alone does not control $\int|C_T|^2$ or $\int|C_T|^4$.
+\end{lemma}
+\begin{proof}
+For each fixed $p$, the function $t\mapsto\wt_{1,t}(p)$ is nondecreasing, belongs to $[0,1]$, and has total variation at most one. Integration by parts gives $|\int_T^{2T}\wt_{1,t}(p)\sin(t\log p)dt|\le3/\log p$. Summing the coefficients and using $p\le(2T)^2$ yields
+\[
+ \left|\int_T^{2T}C_T(t)dt\right|
+ \ll\sum_{Y_T<p\le4T^2}\frac1{\sqrt p\log p}
+ \ll\frac{T}{\log^2T},
+\]
+by partial summation and the prime number theorem.
+\end{proof}
+\begin{proposition}[The continuous density is negligible]\label{prop:continuous-prime}
+Define
+\begin{equation}\label{eq:continuous-I}
+ I_T(t)=\int_{Y_T}^{t^2}\frac{\wt_{1,t}(x)}{\sqrt x\log x}\,e^{it\log x}dx,
+ \qquad T\le t\le2T,
+\end{equation}
+where the taper is defined for real $x$ by the same formula as in \eqref{eq:mobile-weight}. Then
+\begin{equation}\label{eq:continuous-small}
+ \boxed{\sup_{T\le t\le2T}|I_T(t)|\ll T^{-3/4}(\log T)^{-1/2}.}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Let $a_t(x)=\sqrt x\,\wt_{1,t}(x)/\log x$ and use $e^{it\log x}dx/x$ as the oscillatory measure. The upper endpoint vanishes because $\wt_{1,t}(t^2)=0$. One integration by parts gives
+\begin{equation}\label{eq:I-parts1}
+ I_T(t)=-\frac{a_t(Y_T)e^{it\log Y_T}}{it}
+ -\frac1{it}\int_{Y_T}^{t^2}a_t'(x)e^{it\log x}dx.
+\end{equation}
+Define $b_t(x)=xa_t'(x)$. Direct differentiation on $[Y_T,t]$ and $(t,t^2]$, including the single jump at $x=t$, gives
+\begin{equation}\label{eq:b-var}
+ |b_t(Y_T)|+|b_t(t^2-)|+\Var_{[Y_T,t^2]}(b_t)\ll\frac t{\log^2t}.
+\end{equation}
+A second integration by parts therefore bounds the last integral in \eqref{eq:I-parts1} by $O(\log^{-2}t)$. Since $a_t(Y_T)=\sqrt{Y_T}/\log Y_T$ and $Y_T\asymp\sqrt T\log T$,
+\[
+ |I_T(t)|\ll\frac{\sqrt{Y_T}}{t\log Y_T}+\frac1{t\log^2t}
+ \ll T^{-3/4}(\log T)^{-1/2}.
+\]
+\end{proof}
+\begin{corollary}[Exact Chebyshev fluctuation representation]\label{cor:theta-fluct}
+Let $\vartheta_{\!p}(x)=\sum_{p\le x}\log p$ and $E_p(x)=\vartheta_{\!p}(x)-x$. Define the Stieltjes integral
+\begin{equation}\label{eq:residual-E}
+ \mathcal Q_T(t)=\int_{(Y_T,t^2]}
+ \frac{\wt_{1,t}(x)}{\sqrt x\log x}\,e^{it\log x}\,dE_p(x).
+\end{equation}
+Then, uniformly in $t\in[T,2T]$,
+\begin{equation}\label{eq:tail-E}
+ C_T(t)=-\frac1\pi\Im\mathcal Q_T(t)
+ +O\left(T^{-3/4}(\log T)^{-1/2}\right).
+\end{equation}
+\end{corollary}
+\begin{proof}
+The Stieltjes identity $d\vartheta_{\!p}(x)=dx+dE_p(x)$ splits the sum over $p$ into the integral $I_T(t)$ and the fluctuation integral $\mathcal Q_T(t)$. Apply Proposition~\ref{prop:continuous-prime}.
+\end{proof}
+\begin{remark}[No fourth moment claimed for the long tail]\label{rem:long-open}
+The estimate $\int_T^{2T}|C_T(t)|^4dt\ll T$ is \emph{not} proved. Neither Lemma~\ref{lem:long-mean} nor \eqref{eq:tail-E} implies it. Squaring a polynomial of length $T^2$ produces frequencies up to $T^4$; the available mean-value remainder is too large for a diagonal argument. A full-cutoff fourth moment would require additional arithmetic cancellation.
+\end{remark}
+\section{Prime-power Fourier coefficients at fixed frequencies}\label{sec:fixed-fourier}
+\begin{theorem}[Arithmetic coefficient recovery]\label{thm:prime-coeff}
+Fix $\omega>0$, and put $q=e^\omega$. For the \emph{complete moving-cutoff} phase,
+\begin{equation}\label{eq:fixed-coefficient}
+ \boxed{\frac{2\pi}{T}\int_T^{2T}e^{i\omega t}\Phi^W(t)dt
+ =-i\frac{\Lambda(q)}{\sqrt q\log q}+O_\omega(\log^{-2}T).}
+\end{equation}
+By convention $\Lambda(q)=0$ unless $q$ is an integral prime power. This is an unconditional assertion about a finite, explicitly given prime sum, with no appeal to a formula for the true zeros.
+\end{theorem}
+\begin{proof}
+Write $a_n=\Lambda(n)/(\sqrt n\log n)$. On $[T,2T]$, the moving taper $t\mapsto\wt_{1,t}(n)$ has variation at most one and is bounded by one. For a fixed $\omega>0$ and $\log n\ne\omega$, integration by parts bounds the contribution of the $n$th sine term by
+\begin{equation}\label{eq:offfreq}
+ \left|\int_T^{2T}e^{i\omega t}\wt_{1,t}(n)\sin(t\log n)dt\right|
+ \ll\frac1{|\log n-\omega|}+\frac1{\log n+\omega}.
+\end{equation}
+The finitely many integers $n$ in a fixed bounded neighborhood of $q$ have bounded total contribution. For all sufficiently large $n$ the denominators in \eqref{eq:offfreq} are both $\gg_\omega\log n$. Hence all nonresonant terms together contribute
+\begin{equation}\label{eq:offfreqsum}
+ O_\omega\left(1+\sum_{n\le4T^2}\frac{\Lambda(n)}{\sqrt n(\log n)^2}\right)
+ =O_\omega\left(\frac T{\log^2T}\right),
+\end{equation}
+where the last equality follows by the prime number theorem and a convergent prime-power contribution. If $q$ is a prime power, $\wt_{1,t}(q)=1$ for all $t\in[T,2T]$ once $T>q$. The resonant sine term satisfies
+\begin{equation}\label{eq:resonant-sine}
+ \int_T^{2T}e^{i\omega t}\sin(\omega t)dt=\frac{iT}{2}+O_\omega(1).
+\end{equation}
+Multiply the sum of \eqref{eq:offfreqsum} and \eqref{eq:resonant-sine} by $-1/\pi$, then by $2\pi/T$. This yields \eqref{eq:fixed-coefficient}.
+\end{proof}
+\begin{proposition}[Exact spectral identity for the synthetic count]\label{prop:synthetic-spectrum}
+For $\omega>0$ and $T>2\pi$, denote $E_W(t)=N_W(t)-F_W(t)$. Then
+\begin{equation}\label{eq:landau-identity}
+ \boxed{\begin{aligned}
+ \frac{2\pi}{T}\sum_{T<W_k\le2T}e^{i\omega W_k}
+ ={}&-\frac{\Lambda(e^\omega)}{\sqrt{e^\omega}}
+ -i\omega\frac{2\pi}{T}\int_T^{2T}e^{i\omega t}E_W(t)dt
+ +O_\omega(\log^{-2}T).
+ \end{aligned}}
+\end{equation}
+In particular, for each fixed prime $p$,
+\begin{equation}\label{eq:p-synthetic}
+ \boxed{\begin{aligned}
+ \frac{2\pi}{T}\sum_{T<W_k\le2T}p^{\rho_k^W}
+ ={}&-\log p
+ -i\sqrt p\log p\,\frac{2\pi}{T}\int_T^{2T}p^{it}E_W(t)dt
+ +O_p(\log^{-2}T).
+ \end{aligned}}
+\end{equation}
+No unproved assertion is made about the integral containing $E_W$.
+\end{proposition}
+\begin{proof}
+The finite measure $dN_W$ has unit atoms at the synthetic ordinates, so Stieltjes integration by parts gives
+\begin{equation}\label{eq:stieltjes-count}
+ \sum_{T<W_k\le2T}e^{i\omega W_k}
+ =[e^{i\omega t}N_W(t)]_T^{2T}-i\omega\int_T^{2T}e^{i\omega t}N_W(t)dt,
+\end{equation}
+with the natural one-sided convention at endpoints. Substitute $N_W=N_0+\Phi^W+E_W$. The smooth part equals $\int_T^{2T}e^{i\omega t}\mathcal L(t)dt=O_\omega(\log T)$; Theorem~\ref{thm:prime-coeff} evaluates the phase integral. The boundary terms for $\Phi^W$ and $E_W$ are each $O(T/\log^2T)$ by Lemma~\ref{lem:amplitude} and Proposition~\ref{prop:ordered}, giving $O(\log^{-2}T)$ after normalization. This proves \eqref{eq:landau-identity}; multiply by $\sqrt p$ and take $\omega=\log p$ to obtain \eqref{eq:p-synthetic}.
+\end{proof}
+\begin{remark}[What the identity does not say]
+Equation \eqref{eq:p-synthetic} has the same \emph{formal principal coefficient} as the prime-power Landau formula, but the reordering integral may be nonzero. Therefore \eqref{eq:p-synthetic} is not a Landau--Gonek theorem for $\rho_k^W$. Furthermore, establishing a fixed-$p$ coefficient does not provide bounds uniform in $p\asymp T^\alpha$.
+\end{remark}
+\section{A quadratic reordering bound, with no crossing denominators}\label{sec:reorder}
+The next theorem concerns the nonlinear rearrangement itself. It applies to arbitrary measurable phases and therefore does not assume properties of the genuine zeros.
+\begin{definition}[Local reordering defect]
+Let $I=[a,b]$, $g\in C^1(I)$ with $g'(t)\ge L>0$, and $f=g+\phi$. Choose a finite set $\mathscr H$ of half-integer levels containing all levels that can lie between $f(t)$ and $g(t)$ for some $t\in I$. For $\lambda\in\mathscr H$, put
+\begin{equation}\label{eq:local-x}
+ A_\lambda=\{t\in I:f(t)<\lambda\},\quad
+ B_\lambda=\{t\in I:g(t)<\lambda\},\quad
+ x_\lambda=a+|A_\lambda|,\quad
+ y_\lambda=a+|B_\lambda|.
+\end{equation}
+Define the local defect, for $a<t<b$, by
+\begin{equation}\label{eq:local-R}
+ \mathcal R_{f,g,I}(t)
+ =\sum_{\lambda\in\mathscr H}\left(\1_{\{t<x_\lambda\}}-\1_{\{f(t)<\lambda\}}\right).
+\end{equation}
+The sum is finite; levels for which $A_\lambda=B_\lambda=I$ or $\varnothing$ contribute zero.
+\end{definition}
+\begin{theorem}[Quadratic estimate for the local reordering defect]\label{thm:quad-reorder}
+For every complex-valued Lipschitz function $h:I\to\C$,
+\begin{equation}\label{eq:quadratic-reorder}
+ \boxed{\left|\int_I h(t)\mathcal R_{f,g,I}(t)dt\right|
+ \le\frac{2\LP(h)}L\int_I(|\phi(t)|^2+|\phi(t)|)dt.}
+\end{equation}
+No differentiability of $f$, no simplicity of its level crossings and no bound for $1/|f'(t)|$ is required.
+\end{theorem}
+\begin{proof}
+Fix $\lambda\in\mathscr H$. Since $g$ is strictly increasing, $B_\lambda$ is an initial interval $[a,y_\lambda)$ (including the two degenerate possibilities). Put $V_\lambda=[a,x_\lambda)$. By construction $|V_\lambda|=|A_\lambda|$. Thus
+\[
+ \int_Ih(t)(\1_{V_\lambda}-\1_{A_\lambda})dt
+ =\int_I(h(t)-h(y_\lambda))(\1_{V_\lambda}-\1_{A_\lambda})dt.
+\]
+Define the weighted symmetric-difference mass
+\[
+ Q_\lambda=\int_I|t-y_\lambda|\,|\1_{A_\lambda}(t)-\1_{B_\lambda}(t)|dt.
+\]
+If $r$ and $s$ are respectively the measures of $A_\lambda\setminus B_\lambda$ and $B_\lambda\setminus A_\lambda$, then $x_\lambda-y_\lambda=r-s$. For a set of measure $r$ to the right of $y_\lambda$, its first moment around $y_\lambda$ is at least $r^2/2$; similarly the removed portion on the left has moment at least $s^2/2$. Therefore
+\begin{equation}\label{eq:Qdelta}
+ Q_\lambda\ge\frac{r^2+s^2}{2}\ge\frac{(x_\lambda-y_\lambda)^2}{2}.
+\end{equation}
+Consequently
+\[
+ \int_I|t-y_\lambda|\,|\1_{V_\lambda}-\1_{B_\lambda}|dt
+ =\frac{(x_\lambda-y_\lambda)^2}{2}\le Q_\lambda.
+\]
+The triangle inequality then yields
+\begin{equation}\label{eq:level-Q}
+ \left|\int_Ih(t)(\1_{V_\lambda}-\1_{A_\lambda})dt\right|
+ \le2\LP(h)Q_\lambda.
+\end{equation}
+Whenever $\1_{A_\lambda}(t)\ne\1_{B_\lambda}(t)$ we have $|g(t)-\lambda|\le|\phi(t)|$. Since $g'\ge L$, the distance from $t$ to the clipped crossing $y_\lambda$ is at most $|\phi(t)|/L$, including when $B_\lambda$ is empty or all of $I$. For each fixed $t$, the number of such half-integer levels is at most $|\phi(t)|+1$. It follows that
+\begin{equation}\label{eq:sumQ}
+ \sum_{\lambda\in\mathscr H}Q_\lambda
+ \le\frac1L\int_I|\phi(t)|(|\phi(t)|+1)dt.
+\end{equation}
+Sum \eqref{eq:level-Q} and use \eqref{eq:sumQ}. This proves \eqref{eq:quadratic-reorder}.
+\end{proof}
+\begin{remark}[A necessary indexing convention]\label{rem:local-index}
+The local quantity $\mathcal R_{f,g,I}$ should not be silently identified with $\floor{f+1/2}-N_W$ without checking that the sublevels at the relevant indices are localized in $I$ and that the initial count offsets agree. The theorem itself does not require such an identification.
+\end{remark}
+\begin{corollary}[Low-frequency bound for a moderate arithmetic phase]\label{cor:reorder-application}
+Fix $0<\theta<1/2$, and let $I_T=[T,2T]$; choose $g=N_0$ and $f=F_\theta$. For $u\in\R$ and a smooth cutoff $\eta$ supported on $(1,2)$, set $h_u(t)=\eta(t/T)e^{iut}$. Then the corresponding localized reordering defect satisfies
+\begin{equation}\label{eq:lowfreq-reorder}
+ \boxed{\left|\frac1T\int_{I_T}h_u(t)\mathcal R_{F_\theta,N_0,I_T}(t)dt\right|
+ \ll_{\theta,\eta}\frac{(|u|+T^{-1})(1+\log\log T)}{\log T}.}
+\end{equation}
+In particular, the normalized Fourier coefficient tends to zero uniformly in the range $|u|=o(\log T/\log\log T)$.
+\end{corollary}
+\begin{proof}
+On $I_T$, $N_0'\gg\log T$. Moreover $\LP(h_u)\ll_\eta |u|+T^{-1}$. By Theorem~\ref{thm:variance}, $T^{-1}\int_{I_T}|\Phi_\theta|^2\ll_\theta1+\log\log T$; Cauchy--Schwarz also gives $T^{-1}\int_{I_T}|\Phi_\theta|\ll_\theta\sqrt{1+\log\log T}$. Insert these estimates into \eqref{eq:quadratic-reorder}.
+\end{proof}
+\begin{remark}[Why $u\asymp\log T$ remains critical]
+At $u\asymp\log T$, the Lipschitz factor in \eqref{eq:lowfreq-reorder} cancels the $1/\log T$ gain coming from $N_0'(T)$. For $\theta=1$, even the bound $T^{-1}\int|\Phi^W|^2=o(\log T)$ is not established here. Thus neither the local reordering estimate nor fixed-frequency arithmetic coefficient recovery currently controls the critical frequencies $u\asymp\log T$ for the full taucw family.
+\end{remark}
+\section{Exact Fourier transforms of counting discrepancies}\label{sec:spectral}
+\begin{theorem}[Plancherel identity for two finite ordinate lists]\label{thm:plancherel}
+Let $a_1\le\cdots\le a_K$ and $b_1\le\cdots\le b_K$ be real numbers, with multiplicity allowed. Put
+\begin{align}
+ M_K(t)&=\sum_{j=1}^K(\1_{\{a_j\le t\}}-\1_{\{b_j\le t\}}),\label{eq:M-count}\\
+ D_K(u)&=\sum_{j=1}^K(e^{iua_j}-e^{iub_j}).\label{eq:D-spectral}
+\end{align}
+Then
+\begin{align}
+ \int_\R|M_K(t)|^2dt&=\frac1{2\pi}\int_\R\frac{|D_K(u)|^2}{u^2}\,du,\label{eq:plancherel}\\
+ \int_\R|M_K(t)|dt&=\sum_{j=1}^K|a_j-b_j|.\label{eq:L1-sorted}
+\end{align}
+The integral at $u=0$ is understood by continuity, since $D_K(0)=0$. Both identities hold without any hypothesis on the zero ordinates.
+\end{theorem}
+\begin{proof}
+The function $M_K$ is bounded, piecewise constant and compactly supported. In distributions, $M_K'=\sum_j(\delta_{a_j}-\delta_{b_j})$. Under the Fourier convention $\widehat f(u)=\int f(t)e^{-iut}dt$, this gives $iu\widehat M_K(u)=D_K(-u)$. Plancherel yields \eqref{eq:plancherel}.
+For \eqref{eq:L1-sorted}, define the empirical measures $\mu_A=\sum_j\delta_{a_j}$ and $\mu_B=\sum_j\delta_{b_j}$. In one dimension the integral of the absolute difference of their distribution functions equals the $L^1$ optimal matching cost. To see this without invoking optimal transport, note that the matching $j\mapsto j$ is optimal by the crossing inequality $|x-v|+|y-u|\ge |x-u|+|y-v|$ for $x\le y$, $u\le v$. For each matched pair, the difference of its Heaviside functions is the indicator, up to sign, of the interval joining the endpoints. Since the sorted matching has no crossing, summing signed overlaps and integrating establishes equality with $\sum_j|a_j-b_j|$. Alternatively, integrate layer-cake level sets of the two ordered lists.
+\end{proof}
+\begin{corollary}[Finite spectral robustness]\label{cor:finite-spectrum}
+Under the hypotheses of Theorem~\ref{thm:plancherel}, for every real $u$,
+\begin{equation}\label{eq:pointwise-spectrum}
+ |D_K(u)|\le |u|\sum_{j=1}^K|a_j-b_j|.
+\end{equation}
+\end{corollary}
+\begin{proof}
+For real $x,y$, $|e^{iux}-e^{iuy}|\le |u||x-y|$. Sum over the corresponding ordered terms.
+\end{proof}
+\begin{theorem}[Band-limited quadratic identity]\label{thm:band-limited}
+For $U>0$ let
+\begin{equation}\label{eq:Fejer-kernel}
+ \kappa_U(t)=\frac{U}{2\pi}\left(\frac{\sin(Ut/2)}{Ut/2}\right)^2,
+ \qquad \widehat\kappa_U(u)=\left(1-\frac{|u|}{U}\right)_+.
+\end{equation}
+For $M_K,D_K$ in Theorem~\ref{thm:plancherel},
+\begin{equation}\label{eq:smoothed-count}
+ \boxed{\int_\R|\kappa_U*M_K(t)|^2dt
+ =\frac1{2\pi}\int_{-U}^U\left(1-\frac{|u|}{U}\right)^2
+ \frac{|D_K(u)|^2}{u^2}\,du.}
+\end{equation}
+Moreover, for any $t$ distinct from all $a_j,b_j$,
+\begin{equation}\label{eq:pointwise-M}
+ \begin{aligned}
+ |M_K(t)|\le{}&\left[\frac{U}{2\pi^2}\int_{-U}^{U}
+ \left(1-\frac{|u|}{U}\right)^2\frac{|D_K(u)|^2}{u^2}du\right]^{1/2}\\
+ &+\sum_{j=1}^K\min\left(1,\frac2{\pi U|t-a_j|}\right)
+ +\sum_{j=1}^K\min\left(1,\frac2{\pi U|t-b_j|}\right).
+ \end{aligned}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The kernel $\kappa_U$ is nonnegative, has integral one, and has the Fourier transform displayed in \eqref{eq:Fejer-kernel}. Plancherel gives \eqref{eq:smoothed-count}. The support of $\widehat{\kappa_U*M_K}$ is contained in $[-U,U]$; Cauchy--Schwarz in the inversion formula gives
+\[
+ \|\kappa_U*M_K\|_\infty\le\sqrt{U/\pi}\,\|\kappa_U*M_K\|_2.
+\]
+For each Heaviside function, the difference from convolution with $\kappa_U$ is bounded by the kernel's one-sided tail beyond $d=|t-a_j|$, which is at most $\min\{1,2/(\pi Ud)\}$. Indeed, $\kappa_U(y)\le 2/(\pi U y^2)$ for $y\ne0$. Sum these errors over all $a_j,b_j$. Combining with the supremum bound proves \eqref{eq:pointwise-M}.
+\end{proof}
+\begin{remark}[The graph is a finite-frequency diagnostic]
+For $a_j=\gamma_j$ and $b_j=W_j$, the quantity $|D_K(u)|$ is exactly the modulus of the difference between the two exponential sums. The graph in Figure~\ref{fig:spectrum} plots it for $K=3000$ on a bounded frequency interval. Neither \eqref{eq:plancherel} nor \eqref{eq:smoothed-count} permits replacing its full-frequency integral by such a plot. In particular, visual coincidence at the prime-power frequencies does not prove a uniform zero-counting estimate.
+\end{remark}
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=.98\textwidth]{spectral_taucw_3000.png}
+ \caption{Finite numerical comparison of the real parts and moduli of two exponential sums with $K=3000$, over the displayed frequency interval. Dotted vertical lines are prime-power frequencies. This externally supplied finite computation illustrates the exact identities in \S\ref{sec:spectral}, but is not used in any proof or extrapolated to an asymptotic theorem.}
+ \label{fig:spectrum}
+\end{figure}
+\section{The precise relation to \texorpdfstring{$S_\zeta(t)$}{S-zeta(t)} and unconditional limitations}\label{sec:St}
+\begin{definition}[Prime-defined counting surrogate]
+Define
+\begin{equation}\label{eq:SW}
+ \Sc_W(t)=N_W(t)-N_0(t)-R_\zeta(t),\qquad t>2\pi.
+\end{equation}
+The right side is determined by the prime-defined sequence $W_k$ and the explicit gamma-function term $R_\zeta$. It does not use $\gamma_j$ or $\beta_j$ in its computation.
+\end{definition}
+\begin{proposition}[Exact counting discrepancy]\label{prop:St-exact}
+For every $t>2\pi$ away from genuine zero ordinates,
+\begin{equation}\label{eq:St-error}
+ \boxed{S_\zeta(t)-\Sc_W(t)=N_\zeta(t)-N_W(t)\in\mathbb Z.}
+\end{equation}
+In particular, $S_\zeta(t)=\Sc_W(t)$ wherever the two counts agree. For every finite $K$, equality of the first $K$ ordered counts fails only on the union of the intervals between paired ordinates, and
+\begin{equation}\label{eq:exception-length}
+ \meas\{t:N_{\zeta,K}(t)\ne N_{W,K}(t)\}\le\sum_{j=1}^K|\gamma_j-W_j|.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Subtract \eqref{eq:SW} from the complete Riemann--von Mangoldt formula \eqref{eq:rvm-decomp}. Each paired pair of Heaviside functions differs only between its endpoints; the inclusion in a union and \eqref{eq:exception-length} follow immediately, or from \eqref{eq:L1-sorted} and Lemma~\ref{lem:integers}.
+\end{proof}
+\begin{theorem}[Coefficient transfer needs counts, not uniform ordinates]\label{thm:coef-transfer}
+Let
+\begin{equation}\label{eq:c-def}
+ c_W=\limsup_{t\to\infty}\frac{|N_W(t)-N_0(t)|}{\log t},\qquad
+ d_W=\limsup_{t\to\infty}\frac{|N_\zeta(t)-N_W(t)|}{\log t},
+\end{equation}
+allowing $+\infty$. Then
+\begin{equation}\label{eq:coef-inequality}
+ \boxed{\limsup_{t\to\infty}\frac{|S_\zeta(t)|}{\log t}\le c_W+d_W.}
+\end{equation}
+In particular a proof of $d_W=0$ does \emph{not} require $\sup_{\gamma_k\asymp T}|\gamma_k-W_k|=o(1)$; a uniform ordinate bound is only one sufficient method for obtaining small $d_W$.
+\end{theorem}
+\begin{proof}
+Use \eqref{eq:St-error}, the triangle inequality and $R_\zeta(t)=O(1/t)$. Divide by $\log t$ and take limsups. No zero location hypothesis enters.
+\end{proof}
+\begin{remark}[A necessary distinction]\label{rem:determination}
+The function $\Sc_W$ is completely determined by the arithmetic sublevel ordinates. Whether it \emph{equals} the true $S_\zeta$, uniformly or in a specified asymptotic sense, is a separate theorem to be proved. Likewise, knowledge of the imaginary parts $\gamma_j$ with multiplicity, even if exact, does not algebraically determine the real parts $\beta_j$. The construction $\rho^W_k=1/2+iW_k$ has real part $1/2$ by definition, but this cannot substitute for a proof of the same assertion about the genuine zeros.
+\end{remark}
+\subsection{The exact correlation needed for an improved phase approximation}
+Let $F_{\mathrm C}$ be the finite-Euler-factor comparison function of \S\ref{sec:comparison} and define the real functions $D_{\mathrm C}(t)=F_{\mathrm C}(t)-N_\zeta(t)$ and $\Delta(t)=F_W(t)-F_{\mathrm C}(t)$. For any finite interval $I$,
+\begin{equation}\label{eq:anti-corr-exact}
+ \boxed{\begin{aligned}
+ \int_I|F_W-N_\zeta|^2dt-\int_I|F_{\mathrm C}-N_\zeta|^2dt
+ ={}&2\int_I D_{\mathrm C}(t)\Delta(t)dt\\
+ &+\int_I|\Delta(t)|^2dt.
+ \end{aligned}}
+\end{equation}
+This identity preserves signed cancellation. In particular the additional primes improve the quadratic phase error on $I$ if and only if
+\begin{equation}\label{eq:anti-corr-criterion}
+ 2\int_I D_{\mathrm C}\Delta\,dt<-\int_I|\Delta|^2dt.
+\end{equation}
+The inequality \eqref{eq:anti-corr-criterion} is \emph{not} proved in this article. Applying a conditional Landau--Gonek formula to $\sum p^{\rho_j}$ and replacing $p^{\rho_j}$ by $\sqrt p\,p^{i\gamma_j}$ would assume the Riemann hypothesis and is not a legitimate unconditional proof of \eqref{eq:anti-corr-criterion}. The same substitution is algebraically valid for the synthetic $\rho^W_k$, but that fact does not make a Landau--Gonek formula for the synthetic sequence automatic.
+\subsection{A gap between finite-frequency agreement and location}
+For $K$ fixed, the spectral comparison of \S\ref{sec:spectral} is exact. When $K$ grows with height, however, an estimate at fixed $u$ does not determine $M_K(t)$ at all heights. The high-frequency mass
+\begin{equation}\label{eq:critical-mass}
+ \frac1{2\pi}\int_{|u|>U}\frac{|D_K(u)|^2}{u^2}\,du
+\end{equation}
+can be large even when $|D_K(u)|$ is small on every fixed compact frequency interval. To infer exact integer counts using \eqref{eq:pointwise-M}, one additionally requires a quantitative estimate of local concentrations near the jumps. No such estimate is supplied by the numerical graph.
+\subsection{The genuinely open arithmetic estimates}\label{subsec:open}
+The following are \emph{problems}, not consequences of the preceding theorems:
+\begin{enumerate}
+ \item An unconditional full-cutoff bound
+ \begin{equation}\label{eq:open-energy}
+ \mathcal E_1(T)=\frac1T\int_T^{2T}|\Phi^W(t)|^2dt=o(\log T),
+ \end{equation}
+ or a comparably strong signed bound for the actual reordering defect. The present diagonal method only proves such energy bounds for $2\theta<1$.
+ \item An unconditional bound for the fourth moment of the long-prime tail $C_T$ from \eqref{eq:C-large}, or a direct proof of the cancellation criterion \eqref{eq:anti-corr-criterion}. The existing signed-mean estimate is insufficient.
+ \item Uniform control at $u\asymp\log T$ of the reordering integral in \eqref{eq:landau-identity}. The local Lipschitz estimate \eqref{eq:lowfreq-reorder} has no saving in this range.
+ \item An independent estimate of $N_\zeta-N_W$ strong enough to imply $d_W=0$ or a smaller explicit coefficient, and a separate argument excluding zeros with $\beta_j\ne1/2$.
+\end{enumerate}
+None of these unresolved assertions is used as a hypothesis in the theorems proved in this paper.
+\section{Numerical illustration and theorem-status audit}\label{sec:audit}
+Figure~\ref{fig:spectrum} displays the finite comparison supplied with this study. It has two important features: the visible prime-power lines in the real parts of the finite exponential sums and the much smaller plotted residual modulus over the displayed range. Neither visual fact proves that the residual remains small as $K\to\infty$ or as $|u|\to\infty$. Accordingly, the figure is used only as motivation for the exact identities of \S\ref{sec:spectral}.
+\medskip
+\noindent\textbf{Proof status.} The theorems of this article establish:
+\begin{enumerate}
+\item existence, nesting, and coarse localization of the $W_{\theta,k}$ (Propositions~\ref{prop:ordered} and \ref{prop:coarse-displ});
+\item exact signed sublevel transport and its $L^1$ majorant (Proposition~\ref{prop:exact-areas} and Theorem~\ref{thm:L1transport});
+\item contraction and the signed identities for all real levels (Theorem~\ref{thm:contraction});
+\item exact prime-cutoff differentiation and $L^2$ moment formulae for $2\theta<1$ (Lemma~\ref{lem:theta-deriv} and Theorems~\ref{thm:variance}--\ref{thm:increment});
+\item signed cancellation through the full cutoff $\theta=1$ (Theorem~\ref{thm:signed});
+\item negative covariance of successive increments of an individual prime band sampled at Lambert ordinates (Theorem~\ref{thm:band-cov});
+\item the moving-cutoff pole-compensator bound (Theorem~\ref{thm:pole-t});
+\item a fourth-moment bound for the prime-power component, first-moment cancellation of the long-prime component, and its Chebyshev fluctuation representation (Theorem~\ref{thm:prime-powers} and Corollary~\ref{cor:theta-fluct});
+\item fixed-frequency coefficients of the complete prime phase and the exact residual term in the synthetic counting spectrum (Theorem~\ref{thm:prime-coeff} and Proposition~\ref{prop:synthetic-spectrum});
+\item the local quadratic reordering estimate and its moderate-cutoff frequency consequence (Theorem~\ref{thm:quad-reorder});
+\item Fourier--Plancherel and band-limited formulae for finite ordinate lists, and the exact relation between the prime-defined surrogate $\Sc_W$ and $S_\zeta$ (Theorems~\ref{thm:plancherel}--\ref{thm:coef-transfer}).
+\end{enumerate}
+\noindent\textbf{Excluded assertions.} We do not claim a full-cutoff fourth moment, uniform $W_k-\gamma_k=o(1)$, a Landau--Gonek theorem for the synthetic points without the residual, a numerical asymptotic coefficient for $S_\zeta$ derived from $W_k$, an identification of the synthetic points with the genuine zeros, or a proof of the Riemann hypothesis. We do not infer any of these conclusions from the finite spectral plot, from convergence at a fixed ordinal index, or from arguments conditional on RH.
+\section{Conclusion}\label{sec:conclusion}
+Sublevel volumes retain the full moving Selberg prime-power phase while producing a canonical ordered sequence without selecting roots of a nonmonotone equation. The principal unconditional output is an exact framework linking prime phases, redistribution across half-integer levels, counting surrogates and Fourier transforms. The continuous part of cutoff transport is controllable by arithmetic summation, and its signed version reaches the complete cutoff $X(t)=t$. The quadratic energy estimates and resulting low-frequency control of local reordering are presently restricted to $2\theta<1$. At the full cutoff the outstanding analysis lies in the correlations of large primes, the half-integer sawtooth, and the genuine count discrepancy. Those are quantitative mathematical questions, rather than hypotheses tacitly resolved by the construction. No use of RH is made anywhere in the proofs.
+\begin{thebibliography}{99}
+\bibitem{Titchmarsh} E.~C. Titchmarsh, \emph{The Theory of the Riemann Zeta-Function}, second ed., revised by D.~R. Heath-Brown, Oxford Univ. Press, 1986.
+\bibitem{GK} S.~W. Graham and G. Kolesnik, \emph{Van der Corput's Method of Exponential Sums}, London Mathematical Society Lecture Note Series \textbf{126}, Cambridge Univ. Press, 1991.
+\bibitem{MV} H.~L. Montgomery and R.~C. Vaughan, Hilbert's inequality, \emph{J. London Math. Soc.} (2) \textbf{8} (1974), 73--82, doi:10.1112/jlms/s2-8.1.73.
+\bibitem{Montgomery} H.~L. Montgomery, \emph{Topics in Multiplicative Number Theory}, Lecture Notes in Math. \textbf{227}, Springer, 1971.
+\bibitem{Davenport} H. Davenport, \emph{Multiplicative Number Theory}, third ed., revised by H.~L. Montgomery, Graduate Texts in Math. \textbf{74}, Springer, 2000.
+\bibitem{Selberg} A. Selberg, Contributions to the theory of the Riemann zeta-function, \emph{Arch. Math. Naturvid.} \textbf{48} (1946), no. 5, 89--155.
+\bibitem{Mertens} F. Mertens, Ein Beitrag zur analytischen Zahlentheorie, \emph{J. Reine Angew. Math.} \textbf{78} (1874), 46--62.
+\end{thebibliography}
+\end{document}

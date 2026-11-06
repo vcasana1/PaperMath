@@ -1,0 +1,367 @@
+# TAREA: OPTIMIZACIÓN EXTREMA DE LA CONSTANTE ADITIVA DE S(T)
+
+## OBJETIVO MATEMÁTICO
+
+Partimos de la desigualdad incondicional
+
+\[
+|S(T)|<0.08382\log T+4.40577136,
+\qquad T>1.
+\]
+
+Quiero reducir **4.40577136 tanto como sea matemáticamente posible**, reoptimizando desde cero los 19 coeficientes del núcleo de Casaña–Turing–Jensen.
+
+No te limites a perfeccionar las estimaciones numéricas existentes. Debes buscar un núcleo realmente mejor.
+
+El coeficiente principal debe satisfacer
+
+\[
+A\le0.08382.
+\]
+
+La desigualdad final debe valer **para todo \(T>1\)**, sin asumir RH ni imponer una altura mínima.
+
+No acepto resultados basados únicamente en mallas numéricas: las nuevas constantes deben poder certificarse rigurosamente.
+
+## 1. LOCALIZA Y COMPRENDE LOS ARCHIVOS
+
+Trabaja en el repositorio:
+
+`vcasana1/PaperMath`
+
+Rama de referencia:
+
+`explicit-S-turing`
+
+Directorio:
+
+`numerics/explicit_S_turing`
+
+Manuscrito de referencia:
+
+`casanya_turing_jensen_v11_l.tex`
+
+Localiza también los certificados y programas de la mejora a 4.40577136:
+
+- `certificado_S_4_40577136.zip`
+- `verify_constant_4_40577136.py`
+- `verify_phase_max_bnb.py`
+- `verify_phase_two_harmonics_sharp.py`
+- `verify_constant_tail_refined.py`
+
+Si están en Descargas u otra carpeta local del Mac, búscalos.
+
+Lee previamente las secciones 3 y 4, las definiciones de los núcleos, la desigualdad (K), las constantes de Euler y las rutinas de certificación.
+
+Examina especialmente:
+
+`opt_line.py`, `cz_gen_pp.py`, `elem_gen.py`, `certify_hybrid.py`, `certutil.py`.
+
+Antes de optimizar, comprueba si los certificados anteriores justifican efectivamente la constante 4.40577136. Si encuentras un fallo, repáralo y documenta la corrección.
+
+## 2. REOPTIMIZACIÓN CONJUNTA DEL NÚCLEO
+
+El núcleo es
+
+\[
+U(b,t)=\sum_{\iota\in\mathcal B_{10}}c_\iota G_\iota(b,t),
+\]
+
+con
+
+\[
+\mathcal B_{10}
+=
+\{(R,j):1\le j\le10\}
+\cup
+\{(I,j):2\le j\le10\}.
+\]
+
+Dispones de 19 coeficientes libres.
+
+La condición obligatoria es
+
+\[
+U(b,t)\ge f(b,t)
+\]
+
+para
+
+\[
+0\le b\le\tfrac12,\qquad t\ne0.
+\]
+
+La constante de Euler es
+
+\[
+C_\zeta(c,d)
+=
+\sum_p\max_x f_p(x;c,d).
+\]
+
+La constante elemental depende también de los coeficientes.
+
+**No optimices exclusivamente el coeficiente de \(\log T\).**
+
+Debes minimizar directamente la constante aditiva final de la desigualdad uniforme.
+
+Para cada conjunto de coeficientes, utiliza la contribución completa:
+
+\[
+A(c,d)\log T+C_\zeta(c,d)+E(c,d,T).
+\]
+
+El objetivo debe tener en cuenta simultáneamente:
+
+1. La constante aritmética \(C_\zeta\).
+2. La contribución elemental.
+3. La restricción del coeficiente principal.
+4. Las desigualdades que garantizan la validez del núcleo.
+5. El posible uso de distintos núcleos en diferentes intervalos de alturas.
+
+No presupongas que el núcleo óptimo para \(T=e^{400}\) o \(T=e^{6000}\) minimiza la constante uniforme.
+
+## 3. RESOLUCIÓN NUMÉRICA GLOBAL DENTRO DE LA FAMILIA
+
+Utiliza CVXPY con Clarabel, o un solucionador equivalente de programación convexa.
+
+Para \(d\) fijo, aprovecha la convexidad de la formulación siempre que se conserve exactamente.
+
+Implementa un método de cutting planes:
+
+- Optimización inicial de los coeficientes.
+- Búsqueda global de violaciones de (K).
+- Incorporación de las nuevas restricciones.
+- Reoptimización.
+- Repetición hasta eliminar todas las violaciones.
+
+Emplea múltiples puntos iniciales cuando el problema o su parametrización no sean convexos.
+
+Explora también el parámetro \(d>1/2\), que en los núcleos actuales es \(d=0.85\).
+
+Realiza una búsqueda adaptativa de \(d\). No restrinjas artificialmente la búsqueda a los valores utilizados en el artículo.
+
+Investiga asimismo familias con \(m>10\), especialmente \(m=12,15,20\), si ofrecen mejoras.
+
+Distingue entre la optimización global de los 19 coeficientes con \(d\) fijo y la optimización respecto de \(d\) y del orden \(m\). No afirmes optimalidad global sin demostrarla.
+
+## 4. OPTIMIZA DIRECTAMENTE LA ENVOLVENTE
+
+El resultado no tiene necesariamente que proceder de una sola recta.
+
+Permite una familia de núcleos \(U_1,\ldots,U_r\) y construye
+
+\[
+|S(T)|
+\le
+\min_j\{A_j\log T+C_j(T)\}.
+\]
+
+Busca simultáneamente los núcleos y sus puntos de transición para minimizar
+
+\[
+\boxed{
+C_*=
+\sup_{T>1}
+\left[
+\min_j\{A_j\log T+C_j(T)\}
+-0.08382\log T
+\right].
+}
+\]
+
+Esta es la cantidad que realmente quiero minimizar.
+
+Puedes empezar con tres núcleos y aumentar su número cuando exista una mejora.
+
+No impongas a todos los núcleos \(A_j\le0.08382\): las rectas utilizadas únicamente en intervalos acotados pueden tener pendientes superiores, siempre que la envolvente final satisfaga el objetivo.
+
+Controla rigurosamente el comportamiento para \(T\to\infty\).
+
+## 5. AGOTA LOS MÁRGENES DE LA PARTE ARITMÉTICA
+
+Aprovecha las correcciones ya conseguidas:
+
+- Integración del peso original en lugar de mayorantes escalonadas innecesarias.
+- Cotas incondicionales explícitas para \(\psi(x)-x\).
+- Maximización rigurosa de las fases de los primos.
+- Acoplamiento de todas las potencias de un mismo primo.
+- Cuadraturas certificadas con aritmética de intervalos.
+
+Ahora debes intentar mejoras adicionales.
+
+Investiga, en particular:
+
+**A.** Aumentar el corte aritmético por encima de \(10^8\), cuantificando el beneficio y el coste computacional.
+
+**B.** Calcular directamente los máximos de las sumas trigonométricas completas de cada primo mediante aislamiento de puntos críticos, en lugar de cotas triangulares.
+
+**C.** Utilizar cotas explícitas de \(\psi(x)-x\) dependientes de \(x\), evitando sustituirlas por una constante multiplicativa uniforme cuando ello provoque pérdidas.
+
+**D.** Reorganizar la cola mediante integración por partes y cancelaciones de la derivada del peso.
+
+**E.** Determinar si existen contribuciones que puedan calcularse exactamente, sin introducir estimaciones independientes innecesarias.
+
+Utiliza únicamente cotas externas cuyas hipótesis y dominios estén verificados.
+
+## 6. OPTIMIZACIÓN DE LA PARTE ELEMENTAL
+
+El artículo utiliza cotas para
+
+\[
+F_u^S(T),\qquad F_\ell^S(T).
+\]
+
+No aceptes automáticamente la mayorante \(K/T\) si una evaluación más ajustada de las funciones completas produce una mejora.
+
+Implementa búsqueda adaptativa de máximos y mínimos con intervalos certificados.
+
+Para alturas grandes, obtén desarrollos asintóticos con restos explícitos.
+
+Para alturas pequeñas, certifica el intervalo completo empezando en \(T=1\).
+
+Debes eliminar las pérdidas derivadas de separar términos que puedan evaluarse conjuntamente.
+
+La validez para todo \(T>1\) es obligatoria.
+
+## 7. CERTIFICACIÓN RIGUROSA
+
+La búsqueda numérica y la demostración deben ser independientes.
+
+Utiliza `python-flint` y Arb, o un sistema equivalente de aritmética rigurosa.
+
+Cada solución candidata debe superar:
+
+1. Certificación global de \(U-f\ge0\).
+2. Certificación de la cola del núcleo hasta el infinito.
+3. Certificación de \(C_\zeta\).
+4. Certificación de la parte elemental.
+5. Certificación de todos los puntos de transición.
+6. Certificación del intervalo completo \(T>1\).
+7. Verificación de la convención de \(S(T)\) en las ordenadas de los ceros.
+
+Todos los números finales deben redondearse hacia arriba.
+
+Guarda los coeficientes con precisión completa. No utilices los doce dígitos impresos en las tablas como fuente exacta cuando existan los JSON originales.
+
+Incluye hashes SHA-256 y versiones de las dependencias.
+
+Una solución de malla sin certificado no es un teorema.
+
+## 8. DEMOSTRAR HASTA DÓNDE PUEDE MEJORARSE
+
+Este apartado es especialmente importante.
+
+No basta con encontrar una constante menor.
+
+Quiero saber cuánto margen queda.
+
+Para cada familia convexa de coeficientes con parámetros fijos:
+
+- Obtén cotas inferiores rigurosas del óptimo.
+- Utiliza certificados duales cuando sea posible.
+- Calcula una brecha de optimalidad certificada.
+- Identifica las restricciones activas.
+- Determina qué condiciones impiden seguir reduciendo la constante.
+
+Intenta construir un certificado del tipo
+
+\[
+C_{\min}\le C_{\mathrm{opt}}\le C_{\max},
+\]
+
+con una diferencia tan pequeña como sea posible.
+
+Distingue entre:
+
+- Óptimo demostrado dentro de una familia concreta.
+- Mejor solución numérica encontrada.
+- Mejor cota superior rigurosamente certificada.
+- Óptimo absoluto entre todos los núcleos posibles, que no debes afirmar sin una demostración específica.
+
+Si una familia parece agotada, cambia de familia antes de concluir.
+
+## 9. EJECUCIÓN
+
+No te limites a escribir programas.
+
+**EJECÚTALOS.**
+
+Utiliza los recursos computacionales disponibles para realizar búsquedas amplias, optimizaciones y certificaciones.
+
+Organiza el trabajo en etapas, conservando el mejor resultado riguroso después de cada una.
+
+Si una etapa falla, diagnostica el motivo, modifica el método y continúa.
+
+No sustituyas una demostración por la afirmación de que debería funcionar.
+
+## 10. ENTREGABLES
+
+Crea un directorio independiente:
+
+`numerics/explicit_S_turing/optimization_C/`
+
+Incluye:
+
+1. Código completo de optimización.
+2. Coeficientes óptimos encontrados en JSON.
+3. Certificadores independientes.
+4. Registros completos de ejecución.
+5. Tabla comparativa de las mejores soluciones.
+6. Certificados de optimalidad o cotas inferiores cuando existan.
+7. Un informe matemático detallado en Markdown.
+8. Un archivo `README.md` con instrucciones de reproducción.
+
+El informe debe contener explícitamente:
+
+\[
+\boxed{
+|S(T)|\le0.08382\log T+C_{\rm nuevo},
+\qquad T>1,
+}
+\]
+
+únicamente si se ha demostrado.
+
+Indica también el mejor candidato no certificado, si existe, pero sepáralo claramente del resultado demostrado.
+
+Prepara un ZIP reproducible que contenga los datos y programas necesarios.
+
+## 11. RESTRICCIONES
+
+- No asumir RH.
+- No utilizar verificaciones de RH como hipótesis global; se permiten teoremas incondicionales que incorporen comprobaciones finitas.
+- No modificar el manuscrito v11.
+- No crear una v12 ni otra versión del artículo.
+- No alterar los certificados originales.
+- No anunciar resultados que no hayas demostrado.
+- No utilizar constantes redondeadas hacia abajo.
+- No abandonar el problema después de encontrar la primera mejora.
+
+Trabaja en una rama independiente de Git y conserva todos los resultados reproducibles.
+
+## CRITERIO FINAL
+
+Quiero que intentes llegar al límite matemático de esta construcción.
+
+No considero terminada la optimización simplemente porque el ahorro adicional sea pequeño.
+
+Continúa mientras existan mejoras identificables que puedan demostrarse con los recursos disponibles.
+
+Cuando finalmente cierres, quiero tres números:
+
+\[
+\boxed{
+\begin{aligned}
+C_{\rm anterior}&=4.40577136,\\
+C_{\rm nuevo}&=\text{mejor constante certificada},\\
+C_{\rm inferior}&=\text{mejor cota inferior demostrada del óptimo}.
+\end{aligned}
+}
+\]
+
+Si no puedes demostrar una cota inferior, indícalo expresamente.
+
+**Prioridad máxima: reducir \(C_{\rm nuevo}\), no reducir el coeficiente \(0.08382\).**
+
+No necesito propuestas de investigación: necesito optimización ejecutada, resultados, demostraciones, archivos y certificados.

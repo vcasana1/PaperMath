@@ -1,0 +1,8 @@
+low_kernel PASS
+low_arithmetic PASS
+low_elementary PASS
+high_kernel PASS
+high_arithmetic PASS
+envelope PASS
+universal_lower PASS
+REPRODUCTION COMPLETE 3.418772350 output /Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/reproduction/20261106_171005

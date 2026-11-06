@@ -1,0 +1,23 @@
+d100_m20.json sha256 5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4
+certify_arithmetic.py sha256 f580fbadf10505961a905535b4d0c5d480e4a0ffbecabd00b8fbb8cbe472eb87
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+summed primes 1000000 seconds 7.687382936477661
+summed primes 2000000 seconds 14.49695110321045
+summed primes 3000000 seconds 22.883859872817993
+summed primes 4000000 seconds 31.425729036331177
+summed primes 5000000 seconds 41.36095595359802
+partial [3.482174636565135782239801118281785630263865781370805894525216031464546 +/- 5.63e-70] psi [99998242.79662678234160684045753580904452286817126960114125131028399762 +/- 8.48e-63] phase_gain [0.27981017397761703952240387839669854259331252125743976315064446284416472809 +/- 6.14e-75] phase_boxes 10800 seconds 49.48760175704956
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_arithmetic.py", line 132, in <module>
+    ap.add_argument('--step',default='0.02');a=ap.parse_args();certify(a.path,a.N,a.P0,step=a.step)
+                                                               ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_arithmetic.py", line 122, in certify
+    result=dict(certified=True,N0=N,P0=P0,Czeta_upper=up_str(Cz,24),partial_upper=up_str(total,24),
+                                                      ~~~~~~^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/hybrid_asymptotic/certutil.py", line 38, in up_str
+    u = exact(x.upper()); s = _dir_str(u, n, ROUND_CEILING)
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/hybrid_asymptotic/certutil.py", line 27, in exact
+    assert x.is_exact() and x.is_finite(), x
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: nan

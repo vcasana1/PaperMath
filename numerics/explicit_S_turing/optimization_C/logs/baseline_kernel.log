@@ -1,0 +1,15 @@
+sol.json sha256 bc61062c39431f9498808273a0673ca1381c0a16313f88d89d2684e53da8431e
+certify_kernel.py sha256 994f7a12faa77a32eaf5f5c92734952f0e52633835e4e319a1ad79cd6fca0fd5
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_kernel.py", line 82, in <module>
+    if __name__=='__main__':certify(sys.argv[1],int(sys.argv[2]) if len(sys.argv)>2 else 100)
+                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_kernel.py", line 75, in certify
+    t=time.time();result[label]=bisect(fn,lo,hi);result[label]['seconds']=time.time()-t
+                                ~~~~~~^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/certify_kernel.py", line 69, in bisect
+    if dep>=65:raise RuntimeError(f'uncertified interval {l} {h}: {v}')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: uncertified interval 36893488147419103231/73786976294838206464 1/2: nan

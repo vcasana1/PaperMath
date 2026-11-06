@@ -1,0 +1,10 @@
+d110_m60_panel.json sha256 9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b
+certify_kernel.py sha256 cf06ebf360ffd821417e92f9fc48035024558868b79876fbddedd5cc0c536dcc
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+t_zero {'boxes': 25, 'positive_lower': '0.0000004796978132362549', 'seconds': 0.004667043685913086}
+positive {'boxes': 34233, 'positive_lower': '0.0000000000000006516207993199192', 'seconds': 10.243891954421997}
+negative {'boxes': 32535, 'positive_lower': '0.0000000000000004297632991963687', 'seconds': 10.146452903747559}
+tail_positive {'boxes': 4095, 'positive_lower': '0.0000009038545808059743', 'seconds': 1.3772549629211426}
+tail_negative {'boxes': 4095, 'positive_lower': '0.0000009136762597430517', 'seconds': 1.1755750179290771}
+ALL KERNEL BOUNDARIES AND GLOBAL (K) CERTIFIED

@@ -1,0 +1,62 @@
+conditioning 24960.13715523055
+===============================================================================
+                                     CVXPY                                     
+                                     v1.9.3                                    
+===============================================================================
+(CVXPY) Nov 06 11:27:10 AM: Your problem has 187 variables, 38058 constraints, and 0 parameters.
+(CVXPY) Nov 06 11:27:10 AM: It is compliant with the following grammars: DCP, DQCP
+(CVXPY) Nov 06 11:27:10 AM: DCP verification time: 0.0061 seconds.
+(CVXPY) Nov 06 11:27:10 AM: Expression tree has 9 nodes.
+(CVXPY) Nov 06 11:27:10 AM: (If you need to solve this problem multiple times, but with different data, consider using parameters.)
+(CVXPY) Nov 06 11:27:10 AM: CVXPY will first compile your problem; then, it will invoke a numerical solver to obtain a solution.
+(CVXPY) Nov 06 11:27:10 AM: Your problem is compiled with the CPP canonicalization backend.
+-------------------------------------------------------------------------------
+                                  Compilation                                  
+-------------------------------------------------------------------------------
+(CVXPY) Nov 06 11:27:10 AM: Compiling problem (target solver=CLARABEL).
+(CVXPY) Nov 06 11:27:10 AM: Reduction chain: Dcp2Cone -> CvxAttr2Constr -> EliminateZeroSized -> ConeMatrixStuffing -> CLARABEL
+(CVXPY) Nov 06 11:27:10 AM: Applying reduction Dcp2Cone
+(CVXPY) Nov 06 11:27:10 AM: Applying reduction CvxAttr2Constr
+(CVXPY) Nov 06 11:27:10 AM: Applying reduction EliminateZeroSized
+(CVXPY) Nov 06 11:27:10 AM: Applying reduction ConeMatrixStuffing
+(CVXPY) Nov 06 11:27:11 AM: Applying reduction CLARABEL
+(CVXPY) Nov 06 11:27:11 AM: Finished problem compilation (took 6.394e-01 seconds).
+-------------------------------------------------------------------------------
+                                Numerical solver                               
+-------------------------------------------------------------------------------
+(CVXPY) Nov 06 11:27:11 AM: Invoking solver CLARABEL  to obtain a solution.
+-------------------------------------------------------------
+           Clarabel.rs v0.11.1  -  Clever Acronym                
+
+                   (c) Paul Goulart                          
+                University of Oxford, 2022                   
+-------------------------------------------------------------
+
+problem:
+  variables     = 2681
+  constraints   = 45540
+  nnz(P)        = 0
+  nnz(A)        = 852624
+  cones (total) = 2495
+    : Nonnegative = 1,  numel = 38058
+    : SecondOrder = 2494,  numel = (3,3,3,3,...,3)
+
+settings:
+  linear algebra: direct / qdldl, precision: 64 bit (1 thread)
+  max iter = 300, time limit = Inf,  max step = 0.990
+  tol_feas = 1.0e-8, tol_gap_abs = 1.0e-8, tol_gap_rel = 1.0e-8,
+  static reg : on, ϵ1 = 1.0e-8, ϵ2 = 4.9e-32
+  dynamic reg: on, ϵ = 1.0e-13, δ = 2.0e-7
+  iter refine: on, reltol = 1.0e-13, abstol = 1.0e-12,
+               max iter = 10, stop ratio = 5.0
+  equilibrate: on, min_scale = 1.0e-4, max_scale = 1.0e4
+               max iter = 10
+
+iter    pcost        dcost       gap       pres      dres      k/t        μ       step      
+---------------------------------------------------------------------------------------------
+  0  +0.0000e+00  +6.3419e+06  6.34e+06  1.25e+00  1.00e+00  1.00e+00  1.00e+00   ------   
+  1  +0.0000e+00  +6.3419e+06  6.34e+06  1.25e+00  1.00e+00  1.00e+00  1.00e+00  0.00e+00  
+---------------------------------------------------------------------------------------------
+Terminated with status = NumericalError
+solve time = 92.469333ms
+SOLVER ERROR SolverError("Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.")

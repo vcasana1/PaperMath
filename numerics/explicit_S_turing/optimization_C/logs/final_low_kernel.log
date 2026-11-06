@@ -1,0 +1,10 @@
+low_L60.json sha256 79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf
+certify_kernel.py sha256 f09761952532b4cb14a25f00591e5bda4dffffecc6b3dc5445e496f3c404e483
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+t_zero {'boxes': 17, 'positive_lower': '0.0001285550032030088', 'seconds': 0.0015690326690673828}
+positive {'boxes': 407, 'positive_lower': '0.00000009331807493500219', 'seconds': 0.03130006790161133}
+negative {'boxes': 271, 'positive_lower': '0.0000001101275099405668', 'seconds': 0.019613027572631836}
+tail_positive {'boxes': 15, 'positive_lower': '0.002123328152624965', 'seconds': 0.0003762245178222656}
+tail_negative {'boxes': 15, 'positive_lower': '0.003143608695063710', 'seconds': 0.00032782554626464844}
+ALL KERNEL BOUNDARIES AND GLOBAL (K) CERTIFIED
