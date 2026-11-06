@@ -58,6 +58,12 @@
 \CGtip{eq:jensen_bound}{Lemma 5.4: sum over rho of W(b_rho, t_rho) <= 2 (J(e;c,R) + eps) log T for T >= T_eps.}
 \CGtip{eq:CH}{C_H = c_R1/(2pi) + (1/pi) sum_k kappa_k J(e_P; c_k, R_k).}
 \CGtip{eq:hybrid_ineq}{Proposition 6.3: f(b,t) <= U(b,t) + sum_k kappa_k W_k(b,t) for 0 <= b <= 1/2, t != 0.}
+\CGtip{eq:green_explicit}{Uniform explicit Green--Jensen theorem: |S(T)| <= 0.08382 log T + 2.959227629, T>1.}
+\CGtip{thm:green_explicit}{New explicit theorem: 2 certified height branches and 23 Green weights; original six-line bounds are preserved.}
+\CGtip{eq:green_majorant}{Global geometric majorant f <= U + sum kappa W; 16 rectangles, 7 discs, 119 kernel coefficients.}
+\CGtip{eq:green_bounds}{Residual bounds for T<=exp(93.077380) and T>=exp(93.077380) respectively.}
+\CGtip{sec:green_explicit}{Explicit Green--Jensen certificate and two-branch uniform envelope.}
+\CGtip{sec:conclusions}{Conclusions: new uniform explicit S(T), original six-line N(T), distinct asymptotic estimate.}
 \CGtip{eq:CH_value}{C_H = 0.0748883899702... < 0.0748883899703.}
 \CGtip{eq:Lambda0}{Lambda(0) = (3 sqrt 3 - pi)/(12 pi log 2) = 0.0786252...}
 \CGtip{eq:a_def}{a = limsup |S(T)| / log T.}
@@ -189,6 +195,9 @@
 \newcommand{\LineBAone}{0.08382}
 \newcommand{\LineBAthreeN}{5.326}
 \newcommand{\LineBAthreeS}{4.444}
+\newcommand{\GreenC}{2.959227629}
+\newcommand{\GreenA}{0.08382}
+\newcommand{\GreenLswitch}{93.077380}
 \newcommand{\LineBreakA}{8.574788}
 \newcommand{\LineBreakAfrac}{\tfrac{80200}{9353}}
 \newcommand{\LineBreakB}{49.111111}
@@ -214,21 +223,37 @@
 \newcommand{\HybBoxesTail}{155\,116}
 
 
-\title[Explicit and asymptotic estimates for $N(T)$]{Explicit and asymptotic estimates for the zero-counting function of the Riemann zeta-function}
+\title[Explicit bounds for $S(T)$ and $N(T)$]{Explicit and asymptotic estimates for the argument and zero-counting function of the Riemann zeta-function}
 \author{V\'ictor Casa\~na-Giner}
 \address{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain}
 \email{\href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es}}
 \thanks{ORCID \href{https://orcid.org/0000-0002-8252-2608}{0000-0002-8252-2608}.}
-\date{1 November 2026}
+\date{7 November 2026}
 
 \begin{document}
 
 \begin{abstract}
-Let $N(T)$ be the number of non-trivial zeros of the Riemann zeta-function with imaginary part in $(0,T]$, counted with multiplicity, and let $S(T)$ be the argument of $\zeta$ on the critical line, normalised so that $N(T)=\frac1\pi\vartheta(T)+1+S(T)$. Two estimates are proved by the method of Turing type that Amberger introduced for Dedekind zeta-functions and that Bellotti and Wong extended to Artin $L$-functions. The first is explicit: for every $T\ge1$,
+Let $N(T)$ count the non-trivial zeros of the Riemann zeta-function
+with ordinate in $(0,T]$, with multiplicity, and define
+$S(T)=N(T)-\vartheta(T)/\pi-1$ using the right-continuous convention.
+We establish the explicit unconditional inequality
 \[
-\Bigl|N(T)-\frac T{2\pi}\log\frac T{2\pi e}\Bigr|\le\LineBAone\log T+\LineBAthreeN,\qquad |S(T)|\le\LineBAone\log T+\LineBAthreeS,
+|S(T)|\le\GreenA\log T+\GreenC\qquad(T>1).
 \]
-and a piecewise linear bound, formed by six lines, lies below the explicit bounds of Amberger and of Bellotti and Wong for every $T\ge1$. The kernels of the method are found by convex optimisation instead of by hand, the constant coming from the Euler product is computed exactly up to $10^8$ and bounded beyond by a prime-number estimate of Rosser and Schoenfeld, and the elementary part is evaluated as one function of $T$. The second estimate is asymptotic: $\limsup_{T\to\infty}|S(T)|/\log T<\CHup$. It comes from a hybrid of the kernel majorant with Jensen's formula on discs to the right of the critical line, where the growth of $\zeta$ is controlled by the subconvexity bounds of Bourgain, of Trudgian and Yang, of Tao, Trudgian and Yang, and of Heath-Brown. The constant is smaller than the value $0.0786252\ldots$ that the method of Backlund gives for discs centred near $s=1$ even under the Lindel\"of hypothesis. Every inequality between elementary functions that enters a proof is certified in ball arithmetic, and no numerical information on the zeros is used.
+It combines the exact identity of Turing type with a certified order-$60$
+kernel (119 coefficients), Green--Jensen weights of 16 rectangles and
+7 discs, and Euler-product centre contributions coupled to the prime
+phases. A separate kernel covers small heights. The remaining positive
+$\log\log T$ contribution is absorbed by the strict slack of the main
+coefficient, with an analytic maximum and explicit height remainders.
+We retain the original six-line estimates for $N(T)$ and $S(T)$ and
+their unchanged certificates, including
+$|N(T)-\mathcal M(T)|\le0.08382\log T+5.326$ for $T\ge1$.
+Independently, the asymptotic hybrid gives
+$\limsup_{T\to\infty}|S(T)|/\log T<0.0748883899703$.
+A reproducible external archive supplies the new exact coefficients
+and interval-verification records. No assumption of the Riemann
+hypothesis or global optimality claim is made.
 \end{abstract}
 
 \maketitle
@@ -278,7 +303,7 @@ for any admissible growth profile of $\zeta$, even under the Lindel\"of hypothes
 
 In 2025 Amberger \cite{Amberger2025} introduced a different method, inspired by Turing's \cite[Lemma~1]{Turing1953}, for Dedekind zeta-functions, and Bellotti and Wong \cite{BellottiWong2026} extended it to Artin $L$-functions and sharpened it. Instead of a disc, it uses an exact identity: for $d>\frac12$, $N(T)$ equals a combination of the arguments of $\xi$ at the two points $\frac12+d+iT$ and $\frac12+2d+iT$, which lie in the zero-free half-plane $\Rp s>1$, plus a sum over all the zeros of an explicit function $f(\frac12-\beta,T-\gamma)$ (Lemma~\CGref{lem:identity}). The sum over the zeros is then estimated from above and from below by sums of functions of the form $\Rp(x+it)^{-j}$ and $\Ip(x+it)^{-j}$, whose sums over the zeros are the derivatives of $\xi'/\xi$ at $\frac12+d+iT$, again in the zero-free half-plane. For the Riemann zeta-function the method gives $|N(T)-\main(T)|\le0.097\log T+4.807$ for all $T\ge1$ in \cite[Cor.~2]{Amberger2025}, and $\min(0.0946\log T+5.746,\ 0.097\log T+4.954)$ in \cite[Cor.~1.3]{BellottiWong2026}. Both articles choose the coefficients of the majorant by trial, with three or four of them, and Bellotti and Wong \cite[\S3]{BellottiWong2026} ask what the method can give when more coefficients are allowed and chosen by convex optimisation, and whether the infimum of the leading constant over all such majorants is zero.
 
-This article contains two contributions to that method. The first is quantitative. The majorant is taken from a family with nineteen coefficients and the coefficients are chosen by a second-order cone programme, with the inequality that defines the majorant imposed on a grid and refined by cutting planes. The constant that comes from the Euler product is computed exactly in ball arithmetic over all prime powers up to $10^8$, taking, for each prime, the maximum over the common phase of all its powers (an observation of Amberger \cite[Lemma~9]{Amberger2025}), and bounded beyond $10^8$ by partial summation with the inequality $\psi(x)<1.03883x$ of Rosser and Schoenfeld \cite[Thm.~12]{RosserSchoenfeld1962}. The remaining part, which comes from $\Gamma$, from $s(s-1)$ and from the main term, is evaluated as a single function of $T$ whose supremum over $T\ge1$ is certified. The result (Theorem~\CGref{thm:explicit}) is a piecewise linear bound, valid for all $T\ge1$, that lies below the bounds of \cite{Amberger2025} and \cite{BellottiWong2026} at every height; its last line has leading constant $\LineBAone$.
+The original construction contains two contributions to that method; this version adds an independently certified explicit geometric extension. The first is quantitative. The majorant is taken from a family with nineteen coefficients and the coefficients are chosen by a second-order cone programme, with the inequality that defines the majorant imposed on a grid and refined by cutting planes. The constant that comes from the Euler product is computed exactly in ball arithmetic over all prime powers up to $10^8$, taking, for each prime, the maximum over the common phase of all its powers (an observation of Amberger \cite[Lemma~9]{Amberger2025}), and bounded beyond $10^8$ by partial summation with the inequality $\psi(x)<1.03883x$ of Rosser and Schoenfeld \cite[Thm.~12]{RosserSchoenfeld1962}. The remaining part, which comes from $\Gamma$, from $s(s-1)$ and from the main term, is evaluated as a single function of $T$ whose supremum over $T\ge1$ is certified. The result (Theorem~\CGref{thm:explicit}) is a piecewise linear bound, valid for all $T\ge1$, that lies below the bounds of \cite{Amberger2025} and \cite{BellottiWong2026} at every height; its last line has leading constant $\LineBAone$.
 
 The second contribution is methodological. By the maximum principle, the constraints that determine the optimal majorant are those at hypothetical zeros with $\beta$ near $0$ or near $1$, and the method of Turing type, which uses no information on $\zeta$ inside the critical strip, cannot exclude them. In the hybrid of Section~\CGref{sec:jensen} the majorant is allowed to fail near $\beta\in\{0,1\}$, and the excess is paid by weights of the form $\log^+(R/|\rho^*-s_0|)$, where $s_0=c+i(T+v)$ with $c>1$ and $\rho^*$ is the one of $\rho$, $1-\bar\rho$ with real part $\ge\frac12$. The sum of such a weight over the zeros is bounded by Jensen's formula on the disc $|s-s_0|<R$, and the integral of $\log|\zeta|$ on its boundary by the subconvexity bounds for $\zeta$ in the strip. The coefficients of the majorant and the weights of the discs are chosen together by linear programming. This gives (Theorem~\CGref{thm:hybrid})
 \[
@@ -286,7 +311,13 @@ The second contribution is methodological. By the maximum principle, the constra
 \]
 below the value \CGeqref{eq:Lambda0}. The bound is asymptotic: the subconvexity estimates used have no explicit constants, and no height from which the inequality holds is computed.
 
-The identity of Lemma~\CGref{lem:identity}, the family of kernel functions and the way their sums over the zeros are evaluated are due to Amberger \cite{Amberger2025} and to Bellotti and Wong \cite{BellottiWong2026}, as is the maximum over the phase in the Euler product; they are proved here again, with the normalisation used in this article, so that the article is self-contained. The convex optimisation, the certification of every inequality in ball arithmetic \cite{Johansson2017}, and the hybrid with Jensen's formula are, to the author's knowledge, new. Backlund's method and the method of Turing type are compared in Section~\CGref{sec:methods}, where the computations are also described. All numerical statements in the proofs are certified in Arb ball arithmetic \cite{Johansson2017} through \texttt{python-flint}; the programs and their outputs are reproduced after the bibliography (Appendices~\CGref{app:code}--\CGref{app:data}), and no computation of zeros of $\zeta$, in particular no verification of the Riemann hypothesis up to some height, is used anywhere.
+The uniform geometric extension of Theorem~\CGref{thm:green_explicit}
+uses rectangular and circular Green--Jensen terms and couples the
+Euler-product contributions at their centres to the prime phases of
+the kernel. Unlike the asymptotic hybrid, its boundary growth inputs
+are explicit and the initial range is separately certified.
+
+The identity of Lemma~\CGref{lem:identity}, the family of kernel functions and the way their sums over the zeros are evaluated are due to Amberger \cite{Amberger2025} and to Bellotti and Wong \cite{BellottiWong2026}, as is the maximum over the phase in the Euler product; they are proved here again, with the normalisation used in this article, so that the article is self-contained. The convex optimisation, the certification of every inequality in ball arithmetic \cite{Johansson2017}, and the hybrid with Jensen's formula are, to the author's knowledge, new. Backlund's method and the method of Turing type are compared in Section~\CGref{sec:methods}, where the computations are also described. All numerical statements in the proofs are certified in Arb ball arithmetic \cite{Johansson2017} through \texttt{python-flint}; the programs and their outputs are reproduced after the bibliography (Appendices~\CGref{app:code}--\CGref{app:data}), and no computed zeta zero is required to prove the upper bounds. An optional lower-bound experiment in the separate new archive does not enter the proof of any upper bound.
 
 %======================================================================
 \section{Results}\label{sec:results}
@@ -366,7 +397,7 @@ C_{\rm H}=\CHval\ldots<\CHup .
 In particular $\mathfrak a<\Lambda(0)$, with $\Lambda(0)$ as in \CGeqref{eq:Lambda0}.
 \end{theorem}
 
-Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. The explicit bounds of Theorem~\CGref{thm:explicit} are not improved by it at any finite height.
+Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. Taken alone, that asymptotic theorem does not give an improved finite-height bound; Theorem~\CGref{thm:green_explicit} supplies a separate explicit extension.
 
 \begin{remark}[Conventions]\label{rem:conventions}
 Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not an ordinate and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at an ordinate, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
@@ -375,6 +406,23 @@ Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count
 \begin{remark}[On the infimum of the leading constant]\label{rem:infimum}
 Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ over all majorants of the type used in the method, with finitely many kernel functions, is $0$. The computations of Section~\CGref{sec:methods} give, for the family \CGeqref{eq:kernel_def} optimised also over $d\in\{0.7,0.8,0.9\}$, the leading constants $0.08831$, $0.08071$, $0.0800$ and $0.0795$ for $m=4,10,20,40$ (grid optima, not certified), which suggest a positive limit near $0.079$. The same computations with the admissibility constraint imposed only at $\beta=\frac12$, as would suffice under the Riemann hypothesis, give $0.050$, $0.020$ and $0.0126$ for $m=4,10,20$. The obstruction thus comes from hypothetical zeros near $\beta\in\{0,1\}$, and it is exactly what the hybrid of Theorem~\CGref{thm:hybrid} removes, at the price of using subconvexity bounds for $\zeta$ inside the strip.
 \end{remark}
+
+
+\begin{theorem}[Uniform explicit Green--Jensen estimate]\label{thm:green_explicit}
+For all $T>1$, unconditionally,
+\begin{equation}
+\boxed{\displaystyle |S(T)|\le\GreenA\log T+\GreenC.}
+\label{eq:green_explicit}
+\end{equation}
+The bound holds also for the right- and left-continuous limits
+at zero ordinates, and hence for their arithmetic mean.
+\end{theorem}
+
+This is a new, separately certified explicit geometric estimate;
+it does not replace the original six lines of
+Theorem~\CGref{thm:explicit} or their certificates.
+The proof and its two certified height ranges are in
+Section~\CGref{sec:green_explicit}.
 
 %======================================================================
 \section{The identity of Turing type}\label{sec:identity}
@@ -998,17 +1046,116 @@ and $v\in\{0,\pm0.2,\pm0.35,\pm0.5,\pm0.65,\pm0.8,\pm1,\pm1.3,\pm1.6,\pm2\}$; th
 All certificates use \texttt{python-flint}~0.9.0 (Arb \cite{Johansson2017}, FLINT \cite{FLINT}) at $256$ bits of precision; a ball computed by Arb contains the exact value of the expression evaluated, and the programs only ever use the endpoints of balls in the direction that makes the final statement weaker. The kernel inequality for the hybrid ($T_1=40$) took $716$ seconds; for the kernel of $\ell_{400}$ the three parts of Proposition~\CGref{prop:kernel_cert} needed $11\,835\,193$, $9\,801\,985$ and $4\,194\,302$ boxes and $2716$ seconds, and for that of $\ell_{6000}$, $3243$ seconds. The constant $C_\zeta$ for each kernel takes between $80$ and $165$ seconds (the sum over the $5\,761\,455$ primes below $10^8$ and their powers, and the tail), and the elementary part about $120$ seconds per mode. The coefficients are passed to the certifiers as the exact binary numbers written by the optimiser (the JSON files of Appendix~\CGref{app:data}, whose decimal strings round-trip), so there is no rounding between search and certificate other than the rational rounding of the disc data described before \CGeqref{eq:CH}, which is itself part of the certified data.
 
 \subsection{Comparison of the two methods}\label{subsec:comparison_methods}
-Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Making Theorem~\CGref{thm:hybrid} explicit requires versions of \CGeqref{eq:admissible} with explicit constants, for which the available bounds are those of Hiary, Patel and Yang \cite{HiaryPatelYang2024} on the critical line, of Yang \cite{Yang2024} on the lines $\sigma=1-m/(2^m-2)$, and of Bellotti \cite{Bellotti2024} in the strip; with them the method gives bounds of the form $A_1\log T+B\log\log T+C$ with $A_1$ near $0.076$, valid from a computable height, and this is left for a later article.
+Backlund's method bounds the variation of $\arg\zeta$ on a horizontal segment ending at $\frac12+iT$ by the number of zeros of $\Rp\zeta$ on it, which Jensen's formula controls through the growth of $\zeta$ on a disc centred at $c+iT$, $c>1$, that reaches $\frac12-\delta$; the growth to the left of the critical line is supplied by the functional equation, and the factor $\frac1{\log2}$ in \CGeqref{eq:Lambda0} comes from the geometry of a disc that reaches $\frac12$ from a centre at distance about $1$. The method of Turing type bounds a sum over all the zeros, each weighted by $f(b_\rho,t_\rho)$, by its exact evaluation at points of $\Rp s>1$, and needs no information inside the strip; its limit, in the computations of Remark~\CGref{rem:infimum}, is near $0.079$. The hybrid keeps the exact evaluation for most of the sum and uses Jensen's formula only where the kernel fails, on small discs that lie entirely in $\Rp s\ge\frac12$, so that only the growth of $\zeta$ to the right of the critical line, where it is smallest, is paid for. Any improvement of the bounds for $\mu(\sigma)$ on $(\frac12,1)$ lowers $C_{\rm H}$ through $J(\eP;c_k,R_k)$ without any other change in the proof. Theorem~\CGref{thm:green_explicit} now gives an explicit
+Green--Jensen extension using independently certified
+boundary constants and a separate low-height covering kernel.
+It does not alter the earlier asymptotic construction
+or the value of $C_{\rm H}$.
+
+
+\section{Explicit Green--Jensen certification}\label{sec:green_explicit}
+
+The new all-height estimate is obtained from the Turing identity
+of Lemma~\CGref{lem:identity} with a separately certified
+majorant: an order-$60$ kernel with $119$ coefficients, plus
+non-negative Green weights for $16$ rectangles and $7$ discs.
+The certified continuous inequality is
+\begin{equation}
+f(b,t)\le U(b,t)+\sum_{j=1}^{23}\kappa_jW_j(b,t),
+\quad 0\le b\le\tfrac12,\quad t\ne0.
+\label{eq:green_majorant}
+\end{equation}
+The global proof uses the harmonic minimum principle on all
+geometric cells, verified interfaces and both infinite tails.
+The centre terms are expanded by the Euler product in
+$\Re s>1$, and maximise jointly with the kernel at the
+same phase $T\log p$. Explicit bounds of
+Patel--Yang \cite{PatelYang2024} and Yang \cite{Yang2024}
+give certified harmonic boundary costs. The upper branch has
+$A<0.083528809556647599$ and
+$B<0.064611026099352525$ as the coefficients of
+$\log T$ and $\log\log T$; its logarithmic term is absorbed
+by the strict slack in $0.08382-A$.
+
+
+For a disc centred at $c+i(T+v)$ the weight at a
+reflected zero is
+$\log^+(R/\sqrt{(c-\frac12-|b|)^2+(t+v)^2})$.
+For a rectangle, the analogous weight is its Dirichlet
+Green function, extended by zero outside its domain.
+In either geometry, Green--Jensen gives
+\[
+\sum_{w\in D_T}{\cal G}_D(c;w)
+=\int_{\partial D_T}\log|\zeta(s)|\,d\omega_c(s)
+-\log|\zeta(c+i(T+v))|.
+\]
+Here $d\omega_c$ is harmonic measure, the sum counts
+zeros with multiplicity, and the reflection of zeros
+across $\Re s=\frac12$ introduces the factor two
+required in the original Turing identity.
+
+Each centre has $c>1$, hence its term is exactly
+\[
+-\log|\zeta(c+i(T+v))|=
+-\sum_p\sum_{k\ge1}\frac{p^{-kc}}{k}
+\cos(k(T+v)\log p).
+\]
+The centre and kernel terms are maximised with
+the same phase for each prime and all its powers.
+The certified joint Euler contribution is
+$C_\zeta^{\rm joint}<2.727505930910822688$;
+this is not the old six-line $C_\zeta$.
+The global geometric verifier treats all cell
+interfaces with rational coordinates and Arb enclosures.
+The harmonic-cost verifier handles boundary integrals
+and explicit $O(T^{-1})$ corrections, without
+discarding them. The envelope verifier maximises
+$-(0.08382-A)L+B\log L$ analytically for
+$L=\log T\ge93.077380$; the maximum is enclosed at
+$221.8858055762487512189634<L<
+221.8858055762487512189635$.
+
+A separate order-$5$ kernel controls the initial range.
+The two verified residual upper bounds are
+\begin{equation}
+\begin{aligned}
+\sup_{1<T\le e^{93.077380}}
+(|S(T)|-0.08382\log T)&<2.959218418359088442,\\
+\sup_{T\ge e^{93.077380}}
+(|S(T)|-0.08382\log T)&<2.959227628288475263.
+\end{aligned}
+\label{eq:green_bounds}
+\end{equation}
+They establish Theorem~\CGref{thm:green_explicit}.
+Exact data, independent interval verifiers and execution logs
+are in the companion archive \cite{CasanaCertificate2026}.
+The numerical certificate is not claimed to be an optimality
+proof or a formal verification of its own implementation.
+
+\section{Conclusions}\label{sec:conclusions}
+
+The new bound \CGeqref{eq:green_explicit} holds for all $T>1$.
+The six older lines and the asymptotic hybrid, together with
+their proofs and numerical certificates, remain unchanged.
+The large additive improvement comes from the new
+Green--Jensen majorant and coupled prime phases.
 
 \subsection*{Data availability}
-The programs, the coefficient files and the outputs of all certificates are reproduced in Appendices~\CGref{app:code}--\CGref{app:data} and are available at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
+The original six-line and asymptotic programs and outputs are
+reproduced in Appendices~\CGref{app:code}--\CGref{app:data}
+and at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
+The exact new Green--Jensen data and interval verifiers are
+in the independently reproducible archive
+\url{https://github.com/vcasana1/PaperMath/tree/codex/optimize-uniform-S-constant/certificado_S_2_959227629},
+SHA-256 of ZIP:
+\texttt{a157aafd247a49dd6e8c002762dce6d66fd4500838c8e16d1456f14d0479b131}.
 
 % ---- inlined from ai_declaration.tex ----
 \subsection*{AI declaration}
-The ideas of this article, the constructions and the strategy of the proofs are the author's. Generative AI tools were used during the work and the preparation of the manuscript: Claude (Anthropic), models Claude Fable~5.1, Claude Opus~5.5 and Claude Sonnet~5.5; ChatGPT (OpenAI), model Astra~6; and Microsoft~365 Copilot, based on the GPT-5 reasoning model. Under the author's direction, Claude and ChatGPT were used to draft and revise the \LaTeX\ text, to check proofs, constants and citations against the sources, and to search the literature. The Python programs of Appendix~\CGref{app:code} were written with Claude. Microsoft~365 Copilot was used only to review drafts of the manuscript. The author has checked the whole article and takes full responsibility for its content. No AI tool is an author.
+The ideas of this article, the constructions and the strategy of the proofs are the author's. Generative AI tools were used during the work and the preparation of the manuscript: Claude (Anthropic), models Claude Fable~5.1, Claude Opus~5.5 and Claude Sonnet~5.5; ChatGPT (OpenAI), model Astra~6; and Microsoft~365 Copilot, based on the GPT-5 reasoning model. Under the author's direction, Claude and ChatGPT were used to draft and revise the \LaTeX\ text, to check proofs, constants and citations against the sources, and to search the literature. The Python programs of Appendix~\CGref{app:code} were written with Claude. Microsoft~365 Copilot was used only to review drafts of the manuscript. Codex (OpenAI) was used, under the author's direction, to develop and execute the separate Green--Jensen optimisation and its Arb-based certificate. The author has checked the whole article and takes full responsibility for its content. No AI tool is an author.
 
 \subsection*{Mathematical software}
-The computations of Appendices~\CGref{app:code}--\CGref{app:cert} use Python~3.13 with \texttt{numpy}, \texttt{scipy}, \texttt{cvxpy} (solver Clarabel), \texttt{mpmath} and \texttt{python-flint}~0.9.0 (Arb ball arithmetic \cite{Johansson2017}, FLINT~3.6.0 \cite{FLINT}).
+The original computations of Appendices~\CGref{app:code}--\CGref{app:cert} use Python~3.13 with \texttt{numpy}, \texttt{scipy}, \texttt{cvxpy} (solver Clarabel), \texttt{mpmath} and \texttt{python-flint}~0.9.0 (Arb ball arithmetic \cite{Johansson2017}, FLINT~3.6.0 \cite{FLINT}).
 
 
 \begin{thebibliography}{99}
@@ -1048,6 +1195,10 @@ The computations of Appendices~\CGref{app:code}--\CGref{app:cert} use Python~3.1
 \bibitem{Johansson2017} F. Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, \textit{IEEE Trans. Comput.} \textbf{66} (2017) 1281--1292, \href{https://doi.org/10.1109/TC.2017.2690633}{doi:10.1109/TC.2017.2690633}.
 
 \bibitem{Olver1974} F. W. J. Olver, \textit{Asymptotics and Special Functions} (Academic Press, New York, 1974); reprinted (A K Peters, Wellesley, MA, 1997), \href{https://doi.org/10.1201/9781439864548}{doi:10.1201/9781439864548}.
+
+\bibitem{PatelYang2024} D. Patel and A. Yang, An explicit sub-Weyl bound for $\zeta(1/2+it)$, \textit{J. Number Theory} \textbf{262} (2024) 301--334, \href{https://doi.org/10.1016/j.jnt.2024.03.011}{doi:10.1016/j.jnt.2024.03.011}.
+
+\bibitem{CasanaCertificate2026} V. Casa\~na-Giner, Reproducible Green--Jensen certificate for $|S(T)|\le0.08382\log T+2.959227629$, computational companion to the present article, 7 November 2026, \url{https://github.com/vcasana1/PaperMath/tree/codex/optimize-uniform-S-constant/certificado_S_2_959227629}.
 
 \bibitem{PlattTrudgian2015} D. J. Platt and T. S. Trudgian, An improved explicit bound on $|\zeta(\frac12+it)|$, \textit{J. Number Theory} \textbf{147} (2015) 842--851, \href{https://doi.org/10.1016/j.jnt.2014.08.019}{doi:10.1016/j.jnt.2014.08.019}.
 
