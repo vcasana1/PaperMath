@@ -17,7 +17,7 @@ with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) 
         z.writestr(item,data,compress_type=zipfile.ZIP_DEFLATED,compresslevel=9)
     for p in files:add(prefix+p.relative_to(BASE).as_posix(),p.read_bytes())
     for name in upstream:add('numerics/explicit_S_turing/'+name,(EXPLICIT/name).read_bytes())
-    add('README_PACKAGE.md',b'Extract into an empty directory. Then cd numerics/explicit_S_turing/optimization_C and follow README.md. FINAL_NUMBERS.md and certificates/FINAL_RESULT.json identify the proved bound.\n')
+    add('LEEME_CERTIFICADO.md',(BASE/'CERTIFICADO.md').read_bytes())
 with zipfile.ZipFile(dest) as z:
     assert z.testzip() is None
     for p in files:assert hashlib.sha256(z.read(prefix+p.relative_to(BASE).as_posix())).hexdigest()==sha(p)

@@ -1,0 +1,3 @@
+{"iteration": 0, "worst_scaled_slack": -1.4417042302428129e-05, "cuts": 34, "geometries": 9, "seconds": 2.104340076446533}
+{"iteration": 1, "worst_scaled_slack": 1.9636015675672525e-06, "cuts": 0, "geometries": 9, "seconds": 44.928627014160156}
+REPAIRED NUMERICALLY candidates/geometry_joint_probe_d11_repaired.json

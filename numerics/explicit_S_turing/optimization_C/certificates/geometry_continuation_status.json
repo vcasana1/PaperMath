@@ -1,0 +1,40 @@
+{
+  "status": "stopped_by_user",
+  "selected": "candidates/geometry_m60_d1p1_joint_neighbors11_repaired.json",
+  "stages": [
+    {
+      "stage": 9,
+      "factor": "1",
+      "seed": "candidates/geometry_m60_d1p1_joint_neighbors8_repaired.json",
+      "candidate": "candidates/geometry_m60_d1p1_joint_neighbors9_repaired.json",
+      "C": "2.963951907",
+      "previous_C": "2.969936673",
+      "gain": "0.005984766",
+      "seconds": 624.9295651912689
+    },
+    {
+      "stage": 10,
+      "factor": "1",
+      "seed": "candidates/geometry_m60_d1p1_joint_neighbors9_repaired.json",
+      "candidate": "candidates/geometry_m60_d1p1_joint_neighbors10_repaired.json",
+      "C": "2.960176836",
+      "previous_C": "2.963951287",
+      "gain": "0.003774451",
+      "seconds": 629.0017468929291
+    },
+    {
+      "stage": 11,
+      "factor": "1",
+      "seed": "candidates/geometry_m60_d1p1_joint_neighbors10_repaired.json",
+      "candidate": "candidates/geometry_m60_d1p1_joint_neighbors11_repaired.json",
+      "C": "2.959227629",
+      "previous_C": "2.960176836",
+      "gain": "0.000949207",
+      "seconds": 714.7800080776215
+    }
+  ],
+  "elapsed_seconds": 1968.7142262458801,
+  "criterion": "gain >= 0.0001 with reasonable local runtime; checkpoint is not a global optimum",
+  "stop_instruction": "vale, acaba ya de momento; entregar certificado ZIP de 2.959",
+  "cancelled_stage": 12
+}

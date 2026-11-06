@@ -1,0 +1,28 @@
+{
+  "status": "checkpoint",
+  "selected": "candidates/geometry_m60_d1p1_joint_neighbors8_repaired.json",
+  "stages": [
+    {
+      "stage": 7,
+      "factor": "1",
+      "seed": "candidates/geometry_joint_expanded_m60_d11_repaired_pruned.json",
+      "candidate": "candidates/geometry_m60_d1p1_joint_neighbors7_repaired.json",
+      "C": "2.978049793",
+      "previous_C": "2.988731893",
+      "gain": "0.010682100",
+      "seconds": 448.91025495529175
+    },
+    {
+      "stage": 8,
+      "factor": "1",
+      "seed": "candidates/geometry_m60_d1p1_joint_neighbors7_repaired.json",
+      "candidate": "candidates/geometry_m60_d1p1_joint_neighbors8_repaired.json",
+      "C": "2.969936673",
+      "previous_C": "2.978049793",
+      "gain": "0.008113120",
+      "seconds": 630.8489849567413
+    }
+  ],
+  "elapsed_seconds": 1079.7598280906677,
+  "criterion": "gain >= 0.0001 with reasonable local runtime; checkpoint is not a global optimum"
+}

@@ -1,0 +1,4 @@
+{"iteration": 0, "worst_scaled_slack": -7.481024976230266e-05, "cuts": 62, "geometries": 6, "seconds": 3.365077018737793}
+{"iteration": 1, "worst_scaled_slack": 6.435895696377258e-07, "cuts": 20, "geometries": 6, "seconds": 43.12098288536072}
+{"iteration": 2, "worst_scaled_slack": 1.9066913652387996e-06, "cuts": 0, "geometries": 6, "seconds": 84.85421586036682}
+REPAIRED NUMERICALLY candidates/geometry_m100_repaired.json

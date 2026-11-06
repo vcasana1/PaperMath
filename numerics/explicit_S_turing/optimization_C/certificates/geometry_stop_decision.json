@@ -1,0 +1,15 @@
+{
+  "status": "stopped_by_user",
+  "search_exhausted": false,
+  "global_optimality_proved": false,
+  "selected_C": "2.959227629",
+  "selected_result": "certificates/FINAL_RESULT.json",
+  "reason": "El autor solicita cerrar la b\u00fasqueda por ahora y entregar el certificado de 2.959.",
+  "cancelled_experiments": [
+    "geometry_m60_d1p1_joint_neighbors12",
+    "geometry_joint_m60_round11_union",
+    "geometry_joint_m80_round11_union"
+  ],
+  "deliberate_stop_scope": "Se detiene la investigaci\u00f3n adicional; se completa \u00fanicamente la reproducci\u00f3n e integridad del certificado seleccionado.",
+  "unproved_candidates": "certificates/unproved_candidate_summary.json"
+}

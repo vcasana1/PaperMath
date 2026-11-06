@@ -37,9 +37,14 @@ ampliación llega a los 4118054813 primos hasta 10^11.
 ```
 
 El programa vuelve a ejecutar el núcleo inferior de cobertura, su parte
-elemental completa, el núcleo final, su constante aritmética y la envolvente.
+elemental completa, las condiciones compactas de Phragmén--Lindelöf, el
+mayorante geométrico en todas las interfaces y colas, las integrales armónicas,
+la aritmética con fases conjuntas de los centros y la envolvente uniforme.
 Comprueba también el punto racional que proporciona la cota inferior universal.
-Las salidas nuevas van en `reproduction/`, preservando los resultados de entrega.
+Las salidas nuevas de la prueba geométrica van en `reproduction_geometry/`,
+preservando los resultados de entrega. `GEOMETRY.md` contiene la deducción
+del paso a rectángulos y del acoplamiento de sus centros con los primos.
+Los resultados anteriores sin geometría se conservan por separado.
 
 La reproducción del certificado dual, cuando se desee, se ejecuta con:
 
@@ -107,3 +112,50 @@ La copia ZIP incluye las dependencias de código del repositorio necesarias
 El paquete anterior `certificado_S_4_40577136.zip` y los cuatro verificadores
 especificados en la petición no fueron localizados. La nueva prueba parte de
 las fórmulas y datos de v11; no presupone la validez de 4.40577136.
+
+
+## Geometrías alternativas
+
+Se ensayaron discos y rectángulos en una familia inicial de 1008 geometrías;
+el refinamiento admite combinaciones de ambas formas. Se optimizan conjuntamente
+los coeficientes y los pesos, y se añaden variaciones de centros, anchuras,
+alturas y desplazamientos. Por ejemplo, para repetir un refinamiento local:
+
+```sh
+GEOMETRY_SEED_PATH="$(.venv/bin/python -c 'import json;print(json.load(open("certificates/FINAL_RESULT.json"))["solution"])')"
+OPENBLAS_NUM_THREADS=1 .venv/bin/python src/geometry_continuation.py "$GEOMETRY_SEED_PATH" --start 100 --stages 1 --factor 0.5 --maxit 2
+```
+
+El programa lee d, m y el perfil del resultado seleccionado; este ejemplo
+ejecuta una nueva etapa de búsqueda y su certificación independiente.
+La búsqueda no certifica;
+el último comando se detiene si falla cualquiera de los verificadores.
+`src/verify_chain.py` comprueba los enlaces y hashes del resultado seleccionado;
+`src/verify_manifest.py` comprueba la integridad del ZIP extraído.
+
+Se sigue el criterio práctico del autor: priorizar ganancias de 0.0001 o
+mayores mientras el tiempo local resulte razonable. El cierre de una búsqueda
+no excluye otras dimensiones, órdenes o familias con mejores constantes.
+
+
+El resultado seleccionado puede emplear `baseline`, `subweyl` o
+`pruned_subweyl` como perfil de borde. `FINAL_RESULT.json` fija explícitamente
+los verificadores PL, de costes y de envolvente. La reproducción lee esa
+selección y repite la cadena correspondiente. El último perfil utiliza la
+entrada sub-Weyl de Patel--Yang y una selección de nodos de Yang; su deducción
+y las comprobaciones compactas están documentadas en `GEOMETRY.md`.
+
+
+El campo `certified: false` del fichero de coeficientes registra su procedencia
+como salida de búsqueda. Se conserva sin editar para mantener su hash exacto.
+La aceptación matemática se declara en los certificados independientes y en
+`FINAL_RESULT.json`; modificar aquel campo después de verificar invalidaría
+los enlaces de integridad.
+
+
+La entrega solicitada se fija en **C=2.959227629** y en `CERTIFICADO.md`.
+La búsqueda se detuvo expresamente por indicación del autor; los ensayos
+incompletos posteriores se conservan como historial y no se anuncian como
+mejoras demostradas. Para continuar una familia desde un resultado congelado,
+`geometry_continuation.py` lee d, m y el perfil de su envolvente; admite
+`--maxit` para controlar los refinamientos numéricos antes de certificar.

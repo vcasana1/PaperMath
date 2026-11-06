@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "method": "independent automatic differentiation with Arb power series",
+  "precision": 512,
+  "verifier_sha256": "93a03869afcfb5b428a172e19b2f5a687db9a8ac5e292138bcdef705ff67e612",
+  "candidate": "candidates/geometry_m40_refined2_repaired.json",
+  "checks": [
+    {
+      "x": 2,
+      "weight_derivatives_pass": true,
+      "x_curvature_pass": true
+    },
+    {
+      "x": 1009,
+      "weight_derivatives_pass": true,
+      "x_curvature_pass": true
+    },
+    {
+      "x": 100000000,
+      "weight_derivatives_pass": true,
+      "x_curvature_pass": true
+    }
+  ]
+}

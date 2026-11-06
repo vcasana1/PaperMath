@@ -1,0 +1,5 @@
+LOCAL GEOMETRY SCREEN m 60 coefficients 119 geometries 19 mode both
+geometry cost ranges [0.01972607 0.15346183 1.3787132 ] [0.04664662 0.67881975 4.10892124] setup seconds 0.001065969467163086
+{"iteration": 0, "C_numerical": 2.9652692732823493, "A_total": 0.08356350911287105, "B_loglog": 0.057757505844418446, "geometries_used": 15, "kappa_sum": 0.32818701263194017, "worst": -0.0003293173454240719, "phasegap": 0.000474964947676737, "peak_logT": 225.18346164626365, "height_gap": 3.0685192565993447e-05, "seconds": 101.42985391616821}
+{"iteration": 1, "C_numerical": 2.9685315666597827, "A_total": 0.08356895418486977, "B_loglog": 0.057459111589176465, "geometries_used": 16, "kappa_sum": 0.32788737739271623, "worst": -7.781786809443556e-05, "phasegap": 2.2600030586544806e-08, "peak_logT": 228.8789859307911, "height_gap": 7.5266208878765894e-06, "seconds": 228.92869186401367}
+saved SCREEN ONLY candidates/geometry_joint_round8_probe_d15.json

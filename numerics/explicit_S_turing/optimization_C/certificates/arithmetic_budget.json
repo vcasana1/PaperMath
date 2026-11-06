@@ -1,7 +1,5 @@
 [
   {
-    "kernel_sha256": "633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87",
-    "certificate": "candidates/d110_m40_lag_arithmetic_N1000000.json",
     "certified": true,
     "N0": 1000000,
     "P0": 1000,
@@ -18,11 +16,12 @@
     "input_sha256": "633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87",
     "code_sha256": "0e8646ed6734533fc2d173442616b641ce2ab4fc1c8e7f3527f934239e803876",
     "Lfar": 200,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87",
+    "centre_mode": "separate",
+    "certificate": "candidates/d110_m40_lag_arithmetic_N1000000.json"
   },
   {
-    "kernel_sha256": "633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87",
-    "certificate": "candidates/d110_m40_lag_arithmetic_N100000000.json",
     "certified": true,
     "N0": 100000000,
     "P0": 10000,
@@ -39,11 +38,12 @@
     "input_sha256": "633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87",
     "code_sha256": "06a536ed81b0012a59b201412980540339178aeb9172db3b5b7f16189ebb1541",
     "Lfar": 200,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "633c3b79415f26f00182b1fbbb668e129ac36d0a4c51e26b6da22d58edcaed87",
+    "centre_mode": "separate",
+    "certificate": "candidates/d110_m40_lag_arithmetic_N100000000.json"
   },
   {
-    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
-    "certificate": "candidates/d105_m40_repaired_arithmetic_binned_N1000000_P10000_985684591a_step0.01_extra1000000000000000000000000000000.json",
     "certified": true,
     "N0": 1000000,
     "P0": 10000,
@@ -70,11 +70,12 @@
     "input_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
     "code_sha256": "985684591ae1792eccf131bb4e81e0a9f389b2165e930c3dcaa360d5c2d86a21",
     "Lfar": 350,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
+    "centre_mode": "separate",
+    "certificate": "candidates/d105_m40_repaired_arithmetic_binned_N1000000_P10000_985684591a_step0.01_extra1000000000000000000000000000000.json"
   },
   {
-    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
-    "certificate": "candidates/d105_m40_repaired_arithmetic_binned_N1000000_P10000_933bacebd4_step0.01.json",
     "certified": true,
     "N0": 1000000,
     "P0": 10000,
@@ -99,11 +100,12 @@
     "input_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
     "code_sha256": "933bacebd43ad64fb0614b33d7ed8e7aaea45a783bdbe691a826e3d1c6093019",
     "Lfar": 350,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
+    "centre_mode": "separate",
+    "certificate": "candidates/d105_m40_repaired_arithmetic_binned_N1000000_P10000_933bacebd4_step0.01.json"
   },
   {
-    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
-    "certificate": "candidates/d105_m40_repaired_arithmetic_N1000000_P10000_69958b3c97_step0.01.json",
     "certified": true,
     "N0": 1000000,
     "P0": 10000,
@@ -121,11 +123,12 @@
     "input_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
     "code_sha256": "69958b3c97cce1a5ef788c1066fd0b33cb46a0143d5198b73f1ae8ac1f51f7b3",
     "Lfar": 350,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
+    "centre_mode": "separate",
+    "certificate": "candidates/d105_m40_repaired_arithmetic_N1000000_P10000_69958b3c97_step0.01.json"
   },
   {
-    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
-    "certificate": "candidates/d105_m40_repaired_arithmetic_N200000000_P10000_69958b3c97_step0.005.json",
     "certified": true,
     "N0": 200000000,
     "P0": 10000,
@@ -143,11 +146,12 @@
     "input_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
     "code_sha256": "69958b3c97cce1a5ef788c1066fd0b33cb46a0143d5198b73f1ae8ac1f51f7b3",
     "Lfar": 350,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
+    "centre_mode": "separate",
+    "certificate": "candidates/d105_m40_repaired_arithmetic_N200000000_P10000_69958b3c97_step0.005.json"
   },
   {
-    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
-    "certificate": "candidates/d105_m40_repaired_arithmetic_binned_N1000000000_P10000_933bacebd4_step0.005.json",
     "certified": true,
     "N0": 1000000000,
     "P0": 10000,
@@ -172,11 +176,12 @@
     "input_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
     "code_sha256": "933bacebd43ad64fb0614b33d7ed8e7aaea45a783bdbe691a826e3d1c6093019",
     "Lfar": 350,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "a405128ed1b2467d2936e636fdab471eef6c71be340bcad7b8c40d72cf885ce9",
+    "centre_mode": "separate",
+    "certificate": "candidates/d105_m40_repaired_arithmetic_binned_N1000000000_P10000_933bacebd4_step0.005.json"
   },
   {
-    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
-    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N1000000000_P10000_933bacebd4_step0.005.json",
     "certified": true,
     "N0": 1000000000,
     "P0": 10000,
@@ -201,11 +206,12 @@
     "input_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
     "code_sha256": "933bacebd43ad64fb0614b33d7ed8e7aaea45a783bdbe691a826e3d1c6093019",
     "Lfar": 400,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
+    "centre_mode": "separate",
+    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N1000000000_P10000_933bacebd4_step0.005.json"
   },
   {
-    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
-    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N10000000000_P10000_933bacebd4_step0.005.json",
     "certified": true,
     "N0": 10000000000,
     "P0": 10000,
@@ -230,11 +236,12 @@
     "input_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
     "code_sha256": "933bacebd43ad64fb0614b33d7ed8e7aaea45a783bdbe691a826e3d1c6093019",
     "Lfar": 400,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
+    "centre_mode": "separate",
+    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N10000000000_P10000_933bacebd4_step0.005.json"
   },
   {
-    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
-    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N10000000000_P100000_d7360b984f_step0.005.json",
     "certified": true,
     "N0": 10000000000,
     "P0": 100000,
@@ -259,11 +266,12 @@
     "input_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
     "code_sha256": "d7360b984f177e31efd684dcdebba10e9968d717e3ca6bf5df43255654555b9b",
     "Lfar": 400,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
+    "centre_mode": "separate",
+    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N10000000000_P100000_d7360b984f_step0.005.json"
   },
   {
-    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
-    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N10000000000.json",
     "certified": true,
     "N0": 10000000000,
     "P0": 1000000,
@@ -290,11 +298,12 @@
     "input_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
     "code_sha256": "985684591ae1792eccf131bb4e81e0a9f389b2165e930c3dcaa360d5c2d86a21",
     "Lfar": 400,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "9ae1cdff3a695e8945584708d854bc60704cebeca79bb259c9461da4caaecb8b",
+    "centre_mode": "separate",
+    "certificate": "candidates/d110_m60_panel_arithmetic_binned_N10000000000.json"
   },
   {
-    "kernel_sha256": "c3cd42dfa0bac03c613303b1ffb159d8ee057c336c3b3ac73459fb930cd44232",
-    "certificate": "candidates/d100_m80_lag_arithmetic_N1000000_P10000_69958b3c97_step0.01.json",
     "certified": true,
     "N0": 1000000,
     "P0": 10000,
@@ -312,11 +321,12 @@
     "input_sha256": "c3cd42dfa0bac03c613303b1ffb159d8ee057c336c3b3ac73459fb930cd44232",
     "code_sha256": "69958b3c97cce1a5ef788c1066fd0b33cb46a0143d5198b73f1ae8ac1f51f7b3",
     "Lfar": 568,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "c3cd42dfa0bac03c613303b1ffb159d8ee057c336c3b3ac73459fb930cd44232",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m80_lag_arithmetic_N1000000_P10000_69958b3c97_step0.01.json"
   },
   {
-    "kernel_sha256": "c3cd42dfa0bac03c613303b1ffb159d8ee057c336c3b3ac73459fb930cd44232",
-    "certificate": "candidates/d100_m80_lag_arithmetic_N200000000.json",
     "certified": true,
     "N0": 200000000,
     "P0": 10000,
@@ -334,11 +344,12 @@
     "input_sha256": "c3cd42dfa0bac03c613303b1ffb159d8ee057c336c3b3ac73459fb930cd44232",
     "code_sha256": "23d74e9ff54cb446b2c5d3c2e168f83873cc03b424714ca42c5a1f800d9734fc",
     "Lfar": 568,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "c3cd42dfa0bac03c613303b1ffb159d8ee057c336c3b3ac73459fb930cd44232",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m80_lag_arithmetic_N200000000.json"
   },
   {
-    "kernel_sha256": "0d84065b107a7013ecbbbd39b5fcf4d2577706f324647af14e4e15e063f2da3f",
-    "certificate": "candidates/d100_m100_empirical_arithmetic_binned_N10000000000.json",
     "certified": true,
     "N0": 10000000000,
     "P0": 1000000,
@@ -365,11 +376,12 @@
     "input_sha256": "0d84065b107a7013ecbbbd39b5fcf4d2577706f324647af14e4e15e063f2da3f",
     "code_sha256": "985684591ae1792eccf131bb4e81e0a9f389b2165e930c3dcaa360d5c2d86a21",
     "Lfar": 708,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "0d84065b107a7013ecbbbd39b5fcf4d2577706f324647af14e4e15e063f2da3f",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m100_empirical_arithmetic_binned_N10000000000.json"
   },
   {
-    "kernel_sha256": "0d84065b107a7013ecbbbd39b5fcf4d2577706f324647af14e4e15e063f2da3f",
-    "certificate": "candidates/d100_m100_empirical_arithmetic_binned_N100000000000.json",
     "certified": true,
     "N0": 100000000000,
     "P0": 1000000,
@@ -397,11 +409,12 @@
     "input_sha256": "0d84065b107a7013ecbbbd39b5fcf4d2577706f324647af14e4e15e063f2da3f",
     "code_sha256": "d54830e5908fb7c6b31e2e6d8ed6df30040641717236da15eae706eab05d3b2c",
     "Lfar": 708,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "0d84065b107a7013ecbbbd39b5fcf4d2577706f324647af14e4e15e063f2da3f",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m100_empirical_arithmetic_binned_N100000000000.json"
   },
   {
-    "kernel_sha256": "1de8c39f0ce1037e623d7a3970100b13ea49b88c6041645e8a90dafa796e25af",
-    "certificate": "candidates/d100_m40_lag_arithmetic_N1000000.json",
     "certified": true,
     "N0": 1000000,
     "P0": 10000,
@@ -419,11 +432,12 @@
     "input_sha256": "1de8c39f0ce1037e623d7a3970100b13ea49b88c6041645e8a90dafa796e25af",
     "code_sha256": "06a536ed81b0012a59b201412980540339178aeb9172db3b5b7f16189ebb1541",
     "Lfar": 350,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "1de8c39f0ce1037e623d7a3970100b13ea49b88c6041645e8a90dafa796e25af",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m40_lag_arithmetic_N1000000.json"
   },
   {
-    "kernel_sha256": "1de8c39f0ce1037e623d7a3970100b13ea49b88c6041645e8a90dafa796e25af",
-    "certificate": "candidates/d100_m40_lag_arithmetic_N200000000.json",
     "certified": true,
     "N0": 200000000,
     "P0": 10000,
@@ -440,11 +454,12 @@
     "input_sha256": "1de8c39f0ce1037e623d7a3970100b13ea49b88c6041645e8a90dafa796e25af",
     "code_sha256": "06a536ed81b0012a59b201412980540339178aeb9172db3b5b7f16189ebb1541",
     "Lfar": 200,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "1de8c39f0ce1037e623d7a3970100b13ea49b88c6041645e8a90dafa796e25af",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m40_lag_arithmetic_N200000000.json"
   },
   {
-    "kernel_sha256": "5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4",
-    "certificate": "candidates/d100_m20_arithmetic_N1000000.json",
     "certified": true,
     "N0": 1000000,
     "P0": 1000,
@@ -461,11 +476,12 @@
     "input_sha256": "5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4",
     "code_sha256": "0e8646ed6734533fc2d173442616b641ce2ab4fc1c8e7f3527f934239e803876",
     "Lfar": 200,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m20_arithmetic_N1000000.json"
   },
   {
-    "kernel_sha256": "5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4",
-    "certificate": "candidates/d100_m20_arithmetic_N100000000.json",
     "certified": true,
     "N0": 100000000,
     "P0": 1000,
@@ -482,11 +498,84 @@
     "input_sha256": "5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4",
     "code_sha256": "0e8646ed6734533fc2d173442616b641ce2ab4fc1c8e7f3527f934239e803876",
     "Lfar": 200,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "5b0b4c0d53ee0353e9256f869b50c367001f1631ec9fa11dac8d40d89f3f24a4",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m20_arithmetic_N100000000.json"
   },
   {
-    "kernel_sha256": "5fb17dc68688de66da86c54e9898f5832a0c653d77c3e98a26d825fbd6b3e6b8",
-    "certificate": "candidates/d100_m60_lag_arithmetic_N1000000.json",
+    "certified": true,
+    "far_tolerance": "1e-14",
+    "tail_quadrature_absolute_tolerance": "1e-18",
+    "N0": 100000000,
+    "P0": 10000,
+    "Czeta_upper": "2.72742680802221243701353",
+    "partial_upper": "2.69128024983864724958413",
+    "tail_upper": "0.0361465581835651874293906",
+    "integral_upper": "0.0361458557911583000917250",
+    "far_upper": "0.00000000000000995168464781695089946506",
+    "error_upper": "0.000000668863685628582398842611",
+    "boundary_correction_upper": "0.0000000446960742029450655466790",
+    "phase_gain_lower": "0.303500454371844000767257",
+    "phase_boxes": 81758,
+    "error_boxes": 51579,
+    "seconds": 53.792850971221924,
+    "bin_log_width": "0.0001",
+    "bin_count": 67001,
+    "bin_excess_upper": "0.000000000000191462213793435426865507",
+    "prime_count": 5761455,
+    "step": "0.02",
+    "phase_tolerance": "1e-16",
+    "precision": 480,
+    "extra_prime_power_cutoff": 1000000000000000000000000000000,
+    "chunk_size": 5000000,
+    "removed_tail_norm_lower": "0.0000000111673529441898167340212",
+    "input_sha256": "71f084d561c1dae4ee130c3d7ba849a849827e47f9c8565dda27633f56102363",
+    "code_sha256": "29a5a03ec1815cf7ff7406651aca651110f51794451a9baf2391e276ecbfb1dc",
+    "Lfar": 1050,
+    "centre_mode": "joint_prime_phase",
+    "sigma_common": "41/40",
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "71f084d561c1dae4ee130c3d7ba849a849827e47f9c8565dda27633f56102363",
+    "certificate": "candidates/geometry_m60_d1p1_joint_neighbors9_repaired_arithmetic_coupled_binned_N100000000.json"
+  },
+  {
+    "certified": true,
+    "far_tolerance": "1e-14",
+    "tail_quadrature_absolute_tolerance": "1e-18",
+    "N0": 10000000000,
+    "P0": 10000,
+    "Czeta_upper": "2.72742618846525490987514",
+    "partial_upper": "2.71125910239843790937177",
+    "tail_upper": "0.0161670860668170005033680",
+    "integral_upper": "0.0161670497309501367863269",
+    "far_upper": "0.00000000000000995168464781695089946506",
+    "error_upper": "0.0000000493975174319724058996898",
+    "boundary_correction_upper": "-0.0000000128675222692093978109417",
+    "phase_gain_lower": "0.303500454371844000767257",
+    "phase_boxes": 81758,
+    "error_boxes": 51349,
+    "seconds": 170.22343802452087,
+    "bin_log_width": "0.0001",
+    "bin_count": 115032,
+    "bin_excess_upper": "0.000000000000209899673860714150411998",
+    "prime_count": 455052511,
+    "step": ".02",
+    "phase_tolerance": "1e-16",
+    "precision": 480,
+    "extra_prime_power_cutoff": 1000000000000000000000000000000,
+    "chunk_size": 5000000,
+    "removed_tail_norm_lower": "0.000000000194128299045985752353537",
+    "input_sha256": "71f084d561c1dae4ee130c3d7ba849a849827e47f9c8565dda27633f56102363",
+    "code_sha256": "29a5a03ec1815cf7ff7406651aca651110f51794451a9baf2391e276ecbfb1dc",
+    "Lfar": 1050,
+    "centre_mode": "joint_prime_phase",
+    "sigma_common": "41/40",
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "71f084d561c1dae4ee130c3d7ba849a849827e47f9c8565dda27633f56102363",
+    "certificate": "candidates/geometry_m60_d1p1_joint_neighbors9_repaired_arithmetic_coupled_binned_N10000000000.json"
+  },
+  {
     "certified": true,
     "N0": 1000000,
     "P0": 10000,
@@ -504,11 +593,12 @@
     "input_sha256": "5fb17dc68688de66da86c54e9898f5832a0c653d77c3e98a26d825fbd6b3e6b8",
     "code_sha256": "69958b3c97cce1a5ef788c1066fd0b33cb46a0143d5198b73f1ae8ac1f51f7b3",
     "Lfar": 500,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "5fb17dc68688de66da86c54e9898f5832a0c653d77c3e98a26d825fbd6b3e6b8",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m60_lag_arithmetic_N1000000.json"
   },
   {
-    "kernel_sha256": "5fb17dc68688de66da86c54e9898f5832a0c653d77c3e98a26d825fbd6b3e6b8",
-    "certificate": "candidates/d100_m60_lag_arithmetic_N200000000.json",
     "certified": true,
     "N0": 200000000,
     "P0": 10000,
@@ -526,6 +616,79 @@
     "input_sha256": "5fb17dc68688de66da86c54e9898f5832a0c653d77c3e98a26d825fbd6b3e6b8",
     "code_sha256": "69958b3c97cce1a5ef788c1066fd0b33cb46a0143d5198b73f1ae8ac1f51f7b3",
     "Lfar": 500,
-    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "5fb17dc68688de66da86c54e9898f5832a0c653d77c3e98a26d825fbd6b3e6b8",
+    "centre_mode": "separate",
+    "certificate": "candidates/d100_m60_lag_arithmetic_N200000000.json"
+  },
+  {
+    "certified": true,
+    "N0": 100000000,
+    "P0": 10000,
+    "Czeta_upper": "2.79291075632589830044992",
+    "partial_upper": "2.75689944925833209284500",
+    "tail_upper": "0.0360113070675662076049229",
+    "integral_upper": "0.0360107045685917111432520",
+    "far_upper": "0.000000000000000000000000000000000000000000292194571685431609781621",
+    "error_upper": "0.000000590000784434168685124218",
+    "boundary_correction_upper": "0.0000000221110618606092080641870",
+    "phase_gain_lower": "0.299932757893820777400792",
+    "phase_boxes": 79026,
+    "error_boxes": 177079,
+    "seconds": 113.4221339225769,
+    "bin_log_width": "0.0001",
+    "bin_count": 67001,
+    "bin_excess_upper": "0.000000000000184134267131476229776629",
+    "prime_count": 5761455,
+    "step": "0.02",
+    "phase_tolerance": "1e-16",
+    "precision": 480,
+    "extra_prime_power_cutoff": 1000000000000000000000000000000,
+    "chunk_size": 5000000,
+    "removed_tail_norm_lower": "0.00000000961287179831622233265551",
+    "input_sha256": "6f3b215ba67eaa0924e6bc337d80e2f9c676226099f7adadf491e9c5791eb7a5",
+    "code_sha256": "93a03869afcfb5b428a172e19b2f5a687db9a8ac5e292138bcdef705ff67e612",
+    "Lfar": 3560,
+    "centre_mode": "joint_prime_phase",
+    "sigma_common": "41/40",
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "6f3b215ba67eaa0924e6bc337d80e2f9c676226099f7adadf491e9c5791eb7a5",
+    "certificate": "candidates/geometry_m60_d1p1_joint_neighbors7_repaired_arithmetic_coupled_binned_N100000000_P10000_93a03869af_step0.02_extra1000000000000000000000000000000.json"
+  },
+  {
+    "certified": true,
+    "far_tolerance": "1e-14",
+    "tail_quadrature_absolute_tolerance": "1e-18",
+    "N0": 100000000,
+    "P0": 10000,
+    "Czeta_upper": "2.79291075632590291930071",
+    "partial_upper": "2.75689944925833209284500",
+    "tail_upper": "0.0360113070675708264557065",
+    "integral_upper": "0.0360107045685963299938400",
+    "far_upper": "0.00000000000000648588110582798779902279",
+    "error_upper": "0.000000590000784434168861018008",
+    "boundary_correction_upper": "0.0000000221110618606092080641870",
+    "phase_gain_lower": "0.299932757893820777400792",
+    "phase_boxes": 79026,
+    "error_boxes": 49079,
+    "seconds": 60.7279999256134,
+    "bin_log_width": "0.0001",
+    "bin_count": 67001,
+    "bin_excess_upper": "0.000000000000184134267131476229776629",
+    "prime_count": 5761455,
+    "step": ".02",
+    "phase_tolerance": "1e-16",
+    "precision": 480,
+    "extra_prime_power_cutoff": 1000000000000000000000000000000,
+    "chunk_size": 5000000,
+    "removed_tail_norm_lower": "0.00000000961287179831622233265551",
+    "input_sha256": "6f3b215ba67eaa0924e6bc337d80e2f9c676226099f7adadf491e9c5791eb7a5",
+    "code_sha256": "29a5a03ec1815cf7ff7406651aca651110f51794451a9baf2391e276ecbfb1dc",
+    "Lfar": 1000,
+    "centre_mode": "joint_prime_phase",
+    "sigma_common": "41/40",
+    "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code",
+    "kernel_sha256": "6f3b215ba67eaa0924e6bc337d80e2f9c676226099f7adadf491e9c5791eb7a5",
+    "certificate": "candidates/geometry_m60_d1p1_joint_neighbors7_repaired_arithmetic_coupled_binned_N100000000_P10000_29a5a03ec1_step.02_extra1000000000000000000000000000000.json"
   }
 ]

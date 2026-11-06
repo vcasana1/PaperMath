@@ -1,0 +1,4 @@
+geometry_m60_d1p1_joint_neighbors12_repaired.json sha256 b616a0137f0f413c868edda2aebaba0860774f0d6adb5cb19671b3c0921dd005
+certify_geometry_kernel_fast.py sha256 33445a3a73977991be4c70b9c7c6c3839bbabf9ceace0e70cbfd4693287fae08
+python 3.14.5, python-flint 0.9.0, precision 512 bits
+INTERFACE PASS b0 1707 seconds 1.4896180629730225

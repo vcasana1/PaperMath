@@ -1,0 +1,4 @@
+{"iteration": 0, "worst_scaled_slack": -6.665635036151585e-06, "cuts": 30, "geometries": 6, "seconds": 1.1602067947387695}
+{"iteration": 1, "worst_scaled_slack": 1.8798208962778062e-06, "cuts": 1, "geometries": 6, "seconds": 21.218865871429443}
+{"iteration": 2, "worst_scaled_slack": 1.968645847894024e-06, "cuts": 0, "geometries": 6, "seconds": 40.330678939819336}
+REPAIRED NUMERICALLY candidates/geometry_m40_joint_fixed_repaired.json

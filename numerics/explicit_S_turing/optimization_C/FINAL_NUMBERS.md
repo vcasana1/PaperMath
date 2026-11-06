@@ -1,17 +1,18 @@
 # Números finales demostrados
 
-\[\boxed{|S(T)|\le0.08382\log T+3.418772350,\qquad T>1.}\]
+\[\boxed{|S(T)|\le0.08382\log T+2.959227629,\qquad T>1.}\]
 
 | Cantidad | Valor | Alcance |
 |---|---:|---|
 | C anterior | 4.40577136 | Referencia del autor; paquete anterior no localizado |
-| C nuevo | 3.418772350 | Cota superior uniforme certificada |
-| C inferior | 0.688655186978719794671238 | Cota inferior necesaria para cualquier desigualdad uniforme, incluidas envolventes |
+| C nuevo | 2.959227629 | Cota superior uniforme certificada con Green--Jensen |
+| C inferior | 0.688655186978719794671238 | Necesaria para cualquier desigualdad uniforme, incluidas envolventes |
 
-Reducción certificada respecto a la cifra de referencia: **0.986999010**.
-Núcleo alto: d=1.0, m=100, 199 coeficientes.
-Corte aritmético: 10000000000; fases acopladas hasta p=1000000; transición log T=135.199646.
+Reducción respecto a la referencia: **1.446543731**.
+Núcleo racional: d=1.1, m=60, 119 coeficientes; 16 rectángulos y 7 discos con pesos no negativos.
+A total <= 0.08352880955664759899676537; B de log log T <= 0.06461102609935252463424234.
+Perfil de borde: pruned_subweyl; centros acoplados: True.
+El término B se absorbe usando la holgura de pendiente y el máximo analítico en log T.
+Corte aritmético 100000000; fases conjuntas hasta p=10000; cobertura baja hasta log T=93.077380.
 
-No se ha probado optimalidad global. Para la familia fija de un núcleo d=0.95,m=10,
-la cota dual es 3.280652819907774820834 y la cota superior 3.56656806163738605688624;
-esta segunda comparación no se extiende a todas las envolventes.
+No se ha probado optimalidad global. Las cotas duales de familias fijas sin rectángulos no se trasladan a esta familia.

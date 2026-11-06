@@ -5,6 +5,9 @@ from decimal import Decimal
 BASE=Path(__file__).resolve().parents[1];ROOT=BASE.parent
 ap=argparse.ArgumentParser();ap.add_argument('--binwidth',default=None,help='Alternate rigorous bin width; final rounded bound must still pass');args=ap.parse_args()
 final=json.loads((BASE/'certificates/FINAL_RESULT.json').read_text())
+if final.get('bound_type')=='Green_Jensen_uniform':
+    subprocess.run([sys.executable,str(BASE/'src/reproduce_geometry.py'),*sys.argv[1:]],check=True)
+    sys.exit(0)
 run=BASE/'reproduction'/time.strftime('%Y%m%d_%H%M%S');run.mkdir(parents=True)
 checks=[]
 def execute(name,args):

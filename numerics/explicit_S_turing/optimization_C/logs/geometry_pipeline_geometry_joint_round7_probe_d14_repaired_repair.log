@@ -1,0 +1,4 @@
+{"iteration": 0, "worst_scaled_slack": -9.24181942441038e-06, "cuts": 62, "geometries": 14, "seconds": 5.975672960281372}
+{"iteration": 1, "worst_scaled_slack": 1.8863605695251806e-06, "cuts": 1, "geometries": 14, "seconds": 24.678427696228027}
+{"iteration": 2, "worst_scaled_slack": 1.915999864987583e-06, "cuts": 0, "geometries": 14, "seconds": 42.912516832351685}
+REPAIRED NUMERICALLY candidates/geometry_joint_round7_probe_d14_repaired.json

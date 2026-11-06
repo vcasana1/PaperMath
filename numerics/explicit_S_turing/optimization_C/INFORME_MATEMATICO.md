@@ -1,4 +1,25 @@
 # Optimización ejecutada de la constante aditiva de S(T)
+<!-- CURRENT_RESULT -->
+
+**Resultado actual:** para todo T>1, |S(T)| <= 0.08382 log T + **2.959227629**.
+La prueba seleccionada usa un núcleo d=1.1, de orden 60, 119 coeficientes
+racionales, 16 rectángulos y 7 discos, con los centros acoplados exactamente
+a las fases primas. No supone RH. La deducción completa de esta ampliación
+está en `GEOMETRY.md`; los coeficientes y certificados seleccionados están en
+`certificates/final_geometry_C2_959227629/solution.json` y `certificates/FINAL_RESULT.json`.
+
+Los apartados siguientes conservan el desarrollo anterior de la familia sin
+geometría y su auditoría. Las afirmaciones de familia fija se refieren a esa
+familia. Los resultados finales y el alcance de los ensayos ampliados se
+recogen después del marcador FINAL_RESULTS y en `FINAL_NUMBERS.md`.
+<!-- END_CURRENT_RESULT -->
+
+
+
+
+
+
+
 
 Este informe acompaña cálculos ejecutados y certificados con Arb. El resumen
 numérico seleccionado se añade al final de la ejecución en `FINAL_NUMBERS.md`.
@@ -438,57 +459,82 @@ conservan. El resultado final se reprodujo con una versión estable, y
 
 ### Valores finales
 
-\[\boxed{|S(T)|\le0.08382\log T+3.418772350,\qquad T>1.}\]
+\[\boxed{|S(T)|\le0.08382\log T+2.959227629,\qquad T>1.}\]
 
 | Cantidad | Valor | Alcance |
 |---|---:|---|
 | C anterior | 4.40577136 | Referencia del autor; paquete anterior no localizado |
-| C nuevo | 3.418772350 | Cota superior uniforme certificada |
-| C inferior | 0.688655186978719794671238 | Cota inferior necesaria para cualquier desigualdad uniforme, incluidas envolventes |
+| C nuevo | 2.959227629 | Cota superior uniforme certificada con Green--Jensen |
+| C inferior | 0.688655186978719794671238 | Necesaria para cualquier desigualdad uniforme, incluidas envolventes |
 
-Reducción certificada respecto a la cifra de referencia: **0.986999010**.
-Núcleo alto: d=1.0, m=100, 199 coeficientes.
-Corte aritmético: 10000000000; fases acopladas hasta p=1000000; transición log T=135.199646.
+Reducción respecto a la referencia: **1.446543731**.
+Núcleo racional: d=1.1, m=60, 119 coeficientes; 16 rectángulos y 7 discos con pesos no negativos.
+A total <= 0.08352880955664759899676537; B de log log T <= 0.06461102609935252463424234.
+Perfil de borde: pruned_subweyl; centros acoplados: True.
+El término B se absorbe usando la holgura de pendiente y el máximo analítico en log T.
+Corte aritmético 100000000; fases conjuntas hasta p=10000; cobertura baja hasta log T=93.077380.
 
-No se ha probado optimalidad global. Para la familia fija de un núcleo d=0.95,m=10,
-la cota dual es 3.280652819907774820834 y la cota superior 3.56656806163738605688624;
-esta segunda comparación no se extiende a todas las envolventes.
+No se ha probado optimalidad global. Las cotas duales de familias fijas sin rectángulos no se trasladan a esta familia.
 
-### Verificación ejecutada
+### Reproducción independiente ejecutada
 
-La reproducción completa terminó con C=3.418772350. Etapas superadas: low_kernel, low_arithmetic, low_elementary, high_kernel, high_arithmetic, envelope, universal_lower. Registro: `reproduction/20261106_171005`.
+La reproducción completa terminó con C=2.959227629. Etapas: low_kernel, low_arithmetic, low_elementary, PL_inputs, geometric_kernel, harmonic_costs, high_arithmetic, uniform_envelope, universal_lower. Registro: `reproduction_geometry/20261106_205118`. `verify_chain.py` comprueba además los hashes de los coeficientes y los certificadores enlazados. La búsqueda numérica no se importa como prueba.
 
-### Criterio de cierre indicado por el autor
+### Geometrías y criterio práctico de cierre
 
-Se priorizan mejoras de 0.0001 o mayores mientras el cálculo siga siendo rápido en el Mac. Se dejan de perseguir mejoras limitadas a la quinta cifra decimal o posteriores, y se evita extender cálculos cuyo coste resulte excesivo. Esto sustituye un criterio de agotamiento absoluto, que no se ha demostrado.
+Se buscaron inicialmente 168 discos y 840 rectángulos. Después se reoptimizaron
+coeficientes y pesos con las fases exactas de los centros, variando centros,
+abscisas, anchuras, semialturas y desplazamientos de las formas activas.
+`COMPARACION.md`, `certificates/geometry_search_history.json` y los registros
+conservan las mejoras certificadas y los candidatos que no superaron la prueba.
+No se declara un óptimo entre todos los discos o rectángulos posibles.
 
-La suma ya se extendió de 455052511 primos hasta 10^10 a 4118054813 primos hasta 10^11 para un núcleo de orden 100. El beneficio de ese aumento fue de unas pocas centésimas de millonésima, muy por debajo del nuevo umbral. `ARITHMETIC_BUDGET.md` conserva los tiempos y los términos de error. No se confunde el corte P0 de fases conjuntas con el número total de primos incluidos.
+Se aplica el criterio del autor: perseguir ganancias de 0.0001 o mayores
+mientras el cálculo local siga siendo rápido; detener refinamientos que solo
+afectan a la quinta cifra decimal o que resultan excesivamente costosos.
+El estado final de esta exploración se documenta en
+`certificates/geometry_stop_decision.json`. Es un cierre práctico, no una
+prueba de agotamiento matemático.
 
-El binario del autor fue validado por igualdad exacta con la criba completa (42.2 s en esta ejecución), sin modificarlo. Los ensayos nuevos agregan todos sus 455052511 primos. Las agregaciones y cuadraturas son herramientas numéricas de búsqueda; la prueba aritmética sigue siendo independiente.
+### Uso del archivo de primos y órdenes grandes
 
-### Órdenes superiores: reevaluación numérica separada
+El binario del autor contiene 455052511 enteros uint64 little-endian y se
+validó por igualdad exacta con la criba completa hasta 10^10 (42.2 s).
+Las búsquedas nuevas usan su agregación positiva completa. Los certificadores
+regeneran los primos independientemente y acotan la cola infinita: ni el
+binario ni la cuadratura de búsqueda se presuponen correctos en la prueba.
 
-| Archivo | Orden | Nodos de Gauss por panel | Objetivo numérico |
-|---|---:|---:|---:|
-| d100_m100_lowmargin.json | 100 | 64 | 3.418902225600 |
-| d100_m100_lowmargin.json | 100 | 128 | 3.418902238348 |
-| d100_m100_lowmargin.json | 100 | 256 | 3.418902239851 |
-| d100_m200_primoss.json | 200 | 64 | 3.419062690410 |
-| d100_m200_primoss.json | 200 | 128 | 3.419064306059 |
-| d100_m200_primoss.json | 200 | 256 | 3.419064216858 |
-| d100_m1000_sparse_primoss.json | 1000 | 64 | 3.419214623128 |
-| d100_m1000_sparse_primoss.json | 1000 | 128 | 3.419213243061 |
-| d100_m1000_sparse_primoss.json | 1000 | 256 | 3.419213074046 |
-| d100_m1000_sparse_resolved.json | 1000 | 64 | 3.418907097850 |
-| d100_m1000_sparse_resolved.json | 1000 | 128 | 3.418907071290 |
-| d100_m1000_sparse_resolved.json | 1000 | 256 | 3.418907070182 |
+En la familia anterior sin geometría se llegó además a 4118054813 primos
+hasta 10^11. Ese aumento tardó unos 2569 s y mejoró C solo en unos 2.5·10^-8.
+No se repite esa extensión para ganar cifras que el autor pidió no perseguir.
+No se confunde P0, que controla las fases conjuntas, con el corte total N.
+`ARITHMETIC_BUDGET.md` compara únicamente funciones aritméticas idénticas.
 
-Estos números son evaluaciones numéricas de un objetivo aproximante, no cotas uniformes certificadas. La comparación se hace con los mismos datos y una cuadratura más densa en sqrt(log x). No se sustituyen por ellos los valores probados anteriores. El ensayo de orden 1000 libera 269 parámetros seleccionados, frente a los 1999 de la familia completa; no se afirma optimalidad en esa familia.
+Se ejecutó un ensayo de orden 200 con 399 parámetros y otro de orden 1000
+con 269 parámetros seleccionados. La reevaluación densa no mejoró el objetivo
+comparable del núcleo anterior. El ensayo de orden 1000 no libera los 1999
+coeficientes de la familia completa: no constituye una exclusión de esa familia.
+La primera cuadratura insuficiente y sus aparentes mejoras se rechazaron;
+se preservan como historial identificado, no como resultados certificados.
 
-El ensayo corregido de orden 1000 (`d100_m1000_sparse_resolved.json`) terminó en 272.6 s. Su objetivo reevaluado no mejora al del núcleo vigente. No se inició una certificación aritmética costosa de ese candidato. El núcleo de orden 200 sí superó la prueba global de (K), aislando las 803 raíces de su polinomio derivado en 45.1 s, pero su reevaluación aritmética numérica tampoco ofreció la mejora requerida; no se publica una nueva constante a partir de él. Estos resultados explican el cierre práctico, sin excluir una mejora futura con otros parámetros ni con los 1999 coeficientes libres.
+### Holguras y cotas inferiores
 
-### Restricciones próximas al contacto
+`certificates/active_geometry_constraints.json` recoge las holguras intervalares
+más pequeñas en las interfaces, las colas completas, los pesos y la holgura de
+pendiente. Son datos certificados de factibilidad, no un dual de optimalidad.
 
-Para el núcleo seleccionado, A está entre 0.0838199999840863336458757 y 0.0838199999840863336458758; la holgura inferior del límite de t²(U-f) es 0.0000000190210633986148239999999. Los veinte puntos críticos más próximos al contacto y sus holguras dirigidas figuran en `certificates/active_constraints.json`. Son holguras certificadas, no una prueba dual de optimalidad.
+La cota inferior universal 0.688655186978719794671238 procede de un punto
+racional verificado con Arb y es válida también para esta construcción.
+Las cotas duales 3.28065... y 3.06766... pertenecen a familias fijas anteriores
+sin rectángulos y **no** se trasladan a la familia ampliada. La brecha global
+sigue abierta; no se afirma que el mejor valor encontrado sea el mínimo.
 
-La brecha global sigue siendo amplia. Las dos familias de un solo núcleo con dual certificado figuran en `certificates/fixed_family_gap_d095_m10.json` y `certificates/fixed_family_gap_d1006257_m10.json`; sus cotas inferiores no se trasladan a la unión de todas las envolventes. Para las demás familias no se ha obtenido un dual específico; sí les aplica la cota inferior universal.
+### Candidato numérico separado
+
+El menor objetivo numérico registrado es 2.958331428916, en `candidates/geometry_joint_m80_round11_union.json`. Su residual mínimo numérico escalado es -4.01418971772631e-05; su error de fases detectado, 1.7130400657011657e-08. No se anuncia ese valor como cota uniforme. Los coeficientes de entrada reparados y aceptados se identifican exclusivamente mediante FINAL_RESULT y la cadena independiente.
+
+El resultado nuevo implica también la desigualdad con constante 4.40577136; esto no constituye una auditoría del paquete original que no fue localizado.
+
+### Cierre solicitado por el autor
+
+La investigación se detuvo por solicitud expresa del autor. No se ha agotado la búsqueda ni se han certificado los candidatos posteriores. La entrega se fija en C=2.959227629; la verificación adicional se limita a reproducir ese certificado y comprobar su integridad.

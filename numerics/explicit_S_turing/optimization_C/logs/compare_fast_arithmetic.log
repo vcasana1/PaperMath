@@ -1,0 +1,27 @@
+{
+  "certified_comparison": true,
+  "same_input_sha256": "6f3b215ba67eaa0924e6bc337d80e2f9c676226099f7adadf491e9c5791eb7a5",
+  "identical_derivative_code_AST": true,
+  "upper_difference": "4.61885079E-15",
+  "rows": [
+    {
+      "certificate": "candidates/geometry_m60_d1p1_joint_neighbors7_repaired_arithmetic_coupled_binned_N100000000_P10000_29a5a03ec1_step.02_extra1000000000000000000000000000000.json",
+      "verifier": "certify_arithmetic_coupled_fast.py",
+      "code_sha256": "29a5a03ec1815cf7ff7406651aca651110f51794451a9baf2391e276ecbfb1dc",
+      "Czeta_upper": "2.79291075632590291930071",
+      "seconds": 60.7279999256134,
+      "Lfar": 1000,
+      "error_boxes": 49079
+    },
+    {
+      "certificate": "candidates/geometry_m60_d1p1_joint_neighbors7_repaired_arithmetic_coupled_binned_N100000000_P10000_93a03869af_step0.02_extra1000000000000000000000000000000.json",
+      "verifier": "certify_arithmetic_coupled.py",
+      "code_sha256": "93a03869afcfb5b428a172e19b2f5a687db9a8ac5e292138bcdef705ff67e612",
+      "Czeta_upper": "2.79291075632589830044992",
+      "seconds": 113.4221339225769,
+      "Lfar": 3560,
+      "error_boxes": 177079
+    }
+  ],
+  "meaning": "Both are rigorous upper bounds for identical input bytes. All omitted mass remains bounded explicitly."
+}

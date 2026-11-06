@@ -1,0 +1,12 @@
+{
+  "certified": true,
+  "meaning": "Identical complete input bytes: unchanged coefficients, geometry parameters and weights; only the boundary estimate changes",
+  "original_input": "candidates/geometry_joint_expanded_m60_d11_repaired.json",
+  "profile_input": "candidates/geometry_joint_expanded_m60_d11_repaired_pruned.json",
+  "identical_sha256": "08833ad2485c0cfb4ed1e844797779fb3d354f4117888d7fdfbe00c57856864d",
+  "original_kernel_certificate": "candidates/geometry_joint_expanded_m60_d11_repaired_geometry_kernel.json",
+  "original_arithmetic_certificate": "candidates/geometry_joint_expanded_m60_d11_repaired_arithmetic_coupled_binned_N100000000.json",
+  "boundary_profile": "pruned_subweyl",
+  "PL_certificate": "certificates/geometry_PL_inputs_subweyl.json",
+  "source": "https://arxiv.org/html/2302.13444v1"
+}

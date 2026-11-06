@@ -1,0 +1,6 @@
+LOCAL GEOMETRY SCREEN m 80 coefficients 159 geometries 25 mode both
+geometry cost ranges [0.02052597 0.15346183 1.3787132 ] [0.04558959 0.67617102 4.18715242] setup seconds 0.0011851787567138672
+{"iteration": 0, "C_numerical": 2.958097472360922, "A_total": 0.08353419896192883, "B_loglog": 0.06435764677252089, "geometries_used": 21, "kappa_sum": 0.354789253210338, "worst": -0.0008143955872355766, "phasegap": 9.318433324967401e-08, "peak_logT": 225.18339053930873, "height_gap": 3.419107468305427e-05, "seconds": 147.77114915847778}
+{"iteration": 1, "C_numerical": 2.958312150005305, "A_total": 0.08352248910112538, "B_loglog": 0.06489720509360626, "geometries_used": 21, "kappa_sum": 0.3581116811250481, "worst": -0.00016537168829417273, "phasegap": 5.573902012168119e-07, "peak_logT": 218.13387455413547, "height_gap": 3.030814399451742e-08, "seconds": 302.70933413505554}
+{"iteration": 2, "C_numerical": 2.9583314289162352, "A_total": 0.08352845031054076, "B_loglog": 0.0645895421073021, "geometries_used": 20, "kappa_sum": 0.35602550146679524, "worst": -4.01418971772631e-05, "phasegap": 1.7130400657011657e-08, "peak_logT": 221.53871001235152, "height_gap": 8.698014812402732e-06, "seconds": 466.31343388557434}
+saved SCREEN ONLY candidates/geometry_joint_m80_round11_union.json

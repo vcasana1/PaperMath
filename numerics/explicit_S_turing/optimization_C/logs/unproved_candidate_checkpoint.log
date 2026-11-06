@@ -1,0 +1,12 @@
+{
+  "candidate": "candidates/geometry_m60_d1p1_joint_neighbors11.json",
+  "sha256": "e837a078ce6c38c4f1d97e16f0d48e77e45f502076abcf9c390874a4b1874304",
+  "C_numerical": 2.958758190845609,
+  "d": "1.1",
+  "m": 60,
+  "geometries": 35,
+  "minimum_scaled_residual_numerical": -0.0011040233236590748,
+  "phase_gap_numerical": 3.034954150493707e-08,
+  "height_gap_numerical": 4.533176344967416e-06,
+  "seconds": 206.915452003479
+}

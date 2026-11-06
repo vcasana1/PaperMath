@@ -1,0 +1,4 @@
+geometry_m100_repaired.json sha256 54c09ff41f3b5e3f14bbda67e70bae3bfa28d995be7d2d7b2b5d3a6efc823886
+certify_geometry_kernel.py sha256 375a750f3bd864a30797ff5da2237b8cb1bb248ad16b5ae5f44691594bb657ea
+python 3.14.5, python-flint 0.9.0, precision 800 bits
+INTERFACE PASS b0 11741 seconds 21.009103775024414

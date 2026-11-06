@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/validate_coupled_weights.py", line 11, in <module>
+    s=json.loads(Path(sys.argv[1]).read_text());d=Q(s['d']);B=[tuple(x) for x in s['B']];pi=arb.pi()
+                      ~~~~~~~~^^^
+IndexError: list index out of range

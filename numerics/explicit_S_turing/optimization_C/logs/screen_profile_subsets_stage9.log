@@ -1,0 +1,178 @@
+{
+  "solution": "certificates/final_geometry_C2_963951287/solution.json",
+  "seconds": 6.583557844161987,
+  "top": [
+    {
+      "C_numerical": 2.963945770628465,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7
+      ],
+      "A_total": 0.08353366983222552,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.51068465797117,
+      "peak_logT": 226.85840844667268
+    },
+    {
+      "C_numerical": 2.964004361904381,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "A_total": 0.08353313140497198,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.51605507739525,
+      "peak_logT": 226.43261506281078
+    },
+    {
+      "C_numerical": 2.964080772258759,
+      "one_line_factor": 0.5,
+      "log_shift": 3.86,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        7
+      ],
+      "A_total": 0.08353569037290852,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.5230587762383,
+      "peak_logT": 224.6106529852668
+    },
+    {
+      "C_numerical": 2.96408141681858,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "A_total": 0.08353299261876557,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.5231178559652,
+      "peak_logT": 226.32312058389428
+    },
+    {
+      "C_numerical": 2.9641113904860994,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "A_total": 0.08353312502808796,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.52586521320809,
+      "peak_logT": 226.42758173935576
+    },
+    {
+      "C_numerical": 2.964114632955676,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        7
+      ],
+      "A_total": 0.08353361799336544,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.52616241481911,
+      "peak_logT": 226.8173441304067
+    },
+    {
+      "C_numerical": 2.964122315395863,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        7
+      ],
+      "A_total": 0.08353569037290852,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.52686657982252,
+      "peak_logT": 228.4706529852668
+    },
+    {
+      "C_numerical": 2.9641916345020345,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "A_total": 0.08353347920715902,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.53322030174473,
+      "peak_logT": 226.70747734402403
+    },
+    {
+      "C_numerical": 2.9643023281036847,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        4,
+        7
+      ],
+      "A_total": 0.08353523727259081,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.54336636972367,
+      "peak_logT": 228.10712182233385
+    },
+    {
+      "C_numerical": 2.96433584265005,
+      "one_line_factor": 1.0,
+      "log_shift": 0.0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7
+      ],
+      "A_total": 0.08353411461087079,
+      "B_loglog": 0.06495640615158958,
+      "Lswitch": 93.54643828048125,
+      "peak_logT": 227.21135329595512
+    }
+  ]
+}

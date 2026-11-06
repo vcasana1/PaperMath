@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "C": "2.963951287",
+  "checks": [
+    "envelope dependencies",
+    "kernel and arithmetic input linkage",
+    "current independent verifier code hashes",
+    "complete critical polynomial linkage",
+    "fixed-family proof linkage",
+    "executed reproduction matches final solution"
+  ],
+  "meaning": "integrity check in addition to the executed mathematical verifiers"
+}

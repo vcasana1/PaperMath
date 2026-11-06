@@ -1,0 +1,4 @@
+LOCAL GEOMETRY SCREEN m 60 coefficients 119 geometries 247 mode both
+geometry cost ranges [0.01135446 0.15346183 1.29498634] [0.05201586 0.77936808 5.21677091] setup seconds 0.00273895263671875
+{"iteration": 0, "C_numerical": 2.959774070004189, "A_total": 0.08352038484773437, "B_loglog": 0.06455502836494391, "geometries_used": 22, "kappa_sum": 0.3573004651868111, "worst": -0.0009093153743561461, "phasegap": 1.2347276084900827e-07, "peak_logT": 215.45982530186095, "height_gap": 4.186491555646654e-06, "seconds": 193.23834800720215}
+saved SCREEN ONLY candidates/geometry_m60_d1p1_joint_neighbors10.json

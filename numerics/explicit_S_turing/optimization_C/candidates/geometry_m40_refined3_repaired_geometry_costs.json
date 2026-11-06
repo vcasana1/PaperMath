@@ -1,0 +1,205 @@
+{
+  "certified": true,
+  "input_sha256": "0658221821b213609567e9834a44fc1e9ad27f9e8a70f77c2d1f3a2b0672b403",
+  "code_sha256": "1a2cc8fc7ec3db4504e7008f8874d8c6eee121041d7bf32a06312a483ec4a445",
+  "PL_certificate_sha256": "cfb329de99fab1d6c618c1bee56ef4412c434e3c0ac7443e6de9d67bd0579faa",
+  "precision": 512,
+  "endpoint_sliver": "1/281474976710656",
+  "geometries": [
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.95,
+        "v": -1.1
+      },
+      "J_upper": "0.04385507197980448184577612",
+      "G_upper": "0.6291329282947342487564762",
+      "A_upper": "2.578614049791781636622104",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 24,
+      "Poisson_tail_upper": "0.0000000000000000000000144332977396059761355648"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 1.0,
+        "v": -1.15
+      },
+      "J_upper": "0.04476301404793638752042252",
+      "G_upper": "0.6389189224041824106825554",
+      "A_upper": "2.557607721562245045524510",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 23,
+      "Poisson_tail_upper": "0.00000000000000000000000808077321838460417504738"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 3.5,
+        "c": 1.1,
+        "H": 1.0,
+        "v": -1.1
+      },
+      "J_upper": "0.04632511679752741076166681",
+      "G_upper": "0.6621831831461068126957486",
+      "A_upper": "2.567942373519605237370159",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 45,
+      "Poisson_tail_upper": "0.0000000000000000000000648075948812392963129355"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.75,
+        "v": -1.1
+      },
+      "J_upper": "0.03892369529098276635225616",
+      "G_upper": "0.5775211254274214235376687",
+      "A_upper": "2.694596059153453416060505",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 30,
+      "Poisson_tail_upper": "0.0000000000000000000000484276114462963638830416"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.7,
+        "v": -1.0
+      },
+      "J_upper": "0.03728331844174246954773141",
+      "G_upper": "0.5609244144726486301859387",
+      "A_upper": "2.733922446754999638731827",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 32,
+      "Poisson_tail_upper": "0.0000000000000000000000698899410099031924910174"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.75,
+        "v": -1.05
+      },
+      "J_upper": "0.03892369529098276635225616",
+      "G_upper": "0.5775211254274214235376687",
+      "A_upper": "2.694596059153453416060505",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 30,
+      "Poisson_tail_upper": "0.0000000000000000000000484276114462963638830416"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.95,
+        "v": 1.1
+      },
+      "J_upper": "0.04385507197980448184577612",
+      "G_upper": "0.6291329282947342487564762",
+      "A_upper": "2.578614049791781636622104",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 24,
+      "Poisson_tail_upper": "0.0000000000000000000000144332977396059761355648"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 1.0,
+        "v": 1.15
+      },
+      "J_upper": "0.04476301404793638752042252",
+      "G_upper": "0.6389189224041824106825554",
+      "A_upper": "2.557607721562245045524510",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 23,
+      "Poisson_tail_upper": "0.00000000000000000000000808077321838460417504738"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.75,
+        "v": 1.1
+      },
+      "J_upper": "0.03892369529098276635225616",
+      "G_upper": "0.5775211254274214235376687",
+      "A_upper": "2.694596059153453416060505",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 30,
+      "Poisson_tail_upper": "0.0000000000000000000000484276114462963638830416"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 1.0,
+        "v": 1.2
+      },
+      "J_upper": "0.04744601527500810536860923",
+      "G_upper": "0.6312024595421087510817698",
+      "A_upper": "2.531111984813125137946700",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 23,
+      "Poisson_tail_upper": "0.0000000000000000000000130407349634481655974633"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.7,
+        "v": 1.0
+      },
+      "J_upper": "0.03728331844174246954773141",
+      "G_upper": "0.5609244144726486301859387",
+      "A_upper": "2.733922446754999638731827",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 32,
+      "Poisson_tail_upper": "0.0000000000000000000000698899410099031924910174"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7125,
+        "b": 2.1,
+        "c": 1.1,
+        "H": 0.75,
+        "v": 1.05
+      },
+      "J_upper": "0.03892369529098276635225616",
+      "G_upper": "0.5775211254274214235376687",
+      "A_upper": "2.694596059153453416060505",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 30,
+      "Poisson_tail_upper": "0.0000000000000000000000484276114462963638830416"
+    }
+  ],
+  "height_domain": "log T>=100; |v|+extent<=10 and Q+maximum real boundary coordinate<=10",
+  "explicit_height_correction_per_weight": "G*pi^2/(8*(log T)^2)+400/T",
+  "seconds": 1.4422857761383057
+}

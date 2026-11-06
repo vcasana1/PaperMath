@@ -1,0 +1,5 @@
+LOCAL GEOMETRY SCREEN m 40 coefficients 79 geometries 279 mode both
+geometry cost ranges [0.0010368  0.09862661 0.46883617] [0.05365694 0.68444003 4.73489805] setup seconds 0.0021371841430664062
+{"iteration": 0, "C_numerical": 3.008882012523867, "A_total": 0.0836209608299511, "B_loglog": 0.04783972052483995, "geometries_used": 10, "kappa_sum": 0.29130415777368734, "worst": -0.0005811521640670199, "phasegap": 3.928826147567288e-05, "peak_logT": 240.35329585169498, "height_gap": 2.541835802016834e-05, "seconds": 147.41846323013306}
+{"iteration": 1, "C_numerical": 3.009202053503464, "A_total": 0.08362476134780412, "B_loglog": 0.04769623926674906, "geometries_used": 10, "kappa_sum": 0.29062239424723146, "worst": -8.917292668910562e-06, "phasegap": 2.166407522818936e-08, "peak_logT": 244.2971139695018, "height_gap": 6.255348060868471e-06, "seconds": 293.5348370075226}
+saved SCREEN ONLY candidates/geometry_m40_joint_neighbors2.json

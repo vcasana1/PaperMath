@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "C_reproduced": "3.418772350",
+  "C_claimed": "3.418772350",
+  "checks": [
+    "low_kernel",
+    "low_arithmetic",
+    "low_elementary",
+    "high_kernel",
+    "high_arithmetic",
+    "envelope",
+    "universal_lower"
+  ],
+  "output": "reproduction/20261106_171005",
+  "bin_log_width": "0.0001"
+}

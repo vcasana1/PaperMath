@@ -1,0 +1,5 @@
+LOCAL GEOMETRY SCREEN m 40 coefficients 79 geometries 102 mode rectangle
+geometry cost ranges [0.03892369 0.4890965  2.06537432] [0.08895648 0.68691091 2.93313798] setup seconds 0.0021293163299560547
+{"iteration": 0, "C_numerical": 3.2216891027105365, "A_total": 0.08370496133252316, "B_loglog": 0.03132886459118312, "geometries_used": 10, "kappa_sum": 0.16457914225988704, "worst": -0.00034280085705779944, "phasegap": 9.855878260744966e-08, "peak_logT": 272.33334041780165, "height_gap": 1.868369382806989e-05, "seconds": 56.84803104400635}
+{"iteration": 1, "C_numerical": 3.2218842569068973, "A_total": 0.08370726788638515, "B_loglog": 0.03123441084786556, "geometries_used": 11, "kappa_sum": 0.16419467257805645, "worst": -4.001638532032006e-06, "phasegap": 1.0985254816908707e-08, "peak_logT": 277.06755285877045, "height_gap": 4.594842671679089e-06, "seconds": 117.32347106933594}
+saved SCREEN ONLY candidates/geometry_m40_refined2.json

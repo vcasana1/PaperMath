@@ -1,0 +1,12 @@
+{
+  "candidate": "candidates/geometry_joint_m80_round11_union.json",
+  "sha256": "504be9754f1b7afd922555493a71a749159313cf4c1cc1b2777f18680ca71712",
+  "C_numerical": 2.9583314289162352,
+  "d": "1.1",
+  "m": 80,
+  "geometries": 24,
+  "minimum_scaled_residual_numerical": -4.01418971772631e-05,
+  "phase_gap_numerical": 1.7130400657011657e-08,
+  "height_gap_numerical": 8.698014812402732e-06,
+  "seconds": 466.40071988105774
+}

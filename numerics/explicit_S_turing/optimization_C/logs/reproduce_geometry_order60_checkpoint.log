@@ -1,0 +1,10 @@
+low_kernel PASS
+low_arithmetic PASS
+low_elementary PASS
+PL_inputs PASS
+geometric_kernel PASS
+harmonic_costs PASS
+high_arithmetic PASS
+uniform_envelope PASS
+universal_lower PASS
+GEOMETRY REPRODUCTION COMPLETE 3.001621579 output /Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/reproduction_geometry/20261106_190700

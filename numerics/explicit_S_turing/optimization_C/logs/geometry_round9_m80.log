@@ -1,0 +1,5 @@
+LOCAL GEOMETRY SCREEN m 80 coefficients 159 geometries 23 mode both
+geometry cost ranges [0.01972607 0.15346183 1.3787132 ] [0.04664662 0.67881975 4.138639  ] setup seconds 0.0013511180877685547
+{"iteration": 0, "C_numerical": 2.9627284358512833, "A_total": 0.08354344119559039, "B_loglog": 0.06227646878764174, "geometries_used": 20, "kappa_sum": 0.3442591935965474, "worst": -0.0006410717797172213, "phasegap": 2.310591352877589e-05, "peak_logT": 225.18346114702766, "height_gap": 3.3086011820060435e-05, "seconds": 134.06532311439514}
+{"iteration": 1, "C_numerical": 2.9628947098397775, "A_total": 0.08353600133814601, "B_loglog": 0.06291671531844917, "geometries_used": 21, "kappa_sum": 0.34863082653268224, "worst": -4.6689628708368535e-05, "phasegap": 1.497249224574615e-06, "peak_logT": 221.5387738368808, "height_gap": 8.473046578583165e-06, "seconds": 298.666876077652}
+saved SCREEN ONLY candidates/geometry_joint_round9_m80.json

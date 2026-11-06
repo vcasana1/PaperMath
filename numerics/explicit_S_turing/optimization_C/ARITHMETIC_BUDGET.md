@@ -4,14 +4,14 @@ Los tiempos son mediciones de ejecución, afectadas por la carga concurrente.
 Las comparaciones dentro de cada bloque usan exactamente los mismos coeficientes.
 El término de error de ψ es una contribución al mayorante, no una brecha de optimalidad del núcleo.
 
-## d110_m40_lag
+## d110_m40_lag — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
 | 1000000 | 1000 | 3.57464156576512922961364 | 0.000161598229626262541251159 | — | 5.6 |
 | 100000000 | 10000 | 3.57435184118998823270799 | 0.00000424204615819378302232509 | — | 187.6 |
 
-## d105_m40_repaired
+## d105_m40_repaired — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
@@ -21,7 +21,7 @@ El término de error de ψ es una contribución al mayorante, no una brecha de o
 | 200000000 | 10000 | 3.57342922441124939150041 | 0.00000222283960632024876812269 | — | 149.0 |
 | 1000000000 | 10000 | 3.57342738395836256403104 | 0.000000430362103658173398521938 | 0.000000000000221373153942736080629922 | 20.7 |
 
-## d110_m60_panel
+## d110_m60_panel — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
@@ -30,39 +30,53 @@ El término de error de ψ es una contribución al mayorante, no una brecha de o
 | 10000000000 | 100000 | 3.57301759532668599502456 | 0.0000000580208365227703170702201 | 0.000000000000270851120114514999650146 | 84.8 |
 | 10000000000 | 1000000 | 3.57301759402258086610598 | 0.0000000580208365227703170702201 | 0.000000000000194207427364345781705652 | 92.4 |
 
-## d100_m80_lag
+## d100_m80_lag — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
 | 1000000 | 10000 | 3.57401320067604401795681 | 0.000159615257247575843620702 | — | 1036.4 |
 | 200000000 | 10000 | 3.57372365359102433864225 | 0.00000223778090197292317506845 | — | 394.6 |
 
-## d100_m100_empirical
+## d100_m100_empirical — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
 | 10000000000 | 1000000 | 3.57284089037034359125851 | 0.0000000578721614432010804509113 | 0.000000000000171819935161748865155447 | 261.3 |
 | 100000000000 | 1000000 | 3.57284086488699057756434 | 0.0000000322694803355893490371155 | 0.000000000000000140393196809342843130588 | 2569.4 |
 
-## d100_m40_lag
+## d100_m40_lag — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
 | 1000000 | 10000 | 3.57449437547373649601172 | 0.000159720212826012823115996 | — | 24.6 |
 | 200000000 | 10000 | 3.57758094725268174508558 | 0.00000224274159198347296302743 | — | 300.4 |
 
-## d100_m20
+## d100_m20 — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
 | 1000000 | 1000 | 3.58288293880226333395761 | 0.000162126969187507699666413 | — | 2.8 |
 | 100000000 | 1000 | 3.58272037346454261266800 | 0.00000438133438663596257576296 | — | 92.7 |
 
-## d100_m60_lag
+## geometry_m60_d1p1_joint_neighbors9_repaired — centros joint_prime_phase
+
+| N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
+|---:|---:|---:|---:|---:|---:|
+| 100000000 | 10000 | 2.72742680802221243701353 | 0.000000668863685628582398842611 | 0.000000000000191462213793435426865507 | 53.8 |
+| 10000000000 | 10000 | 2.72742618846525490987514 | 0.0000000493975174319724058996898 | 0.000000000000209899673860714150411998 | 170.2 |
+
+## d100_m60_lag — centros separate
 
 | N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
 |---:|---:|---:|---:|---:|---:|
 | 1000000 | 10000 | 3.57406854298469991702464 | 0.000159634039806065781461809 | — | 72.4 |
 | 200000000 | 10000 | 3.57377895988335100897703 | 0.00000223878090587295339391569 | — | 3036.2 |
+
+## geometry_m60_d1p1_joint_neighbors7_repaired — centros joint_prime_phase
+
+| N | P0 | Cζ superior | Error ψ superior | Exceso de bins | Segundos |
+|---:|---:|---:|---:|---:|---:|
+| 100000000 | 10000 | 2.79291075632589830044992 | 0.000000590000784434168685124218 | 0.000000000000184134267131476229776629 | 113.4 |
+| 100000000 | 10000 | 2.79291075632590291930071 | 0.000000590000784434168861018008 | 0.000000000000184134267131476229776629 | 60.7 |
 
 La cola principal se integra con el peso original. Aumentar N reduce la incertidumbre de ψ y la aproximación por normas de las potencias aún no acopladas; no elimina la contribución aritmética verdadera. No se ha demostrado que los parámetros del núcleo sean óptimos.

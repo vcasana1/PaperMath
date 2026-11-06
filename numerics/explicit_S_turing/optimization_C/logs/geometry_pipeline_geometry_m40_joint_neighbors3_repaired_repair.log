@@ -1,0 +1,4 @@
+{"iteration": 0, "worst_scaled_slack": -0.0004058527415917723, "cuts": 40, "geometries": 15, "seconds": 3.4336469173431396}
+{"iteration": 1, "worst_scaled_slack": 5.618695195774848e-07, "cuts": 5, "geometries": 15, "seconds": 53.24362897872925}
+{"iteration": 2, "worst_scaled_slack": 1.9328630924686507e-06, "cuts": 0, "geometries": 15, "seconds": 101.52549195289612}
+REPAIRED NUMERICALLY candidates/geometry_m40_joint_neighbors3_repaired.json

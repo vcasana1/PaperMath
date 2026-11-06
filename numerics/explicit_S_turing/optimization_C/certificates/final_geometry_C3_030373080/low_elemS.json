@@ -1,0 +1,10 @@
+{
+  "A1": "0.09473",
+  "T0": 10000,
+  "mode": "S",
+  "Fsup_upper": "-0.158475758991133",
+  "certified": true,
+  "input_sha256": "79d3366fe78fe865de0b9dbd01bab13c6d5380a91913b78c2f4da095fb389acf",
+  "elementary_code_sha256": "25530a892cba6b7ef5c5c229da418d28a7e86622f11552a8f7abb963a6093670",
+  "wrapper_code_sha256": "b30251239ce8e7c616ade0906b9888a0607cd45957077eb352bd23c90f488526"
+}

@@ -1,0 +1,4 @@
+{"iteration": 0, "worst_scaled_slack": -6.855496412772055e-06, "cuts": 47, "geometries": 9, "seconds": 4.428201913833618}
+{"iteration": 1, "worst_scaled_slack": 1.8475840650733488e-06, "cuts": 3, "geometries": 9, "seconds": 62.52853608131409}
+{"iteration": 2, "worst_scaled_slack": 1.950743664824728e-06, "cuts": 0, "geometries": 9, "seconds": 107.0397539138794}
+REPAIRED NUMERICALLY candidates/geometry_joint_probe_m60_repaired.json

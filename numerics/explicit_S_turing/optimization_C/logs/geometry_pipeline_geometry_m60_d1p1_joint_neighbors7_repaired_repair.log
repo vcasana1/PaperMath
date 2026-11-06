@@ -1,0 +1,6 @@
+{"iteration": 0, "worst_scaled_slack": -0.000265542476163505, "cuts": 59, "geometries": 14, "seconds": 4.561603784561157}
+/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/src/repair_geometry_general.py:53: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver='CLARABEL',tol_gap_abs=1e-14,tol_feas=1e-11,tol_gap_rel=1e-11,max_iter=250);assert delta.value is not None,prob.status
+{"iteration": 1, "worst_scaled_slack": -1.7494168886855732e-06, "cuts": 20, "geometries": 14, "seconds": 21.867528915405273}
+{"iteration": 2, "worst_scaled_slack": 1.9206674322092e-06, "cuts": 0, "geometries": 14, "seconds": 38.48977184295654}
+REPAIRED NUMERICALLY candidates/geometry_m60_d1p1_joint_neighbors7_repaired.json

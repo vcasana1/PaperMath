@@ -1,0 +1,8 @@
+{
+  "complete": false,
+  "cancelled_by_user": true,
+  "timed_out": false,
+  "exit_code": -15,
+  "output": "candidates/geometry_joint_m80_round11_union_repaired.json",
+  "reason": "Experiment stopped at explicit user request; no new constant accepted."
+}

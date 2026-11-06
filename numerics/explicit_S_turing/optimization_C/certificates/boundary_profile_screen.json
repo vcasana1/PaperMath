@@ -1,0 +1,34 @@
+{
+  "certified": false,
+  "solution": "certificates/final_geometry_C3_001621579/solution.json",
+  "results": [
+    {
+      "profile": "HPY_0618",
+      "C_numerical": 3.00163470923007,
+      "A_total": 0.08362015907572713,
+      "B_loglog": 0.04886309051671122,
+      "Lswitch_numerical": 96.96462847438882,
+      "source": "https://arxiv.org/html/2207.02366v1",
+      "gain_numerical": 0.0
+    },
+    {
+      "profile": "Revers_0611",
+      "C_numerical": 3.0016310435976687,
+      "A_total": 0.08362015907572713,
+      "B_loglog": 0.04886309051671122,
+      "Lswitch_numerical": 96.96429248201169,
+      "source": "https://arxiv.org/html/2602.05614v1",
+      "gain_numerical": 3.6656324011730135e-06
+    },
+    {
+      "profile": "Patel_Yang_subWeyl",
+      "C_numerical": 3.0012139706168743,
+      "A_total": 0.08361950502983394,
+      "B_loglog": 0.048541299937255644,
+      "Lswitch_numerical": 96.92606738745468,
+      "source": "https://arxiv.org/html/2302.13444v1",
+      "gain_numerical": 0.0004207386131955815
+    }
+  ],
+  "warning": "Numerical screening only; changing PL exponents requires separate verification and harmonic cost certification."
+}

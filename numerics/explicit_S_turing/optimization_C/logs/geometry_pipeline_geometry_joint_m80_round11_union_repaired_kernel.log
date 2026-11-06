@@ -1,0 +1,4 @@
+geometry_joint_m80_round11_union_repaired.json sha256 e0e727a05ce7f8172e201bc1b2a0b3cbf996d4f9107b772e499af9f4d984eeef
+certify_geometry_kernel_fast.py sha256 33445a3a73977991be4c70b9c7c6c3839bbabf9ceace0e70cbfd4693287fae08
+python 3.14.5, python-flint 0.9.0, precision 640 bits
+INTERFACE PASS b0 4761 seconds 8.657102108001709

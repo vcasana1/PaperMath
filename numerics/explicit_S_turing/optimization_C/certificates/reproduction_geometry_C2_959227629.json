@@ -1,0 +1,19 @@
+{
+  "complete": true,
+  "bound_type": "Green_Jensen_uniform",
+  "C_reproduced": "2.959227629",
+  "C_claimed": "2.959227629",
+  "checks": [
+    "low_kernel",
+    "low_arithmetic",
+    "low_elementary",
+    "PL_inputs",
+    "geometric_kernel",
+    "harmonic_costs",
+    "high_arithmetic",
+    "uniform_envelope",
+    "universal_lower"
+  ],
+  "output": "reproduction_geometry/20261106_205118",
+  "bin_log_width": "0.0001"
+}

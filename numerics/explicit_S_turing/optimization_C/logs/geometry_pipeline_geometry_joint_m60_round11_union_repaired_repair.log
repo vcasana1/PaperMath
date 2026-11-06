@@ -1,0 +1,5 @@
+{"iteration": 0, "worst_scaled_slack": -2.698296317271698e-06, "cuts": 68, "geometries": 23, "seconds": 15.351805925369263}
+{"iteration": 1, "worst_scaled_slack": 1.6843776613484351e-06, "cuts": 3, "geometries": 23, "seconds": 50.74533200263977}
+{"iteration": 2, "worst_scaled_slack": 1.8378759545356615e-06, "cuts": 1, "geometries": 23, "seconds": 88.33097982406616}
+{"iteration": 3, "worst_scaled_slack": 1.922251827268795e-06, "cuts": 0, "geometries": 23, "seconds": 126.66916799545288}
+REPAIRED NUMERICALLY candidates/geometry_joint_m60_round11_union_repaired.json

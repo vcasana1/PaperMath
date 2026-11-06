@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "input_sha256": "63c0dd991e831702cc0a9fee17e4e11c59b4c3164be776e599db93793e5b6f46",
+  "identical_nested_proof_functions_AST": true,
+  "rows": [
+    {
+      "certificate": "candidates/geometry_m60_d1p1_joint_neighbors8_repaired_geometry_kernel_original_verifier.json",
+      "verifier": "certify_geometry_kernel.py",
+      "seconds": 309.7414700984955,
+      "interface_count": 54,
+      "bhalf_boxes": 33933,
+      "rectangle_image_counts": null
+    },
+    {
+      "certificate": "candidates/geometry_m60_d1p1_joint_neighbors8_repaired_geometry_kernel.json",
+      "verifier": "certify_geometry_kernel_fast.py",
+      "seconds": 232.04468989372253,
+      "interface_count": 54,
+      "bhalf_boxes": 33933,
+      "rectangle_image_counts": [
+        10,
+        9,
+        8,
+        7,
+        7,
+        6,
+        10,
+        9,
+        8,
+        8,
+        18,
+        10,
+        18,
+        18,
+        13,
+        11
+      ]
+    }
+  ],
+  "meaning": "Only the number of images changes; every omitted image retains the original explicit interval tail bound. Timings are execution measurements affected by load."
+}

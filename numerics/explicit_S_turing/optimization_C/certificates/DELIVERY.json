@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-06",
+  "archive": "certificado_S_2_959227629.zip",
+  "bound": "|S(T)| <= 0.08382 log(T) + 2.959227629 for all T>1",
+  "selected_result": "certificates/FINAL_RESULT.json",
+  "branch": "codex/optimize-uniform-S-constant",
+  "research_status": "stopped_by_user",
+  "global_optimality_proved": false,
+  "original_manuscripts_modified": false,
+  "reproduction": "certificates/reproduction_status.json"
+}

@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "C": "3.418772350",
+  "C": "2.959227629",
   "checks": [
     "envelope dependencies",
     "kernel and arithmetic input linkage",

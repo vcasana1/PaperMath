@@ -1,0 +1,6 @@
+{"iteration": 0, "worst_scaled_slack": -0.0009716490117657184, "cuts": 73, "geometries": 25, "seconds": 19.936084032058716}
+{"iteration": 1, "worst_scaled_slack": -7.700988442493895e-07, "cuts": 15, "geometries": 25, "seconds": 63.587525844573975}
+{"iteration": 2, "worst_scaled_slack": 1.8563862640430528e-06, "cuts": 1, "geometries": 25, "seconds": 106.43915891647339}
+{"iteration": 3, "worst_scaled_slack": 1.8935798358210576e-06, "cuts": 1, "geometries": 25, "seconds": 149.10438776016235}
+{"iteration": 4, "worst_scaled_slack": 2.0021048254825757e-06, "cuts": 0, "geometries": 25, "seconds": 180.50645184516907}
+REPAIRED NUMERICALLY candidates/geometry_m60_d1p1_joint_neighbors12_repaired.json
