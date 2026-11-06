@@ -1112,6 +1112,31 @@ Each centre has $c>1$, hence its term is exactly
 -\sum_p\sum_{k\ge1}\frac{p^{-kc}}{k}
 \cos(k(T+v)\log p).
 \]
+
+Let $\sigma_0=d+\frac12$ and
+$\sigma=\min(\sigma_0,c_1,\ldots,c_{23})>1$.
+With $a(L),b(L)$ as in \CGeqref{eq:ab_def},
+the combined weights can be written exactly as
+\[
+\begin{aligned}
+a_{\rm joint}(L)
+&=e^{-(\sigma_0-\sigma)L}a(L)
+-\sum_j\frac{\kappa_j}{\pi L}
+ e^{-(c_j-\sigma)L}\cos(v_jL),\\
+b_{\rm joint}(L)
+&=e^{-(\sigma_0-\sigma)L}b(L)
++\sum_j\frac{\kappa_j}{\pi L}
+ e^{-(c_j-\sigma)L}\sin(v_jL).
+\end{aligned}
+\]
+The sine sign follows from expanding
+$-\cos(kx+v_jk\log p)$; reversing that sign
+would invalidate the phase certificate.
+For each prime, these functions are evaluated at
+$L=k\log p$ and maximised in a single common
+$x=T\log p$ over all $k\ge1$.
+The proof does not maximise the prime powers independently.
+
 The centre and kernel terms are maximised with
 the same phase for each prime and all its powers.
 The certified joint Euler contribution is
