@@ -49,7 +49,8 @@ jobs:
           curl -fL --retry 3 -o "$out/certificates/certificado_S_2_959227629.zip" 'https://raw.githubusercontent.com/vcasana1/PaperMath/codex/optimize-uniform-S-constant/certificado_S_2_959227629/certificado_S_2_959227629.zip'
           echo 'a157aafd247a49dd6e8c002762dce6d66fd4500838c8e16d1456f14d0479b131  '"$out/certificates/certificado_S_2_959227629.zip" | sha256sum -c -
           curl -fL --retry 3 -o "$out/certificates/PARA_CHATGPT.md" 'https://raw.githubusercontent.com/vcasana1/PaperMath/codex/optimize-uniform-S-constant/certificado_S_A0_0751/PARA_CHATGPT.md'
-          cp -r "$root/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107" "$out/certificates/" 2>/dev/null || true
+          git fetch --depth=1 origin refs/heads/codex/optimize-uniform-S-constant
+          git archive FETCH_HEAD numerics/explicit_S_turing/optimization_C/slope_optimization_20261107 | tar -xf - -C "$out/certificates"
           cat >"$out/README.txt" <<'EOF'
           COMPLETE V8 MANUSCRIPT
           The PDF is built from the TEX in this ZIP.
@@ -71,6 +72,7 @@ jobs:
           git add numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts/
           git diff --cached --quiet && exit 0
           git commit -m '[skip ci] Attach compiled full v8 PDF and complete certificate ZIP'
+          git pull --rebase origin chatgpt/casanya-turing-jensen-v8
           git push
       - name: Upload workflow artifact as backup
         uses: actions/upload-artifact@v4
