@@ -253,7 +253,9 @@ Independently, the asymptotic hybrid gives
 $\limsup_{T\to\infty}|S(T)|/\log T<0.0748883899703$.
 A reproducible external archive supplies the new exact coefficients
 and interval-verification records. No assumption of the Riemann
-hypothesis or global optimality claim is made.
+hypothesis or global optimality claim is made. We also apply the
+bounds to a second prime-only ordinal clock, keeping its finite
+numerical improvements separate from unproved proportion claims.
 \end{abstract}
 
 \maketitle
@@ -1168,6 +1170,201 @@ Exact data, independent interval verifiers and execution logs
 are in the companion archive \cite{CasanaCertificate2026}.
 The numerical certificate is not claimed to be an optimality
 proof or a formal verification of its own implementation.
+
+
+% ---- application of the same certified S bound to the prime-only clock C2 ----
+\section{Application to a second prime-only ordinal clock}\label{sec:tauC2}
+
+The estimate \eqref{eq:green_explicit} also bounds the displacement of
+a second sequence of synthetic ordinates, constructed with only the
+Riemann--von Mangoldt main term and finitely many ordinary primes.
+The construction is independent of the values and zeros of $\zeta$.
+The ordinal-energy test below is a sufficient condition, not a claim
+that the proportion of simple critical-line zeros exceeds $80\%$.
+
+For $t>0$ put $N_0(t)=\main(t)+\frac78$ and define
+\[
+\mathscr W(\theta)
+ =(1+\theta)\log(1+\theta)+(1-\theta)\log(1-\theta)
+ \quad(0\le\theta<1).
+\]
+Let $p_1<p_2<\cdots$ be the usual primes,
+$U_j=2^j$, $m_j=\lfloor2^{j/2}\rfloor$, and
+\[
+ a_p(t)=-\frac1\pi\arg(1-p^{-1/2-it}),\qquad
+ Q_j(t)=\sum_{\nu\le m_j}w_{j,\nu}a_{p_\nu}(t),
+\]
+where the principal argument is used and
+\begin{equation}
+ w_{j,\nu}=
+ \begin{cases}
+ 1,&j<12,\\[2pt]
+ 1-\mathscr W(\log p_\nu/\log U_j),&j\ge12.
+ \end{cases}
+ \label{eq:tauC2_weights_v6}
+\end{equation}
+The argument of $\mathscr W$ is below $1$ for these prime budgets.
+For $2^j\le t\le2^{j+1}$ let
+\[
+ Q^\circ(t)=\left(2-\frac{t}{2^j}\right)Q_j(t)
+       +\left(\frac{t}{2^j}-1\right)Q_{j+1}(t),
+ \qquad h(t)=\log\log\max\{t,e^e\}.
+\]
+Clip $Q^\circ(t)$ to $[-h(t),h(t)]$, obtaining
+\[
+ Q(t)=\max\{-h(t),\min\{h(t),Q^\circ(t)\}\},\qquad
+ F_2(t)=N_0(t)+Q(t).
+\]
+Define the second prime-only clock by the sublevel measure
+\begin{equation}
+ \boxed{\displaystyle
+ \tau_k^{\mathrm{C2}}=
+ \operatorname{meas}\{t>0:F_2(t)<k-\tfrac12\},\quad k\ge1.}
+ \label{eq:tauC2_v6}
+\end{equation}
+Every sum at a fixed height contains finitely many primes.
+The elementary weights are fixed in advance and are not fitted to
+the true ordinates.
+
+\begin{proposition}[Ordering and an unconditional height envelope]
+\label{prop:tauC2_v6}
+The numbers $\tau_k^{\mathrm{C2}}$ are positive, finite, and
+strictly increasing. Let $\tau_k$ be the large solution of
+$N_0(\tau_k)=k-\frac12$ and let $\gamma_k$ enumerate all positive
+ordinates of non-trivial zeros with multiplicity, without RH.
+For sufficiently large $k$ put
+$\mathfrak m_k=\min\{\tau_k,\gamma_k\}$. Then
+\begin{equation}
+\begin{aligned}
+ |\tau_k^{\mathrm{C2}}-\gamma_k|
+ &\le\frac{2\pi}{\log(\mathfrak m_k/(2\pi))}
+   \left(\GreenA\log\gamma_k+\GreenC
+             +\frac{25}{48\pi\gamma_k}\right)\\
+ &\quad+\frac{2\pi h(2\tau_k)}{\log(\tau_k/(4\pi))}.
+\end{aligned}
+\label{eq:tauC2_explicit_v6}
+\end{equation}
+Moreover, Theorem~\ref{thm:hybrid} yields
+\begin{equation}
+ \limsup_{k\to\infty}|\tau_k^{\mathrm{C2}}-\gamma_k|
+ \le 2\pi C_{\rm H}<0.470538.
+ \label{eq:tauC2_limsup_v6}
+\end{equation}
+These are upper bounds, not an asymptotic improvement of the
+root-mean-square localization constant.
+\end{proposition}
+
+\begin{proof}
+For each $p$, the number $1-p^{-1/2-it}$ lies in the open
+right half-plane, hence its principal argument is continuous.
+The dyadic interpolations agree at their common endpoints.
+Clipping preserves continuity, $|Q(t)|\le h(t)$, and
+$F_2(t)\to+\infty$. Thus every sublevel set is bounded.
+At $t=2\pi$ both adjacent budgets involve just the primes
+$2$ and $3$ with unit weights.
+Here $N_0(2\pi)=-\frac18$, while
+$|a_2(2\pi)|<\frac14$ and $|a_3(2\pi)|<\frac14$,
+so $F_2(2\pi)<\frac38<\frac12$.
+All sublevel sets have positive measure, and continuity shows
+that $\{k-\frac12<F_2<k+\frac12\}$ contains a nonempty
+open interval for every $k$. This proves strict ordering.
+
+For sufficiently large $k$, the main term is increasing on
+$[\tau_k/2,2\tau_k]$; on this interval
+\[
+ N_0'(t)\ge\frac1{2\pi}\log\frac{\tau_k}{4\pi}.
+\]
+The main-term gaps outside the interval dominate $h(t)$.
+Comparison of the sublevel sets for $N_0\pm h(2\tau_k)$
+with that for $F_2$, followed by the mean-value theorem, gives
+\begin{equation}
+ |\tau_k^{\mathrm{C2}}-\tau_k|
+ \le\frac{2\pi h(2\tau_k)}{\log(\tau_k/(4\pi))}
+ =o(1).
+ \label{eq:tauC2_clock_shift_v6}
+\end{equation}
+At a repeated ordinate $\gamma_k$, the one-sided values
+$N(\gamma_k^-)$ and $N(\gamma_k^+)$ bracket $k-\frac12$.
+By Theorem~\ref{thm:green_explicit}, including its one-sided
+version, and Lemma~\ref{lem:varpi},
+\[
+ |N_0(\gamma_k)-(k-\tfrac12)|
+ \le\GreenA\log\gamma_k+\GreenC
+        +\frac{25}{48\pi\gamma_k}.
+\]
+The mean-value theorem for $N_0$ between $\gamma_k$ and
+$\tau_k$, combined with \eqref{eq:tauC2_clock_shift_v6},
+proves \eqref{eq:tauC2_explicit_v6}. Finally apply the
+asymptotic bound $|S(t)|\le(C_{\rm H}+o(1))\log t$
+and use \eqref{eq:tauC2_clock_shift_v6} to obtain
+\eqref{eq:tauC2_limsup_v6}.
+\end{proof}
+
+\begin{proposition}[Ordinal-energy criterion]
+\label{prop:tauC2_energy_v6}
+Let $\mathcal K_T=\{k:T<\gamma_k\le2T\}$,
+$M_T=\#\mathcal K_T$, and define
+\[
+ E_T(F_2)=\frac1{M_T}\sum_{k\in\mathcal K_T}
+ \left(k-\tfrac12-F_2(\gamma_k)\right)^2.
+\]
+If $N_{\rm simple,1/2}(T,2T)$ counts simple zeros
+on the critical line in this window, then, without RH,
+\begin{equation}
+ N_{\rm simple,1/2}(T,2T)
+ \ge M_T\bigl(1-4E_T(F_2)\bigr).
+ \label{eq:tauC2_count_v6}
+\end{equation}
+Consequently, the additional \emph{unproved} condition
+\[
+ \limsup_{T\to\infty} E_T(F_2)<\frac1{20}
+\]
+would imply more than $80\%$ simple critical-line zeros,
+counted with multiplicity. The stronger condition
+$\limsup E_T(F_2)<1/80$ would imply more than $95\%$.
+Neither condition follows from a pointwise bound for $S(T)$.
+\end{proposition}
+
+\begin{proof}
+Group zeros by common ordinate, counting multiplicities
+and all real parts. In a block of size $m$, the defects
+$k-\frac12-F_2(\gamma_k)$ form a progression of step one.
+Their total squared defect is at least $m(m^2-1)/12$,
+which is at least $m/4$ for $m\ge2$.
+Each off-line zero has a distinct reflected partner
+$1-\bar\rho$ at the same ordinate; a multiple zero
+also lies in a repeated block. Hence the number of zeros
+that are not simple and on the critical line is \emph{at
+most} the total size of repeated blocks.
+A simple critical-line zero might share its ordinate
+with other zeros, so equality must not be asserted.
+Summing the block inequalities proves the claim.
+\end{proof}
+
+\begin{remark}[Numerical diagnostics, not an asymptotic bound]
+\label{rem:tauC2_data_v6}
+Using ordinates only for the final evaluation, and with
+the weights fixed without reference to those ordinates,
+the following finite-window ordinal energies were reported:
+\[
+\begin{array}{c|cc}
+T&E_T(F_{\rm C})&E_T(F_2)\\\hline
+2^{14}&0.0073343104&0.0043512826\\
+2^{16}&0.0077825673&0.0049298772\\
+2^{18}&0.0082597488&0.0055071066
+\end{array}
+\]
+Here $F_{\rm C}$ is the corresponding unit-weight,
+interpolated, clipped prime-phase model.
+The numerical improvements do not prove a uniform
+bound on $E_T(F_2)$ as $T\to\infty$.
+The outstanding question is the exact weighted
+second-moment constant and the correlation between
+the prime phase and the ordinal error.
+The $O(1/\log T)$ root-mean-square localization
+in the companion prime-clock manuscript does not
+give that constant.
+\end{remark}
 
 \section{Conclusions}\label{sec:conclusions}
 
