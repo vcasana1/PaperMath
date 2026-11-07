@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "A": "0.0751",
+  "C_new": "16.58585760",
+  "C_previous": "23.08071071",
+  "additive_gain": "6.49485311",
+  "domain": "T>1",
+  "conditional_on_RH": false,
+  "convention": "right continuous at zeros; also left and midpoint values",
+  "selected": "candidates/joint_C_m40_repaired.json",
+  "envelope": "certificates/m40_envelope.json",
+  "input_sha256": "885690f66faacd2bafb81007228bef81002d88276d74bbeaeb91e5bb5dc2747b",
+  "global_optimality_proved": false,
+  "execution": "local Mac",
+  "proof_stages": [
+    "global kernel",
+    "harmonic costs",
+    "coupled arithmetic with infinite tail",
+    "uniform envelope"
+  ],
+  "candidates": [
+    {
+      "candidate": "candidates/baseline.json",
+      "envelope": "certificates/baseline_coupled_envelope.json",
+      "A": "0.0751",
+      "C": "20.71059150",
+      "A_total_upper": "0.07508542266316091887835288",
+      "input_sha256": "df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb",
+      "status": "PASS"
+    },
+    {
+      "candidate": "candidates/joint_C_m20_repaired.json",
+      "envelope": "certificates/m20_envelope.json",
+      "A": "0.0751",
+      "C": "19.51311422",
+      "A_total_upper": "0.07509094778312866360646386",
+      "input_sha256": "c6d606de9b577b882c55fe455df32ec6909c9a7883c843421b2ccf875b0452b1",
+      "status": "PASS"
+    },
+    {
+      "candidate": "candidates/joint_C_m40_repaired.json",
+      "envelope": "certificates/m40_envelope.json",
+      "A": "0.0751",
+      "C": "16.58585760",
+      "A_total_upper": "0.07508804928842704994878591",
+      "input_sha256": "885690f66faacd2bafb81007228bef81002d88276d74bbeaeb91e5bb5dc2747b",
+      "status": "PASS"
+    }
+  ]
+}

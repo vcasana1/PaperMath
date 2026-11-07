@@ -1,0 +1,606 @@
+{
+  "certified": true,
+  "boundary_profile": "pruned_subweyl",
+  "input_sha256": "06ba6f4adf7164ea9803fd28ebf879f462c78401feb8991f247d7f608ad93c72",
+  "code_sha256": "10cf15daeb002fdb4e47843f1ae9b50294ac549ce1f5d54612068740e92d85ad",
+  "PL_certificate_sha256": "741eefe4f77b4cd8a62c3c7718acfe1b1e8d98d01ad4eae7ad33b0d32b937dfa",
+  "precision": 512,
+  "endpoint_sliver": "1/281474976710656",
+  "geometries": [
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.23,
+        "v": -0.65
+      },
+      "J_upper": "0.01168360016554769569956985",
+      "G_upper": "0.4583626808115184112230682",
+      "A_upper": "4.404918886769305246247798",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.23,
+        "v": 0.65
+      },
+      "J_upper": "0.01168360016554769569956985",
+      "G_upper": "0.4583626808115184112230682",
+      "A_upper": "4.404918886769305246247798",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.28,
+        "v": -0.65
+      },
+      "J_upper": "0.01617218482896186061104132",
+      "G_upper": "0.4658297787336608973943490",
+      "A_upper": "4.308850418648133542711032",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.28,
+        "v": 0.65
+      },
+      "J_upper": "0.01617218482896186061104132",
+      "G_upper": "0.4658297787336608973943490",
+      "A_upper": "4.308850418648133542711032",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.33,
+        "v": -0.65
+      },
+      "J_upper": "0.02097240969789774463539031",
+      "G_upper": "0.4668509422205315543290815",
+      "A_upper": "4.247413821008690257268548",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.33,
+        "v": 0.65
+      },
+      "J_upper": "0.02097240969789774463539031",
+      "G_upper": "0.4668509422205315543290815",
+      "A_upper": "4.247413821008690257268548",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.38,
+        "v": -0.65
+      },
+      "J_upper": "0.02660013159796125276064650",
+      "G_upper": "0.4374914156025627845537160",
+      "A_upper": "4.308178051823621181420545",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.03,
+        "R": 0.53,
+        "v": -1.6
+      },
+      "J_upper": "0.04524758104417265873786337",
+      "G_upper": "0.2870142497680914652879963",
+      "A_upper": "4.757567802046865429803435",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.16,
+        "v": -0.5
+      },
+      "J_upper": "0.003912982491564451139968942",
+      "G_upper": "0.3776427064608768746594624",
+      "A_upper": "4.005074283848204695273010",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.16,
+        "v": 0.5
+      },
+      "J_upper": "0.003912982491564451139968942",
+      "G_upper": "0.3776427064608768746594624",
+      "A_upper": "4.005074283848204695273010",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.21,
+        "v": -0.5
+      },
+      "J_upper": "0.007130619141949055227927923",
+      "G_upper": "0.4077691688943320334470198",
+      "A_upper": "3.835466315558451582992164",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.21,
+        "v": 0.5
+      },
+      "J_upper": "0.007130619141949055227927923",
+      "G_upper": "0.4077691688943320334470198",
+      "A_upper": "3.835466315558451582992164",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.26,
+        "v": -0.5
+      },
+      "J_upper": "0.01092599063665323726583513",
+      "G_upper": "0.4258757566828431268826091",
+      "A_upper": "3.716249512437607169631911",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.26,
+        "v": 0.5
+      },
+      "J_upper": "0.01092599063665323726583513",
+      "G_upper": "0.4258757566828431268826091",
+      "A_upper": "3.716249512437607169631911",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.26,
+        "v": 0.65
+      },
+      "J_upper": "0.01092599063665323726583513",
+      "G_upper": "0.4258757566828431268826091",
+      "A_upper": "3.716249512437607169631911",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.41,
+        "v": -0.8
+      },
+      "J_upper": "0.02551151765348356504510961",
+      "G_upper": "0.4173133070233450983437985",
+      "A_upper": "3.625960681858864224251423",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.41,
+        "v": 0.8
+      },
+      "J_upper": "0.02551151765348356504510961",
+      "G_upper": "0.4173133070233450983437985",
+      "A_upper": "3.625960681858864224251423",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.46,
+        "v": 0.8
+      },
+      "J_upper": "0.03143232190258413235443209",
+      "G_upper": "0.3775504215693337922220655",
+      "A_upper": "3.742784397219179523059869",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.06,
+        "R": 0.56,
+        "v": -1.6
+      },
+      "J_upper": "0.04389396745699858960947518",
+      "G_upper": "0.2763957364870287636393060",
+      "A_upper": "4.066516095406718235629336",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.1,
+        "R": 0.25,
+        "v": -0.5
+      },
+      "J_upper": "0.006494196381854332633574710",
+      "G_upper": "0.3690101195655453827554306",
+      "A_upper": "3.316720412075370622157942",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.1,
+        "R": 0.25,
+        "v": 0.5
+      },
+      "J_upper": "0.006494196381854332633574710",
+      "G_upper": "0.3690101195655453827554306",
+      "A_upper": "3.316720412075370622157942",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.1,
+        "R": 0.4,
+        "v": 0.8
+      },
+      "J_upper": "0.01887970256782306246994138",
+      "G_upper": "0.4157816127968062076762804",
+      "A_upper": "3.070098898230678924344456",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.1,
+        "R": 0.45,
+        "v": -0.8
+      },
+      "J_upper": "0.02425024601551892360266665",
+      "G_upper": "0.3943913597968877147050415",
+      "A_upper": "3.127988356790570229378435",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.198612288668,
+        "v": -0.5
+      },
+      "J_upper": "0.003488373489009979888205181",
+      "G_upper": "0.3346158967094755018985656",
+      "A_upper": "3.483626885695278946945261",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.198612288668,
+        "v": 0.5
+      },
+      "J_upper": "0.003488373489009979888205181",
+      "G_upper": "0.3346158967094755018985656",
+      "A_upper": "3.483626885695278946945261",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.248612288668,
+        "v": -0.5
+      },
+      "J_upper": "0.006513477608990992357401643",
+      "G_upper": "0.3701723529520273916630167",
+      "A_upper": "3.330991392486442090945698",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.248612288668,
+        "v": 0.5
+      },
+      "J_upper": "0.006513477608990992357401643",
+      "G_upper": "0.3701723529520273916630167",
+      "A_upper": "3.330991392486442090945698",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.298612288668,
+        "v": -0.5
+      },
+      "J_upper": "0.01013937963525599946811297",
+      "G_upper": "0.3928719347240063394514313",
+      "A_upper": "3.221821637039015358577036",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.298612288668,
+        "v": 0.5
+      },
+      "J_upper": "0.01013937963525599946811297",
+      "G_upper": "0.3928719347240063394514313",
+      "A_upper": "3.221821637039015358577036",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.448612288668,
+        "v": -0.8
+      },
+      "J_upper": "0.02429088394231050680584180",
+      "G_upper": "0.3951228472362720620803493",
+      "A_upper": "3.141539442485924610068794",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.448612288668,
+        "v": 0.8
+      },
+      "J_upper": "0.02429088394231050680584180",
+      "G_upper": "0.3951228472362720620803493",
+      "A_upper": "3.141539442485924610068794",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.498612288668,
+        "v": -0.8
+      },
+      "J_upper": "0.03007990676371845588160272",
+      "G_upper": "0.3590886566224467078133073",
+      "A_upper": "3.255395642948080749478457",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.098612288668,
+        "R": 0.498612288668,
+        "v": 0.8
+      },
+      "J_upper": "0.03007990676371845588160272",
+      "G_upper": "0.3590886566224467078133073",
+      "A_upper": "3.255395642948080749478457",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.15,
+        "R": 0.2,
+        "v": -0.5
+      },
+      "J_upper": "0.001085774501483836600288502",
+      "G_upper": "0.2300534561626158852137806",
+      "A_upper": "3.237885483405918981912174",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.15,
+        "R": 0.2,
+        "v": -0.35
+      },
+      "J_upper": "0.001085774501483836600288502",
+      "G_upper": "0.2300534561626158852137806",
+      "A_upper": "3.237885483405918981912174",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.15,
+        "R": 0.2,
+        "v": 0.35
+      },
+      "J_upper": "0.001085774501483836600288502",
+      "G_upper": "0.2300534561626158852137806",
+      "A_upper": "3.237885483405918981912174",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.15,
+        "R": 0.45,
+        "v": -0.8
+      },
+      "J_upper": "0.01772039506914525679127971",
+      "G_upper": "0.3882561289812161000822662",
+      "A_upper": "2.680164726137994734062453",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.15,
+        "R": 0.5,
+        "v": -0.8
+      },
+      "J_upper": "0.02291060609948626876762649",
+      "G_upper": "0.3705188503297782336175344",
+      "A_upper": "2.737078138379495164501769",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.15,
+        "R": 0.55,
+        "v": -0.8
+      },
+      "J_upper": "0.02852616699557594592355140",
+      "G_upper": "0.3383292921519536480665989",
+      "A_upper": "2.847692709865485553838613",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.2,
+        "R": 0.25,
+        "v": -0.35
+      },
+      "J_upper": "0.0009685614268202729144036514",
+      "G_upper": "0.2048327646991334516491979",
+      "A_upper": "2.900753677520081980298451",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.2,
+        "R": 0.25,
+        "v": 0.35
+      },
+      "J_upper": "0.0009685614268202729144036514",
+      "G_upper": "0.2048327646991334516491979",
+      "A_upper": "2.900753677520081980298451",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.2,
+        "R": 0.25,
+        "v": 0.5
+      },
+      "J_upper": "0.0009685614268202729144036514",
+      "G_upper": "0.2048327646991334516491979",
+      "A_upper": "2.900753677520081980298451",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 1.4,
+        "R": 0.9,
+        "v": 1.3
+      },
+      "J_upper": "0.03401594060535666037218722",
+      "G_upper": "0.2051507128650626169569852",
+      "A_upper": "2.199987702363404289554917",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7142857142857143,
+        "b": 2.1,
+        "c": 1.025,
+        "H": 0.65,
+        "v": -0.95
+      },
+      "J_upper": "0.04119135637127510921345157",
+      "G_upper": "0.6254590097792902797112578",
+      "A_upper": "4.000452052937887373140845",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 34,
+      "Poisson_tail_upper": "0.000000000000000000000149176194960073317102577"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7142857142857143,
+        "b": 1.35,
+        "c": 1.025,
+        "H": 0.75,
+        "v": 0.95
+      },
+      "J_upper": "0.03480392153778674852836560",
+      "G_upper": "0.5063172770007934051169244",
+      "A_upper": "4.108652705825603903308993",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 16,
+      "Poisson_tail_upper": "0.00000000000000000000000000278883551271182764547081"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7142857142857143,
+        "b": 1.35,
+        "c": 1.025,
+        "H": 0.65,
+        "v": 0.95
+      },
+      "J_upper": "0.03371129891425376196222834",
+      "G_upper": "0.5032007877201329241300745",
+      "A_upper": "4.138198719046389391170916",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 16,
+      "Poisson_tail_upper": "0.0000000000000000000000126190815408797144360320"
+    },
+    {
+      "geometry": {
+        "kind": "rectangle",
+        "a": 0.7142857142857143,
+        "b": 1.35,
+        "c": 1.025,
+        "H": 0.55,
+        "v": 0.95
+      },
+      "J_upper": "0.03192879218010770586706900",
+      "G_upper": "0.4981390177787201087800294",
+      "A_upper": "4.186430490751499324196585",
+      "method": "exact sine integrals for linear profiles; Arb Euler integral; rigorous geometric Fourier tail",
+      "Fourier_terms": 19,
+      "Poisson_tail_upper": "0.0000000000000000000000166013753171423523955591"
+    },
+    {
+      "geometry": {
+        "kind": "circle",
+        "c": 2.0,
+        "R": 1.5,
+        "v": 1.5
+      },
+      "J_upper": "0.02606881950118345233846295",
+      "G_upper": "0.1534618278075992384166049",
+      "A_upper": "1.378731143797629699440681",
+      "method": "exact circle integrals for linear profiles; Arb log-coordinate Euler integral; explicit endpoint sliver"
+    }
+  ],
+  "height_domain": "harmonic coefficients independent of T; explicit height correction valid for log T>=10, |v|+extent<=10 and Q+maximum real boundary coordinate<=10",
+  "explicit_height_correction_per_weight": "G*pi^2/(8*(log T)^2)+400/T",
+  "seconds": 10.315062999725342
+}

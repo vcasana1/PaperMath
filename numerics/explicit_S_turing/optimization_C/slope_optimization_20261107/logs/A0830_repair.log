@@ -1,0 +1,4 @@
+{"iteration": 0, "worst_scaled_slack": -6.265498572854966e-06, "cuts": 61, "geometries": 18, "seconds": 5.1510009765625}
+{"iteration": 1, "worst_scaled_slack": 1.7576889519421712e-06, "cuts": 2, "geometries": 18, "seconds": 19.69001293182373}
+{"iteration": 2, "worst_scaled_slack": 1.9049705339835299e-06, "cuts": 0, "geometries": 18, "seconds": 34.369051694869995}
+REPAIRED NUMERICALLY numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired.json

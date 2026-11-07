@@ -1,0 +1,4 @@
+FULL SLOPE CAP 0.07509094779272403
+{"iteration": 0, "worst_scaled_slack": -0.00010225666558572044, "cuts": 68, "geometries": 46, "seconds": 2.923459053039551}
+{"iteration": 1, "worst_scaled_slack": 1.999422282117358e-05, "cuts": 0, "geometries": 46, "seconds": 7.270841836929321}
+REPAIRED NUMERICALLY numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired.json

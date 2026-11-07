@@ -1,0 +1,40 @@
+baseline.json sha256 df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb
+certify_arithmetic_coupled_fast.py sha256 29a5a03ec1815cf7ff7406651aca651110f51794451a9baf2391e276ecbfb1dc
+certutil.py sha256 47322401572e98fab93924be05e7172d9d88a80685ee2818973a1081430e3220
+python 3.14.5, python-flint 0.9.0, precision 256 bits
+sieved to 1000000 prime count 78498 bins 20930 seconds 13.60658311843872
+partial [4.87255590482298438349503330076672373107675251686403130005654830410611144 +/- 2.29e-72] psi [999586.59749563 +/- 4.64e-9] phase_gain [0.5780008499072894458972985301430401740214604493710090484904790792779975955 +/- 1.08e-74] phase_boxes 12742 bins 20930 bin excess [1.322445291545047111245433653436404780338077064993224096767221770635553152649e-13 +/- 4.65e-89] seconds 13.607233047485352
+{
+  "certified": true,
+  "far_tolerance": "1e-14",
+  "tail_quadrature_absolute_tolerance": "1e-18",
+  "N0": 1000000,
+  "P0": 1000,
+  "Czeta_upper": "15.2132343406179349318408",
+  "partial_upper": "4.87255590482298438349504",
+  "tail_upper": "10.3406784357949505483458",
+  "integral_upper": "10.3399606513953814353553",
+  "far_upper": "0.00000000000000380642298389101574798726",
+  "error_upper": "0.000607149957638769764371547",
+  "boundary_correction_upper": "0.000132146520837725658156067",
+  "phase_gain_lower": "0.578000849907289445897298",
+  "phase_boxes": 12742,
+  "error_boxes": 51810,
+  "seconds": 35.42899298667908,
+  "bin_log_width": "0.0001",
+  "bin_count": 20930,
+  "bin_excess_upper": "0.000000000000132244529154504711124544",
+  "prime_count": 78498,
+  "step": "0.02",
+  "phase_tolerance": "1e-16",
+  "precision": 256,
+  "extra_prime_power_cutoff": 1000000000000000000000000000000,
+  "chunk_size": 5000000,
+  "removed_tail_norm_lower": "0.0000215120789073824319883192",
+  "input_sha256": "df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb",
+  "code_sha256": "29a5a03ec1815cf7ff7406651aca651110f51794451a9baf2391e276ecbfb1dc",
+  "Lfar": 1050,
+  "centre_mode": "joint_prime_phase",
+  "sigma_common": "41/40",
+  "theorem_source": "JRT Lemmas 6,7,8; unconditional, ranges checked in code"
+}

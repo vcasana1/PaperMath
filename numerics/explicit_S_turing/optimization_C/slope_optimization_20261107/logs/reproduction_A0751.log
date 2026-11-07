@@ -1,0 +1,12 @@
+kernel PASS
+costs PASS
+arithmetic PASS
+envelope PASS
+{
+  "complete": true,
+  "slope": "0.0751",
+  "C_upper": "23.08071071",
+  "domain": "T>1",
+  "expected_C_reproduced": true,
+  "envelope": "/Users/vcasana/Documents/ChatGPT/M\u00f6bius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution_geometry_envelope.json"
+}

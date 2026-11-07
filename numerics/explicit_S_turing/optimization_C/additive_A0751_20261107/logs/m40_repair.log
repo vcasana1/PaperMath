@@ -1,0 +1,9 @@
+FULL SLOPE CAP 0.07508804928842928
+{"iteration": 0, "worst_scaled_slack": -0.0019567701641267643, "cuts": 95, "geometries": 47, "seconds": 3.8358888626098633}
+{"iteration": 1, "worst_scaled_slack": -0.018420526262536097, "cuts": 30, "geometries": 47, "seconds": 23.750710010528564}
+{"iteration": 2, "worst_scaled_slack": -0.004220544252625302, "cuts": 19, "geometries": 47, "seconds": 44.39385008811951}
+{"iteration": 3, "worst_scaled_slack": -0.000592724967758862, "cuts": 16, "geometries": 47, "seconds": 64.12246108055115}
+{"iteration": 4, "worst_scaled_slack": -9.940696832266838e-05, "cuts": 8, "geometries": 47, "seconds": 85.15977096557617}
+{"iteration": 5, "worst_scaled_slack": -7.6664661676773e-06, "cuts": 6, "geometries": 47, "seconds": 104.83228397369385}
+{"iteration": 6, "worst_scaled_slack": 1.9090702093160772e-05, "cuts": 0, "geometries": 47, "seconds": 125.05764102935791}
+REPAIRED NUMERICALLY numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired.json

@@ -1,0 +1,923 @@
+{
+  "files": [
+    {
+      "path": "certificado_S_A0_0751/PACKAGE_REPRODUCTION.log",
+      "bytes": 390,
+      "sha256": "5281e7c889c960e54bb1f1f2006b666aeb2f9514c53e4061f605943f2b8f2497",
+      "git_blob_sha": "177e8fa6a3266955d59c0ababbc359466c431b9d"
+    },
+    {
+      "path": "certificado_S_A0_0751/PACKAGE_VALIDATION.json",
+      "bytes": 524,
+      "sha256": "039d945dede090875c4f4948b9eae02c7404cd55399971aef689dc332f1c642e",
+      "git_blob_sha": "ec997837fe75678d7769123e0a547d731a983943"
+    },
+    {
+      "path": "certificado_S_A0_0751/PARA_CHATGPT.md",
+      "bytes": 3755,
+      "sha256": "30debca2d86c58cbf561838cf2cfa542c246ab66a99ed8ba426a897e3bff7d33",
+      "git_blob_sha": "78597d122973511a7985e28bb0cbc5e37125f7a3"
+    },
+    {
+      "path": "certificado_S_A0_0751/README.md",
+      "bytes": 1400,
+      "sha256": "f02ce641b8499ebf24e713755b42259538f029a117ec94e43c5693b1c0054b7a",
+      "git_blob_sha": "c82eda371ac812658f3906f00c84bbadb786c751"
+    },
+    {
+      "path": "certificado_S_A0_0751/certificado_S_A0_0751.zip",
+      "bytes": 868541,
+      "sha256": "f242a3995dbecd109e134736ba3a8d96e9dba0249b6a3188341aff7cb9c47a06",
+      "git_blob_sha": "b197022c717e6041e7137056f869d6da95299c87"
+    },
+    {
+      "path": "certificado_S_A0_0751/certificado_S_A0_0751.zip.sha256",
+      "bytes": 92,
+      "sha256": "329b5282542f8bd84a50178c201fe1122099977b261ad861f795df8efe11833b",
+      "git_blob_sha": "b1b2da94970e578d38d5a9588d11e8f6fcbe54f1"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/arithmetic.log",
+      "bytes": 2171,
+      "sha256": "8af37978d312f1e3325adde6d921083ac0ceddfc3b8061fc6726756a13e5c42b",
+      "git_blob_sha": "b1b350bedd9e10e1e61156ef58d87260f60f41ff"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/costs.log",
+      "bytes": 6482,
+      "sha256": "0d731acdce5ca56b4be1593cfca17d4634afe45163c2662c86fc4f0a1fff5717",
+      "git_blob_sha": "8868ea8b92633d7517e87cbd7723eebeff8b714c"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/envelope.log",
+      "bytes": 3965,
+      "sha256": "5112304bae9488ae0b688e60eaf9cdeede8a1c9aa80879c824df47f8d51f009f",
+      "git_blob_sha": "5c8ff1ef0d630bb6e0187b629b3f926c2a4cd5f9"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/kernel.log",
+      "bytes": 3633,
+      "sha256": "fe6b06581ff5a265e07a5613bedb2ecf8d4c61ac7aba4dbb312780e085a058b7",
+      "git_blob_sha": "bedb4fd784a8f448b4a01fe64d18d0b26d7e9605"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/reproduction_status.json",
+      "bytes": 336,
+      "sha256": "19e7f5637d88b9f4acbe15813c9cfe366c133ddde94453bffc5d9317bc21b183",
+      "git_blob_sha": "2326652075cf7955d3e575bd739def1bb21a9dc8"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/solution.json",
+      "bytes": 20866,
+      "sha256": "885690f66faacd2bafb81007228bef81002d88276d74bbeaeb91e5bb5dc2747b",
+      "git_blob_sha": "98a3c10c29c454113c130b94ae83170e3b36ebd3"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/solution_arithmetic_coupled_binned_N1000000.json",
+      "bytes": 1314,
+      "sha256": "768eecee48bafdc55b03244ff0d0d01cdda3edc846c741da797f56c3563515f9",
+      "git_blob_sha": "85ba30f35dc806f9947c7d6fb20f47f4542f4be8"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/solution_arithmetic_coupled_binned_N1000000_P1000_29a5a03ec1_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1314,
+      "sha256": "768eecee48bafdc55b03244ff0d0d01cdda3edc846c741da797f56c3563515f9",
+      "git_blob_sha": "85ba30f35dc806f9947c7d6fb20f47f4542f4be8"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/solution_geometry_costs.json",
+      "bytes": 19674,
+      "sha256": "802200fac375d285fe2841f855fa81f1fead8be184d67ee0664b79484b698d26",
+      "git_blob_sha": "0307f10de77e92ac908c5912f40d5314e2382072"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/solution_geometry_kernel.json",
+      "bytes": 55731,
+      "sha256": "4360094c2ceaf0beac33cc2046cd93ac138d822fa4556c5f16eec00b625a8fa5",
+      "git_blob_sha": "60bedf8e02109456af740af16d4202aae09c2d12"
+    },
+    {
+      "path": "certificado_S_A0_0751/package_reproduction/solution_joint_geometry_envelope.json",
+      "bytes": 3964,
+      "sha256": "2b61ad937c5355108cbeb0b5ceb88355f13ed1bd43f7589e8916ba37df633c35",
+      "git_blob_sha": "baff4f5274aa85e858287b92647103be7ad9605c"
+    },
+    {
+      "path": "certificado_S_A0_0751/requirements-lock.txt",
+      "bytes": 77,
+      "sha256": "6bbe2c7d7a6fb8624bb219f82d5b1b7a9c314dc9bf796246cdf0418225c41ff1",
+      "git_blob_sha": "6e26823cf94530e359fd4f9988072286f84a2b75"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/FINAL_RESULT.json",
+      "bytes": 1683,
+      "sha256": "102c158d8eb0b92b0d738e12ab86e4bac1cb3d47f8b034590d7afa3f221d8b37",
+      "git_blob_sha": "e96add9fe4095caa72c33c415669fc7fdb740c34"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/RESULTADO_CONSTANTE_ADITIVA.md",
+      "bytes": 2804,
+      "sha256": "3e976f070dc22a9998e53be434d92d28c75ab64ab86f9faa11a74f4b75e00ac3",
+      "git_blob_sha": "0541e91b1b04c7d9e8112f6c2b829b00bd7ba6cd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/SHA256SUMS",
+      "bytes": 4629,
+      "sha256": "78ab3bae2d2c2cd980a4963bba3b188b06f46ff78e3146bac3d2f23ce5ea60a3",
+      "git_blob_sha": "4d09dcafbf836013f21f7b3293994ae5ae55eb90"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/baseline.json",
+      "bytes": 15165,
+      "sha256": "df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb",
+      "git_blob_sha": "8056b8180354f67f785a8997e591615f3e2babdf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/baseline_arithmetic_coupled_binned_N1000000.json",
+      "bytes": 1313,
+      "sha256": "df5c20c45f76b64d4dd7a19347a471a647477bacdcb0d5744cdb494eae64256d",
+      "git_blob_sha": "0c755bc5c8bb40dfeff80311342d7d9d7981430b"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/baseline_arithmetic_coupled_binned_N1000000_P1000_29a5a03ec1_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1313,
+      "sha256": "df5c20c45f76b64d4dd7a19347a471a647477bacdcb0d5744cdb494eae64256d",
+      "git_blob_sha": "0c755bc5c8bb40dfeff80311342d7d9d7981430b"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/baseline_geometry_costs.json",
+      "bytes": 19395,
+      "sha256": "b3947855a23fbbb79d67107675b84a6e374f33463cb1ae184c8a72bae85d2bc4",
+      "git_blob_sha": "885ae9e41a83d5b9a35741464f4b4aea84c91959"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/baseline_geometry_kernel.json",
+      "bytes": 30997,
+      "sha256": "e2343e526617399c848a89b9233ff800c919e8ff03b226914cb11787e8388b18",
+      "git_blob_sha": "ef946b7c159dadf0cadf91cf9395db6503bd4fa1"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/baseline_joint_geometry_envelope.json",
+      "bytes": 4047,
+      "sha256": "f990ccf7d0c204549035a7eef419fef8264eae0eea3fafbdeb417e7a742a26bb",
+      "git_blob_sha": "fbe37705acba447ea10f4b8a3f75c7bde979d400"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired.json",
+      "bytes": 15661,
+      "sha256": "c6d606de9b577b882c55fe455df32ec6909c9a7883c843421b2ccf875b0452b1",
+      "git_blob_sha": "94ebaf9cac0b1d82486e03937a6ba9fa5c053496"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired_arithmetic_coupled_binned_N1000000.json",
+      "bytes": 1313,
+      "sha256": "e01ececa444375ffc7f2291b89ae9502bb584921e44c41700807d283418ccf20",
+      "git_blob_sha": "8aef01a8b1a1794bb65ea2458e8cd9defec86e3f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired_arithmetic_coupled_binned_N1000000_P1000_29a5a03ec1_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1313,
+      "sha256": "e01ececa444375ffc7f2291b89ae9502bb584921e44c41700807d283418ccf20",
+      "git_blob_sha": "8aef01a8b1a1794bb65ea2458e8cd9defec86e3f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired_geometry_costs.json",
+      "bytes": 19375,
+      "sha256": "59bba74ef60a177ffe7589a0aee450218e7148bba17b5d5393dd277e2aa70ba0",
+      "git_blob_sha": "d07b0ebba3293760d6c9af58a2dd345bdfd0118c"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired_geometry_kernel.json",
+      "bytes": 29291,
+      "sha256": "5d85a2cfda6092c2df86d4f0228deb002d15eacc049ae420e0c4b608d65ba83b",
+      "git_blob_sha": "e5c29464b8d3a4ee2e4b53656aaded5a32f1c526"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m20_repaired_joint_geometry_envelope.json",
+      "bytes": 4096,
+      "sha256": "25eedf82744e1ced882325e258b4792100a496c5314a508ccd7d819077bd2436",
+      "git_blob_sha": "444537faf9261087cdd4e9dd1fc359fc1cceb4a6"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40.json",
+      "bytes": 22424,
+      "sha256": "cd4d216a7672c2cd754fe1f2c6f4ab9f177ad9661b9534acdc54dcd3f261c44f",
+      "git_blob_sha": "0dae792155b1e48c73645fdbc59a486668d40ef8"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired.json",
+      "bytes": 20866,
+      "sha256": "885690f66faacd2bafb81007228bef81002d88276d74bbeaeb91e5bb5dc2747b",
+      "git_blob_sha": "98a3c10c29c454113c130b94ae83170e3b36ebd3"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired_arithmetic_coupled_binned_N1000000.json",
+      "bytes": 1313,
+      "sha256": "791ada289de5d5c008475bf723167a12f7231f167e9e73b4ef5a8112bd25d5af",
+      "git_blob_sha": "4aa72d9031b0cfd1fe4eda8e11c5198a9e92e50e"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired_arithmetic_coupled_binned_N1000000_P1000_29a5a03ec1_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1313,
+      "sha256": "791ada289de5d5c008475bf723167a12f7231f167e9e73b4ef5a8112bd25d5af",
+      "git_blob_sha": "4aa72d9031b0cfd1fe4eda8e11c5198a9e92e50e"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired_geometry_costs.json",
+      "bytes": 19675,
+      "sha256": "26b5ca714794fdd041245c0df6f24afcc1de8b6ab00abc2b5b1b4b8ad25dd1c2",
+      "git_blob_sha": "848116723628e1eb8e1e6618596c12c786d052b3"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired_geometry_kernel.json",
+      "bytes": 55727,
+      "sha256": "8dd8eed11fbec13923b28325cb4dcb02ef26460fa209c8cce5359dbb0915bde3",
+      "git_blob_sha": "5c6da68c31c0279e397cfdf6c0d5aea1395b64ac"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40_repaired_joint_geometry_envelope.json",
+      "bytes": 4096,
+      "sha256": "954a96f4f2fa244eb43a3d86186db71e05347f7e20fd300c11b8850cd33e89d4",
+      "git_blob_sha": "ed17c881ca4667429c0bd3f55abdb28d05799793"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_search.json",
+      "bytes": 16689,
+      "sha256": "6957db8f293013a9f9fa624b58489ca3fcdccadc73a98342d449dd6b13c53bcd",
+      "git_blob_sha": "e8475b018e8416ff77f296bc397c800cb2c30880"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/certificates/baseline_coupled_envelope.json",
+      "bytes": 4047,
+      "sha256": "f990ccf7d0c204549035a7eef419fef8264eae0eea3fafbdeb417e7a742a26bb",
+      "git_blob_sha": "fbe37705acba447ea10f4b8a3f75c7bde979d400"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/certificates/m20_envelope.json",
+      "bytes": 4096,
+      "sha256": "25eedf82744e1ced882325e258b4792100a496c5314a508ccd7d819077bd2436",
+      "git_blob_sha": "444537faf9261087cdd4e9dd1fc359fc1cceb4a6"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/certificates/m40_envelope.json",
+      "bytes": 4096,
+      "sha256": "954a96f4f2fa244eb43a3d86186db71e05347f7e20fd300c11b8850cd33e89d4",
+      "git_blob_sha": "ed17c881ca4667429c0bd3f55abdb28d05799793"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/inputs/seed_m40.json",
+      "bytes": 17205,
+      "sha256": "b97319cac9f31dae8fc380e5c36e1a55f74111525e31351185ad881211371459",
+      "git_blob_sha": "66badf3d3115589292359c034ae421e226e611a9"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/baseline_coupled_arithmetic.log",
+      "bytes": 2115,
+      "sha256": "09c1980f9c22b41b8a7bb158473465c88927846b4f5e7472b012a48a56c1a3ae",
+      "git_blob_sha": "484263717b8906bdd2c3954b4fd8079abe86ad68"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/baseline_envelope.log",
+      "bytes": 4048,
+      "sha256": "65eb238c2cf336b66d3cdeaca65e196ae1e8a11cb9493b6566f989b71ff3c972",
+      "git_blob_sha": "fc74189638691edba17b7626560ff720f1d1e216"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/joint_C_m40.log",
+      "bytes": 997,
+      "sha256": "026e7ff5ca0dd7a761345d034f07027f81a5fabdcbd4aacc29fd0592b1056535",
+      "git_blob_sha": "3c0d6393d1725daf7b91df780d884363644bc2b0"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/joint_C_search.log",
+      "bytes": 1343,
+      "sha256": "422c7e56037829123a82cd8751e0d55c7786d15dad34abd55482f4c0a259e6c7",
+      "git_blob_sha": "78dd25254d5dafe02254574e5d4bba851a58349b"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m20_arithmetic.log",
+      "bytes": 2129,
+      "sha256": "bbe3dc3860393db7d0a0a8665af3904f6eb59fb387782611f96be04b86ede63a",
+      "git_blob_sha": "72c583edbe5025bd872b0230ebd6eac990eaa207"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m20_costs.log",
+      "bytes": 6356,
+      "sha256": "bf6eb498808a7c4beb9207a267a24bcec445b5d481019312987274a71bb474f2",
+      "git_blob_sha": "76fc2d2c3274ecdf06ee290252ab9c0c4e8ce7f9"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m20_envelope.log",
+      "bytes": 4097,
+      "sha256": "799f155fe5df32114a93f8d1cb84b9460d759fdd490e4ed356f34f18d370bbf0",
+      "git_blob_sha": "e4c6a7e8e7883645aa081df1a383e12a0eae43ed"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m20_kernel.log",
+      "bytes": 3587,
+      "sha256": "a987afce88eda2874e0bf5655798b81db1f2b61f1422cc53bfa645fe304ded2f",
+      "git_blob_sha": "0c526e421935e3342f11b337d978f4e06124699a"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m20_repair.log",
+      "bytes": 404,
+      "sha256": "a2f456289bef71bcec1fad178231862664a688dcf015c1a2bd9f3df2ab4a573c",
+      "git_blob_sha": "c6b99aa725420e6887bdb68e2717ae94033cac82"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m40_arithmetic.log",
+      "bytes": 2181,
+      "sha256": "78883c28335c25b167fed06f12e1be4e0ebaa4d41770905cd1fdf8ca91f3f83d",
+      "git_blob_sha": "cb67afc0172996f3816f8c564af362838c03a4b2"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m40_costs.log",
+      "bytes": 6480,
+      "sha256": "9068fc84b7a8fbde133f976e494a87661e4012920f11d64434df2501bed8b972",
+      "git_blob_sha": "51a5e649e5c854aed666d3dde5c082227da4a198"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m40_envelope.log",
+      "bytes": 4097,
+      "sha256": "ece0734f9b0955b0ed14662f874cc95914a0094e5ce3171b15b9ce4711d878a5",
+      "git_blob_sha": "1237837a865646c9e8f5de9bb191122140cbb9a4"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m40_kernel.log",
+      "bytes": 3641,
+      "sha256": "6678eab24215eb4d0c0b8e6c2e789c7d87894f7f3ac1fd48b9035820a7fafc0c",
+      "git_blob_sha": "132f85ab91552c0fab226417761b532cac5e6b96"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/logs/m40_repair.log",
+      "bytes": 1016,
+      "sha256": "71ab059caab24ad04903be40acf17c94bfc6d9b28430b7b79a510bf6f4c4548f",
+      "git_blob_sha": "8b005e74711aeba227ab321994f39ce0d9f45db0"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/src/audit_and_select.py",
+      "bytes": 3305,
+      "sha256": "af79b9cef9d45b0643658c9d1c6d2c0ee4fc336ce827bbb049894790f3bcd0ae",
+      "git_blob_sha": "a8b6be803c594e2e46ff867965945572abb504df"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/src/build_delivery_zip.py",
+      "bytes": 3794,
+      "sha256": "f64543ebf27796133131282331ed6174a5c33a9824b63b43a5727272b230eb68",
+      "git_blob_sha": "8f751eab2b700d2e761ee3d1f75dafa7d26f73cd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/src/repair_fixed_slope.py",
+      "bytes": 5530,
+      "sha256": "22a987ff061c64407a07eccfc55534213639671d8a886a73f3d39f7ea96ada7a",
+      "git_blob_sha": "5878ecc82b1af3902ffbb3af3334c94c71d00cce"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/src/reproduce_certificate.py",
+      "bytes": 2928,
+      "sha256": "022effffb78e388d4d1bb16d3c4c40305db649f1356745477e6ad3a5bc52d552",
+      "git_blob_sha": "b73ec087995bb11fbdfa44d84869ebc5381d03c3"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/RESULTADO_COEFICIENTE_L.md",
+      "bytes": 7244,
+      "sha256": "69b996aa68616f3c7c471607e18aa4275bd894cc7fc5c08414136fce419654d8",
+      "git_blob_sha": "0f1fb902cc593ac8a75401c36de7ab8103ac7829"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/SHA256SUMS",
+      "bytes": 9767,
+      "sha256": "355994748d5307a66e772caf7815db5fd25adbdad1f71a021f1e072f7b239cfa",
+      "git_blob_sha": "cedc807de60075fd10b0f24d69065a2051aa2b64"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_fixed.json",
+      "bytes": 21271,
+      "sha256": "de2ff08efb64c778c7a58c41e12780577aa4c5b14d4bed6e4c242f5717258345",
+      "git_blob_sha": "df271f8c02408fe39d497980dfba229c689f63fe"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired.json",
+      "bytes": 21289,
+      "sha256": "a5531afafdd2cecb4cd99ea4395ad14034f8309404e200363b7585c0fdaf40dc",
+      "git_blob_sha": "907a791bba98c7da0d1e3728d3e6dfbd88554206"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired_arithmetic_coupled_binned_N100000000.json",
+      "bytes": 1333,
+      "sha256": "d2807039d605484bba9ee0174636baab3f6db5994b83a6342f7288fe9d45e338",
+      "git_blob_sha": "d73059965fc324baec502f79befefe5ad095ed55"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired_arithmetic_coupled_binned_N100000000_P10000_29a5a03ec1_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1333,
+      "sha256": "d2807039d605484bba9ee0174636baab3f6db5994b83a6342f7288fe9d45e338",
+      "git_blob_sha": "d73059965fc324baec502f79befefe5ad095ed55"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired_geometry_costs.json",
+      "bytes": 9527,
+      "sha256": "5568a82e70883f176ad9437c94958625fbb7d869b0f0905a4f2a92073e77e6eb",
+      "git_blob_sha": "bd93fdfedb5c6e62276319f0faabbf910b41e345"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired_geometry_kernel.json",
+      "bytes": 100937,
+      "sha256": "ca5a3a46a6e1ba8fef9f538e5d0090b6c6adcf089d1ac763888c6a908a0cf79c",
+      "git_blob_sha": "557cefec75d2e7ad19d87df1ea3e49f42bbf37e5"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_repaired_joint_geometry_envelope.json",
+      "bytes": 4091,
+      "sha256": "62cc40b82171889ad4e96815c0bff2e995b89e371d1460c102829dc7adb2b2d9",
+      "git_blob_sha": "aa697535012e800d38da50e8c80a8ddeeb82bbd5"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_repaired.json",
+      "bytes": 13566,
+      "sha256": "06ba6f4adf7164ea9803fd28ebf879f462c78401feb8991f247d7f608ad93c72",
+      "git_blob_sha": "ecd4dda5c13d01bc268c48fe9afaedea10656fa7"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_repaired_arithmetic_binned_N1000000.json",
+      "bytes": 1186,
+      "sha256": "2cc3cc9b6a9102f9dc69e8aab4472de4467440de00ccfc80ce27c8bd6ebf9eee",
+      "git_blob_sha": "2f0581f1e28361f6d8e56d829f450ad42d81a257"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_repaired_arithmetic_binned_N1000000_P1000_d54830e590_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1186,
+      "sha256": "2cc3cc9b6a9102f9dc69e8aab4472de4467440de00ccfc80ce27c8bd6ebf9eee",
+      "git_blob_sha": "2f0581f1e28361f6d8e56d829f450ad42d81a257"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_repaired_geometry_costs.json",
+      "bytes": 20216,
+      "sha256": "8e564f04fbe98d2ca7c6c0db941808d377af4788240a619db5a3d79f18cc8848",
+      "git_blob_sha": "5f1ea192c8e8d9b47a46e2985d11f164b8c161fd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_repaired_geometry_envelope.json",
+      "bytes": 4084,
+      "sha256": "a5d5b802cf550ce9226cb94b3dc909b9bb63cbe9a0bf6265c7446e3311be30e4",
+      "git_blob_sha": "82bf8d168cf9f9bb14eaf45f054535605e268ba9"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_repaired_geometry_kernel.json",
+      "bytes": 24226,
+      "sha256": "53f2c6d61d4e25307ac4ce7864e27031a890a99cc8a745bce1f13e127dd2d4ec",
+      "git_blob_sha": "1824f285c74e8778c71e44911fb283f58dbb5b80"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_union.json",
+      "bytes": 13579,
+      "sha256": "8b253e84bdcc583c7489e7be13c46f24b6988183cfa81e27c311fa80b379c5bb",
+      "git_blob_sha": "d698498954fff42b385b04c4bd46f766ab3e7390"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_repaired.json",
+      "bytes": 15165,
+      "sha256": "df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb",
+      "git_blob_sha": "8056b8180354f67f785a8997e591615f3e2babdf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_repaired_arithmetic_binned_N1000000.json",
+      "bytes": 1181,
+      "sha256": "46fcbd96ad97214942803b10758856cd2ff92f53b95ddc57c224d854fe1919f4",
+      "git_blob_sha": "1663041e868b85b2d6e85105ba1b672a85e82dfd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_repaired_arithmetic_binned_N1000000_P1000_d54830e590_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1181,
+      "sha256": "46fcbd96ad97214942803b10758856cd2ff92f53b95ddc57c224d854fe1919f4",
+      "git_blob_sha": "1663041e868b85b2d6e85105ba1b672a85e82dfd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_repaired_geometry_costs.json",
+      "bytes": 19395,
+      "sha256": "b3947855a23fbbb79d67107675b84a6e374f33463cb1ae184c8a72bae85d2bc4",
+      "git_blob_sha": "885ae9e41a83d5b9a35741464f4b4aea84c91959"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_repaired_geometry_envelope.json",
+      "bytes": 4085,
+      "sha256": "5db9f17c7530d1ae13ed031228b94b56b18cb54d2742ecdfefa6a33539e61157",
+      "git_blob_sha": "c000613217210e6eab30bf9bec557fe0a2549b9b"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_repaired_geometry_kernel.json",
+      "bytes": 30997,
+      "sha256": "e2343e526617399c848a89b9233ff800c919e8ff03b226914cb11787e8388b18",
+      "git_blob_sha": "ef946b7c159dadf0cadf91cf9395db6503bd4fa1"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m20_union.json",
+      "bytes": 15182,
+      "sha256": "eea726e30b6f8371a6a0c2a426fc83fb05fa3ff827cc0e24b498b4d2381b9733",
+      "git_blob_sha": "b4e8a8f94afcb941f0fa2b57915635978c7920b3"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_repaired.json",
+      "bytes": 13184,
+      "sha256": "60afd888a10d3f2f2a437d20cd43071f166f8b2a0292c51d6069680a50348001",
+      "git_blob_sha": "c11b6fbbe2323f35459ba1b7d2bf0a60a8bf2284"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_repaired_arithmetic_binned_N1000000.json",
+      "bytes": 1185,
+      "sha256": "f2561611cfa85cbbff957bdd1d194d3ca93c328ca6fc66e72b50ae982945903c",
+      "git_blob_sha": "36dcd1b614aba0c86220c2600359f5d34f8c859e"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_repaired_arithmetic_binned_N1000000_P1000_d54830e590_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1185,
+      "sha256": "f2561611cfa85cbbff957bdd1d194d3ca93c328ca6fc66e72b50ae982945903c",
+      "git_blob_sha": "36dcd1b614aba0c86220c2600359f5d34f8c859e"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_repaired_geometry_costs.json",
+      "bytes": 36020,
+      "sha256": "b2f522b48e62e20d31707ec1a9d698ba08eeddd7110bdea4dc234089d7bc40bb",
+      "git_blob_sha": "10056f49237a125de726f3521f3e312921752bee"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_repaired_geometry_envelope.json",
+      "bytes": 4091,
+      "sha256": "f2c81f1a25c1ed9988a52358099487637218e261a17c26597c730ca4f1e274bd",
+      "git_blob_sha": "7376a4b40b5d0d54b24507286fb6fd189330e19f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_repaired_geometry_kernel.json",
+      "bytes": 30129,
+      "sha256": "440ada47b3eeeb18d3957f18de8fc3bcaa624a71fb12204fbee502319dac5063",
+      "git_blob_sha": "af578f3f1110fec588949f3e0e94fb10cd2d9542"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/v5_explicit_seed.json",
+      "bytes": 12934,
+      "sha256": "388eb0db896799292ec6a3b73dd882408879a6f5036bb5fc4324abedbc564322",
+      "git_blob_sha": "1525e389cfe5da998775b145c8fa440affdfdcdf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/A0.0751_envelope.json",
+      "bytes": 4085,
+      "sha256": "5db9f17c7530d1ae13ed031228b94b56b18cb54d2742ecdfefa6a33539e61157",
+      "git_blob_sha": "c000613217210e6eab30bf9bec557fe0a2549b9b"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/A0.0758_envelope.json",
+      "bytes": 4084,
+      "sha256": "a5d5b802cf550ce9226cb94b3dc909b9bb63cbe9a0bf6265c7446e3311be30e4",
+      "git_blob_sha": "82bf8d168cf9f9bb14eaf45f054535605e268ba9"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/A0.0828_envelope.json",
+      "bytes": 4091,
+      "sha256": "62cc40b82171889ad4e96815c0bff2e995b89e371d1460c102829dc7adb2b2d9",
+      "git_blob_sha": "aa697535012e800d38da50e8c80a8ddeeb82bbd5"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/A0.0830_envelope.json",
+      "bytes": 4090,
+      "sha256": "7f52dee65726ff37a915060f446c367621081b1b37e14db24a34bbc2156bab1a",
+      "git_blob_sha": "bf8582b4ed185a1f60c035e5b0bc52122a7d0629"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/envelope_regression/solution.json",
+      "bytes": 22532,
+      "sha256": "577a00086ea419cfa3de97df2d41bb23e838100fe4d65b0ffef13e692000610d",
+      "git_blob_sha": "dccc283ecce3e56cc454d0023743d13e2b4a5057"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/envelope_regression/solution_geometry_costs.json",
+      "bytes": 12085,
+      "sha256": "096e45d900cdc76765b5df5ae08caa5983aefe7777d3f2d4fe8b824c60983e92",
+      "git_blob_sha": "c5d115a626064a05b20b9513f5b94b9102a69617"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/envelope_regression/solution_geometry_kernel.json",
+      "bytes": 105432,
+      "sha256": "e342f1ec2a88f266de49c7118a190a5d8110bb230426df0239364954b2205d1c",
+      "git_blob_sha": "b41834bd42b8799fee605c3bf6ca40d06994d96f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/envelope_regression/solution_joint_geometry_envelope.json",
+      "bytes": 4231,
+      "sha256": "f776c708bd53a5029207707c22245a578e89210e4e3ae3c20a8133b67e34d6ed",
+      "git_blob_sha": "5bced685df7936f4c7fabdcc7573e3c62247ca1f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/certificates/proof_chain_status.json",
+      "bytes": 1407,
+      "sha256": "89669c12d0153720a2d02971f76e87ef4c09850fd470ca389f9fd8b4f75c9c7b",
+      "git_blob_sha": "2af8d31ad873978101f440e9a39bcd19ba6bf899"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/inputs/certified_geometries_pool.json",
+      "bytes": 4758,
+      "sha256": "68a3d8f42256b18e38d2197a0a63231ca35b2fb3df40f9bf22987961f06b8ec9",
+      "git_blob_sha": "0256adf85059c4c808162ee6a00149d2d8b3bc88"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/inputs/m20_seed.json",
+      "bytes": 14204,
+      "sha256": "82c2f22e3da3bd15d83efeb9c8e55f0a83b4686a64ceaf2c8ac4d5a4d4529062",
+      "git_blob_sha": "e1622edb5c25eb130d555dfbd90aa3ca2862e1bf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/inputs/seed.json",
+      "bytes": 22532,
+      "sha256": "577a00086ea419cfa3de97df2d41bb23e838100fe4d65b0ffef13e692000610d",
+      "git_blob_sha": "dccc283ecce3e56cc454d0023743d13e2b4a5057"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/inputs/slope_union_pool.json",
+      "bytes": 20670,
+      "sha256": "038b3a4c3876f220ce0825cd176101222bdbc79f8b81df516384de4247670164",
+      "git_blob_sha": "22efe3e4f00586a2af9f8488f7cec3de468445cd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0.0828_envelope.log",
+      "bytes": 4092,
+      "sha256": "f6c1abe5a41ee67d1b0b0ff8d73abeb8857cd073091025f017b95cf89f40a0de",
+      "git_blob_sha": "d8089c3ad264eee4bf37628df9f78f549d831f5b"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0.0830_envelope.log",
+      "bytes": 4091,
+      "sha256": "287aa9f5178326297e6fc0b8b6911a872674d790dfa34507c80e70917a601de4",
+      "git_blob_sha": "a227364737df352a4038ce84db75a73cd9940194"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0751_envelope.log",
+      "bytes": 4086,
+      "sha256": "4854a3d91105118aaabf157149e55287b4bc20f7ac2128885cc4e06cafc765db",
+      "git_blob_sha": "887400a8a52380d29cc6e47b1c7fa6a0705bc9f9"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0758_envelope.log",
+      "bytes": 4085,
+      "sha256": "7e264103f415a0a3eb5928559579acca8411b822cfc1e32f01cacc54e9378c5c",
+      "git_blob_sha": "72f8a552c3ef585965706001f6f16f467b5d304c"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0830_arithmetic.log",
+      "bytes": 2335,
+      "sha256": "ac4016dbe9cb85256b09af496954fe998adfa0144a4d94b985dd1848068e20c8",
+      "git_blob_sha": "a93c0e497894ed2f06435ff284c9fed6c0011ffb"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0830_costs.log",
+      "bytes": 2503,
+      "sha256": "f4bce5cffbc0457ac8ae65a50a0c0a32d3a3795730eb134e255ce4991def3bbf",
+      "git_blob_sha": "2500a63bef0ffefb001799a878007e4fd626a5e6"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0830_fixed.log",
+      "bytes": 1334,
+      "sha256": "9ff7de6129212247d62319677324af0dbac37fe92759f1453e5eec95e2709ec6",
+      "git_blob_sha": "3a6f0d1ae0fe1111b38bebe32954928ca7198bb4"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0830_kernel.log",
+      "bytes": 2910,
+      "sha256": "7818354841768bd4972e3fa88891669977733c205f0199b5582fdbbf524324fd",
+      "git_blob_sha": "ad3296dcee928ff45faec4a6bc5053c0745f3219"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/A0830_repair.log",
+      "bytes": 488,
+      "sha256": "5f554fc53cdc260bdb26a026a266680ecf0193a3f328f8df2949a8cd0d88a582",
+      "git_blob_sha": "2bec6a9ac02970a0c7543627c5367f74be78102f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/envelope_regression.log",
+      "bytes": 4232,
+      "sha256": "c0938e6ae4390ccd8b425163ee2c1423899876384f78e71687e4253f4745315e",
+      "git_blob_sha": "10a5d7653e083725b1b277b8a8e22ddf2e4db02c"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m10_arithmetic.log",
+      "bytes": 1994,
+      "sha256": "cdce3ef1db1c44a9d3f300a2f2dac8207ae4cb1ed70a38b780f3949053771af1",
+      "git_blob_sha": "ab01e80a212e54abcdbfee6541ecf315393b1b98"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m10_costs.log",
+      "bytes": 6627,
+      "sha256": "b9ab2025352626f267b818ecad869f5694920e1e1abf3dbb430b6b7a21deef55",
+      "git_blob_sha": "b045697343e5c6139735565bc5ba2e4fa7bfed15"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m10_kernel.log",
+      "bytes": 3690,
+      "sha256": "884bb5293d430431529f98ffb3c5c1fa5c9ee640efc08ad3d409a21d39e4e8c6",
+      "git_blob_sha": "dbac56057364165605791a721fe44e3330538618"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m20_arithmetic.log",
+      "bytes": 1987,
+      "sha256": "4282b352e775205793f2efc735c3e7f13e2aab6b2761b491cca9a6752bb1951e",
+      "git_blob_sha": "f8ee8dd46695d4b243d9ab906ad30ce58436687e"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m20_costs.log",
+      "bytes": 6356,
+      "sha256": "b1b94ed7d659c50c6a8c848c9acbd358775ff3ad43a5aa1d4e0b6aa9c7166a76",
+      "git_blob_sha": "38d5e03ce5d73acf44977fbf95a116033edb9431"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m20_kernel.log",
+      "bytes": 3585,
+      "sha256": "0cfb7f28cc85d76e7ce4a113ad64ae17f3d2e83fe5830228068995e8ffc7c03c",
+      "git_blob_sha": "7a74f2d5a4299a95ef48124048bf062e17d5bbaf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/m20_repair.log",
+      "bytes": 1040,
+      "sha256": "f671b4d5dbaa6e3ccbfc9cbda450f3a7426fbb6c38dc5c8fa2b95ecbcf375d8d",
+      "git_blob_sha": "f5ff6828002e3bbe4009bdd97cb27e4c231a10cf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/reproduction_A0751.log",
+      "bytes": 404,
+      "sha256": "7db63ebbf11ba51bfc41a1430a3bbd40608c199fc41ebc9d0e4c48f8b13eab53",
+      "git_blob_sha": "066f9d294876158871f399e0155ab3de718c3c55"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/slope_m10_repair.log",
+      "bytes": 371,
+      "sha256": "bfbf4ea2e72e948f0889fe87b6e38a745df72b6b1737c23118e06161f432e7db",
+      "git_blob_sha": "8be1830b849eea57a2dce5c3bb1ce66e7a010e01"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/slope_m10_union.log",
+      "bytes": 2498,
+      "sha256": "b9d09393e9846807d70c9275384da2e35d94aae9ed1ceeaa21d07196af76859b",
+      "git_blob_sha": "34e3be3e24766ddb34384058b13d72415a22f36a"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/slope_m10_union_v2.log",
+      "bytes": 1496,
+      "sha256": "2a2b4bb4a5ebfe77c65d2ce8af665eb92aa17ca7baddb3f3863e830d4887f586",
+      "git_blob_sha": "55506a23ef8eb8813bf4e7cd87684e3daf7f4758"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/slope_m20_union_v2.log",
+      "bytes": 1480,
+      "sha256": "1b14fb80ab61f0060e7b5708e89a37d4ff71a03cefb098dd279bd255d3e02a75",
+      "git_blob_sha": "31a346d6e31925b89e24b5f2dc42d7c092987bb8"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/v5_explicit_arithmetic.log",
+      "bytes": 1995,
+      "sha256": "7a62d68b191420d2564637c84fb003c8aba7420a731a0a8b48600e735e900f81",
+      "git_blob_sha": "7c17e73b58f68cfe8dc06db43e826656e3d55ea3"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/v5_explicit_costs.log",
+      "bytes": 12436,
+      "sha256": "d1fbde83188de4d046b4368bc46c5e72995792c09ac9a8692117d62b437da64f",
+      "git_blob_sha": "01156e75132e344e93698a7edceacc35f813cb43"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/v5_explicit_envelope.log",
+      "bytes": 4092,
+      "sha256": "05ec847135577592c3df9bf069442864c10ee12d0ab781d8d5b28192c4c69165",
+      "git_blob_sha": "137073b57954ab29603f07c8c4bd0eb7e750b36a"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/v5_explicit_kernel.log",
+      "bytes": 5612,
+      "sha256": "6b13528649610113dba93f10a8131726085d9ac372d5f7911b8e9c55a716a2fb",
+      "git_blob_sha": "351ecaaace42055ec66aafc774585fa27c87501f"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/logs/v5_explicit_repair.log",
+      "bytes": 250,
+      "sha256": "1936665db9e9c874df61ed6f31f29293e2581207eb58d252952033d160e6ee66",
+      "git_blob_sha": "705183b5508c1d84e462ab930d534bc0d1fa1123"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/arithmetic.log",
+      "bytes": 1979,
+      "sha256": "efa646a7a2548fd0ed28a1d5054fb9aa802a87d68495c2816be2b850e29efed7",
+      "git_blob_sha": "0d2e9bceb07fb2fecf57d8732e06dbd090fa69cb"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/costs.log",
+      "bytes": 6352,
+      "sha256": "4ca495e3bce20bb6f7cf1c67378bcdb703f528315a53c621944f61720cd24e09",
+      "git_blob_sha": "9854dadc2989ca91143615a71ed5e2f2691c6eb9"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/envelope.log",
+      "bytes": 4154,
+      "sha256": "3e205f03d9f3c416d29fd232ec7b4b3d8b64b11bb092b9c3ecb0a0ec1e0bbe83",
+      "git_blob_sha": "d1f55fdf692c570a91e37dd94fad32a4bc1489d2"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/kernel.log",
+      "bytes": 3579,
+      "sha256": "48b3be78b8a52d99684cf5c94548fee57450a036ea9ba24b2397415c099ac71c",
+      "git_blob_sha": "81707fd4cff824d10eb4c2d4f5be1197d0f82927"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/reproduction_status.json",
+      "bytes": 350,
+      "sha256": "5c666d758a353174ecd3766f5d3c7206eeffb39f1b981f1d1f9da9ea5b200259",
+      "git_blob_sha": "9698be4817733769ff206f5eff99490a9ef21c39"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution.json",
+      "bytes": 15165,
+      "sha256": "df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb",
+      "git_blob_sha": "8056b8180354f67f785a8997e591615f3e2babdf"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution_arithmetic_binned_N1000000.json",
+      "bytes": 1181,
+      "sha256": "36c9a23df996588a44eebc8931224a7ddfc798fe63506e8a89ff32b0dd9df905",
+      "git_blob_sha": "46513b731901af2ee82cf5c4cbde7d0e3352ba69"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution_arithmetic_binned_N1000000_P1000_d54830e590_step0.02_extra1000000000000000000000000000000.json",
+      "bytes": 1181,
+      "sha256": "36c9a23df996588a44eebc8931224a7ddfc798fe63506e8a89ff32b0dd9df905",
+      "git_blob_sha": "46513b731901af2ee82cf5c4cbde7d0e3352ba69"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution_geometry_costs.json",
+      "bytes": 19395,
+      "sha256": "6ec2fa950e909b3778b62ac0132c1097e334c667fcc94509ffdf2b9631382068",
+      "git_blob_sha": "f596a9db8dfeed9dec204cba4ce38ebdfc6f0a34"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution_geometry_envelope.json",
+      "bytes": 4153,
+      "sha256": "c542d9ded3dcbda71bb3edd25685a07f2d223f6e1be9f4aa8c42285f1203cc98",
+      "git_blob_sha": "eadb13f5407af11a6f94d8ef155352ca08a156e3"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/reproduction/20261107T010943Z/A0.0751/solution_geometry_kernel.json",
+      "bytes": 31001,
+      "sha256": "739e17a82f9c092fe3d64ebeb8ac5a8b35041d5b0cf286b4b439f3554145e3e5",
+      "git_blob_sha": "63885d019be3b38b2a14708df44723eacfece711"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/runtime.json",
+      "bytes": 260,
+      "sha256": "d5272da1c5092bef379cc81a2ba1dfe66e4a58751ddf3c2fc237168f92743eba",
+      "git_blob_sha": "90c217c94456085967f75a07aacc7ea8e871443d"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/audit_slope_results.py",
+      "bytes": 3025,
+      "sha256": "b621ff3aae2a45e7b71180aa5f0ee34dc3b14b001abd69ec4ee131e435727631",
+      "git_blob_sha": "a255f684ee271cfbe4b14dbfa1efd0f0cf62dc05"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/certify_geometry_costs_slope.py",
+      "bytes": 7126,
+      "sha256": "10cf15daeb002fdb4e47843f1ae9b50294ac549ce1f5d54612068740e92d85ad",
+      "git_blob_sha": "f4d886c624ba8e6a083cf22bfc65919d90b35320"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/certify_geometry_envelope_slope.py",
+      "bytes": 7034,
+      "sha256": "ddc20ebdcc0e9d247465f965ec777406e27e1ee1bd7db75f7e166a64d44dccef",
+      "git_blob_sha": "1ba485c875c9bbea814f55d7c0ffcf2d2af1dbd8"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope.py",
+      "bytes": 5533,
+      "sha256": "4304581cda374c8084c7edabd8f013a43e780efc406e430fe5422367ecbab47c",
+      "git_blob_sha": "c47c31a59c44a5296752bfba2b2d4d9a805d3157"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope_metadata_next.py",
+      "bytes": 5644,
+      "sha256": "c8196effa8f945dec945eb6fcdc99b8239a43802e445fe01505be50addb0ba7e",
+      "git_blob_sha": "de7e263eace1797617209d86d61b1804893dcbdd"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope_v1_unsaved.py",
+      "bytes": 5471,
+      "sha256": "fb55651d5bd5f226eae3b258a2f83aae7be43839ab5b182134c35194dbd96f5e",
+      "git_blob_sha": "d34d84af5c7ebdb44df3c216e59affe8f213ba30"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/reproduce_slope_certificate.py",
+      "bytes": 3104,
+      "sha256": "0ad5ccb0e3de6de6f8380eaa2a46b00aef3f46a0a9b3a772550a14fcb35a744b",
+      "git_blob_sha": "154750e65bbbc15166f04cbeb40af3c94c65a163"
+    },
+    {
+      "path": "numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/screen_geometry_slope.py",
+      "bytes": 11430,
+      "sha256": "c8313fa7f6832edfaeadcbae97f4d9dc2e20f9c7533319cedaddd81421c3d397",
+      "git_blob_sha": "8499a3380811f4d86fd67c2cdc282f9cb75e141c"
+    }
+  ],
+  "archive_sha256": "f242a3995dbecd109e134736ba3a8d96e9dba0249b6a3188341aff7cb9c47a06"
+}

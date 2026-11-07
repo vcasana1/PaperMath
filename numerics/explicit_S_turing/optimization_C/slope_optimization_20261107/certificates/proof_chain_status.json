@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "domain": "T>1",
+  "conditional_on_RH": false,
+  "strongest_slope": "0.0751",
+  "strongest_slope_C": "23.08071071",
+  "strongest_result_fully_reproduced": true,
+  "global_optimality_proved": false,
+  "cases": [
+    {
+      "A": "0.0751",
+      "C": "23.08071071",
+      "proof_chain": "PASS",
+      "envelope": "certificates/A0.0751_envelope.json",
+      "input_sha256": "df3d9d0447165c8e6ba26cff5dfad33e7cf15dd1db22f7f210fedbb916fa59cb",
+      "N0": 1000000,
+      "direct_prime_count": 78498
+    },
+    {
+      "A": "0.0758",
+      "C": "16.46762913",
+      "proof_chain": "PASS",
+      "envelope": "certificates/A0.0758_envelope.json",
+      "input_sha256": "06ba6f4adf7164ea9803fd28ebf879f462c78401feb8991f247d7f608ad93c72",
+      "N0": 1000000,
+      "direct_prime_count": 78498
+    },
+    {
+      "A": "0.0828",
+      "C": "3.242277741",
+      "proof_chain": "PASS",
+      "envelope": "certificates/A0.0828_envelope.json",
+      "input_sha256": "a5531afafdd2cecb4cd99ea4395ad14034f8309404e200363b7585c0fdaf40dc",
+      "N0": 100000000,
+      "direct_prime_count": 5761455
+    },
+    {
+      "A": "0.0830",
+      "C": "3.151694782",
+      "proof_chain": "PASS",
+      "envelope": "certificates/A0.0830_envelope.json",
+      "input_sha256": "a5531afafdd2cecb4cd99ea4395ad14034f8309404e200363b7585c0fdaf40dc",
+      "N0": 100000000,
+      "direct_prime_count": 5761455
+    }
+  ]
+}

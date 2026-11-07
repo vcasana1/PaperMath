@@ -1,0 +1,5 @@
+LOCAL GEOMETRY SCREEN m 40 coefficients 79 geometries 113 mode both
+geometry cost ranges [5.92526210e-04 1.24751630e-01 1.37873114e+00] [0.04558959 0.67619559 4.7575678 ] setup seconds 0.0016531944274902344
+{"iteration": 0, "C_numerical": 16.35203303823504, "A_total": 0.07508309111072525, "B_loglog": 0.30047625988271015, "geometries_used": 44, "kappa_sum": 2.241596231115505, "worst": -0.009130424355456123, "phasegap": 0.0003509492966621841, "peak_logT": 17770.313294999345, "height_gap": 0.000160680525674195, "seconds": 77.33343815803528}
+{"iteration": 1, "C_numerical": 16.457861244840274, "A_total": 0.07508406633704984, "B_loglog": 0.30222775036842736, "geometries_used": 48, "kappa_sum": 2.249215543562714, "worst": -0.00012154037908811755, "phasegap": 5.716422614709948e-07, "peak_logT": 18967.87645839719, "height_gap": 0.0001632415210828242, "seconds": 149.80262112617493}
+saved SCREEN ONLY numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/candidates/joint_C_m40.json

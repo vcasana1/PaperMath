@@ -1,0 +1,14 @@
+{"iteration": 0, "worst_scaled_slack": -2.3760675704200906, "cuts": 65, "geometries": 113, "seconds": 11.257152795791626}
+NUMERICAL TOTAL SLOPE 0.07575498843209949
+{"iteration": 1, "worst_scaled_slack": -0.014715915159837945, "cuts": 41, "geometries": 113, "seconds": 27.813196897506714}
+/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope.py:62: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver='CLARABEL',tol_gap_abs=1e-14,tol_feas=1e-11,tol_gap_rel=1e-11,max_iter=250);assert newv.value is not None,prob.status
+NUMERICAL TOTAL SLOPE 0.0757584700176086
+{"iteration": 2, "worst_scaled_slack": -0.0036189456916955187, "cuts": 33, "geometries": 113, "seconds": 43.78346395492554}
+NUMERICAL TOTAL SLOPE 0.07575891069834573
+{"iteration": 3, "worst_scaled_slack": -0.0015882606988539827, "cuts": 18, "geometries": 113, "seconds": 59.714881896972656}
+NUMERICAL TOTAL SLOPE 0.07575916868691535
+{"iteration": 4, "worst_scaled_slack": -0.00037800557357980935, "cuts": 15, "geometries": 113, "seconds": 75.55817008018494}
+NUMERICAL TOTAL SLOPE 0.07575925510682247
+Finite screening cut limit reached; saving unproved candidate for separate repair and Arb proof.
+REPAIRED NUMERICALLY numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/slope_m10_union.json

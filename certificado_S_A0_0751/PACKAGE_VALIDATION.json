@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "zip_sha256": "f242a3995dbecd109e134736ba3a8d96e9dba0249b6a3188341aff7cb9c47a06",
+  "zip_bytes": 868541,
+  "archive_entries": 272,
+  "manifest_files": 271,
+  "archive_crc": "PASS",
+  "payload_hashes": "PASS",
+  "relocated_stored_proof_audit": "PASS",
+  "fresh_reproduction": "PASS",
+  "A": "0.0751",
+  "C_upper": "16.58585760",
+  "domain": "T>1",
+  "all_reproduced_inputs_inside_extracted_package": true,
+  "original_input_sha256": "885690f66faacd2bafb81007228bef81002d88276d74bbeaeb91e5bb5dc2747b"
+}

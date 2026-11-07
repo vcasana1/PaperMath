@@ -1,0 +1,6 @@
+LOCAL GEOMETRY SCREEN m 60 coefficients 119 geometries 23 mode both
+geometry cost ranges [0.02114931 0.15346183 1.37873114] [0.04558959 0.67619559 4.18643049] setup seconds 0.0003998279571533203
+{"iteration": 0, "C_numerical": 3.1513778891989044, "A_total": 0.08272609683600245, "B_loglog": 0.07026855383987973, "geometries_used": 18, "kappa_sum": 0.3875601569663673, "worst": -0.00041594357029048725, "phasegap": 6.276466921534274e-05, "peak_logT": 256.54524326891794, "height_gap": 3.733333395095073e-05, "seconds": 75.50268173217773}
+{"iteration": 1, "C_numerical": 3.1516649664907095, "A_total": 0.0827214878903452, "B_loglog": 0.07029407353698822, "geometries_used": 18, "kappa_sum": 0.3877862184746456, "worst": -2.0657319131397678e-05, "phasegap": 4.7072123950456235e-08, "peak_logT": 252.39144403491758, "height_gap": 9.460461801058528e-06, "seconds": 154.27439904212952}
+{"iteration": 2, "C_numerical": 3.151680480659914, "A_total": 0.08272370990760537, "B_loglog": 0.070308199772275, "geometries_used": 18, "kappa_sum": 0.38786294822333794, "worst": -6.465498577747076e-06, "phasegap": 2.16974173350426e-08, "peak_logT": 254.47238865102707, "height_gap": 2.341574941500113e-06, "seconds": 231.9747200012207}
+saved SCREEN ONLY numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/candidates/A0830_fixed.json

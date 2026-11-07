@@ -1,0 +1,26 @@
+{"iteration": 0, "worst_scaled_slack": -2.3760675704200906, "cuts": 65, "geometries": 113, "seconds": 10.44028115272522}
+NUMERICAL TOTAL SLOPE 0.07575498843209949
+{"iteration": 1, "worst_scaled_slack": -0.014715915159837945, "cuts": 41, "geometries": 113, "seconds": 25.10309624671936}
+/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope.py:62: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver='CLARABEL',tol_gap_abs=1e-14,tol_feas=1e-11,tol_gap_rel=1e-11,max_iter=250);assert newv.value is not None,prob.status
+NUMERICAL TOTAL SLOPE 0.0757584700176086
+{"iteration": 2, "worst_scaled_slack": -0.0036189456916955187, "cuts": 33, "geometries": 113, "seconds": 39.23979640007019}
+NUMERICAL TOTAL SLOPE 0.07575891069834573
+{"iteration": 3, "worst_scaled_slack": -0.0015882606988539827, "cuts": 18, "geometries": 113, "seconds": 53.308836221694946}
+NUMERICAL TOTAL SLOPE 0.07575916868691535
+{"iteration": 4, "worst_scaled_slack": -0.00037800557357980935, "cuts": 15, "geometries": 113, "seconds": 67.95302820205688}
+NUMERICAL TOTAL SLOPE 0.07575925510682247
+{"iteration": 5, "worst_scaled_slack": -7.861185057222997e-05, "cuts": 6, "geometries": 113, "seconds": 83.00700426101685}
+NUMERICAL TOTAL SLOPE 0.07575926753693751
+{"iteration": 6, "worst_scaled_slack": -4.569734420645233e-06, "cuts": 4, "geometries": 113, "seconds": 98.24301719665527}
+NUMERICAL TOTAL SLOPE 0.07575927387133186
+{"iteration": 7, "worst_scaled_slack": 1.3872931438729807e-05, "cuts": 6, "geometries": 113, "seconds": 113.28023600578308}
+NUMERICAL TOTAL SLOPE 0.07575927733661281
+Traceback (most recent call last):
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope.py", line 77, in <module>
+    if __name__=='__main__':repair(sys.argv[1],sys.argv[2],2e-5)
+                            ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vcasana/Documents/ChatGPT/Möbius/PaperMath_optimization_C/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107/src/optimize_total_slope.py", line 65, in repair
+    else:raise RuntimeError('geometry repair did not converge')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: geometry repair did not converge

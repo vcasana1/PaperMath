@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "slope": "0.0751",
+  "C_upper": "16.58585760",
+  "domain": "T>1",
+  "expected_C_reproduced": true,
+  "envelope": "/private/tmp/PaperMath_A0751_delivery_check/PaperMath/numerics/explicit_S_turing/optimization_C/additive_A0751_20261107/reproduction/20261107T015412Z/A0.0751/solution_joint_geometry_envelope.json"
+}
