@@ -27,7 +27,7 @@
 \newcommand{\CGtip}[2]{\expandafter\gdef\csname CGTip@#1\endcsname{#2}}
 \makeatother
 % ---- inlined from tips.tex ----
-\CGtip{eq:identity}{Lemma 3.1: N(T) = (1/pi)(2 arg xi(s1) - arg xi(s2)) + (1/2pi) sum over rho of f(1/2-beta, T-gamma), d>1/2, T not an imaginary part of a zero.}
+\CGtip{eq:identity}{Lemma 3.1: N(T) = (1/pi)(2 arg xi(s1) - arg xi(s2)) + (1/2pi) sum over rho of f(1/2-beta, T-gamma), d>1/2, T not equal to the imaginary part of any zero.}
 \CGtip{eq:f_def}{f(b,t) = 2atan((d+b)/t) + 2atan((d-b)/t) - atan((2d+b)/t) - atan((2d-b)/t).}
 \CGtip{eq:kernel_def}{Kernel U = sum of c_iota G_iota over iota in B_m = {(R,j): 1<=j<=m} u {(I,j): 2<=j<=m}.}
 \CGtip{eq:G_def}{F_R,j = Re (x+it)^(-j), F_I,j = -Im (x+it)^(-j), G_iota(b,t) = F_iota(d+b,t) + F_iota(d-b,t).}
@@ -40,7 +40,7 @@
 \CGtip{eq:twosided}{Proposition 4.1: E_l + sum Lambda n^(-sigma1)(-a cos + b sin) <= N - M <= E_u + sum Lambda n^(-sigma1)(a cos + b sin).}
 \CGtip{eq:fp_def}{f_p(x) = sum_k lambda_k (a_k cos kx + b_k sin kx), lambda_k = (log p) p^(-k sigma1); M_p = max f_p.}
 \CGtip{eq:Fu_Fl_def}{F_u = E_u - A1 log T, F_l = -E_l - A1 log T.}
-\CGtip{eq:master_explicit}{|N(T) - M(T)| <= A1 log T + C_zeta + max(F_u(T), F_l(T)), T not an imaginary part of a zero, C_zeta >= sum of M_p.}
+\CGtip{eq:master_explicit}{|N(T) - M(T)| <= A1 log T + C_zeta + max(F_u(T), F_l(T)), T not equal to the imaginary part of any zero, C_zeta >= sum of M_p.}
 \CGtip{eq:tail_bound}{Lemma 4.3: sum_(n>N0) Lambda(n) g(n) <= G(N0)(1.03883 N0 - psi(N0)) + 1.03883 int_(N0)^oo G.}
 \CGtip{eq:Cz_def}{Definition of the certified constant C_zeta (per-prime phase maximum for p <= 1000, hypot for the other prime powers <= 1e8, tail).}
 \CGtip{eq:R_deriv}{|R^(k+1)(z)| <= (k+1)! (2/(3|z|)) (2/|z|)^(k+1) for Re z > 0 (Cauchy estimate of Stirling's remainder).}
@@ -273,7 +273,7 @@ its completed form, an entire function that satisfies $\xi(s)=\xi(1-s)$ and is r
 N(T)=\#\{\rho:\ 0<\gamma\le T\}\qquad(T>0),
 \label{eq:N_def}
 \end{equation}
-so that $N(T)$ is right-continuous and $N(T)=N(T^+)$ at an imaginary part of a zero $T$. Since $\xi(\bar s)=\overline{\xi(s)}$, the zeros are symmetric with respect to the real axis, and $N(T)$ counts half of the zeros with $|\gamma|\le T$. Riemann stated and von Mangoldt \cite{VonMangoldt1905} proved that
+so that $N(T)$ is right-continuous and $N(T)=N(T^+)$ at a zero's imaginary part $T$. Since $\xi(\bar s)=\overline{\xi(s)}$, the zeros are symmetric with respect to the real axis, and $N(T)$ counts half of the zeros with $|\gamma|\le T$. Riemann stated and von Mangoldt \cite{VonMangoldt1905} proved that
 \begin{equation}
 N(T)=\main(T)+O(\log T),\qquad \main(T)=\frac T{2\pi}\log\frac T{2\pi e}.
 \label{eq:RvM}
@@ -326,7 +326,7 @@ The identity of Lemma~\CGref{lem:identity}, the family of kernel functions and t
 Write $L=\log T$ and, for a finite set of lines $\ell_i(L)=A_{1,i}L+A_{3,i}$,
 \begin{equation}
 \min_i\ell_i(L)=\min_i\bigl(A_{1,i}L+A_{3,i}\bigr).
-\label{eq:envelope_def}
+\label{eq:bound_def}
 \end{equation}
 
 \begin{theorem}[Explicit estimate]\label{thm:explicit}
@@ -401,7 +401,7 @@ In particular $\mathfrak a<\Lambda(0)$, with $\Lambda(0)$ as in \CGeqref{eq:Lamb
 Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. Taken alone, that asymptotic theorem does not give an improved finite-height bound; Theorem~\CGref{thm:green_explicit} supplies a separate explicit extension.
 
 \begin{remark}[Conventions]\label{rem:conventions}
-Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not an imaginary part of a zero and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at an imaginary part of a zero, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
+Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not equal to the imaginary part of any zero and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at a zero's imaginary part, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
 \end{remark}
 
 \begin{remark}[On the infimum of the leading constant]\label{rem:infimum}
@@ -426,7 +426,7 @@ where
 &0.0758\log T+16.46762913,\\
 &0.0751\log T+16.58585760\}.
 \end{aligned}
-\label{eq:green_envelope}
+\label{eq:green_bound}
 \end{equation}
 The bounds hold for both one-sided conventions
 at imaginary parts of zeros, and for the midpoint convention.
@@ -472,9 +472,9 @@ where the series converges absolutely.
 \end{lemma}
 
 \begin{proof}
-\emph{The argument principle.} Let $\mathcal R$ be the rectangle with vertices $\sigma_2$, $\sigma_2+iT$, $1-\sigma_2+iT$, $1-\sigma_2$. The function $\xi$ has no zeros on $\partial\mathcal R$: none on the vertical sides, which lie outside the critical strip; none on the top side, because $T$ is not an imaginary part of a zero; and none on the real segment, because $\xi(\sigma)>0$ for all real $\sigma$ (for $\sigma\ge1$ this was noted above; for $0<\sigma<1$ one has $\sigma(\sigma-1)<0$ and $\zeta(\sigma)<0$, the latter because $(1-2^{1-\sigma})\zeta(\sigma)=\sum_{n\ge1}(-1)^{n-1}n^{-\sigma}>0$ and $1-2^{1-\sigma}<0$; the case $\sigma\le0$ follows from $\xi(\sigma)=\xi(1-\sigma)$). Since $T$ is not an imaginary part of a zero, the zeros of $\xi$ inside $\mathcal R$, namely the non-trivial zeros with $0<\gamma<T$, are exactly the $N(T)$ zeros counted in \CGeqref{eq:N_def}, so by the argument principle the variation of $\arg\xi$ along $\partial\mathcal R$, counterclockwise, is $2\pi N(T)$.
+\emph{The argument principle.} Let $\mathcal R$ be the rectangle with vertices $\sigma_2$, $\sigma_2+iT$, $1-\sigma_2+iT$, $1-\sigma_2$. The function $\xi$ has no zeros on $\partial\mathcal R$: none on the vertical sides, which lie outside the critical strip; none on the top side, because $T$ is not equal to the imaginary part of any zero; and none on the real segment, because $\xi(\sigma)>0$ for all real $\sigma$ (for $\sigma\ge1$ this was noted above; for $0<\sigma<1$ one has $\sigma(\sigma-1)<0$ and $\zeta(\sigma)<0$, the latter because $(1-2^{1-\sigma})\zeta(\sigma)=\sum_{n\ge1}(-1)^{n-1}n^{-\sigma}>0$ and $1-2^{1-\sigma}<0$; the case $\sigma\le0$ follows from $\xi(\sigma)=\xi(1-\sigma)$). Since $T$ is not equal to the imaginary part of any zero, the zeros of $\xi$ inside $\mathcal R$, namely the non-trivial zeros with $0<\gamma<T$, are exactly the $N(T)$ zeros counted in \CGeqref{eq:N_def}, so by the argument principle the variation of $\arg\xi$ along $\partial\mathcal R$, countersequencewise, is $2\pi N(T)$.
 
-Let $\Delta_1$ be the variation of $\arg\xi$ along the path $\pi_1$ from $\sigma_2$ to $\sigma_2+iT$ and then to $\frac12+iT$. The reflection $s\mapsto1-\bar s$ in the critical line maps $\pi_1$ onto the path $\pi_1'$ from $1-\sigma_2$ to $1-\sigma_2+iT$ to $\frac12+iT$, and $\xi(1-\bar s)=\xi(\bar s)=\overline{\xi(s)}$, so the variation of $\arg\xi$ along $\pi_1'$ is $-\Delta_1$. The boundary $\partial\mathcal R$, counterclockwise, is $\pi_1$ followed by the reverse of $\pi_1'$ followed by the real segment from $1-\sigma_2$ to $\sigma_2$, on which $\arg\xi$ is constant. Hence $2\pi N(T)=\Delta_1+\Delta_1$, that is, $\Delta_1=\pi N(T)$.
+Let $\Delta_1$ be the variation of $\arg\xi$ along the path $\pi_1$ from $\sigma_2$ to $\sigma_2+iT$ and then to $\frac12+iT$. The reflection $s\mapsto1-\bar s$ in the critical line maps $\pi_1$ onto the path $\pi_1'$ from $1-\sigma_2$ to $1-\sigma_2+iT$ to $\frac12+iT$, and $\xi(1-\bar s)=\xi(\bar s)=\overline{\xi(s)}$, so the variation of $\arg\xi$ along $\pi_1'$ is $-\Delta_1$. The boundary $\partial\mathcal R$, countersequencewise, is $\pi_1$ followed by the reverse of $\pi_1'$ followed by the real segment from $1-\sigma_2$ to $\sigma_2$, on which $\arg\xi$ is constant. Hence $2\pi N(T)=\Delta_1+\Delta_1$, that is, $\Delta_1=\pi N(T)$.
 
 Along the vertical part of $\pi_1$ the variation is $\arg\xi(s_2)$, the branch defined above. Along the horizontal part, $\xi$ has no zeros, and with
 \begin{equation}
@@ -502,7 +502,7 @@ with a real constant $B$ and absolute convergence for every $s$ that is not a ze
 F(\sigma)-F(\sigma+d)=\sum_\rho\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr),
 \label{eq:F_diff}
 \end{equation}
-an absolutely convergent series of differences (the two series \CGeqref{eq:hadamard}, with their regularising terms $1/\rho$, are each absolutely convergent; nothing is asserted about $\sum_\rho(s-\rho)^{-1}$ alone). For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an imaginary part of a zero, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
+an absolutely convergent series of differences (the two series \CGeqref{eq:hadamard}, with their regularising terms $1/\rho$, are each absolutely convergent; nothing is asserted about $\sum_\rho(s-\rho)^{-1}$ alone). For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not equal to the imaginary part of any zero, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
 \begin{equation}
 \int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),
 \label{eq:g_def}
@@ -594,7 +594,7 @@ and
 \end{equation}
 
 \begin{proposition}[Two-sided estimate]\label{prop:twosided}
-Under \CGeqref{eq:K}, for every $T>0$ that is not an imaginary part of a zero,
+Under \CGeqref{eq:K}, for every $T>0$ that is not equal to the imaginary part of any zero,
 \begin{equation}
 \begin{aligned}
 N(T)-\main(T)&\le\mathcal E_u(T)+\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\bigl(a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr),\\
@@ -652,7 +652,7 @@ The series converges absolutely and uniformly, so $f_p$ is continuous and $2\pi$
 F_u(T)=\mathcal E_u(T)-A_1\log T,\qquad F_\ell(T)=-\mathcal E_\ell(T)-A_1\log T,
 \label{eq:Fu_Fl_def}
 \end{equation}
-Proposition~\CGref{prop:twosided} gives, for every $T>0$ not an imaginary part of a zero and every $A_1$ and $C_\zeta\ge\sum_pM_p$,
+Proposition~\CGref{prop:twosided} gives, for every $T>0$ not equal to the imaginary part of any zero and every $A_1$ and $C_\zeta\ge\sum_pM_p$,
 \begin{equation}
 \bigl|N(T)-\main(T)\bigr|\le A_1\log T+C_\zeta+\max\bigl(F_u(T),F_\ell(T)\bigr).
 \label{eq:master_explicit}
@@ -884,7 +884,7 @@ $\ell_{6000}$ & $0.85$ & $10$ & $0.08382$ & $4.58951035$ & $0.73573766$ & $5.326
 \end{table}
 
 \begin{proof}[Proof of Theorem~\CGref{thm:explicit}]
-Each line $A_1L+A_3$ of \CGeqref{eq:thm_N} corresponds to a kernel listed in Table~\CGref{tab:lines} and Appendix~\CGref{app:tables}, with $A_1=\lceil C_1\rceil_5\ge C_1=c_{\mathrm R,1}/(2\pi)$. For it, \CGeqref{eq:K} holds by Proposition~\CGref{prop:kernel_cert}; $\sum_pM_p\le C_\zeta$ by Proposition~\CGref{prop:Cz}; and $\sup_{T\ge1}\max(F_u,F_\ell)$ is bounded by Proposition~\CGref{prop:elem}, with $A_1\ge C_1$ as required in Lemma~\CGref{lem:elem_large}. By \CGeqref{eq:master_explicit}, for every $T\ge1$ that is not an imaginary part of a zero, $|N(T)-\main(T)|\le A_1\log T+C_\zeta+\sup\max(F_u,F_\ell)\le A_1\log T+A_3^N$. At an imaginary part of a zero $T$, $N(T)=\lim_{t\to T^+}N(t)$ and $\main$ is continuous, so the inequality persists. The same argument with \CGeqref{eq:master_S} gives \CGeqref{eq:thm_S}, with $S(T)=S(T^+)$ at the imaginary parts of zeros.
+Each line $A_1L+A_3$ of \CGeqref{eq:thm_N} corresponds to a kernel listed in Table~\CGref{tab:lines} and Appendix~\CGref{app:tables}, with $A_1=\lceil C_1\rceil_5\ge C_1=c_{\mathrm R,1}/(2\pi)$. For it, \CGeqref{eq:K} holds by Proposition~\CGref{prop:kernel_cert}; $\sum_pM_p\le C_\zeta$ by Proposition~\CGref{prop:Cz}; and $\sup_{T\ge1}\max(F_u,F_\ell)$ is bounded by Proposition~\CGref{prop:elem}, with $A_1\ge C_1$ as required in Lemma~\CGref{lem:elem_large}. By \CGeqref{eq:master_explicit}, for every $T\ge1$ that is not equal to the imaginary part of any zero, $|N(T)-\main(T)|\le A_1\log T+C_\zeta+\sup\max(F_u,F_\ell)\le A_1\log T+A_3^N$. At an imaginary part of a zero $T$, $N(T)=\lim_{t\to T^+}N(t)$ and $\main$ is continuous, so the inequality persists. The same argument with \CGeqref{eq:master_S} gives \CGeqref{eq:thm_S}, with $S(T)=S(T^+)$ at the imaginary parts of zeros.
 \end{proof}
 
 \begin{proof}[Proof of Corollary~\CGref{cor:comparison}]
@@ -1028,7 +1028,7 @@ since $\sigma=c_k+R_k\cos\theta$ and $d\sigma=-R_k\sin\theta\,d\theta$; the argu
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\CGref{thm:hybrid}]
-Let $\varepsilon>0$ and let $T\to\infty$ through values that are not imaginary parts of zeros. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
+Let $\varepsilon>0$ and let $T\to\infty$ through values that are not equal to the imaginary part of any zero. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
 \[
 -U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
 \]
@@ -1185,7 +1185,7 @@ The two verified residual upper bounds are
 \label{eq:green_bounds}
 \end{equation}
 They establish the first affine bound of
-\eqref{eq:green_envelope}.
+\eqref{eq:green_bound}.
 Exact data, independent interval verifiers and execution logs
 are in the companion archive \cite{CasanaCertificate2026}.
 The numerical certificate is not claimed to be an optimality
@@ -1195,7 +1195,7 @@ proof or a formal verification of its own implementation.
 
 \subsection{Coefficient-optimised Green--Jensen majorants}
 The four further certified affine bounds in
-\eqref{eq:green_envelope} follow from the same
+\eqref{eq:green_bound} follow from the same
 Turing-type and Green--Jensen method with
 independently interval-certified rational data,
 and with the centre and kernel prime phases
@@ -1303,7 +1303,7 @@ the imaginary parts of genuine zeros.
 The numbers $\tau_k^{\mathrm{C2}}$ are positive, finite, and
 strictly increasing. Let $\tau_k$ be the large solution of
 $N_0(\tau_k)=k-\frac12$ and let $\gamma_k$ enumerate all positive
-imaginary parts of zeros of non-trivial zeros with multiplicity, without RH.
+imaginary parts of non-trivial zeros with multiplicity, without RH.
 For sufficiently large $k$ put
 $\mathfrak m_k=\min\{\tau_k,\gamma_k\}$. Then
 \begin{equation}
@@ -1353,7 +1353,7 @@ with that for $F_2$, followed by the mean-value theorem, gives
  |\tau_k^{\mathrm{C2}}-\tau_k|
  \le\frac{2\pi h(2\tau_k)}{\log(\tau_k/(4\pi))}
  =o(1).
- \label{eq:tauC2_clock_shift_v8}
+ \label{eq:tauC2_sequence_shift_v8}
 \end{equation}
 At a repeated imaginary part of a zero $\gamma_k$, the one-sided values
 $N(\gamma_k^-)$ and $N(\gamma_k^+)$ bracket $k-\frac12$.
@@ -1365,15 +1365,15 @@ version, and Lemma~\ref{lem:varpi},
         +\frac{25}{48\pi\gamma_k}.
 \]
 The mean-value theorem for $N_0$ between $\gamma_k$ and
-$\tau_k$, combined with \eqref{eq:tauC2_clock_shift_v8},
+$\tau_k$, combined with \eqref{eq:tauC2_sequence_shift_v8},
 proves \eqref{eq:tauC2_explicit_v8}. Finally apply the
 asymptotic bound $|S(t)|\le(C_{\rm H}+o(1))\log t$
-and use \eqref{eq:tauC2_clock_shift_v8} to obtain
+and use \eqref{eq:tauC2_sequence_shift_v8} to obtain
 \eqref{eq:tauC2_limsup_v8}.
 \end{proof}
 
 \begin{proposition}[indexed quadratic-discrepancy criterion]
-\label{prop:tauC2_energy_v8}
+\label{prop:tauC2_quadratic_sum_v8}
 Let $\mathcal K_T=\{k:T<\gamma_k\le2T\}$,
 $M_T=\#\mathcal K_T$, and define
 \[
@@ -1419,7 +1419,7 @@ Summing the block inequalities proves the claim.
 \begin{remark}[Numerical diagnostics, not an asymptotic bound]
 \label{rem:tauC2_data_v8}
 Using imaginary parts of zeros only for the final evaluation, and with
-the weights fixed without reference to those imaginary parts of zeros,
+the weights fixed independently of these imaginary parts,
 the following finite-window indexed quadratic sums were reported:
 \[
 \begin{array}{c|cc}
@@ -1442,7 +1442,7 @@ give that constant.
 \end{remark}
 
 
-\section{quadratic discrepancy of the second prime-based sequence}\label{sec:tauC2_energy_v8}
+\section{Quadratic discrepancy of the second prime-based sequence}\label{sec:tauC2_quadratic_sum_v8}
 The bound \eqref{eq:green_explicit} controls the endpoints in the
 following identity, while the prime phase supplies a second,
 independently estimable component. No Riemann hypothesis is assumed.
@@ -1507,8 +1507,8 @@ and subdivide general height windows at dyadic boundaries.
 \end{proof}
 
 \begin{proposition}[Exact signed Stieltjes identity]
-\label{prop:tauC2_exact_energy_v8}
-For $T,2T$ not imaginary parts of zeros, let
+\label{prop:tauC2_exact_quadratic_sum_v8}
+For $T,2T$ not equal to the imaginary part of any zero, let
 $M_T=N(2T)-N(T)$, $H=N-F_2$ and
 $u_k=k-\frac12-F_2(\gamma_k)$. Then
 \begin{equation}
@@ -1517,7 +1517,7 @@ $u_k=k-\frac12-F_2(\gamma_k)$. Then
  \int_T^{2T}H(t)^2F_2'(t)\,dt
  -\frac{M_T}{12}
  +\frac{H(2T)^3-H(T)^3}{3}.}
- \label{eq:tauC2_exact_energy_v8}
+ \label{eq:tauC2_exact_quadratic_sum_v8}
 \end{equation}
 Consequently, writing
 \[
@@ -1528,7 +1528,7 @@ we have the unconditional formula
 \begin{equation}
  E_T(F_2)=J_T+C_T-\frac1{12}
  +O\!\left(\frac{\log^2T}{T}\right).
- \label{eq:tauC2_mixed_energy_v8}
+ \label{eq:tauC2_mixed_quadratic_sum_v8}
 \end{equation}
 It extends to endpoint imaginary parts of zeros by taking one-sided limits.
 \end{proposition}
@@ -1574,7 +1574,7 @@ is not proved by the present estimates.
 Apply Cauchy--Schwarz to
 $H^2\sqrt{\Lambda_0}$ and $Q'/\sqrt{\Lambda_0}$.
 Then combine Theorem~\ref{thm:tauC2_slope_v8},
-\eqref{eq:tauC2_mixed_energy_v8}, and
+\eqref{eq:tauC2_mixed_quadratic_sum_v8}, and
 \eqref{eq:tauC2_count_v8}.
 \end{proof}
 
@@ -1620,7 +1620,7 @@ constant for an improved published proportion.
 
 
 \section{Conclusions}\label{sec:conclusions}
-The unconditional bound \eqref{eq:green_envelope}
+The unconditional bound \eqref{eq:green_bound}
 combines five certified explicit bounds for $S(T)$
 on $T>1$, including $0.0751\log T+16.58585760$.
 The asymptotic hybrid gives the distinct smaller
