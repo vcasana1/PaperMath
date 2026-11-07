@@ -1,0 +1,81 @@
+name: Build standalone Casanya Turing Jensen v8
+on:
+  push:
+    branches:
+      - chatgpt/casanya-turing-jensen-v8
+    paths:
+      - numerics/explicit_S_turing/docs/zenodo_note/casanya_turing_jensen_v8_l.tex
+      - .github/workflows/build-casanya-v8.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-v8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX and packaging tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq latexmk texlive-latex-extra texlive-fonts-recommended texlive-science poppler-utils zip
+      - name: Compile full v8 twice and check references
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd numerics/explicit_S_turing/docs/zenodo_note
+          latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error casanya_turing_jensen_v8_l.tex
+          if grep -E 'There were undefined references|LaTeX Warning: Reference .* undefined|multiply defined' casanya_turing_jensen_v8_l.log; then
+            echo 'ERROR: unresolved reference'; exit 1
+          fi
+          if grep -E 'Overfull \\[hv]box' casanya_turing_jensen_v8_l.log; then
+            echo 'ERROR: overfull TeX layout'; exit 1
+          fi
+          pdfinfo casanya_turing_jensen_v8_l.pdf | head -16
+      - name: Collect paper, sources and certificates in a single ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$GITHUB_WORKSPACE"
+          out="$root/v8-delivery"
+          mkdir -p "$out"
+          src="$root/numerics/explicit_S_turing/docs/zenodo_note"
+          cp "$src/casanya_turing_jensen_v8_l.tex" "$out/"
+          cp "$src/casanya_turing_jensen_v8_l.txt" "$out/"
+          cp "$src/casanya_turing_jensen_v8_l.pdf" "$out/"
+          cp "$src/casanya_turing_jensen_v8_l.log" "$out/build.log"
+          mkdir -p "$out/certificates"
+          curl -fL --retry 3 -o "$out/certificates/certificado_S_A0_0751.zip" 'https://raw.githubusercontent.com/vcasana1/PaperMath/codex/optimize-uniform-S-constant/certificado_S_A0_0751/certificado_S_A0_0751.zip'
+          echo 'f242a3995dbecd109e134736ba3a8d96e9dba0249b6a3188341aff7cb9c47a06  '"$out/certificates/certificado_S_A0_0751.zip" | sha256sum -c -
+          curl -fL --retry 3 -o "$out/certificates/certificado_S_2_959227629.zip" 'https://raw.githubusercontent.com/vcasana1/PaperMath/codex/optimize-uniform-S-constant/certificado_S_2_959227629/certificado_S_2_959227629.zip'
+          echo 'a157aafd247a49dd6e8c002762dce6d66fd4500838c8e16d1456f14d0479b131  '"$out/certificates/certificado_S_2_959227629.zip" | sha256sum -c -
+          curl -fL --retry 3 -o "$out/certificates/PARA_CHATGPT.md" 'https://raw.githubusercontent.com/vcasana1/PaperMath/codex/optimize-uniform-S-constant/certificado_S_A0_0751/PARA_CHATGPT.md'
+          cp -r "$root/numerics/explicit_S_turing/optimization_C/slope_optimization_20261107" "$out/certificates/" 2>/dev/null || true
+          cat >"$out/README.txt" <<'EOF'
+          COMPLETE V8 MANUSCRIPT
+          The PDF is built from the TEX in this ZIP.
+          The TXT is a byte-identical copy of the TEX.
+          Both stored Green-Jensen certificate ZIPs have independently checked SHA-256 hashes.
+          No improvement in the proportion of critical-line zeros is asserted.
+          EOF
+          cd "$root"
+          zip -q -r casanya_turing_jensen_v8_COMPLETO.zip v8-delivery
+          unzip -tq casanya_turing_jensen_v8_COMPLETO.zip
+          mkdir -p numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts
+          cp casanya_turing_jensen_v8_COMPLETO.zip numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts/
+          cp "$src/casanya_turing_jensen_v8_l.pdf" numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts/
+      - name: Publish PDF and complete ZIP on branch
+        run: |
+          set -euo pipefail
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'github-actions[bot]'
+          git add numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts/
+          git diff --cached --quiet && exit 0
+          git commit -m '[skip ci] Attach compiled full v8 PDF and complete certificate ZIP'
+          git push
+      - name: Upload workflow artifact as backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: casanya_turing_jensen_v8_COMPLETO
+          path: |
+            numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts/*.pdf
+            numerics/explicit_S_turing/docs/zenodo_note/v8_artifacts/*.zip
