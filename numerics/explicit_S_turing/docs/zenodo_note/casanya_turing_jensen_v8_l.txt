@@ -1093,9 +1093,11 @@ $\log T$ and $\log\log T$; its logarithmic term is absorbed
 by the strict slack in $0.08382-A$.
 
 
-For a disc centred at $c+i(T+v)$ the weight at a
+For a disc centred at $c+i(T+v)$, the weight at a
 reflected zero is
-$\log^+(R/\sqrt{(c-\frac12-|b|)^2+(t+v)^2})$.
+\[
+\log^+\!\left(\frac{R}{\sqrt{(c-\frac12-|b|)^2+(t+v)^2}}\right).
+\]
 For a rectangle, the analogous weight is its Dirichlet
 Green function, extended by zero outside its domain.
 For a rectangle of width $W=b_0-a$ and half-height $H$,
@@ -1610,7 +1612,7 @@ with the necessary unconditional weighted-$L^2$ uniformity.
 Goldston--Lee--Schettler--Suriajaya's horizontal-multiplicity
 method \cite{GoldstonLeeSchettlerSuriajaya2026} is
 complementary to \eqref{eq:tauC2_count_v8};
-its $100\%$ consequence from pair correlation is conditional.
+the full-proportion consequence from pair correlation is conditional.
 The present slope estimate and pointwise Green--Jensen
 bounds do not give the required signed mixed-moment
 constant for an improved published proportion.
@@ -1635,18 +1637,16 @@ The latter bound is not obtained here.
 
 
 \subsection*{Data availability}
-The original six-line and asymptotic programs and outputs are
+The six-line and asymptotic programs and outputs are
 reproduced in Appendices~\CGref{app:code}--\CGref{app:data}
 and at \url{https://github.com/vcasana1/PaperMath/tree/explicit-S-turing/numerics/explicit_S_turing}.
-The exact new Green--Jensen data and interval verifiers are
+The Green--Jensen data and interval verifiers are
 in the independently reproducible archive
 \url{https://github.com/vcasana1/PaperMath/tree/codex/optimize-uniform-S-constant/certificado_S_2_959227629},
-SHA-256 of that ZIP:
-\texttt{a157aafd247a49dd6e8c002762dce6d66fd4500838c8e16d1456f14d0479b131}.
+The archive includes its full SHA-256 verification record.
 The optimised-coefficient certificate is available at
 \url{https://github.com/vcasana1/PaperMath/tree/codex/optimize-uniform-S-constant/certificado_S_A0_0751},
-ZIP SHA-256:
-\texttt{f242a3995dbecd109e134736ba3a8d96e9dba0249b6a3188341aff7cb9c47a06}.
+The accompanying manifest and validation record include its SHA-256.
 
 % ---- inlined from ai_declaration.tex ----
 \subsection*{AI declaration}
