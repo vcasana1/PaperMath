@@ -27,7 +27,7 @@
 \newcommand{\CGtip}[2]{\expandafter\gdef\csname CGTip@#1\endcsname{#2}}
 \makeatother
 % ---- inlined from tips.tex ----
-\CGtip{eq:identity}{Lemma 3.1: N(T) = (1/pi)(2 arg xi(s1) - arg xi(s2)) + (1/2pi) sum over rho of f(1/2-beta, T-gamma), d>1/2, T not an ordinate.}
+\CGtip{eq:identity}{Lemma 3.1: N(T) = (1/pi)(2 arg xi(s1) - arg xi(s2)) + (1/2pi) sum over rho of f(1/2-beta, T-gamma), d>1/2, T not an imaginary part of a zero.}
 \CGtip{eq:f_def}{f(b,t) = 2atan((d+b)/t) + 2atan((d-b)/t) - atan((2d+b)/t) - atan((2d-b)/t).}
 \CGtip{eq:kernel_def}{Kernel U = sum of c_iota G_iota over iota in B_m = {(R,j): 1<=j<=m} u {(I,j): 2<=j<=m}.}
 \CGtip{eq:G_def}{F_R,j = Re (x+it)^(-j), F_I,j = -Im (x+it)^(-j), G_iota(b,t) = F_iota(d+b,t) + F_iota(d-b,t).}
@@ -40,7 +40,7 @@
 \CGtip{eq:twosided}{Proposition 4.1: E_l + sum Lambda n^(-sigma1)(-a cos + b sin) <= N - M <= E_u + sum Lambda n^(-sigma1)(a cos + b sin).}
 \CGtip{eq:fp_def}{f_p(x) = sum_k lambda_k (a_k cos kx + b_k sin kx), lambda_k = (log p) p^(-k sigma1); M_p = max f_p.}
 \CGtip{eq:Fu_Fl_def}{F_u = E_u - A1 log T, F_l = -E_l - A1 log T.}
-\CGtip{eq:master_explicit}{|N(T) - M(T)| <= A1 log T + C_zeta + max(F_u(T), F_l(T)), T not an ordinate, C_zeta >= sum of M_p.}
+\CGtip{eq:master_explicit}{|N(T) - M(T)| <= A1 log T + C_zeta + max(F_u(T), F_l(T)), T not an imaginary part of a zero, C_zeta >= sum of M_p.}
 \CGtip{eq:tail_bound}{Lemma 4.3: sum_(n>N0) Lambda(n) g(n) <= G(N0)(1.03883 N0 - psi(N0)) + 1.03883 int_(N0)^oo G.}
 \CGtip{eq:Cz_def}{Definition of the certified constant C_zeta (per-prime phase maximum for p <= 1000, hypot for the other prime powers <= 1e8, tail).}
 \CGtip{eq:R_deriv}{|R^(k+1)(z)| <= (k+1)! (2/(3|z|)) (2/|z|)^(k+1) for Re z > 0 (Cauchy estimate of Stirling's remainder).}
@@ -58,12 +58,12 @@
 \CGtip{eq:jensen_bound}{Lemma 5.4: sum over rho of W(b_rho, t_rho) <= 2 (J(e;c,R) + eps) log T for T >= T_eps.}
 \CGtip{eq:CH}{C_H = c_R1/(2pi) + (1/pi) sum_k kappa_k J(e_P; c_k, R_k).}
 \CGtip{eq:hybrid_ineq}{Proposition 6.3: f(b,t) <= U(b,t) + sum_k kappa_k W_k(b,t) for 0 <= b <= 1/2, t != 0.}
-\CGtip{eq:green_explicit}{Uniform five-line explicit envelope for |S(T)|, including 0.0751 log T + 16.58585760 for T>1.}
-\CGtip{thm:green_explicit}{Five certified all-height bounds and their lower envelope, without RH.}
+\CGtip{eq:green_explicit}{Uniform five-line explicit bound for |S(T)|, including 0.0751 log T + 16.58585760 for T>1.}
+\CGtip{thm:green_explicit}{Five certified all-height bounds and their lower bound, without RH.}
 \CGtip{eq:green_majorant}{Global geometric majorant f <= U + sum kappa W; 16 rectangles, 7 discs, 119 kernel coefficients.}
 \CGtip{eq:green_bounds}{Residual bounds for T<=exp(93.077380) and T>=exp(93.077380) respectively.}
-\CGtip{sec:green_explicit}{Explicit Green--Jensen certificate and two-branch uniform envelope.}
-\CGtip{sec:conclusions}{Conclusions: uniform S(T), a separate asymptotic coefficient and a prime-only ordinal energy target.}
+\CGtip{sec:green_explicit}{Explicit Green--Jensen certificate and two-branch uniform bound.}
+\CGtip{sec:conclusions}{Conclusions: uniform S(T), a separate asymptotic coefficient and a prime-only indexed quadratic sum target.}
 \CGtip{eq:CH_value}{C_H = 0.0748883899702... < 0.0748883899703.}
 \CGtip{eq:Lambda0}{Lambda(0) = (3 sqrt 3 - pi)/(12 pi log 2) = 0.0786252...}
 \CGtip{eq:a_def}{a = limsup |S(T)| / log T.}
@@ -76,7 +76,7 @@
 \CGtip{eq:N_def}{N(T) = number of zeros with 0 < gamma <= T.}
 \CGtip{thm:explicit}{Theorem 2.1 (Explicit estimate): six certified lines for |N - M| and |S|, all T >= 1.}
 \CGtip{thm:hybrid}{Theorem 2.3 (Hybrid estimate): limsup |S(T)|/log T <= C_H < 0.0748883899703.}
-\CGtip{cor:comparison}{Corollary 2.2: the envelope is below Bellotti-Wong by >= 2.231 and below Amberger by >= 0.291 for all T >= 1.}
+\CGtip{cor:comparison}{Corollary 2.2: the bound is below Bellotti-Wong by >= 2.231 and below Amberger by >= 0.291 for all T >= 1.}
 \CGtip{lem:identity}{Lemma 3.1: the identity of Turing type.}
 \CGtip{lem:kernel_sums}{Lemma 3.2: exact sums of the kernel functions over the zeros.}
 \CGtip{prop:twosided}{Proposition 4.1: two-sided estimate for N - M.}
@@ -98,7 +98,7 @@
 \CGtip{lem:kernel_asym}{Lemma 6.2: sum over rho of U(b_rho, +-t_rho) = c_R1 log T + O(1).}
 \CGtip{prop:hybrid_cert}{Proposition 6.3: certified hybrid inequality and value of C_H.}
 \CGtip{rem:infimum}{Remark 2.5: on the infimum of the leading constant (question of Bellotti and Wong).}
-\CGtip{rem:conventions}{Remark 2.4: half-weight convention at the ordinates.}
+\CGtip{rem:conventions}{Remark 2.4: half-weight convention at the imaginary parts of zeros.}
 \CGtip{sec:identity}{Section 3: The identity of Turing type.}
 \CGtip{sec:explicit}{Section 4: The explicit estimate.}
 \CGtip{sec:jensen}{Section 5: Jensen discs and admissible profiles.}
@@ -223,7 +223,7 @@
 \newcommand{\HybBoxesTail}{155\,116}
 
 
-\title[Zeta estimates and prime-only ordinal clock]{Explicit and asymptotic estimates for the Riemann zeta-function and a prime-only ordinal clock}
+\title[Zeta estimates and prime-based indexed sequence]{Explicit and asymptotic estimates for the Riemann zeta-function and a prime-based indexed sequence}
 \author{V\'ictor Casa\~na-Giner}
 \address{Universidad Nacional de Educaci\'on a Distancia, Madrid, Spain}
 \email{\href{mailto:vcasana1@alumno.uned.es}{vcasana1@alumno.uned.es}}
@@ -234,7 +234,7 @@
 
 \begin{abstract}
 Let $N(T)$ count the non-trivial zeros of the Riemann
-zeta-function with multiplicity and ordinates in $(0,T]$,
+zeta-function with multiplicity and imaginary parts of zeros in $(0,T]$,
 and set $S(T)=N(T)-\vartheta(T)/\pi-1$ using the
 right-continuous convention. We establish unconditional
 uniform explicit bounds, including
@@ -244,10 +244,10 @@ Green--Jensen harmonic weights and coupled Euler-product
 prime phases with interval-arithmetic certificates.
 The asymptotic hybrid separately yields
 $\limsup_{T\to\infty}|S(T)|/\log T<0.0748883899703$.
-A strictly ordered prime-only synthetic clock is defined
+A strictly ordered prime-only synthetic sequence is defined
 using sublevel measures. We establish pointwise
 displacement bounds, a quadratic prime-slope estimate
-and an exact signed ordinal-energy identity.
+and an exact signed indexed quadratic-discrepancy identity.
 The latter identifies the weighted residual moment
 and its correlation with the prime-phase derivative
 that must be controlled to improve published
@@ -273,7 +273,7 @@ its completed form, an entire function that satisfies $\xi(s)=\xi(1-s)$ and is r
 N(T)=\#\{\rho:\ 0<\gamma\le T\}\qquad(T>0),
 \label{eq:N_def}
 \end{equation}
-so that $N(T)$ is right-continuous and $N(T)=N(T^+)$ at an ordinate $T$. Since $\xi(\bar s)=\overline{\xi(s)}$, the zeros are symmetric with respect to the real axis, and $N(T)$ counts half of the zeros with $|\gamma|\le T$. Riemann stated and von Mangoldt \cite{VonMangoldt1905} proved that
+so that $N(T)$ is right-continuous and $N(T)=N(T^+)$ at an imaginary part of a zero $T$. Since $\xi(\bar s)=\overline{\xi(s)}$, the zeros are symmetric with respect to the real axis, and $N(T)$ counts half of the zeros with $|\gamma|\le T$. Riemann stated and von Mangoldt \cite{VonMangoldt1905} proved that
 \begin{equation}
 N(T)=\main(T)+O(\log T),\qquad \main(T)=\frac T{2\pi}\log\frac T{2\pi e}.
 \label{eq:RvM}
@@ -288,7 +288,7 @@ is the Riemann--Siegel theta function, with the branch of $\Lo\Gamma$ that is re
 N(T)=\frac1\pi\vartheta(T)+1+S(T)
 \label{eq:S_def}
 \end{equation}
-\cite[\S9.3]{Titchmarsh1986}; with the convention \CGeqref{eq:N_def}, $S(T)=S(T^+)$ at the ordinates. Since $\vartheta(T)/\pi+1=\main(T)+\frac78+O(1/T)$ (Lemma~\CGref{lem:varpi} below), the estimate \CGeqref{eq:RvM} is equivalent to $S(T)=O(\log T)$.
+\cite[\S9.3]{Titchmarsh1986}; with the convention \CGeqref{eq:N_def}, $S(T)=S(T^+)$ at the imaginary parts of zeros. Since $\vartheta(T)/\pi+1=\main(T)+\frac78+O(1/T)$ (Lemma~\CGref{lem:varpi} below), the estimate \CGeqref{eq:RvM} is equivalent to $S(T)=O(\log T)$.
 
 The problem of making \CGeqref{eq:RvM} explicit, in the form
 \begin{equation}
@@ -401,7 +401,7 @@ In particular $\mathfrak a<\Lambda(0)$, with $\Lambda(0)$ as in \CGeqref{eq:Lamb
 Theorem~\CGref{thm:hybrid} is asymptotic: it states that for every $\varepsilon>0$ there is $T_0(\varepsilon)$ with $|S(T)|\le(C_{\rm H}+\varepsilon)\log T$ for $T\ge T_0(\varepsilon)$, and $T_0(\varepsilon)$ is not computed, because the subconvexity bounds that enter the proof (Lemma~\CGref{lem:profile}) have no explicit constants. Taken alone, that asymptotic theorem does not give an improved finite-height bound; Theorem~\CGref{thm:green_explicit} supplies a separate explicit extension.
 
 \begin{remark}[Conventions]\label{rem:conventions}
-Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not an ordinate and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at an ordinate, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
+Amberger \cite{Amberger2025} and Bellotti and Wong \cite{BellottiWong2026} count a zero with imaginary part exactly $T$ with weight $\frac12$, that is, they use $\frac12(N(T^+)+N(T^-))$. Since the bounds of Theorem~\CGref{thm:explicit} are proved for every $T$ that is not an imaginary part of a zero and $\main$ is continuous, they hold for $N(T^+)$ and for $N(T^-)$ at an imaginary part of a zero, hence also for their mean. The comparisons of Corollary~\CGref{cor:comparison} are therefore between bounds for the same quantity.
 \end{remark}
 
 \begin{remark}[On the infimum of the leading constant]\label{rem:infimum}
@@ -409,7 +409,7 @@ Bellotti and Wong \cite[\S3]{BellottiWong2026} ask whether the infimum of $C_1$ 
 \end{remark}
 
 
-\begin{theorem}[Uniform explicit Green--Jensen envelope]
+\begin{theorem}[Uniform explicit Green--Jensen bound]
 \label{thm:green_explicit}
 For every $T>1$, without RH,
 \begin{equation}
@@ -429,7 +429,7 @@ where
 \label{eq:green_envelope}
 \end{equation}
 The bounds hold for both one-sided conventions
-at ordinates, and for the midpoint convention.
+at imaginary parts of zeros, and for the midpoint convention.
 The first, second, third and fifth affine lines are
 active successively, with switch points
 $\log T=234.716040243902\ldots$,
@@ -463,7 +463,7 @@ b_\rho=\tfrac12-\beta,\qquad t_\rho=T-\gamma .
 Since $0<\beta<1$, one has $|b_\rho|<\frac12<d$. The function $f$ is even in $b$ and odd in $t$.
 
 \begin{lemma}[Identity of Turing type \cite{Turing1953,Amberger2025,BellottiWong2026}]\label{lem:identity}
-Let $d>\frac12$ and let $T>0$ not be an ordinate. Then
+Let $d>\frac12$ and let $T>0$ not be an imaginary part of a zero. Then
 \begin{equation}
 N(T)=\frac1\pi\Bigl(2\arg\xi(s_1)-\arg\xi(s_2)\Bigr)+\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho),
 \label{eq:identity}
@@ -472,7 +472,7 @@ where the series converges absolutely.
 \end{lemma}
 
 \begin{proof}
-\emph{The argument principle.} Let $\mathcal R$ be the rectangle with vertices $\sigma_2$, $\sigma_2+iT$, $1-\sigma_2+iT$, $1-\sigma_2$. The function $\xi$ has no zeros on $\partial\mathcal R$: none on the vertical sides, which lie outside the critical strip; none on the top side, because $T$ is not an ordinate; and none on the real segment, because $\xi(\sigma)>0$ for all real $\sigma$ (for $\sigma\ge1$ this was noted above; for $0<\sigma<1$ one has $\sigma(\sigma-1)<0$ and $\zeta(\sigma)<0$, the latter because $(1-2^{1-\sigma})\zeta(\sigma)=\sum_{n\ge1}(-1)^{n-1}n^{-\sigma}>0$ and $1-2^{1-\sigma}<0$; the case $\sigma\le0$ follows from $\xi(\sigma)=\xi(1-\sigma)$). Since $T$ is not an ordinate, the zeros of $\xi$ inside $\mathcal R$, namely the non-trivial zeros with $0<\gamma<T$, are exactly the $N(T)$ zeros counted in \CGeqref{eq:N_def}, so by the argument principle the variation of $\arg\xi$ along $\partial\mathcal R$, counterclockwise, is $2\pi N(T)$.
+\emph{The argument principle.} Let $\mathcal R$ be the rectangle with vertices $\sigma_2$, $\sigma_2+iT$, $1-\sigma_2+iT$, $1-\sigma_2$. The function $\xi$ has no zeros on $\partial\mathcal R$: none on the vertical sides, which lie outside the critical strip; none on the top side, because $T$ is not an imaginary part of a zero; and none on the real segment, because $\xi(\sigma)>0$ for all real $\sigma$ (for $\sigma\ge1$ this was noted above; for $0<\sigma<1$ one has $\sigma(\sigma-1)<0$ and $\zeta(\sigma)<0$, the latter because $(1-2^{1-\sigma})\zeta(\sigma)=\sum_{n\ge1}(-1)^{n-1}n^{-\sigma}>0$ and $1-2^{1-\sigma}<0$; the case $\sigma\le0$ follows from $\xi(\sigma)=\xi(1-\sigma)$). Since $T$ is not an imaginary part of a zero, the zeros of $\xi$ inside $\mathcal R$, namely the non-trivial zeros with $0<\gamma<T$, are exactly the $N(T)$ zeros counted in \CGeqref{eq:N_def}, so by the argument principle the variation of $\arg\xi$ along $\partial\mathcal R$, counterclockwise, is $2\pi N(T)$.
 
 Let $\Delta_1$ be the variation of $\arg\xi$ along the path $\pi_1$ from $\sigma_2$ to $\sigma_2+iT$ and then to $\frac12+iT$. The reflection $s\mapsto1-\bar s$ in the critical line maps $\pi_1$ onto the path $\pi_1'$ from $1-\sigma_2$ to $1-\sigma_2+iT$ to $\frac12+iT$, and $\xi(1-\bar s)=\xi(\bar s)=\overline{\xi(s)}$, so the variation of $\arg\xi$ along $\pi_1'$ is $-\Delta_1$. The boundary $\partial\mathcal R$, counterclockwise, is $\pi_1$ followed by the reverse of $\pi_1'$ followed by the real segment from $1-\sigma_2$ to $\sigma_2$, on which $\arg\xi$ is constant. Hence $2\pi N(T)=\Delta_1+\Delta_1$, that is, $\Delta_1=\pi N(T)$.
 
@@ -502,7 +502,7 @@ with a real constant $B$ and absolute convergence for every $s$ that is not a ze
 F(\sigma)-F(\sigma+d)=\sum_\rho\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr),
 \label{eq:F_diff}
 \end{equation}
-an absolutely convergent series of differences (the two series \CGeqref{eq:hadamard}, with their regularising terms $1/\rho$, are each absolutely convergent; nothing is asserted about $\sum_\rho(s-\rho)^{-1}$ alone). For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an ordinate, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
+an absolutely convergent series of differences (the two series \CGeqref{eq:hadamard}, with their regularising terms $1/\rho$, are each absolutely convergent; nothing is asserted about $\sum_\rho(s-\rho)^{-1}$ alone). For $\frac12\le\sigma\le\sigma_1$ the $\rho$-th term has modulus at most $d/|t_\rho|^2$, because $|\sigma+iT-\rho|\ge|t_\rho|$ and $|\sigma+d+iT-\rho|\ge|t_\rho|$; since $T$ is not an imaginary part of a zero, $t_\rho\ne0$ for every $\rho$, only finitely many zeros have $|t_\rho|<1$, and $\sum_{|t_\rho|\ge1}|t_\rho|^{-2}<\infty$ \cite[\S9.4]{Titchmarsh1986}, the series \CGeqref{eq:F_diff} is dominated by a summable sequence independent of $\sigma$ and may be integrated term by term over $[\frac12,\sigma_1]$. With $\Ip\frac1{x+it}=-\frac t{x^2+t^2}$ and $\int\frac{-t\,dx}{x^2+t^2}=-\arctan\frac xt$,
 \begin{equation}
 \int_{1/2}^{\sigma_1}\Ip\Bigl(\frac1{\sigma+iT-\rho}-\frac1{\sigma+d+iT-\rho}\Bigr)d\sigma=g(b_\rho,t_\rho),
 \label{eq:g_def}
@@ -594,7 +594,7 @@ and
 \end{equation}
 
 \begin{proposition}[Two-sided estimate]\label{prop:twosided}
-Under \CGeqref{eq:K}, for every $T>0$ that is not an ordinate,
+Under \CGeqref{eq:K}, for every $T>0$ that is not an imaginary part of a zero,
 \begin{equation}
 \begin{aligned}
 N(T)-\main(T)&\le\mathcal E_u(T)+\sum_{n\ge2}\Lambda(n)n^{-\sigma_1}\bigl(a(\log n)\cos(T\log n)+b(\log n)\sin(T\log n)\bigr),\\
@@ -652,7 +652,7 @@ The series converges absolutely and uniformly, so $f_p$ is continuous and $2\pi$
 F_u(T)=\mathcal E_u(T)-A_1\log T,\qquad F_\ell(T)=-\mathcal E_\ell(T)-A_1\log T,
 \label{eq:Fu_Fl_def}
 \end{equation}
-Proposition~\CGref{prop:twosided} gives, for every $T>0$ not an ordinate and every $A_1$ and $C_\zeta\ge\sum_pM_p$,
+Proposition~\CGref{prop:twosided} gives, for every $T>0$ not an imaginary part of a zero and every $A_1$ and $C_\zeta\ge\sum_pM_p$,
 \begin{equation}
 \bigl|N(T)-\main(T)\bigr|\le A_1\log T+C_\zeta+\max\bigl(F_u(T),F_\ell(T)\bigr).
 \label{eq:master_explicit}
@@ -884,11 +884,11 @@ $\ell_{6000}$ & $0.85$ & $10$ & $0.08382$ & $4.58951035$ & $0.73573766$ & $5.326
 \end{table}
 
 \begin{proof}[Proof of Theorem~\CGref{thm:explicit}]
-Each line $A_1L+A_3$ of \CGeqref{eq:thm_N} corresponds to a kernel listed in Table~\CGref{tab:lines} and Appendix~\CGref{app:tables}, with $A_1=\lceil C_1\rceil_5\ge C_1=c_{\mathrm R,1}/(2\pi)$. For it, \CGeqref{eq:K} holds by Proposition~\CGref{prop:kernel_cert}; $\sum_pM_p\le C_\zeta$ by Proposition~\CGref{prop:Cz}; and $\sup_{T\ge1}\max(F_u,F_\ell)$ is bounded by Proposition~\CGref{prop:elem}, with $A_1\ge C_1$ as required in Lemma~\CGref{lem:elem_large}. By \CGeqref{eq:master_explicit}, for every $T\ge1$ that is not an ordinate, $|N(T)-\main(T)|\le A_1\log T+C_\zeta+\sup\max(F_u,F_\ell)\le A_1\log T+A_3^N$. At an ordinate $T$, $N(T)=\lim_{t\to T^+}N(t)$ and $\main$ is continuous, so the inequality persists. The same argument with \CGeqref{eq:master_S} gives \CGeqref{eq:thm_S}, with $S(T)=S(T^+)$ at the ordinates.
+Each line $A_1L+A_3$ of \CGeqref{eq:thm_N} corresponds to a kernel listed in Table~\CGref{tab:lines} and Appendix~\CGref{app:tables}, with $A_1=\lceil C_1\rceil_5\ge C_1=c_{\mathrm R,1}/(2\pi)$. For it, \CGeqref{eq:K} holds by Proposition~\CGref{prop:kernel_cert}; $\sum_pM_p\le C_\zeta$ by Proposition~\CGref{prop:Cz}; and $\sup_{T\ge1}\max(F_u,F_\ell)$ is bounded by Proposition~\CGref{prop:elem}, with $A_1\ge C_1$ as required in Lemma~\CGref{lem:elem_large}. By \CGeqref{eq:master_explicit}, for every $T\ge1$ that is not an imaginary part of a zero, $|N(T)-\main(T)|\le A_1\log T+C_\zeta+\sup\max(F_u,F_\ell)\le A_1\log T+A_3^N$. At an imaginary part of a zero $T$, $N(T)=\lim_{t\to T^+}N(t)$ and $\main$ is continuous, so the inequality persists. The same argument with \CGeqref{eq:master_S} gives \CGeqref{eq:thm_S}, with $S(T)=S(T^+)$ at the imaginary parts of zeros.
 \end{proof}
 
 \begin{proof}[Proof of Corollary~\CGref{cor:comparison}]
-The difference between the minimum of finitely many lines and the minimum of finitely many other lines is a piecewise linear function of $L\ge0$, whose minimum over $[0,\infty)$ is attained at $L=0$, at a breakpoint of one of the two envelopes, or, if the slopes allow, approached as $L\to\infty$. Here the smallest slope of the bounds of \cite{BellottiWong2026} and of \cite{Amberger2025} is $0.0946$ and $0.097$ respectively, larger than $\LineBAone$, so the differences tend to $+\infty$. Evaluating at $L=0$ and at the finitely many breakpoints, in exact rational arithmetic, gives the minimal differences $\GapBW$ (at $L=\GapBWat$) and $\GapAmb$ (at $L=\GapAmbat$), both positive. The statements about single lines are the comparisons of two lines each. When both the slope and the constant of the new line are smaller, the inequality holds for all $L\ge0$: this is the case for $\LineFourHAone L+\LineFourHAthreeN$ and for $\LineBAone L+\LineBAthreeN$ against $0.0946L+5.746$. When the new line has the smaller slope but the larger constant, the inequality holds exactly for $L$ larger than the quotient of the difference of the constants by the difference of the slopes: $(5.202-4.954)/(0.097-0.08399)$ and $(5.326-4.954)/(0.097-0.08382)$ against $0.097L+4.954$.
+The difference between the minimum of finitely many lines and the minimum of finitely many other lines is a piecewise linear function of $L\ge0$, whose minimum over $[0,\infty)$ is attained at $L=0$, at a breakpoint of one of the two bounds, or, if the slopes allow, approached as $L\to\infty$. Here the smallest slope of the bounds of \cite{BellottiWong2026} and of \cite{Amberger2025} is $0.0946$ and $0.097$ respectively, larger than $\LineBAone$, so the differences tend to $+\infty$. Evaluating at $L=0$ and at the finitely many breakpoints, in exact rational arithmetic, gives the minimal differences $\GapBW$ (at $L=\GapBWat$) and $\GapAmb$ (at $L=\GapAmbat$), both positive. The statements about single lines are the comparisons of two lines each. When both the slope and the constant of the new line are smaller, the inequality holds for all $L\ge0$: this is the case for $\LineFourHAone L+\LineFourHAthreeN$ and for $\LineBAone L+\LineBAthreeN$ against $0.0946L+5.746$. When the new line has the smaller slope but the larger constant, the inequality holds exactly for $L$ larger than the quotient of the difference of the constants by the difference of the slopes: $(5.202-4.954)/(0.097-0.08399)$ and $(5.326-4.954)/(0.097-0.08382)$ against $0.097L+4.954$.
 \end{proof}
 
 %======================================================================
@@ -937,7 +937,7 @@ Let $\eP$ be the piecewise linear function through the vertices of the lower con
 \end{lemma}
 
 \begin{proof}
-At each vertex $(\varsigma_i,e_i)$ of the hull, $\mu(\varsigma_i)\le e_i$, so $|\zeta(\varsigma_i+it)|\le K_{i,\varepsilon}|t|^{e_i+\varepsilon}$ for $|t|\ge2$ and every $\varepsilon>0$, by the definition of $\mu$. The vertices have $\varsigma_0=\frac12$, $\varsigma_{\rm last}=1$, and non-increasing ordinates (the values in Table~\CGref{tab:nodes} decrease, and the last is $0$). Lemma~\CGref{lem:interpolation} applies.
+At each vertex $(\varsigma_i,e_i)$ of the hull, $\mu(\varsigma_i)\le e_i$, so $|\zeta(\varsigma_i+it)|\le K_{i,\varepsilon}|t|^{e_i+\varepsilon}$ for $|t|\ge2$ and every $\varepsilon>0$, by the definition of $\mu$. The vertices have $\varsigma_0=\frac12$, $\varsigma_{\rm last}=1$, and non-increasing second coordinates (the values in Table~\CGref{tab:nodes} decrease, and the last is $0$). Lemma~\CGref{lem:interpolation} applies.
 \end{proof}
 
 The points of $\mathcal N$ that are not vertices are not needed: the chord between two vertices is a valid bound by Lemma~\CGref{lem:interpolation}, and it is smaller. No use is made of the convexity of $\mu$ beyond its continuity in (iv).
@@ -1028,7 +1028,7 @@ since $\sigma=c_k+R_k\cos\theta$ and $d\sigma=-R_k\sin\theta\,d\theta$; the argu
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\CGref{thm:hybrid}]
-Let $\varepsilon>0$ and let $T\to\infty$ through values that are not ordinates. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
+Let $\varepsilon>0$ and let $T\to\infty$ through values that are not imaginary parts of zeros. All functions in \CGeqref{eq:hybrid_ineq} are even in $b$, and $|b_\rho|<\frac12$, so \CGeqref{eq:hybrid_ineq} holds at $(b_\rho,t_\rho)$ and at $(b_\rho,-t_\rho)$ for every zero; with $f(b,-t)=-f(b,t)$,
 \[
 -U(b_\rho,-t_\rho)-\sum_k\kappa_kW_k(b_\rho,-t_\rho)\le f(b_\rho,t_\rho)\le U(b_\rho,t_\rho)+\sum_k\kappa_kW_k(b_\rho,t_\rho).
 \]
@@ -1036,7 +1036,7 @@ Summing over $\rho$ (all series converge absolutely: those of $U$ by Lemma~\CGre
 \[
 \Bigl|\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)\Bigr|\le\Bigl(\frac{c_{\mathrm R,1}}{2\pi}+\frac1\pi\sum_k\kappa_k\bigl(J(\eP;c_k,R_k)+\varepsilon\bigr)\Bigr)\log T+O(1)
 \]
-for $T\ge\max_kT_\varepsilon(k)$. By Lemma~\CGref{lem:identity} and Lemma~\CGref{lem:main_asym}, $S(T)=\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)+O(1)$, so $|S(T)|\le(C_{\rm H}+\varepsilon\sum_k\kappa_k/\pi)\log T+O(1)$. Dividing by $\log T$, letting $T\to\infty$ (at the ordinates $S(T)=S(T^+)$ is a limit of values at non-ordinates, so the limit superior over non-ordinates is $\mathfrak a$) and then $\varepsilon\to0$ gives $\mathfrak a\le C_{\rm H}$, and Proposition~\CGref{prop:hybrid_cert} gives \CGeqref{eq:CH_value}. Finally $\CHup<0.0786<\Lambda(0)$.
+for $T\ge\max_kT_\varepsilon(k)$. By Lemma~\CGref{lem:identity} and Lemma~\CGref{lem:main_asym}, $S(T)=\frac1{2\pi}\sum_\rho f(b_\rho,t_\rho)+O(1)$, so $|S(T)|\le(C_{\rm H}+\varepsilon\sum_k\kappa_k/\pi)\log T+O(1)$. Dividing by $\log T$, letting $T\to\infty$ (at the imaginary parts of zeros $S(T)=S(T^+)$ is a limit of values at values outside the imaginary parts of zeros, so the limit superior over values outside the imaginary parts of zeros is $\mathfrak a$) and then $\varepsilon\to0$ gives $\mathfrak a\le C_{\rm H}$, and Proposition~\CGref{prop:hybrid_cert} gives \CGeqref{eq:CH_value}. Finally $\CHup<0.0786<\Lambda(0)$.
 \end{proof}
 
 %======================================================================
@@ -1167,7 +1167,7 @@ The global geometric verifier treats all cell
 interfaces with rational coordinates and Arb enclosures.
 The harmonic-cost verifier handles boundary integrals
 and explicit $O(T^{-1})$ corrections, without
-discarding them. The envelope verifier maximises
+discarding them. The bound verifier maximises
 $-(0.08382-A)L+B\log L$ analytically for
 $L=\log T\ge93.077380$; the maximum is enclosed at
 $221.8858055762487512189634<L<
@@ -1215,7 +1215,7 @@ checked on every harmonic interface and
 both infinite tails. The certificate separately
 bounds harmonic costs, coupled Euler arithmetic
 with its infinite prime tail, and the uniform
-height envelope by Arb ball arithmetic.
+height bound by Arb ball arithmetic.
 The total logarithmic coefficient before the
 positive $\log\log T$ term is absorbed is at most
 $0.07508804928842704994878591$, and the
@@ -1244,14 +1244,14 @@ This does not claim global optimality.
 Comparing the five affine functions verifies
 the switch points in Theorem~\ref{thm:green_explicit}.
 
-% ---- prime-only clock ----
-\section{Application to a second prime-only ordinal clock}\label{sec:tauC2}
+% ---- prime-based sequence ----
+\section{Application to a second prime-based indexed sequence}\label{sec:tauC2}
 
 The estimate \eqref{eq:green_explicit} also bounds the displacement of
-a second sequence of synthetic ordinates, constructed with only the
+a second sequence of synthetic imaginary parts, constructed with only the
 Riemann--von Mangoldt main term and finitely many ordinary primes.
 The construction is independent of the values and zeros of $\zeta$.
-The ordinal-energy test below is a sufficient condition;
+The indexed quadratic-discrepancy test below is a sufficient condition;
 no improvement on published proportions is claimed.
 
 For $t>0$ put $N_0(t)=\main(t)+\frac78$ and define
@@ -1287,7 +1287,7 @@ Clip $Q^\circ(t)$ to $[-h(t),h(t)]$, obtaining
  Q(t)=\max\{-h(t),\min\{h(t),Q^\circ(t)\}\},\qquad
  F_2(t)=N_0(t)+Q(t).
 \]
-Define the second prime-only clock by the sublevel measure
+Define the second prime-based sequence by the sublevel measure
 \begin{equation}
  \boxed{\displaystyle
  \tau_k^{\mathrm{C2}}=
@@ -1296,14 +1296,14 @@ Define the second prime-only clock by the sublevel measure
 \end{equation}
 Every sum at a fixed height contains finitely many primes.
 The elementary weights are fixed in advance and are not fitted to
-the true ordinates.
+the imaginary parts of genuine zeros.
 
-\begin{proposition}[Ordering and an unconditional height envelope]
+\begin{proposition}[Ordering and an unconditional height bound]
 \label{prop:tauC2_v8}
 The numbers $\tau_k^{\mathrm{C2}}$ are positive, finite, and
 strictly increasing. Let $\tau_k$ be the large solution of
 $N_0(\tau_k)=k-\frac12$ and let $\gamma_k$ enumerate all positive
-ordinates of non-trivial zeros with multiplicity, without RH.
+imaginary parts of zeros of non-trivial zeros with multiplicity, without RH.
 For sufficiently large $k$ put
 $\mathfrak m_k=\min\{\tau_k,\gamma_k\}$. Then
 \begin{equation}
@@ -1355,7 +1355,7 @@ with that for $F_2$, followed by the mean-value theorem, gives
  =o(1).
  \label{eq:tauC2_clock_shift_v8}
 \end{equation}
-At a repeated ordinate $\gamma_k$, the one-sided values
+At a repeated imaginary part of a zero $\gamma_k$, the one-sided values
 $N(\gamma_k^-)$ and $N(\gamma_k^+)$ bracket $k-\frac12$.
 By Theorem~\ref{thm:green_explicit}, including its one-sided
 version, and Lemma~\ref{lem:varpi},
@@ -1372,7 +1372,7 @@ and use \eqref{eq:tauC2_clock_shift_v8} to obtain
 \eqref{eq:tauC2_limsup_v8}.
 \end{proof}
 
-\begin{proposition}[Ordinal-energy criterion]
+\begin{proposition}[indexed quadratic-discrepancy criterion]
 \label{prop:tauC2_energy_v8}
 Let $\mathcal K_T=\{k:T<\gamma_k\le2T\}$,
 $M_T=\#\mathcal K_T$, and define
@@ -1401,26 +1401,26 @@ No such asymptotic estimate is established here.
 \end{proposition}
 
 \begin{proof}
-Group zeros by common ordinate, counting multiplicities
+Group zeros by common imaginary part of a zero, counting multiplicities
 and all real parts. In a block of size $m$, the defects
 $k-\frac12-F_2(\gamma_k)$ form a progression of step one.
 Their total squared defect is at least $m(m^2-1)/12$,
 which is at least $m/4$ for $m\ge2$.
 Each off-line zero has a distinct reflected partner
-$1-\bar\rho$ at the same ordinate; a multiple zero
+$1-\bar\rho$ at the same imaginary part of a zero; a multiple zero
 also lies in a repeated block. Hence the number of zeros
 that are not simple and on the critical line is \emph{at
 most} the total size of repeated blocks.
-A simple critical-line zero might share its ordinate
+A simple critical-line zero might share its imaginary part of a zero
 with other zeros, so equality must not be asserted.
 Summing the block inequalities proves the claim.
 \end{proof}
 
 \begin{remark}[Numerical diagnostics, not an asymptotic bound]
 \label{rem:tauC2_data_v8}
-Using ordinates only for the final evaluation, and with
-the weights fixed without reference to those ordinates,
-the following finite-window ordinal energies were reported:
+Using imaginary parts of zeros only for the final evaluation, and with
+the weights fixed without reference to those imaginary parts of zeros,
+the following finite-window indexed quadratic sums were reported:
 \[
 \begin{array}{c|cc}
 T&E_T(F_{\rm C})&E_T(F_2)\\\hline
@@ -1437,12 +1437,12 @@ The outstanding question is the exact weighted
 second-moment constant and the correlation between
 the prime phase and the ordinal error.
 The $O(1/\log T)$ root-mean-square localization
-in the companion prime-clock manuscript does not
+in the companion prime-based sequence manuscript does not
 give that constant.
 \end{remark}
 
 
-\section{Quadratic energy of the second prime-only clock}\label{sec:tauC2_energy_v8}
+\section{quadratic discrepancy of the second prime-based sequence}\label{sec:tauC2_energy_v8}
 The bound \eqref{eq:green_explicit} controls the endpoints in the
 following identity, while the prime phase supplies a second,
 independently estimable component. No Riemann hypothesis is assumed.
@@ -1508,7 +1508,7 @@ and subdivide general height windows at dyadic boundaries.
 
 \begin{proposition}[Exact signed Stieltjes identity]
 \label{prop:tauC2_exact_energy_v8}
-For $T,2T$ not zero ordinates, let
+For $T,2T$ not imaginary parts of zeros, let
 $M_T=N(2T)-N(T)$, $H=N-F_2$ and
 $u_k=k-\frac12-F_2(\gamma_k)$. Then
 \begin{equation}
@@ -1530,10 +1530,10 @@ we have the unconditional formula
  +O\!\left(\frac{\log^2T}{T}\right).
  \label{eq:tauC2_mixed_energy_v8}
 \end{equation}
-It extends to endpoint ordinates by taking one-sided limits.
+It extends to endpoint imaginary parts of zeros by taking one-sided limits.
 \end{proposition}
 \begin{proof}
-At an ordinate of multiplicity $m$, put
+At an imaginary part of a zero of multiplicity $m$, put
 $H_-=N(\gamma^-)-F_2(\gamma)$,
 $H_+=H_-+m$ and $c=(H_++H_-)/2$.
 The block contributes
@@ -1593,7 +1593,7 @@ for a fixed real $\lambda$, then
  \label{eq:tauC2_polar_v8}
 \end{equation}
 A window-dependent minimizing $\lambda$ evaluated at the
-true ordinates is \emph{not} a zero-free clock; the
+imaginary parts of genuine zeros is \emph{not} a sequence defined without zeta zeros; the
 predetermined $\lambda=1$ gives $F_2$.
 \end{proposition}
 \begin{proof}
@@ -1603,7 +1603,7 @@ Expand the square of $u_{k,\rm C}-\lambda D_k$.
 \begin{remark}[Mathematical scope and literature]
 \label{rem:tauC2_barrier_v8}
 The Selberg--Fujii estimates used by the earlier
-prime-clock localization theorem give an $O(1)$ residual
+prime-based sequence localization theorem give an $O(1)$ residual
 moment, not the numerical constant of the signed moment
 $C_T$. The author's spectral decomposition S2 contains
 a non-negative orthogonal remainder; the proposed moving-prime
@@ -1620,15 +1620,15 @@ constant for an improved published proportion.
 
 
 \section{Conclusions}\label{sec:conclusions}
-The unconditional envelope \eqref{eq:green_envelope}
+The unconditional bound \eqref{eq:green_envelope}
 combines five certified explicit bounds for $S(T)$
 on $T>1$, including $0.0751\log T+16.58585760$.
 The asymptotic hybrid gives the distinct smaller
 coefficient $C_{\rm H}<0.0748883899703$ without
 an explicit starting height. The prime-only
-synthetic clock is strictly ordered and obeys
-the stated height envelopes. Its exact signed
-ordinal-energy identity reduces any improvement
+synthetic sequence is strictly ordered and obeys
+the stated height bounds. Its exact signed
+indexed quadratic-discrepancy identity reduces any improvement
 of a published unconditional critical-line
 proportion to a sufficiently sharp bound on
 a residual second moment and its correlation
@@ -1716,7 +1716,7 @@ The original computations of Appendices~\CGref{app:code}--\CGref{app:cert} use P
 
 \bibitem{RosserSchoenfeld1962} J. B. Rosser and L. Schoenfeld, Approximate formulas for some functions of prime numbers, \textit{Illinois J. Math.} \textbf{6} (1962) 64--94, \href{https://doi.org/10.1215/ijm/1255631807}{doi:10.1215/ijm/1255631807}.
 
-\bibitem{TaoTrudgianYang2025} T. Tao, T. S. Trudgian and A. Yang, New exponent pairs, zero density estimates, and zero additive energy estimates: a systematic approach, arXiv:2501.16779v1, 28 January 2025, \href{https://doi.org/10.48550/arXiv.2501.16779}{doi:10.48550/arXiv.2501.16779}.
+\bibitem{TaoTrudgianYang2025} T. Tao, T. S. Trudgian and A. Yang, arXiv preprint, arXiv:2501.16779v1, 28 January 2025, \href{https://doi.org/10.48550/arXiv.2501.16779}{doi:10.48550/arXiv.2501.16779}.
 
 \bibitem{Titchmarsh1939} E. C. Titchmarsh, \textit{The Theory of Functions}, 2nd edn. (Oxford University Press, Oxford, 1939).
 
