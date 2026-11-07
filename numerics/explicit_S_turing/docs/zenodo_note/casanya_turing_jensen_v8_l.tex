@@ -58,12 +58,12 @@
 \CGtip{eq:jensen_bound}{Lemma 5.4: sum over rho of W(b_rho, t_rho) <= 2 (J(e;c,R) + eps) log T for T >= T_eps.}
 \CGtip{eq:CH}{C_H = c_R1/(2pi) + (1/pi) sum_k kappa_k J(e_P; c_k, R_k).}
 \CGtip{eq:hybrid_ineq}{Proposition 6.3: f(b,t) <= U(b,t) + sum_k kappa_k W_k(b,t) for 0 <= b <= 1/2, t != 0.}
-\CGtip{eq:green_explicit}{Uniform explicit Green--Jensen theorem: |S(T)| <= 0.08382 log T + 2.959227629, T>1.}
-\CGtip{thm:green_explicit}{New explicit theorem: 2 certified height branches and 23 Green weights; original six-line bounds are preserved.}
+\CGtip{eq:green_explicit}{Uniform five-line explicit envelope for |S(T)|, including 0.0751 log T + 16.58585760 for T>1.}
+\CGtip{thm:green_explicit}{Five certified all-height bounds and their lower envelope, without RH.}
 \CGtip{eq:green_majorant}{Global geometric majorant f <= U + sum kappa W; 16 rectangles, 7 discs, 119 kernel coefficients.}
 \CGtip{eq:green_bounds}{Residual bounds for T<=exp(93.077380) and T>=exp(93.077380) respectively.}
 \CGtip{sec:green_explicit}{Explicit Green--Jensen certificate and two-branch uniform envelope.}
-\CGtip{sec:conclusions}{Conclusions: new uniform explicit S(T), original six-line N(T), distinct asymptotic estimate.}
+\CGtip{sec:conclusions}{Conclusions: uniform S(T), a separate asymptotic coefficient and a prime-only ordinal energy target.}
 \CGtip{eq:CH_value}{C_H = 0.0748883899702... < 0.0748883899703.}
 \CGtip{eq:Lambda0}{Lambda(0) = (3 sqrt 3 - pi)/(12 pi log 2) = 0.0786252...}
 \CGtip{eq:a_def}{a = limsup |S(T)| / log T.}
@@ -1102,7 +1102,7 @@ For a rectangle of width $W=b_0-a$ and half-height $H$,
 with $a\ge\frac12$ and pole $c\in(a,b_0)$,
 the normalised Green function has the representation
 \[
-{\cal G}_D(c;x,y)=\sum_{n\in\mathbb Z}
+\mathcal G_D(c;x,y)=\sum_{n\in\mathbb Z}
 \bigl[g_H(x-c+2nW,y)-g_H(x+c-2a+2nW,y)\bigr],
 \quad
 g_H(u,y)=\operatorname{atanh}
@@ -1116,7 +1116,7 @@ because every geometric centre has $c>1$.
 
 In either geometry, Green--Jensen gives
 \[
-\sum_{w\in D_T}{\cal G}_D(c;w)
+\sum_{w\in D_T}\mathcal G_D(c;w)
 =\int_{\partial D_T}\log|\zeta(s)|\,d\omega_c(s)
 -\log|\zeta(c+i(T+v))|.
 \]
