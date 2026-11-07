@@ -1545,23 +1545,28 @@ bound establishes $\limsup E_T(F_2)<1/20$.
 % ----- Codex communication, 7 Nov 2026: awaiting source certificates -----
 \section{Additional explicit lines reported by Codex}
 \label{sec:codex_new_lines_v7}
-A numerical-certification run communicated by Codex on
-7 November 2026 reports the following three unconditional
-explicit envelopes, obtained with Arb and reproduced on the
-author's Mac:
+Numerical-certification runs communicated by Codex on
+7 November 2026 report the following three uniform explicit
+envelopes. The final reported order-$40$ certificate reduces the
+additive constant of the $0.0751$ line from $23.08071071$
+to $16.58585760$, with the same leading coefficient.
+Codex reports that the computations used Arb and were
+reproduced on the author's Mac:
 \begin{equation}
 \begin{aligned}
  |S(t)|&\le0.0828\log t+3.242277741,\\
  |S(t)|&\le0.0758\log t+16.46762913,\\
- |S(t)|&\le0.0751\log t+23.08071071.
+ |S(t)|&\le0.0751\log t+16.58585760.
 \end{aligned}
 \label{eq:codex_reported_lines_v7}
 \end{equation}
-The communicated screenshot truncates the right-hand side
-of the stated domain ($t>$). At the time of this version
-the numerical certificate, its manifest, coefficient
-data, and verification logs had not yet been independently
-retrieved from a published archive. Accordingly,
+The communicated screenshots truncate the right-hand
+side of the stated domain ($t>$), while the intended
+uniform domain is $t>1$. The exact order-$40$ certificate,
+its manifest, coefficient data, and verification logs
+have been announced for publication in PaperMath but
+were not yet accessible for independent inspection
+at the time of this revision. Accordingly,
 \eqref{eq:codex_reported_lines_v7} records a
 \emph{Codex-reported certificate}, not a theorem
 independently proved or reproduced in this manuscript.
@@ -1580,7 +1585,7 @@ Theorem~\ref{thm:green_explicit}. Define
  0.08382\log t+2.959227629,\ 
  0.0828\log t+3.242277741,\\
  &0.0758\log t+16.46762913,\ 
- 0.0751\log t+23.08071071\}.
+ 0.0751\log t+16.58585760\}.
 \end{split}
 \label{eq:codex_envelope_v7}
 \end{equation}
@@ -1600,14 +1605,21 @@ hence permits the stated replacement.
 
 \begin{remark}[Switching heights and asymptotic scope]
 \label{rem:codex_switch_v7}
-The successive switch points of the linear
-functions in \eqref{eq:codex_envelope_v7}, for
-$L=\log t$ increasing, are
+The lower envelope of the four lines in
+\eqref{eq:codex_envelope_v7}, for $L=\log t$ increasing,
+has only \emph{three} active pieces. The switch points are
 \[
  L_1=277.5001098039\ldots,\qquad
- L_2=1889.3359127143\ldots,\qquad
- L_3=9447.2594000\ldots.
+ L_2=1732.9324492207\ldots.
 \]
+The line $0.0758L+16.46762913$ is never active:
+its intersection with the $0.0751$ line is at
+$L=168.8978142857\ldots$, below the region
+where it could overtake the $0.0828$ line.
+The earlier $0.0751L+23.08071071$ certificate
+was reported before the order-$40$ improvement and
+is superseded, though its original data remain
+relevant to the computational audit.
 The coefficient $0.0751$ improves the previous
 \emph{explicit} $0.08382$ but is larger
 than the \emph{asymptotic} coefficient
