@@ -1629,6 +1629,16 @@ The six older lines and the asymptotic hybrid, together with
 their proofs and numerical certificates, remain unchanged.
 The large additive improvement comes from the new
 Green--Jensen majorant and coupled prime phases.
+Section~\ref{sec:tauC2_energy_v7} also establishes a
+quadratic slope budget and an exact signed ordinal-energy
+identity for the purely prime-defined second clock. The
+additional Codex coefficients recorded in
+Section~\ref{sec:codex_new_lines_v7} provide a candidate
+four-line explicit envelope; their separate numerical
+certificates must be checked before this revision treats
+them as independent unconditional theorems. In particular,
+no asymptotic proportion exceeding $80\%$ of simple
+critical-line zeros is asserted.
 
 \subsection*{Data availability}
 The original six-line and asymptotic programs and outputs are
