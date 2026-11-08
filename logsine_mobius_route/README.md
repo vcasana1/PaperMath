@@ -1,6 +1,6 @@
-# logsine_mobius_route (v1, 8 Nov 2026)
+# logsine_mobius_route (v2, 8 Nov 2026)
 
-Record of the log-sine Moebius route to RH: `logsine_mobius_route_v1.tex` (with `.txt` copy and `.pdf`).
+Record of the log-sine Moebius route to RH: `logsine_mobius_route_v2.tex (v1 kept)` (with `.txt` copy and `.pdf`).
 Not Lean; this directory is independent of the Lake project.
 
 - `route_constants.py` / `route_constants_output.txt`: every constant quoted in the document (mpmath, 30 digits) and the sympy checks of the identities in the proof that A(s) != 0.
