@@ -177,8 +177,9 @@
 \expandafter\gdef\csname CGTip@prop:clausenmuntz\endcsname{Proposition - The Clausen kernel and its M\"untz transform: Let c(t)=t Cl2(2pi/t) for 0<t<=1 and c(t)=0 for t>1. Then int\_0\textasciicircum{}infinity c(t)t\textasciicircum{}(s-1)dt=Theta(s) for Re s>0, int\_0\textasciicircum{}infinity c=a, and for Y>=1, Y, (E\_G(Y))/Y=sum\_(l>=1) c( Y)-Yint\_0\textasciicircum{}infinity c=(P c)(1/Y),}
 \expandafter\gdef\csname CGTip@eq:EGmuntz\endcsname{Equation: (E\_G(Y))/Y=sum\_(l>=1) c( Y)-Yint\_0\textasciicircum{}infinity c=(P c)(1/Y),}
 \expandafter\gdef\csname CGTip@eq:Cmuntz\endcsname{Equation: Corner(X)=Xsum\_(sqrt X<n<= X)lambda(n) b\_(sqrt X)(n) (P c)( nX),}
+\expandafter\gdef\csname CGTip@eq:LU\endcsname{Equation: L\_U(s)=sum\_(U<n<= X)lambda(n)b\_U(n)n\textasciicircum{}(-s)=D\_U(s)\textasciicircum{}2-sum\_(n<= U)(mu*mu)(n)n\textasciicircum{}(-s),}
 \expandafter\gdef\csname CGTip@eq:Cspectral\endcsname{Equation: Corner(X)=1/(2pi i)int\_((5/2))zeta(s-1)Theta(s) L\_U(s-1) X\textasciicircum{}s ds-aX\textasciicircum{}2sum\_(U<n<= X)(lambda(n)b\_U(n))/n.}
-\expandafter\gdef\csname CGTip@prop:lambdacrit\endcsname{Proposition - One-sided Liouville--Clausen criterion, no truncation: Let Lambda\_G(X)=sum\_(n<= X)lambda(n) n E\_G(X/n) for X>=1. Suppose that for every eps>0 there is K\_eps such that either Lambda\_G(X)<= K\_eps X\textasciicircum{}(3/2+eps) for all X>=1, or Lambda\_G(X)>=-K\_eps X\textasciicircum{}(3/2+eps) for all X>=1. Then R}
+\expandafter\gdef\csname CGTip@prop:lambdacrit\endcsname{Proposition - One-sided Liouville--Clausen criterion: Let Lambda\_G(X)=sum\_(n<= X)lambda(n) n E\_G(X/n) for X>=1. Suppose that for every eps>0 there is K\_eps such that either Lambda\_G(X)<= K\_eps X\textasciicircum{}(3/2+eps) for all X>=1, or Lambda\_G(X)>=-K\_eps X\textasciicircum{}(3/2+eps) for all X>=1. Then R}
 \expandafter\gdef\csname CGTip@eq:lambdatrivial\endcsname{Equation: |Lambda\_G(X)|<=sum\_(n<= X)n c\_(1/2)( Xn)\textasciicircum{}(3/2)<= c\_(1/2)X\textasciicircum{}(3/2)sum\_(n<= X)n\textasciicircum{}(-1/2)<=2c\_(1/2)X\textasciicircum{}2,}
 \expandafter\gdef\csname CGTip@eq:lambdamellin\endcsname{Equation: \_G(s)=(zeta(s-1)Theta(s)-a/(s-2))(zeta(2s-2))/(zeta(s-1)) (Re s>2).}
 \expandafter\gdef\csname CGTip@rem:liouvillenum\endcsname{Remark - Measurements on the Liouville form: At X=30000.5, 120000.5, 380000.5 (liouville\_weight.py): b\_(sqrt X)(n)>0 for 14.2\, 13.9\, 13.8\ of the n in (sqrt X,X], with mean 2.48, 2.61, 2.66 on its support and maximum 16, 22, 26. The contributions of the n with a }
@@ -1079,7 +1080,10 @@ the M\"untz transform of $\mathfrak c$ at $t=1/Y$. Consequently
 \begin{equation}\label{eq:Cmuntz}
 \mathcal C(X)=X\sum_{\sqrt X<n\le X}\lambda(n)\,b_{\sqrt X}(n)\,(P\mathfrak c)\Bigl(\frac nX\Bigr),
 \end{equation}
-and, with $L_U(s)=\sum_{U<n\le X}\lambda(n)b_U(n)n^{-s}=D_U(s)^2-\sum_{n\le U}(\mu*\mu)(n)n^{-s}$, $D_U(s)=\sum_{n\le U}\mu(n)n^{-s}$,
+and, with $D_U(s)=\sum_{n\le U}\mu(n)n^{-s}$ and
+\begin{equation}\label{eq:LU}
+L_U(s)=\sum_{U<n\le X}\lambda(n)b_U(n)n^{-s}=D_U(s)^2-\sum_{n\le U}(\mu*\mu)(n)n^{-s},
+\end{equation}
 \begin{equation}\label{eq:Cspectral}
 \mathcal C(X)=\frac1{2\pi i}\int_{(5/2)}\zeta(s-1)\Theta(s)\,L_U(s-1)\,X^s\,ds-aX^2\sum_{U<n\le X}\frac{\lambda(n)b_U(n)}n.
 \end{equation}
@@ -1091,7 +1095,7 @@ With $v=1/t$, $\int_0^1t\,\mathrm{Cl}_2(2\pi/t)t^{s-1}dt=\int_1^\infty\mathrm{Cl
 
 Thus the corner is $X$ times a weighted Liouville sum of dilations of the M\"untz transform of the Clausen kernel $\mathfrak c$, the kernel one integration above $\mathfrak k$ ($\mathfrak k(t)=F(1/t)$, $\mathfrak c(t)=t\,\mathrm{Cl}_2(2\pi/t)$, and $\mathrm{Cl}_2'=-F(\cdot/2\pi)$ by \CGeqref{eq:Cl2}). The Mellin factor $\zeta(s-1)\Theta(s)$ in \CGeqref{eq:Cspectral} is the transform of $G$; the arithmetic is entirely in $L_U(s-1)=D_U(s-1)^2-\sum_{n\le U}(\mu*\mu)(n)n^{1-s}$, a Dirichlet polynomial of length $U^2=X$ built from $\mu$ on $[1,\sqrt X]$ only.
 
-\begin{proposition}[One-sided Liouville--Clausen criterion, no truncation]\label{prop:lambdacrit}\VCGreviewed{1}
+\begin{proposition}[One-sided Liouville--Clausen criterion]\label{prop:lambdacrit}\VCGreviewed{1}
 Let $\Lambda_G(X)=\sum_{n\le X}\lambda(n)\,n\,E_G(X/n)$ for $X\ge1$. Suppose that for every $\varepsilon>0$ there is $K_\varepsilon$ such that either $\Lambda_G(X)\le K_\varepsilon X^{3/2+\varepsilon}$ for all $X\ge1$, or $\Lambda_G(X)\ge-K_\varepsilon X^{3/2+\varepsilon}$ for all $X\ge1$. Then RH holds.
 \end{proposition}
 
