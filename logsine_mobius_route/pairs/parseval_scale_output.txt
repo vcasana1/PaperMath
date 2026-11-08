@@ -1,0 +1,7 @@
+y=    60  Var(F_y)=      2.8438  V log^4y=     23.8716  ratio=0.1191  (Var-Vlog^4)/log^3=-0.3064
+y=   200  Var(F_y)=     15.0141  V log^4y=     66.9414  ratio=0.2243  (Var-Vlog^4)/log^3=-0.3491
+y=  1000  Var(F_y)=     66.2410  V log^4y=    193.4153  ratio=0.3425  (Var-Vlog^4)/log^3=-0.3858
+y=  3000  Var(F_y)=    142.0183  V log^4y=    349.0481  ratio=0.4069  (Var-Vlog^4)/log^3=-0.4034
+y= 10000  Var(F_y)=    284.4146  V log^4y=    611.2880  ratio=0.4653  (Var-Vlog^4)/log^3=-0.4184
+y= 30000  Var(F_y)=    489.1148  V log^4y=    959.4035  ratio=0.5098  (Var-Vlog^4)/log^3=-0.4293
+y=100000  Var(F_y)=    822.4309  V log^4y=   1492.4023  ratio=0.5511  (Var-Vlog^4)/log^3=-0.4390

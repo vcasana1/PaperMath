@@ -1,0 +1,4 @@
+E_G sup check: max|E_G(Y)|/Y^(3/4) over 4000 random Y in [10, 2e5] = 2.830; max|E_G|/Y = 1.025
+X=30000.5: W=-0.1579 | 2W_u=-0.0004  -aX^2m^2=-0.0006  -Rest=-0.0245 (sum|Rest|=0.442)  -Corner=-0.1323 (sum|Corner|=26.0)  [X^1.5 units] check=2.9e-08
+X=120000.5: W=-0.0948 | 2W_u=-0.0000  -aX^2m^2=-0.0112  -Rest=-0.0054 (sum|Rest|=0.421)  -Corner=-0.0783 (sum|Corner|=53.5)  [X^1.5 units] check=-3.1e-07
+X=380000.5: W=-0.1052 | 2W_u=+0.0001  -aX^2m^2=-0.0000  -Rest=+0.0091 (sum|Rest|=0.359)  -Corner=-0.1142 (sum|Corner|=95.5)  [X^1.5 units] check=-1.1e-06

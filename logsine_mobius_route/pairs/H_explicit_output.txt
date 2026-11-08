@@ -1,0 +1,5 @@
+A(rho1)= (0.10741008 + 0.10085232j)   |A(rho1)|*|rho1|= 2.08387
+1e3: rms H/sqrt x=0.3989  corr(H, 150-zero sum)=0.9369  slope=0.990
+1e4: rms H/sqrt x=0.4168  corr(H, 150-zero sum)=0.9347  slope=0.943
+1e5: rms H/sqrt x=0.4129  corr(H, 150-zero sum)=0.9300  slope=1.040
+1e6: rms H/sqrt x=0.4751  corr(H, 150-zero sum)=0.9512  slope=1.017

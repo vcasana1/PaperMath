@@ -1,0 +1,22 @@
+X=300.5: n=183  W(quad)=-91.101394 W(direct)=-91.101394
+   lam_max=2.328e+03 lam_min=-2.016e+03  Rayleigh(mu)=-4.978e-01  X^0.5=17.3
+   weight of mu on top 1%/5%/20% |lam| eigvecs: 0.0000 0.0000 0.0000   (uniform would be .01 .05 .20)
+   mean |lam| under mu-weights=6.005e-01   plain mean |lam|=2.632e+02
+X=1000.5: n=608  W(quad)=3173.117551 W(direct)=3173.117551
+   lam_max=1.407e+04 lam_min=-1.282e+04  Rayleigh(mu)=5.219e+00  X^0.5=31.6
+   weight of mu on top 1%/5%/20% |lam| eigvecs: 0.0001 0.0002 0.0003   (uniform would be .01 .05 .20)
+   mean |lam| under mu-weights=1.017e+01   plain mean |lam|=8.966e+02
+X=2500.5: n=1523  W(quad)=2299.513289 W(direct)=2299.513289
+   lam_max=5.456e+04 lam_min=-5.146e+04  Rayleigh(mu)=1.510e+00  X^0.5=50.0
+   weight of mu on top 1%/5%/20% |lam| eigvecs: 0.0000 0.0000 0.0000   (uniform would be .01 .05 .20)
+   mean |lam| under mu-weights=2.015e+00   plain mean |lam|=2.287e+03
+--- split at |lam| = X^a ---
+X=1000.5 a=0.25: #|lam|>X^a = 597/608  mu-weight there=7.92e-01  W_big=3237.91  W_small=-64.79  X^1.5=31646
+X=1000.5 a=0.5: #|lam|>X^a = 562/608  mu-weight there=1.70e-02  W_big=-64.77  W_small=3237.89  X^1.5=31646
+X=1000.5 a=0.75: #|lam|>X^a = 439/608  mu-weight there=8.74e-04  W_big=-77.93  W_small=3251.05  X^1.5=31646
+X=2500.5 a=0.25: #|lam|>X^a = 1503/1523  mu-weight there=1.14e-02  W_big=-165.61  W_small=2465.12  X^1.5=125038
+X=2500.5 a=0.5: #|lam|>X^a = 1445/1523  mu-weight there=4.18e-04  W_big=-26.60  W_small=2326.12  X^1.5=125038
+X=2500.5 a=0.75: #|lam|>X^a = 1150/1523  mu-weight there=1.81e-05  W_big=-8.50  W_small=2308.01  X^1.5=125038
+X=5000.5 a=0.25: #|lam|>X^a = 3016/3042  mu-weight there=3.88e-01  W_big=-12792.88  W_small=-3875.30  X^1.5=353606
+X=5000.5 a=0.5: #|lam|>X^a = 2926/3042  mu-weight there=2.88e-03  W_big=-204.08  W_small=-16464.09  X^1.5=353606
+X=5000.5 a=0.75: #|lam|>X^a = 2371/3042  mu-weight there=7.63e-05  W_big=-119.87  W_small=-16548.30  X^1.5=353606

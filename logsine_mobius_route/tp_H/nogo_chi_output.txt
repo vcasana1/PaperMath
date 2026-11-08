@@ -1,0 +1,7 @@
+X=1000.5: W_mu/X^1.5=0.1003   W_chi=1 /X^2=0.0977   random chi: max|W|/X^1.5=0.380
+X=10000.5: W_mu/X^1.5=0.1351   W_chi=1 /X^2=0.0975   random chi: max|W|/X^1.5=0.336
+X=100000.5: W_mu/X^1.5=-0.0018   W_chi=1 /X^2=0.0968   random chi: max|W|/X^1.5=0.437
+--- chi = mu on all primes <= sqrt X, free signs on primes > sqrt X (at most one such prime divides m<=X) ---
+X=10000.5: W_mu/X^1.5=0.1351   max_chi W_chi /X^1.5=5.52   (/X^2=0.0552)
+X=100000.5: W_mu/X^1.5=-0.0018   max_chi W_chi /X^1.5=14.00   (/X^2=0.0443)
+X=199999.5: W_mu/X^1.5=0.0579   max_chi W_chi /X^1.5=18.70   (/X^2=0.0418)

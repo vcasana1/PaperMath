@@ -1,0 +1,2 @@
+max|S_direct-S_formula| k<80,h<60: 3.28626015289046e-14
+E approx 0.6497530407491533 (primes<1e7; tail ~ 1/1e7)

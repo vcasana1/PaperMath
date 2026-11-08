@@ -1,0 +1,6 @@
+closed-form check (1.62e-27 + 1.62e-27j)
+closed-form check (0.0 + 1.29e-26j)
+closed-form check (0.0 + 0.0j)
+zeros of s^2 A(s) in 0<sigma<1, 0.5<t< 30 : -6.171e-27
+zeros of s^2 A(s) in 0<sigma<1, 0.5<t< 100 : 2.057e-27
+zeros in |t|<0.5 box: 7.508e-26
