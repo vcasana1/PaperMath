@@ -1,0 +1,4 @@
+U=100: m(U)=+3.113e-02  max_n sqrt(n)|D_U(n)| = 2.026 at n=96 (n/U=0.96)   at n=U: 1.556   max over n<=U: 2.026   max over U<n<U^2: 1.926   median: 0.122
+U=300: m(U)=-1.051e-02  max_n sqrt(n)|D_U(n)| = 2.472 at n=197 (n/U=0.66)   at n=U: 1.546   max over n<=U: 2.472   max over U<n<U^2: 2.288   median: 0.114
+U=1000: m(U)=+4.412e-03  max_n sqrt(n)|D_U(n)| = 3.108 at n=589 (n/U=0.59)   at n=U: 1.200   max over n<=U: 3.108   max over U<n<U^2: 2.571   median: 0.053
+U=2000: m(U)=+3.320e-03  max_n sqrt(n)|D_U(n)| = 3.386 at n=3354 (n/U=1.68)   at n=U: 0.941   max over n<=U: 3.109   max over U<n<U^2: 3.386   median: 0.131
