@@ -1,0 +1,17 @@
+preamble
+sec:notation
+tab:symbols
+cor:angular
+def:trunc
+eq:HMNL
+eq:midpoint
+eq:rouche
+eq:J2
+eq:partial
+eq:partialupper
+eq:Tpartial
+eq:bound
+sec:num
+eq:GminusA
+fig:zetasurf
+fig:gram

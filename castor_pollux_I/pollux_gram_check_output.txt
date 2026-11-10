@@ -1,0 +1,16 @@
+j=2 k=3 sigma=0.75: direct = -0.004471510161
+      series R=2000: -0.00447150599   diff = -4.17e-9
+      series R=20000: -0.00447151021   diff = 4.89e-11
+      gcd term alone: 0.01758709493
+j=4 k=6 sigma=0.75: direct = -0.001580917579
+      series R=2000: -0.001580911511   diff = -6.07e-9
+      series R=20000: -0.001580917551   diff = -2.77e-11
+      gcd term alone: 0.006217977044
+j=3 k=3 sigma=0.5: direct = 0.297878583
+      series R=2000: 0.2978783029   diff = 2.8e-7
+      series R=20000: 0.2978785872   diff = -4.21e-9
+      gcd term alone: 0.2741556778
+j=2 k=5 sigma=0.3: direct = 0.02940917963
+      series R=2000: 0.0294091727   diff = 6.94e-9
+      series R=20000: 0.02940916736   diff = 1.23e-8
+      gcd term alone: 0.05218975359

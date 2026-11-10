@@ -1,0 +1,5 @@
+eigenvalues of the mean Gram matrix: [0.24332 0.3536  0.384   0.52858 0.66192 0.72798 0.85316 1.16493 1.22224
+ 2.08496]
+eigenvalues of the normalised weighted bracket matrix: [0.06339 0.25018 0.33359 0.38608 0.64636 0.98265 1.17641 1.66392 1.86338
+ 2.14431]
+negative entries of the weighted bracket: 52 of 100

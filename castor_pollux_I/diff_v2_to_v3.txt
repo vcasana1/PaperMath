@@ -1,0 +1,186 @@
+--- Castor_Pollux_I_v2.tex	2026-11-10 19:45:24.733450908 +0000
++++ Castor_Pollux_I_v3.tex	2026-11-10 19:50:13.978130145 +0000
+@@ -153,12 +153,23 @@
+ \expandafter\gdef\csname CGTip@eq:GminusA\endcsname{Equation: G(s)-A(s)= int\_0\textasciicircum{}infinity(h(u)-log(2pi u)) u\textasciicircum{}(-s-1) du .}
+ \expandafter\gdef\csname CGTip@fig:kernel\endcsname{Figure: The function h on one period and the positive kernel K.}
+ \expandafter\gdef\csname CGTip@fig:Greal\endcsname{Figure: G on the real axis.}
+-\expandafter\gdef\csname CGTip@fig:Gsurf\endcsname{Figure: log\_(10)|G(s)|.}
+-\expandafter\gdef\csname CGTip@fig:Asurf\endcsname{Figure: log\_(10)|A(s)|.}
+-\expandafter\gdef\csname CGTip@fig:GAsurf\endcsname{Figure: log\_(10)|G(s)-A(s)|.}
+-\expandafter\gdef\csname CGTip@fig:zetasurf\endcsname{Figure: log\_(10)|zeta(s)|.}
++\expandafter\gdef\csname CGTip@fig:Gsurf\endcsname{Figure: -log\_(10)|G(s)|, clipped at 6. The peaks are the six zeros of G of Table tab:rouche.}
++\expandafter\gdef\csname CGTip@fig:Asurf\endcsname{Figure: -log\_(10)|A(s)| on the rectangle of Figure fig:Gsurf.}
++\expandafter\gdef\csname CGTip@fig:GAsurf\endcsname{Figure: -log\_(10)|G(s)-A(s)|, clipped at 6. The peaks are at the six points 1/2+it of Figure fig:zeromap.}
++\expandafter\gdef\csname CGTip@fig:zetasurf\endcsname{Figure: -log\_(10)|zeta(s)|, clipped at 6. The peaks are the first six nontrivial zeros of zeta.}
+ \expandafter\gdef\csname CGTip@fig:zeromap\endcsname{Figure: Computed zeros of G, computed points with G=A, and the computed arcs of (Im)(G/A)=0 with 0<(Re)(G/A)<1, at points where A!=0. The pairing shown by the arcs is a numerical observation.}
+ \expandafter\gdef\csname CGTip@fig:gram\endcsname{Figure: Gram matrices of the factors h(x/k), 1<= k<=10: mean over a period, and weight x\textasciicircum{}(-2sigma-1) with sigma=3/4.}
++\expandafter\gdef\csname CGTip@prop:A\endcsname{Proposition - Continuation and real zeros of A: Put Sigma\_(2k)=sum\_(m>=1)m\textasciicircum{}(-2k) for the integers k>=1. The function A of (eq:A) extends to a meromorphic function on C, given by A(s)=(log(2pi))/(s)+frac 1(s\textasciicircum{}2)+sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) . Its poles are a double pole at 0 and a simple pole at each}
++\expandafter\gdef\csname CGTip@eq:Aseries\endcsname{Equation: A(s)=(log(2pi))/(s)+frac 1(s\textasciicircum{}2)+sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) .}
++\expandafter\gdef\csname CGTip@eq:Afactor\endcsname{Equation: A(s)=- int\_0\textasciicircum{}1h(u) u\textasciicircum{}(-s-1) du=((s+1)(s+2))/(4pi\textasciicircum{}2) widetilde H(s), ; widetilde H(s)= int\_0\textasciicircum{}1 K(u) u\textasciicircum{}(-s-3) du .}
++\expandafter\gdef\csname CGTip@eq:logsinc\endcsname{Equation: -log(sin(pi u))/(pi u)=sum\_(m>=1)sum\_(k>=1)frac (u\textasciicircum{}(2k))(k m\textasciicircum{}(2k))=sum\_(k>=1)frac (Sigma\_(2k))(k) u\textasciicircum{}(2k),}
++\expandafter\gdef\csname CGTip@eq:Aterm\endcsname{Equation: - int\_0\textasciicircum{}1log(sin(pi u))/(pi u) u\textasciicircum{}(-s-1) du=sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) ; ((Re)s<2).}
++\expandafter\gdef\csname CGTip@eq:Aparts\endcsname{Equation: int\_tau\textasciicircum{}1h(u) u\textasciicircum{}(-s-1) du=frac ( K'(tau) tau\textasciicircum{}(-s-1))(4pi\textasciicircum{}2)+frac ((s+1) K(tau) tau\textasciicircum{}(-s-2))(4pi\textasciicircum{}2)-((s+1)(s+2))/(4pi\textasciicircum{}2) int\_tau\textasciicircum{}1 K(u) u\textasciicircum{}(-s-3) du .}
++\expandafter\gdef\csname CGTip@eq:expsum\endcsname{Equation: E\_G(x)=frac 1(n\_G)sum\_(b=1)\textasciicircum{}(n\_G)e\textasciicircum{}(ix(Im)z\textasciicircum{}G\_b), ; E\_A(x)=frac 1(n\_A)sum\_(b=1)\textasciicircum{}(n\_A)e\textasciicircum{}(ixz\textasciicircum{}A\_b).}
++\expandafter\gdef\csname CGTip@fig:Areal\endcsname{Figure: -log\_(10)|A(s)| near the real axis, clipped to [-2,6]. The peaks are real zeros of A and the pits are its poles at 0,2,4,6,8.}
++\expandafter\gdef\csname CGTip@fig:expsum3d\endcsname{Figure: The exponential sums E\_G(x) and E\_A(x) of (eq:expsum) for 0<= x<=2pi. The variable x is the vertical axis. The dashed lines are the means of the two curves.}
++\expandafter\gdef\csname CGTip@fig:expsumplane\endcsname{Figure: Left: the curves E\_G and E\_A in the complex plane. Right: the 79 computed zeros of G and the 101 computed real zeros of A, with their centroids.}
++\expandafter\gdef\csname CGTip@fig:expsummod\endcsname{Figure: Top: | E\_G(x)| for 0.3<= x<=4.2, with vertical lines at x=log n for the prime powers n<=66. Bottom: | E\_G(x)| and | E\_A(x)| for 0<= x<=2pi.}
+ \makeatother
+ 
+ \hypersetup{
+@@ -241,7 +252,7 @@
+ \date{}
+ 
+ \begin{abstract}
+-Let $h(u)=\log|2\sin(\pi u)|$, so that $\sum_{k\le K}h(x/k)$ is the logarithm of the product $\prod_{k\le K}|2\sin(\pi x/k)|$. The first part of this note studies the transform $G(s)=\int_1^\infty h(u)u^{-s-1}\,du$, which is the local factor of the Mellin transform of every weighted sum of the functions $h(x/k)$. Two primitives of the Fourier series of $h$ give the exact factorization $G(s)=-(s+1)(s+2)H(s)/(4\pi^2)$, where $H$ is the Mellin transform of a strictly positive periodic kernel. It follows that $G$ is entire, that on the real axis $G$ is positive on $(-2,-1)$, vanishes simply at $-1$ and is negative for $s>-1$, and that a complex zero $\sigma+it$ with $\sigma>-2$ satisfies $t^2V(\sigma)\ge2$, where $V$ is the variance of an explicit probability measure. We also prove an asymptotic expansion of $G$ in right sectors, which excludes zeros there, and explicit truncation and quadrature bounds with a Rouch\'e test that isolates a zero in a disc. The second part computes the Gram matrix of the factors $x\mapsto h(x/k)$. For the mean over a common period it is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$, which gives a sum of squares with weights given by the Jordan totient $J_2$. For the weight $x^{-2\sigma-1}$ on $[\max(j,k),\infty)$ we prove an exact formula in which the pairs of harmonics $(m,n)$ with $mk-nj=r$ enter through an explicit kernel, and their total weight is evaluated by the digamma function. The proofs use the Fourier series of $h$, Parseval's identity and integration by parts, together with the Cauchy--Schwarz inequality, Rouch\'e's theorem and standard real and complex analysis. Eight figures show the kernels, the moduli of $G$, of an auxiliary function $A$ and of the Riemann zeta function on a rectangle, and the two Gram matrices.
++Let $h(u)=\log|2\sin(\pi u)|$, so that $\sum_{k\le K}h(x/k)$ is the logarithm of the product $\prod_{k\le K}|2\sin(\pi x/k)|$. The first part of this note studies the transform $G(s)=\int_1^\infty h(u)u^{-s-1}\,du$, which is the local factor of the Mellin transform of every weighted sum of the functions $h(x/k)$. Two primitives of the Fourier series of $h$ give the exact factorization $G(s)=-(s+1)(s+2)H(s)/(4\pi^2)$, where $H$ is the Mellin transform of a strictly positive periodic kernel. It follows that $G$ is entire, that on the real axis $G$ is positive on $(-2,-1)$, vanishes simply at $-1$ and is negative for $s>-1$, and that a complex zero $\sigma+it$ with $\sigma>-2$ satisfies $t^2V(\sigma)\ge2$, where $V$ is the variance of an explicit probability measure. We also prove an asymptotic expansion of $G$ in right sectors, which excludes zeros there, and explicit truncation and quadrature bounds with a Rouch\'e test that isolates a zero in a disc. The second part computes the Gram matrix of the factors $x\mapsto h(x/k)$. For the mean over a common period it is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$, which gives a sum of squares with weights given by the Jordan totient $J_2$. For the weight $x^{-2\sigma-1}$ on $[\max(j,k),\infty)$ we prove an exact formula in which the pairs of harmonics $(m,n)$ with $mk-nj=r$ enter through an explicit kernel, and their total weight is evaluated by the digamma function. The proofs use the Fourier series of $h$, Parseval's identity and integration by parts, together with the Cauchy--Schwarz inequality, Rouch\'e's theorem and standard real and complex analysis. Twelve figures show the kernels, the moduli of $G$, of an auxiliary function $A$ and of the Riemann zeta function on a rectangle, exponential sums over computed zeros of $G$ and of $A$, and the two Gram matrices.
+ \end{abstract}
+ 
+ \subjclass[2020]{11A05; 11C20; 42A16; 33B15; 30C15; 44A15}
+@@ -266,7 +277,7 @@
+ 
+ The second part, Sections~\CGref{sec:flat} to~\CGref{sec:num}, computes the inner products of the functions $x\mapsto h(x/j)$ and $x\mapsto h(x/k)$ for integers $j,k\ge1$. For the mean over a common period, Theorem~\CGref{thm:flat} shows that the Gram matrix is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$. Corollary~\CGref{cor:squares} writes the mean square of any finite combination of factors as a sum of squares with weights given by the Jordan totient $J_2$, and Corollary~\CGref{cor:partial} bounds the mean square of the first $K$ factors between two explicit multiples of $K$. The mechanism of Theorem~\CGref{thm:flat}, Parseval's identity for dilates of one periodic function, is classical, and the factorization of a gcd matrix through a totient goes back to H.~J.~S.~Smith \cite{Smith1875}. Both are proved here in full for the kernel $h$. For the weight $x^{-2\sigma-1}$ on the half-line $x\ge\max(j,k)$, Theorem~\CGref{thm:weighted} gives the Gram entry exactly, as the gcd term plus an absolutely convergent series indexed by the integers $r\ge1$. Lemma~\CGref{lem:T} evaluates the sum over the pairs of harmonics with $mk-nj=r$ by the digamma function, and Proposition~\CGref{prop:bound} bounds the difference between the weighted entry and its gcd term.
+ 
+-Section~\CGref{sec:fig} contains the figures. Section~\CGref{sec:notation} lists every symbol of the note with its single meaning.
++Section~\CGref{sec:fig} contains the figures, the continuation and the real zeros of the auxiliary function $A$ (Proposition~\CGref{prop:A}), and exponential sums over computed zeros of $G$ and of $A$. Section~\CGref{sec:notation} lists every symbol of the note with its single meaning.
+ 
+ \section{Notation}\label{sec:notation}
+ 
+@@ -344,6 +355,11 @@
+ $Y,Y_0,Y_1$ & primitives of $F_0$ & proofs of Proposition~\CGref{prop:bound} and Theorem~\CGref{thm:weighted}\\
+ $X$ & upper limit of integration & \CGeqref{eq:boundparts}\\
+ $A(s)$ & auxiliary function of the figures & \CGeqref{eq:A}\\
++$\Sigma_{2k}$ & $\sum_{m\ge1}m^{-2k}$ for the integers $k\ge1$ & Proposition~\CGref{prop:A}\\
++$\widetilde H(s)$ & transform of $\mathcal K$ on $(0,1)$ & \CGeqref{eq:Afactor}\\
++$z^G_b,n_G$ & computed zeros of $G$ and their number & Section~\CGref{sec:fig}\\
++$z^A_b,n_A$ & computed real zeros of $A$ and their number & Section~\CGref{sec:fig}\\
++$\mathcal E_G(x),\mathcal E_A(x)$ & exponential sums over these zeros & \CGeqref{eq:expsum}\\
+ $\zeta(s)$ & Riemann zeta function, used only in Section~\CGref{sec:fig} & Section~\CGref{sec:fig}\\
+ \end{longtable}
+ 
+@@ -901,7 +917,7 @@
+ 
+ \section{Figures}\label{sec:fig}
+ 
+-All the figures were computed from the definitions of this note. The function $G$ was evaluated through \CGeqref{eq:factor} and \CGeqref{eq:H}, with the midpoint rule for the integral over $x$ and the Euler--Maclaurin formula for the sum over $n>24$. Figure~\CGref{fig:kernel} shows $h$ on one period and the kernel $\mathcal K$ of \CGeqref{eq:K}. Figure~\CGref{fig:Greal} shows $G$ on the real axis and illustrates Theorem~\CGref{thm:real}.
++All the figures were computed from the definitions of this note. The function $G$ was evaluated through \CGeqref{eq:factor} and \CGeqref{eq:H}, with a quadrature rule for the integral over $x$ (the midpoint rule for Figure~\CGref{fig:Greal}, a Gauss--Legendre rule with $240$ nodes for the surfaces) and the Euler--Maclaurin formula for the tail of the sum over $n$. Figure~\CGref{fig:kernel} shows $h$ on one period and the kernel $\mathcal K$ of \CGeqref{eq:K}. Figure~\CGref{fig:Greal} shows $G$ on the real axis and illustrates Theorem~\CGref{thm:real}.
+ 
+ For $0<\operatorname{Re}s<2$ let
+ \begin{equation}\label{eq:A}
+@@ -913,9 +929,53 @@
+ \end{equation}
+ Thus $G-A$ is the Mellin transform on the whole half-line of $h$ minus its logarithmic part.
+ 
+-Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show $\log_{10}$ of the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, on a grid of $39\times157$ points. Figure~\CGref{fig:zetasurf} shows, on the same grid, the modulus of the Riemann zeta function $\zeta(s)$, which is not used anywhere else in this note. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le9.1\cdot10^{-7}$. This relation is not proved and not used in this note.
++\begin{proposition}[Continuation and real zeros of $A$]\label{prop:A}\VCGreviewed{1}
++Put $\Sigma_{2k}=\sum_{m\ge1}m^{-2k}$ for the integers $k\ge1$. The function $A$ of \CGeqref{eq:A} extends to a meromorphic function on $\mathbb C$, given by
++\begin{equation}\label{eq:Aseries}
++A(s)=\frac{\log(2\pi)}{s}+\frac1{s^2}+\sum_{k\ge1}\frac{\Sigma_{2k}}{k\,(2k-s)} .
++\end{equation}
++Its poles are a double pole at $0$ and a simple pole at each positive even integer. For $\operatorname{Re}s<0$,
++\begin{equation}\label{eq:Afactor}
++A(s)=-\int_0^1h(u)\,u^{-s-1}\,du=\frac{(s+1)(s+2)}{4\pi^2}\,\widetilde H(s),\qquad\widetilde H(s)=\int_0^1\mathcal K(u)\,u^{-s-3}\,du .
++\end{equation}
++For real $s$ we have $A(s)>0$ for $s<-2$, $A(-2)=0$, $A(s)<0$ for $-2<s<-1$, $A(-1)=0$, and $A(s)>0$ for $-1<s<0$ and for $0<s<2$. The zeros at $-2$ and $-1$ are simple. For every integer $l\ge1$ the function $A$ has at least one zero in the interval $(2l,2l+2)$.
++\end{proposition}
++
++\begin{proof}
++Let $0<u<1$. The classical product of Euler, $\sin(\pi u)=\pi u\prod_{m\ge1}(1-u^2/m^2)$, and the series $\log(1-\lambda)=-\sum_{k\ge1}\lambda^k/k$ for $0\le\lambda<1$ give
++\begin{equation}\label{eq:logsinc}
++-\log\frac{\sin(\pi u)}{\pi u}=\sum_{m\ge1}\sum_{k\ge1}\frac{u^{2k}}{k\,m^{2k}}=\sum_{k\ge1}\frac{\Sigma_{2k}}{k}\,u^{2k},
++\end{equation}
++where the terms are nonnegative, so that the order of summation is free. Let $\sigma=\operatorname{Re}s<2$. We have $\int_0^1u^{2k-\sigma-1}du=1/(2k-\sigma)$ for all $k\ge1$, and $\sum_{k\ge1}\Sigma_{2k}/(k(2k-\sigma))<\infty$ because $\Sigma_{2k}\le\Sigma_2$. Hence \CGeqref{eq:logsinc} can be integrated termwise against $u^{-s-1}$, and
++\begin{equation}\label{eq:Aterm}
++-\int_0^1\log\frac{\sin(\pi u)}{\pi u}\,u^{-s-1}\,du=\sum_{k\ge1}\frac{\Sigma_{2k}}{k\,(2k-s)}\qquad(\operatorname{Re}s<2).
++\end{equation}
++With \CGeqref{eq:A} this is \CGeqref{eq:Aseries} for $0<\operatorname{Re}s<2$. Let $\theta>0$. For $|s|\le\theta$ and $k>\theta$ we have $|2k-s|\ge2k-\theta\ge k$, so the term of index $k$ in \CGeqref{eq:Aseries} has modulus at most $\Sigma_2/k^2$. Hence the series, without its finitely many terms with $k\le\theta$, converges uniformly on $|s|\le\theta$. The right side of \CGeqref{eq:Aseries} is therefore meromorphic on $\mathbb C$, with the principal part $\log(2\pi)/s+1/s^2$ at $0$ and a simple pole of residue $-\Sigma_{2l}/l$ at $2l$ for every integer $l\ge1$. It is the extension of $A$.
++
++Let $\operatorname{Re}s<0$. Then $\int_0^1u^{-s-1}du=-1/s$ and $\int_0^1(\log u)u^{-s-1}du=-1/s^2$, so $\int_0^1\log(2\pi u)u^{-s-1}du=-\log(2\pi)/s-1/s^2$. Since $h(u)=\log(2\pi u)+\log(\sin(\pi u)/(\pi u))$ for $0<u<1$, \CGeqref{eq:Aseries} and \CGeqref{eq:Aterm} give the first equality in \CGeqref{eq:Afactor}. The integral converges absolutely by the bound $|h(u)|\le\log2+|\log(4u)|$ for $0<u\le\frac12$ from the proof of Lemma~\CGref{lem:kernel} and by $h(1-u)=h(u)$.
++
++Let $0<\tau<\frac14$. By \CGeqref{eq:Kprime}, $h=-\mathcal K''/(4\pi^2)$ almost everywhere, with $\mathcal K'$ absolutely continuous. Two integrations by parts, in which $\mathcal K'(1)=\mathcal K(1)=0$ by \CGeqref{eq:Kprops}, give
++\begin{equation}\label{eq:Aparts}
++\int_\tau^1h(u)\,u^{-s-1}\,du=\frac{\mathcal K'(\tau)\,\tau^{-s-1}}{4\pi^2}+\frac{(s+1)\,\mathcal K(\tau)\,\tau^{-s-2}}{4\pi^2}-\frac{(s+1)(s+2)}{4\pi^2}\int_\tau^1\mathcal K(u)\,u^{-s-3}\,du .
++\end{equation}
++By \CGeqref{eq:Kprime} and the bound for $|h|$ just quoted, $|\mathcal K'(\tau)|\le4\pi^2\int_0^\tau|h|\le4\pi^2\tau(\log2+|\log(4\tau)|+1)$. By Lemma~\CGref{lem:Klocal}, $0\le\mathcal K(\tau)\le2\pi^2\tau^2(\log\frac1\tau+\frac32)+\pi^4\tau^4/9$. Since $\sigma<0$, the two boundary terms in \CGeqref{eq:Aparts} have modulus at most a constant times $\tau^{-\sigma}(1+\log\frac1\tau)$ and tend to $0$ as $\tau\to0$, and $\mathcal K(u)u^{-\sigma-3}$ is integrable on $(0,1)$. Letting $\tau\to0$ in \CGeqref{eq:Aparts} gives the second equality in \CGeqref{eq:Afactor}, and $\widetilde H$ is holomorphic in $\operatorname{Re}s<0$.
++
++For real $s<0$ we have $\widetilde H(s)>0$, because $\mathcal K>0$ on $(0,1)$ by \CGeqref{eq:Kprops}. By \CGeqref{eq:Afactor} the sign of $A(s)$ is the sign of $(s+1)(s+2)$, and the zeros at $-2$ and $-1$ are simple. For $0<s<2$ every term of \CGeqref{eq:Aseries} is positive. Let $l\ge1$ be an integer. On the interval $(2l,2l+2)$ the function $A$ is real and continuous. As $s$ decreases to $2l$, the term of index $l$ in \CGeqref{eq:Aseries} tends to $-\infty$ and the rest of the right side of \CGeqref{eq:Aseries} stays bounded. As $s$ increases to $2l+2$, the term of index $l+1$ tends to $+\infty$ and the rest of the right side stays bounded. By the intermediate value theorem $A$ vanishes in $(2l,2l+2)$.
++\end{proof}
++
++Formula \CGeqref{eq:Afactor} is the counterpart of \CGeqref{eq:factor} for the part of $\mathcal K$ on $(0,1)$.
++
++Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show $-\log_{10}$ of the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, so that a zero is a peak. The grid has $253\times889$ points. Its steps are $0.01$ in $\operatorname{Re}s$ and $0.05$ in $\operatorname{Im}s$, and it is refined near the six zeros of $G$ of Table~\CGref{tab:rouche} and near the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}, which are grid points. The plotted values are clipped at $6$, that is, where the modulus is below $10^{-6}$. At the six zeros of $G$ the computed values of $|G|$ are between $4.1\cdot10^{-12}$ and $2.8\cdot10^{-11}$. On this rectangle $A$ has no peak. Figure~\CGref{fig:Areal} shows $-\log_{10}|A(s)|$ for $-3.5\le\operatorname{Re}s\le9.5$ and $|\operatorname{Im}s|\le2$, computed from \CGeqref{eq:Aseries}. Its peaks are the real zeros of Proposition~\CGref{prop:A} at $-2$ and $-1$ and the computed zeros $3.0428$, $5.0981$, $7.1478$ and $9.1892$, and its pits are the poles at $0,2,4,6,8$. Figure~\CGref{fig:zetasurf} shows, on the grid of Figure~\CGref{fig:Gsurf}, $-\log_{10}$ of the modulus of the Riemann zeta function $\zeta(s)$, which is not used anywhere else in this note. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le1.2\cdot10^{-11}$. This relation is not proved and not used in this note.
++
++Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. The quotient $G/A$ is formed only at points where $A(s)\ne0$. At the $253\times889$ grid points the computed values satisfy $|A(s)|\ge0.072$, and the arcs are the level lines drawn from the grid values. That $A$ has no zero in the whole rectangle is not proved in this note. At those six points the computed value of $|G-A|$ is at most $1.1\cdot10^{-11}$. In the computed figure each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. This pairing is a numerical observation for these six zeros. It is not proved, and no correspondence between the zeros of $G$ and the points with $G=A$ is claimed. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
++
++The last three figures concern exponential sums over computed zeros. In the rectangle $-1.5\le\operatorname{Re}s\le3$, $0.2\le\operatorname{Im}s\le200$ a numerical search finds $n_G=79$ zeros $z^G_1,\dots,z^G_{n_G}$ of $G$, and the computed variation of the argument of $G$ along the boundary of this rectangle corresponds to $79$ zeros. Their real parts lie between $0.1036$ and $1.1274$, and the six with the smallest imaginary parts are the zeros of Table~\CGref{tab:rouche}. For $A$ the same search finds no zero with $-60\le\operatorname{Re}s\le201$ and $0.2\le\operatorname{Im}s\le200$, and exactly one zero in each interval $(2l,2l+2)$ with $1\le l\le99$. With $-2$ and $-1$ this gives $n_A=101$ real zeros $z^A_1,\dots,z^A_{n_A}$ of $A$ in $[-60,200]$. These counts are computed and not proved. For real $x$ put
++\begin{equation}\label{eq:expsum}
++\mathcal E_G(x)=\frac1{n_G}\sum_{b=1}^{n_G}e^{ix\operatorname{Im}z^G_b},\qquad\mathcal E_A(x)=\frac1{n_A}\sum_{b=1}^{n_A}e^{ixz^A_b}.
++\end{equation}
++For $G$ the frequencies are the imaginary parts of the zeros. For $A$ the zeros found are real, so their imaginary parts vanish, and the frequencies are the zeros themselves. Figure~\CGref{fig:expsum3d} shows the two curves $x\mapsto\mathcal E_G(x)$ and $x\mapsto\mathcal E_A(x)$ for $0\le x\le2\pi$, with $x$ on the vertical axis. Figure~\CGref{fig:expsumplane} shows the same curves in the complex plane, and the two sets of zeros with their centroids, which are $\frac1{n_G}\sum_bz^G_b=0.45923+119.21486\,i$ and $\frac1{n_A}\sum_bz^A_b=99.44250$. The means $\frac1{2\pi}\int_0^{2\pi}\mathcal E_G(x)\,dx=-0.00029+0.00188\,i$ and $\frac1{2\pi}\int_0^{2\pi}\mathcal E_A(x)\,dx=0.00151+0.00423\,i$ are the dashed lines of Figure~\CGref{fig:expsum3d}.
+ 
+-Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. The quotient $G/A$ is formed only at points where $A(s)\ne0$. At the $39\times157$ grid points the computed values satisfy $|A(s)|\ge0.072$, and the arcs are the level lines drawn from the grid values. That $A$ has no zero in the whole rectangle is not proved in this note. At those six points the computed value of $|G-A|$ is below $10^{-11}$. In the computed figure each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. This pairing is a numerical observation for these six zeros. It is not proved, and no correspondence between the zeros of $G$ and the points with $G=A$ is claimed. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
++Figure~\CGref{fig:expsummod} shows the moduli. The mean of $|\mathcal E_G(x)|$ over $0\le x\le2\pi$ is $0.0847$. For the integers $2\le n\le31$, the value $|\mathcal E_G(\log n)|$ lies between $0.152$ and $0.254$ for the eleven primes, between $0.090$ and $0.189$ for the prime powers $4,8,9,16,25,27$, and between $0.020$ and $0.124$ for the other thirteen integers. At the eleven primes $p\le31$ the real part of $\mathcal E_G(\log p)$ is negative, between $-0.161$ and $-0.030$. The modulus $|\mathcal E_A(x)|$ equals $0.926$ at $x=\pi$ and $0.784$ at $x=2\pi$, and it is below $0.074$ for $0.3\le x\le2\pi-0.2$ with $|x-\pi|\ge0.2$. The zeros $z^A_b$ other than $-2$ and $-1$ lie in consecutive intervals of length $2$. All the statements of the last two paragraphs are numerical observations for the listed zeros.
+ 
+ \begin{figure}[ht]
+ \centering
+@@ -932,25 +992,31 @@
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_G_surface.png}
+-\caption{$\log_{10}|G(s)|$.}\label{fig:Gsurf}
++\caption{$-\log_{10}|G(s)|$, clipped at $6$. The peaks are the six zeros of $G$ of Table~\CGref{tab:rouche}.}\label{fig:Gsurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_A_surface.png}
+-\caption{$\log_{10}|A(s)|$.}\label{fig:Asurf}
++\caption{$-\log_{10}|A(s)|$ on the rectangle of Figure~\CGref{fig:Gsurf}.}\label{fig:Asurf}
++\end{figure}
++
++\begin{figure}[ht]
++\centering
++\includegraphics[width=0.95\textwidth]{fig_A_real_surface.png}
++\caption{$-\log_{10}|A(s)|$ near the real axis, clipped to $[-2,6]$. The peaks are real zeros of $A$ and the pits are its poles at $0,2,4,6,8$.}\label{fig:Areal}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_GminusA_surface.png}
+-\caption{$\log_{10}|G(s)-A(s)|$.}\label{fig:GAsurf}
++\caption{$-\log_{10}|G(s)-A(s)|$, clipped at $6$. The peaks are at the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}.}\label{fig:GAsurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_zeta_surface.png}
+-\caption{$\log_{10}|\zeta(s)|$.}\label{fig:zetasurf}
++\caption{$-\log_{10}|\zeta(s)|$, clipped at $6$. The peaks are the first six nontrivial zeros of $\zeta$.}\label{fig:zetasurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+@@ -960,6 +1026,24 @@
+ \end{figure}
+ 
+ \begin{figure}[ht]
++\centering
++\includegraphics[width=0.55\textwidth]{fig_expsum_3d.png}
++\caption{The exponential sums $\mathcal E_G(x)$ and $\mathcal E_A(x)$ of \CGeqref{eq:expsum} for $0\le x\le2\pi$. The variable $x$ is the vertical axis. The dashed lines are the means of the two curves.}\label{fig:expsum3d}
++\end{figure}
++
++\begin{figure}[ht]
++\centering
++\includegraphics[width=0.98\textwidth]{fig_expsum_plane.png}
++\caption{Left: the curves $\mathcal E_G$ and $\mathcal E_A$ in the complex plane. Right: the $79$ computed zeros of $G$ and the $101$ computed real zeros of $A$, with their centroids.}\label{fig:expsumplane}
++\end{figure}
++
++\begin{figure}[ht]
++\centering
++\includegraphics[width=0.95\textwidth]{fig_expsum_modulus.png}
++\caption{Top: $|\mathcal E_G(x)|$ for $0.3\le x\le4.2$, with vertical lines at $x=\log n$ for the prime powers $n\le66$. Bottom: $|\mathcal E_G(x)|$ and $|\mathcal E_A(x)|$ for $0\le x\le2\pi$.}\label{fig:expsummod}
++\end{figure}
++
++\begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.98\textwidth]{fig_gram.png}
+ \caption{Gram matrices of the factors $h(x/k)$, $1\le k\le10$: mean over a period, and weight $x^{-2\sigma-1}$ with $\sigma=\frac34$.}\label{fig:gram}

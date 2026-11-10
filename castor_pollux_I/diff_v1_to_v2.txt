@@ -1,0 +1,330 @@
+--- Castor_Pollux_I_v1.tex	2026-11-10 19:29:10.125221018 +0000
++++ Castor_Pollux_I_v2.tex	2026-11-10 19:29:18.231780815 +0000
+@@ -37,52 +37,52 @@
+ % one line per label:
+ \expandafter\gdef\csname CGTip@sec:intro\endcsname{Section: Introduction}
+ \expandafter\gdef\csname CGTip@eq:h\endcsname{Equation: h(u)=log|2sin(pi u)| .}
+-\expandafter\gdef\csname CGTip@eq:G\endcsname{Equation: G(s)= in t\_1\textasciicircum{}infinity h(u) u\textasciicircum{}(-s-1) du ; ((Re)s>0).}
++\expandafter\gdef\csname CGTip@eq:G\endcsname{Equation: G(s)= int\_1\textasciicircum{}infinity h(u) u\textasciicircum{}(-s-1) du ; ((Re)s>0).}
+ \expandafter\gdef\csname CGTip@sec:notation\endcsname{Section: Notation}
+-\expandafter\gdef\csname CGTip@eq:av\endcsname{Equation: (av)[Phi]=frac 1L in t\_0\textasciicircum{}LPhi(x) dx ,}
++\expandafter\gdef\csname CGTip@eq:av\endcsname{Equation: (av)[Phi]=frac 1L int\_0\textasciicircum{}LPhi(x) dx ,}
+ \expandafter\gdef\csname CGTip@eq:parseval\endcsname{Equation: (av)[Phi\_1conj (Phi\_2)]=sum\_( q in Z)hat ((Phi\_1))\_L( q) conj (hat ((Phi\_2))\_L( q)) ,}
+ \expandafter\gdef\csname CGTip@eq:psi\endcsname{Equation: psi(s)=-gamma+sum\_(l>=0)(frac 1(l+1)-frac 1(l+s)).}
+ \expandafter\gdef\csname CGTip@tab:symbols\endcsname{Table: Symbols, each with one meaning in the whole note.}
+ \expandafter\gdef\csname CGTip@sec:G\endcsname{Section: The kernel h and the transform G}
+-\expandafter\gdef\csname CGTip@lem:kernel\endcsname{Lemma - The kernel h: The function h of (eq:h) has period 1, is even, and satisfies in t\_0\textasciicircum{}1|h(u)|\textasciicircum{}n du<infinity for every integer n>=1. Its Fourier coefficients with respect to the period 1 are hat h\_1(0)=0, ; hat h\_1(m)=-frac 1(2|m|) (m in Z, m!=0), so that h(u)=-sum\_(m>=1)cos(2p}
++\expandafter\gdef\csname CGTip@lem:kernel\endcsname{Lemma - The kernel h: The function h of (eq:h) has period 1, is even, and satisfies int\_0\textasciicircum{}1|h(u)|\textasciicircum{}n du<infinity for every integer n>=1. Its Fourier coefficients with respect to the period 1 are hat h\_1(0)=0, ; hat h\_1(m)=-frac 1(2|m|) (m in Z, m!=0), so that h(u)=-sum\_(m>=1)cos(2p}
+ \expandafter\gdef\csname CGTip@eq:hhat\endcsname{Equation: hat h\_1(0)=0, ; hat h\_1(m)=-frac 1(2|m|) (m in Z, m!=0),}
+-\expandafter\gdef\csname CGTip@eq:hnorm\endcsname{Equation: in t\_0\textasciicircum{}1h(u)\textasciicircum{}2 du=(pi\textasciicircum{}2)/(12).}
++\expandafter\gdef\csname CGTip@eq:hnorm\endcsname{Equation: int\_0\textasciicircum{}1h(u)\textasciicircum{}2 du=(pi\textasciicircum{}2)/(12).}
+ \expandafter\gdef\csname CGTip@eq:abel\endcsname{Equation: log|1-varrho e\textasciicircum{}(2pi iu)|=-sum\_(m>=1)(varrho\textasciicircum{}m)/(m)cos(2pi mu) ; (u in R).}
+-\expandafter\gdef\csname CGTip@prop:conv\endcsname{Proposition - Local factor; classical: Let sigma>0 and let xi(k), k>=1, be complex numbers with sum\_(k>=1)|xi(k)|k\textasciicircum{}(-sigma)<infinity. For real x>=1 that is not an integer multiple of any integer k<= x put S\_xi(x)=sum\_(1<= k<= x)xi(k) h(x/k). Then for (Re)s=sigma, in t\_1\textasciicircum{}infinity S\_xi(x) x\textasciicircum{}(-s-1) dx}
++\expandafter\gdef\csname CGTip@prop:conv\endcsname{Proposition - Local factor; classical: Let sigma>0 and let xi(k), k>=1, be complex numbers with sum\_(k>=1)|xi(k)|k\textasciicircum{}(-sigma)<infinity. For real x>=1 that is not an integer multiple of any integer k<= x put S\_xi(x)=sum\_(1<= k<= x)xi(k) h(x/k). Then for (Re)s=sigma, int\_1\textasciicircum{}infinity S\_xi(x) x\textasciicircum{}(-s-1) dx}
+ \expandafter\gdef\csname CGTip@eq:Sxi\endcsname{Equation: S\_xi(x)=sum\_(1<= k<= x)xi(k) h(x/k).}
+-\expandafter\gdef\csname CGTip@eq:convolution\endcsname{Equation: in t\_1\textasciicircum{}infinity S\_xi(x) x\textasciicircum{}(-s-1) dx=G(s)sum\_(k>=1)(xi(k))/(k\textasciicircum{}s),}
+-\expandafter\gdef\csname CGTip@eq:convsub\endcsname{Equation: in t\_k\textasciicircum{}infinity|h(x/k)| x\textasciicircum{}(-sigma-1) dx=k\textasciicircum{}(-sigma) in t\_1\textasciicircum{}infinity|h(u)| u\textasciicircum{}(-sigma-1) du .}
++\expandafter\gdef\csname CGTip@eq:convolution\endcsname{Equation: int\_1\textasciicircum{}infinity S\_xi(x) x\textasciicircum{}(-s-1) dx=G(s)sum\_(k>=1)(xi(k))/(k\textasciicircum{}s),}
++\expandafter\gdef\csname CGTip@eq:convsub\endcsname{Equation: int\_k\textasciicircum{}infinity|h(x/k)| x\textasciicircum{}(-sigma-1) dx=k\textasciicircum{}(-sigma) int\_1\textasciicircum{}infinity|h(u)| u\textasciicircum{}(-sigma-1) du .}
+ \expandafter\gdef\csname CGTip@sec:kernel\endcsname{Section: The positive periodic kernel}
+ \expandafter\gdef\csname CGTip@eq:K\endcsname{Equation: K(x)=sum\_(m>=1)(1-cos(2pi mx))/(m\textasciicircum{}3), ; Sigma\_3=sum\_(m>=1)frac 1(m\textasciicircum{}3).}
+-\expandafter\gdef\csname CGTip@prop:K\endcsname{Proposition - Positivity and boundary data: The series (eq:K) converges uniformly. The function K is real, even, has period 1 and is continuously differentiable, with 0<= K(x)<=2Sigma\_3<5/2, ; K(x)>0 (x not in Z), ; K(n)= K'(n)=0 (n in Z), and in t\_0\textasciicircum{}1 K=Sigma\_3. Moreover K' is absolutely continuous and}
++\expandafter\gdef\csname CGTip@prop:K\endcsname{Proposition - Positivity and boundary data: The series (eq:K) converges uniformly. The function K is real, even, has period 1 and is continuously differentiable, with 0<= K(x)<=2Sigma\_3<5/2, ; K(x)>0 (x not in Z), ; K(n)= K'(n)=0 (n in Z), and int\_0\textasciicircum{}1 K=Sigma\_3. Moreover K' is absolutely continuous and}
+ \expandafter\gdef\csname CGTip@eq:Kprops\endcsname{Equation: 0<= K(x)<=2Sigma\_3<5/2, ; K(x)>0 (x not in Z), ; K(n)= K'(n)=0 (n in Z),}
+-\expandafter\gdef\csname CGTip@eq:Kprime\endcsname{Equation: K'(x)=-4pi\textasciicircum{}2 in t\_0\textasciicircum{}xh(u) du ; (x in R).}
++\expandafter\gdef\csname CGTip@eq:Kprime\endcsname{Equation: K'(x)=-4pi\textasciicircum{}2 int\_0\textasciicircum{}xh(u) du ; (x in R).}
+ \expandafter\gdef\csname CGTip@lem:Klocal\endcsname{Lemma - Local form of the kernel: For 0<x<=1/2, | K(x)-2pi\textasciicircum{}2x\textasciicircum{}2(logfrac 1x+3/2-log(2pi))|<=(pi\textasciicircum{}4x\textasciicircum{}4)/(9).}
+ \expandafter\gdef\csname CGTip@eq:Klocal\endcsname{Equation: | K(x)-2pi\textasciicircum{}2x\textasciicircum{}2(logfrac 1x+3/2-log(2pi))|<=(pi\textasciicircum{}4x\textasciicircum{}4)/(9).}
+ \expandafter\gdef\csname CGTip@sec:factor\endcsname{Section: Factorization and analytic continuation}
+-\expandafter\gdef\csname CGTip@thm:factor\endcsname{Theorem - Factorization through a positive kernel: The integral H(s)= in t\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-s-3) du= in t\_0\textasciicircum{}1 K(x)sum\_(n>=1)(n+x)\textasciicircum{}(-s-3) dx converges absolutely for (Re)s>-2 and defines a holomorphic function there. For (Re)s>0, G(s)=-((s+1)(s+2))/(4pi\textasciicircum{}2) H(s).}
+-\expandafter\gdef\csname CGTip@eq:H\endcsname{Equation: H(s)= in t\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-s-3) du= in t\_0\textasciicircum{}1 K(x)sum\_(n>=1)(n+x)\textasciicircum{}(-s-3) dx}
++\expandafter\gdef\csname CGTip@thm:factor\endcsname{Theorem - Factorization through a positive kernel: The integral H(s)= int\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-s-3) du= int\_0\textasciicircum{}1 K(x)sum\_(n>=1)(n+x)\textasciicircum{}(-s-3) dx converges absolutely for (Re)s>-2 and defines a holomorphic function there. For (Re)s>0, G(s)=-((s+1)(s+2))/(4pi\textasciicircum{}2) H(s).}
++\expandafter\gdef\csname CGTip@eq:H\endcsname{Equation: H(s)= int\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-s-3) du= int\_0\textasciicircum{}1 K(x)sum\_(n>=1)(n+x)\textasciicircum{}(-s-3) dx}
+ \expandafter\gdef\csname CGTip@eq:factor\endcsname{Equation: G(s)=-((s+1)(s+2))/(4pi\textasciicircum{}2) H(s).}
+-\expandafter\gdef\csname CGTip@eq:factorparts\endcsname{Equation: in t\_1\textasciicircum{}Xh(u) u\textasciicircum{}(-s-1) du=-(s+1)/(4pi\textasciicircum{}2) in t\_1\textasciicircum{}X K'(u) u\textasciicircum{}(-s-2) du=-((s+1)(s+2))/(4pi\textasciicircum{}2) in t\_1\textasciicircum{}X K(u) u\textasciicircum{}(-s-3) du .}
++\expandafter\gdef\csname CGTip@eq:factorparts\endcsname{Equation: int\_1\textasciicircum{}Xh(u) u\textasciicircum{}(-s-1) du=-(s+1)/(4pi\textasciicircum{}2) int\_1\textasciicircum{}X K'(u) u\textasciicircum{}(-s-2) du=-((s+1)(s+2))/(4pi\textasciicircum{}2) int\_1\textasciicircum{}X K(u) u\textasciicircum{}(-s-3) du .}
+ \expandafter\gdef\csname CGTip@eq:PF\endcsname{Equation: ( L\_varpi f)(x)=sum\_(n>=1)frac 1((n+x)\textasciicircum{}(2varpi)) f(frac 1(n+x)) ; (0<= x<=1).}
+-\expandafter\gdef\csname CGTip@eq:matrix\endcsname{Equation: H(s)= in t\_0\textasciicircum{}1 K(x) ( L\_((s+3)/2) 1)(x) dx ,}
++\expandafter\gdef\csname CGTip@eq:matrix\endcsname{Equation: H(s)= int\_0\textasciicircum{}1 K(x) ( L\_((s+3)/2) 1)(x) dx ,}
+ \expandafter\gdef\csname CGTip@thm:entire\endcsname{Theorem - Entire continuation and special values: The function H extends to a meromorphic function on C whose only pole is a simple pole at s=-2 with residue Sigma\_3. The function G extends to an entire function, the identity (eq:factor) holds on C, and with Sigma\_5=sum\_(m>=1)m\textasciicircum{}(-5), G(-1)=0, ; G(-2)=(Sigma\_3}
+ \expandafter\gdef\csname CGTip@eq:special\endcsname{Equation: G(-1)=0, ; G(-2)=(Sigma\_3)/(4pi\textasciicircum{}2), ; G(-3)=(Sigma\_3)/(2pi\textasciicircum{}2), ; G(-4)=(3Sigma\_3)/(4pi\textasciicircum{}2)-(3Sigma\_5)/(8pi\textasciicircum{}4).}
+ \expandafter\gdef\csname CGTip@eq:Hfourier\endcsname{Equation: H(s)=(Sigma\_3)/(s+2)-sum\_(m>=1)(C\_m(s))/(m\textasciicircum{}3) ; ((Re)s>-2).}
+-\expandafter\gdef\csname CGTip@eq:Cmparts\endcsname{Equation: C\_m(s)=(s+3)/(2pi m) in t\_1\textasciicircum{}infinitysin(2pi mu) u\textasciicircum{}(-s-4) du=(s+3)/((2pi m)\textasciicircum{}2)-((s+3)(s+4))/((2pi m)\textasciicircum{}2) C\_m(s+2).}
++\expandafter\gdef\csname CGTip@eq:Cmparts\endcsname{Equation: C\_m(s)=(s+3)/(2pi m) int\_1\textasciicircum{}infinitysin(2pi mu) u\textasciicircum{}(-s-4) du=(s+3)/((2pi m)\textasciicircum{}2)-((s+3)(s+4))/((2pi m)\textasciicircum{}2) C\_m(s+2).}
+ \expandafter\gdef\csname CGTip@sec:real\endcsname{Section: The real axis}
+-\expandafter\gdef\csname CGTip@thm:real\endcsname{Theorem - Sign on the real axis: For real s, G(s)>0 (-2<s<-1), ; G(-1)=0, ; G(s)<0 (s>-1). The zero at -1 is simple, and G'(-1)=-frac 1(4pi\textasciicircum{}2) in t\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-2) du<0.}
++\expandafter\gdef\csname CGTip@thm:real\endcsname{Theorem - Sign on the real axis: For real s, G(s)>0 (-2<s<-1), ; G(-1)=0, ; G(s)<0 (s>-1). The zero at -1 is simple, and G'(-1)=-frac 1(4pi\textasciicircum{}2) int\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-2) du<0.}
+ \expandafter\gdef\csname CGTip@eq:sign\endcsname{Equation: G(s)>0 (-2<s<-1), ; G(-1)=0, ; G(s)<0 (s>-1).}
+-\expandafter\gdef\csname CGTip@eq:derminusone\endcsname{Equation: G'(-1)=-frac 1(4pi\textasciicircum{}2) in t\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-2) du<0.}
++\expandafter\gdef\csname CGTip@eq:derminusone\endcsname{Equation: G'(-1)=-frac 1(4pi\textasciicircum{}2) int\_1\textasciicircum{}infinity K(u) u\textasciicircum{}(-2) du<0.}
+ \expandafter\gdef\csname CGTip@sec:q\endcsname{Section: The singularity at u=1 and a completely monotone remainder}
+-\expandafter\gdef\csname CGTip@eq:q\endcsname{Equation: q(u)=log(pi(u-1))/(|sin(pi u)|), ; Q(s)= in t\_1\textasciicircum{}infinity q(u) u\textasciicircum{}(-s-1) du .}
++\expandafter\gdef\csname CGTip@eq:q\endcsname{Equation: q(u)=log(pi(u-1))/(|sin(pi u)|), ; Q(s)= int\_1\textasciicircum{}infinity q(u) u\textasciicircum{}(-s-1) du .}
+ \expandafter\gdef\csname CGTip@prop:q\endcsname{Proposition - Remainder of constant sign: We have q(u)>=0, the integral Q(s) converges absolutely for (Re)s>0, and G(s)=(log(2pi)-gamma-psi(s))/(s)-Q(s) ; ((Re)s>0). For real sigma>0 and real t, (-1)\textasciicircum{}nQ\textasciicircum{}((n))(sigma)>0 (n>=0), ; |Q(sigma+it)|<= Q(sigma).}
+ \expandafter\gdef\csname CGTip@eq:digamma\endcsname{Equation: G(s)=(log(2pi)-gamma-psi(s))/(s)-Q(s) ; ((Re)s>0).}
+ \expandafter\gdef\csname CGTip@eq:Qcomplete\endcsname{Equation: (-1)\textasciicircum{}nQ\textasciicircum{}((n))(sigma)>0 (n>=0), ; |Q(sigma+it)|<= Q(sigma).}
+-\expandafter\gdef\csname CGTip@eq:qsplit\endcsname{Equation: G(s)=frac (log(2pi))s+ in t\_1\textasciicircum{}infinitylog(u-1) u\textasciicircum{}(-s-1) du-Q(s).}
++\expandafter\gdef\csname CGTip@eq:qsplit\endcsname{Equation: G(s)=frac (log(2pi))s+ int\_1\textasciicircum{}infinitylog(u-1) u\textasciicircum{}(-s-1) du-Q(s).}
+ \expandafter\gdef\csname CGTip@sec:moments\endcsname{Section: Moments, variance and a zero-free region}
+-\expandafter\gdef\csname CGTip@thm:moments\endcsname{Theorem - Complete monotonicity: For real sigma>-2 and every integer n>=0, (-1)\textasciicircum{}nH\textasciicircum{}((n))(sigma)= in t\_1\textasciicircum{}infinity K(u) (log u)\textasciicircum{}n u\textasciicircum{}(-sigma-3) du>0, and V(sigma)=(H''(sigma))/(H(sigma))-((H'(sigma))/(H(sigma)))\textasciicircum{}2>0.}
+-\expandafter\gdef\csname CGTip@eq:complete\endcsname{Equation: (-1)\textasciicircum{}nH\textasciicircum{}((n))(sigma)= in t\_1\textasciicircum{}infinity K(u) (log u)\textasciicircum{}n u\textasciicircum{}(-sigma-3) du>0,}
++\expandafter\gdef\csname CGTip@thm:moments\endcsname{Theorem - Complete monotonicity: For real sigma>-2 and every integer n>=0, (-1)\textasciicircum{}nH\textasciicircum{}((n))(sigma)= int\_1\textasciicircum{}infinity K(u) (log u)\textasciicircum{}n u\textasciicircum{}(-sigma-3) du>0, and V(sigma)=(H''(sigma))/(H(sigma))-((H'(sigma))/(H(sigma)))\textasciicircum{}2>0.}
++\expandafter\gdef\csname CGTip@eq:complete\endcsname{Equation: (-1)\textasciicircum{}nH\textasciicircum{}((n))(sigma)= int\_1\textasciicircum{}infinity K(u) (log u)\textasciicircum{}n u\textasciicircum{}(-sigma-3) du>0,}
+ \expandafter\gdef\csname CGTip@eq:logconvex\endcsname{Equation: V(sigma)=(H''(sigma))/(H(sigma))-((H'(sigma))/(H(sigma)))\textasciicircum{}2>0.}
+ \expandafter\gdef\csname CGTip@eq:measure\endcsname{Equation: dnu\_sigma(v)=frac ( K(e\textasciicircum{}v) e\textasciicircum{}(-(sigma+2)v))(H(sigma)) dv ; (v>0)}
+ \expandafter\gdef\csname CGTip@thm:variance\endcsname{Theorem - Zero-free region from the variance: Let sigma>-2 and t be real with sigma+it!=-1. If G(sigma+it)=0, then t\textasciicircum{}2 V(sigma)>=2 . Consequently G(sigma+it)!=0 whenever sigma>-2, sigma+it!=-1 and |t|<sqrt(2/V(sigma)).}
+@@ -92,17 +92,17 @@
+ \expandafter\gdef\csname CGTip@eq:asymp\endcsname{Equation: G(s)=(log(2pi)-gamma-log s)/(s)+frac 1(2s\textasciicircum{}2)+(1/12-pi\textasciicircum{}2/3)/(s\textasciicircum{}3)+O\_delta(|s|\textasciicircum{}(-4)),}
+ \expandafter\gdef\csname CGTip@eq:localsplit\endcsname{Equation: h(e\textasciicircum{}v)-log(2pi v)=log(e\textasciicircum{}v-1)/(v)+log(sin(pi(e\textasciicircum{}v-1)))/(pi(e\textasciicircum{}v-1)) .}
+ \expandafter\gdef\csname CGTip@eq:localh\endcsname{Equation: h(e\textasciicircum{}v)=log(2pi v)+1/2v+(frac 1(24)-frac (pi\textasciicircum{}2)6)v\textasciicircum{}2+varepsilon(v), ; |varepsilon(v)|<= Bv\textasciicircum{}3 (0<v<= v\_0).}
+-\expandafter\gdef\csname CGTip@eq:watson\endcsname{Equation: G(s)= in t\_0\textasciicircum{}infinity(log(2pi v)+1/2v+(frac 1(24)-frac (pi\textasciicircum{}2)6)v\textasciicircum{}2)e\textasciicircum{}(-sv) dv+O(sigma\textasciicircum{}(-4)+e\textasciicircum{}(-sigma/4)).}
+-\expandafter\gdef\csname CGTip@cor:angular\endcsname{Corollary - Angular restriction: If sigma\_i+it\_i, i>=1, are zeros of G with sigma\_i->+infinity, then |t\_i|/sigma\_i->+infinity.}
++\expandafter\gdef\csname CGTip@eq:watson\endcsname{Equation: G(s)= int\_0\textasciicircum{}infinity(log(2pi v)+1/2v+(frac 1(24)-frac (pi\textasciicircum{}2)6)v\textasciicircum{}2)e\textasciicircum{}(-sv) dv+O(sigma\textasciicircum{}(-4)+e\textasciicircum{}(-sigma/4)).}
++\expandafter\gdef\csname CGTip@cor:angular\endcsname{Corollary - Angular restriction: If sigma\_b+it\_b, b>=1, are zeros of G with sigma\_b->+infinity, then |t\_b|/sigma\_b->+infinity.}
+ \expandafter\gdef\csname CGTip@sec:rouche\endcsname{Section: Truncation, quadrature and a Rouch\'e test}
+-\expandafter\gdef\csname CGTip@def:trunc\endcsname{Definition - Truncations: Let M, N, L>=1 be integers and x\_i=(i+1/2)/ L for 0<= i<= L-1. Put K\_( M)(x)=sum\_(m=1)\textasciicircum{}( M)(1-cos(2pi mx))/(m\textasciicircum{}3), ; H\_( M, N)(s)=sum\_(n=1)\textasciicircum{}( N) in t\_0\textasciicircum{}1 K\_( M)(x) (n+x)\textasciicircum{}(-s-3) dx, H\_( M, N, L)(s)=frac 1( L)sum\_(n=1)\textasciicircum{}( N)sum\_(i=0)\textasciicircum{}( L-1) K\_( M)(x\_i) (n+x\_i)\textasciicircum{}(-s}
+-\expandafter\gdef\csname CGTip@eq:KM\endcsname{Equation: K\_( M)(x)=sum\_(m=1)\textasciicircum{}( M)(1-cos(2pi mx))/(m\textasciicircum{}3), ; H\_( M, N)(s)=sum\_(n=1)\textasciicircum{}( N) in t\_0\textasciicircum{}1 K\_( M)(x) (n+x)\textasciicircum{}(-s-3) dx,}
+-\expandafter\gdef\csname CGTip@eq:HMNL\endcsname{Equation: H\_( M, N, L)(s)=frac 1( L)sum\_(n=1)\textasciicircum{}( N)sum\_(i=0)\textasciicircum{}( L-1) K\_( M)(x\_i) (n+x\_i)\textasciicircum{}(-s-3).}
++\expandafter\gdef\csname CGTip@def:trunc\endcsname{Definition - Truncations: Let M, N, L>=1 be integers and x\_b=(b+1/2)/ L for 0<= b<= L-1. Put K\_( M)(x)=sum\_(m=1)\textasciicircum{}( M)(1-cos(2pi mx))/(m\textasciicircum{}3), ; H\_( M, N)(s)=sum\_(n=1)\textasciicircum{}( N) int\_0\textasciicircum{}1 K\_( M)(x) (n+x)\textasciicircum{}(-s-3) dx, H\_( M, N, L)(s)=frac 1( L)sum\_(n=1)\textasciicircum{}( N)sum\_(b=0)\textasciicircum{}( L-1) K\_( M)(x\_b) (n+x\_b)\textasciicircum{}(-s}
++\expandafter\gdef\csname CGTip@eq:KM\endcsname{Equation: K\_( M)(x)=sum\_(m=1)\textasciicircum{}( M)(1-cos(2pi mx))/(m\textasciicircum{}3), ; H\_( M, N)(s)=sum\_(n=1)\textasciicircum{}( N) int\_0\textasciicircum{}1 K\_( M)(x) (n+x)\textasciicircum{}(-s-3) dx,}
++\expandafter\gdef\csname CGTip@eq:HMNL\endcsname{Equation: H\_( M, N, L)(s)=frac 1( L)sum\_(n=1)\textasciicircum{}( N)sum\_(b=0)\textasciicircum{}( L-1) K\_( M)(x\_b) (n+x\_b)\textasciicircum{}(-s-3).}
+ \expandafter\gdef\csname CGTip@eq:Bdefs\endcsname{Equation: B\_0=5/2, ; B\_1=frac (pi\textasciicircum{}3)3, ; B\_2=4pi\textasciicircum{}2(1+log M), ; Z(theta)=1+frac 1(theta-1) (theta>1).}
+-\expandafter\gdef\csname CGTip@eq:midpoint\endcsname{Equation: | in t\_0\textasciicircum{}1chi(x) dx-frac 1( L)sum\_(i=0)\textasciicircum{}( L-1)chi(x\_i)|<=(sup|chi''|)/(24 L\textasciicircum{}2).}
+-\expandafter\gdef\csname CGTip@thm:trunc\endcsname{Theorem - Explicit error bounds: Let sigma=(Re)s>-1. Then |H(s)-H\_( M, N, L)(s)|<= E\_0 and |H'(s)-H\_( M, N, L)'(s)|<= E\_1, where E\_0=()frac 1((sigma+2) M\textasciicircum{}2)+frac (B\_0)((sigma+2)( N+1)\textasciicircum{}(sigma+2)) ; +(B\_2Z(sigma+3)+2|s+3|B\_1Z(sigma+4)+|(s+3)(s+4)|B\_0Z(sigma+5))/(24 L\textasciicircum{}2) and E\_1=()frac 1((sigma+}
+-\expandafter\gdef\csname CGTip@eq:E0expr\endcsname{Equation: E\_0=()frac 1((sigma+2) M\textasciicircum{}2)+frac (B\_0)((sigma+2)( N+1)\textasciicircum{}(sigma+2)) ; +(B\_2Z(sigma+3)+2|s+3|B\_1Z(sigma+4)+|(s+3)(s+4)|B\_0Z(sigma+5))/(24 L\textasciicircum{}2)}
+-\expandafter\gdef\csname CGTip@eq:E1expr\endcsname{Equation: E\_1=()frac 1((sigma+2)\textasciicircum{}2 M\textasciicircum{}2)+frac (B\_0)(( N+1)\textasciicircum{}(sigma+2))((log( N+1))/(sigma+2)+frac 1((sigma+2)\textasciicircum{}2)) ; +(B\_2Z(sigma+2)+2B\_1(Z(sigma+4)+|s+3|Z(sigma+3)))/(24 L\textasciicircum{}2) ; +(B\_0(|(s+3)(s+4)|Z(sigma+4)+|2s+7|Z(sigma+5)))/(24 L\textasciicircum{}2).}
++\expandafter\gdef\csname CGTip@eq:midpoint\endcsname{Equation: | int\_0\textasciicircum{}1chi(x) dx-frac 1( L)sum\_(b=0)\textasciicircum{}( L-1)chi(x\_b)|<=(sup|chi''|)/(24 L\textasciicircum{}2).}
++\expandafter\gdef\csname CGTip@thm:trunc\endcsname{Theorem - Explicit error bounds: Let sigma=(Re)s>-1. Then |H(s)-H\_( M, N, L)(s)|<= E\_0 and |H'(s)-H\_( M, N, L)'(s)|<= E\_1, where E\_0=frac 1((sigma+2) M\textasciicircum{}2)+frac (B\_0)((sigma+2)( N+1)\textasciicircum{}(sigma+2)) ; +(B\_2Z(sigma+3)+2|s+3|B\_1Z(sigma+4)+|(s+3)(s+4)|B\_0Z(sigma+5))/(24 L\textasciicircum{}2) and E\_1=frac 1((sigma+}
++\expandafter\gdef\csname CGTip@eq:E0expr\endcsname{Equation: E\_0=frac 1((sigma+2) M\textasciicircum{}2)+frac (B\_0)((sigma+2)( N+1)\textasciicircum{}(sigma+2)) ; +(B\_2Z(sigma+3)+2|s+3|B\_1Z(sigma+4)+|(s+3)(s+4)|B\_0Z(sigma+5))/(24 L\textasciicircum{}2)}
++\expandafter\gdef\csname CGTip@eq:E1expr\endcsname{Equation: E\_1=frac 1((sigma+2)\textasciicircum{}2 M\textasciicircum{}2)+frac (B\_0)(( N+1)\textasciicircum{}(sigma+2))((log( N+1))/(sigma+2)+frac 1((sigma+2)\textasciicircum{}2)) ; +(B\_2Z(sigma+2)+2B\_1(Z(sigma+4)+|s+3|Z(sigma+3)))/(24 L\textasciicircum{}2) ; +(B\_0(|(s+3)(s+4)|Z(sigma+4)+|2s+7|Z(sigma+5)))/(24 L\textasciicircum{}2).}
+ \expandafter\gdef\csname CGTip@eq:logderivs\endcsname{Equation: (d)/(du)[(log u)u\textasciicircum{}(-s-3)]=u\textasciicircum{}(-s-4)(1-(s+3)log u), ; (d\textasciicircum{}2)/(du\textasciicircum{}2)[(log u)u\textasciicircum{}(-s-3)]=u\textasciicircum{}(-s-5)((s+3)(s+4)log u-(2s+7)).}
+ \expandafter\gdef\csname CGTip@lem:H2\endcsname{Lemma - Second derivative: If (Re)s>=sigma>-2 with sigma real, then |H''(s)|<=2B\_0/(sigma+2)\textasciicircum{}3.}
+ \expandafter\gdef\csname CGTip@prop:rouche\endcsname{Proposition - Rouch\'e test for a disc: Let s\_0 in C and varsigma>0 with (Re)s\_0-varsigma>-1. Let eta\_0=H\_( M, N, L)(s\_0) and eta\_1=H\_( M, N, L)'(s\_0), and let E\_0,E\_1 be the bounds of Theorem thm:trunc at s=s\_0. If |eta\_0|+E\_0+varsigma E\_1+frac (varsigma\textasciicircum{}2B\_0)(((Re)s\_0-varsigma+2)\textasciicircum{}3)<varsigma |eta\_}
+@@ -120,9 +120,9 @@
+ \expandafter\gdef\csname CGTip@cor:partial\endcsname{Corollary - The first K factors: For every integer K>=2, (pi\textasciicircum{}2)/(24)(2-(pi\textasciicircum{}2)/(6))K<=(av)[(sum\_(k=1)\textasciicircum{}(K)h(x/k))\textasciicircum{}2]<=(pi\textasciicircum{}2)/(12)(5K+(1+log K)\textasciicircum{}2).}
+ \expandafter\gdef\csname CGTip@eq:partial\endcsname{Equation: (pi\textasciicircum{}2)/(24)(2-(pi\textasciicircum{}2)/(6))K<=(av)[(sum\_(k=1)\textasciicircum{}(K)h(x/k))\textasciicircum{}2]<=(pi\textasciicircum{}2)/(12)(5K+(1+log K)\textasciicircum{}2).}
+ \expandafter\gdef\csname CGTip@eq:partialexact\endcsname{Equation: (av)[(sum\_(k=1)\textasciicircum{}(K)h(x/k))\textasciicircum{}2]=(pi\textasciicircum{}2)/(12)sum\_(d=1)\textasciicircum{}(K)(J\_2(d))/(d\textasciicircum{}2) (har)(floor( K/d))\textasciicircum{}2 .}
+-\expandafter\gdef\csname CGTip@eq:partialupper\endcsname{Equation: sum\_(d=1)\textasciicircum{}(K)(1+logfrac Kd)\textasciicircum{}2<=(1+log K)\textasciicircum{}2+ in t\_1\textasciicircum{}K(1+logfrac Ktau)\textasciicircum{}2dtau<=(1+log K)\textasciicircum{}2+K in t\_0\textasciicircum{}1(1-log u)\textasciicircum{}2 du,}
++\expandafter\gdef\csname CGTip@eq:partialupper\endcsname{Equation: sum\_(d=1)\textasciicircum{}(K)(1+logfrac Kd)\textasciicircum{}2<=(1+log K)\textasciicircum{}2+ int\_1\textasciicircum{}K(1+logfrac Ktau)\textasciicircum{}2dtau<=(1+log K)\textasciicircum{}2+K int\_0\textasciicircum{}1(1-log u)\textasciicircum{}2 du,}
+ \expandafter\gdef\csname CGTip@sec:weighted\endcsname{Section: The power weight on a half-line}
+-\expandafter\gdef\csname CGTip@eq:I\endcsname{Equation: I\_(jk)(sigma)= in t\_(j v k)\textasciicircum{}(infinity)h(x/j) h(x/k) x\textasciicircum{}(-2sigma-1) dx ,}
++\expandafter\gdef\csname CGTip@eq:I\endcsname{Equation: I\_(jk)(sigma)= int\_(j v k)\textasciicircum{}(infinity)h(x/j) h(x/k) x\textasciicircum{}(-2sigma-1) dx ,}
+ \expandafter\gdef\csname CGTip@def:TU\endcsname{Definition - Pair sums: For r in Z let T\_(jk)(r)=sum\_((m,n>=1\ mk-nj=r))frac 1(2mn), a series of positive terms whose convergence is proved in Lemma lem:T. For integers r>=1 let U\_(jk)(r)=sum\_((m,n>=1\ mk+nj=r))frac 1(2mn), ; D\_(jk)(r)=T\_(jk)(r)+T\_(jk)(-r)+U\_(jk)(r). The sum defining}
+ \expandafter\gdef\csname CGTip@eq:T\endcsname{Equation: T\_(jk)(r)=sum\_((m,n>=1\ mk-nj=r))frac 1(2mn),}
+ \expandafter\gdef\csname CGTip@eq:U\endcsname{Equation: U\_(jk)(r)=sum\_((m,n>=1\ mk+nj=r))frac 1(2mn), ; D\_(jk)(r)=T\_(jk)(r)+T\_(jk)(-r)+U\_(jk)(r).}
+@@ -134,30 +134,30 @@
+ \expandafter\gdef\csname CGTip@eq:coeff\endcsname{Equation: hat F\_(jk)(0)=T\_(jk)(0), ; hat F\_(jk)(r)=hat F\_(jk)(-r)=1/2D\_(jk)(r) (r>=1).}
+ \expandafter\gdef\csname CGTip@eq:Asquare\endcsname{Equation: sum\_(r>=1)D\_(jk)(r)\textasciicircum{}2=2(av)[(F-T\_(jk)(0))\textasciicircum{}2]<infinity .}
+ \expandafter\gdef\csname CGTip@eq:conv\endcsname{Equation: hat F\_(jk)( q)=(av)[F\_1conj (F\_3)]=sum\_( a in Z)hat ((F\_1))\_(jk)( a) hat ((F\_2))\_(jk)( q- a)=sum\_((m,n!=0\ mk+nj= q))(1)/(4|m| |n|),}
+-\expandafter\gdef\csname CGTip@lem:kappa\endcsname{Lemma - The kernel kappa\_sigma: For real y>0 put kappa\_sigma(y)=2sigma y\textasciicircum{}(2sigma) in t\_y\textasciicircum{}infinityfrac (cos v)(v\textasciicircum{}(2sigma+1)) dv . Then |kappa\_sigma(y)|<=min(1,4sigma/y), and for all real x>0 and lambda>0, in t\_x\textasciicircum{}infinitycos(2pilambda u) u\textasciicircum{}(-2sigma-1) du=frac (x\textasciicircum{}(-2sigma))(2sigma) kappa\_sigma(}
+-\expandafter\gdef\csname CGTip@eq:kappa\endcsname{Equation: kappa\_sigma(y)=2sigma y\textasciicircum{}(2sigma) in t\_y\textasciicircum{}infinityfrac (cos v)(v\textasciicircum{}(2sigma+1)) dv .}
+-\expandafter\gdef\csname CGTip@eq:kappaint\endcsname{Equation: in t\_x\textasciicircum{}infinitycos(2pilambda u) u\textasciicircum{}(-2sigma-1) du=frac (x\textasciicircum{}(-2sigma))(2sigma) kappa\_sigma(2pilambda x).}
+-\expandafter\gdef\csname CGTip@eq:kappaparts\endcsname{Equation: in t\_y\textasciicircum{}infinityfrac (cos v)(v\textasciicircum{}(2sigma+1)) dv=-frac (sin y)(y\textasciicircum{}(2sigma+1))+(2sigma+1) in t\_y\textasciicircum{}infinityfrac (sin v)(v\textasciicircum{}(2sigma+2)) dv ,}
++\expandafter\gdef\csname CGTip@lem:kappa\endcsname{Lemma - The kernel kappa\_sigma: For real y>0 put kappa\_sigma(y)=2sigma y\textasciicircum{}(2sigma) int\_y\textasciicircum{}infinityfrac (cos v)(v\textasciicircum{}(2sigma+1)) dv . Then |kappa\_sigma(y)|<=min(1,4sigma/y), and for all real x>0 and lambda>0, int\_x\textasciicircum{}infinitycos(2pilambda u) u\textasciicircum{}(-2sigma-1) du=frac (x\textasciicircum{}(-2sigma))(2sigma) kappa\_sigma(}
++\expandafter\gdef\csname CGTip@eq:kappa\endcsname{Equation: kappa\_sigma(y)=2sigma y\textasciicircum{}(2sigma) int\_y\textasciicircum{}infinityfrac (cos v)(v\textasciicircum{}(2sigma+1)) dv .}
++\expandafter\gdef\csname CGTip@eq:kappaint\endcsname{Equation: int\_x\textasciicircum{}infinitycos(2pilambda u) u\textasciicircum{}(-2sigma-1) du=frac (x\textasciicircum{}(-2sigma))(2sigma) kappa\_sigma(2pilambda x).}
++\expandafter\gdef\csname CGTip@eq:kappaparts\endcsname{Equation: int\_y\textasciicircum{}infinityfrac (cos v)(v\textasciicircum{}(2sigma+1)) dv=-frac (sin y)(y\textasciicircum{}(2sigma+1))+(2sigma+1) int\_y\textasciicircum{}infinityfrac (sin v)(v\textasciicircum{}(2sigma+2)) dv ,}
+ \expandafter\gdef\csname CGTip@prop:bound\endcsname{Proposition - The gcd term and an explicit bound: The integral (eq:I) converges absolutely, and |I\_(jk)(sigma)-(pi\textasciicircum{}2)/(12)*(g\textasciicircum{}2)/(jk)*frac ((j v k)\textasciicircum{}(-2sigma))(2sigma)|<=(pi\textasciicircum{}2)/(6) [j,k] (j v k)\textasciicircum{}(-2sigma-1).}
+ \expandafter\gdef\csname CGTip@eq:bound\endcsname{Equation: |I\_(jk)(sigma)-(pi\textasciicircum{}2)/(12)*(g\textasciicircum{}2)/(jk)*frac ((j v k)\textasciicircum{}(-2sigma))(2sigma)|<=(pi\textasciicircum{}2)/(6) [j,k] (j v k)\textasciicircum{}(-2sigma-1).}
+-\expandafter\gdef\csname CGTip@eq:boundparts\endcsname{Equation: in t\_a\textasciicircum{}XF\_0(x) x\textasciicircum{}(-2sigma-1) dx=Y(X)X\textasciicircum{}(-2sigma-1)+(2sigma+1) in t\_a\textasciicircum{}XY(x) x\textasciicircum{}(-2sigma-2) dx .}
++\expandafter\gdef\csname CGTip@eq:boundparts\endcsname{Equation: int\_a\textasciicircum{}XF\_0(x) x\textasciicircum{}(-2sigma-1) dx=Y(X)X\textasciicircum{}(-2sigma-1)+(2sigma+1) int\_a\textasciicircum{}XY(x) x\textasciicircum{}(-2sigma-2) dx .}
+ \expandafter\gdef\csname CGTip@thm:weighted\endcsname{Theorem - Weighted Gram matrix: With the notation of (eq:I), (eq:T), (eq:U) and (eq:kappa), I\_(jk)(sigma)=frac ((j v k)\textasciicircum{}(-2sigma))(2sigma)[(pi\textasciicircum{}2)/(12)*(g\textasciicircum{}2)/(jk)+sum\_(r>=1)D\_(jk)(r) kappa\_sigma((2pi(j v k) r)/(jk))], and the series converges absolutely.}
+ \expandafter\gdef\csname CGTip@eq:weighted\endcsname{Equation: I\_(jk)(sigma)=frac ((j v k)\textasciicircum{}(-2sigma))(2sigma)[(pi\textasciicircum{}2)/(12)*(g\textasciicircum{}2)/(jk)+sum\_(r>=1)D\_(jk)(r) kappa\_sigma((2pi(j v k) r)/(jk))],}
+ \expandafter\gdef\csname CGTip@eq:Q1\endcsname{Equation: Y\_1(x)=sum\_(r>=1)frac (D\_(jk)(r))(omega r)sin(omega rx).}
+-\expandafter\gdef\csname CGTip@eq:weightedparts\endcsname{Equation: in t\_a\textasciicircum{}infinity F\_0(x) w(x) dx=-Y\_0(a) w(a)- in t\_a\textasciicircum{}infinity Y\_0(x) w'(x) dx .}
+-\expandafter\gdef\csname CGTip@eq:weightedterm\endcsname{Equation: frac (D\_(jk)(r))(omega r)(-sin(omega ra) w(a)- in t\_a\textasciicircum{}infinitysin(omega rx) w'(x) dx)=D\_(jk)(r) in t\_a\textasciicircum{}infinitycos(omega rx) w(x) dx ,}
++\expandafter\gdef\csname CGTip@eq:weightedparts\endcsname{Equation: int\_a\textasciicircum{}infinity F\_0(x) w(x) dx=-Y\_0(a) w(a)- int\_a\textasciicircum{}infinity Y\_0(x) w'(x) dx .}
++\expandafter\gdef\csname CGTip@eq:weightedterm\endcsname{Equation: frac (D\_(jk)(r))(omega r)(-sin(omega ra) w(a)- int\_a\textasciicircum{}infinitysin(omega rx) w'(x) dx)=D\_(jk)(r) int\_a\textasciicircum{}infinitycos(omega rx) w(x) dx ,}
+ \expandafter\gdef\csname CGTip@sec:num\endcsname{Section: Numerical comparison}
+ \expandafter\gdef\csname CGTip@tab:check\endcsname{Table: The two sides of (eq:weighted), and the gcd term alone.}
+ \expandafter\gdef\csname CGTip@sec:fig\endcsname{Section: Figures}
+-\expandafter\gdef\csname CGTip@eq:A\endcsname{Equation: A(s)=frac (log(2pi))s+frac 1(s\textasciicircum{}2)- in t\_0\textasciicircum{}1log(sin(pi u))/(pi u) u\textasciicircum{}(-s-1) du .}
+-\expandafter\gdef\csname CGTip@eq:GminusA\endcsname{Equation: G(s)-A(s)= in t\_0\textasciicircum{}infinity(h(u)-log(2pi u)) u\textasciicircum{}(-s-1) du .}
++\expandafter\gdef\csname CGTip@eq:A\endcsname{Equation: A(s)=frac (log(2pi))s+frac 1(s\textasciicircum{}2)- int\_0\textasciicircum{}1log(sin(pi u))/(pi u) u\textasciicircum{}(-s-1) du .}
++\expandafter\gdef\csname CGTip@eq:GminusA\endcsname{Equation: G(s)-A(s)= int\_0\textasciicircum{}infinity(h(u)-log(2pi u)) u\textasciicircum{}(-s-1) du .}
+ \expandafter\gdef\csname CGTip@fig:kernel\endcsname{Figure: The function h on one period and the positive kernel K.}
+ \expandafter\gdef\csname CGTip@fig:Greal\endcsname{Figure: G on the real axis.}
+ \expandafter\gdef\csname CGTip@fig:Gsurf\endcsname{Figure: log\_(10)|G(s)|.}
+ \expandafter\gdef\csname CGTip@fig:Asurf\endcsname{Figure: log\_(10)|A(s)|.}
+ \expandafter\gdef\csname CGTip@fig:GAsurf\endcsname{Figure: log\_(10)|G(s)-A(s)|.}
+ \expandafter\gdef\csname CGTip@fig:zetasurf\endcsname{Figure: log\_(10)|zeta(s)|.}
+-\expandafter\gdef\csname CGTip@fig:zeromap\endcsname{Figure: Zeros of G, points with G=A, and the arcs of (Im)(G/A)=0 with 0<(Re)(G/A)<1.}
++\expandafter\gdef\csname CGTip@fig:zeromap\endcsname{Figure: Computed zeros of G, computed points with G=A, and the computed arcs of (Im)(G/A)=0 with 0<(Re)(G/A)<1, at points where A!=0. The pairing shown by the arcs is a numerical observation.}
+ \expandafter\gdef\csname CGTip@fig:gram\endcsname{Figure: Gram matrices of the factors h(x/k), 1<= k<=10: mean over a period, and weight x\textasciicircum{}(-2sigma-1) with sigma=3/4.}
+ \makeatother
+ 
+@@ -241,7 +241,7 @@
+ \date{}
+ 
+ \begin{abstract}
+-Let $h(u)=\log|2\sin(\pi u)|$, so that $\sum_{k\le K}h(x/k)$ is the logarithm of the product $\prod_{k\le K}|2\sin(\pi x/k)|$. The first part of this note studies the transform $G(s)=\int_1^\infty h(u)u^{-s-1}\,du$, which is the local factor of the Mellin transform of every weighted sum of the functions $h(x/k)$. Two primitives of the Fourier series of $h$ give the exact factorization $G(s)=-(s+1)(s+2)H(s)/(4\pi^2)$, where $H$ is the Mellin transform of a strictly positive periodic kernel. It follows that $G$ is entire, that on the real axis $G$ is positive on $(-2,-1)$, vanishes simply at $-1$ and is negative for $s>-1$, and that a complex zero $\sigma+it$ with $\sigma>-2$ satisfies $t^2V(\sigma)\ge2$, where $V$ is the variance of an explicit probability measure. We also prove an asymptotic expansion of $G$ in right sectors, which excludes zeros there, and explicit truncation and quadrature bounds with a Rouch\'e test that isolates a zero in a disc. The second part computes the Gram matrix of the factors $x\mapsto h(x/k)$. For the mean over a common period it is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$, which gives a sum of squares with weights given by the Jordan totient $J_2$. For the weight $x^{-2\sigma-1}$ on $[\max(j,k),\infty)$ we prove an exact formula in which the pairs of harmonics $(m,n)$ with $mk-nj=r$ enter through an explicit kernel, and their total weight is evaluated by the digamma function. All proofs use only the Fourier series of $h$, Parseval's identity and integration by parts. Seven figures show the kernels, the moduli of $G$, of an auxiliary function $A$ and of the Riemann zeta function on a rectangle, and the two Gram matrices.
++Let $h(u)=\log|2\sin(\pi u)|$, so that $\sum_{k\le K}h(x/k)$ is the logarithm of the product $\prod_{k\le K}|2\sin(\pi x/k)|$. The first part of this note studies the transform $G(s)=\int_1^\infty h(u)u^{-s-1}\,du$, which is the local factor of the Mellin transform of every weighted sum of the functions $h(x/k)$. Two primitives of the Fourier series of $h$ give the exact factorization $G(s)=-(s+1)(s+2)H(s)/(4\pi^2)$, where $H$ is the Mellin transform of a strictly positive periodic kernel. It follows that $G$ is entire, that on the real axis $G$ is positive on $(-2,-1)$, vanishes simply at $-1$ and is negative for $s>-1$, and that a complex zero $\sigma+it$ with $\sigma>-2$ satisfies $t^2V(\sigma)\ge2$, where $V$ is the variance of an explicit probability measure. We also prove an asymptotic expansion of $G$ in right sectors, which excludes zeros there, and explicit truncation and quadrature bounds with a Rouch\'e test that isolates a zero in a disc. The second part computes the Gram matrix of the factors $x\mapsto h(x/k)$. For the mean over a common period it is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$, which gives a sum of squares with weights given by the Jordan totient $J_2$. For the weight $x^{-2\sigma-1}$ on $[\max(j,k),\infty)$ we prove an exact formula in which the pairs of harmonics $(m,n)$ with $mk-nj=r$ enter through an explicit kernel, and their total weight is evaluated by the digamma function. The proofs use the Fourier series of $h$, Parseval's identity and integration by parts, together with the Cauchy--Schwarz inequality, Rouch\'e's theorem and standard real and complex analysis. Eight figures show the kernels, the moduli of $G$, of an auxiliary function $A$ and of the Riemann zeta function on a rectangle, and the two Gram matrices.
+ \end{abstract}
+ 
+ \subjclass[2020]{11A05; 11C20; 42A16; 33B15; 30C15; 44A15}
+@@ -270,7 +270,7 @@
+ 
+ \section{Notation}\label{sec:notation}
+ 
+-Throughout, $s=\sigma+it$ is a complex number with real part $\sigma$ and imaginary part $t$. When no $s$ is present, $\sigma$ is a real number. The letters $i,j,k,l,m,n,d,r$ denote integers, except that $i$ is the imaginary unit in exponentials and in $\sigma+it$. The letters $u,x,v,\tau,\lambda,\theta$ denote real variables. For integers $j,k\ge1$, $(j,k)$ is the greatest common divisor, $[j,k]$ the least common multiple and $j\vee k=\max(j,k)$. For real $x$, $\{x\}=x-\lfloor x\rfloor$. Euler's constant is $\gamma$. If $\Phi$ is a locally integrable function on $\mathbb R$ with a period $L>0$, its mean is
++Throughout, $s=\sigma+it$ is a complex number with real part $\sigma$ and imaginary part $t$. When no $s$ is present, $\sigma$ is a real number. The letter $i$ always denotes the imaginary unit. The letters $b,j,k,l,m,n,d,r$ denote integers. The letters $u,x,v,\tau,\lambda,\theta$ denote real variables. For integers $j,k\ge1$, $(j,k)$ is the greatest common divisor, $[j,k]$ the least common multiple and $j\vee k=\max(j,k)$. For real $x$, $\{x\}=x-\lfloor x\rfloor$. Euler's constant is $\gamma$. If $\Phi$ is a locally integrable function on $\mathbb R$ with a period $L>0$, its mean is
+ \begin{equation}\label{eq:av}
+ \operatorname{av}[\Phi]=\frac1L\int_0^L\Phi(x)\,dx ,
+ \end{equation}
+@@ -303,6 +303,7 @@
+ $h(u)$ & $\log|2\sin(\pi u)|$ & \CGeqref{eq:h}\\
+ $G(s)$ & transform of $h$ on $[1,\infty)$ & \CGeqref{eq:G}\\
+ $s,\sigma,t$ & complex variable, its real and imaginary parts & Section~\CGref{sec:notation}\\
++$i$ & imaginary unit & Section~\CGref{sec:notation}\\
+ $\gamma$ & Euler's constant & Section~\CGref{sec:notation}\\
+ $\psi$ & digamma function & \CGeqref{eq:psi}\\
+ $\operatorname{av}[\Phi]$ & mean of a periodic function $\Phi$ & \CGeqref{eq:av}\\
+@@ -322,7 +323,7 @@
+ $v_0,\varepsilon(v)$ & cut point $\frac12$ and local remainder & \CGeqref{eq:localh}\\
+ $\mathsf M,\mathsf N,\mathsf L$ & truncation integers: harmonics, periods, nodes & Definition~\CGref{def:trunc}\\
+ $\mathcal K_{\mathsf M},H_{\mathsf M,\mathsf N},H_{\mathsf M,\mathsf N,\mathsf L}$ & truncated kernel and truncated transforms & \CGeqref{eq:KM}--\CGeqref{eq:HMNL}\\
+-$x_i$ & quadrature nodes $(i+\frac12)/\mathsf L$ & \CGeqref{eq:HMNL}\\
++$x_b$ & quadrature nodes $(b+\frac12)/\mathsf L$ & \CGeqref{eq:HMNL}\\
+ $B_0,B_1,B_2$ & bounds for $\mathcal K_{\mathsf M}$, $\mathcal K_{\mathsf M}'$, $\mathcal K_{\mathsf M}''$ & \CGeqref{eq:Bdefs}\\
+ $Z(\theta)$ & $1+1/(\theta-1)$, a bound for $\sum_nn^{-\theta}$ & \CGeqref{eq:Bdefs}\\
+ $E_0,E_1$ & error bounds for $H$ and $H'$ & \CGeqref{eq:E0expr}, \CGeqref{eq:E1expr}\\
+@@ -332,7 +333,7 @@
+ $J_2(d)$ & Jordan totient of order $2$ & \CGeqref{eq:J2}\\
+ $c_k,N$ & real coefficients and their number & Corollary~\CGref{cor:squares}\\
+ $K$ & number of factors & Corollary~\CGref{cor:partial}\\
+-$\operatorname{har}(n)$ & harmonic number $\sum_{i\le n}1/i$ & proof of Corollary~\CGref{cor:partial}\\
++$\operatorname{har}(n)$ & harmonic number $\sum_{b\le n}1/b$ & proof of Corollary~\CGref{cor:partial}\\
+ $g,j',k'$ & $g=(j,k)$, $j=gj'$, $k=gk'$ & Section~\CGref{sec:weighted}\\
+ $I_{jk}(\sigma)$ & weighted Gram entry & \CGeqref{eq:I}\\
+ $T_{jk}(r),U_{jk}(r),D_{jk}(r)$ & pair sums & \CGeqref{eq:T}, \CGeqref{eq:U}\\
+@@ -585,22 +586,22 @@
+ \end{proof}
+ 
+ \begin{corollary}[Angular restriction]\label{cor:angular}\VCGreviewed{1}
+-If $\sigma_i+it_i$, $i\ge1$, are zeros of $G$ with $\sigma_i\to+\infty$, then $|t_i|/\sigma_i\to+\infty$.
++If $\sigma_b+it_b$, $b\ge1$, are zeros of $G$ with $\sigma_b\to+\infty$, then $|t_b|/\sigma_b\to+\infty$.
+ \end{corollary}
+ 
+ \begin{proof}
+-If $|t_i|/\sigma_i$ stayed bounded along a subsequence, these zeros would lie in a fixed sector $|\arg s|\le\frac\pi2-\delta$ with moduli tending to infinity. This contradicts Theorem~\CGref{thm:sector}.
++If $|t_b|/\sigma_b$ stayed bounded along a subsequence, these zeros would lie in a fixed sector $|\arg s|\le\frac\pi2-\delta$ with moduli tending to infinity. This contradicts Theorem~\CGref{thm:sector}.
+ \end{proof}
+ 
+ \section{Truncation, quadrature and a Rouch\'e test}\label{sec:rouche}
+ 
+ \begin{definition}[Truncations]\label{def:trunc}\VCGreviewed{1}
+-Let $\mathsf M,\mathsf N,\mathsf L\ge1$ be integers and $x_i=(i+\frac12)/\mathsf L$ for $0\le i\le\mathsf L-1$. Put
++Let $\mathsf M,\mathsf N,\mathsf L\ge1$ be integers and $x_b=(b+\frac12)/\mathsf L$ for $0\le b\le\mathsf L-1$. Put
+ \begin{equation}\label{eq:KM}
+ \mathcal K_{\mathsf M}(x)=\sum_{m=1}^{\mathsf M}\frac{1-\cos(2\pi mx)}{m^3},\qquad H_{\mathsf M,\mathsf N}(s)=\sum_{n=1}^{\mathsf N}\int_0^1\mathcal K_{\mathsf M}(x)\,(n+x)^{-s-3}\,dx,
+ \end{equation}
+ \begin{equation}\label{eq:HMNL}
+-H_{\mathsf M,\mathsf N,\mathsf L}(s)=\frac1{\mathsf L}\sum_{n=1}^{\mathsf N}\sum_{i=0}^{\mathsf L-1}\mathcal K_{\mathsf M}(x_i)\,(n+x_i)^{-s-3}.
++H_{\mathsf M,\mathsf N,\mathsf L}(s)=\frac1{\mathsf L}\sum_{n=1}^{\mathsf N}\sum_{b=0}^{\mathsf L-1}\mathcal K_{\mathsf M}(x_b)\,(n+x_b)^{-s-3}.
+ \end{equation}
+ Put also
+ \begin{equation}\label{eq:Bdefs}
+@@ -610,9 +611,9 @@
+ 
+ For $\theta>1$ we have $\sum_{n\ge1}n^{-\theta}\le1+\int_1^\infty x^{-\theta}dx=Z(\theta)$. The functions $H_{\mathsf M,\mathsf N}$ and $H_{\mathsf M,\mathsf N,\mathsf L}$ are entire. By \CGeqref{eq:KM}, $0\le\mathcal K_{\mathsf M}\le B_0$, $|\mathcal K_{\mathsf M}'|\le2\pi\sum_{m\ge1}m^{-2}=B_1$ and $|\mathcal K_{\mathsf M}''|\le4\pi^2\sum_{m\le\mathsf M}1/m\le B_2$. We use the midpoint rule in the following form. If $\chi$ is a twice continuously differentiable complex function on $[0,1]$, then
+ \begin{equation}\label{eq:midpoint}
+-\Bigl|\int_0^1\chi(x)\,dx-\frac1{\mathsf L}\sum_{i=0}^{\mathsf L-1}\chi(x_i)\Bigr|\le\frac{\sup|\chi''|}{24\,\mathsf L^2}.
++\Bigl|\int_0^1\chi(x)\,dx-\frac1{\mathsf L}\sum_{b=0}^{\mathsf L-1}\chi(x_b)\Bigr|\le\frac{\sup|\chi''|}{24\,\mathsf L^2}.
+ \end{equation}
+-Indeed, on the subinterval of length $1/\mathsf L$ centred at $x_i$, Taylor's formula gives $|\chi(x)-\chi(x_i)-\chi'(x_i)(x-x_i)|\le\frac12\sup|\chi''|(x-x_i)^2$, the linear term integrates to $0$, and $\int(x-x_i)^2dx=1/(12\mathsf L^3)$ over that subinterval.
++Indeed, on the subinterval of length $1/\mathsf L$ centred at $x_b$, Taylor's formula gives $|\chi(x)-\chi(x_b)-\chi'(x_b)(x-x_b)|\le\frac12\sup|\chi''|(x-x_b)^2$, the linear term integrates to $0$, and $\int(x-x_b)^2dx=1/(12\mathsf L^3)$ over that subinterval.
+ 
+ \begin{theorem}[Explicit error bounds]\label{thm:trunc}\VCGreviewed{1}
+ Let $\sigma=\operatorname{Re}s>-1$. Then $|H(s)-H_{\mathsf M,\mathsf N,\mathsf L}(s)|\le E_0$ and $|H'(s)-H_{\mathsf M,\mathsf N,\mathsf L}'(s)|\le E_1$, where
+@@ -665,7 +666,7 @@
+ For $|s-s_0|=\varsigma$, Taylor's formula with integral remainder and Lemma~\CGref{lem:H2} with $\sigma=\operatorname{Re}s_0-\varsigma$ give $|H(s)-H(s_0)-H'(s_0)(s-s_0)|\le\frac{\varsigma^2}2\cdot2B_0/(\operatorname{Re}s_0-\varsigma+2)^3$. By Theorem~\CGref{thm:trunc}, $|H(s_0)-\eta_0|\le E_0$ and $|H'(s_0)-\eta_1|\le E_1$. Hence $|H(s)-\eta_1(s-s_0)|$ is at most the left side of \CGeqref{eq:rouche}, which is less than $\varsigma|\eta_1|=|\eta_1(s-s_0)|$. By Rouch\'e's theorem $H$ has in the disc as many zeros, counted with multiplicity, as the function $\eta_1(s-s_0)$, namely one. The disc lies in $\operatorname{Re}s>-1$, where the factor $(s+1)(s+2)$ of \CGeqref{eq:factor} does not vanish.
+ \end{proof}
+ 
+-Table~\CGref{tab:rouche} reports the test \CGeqref{eq:rouche} at six points $s_0$, with $\mathsf M=4000$, $\mathsf N=200$, $\mathsf L=65536$ and $\varsigma=10^{-2}$. The sums $\eta_0$ and $\eta_1$ were evaluated in double precision arithmetic, and the rounding errors of these two finite sums are not bounded here. With that reservation, the inequality holds at the six points, so each disc $|s-s_0|<10^{-2}$ contains exactly one zero of $G$. The six centres have real parts between $0.2277$ and $1.1273$.
++Table~\CGref{tab:rouche} reports the test \CGeqref{eq:rouche} at six points $s_0$, with $\mathsf M=4000$, $\mathsf N=200$, $\mathsf L=65536$ and $\varsigma=10^{-2}$. The six centres are the decimal numbers printed in the table, taken as exact rational numbers. The finite sums $\eta_0$ and $\eta_1$, the bounds $E_0$ and $E_1$ and the two sides of \CGeqref{eq:rouche} were enclosed in ball arithmetic with the library Arb \cite{Johansson2017}, at a precision of $128$ bits. In this arithmetic every operation returns a midpoint and a radius such that the ball contains the exact result, so the rounding errors are inside the radii. The radii of the real and imaginary parts of $\eta_0$ and $\eta_1$ are below $10^{-32}$. At each of the six points the upper bound of the left side of \CGeqref{eq:rouche} is smaller than the lower bound of the right side, and the left side is less than $0.47$ times the right side. By Proposition~\CGref{prop:rouche}, each disc $|s-s_0|<10^{-2}$ contains exactly one zero of $G$, and this zero is simple. The entries of Table~\CGref{tab:rouche} are the enclosures rounded to the digits shown. The six centres have real parts between $0.2277$ and $1.1273$.
+ 
+ \begin{table}[ht]
+ \centering
+@@ -708,7 +709,7 @@
+ \begin{equation}\label{eq:J2}
+ J_2(d)=d^2\prod_{p\mid d}\Bigl(1-\frac1{p^2}\Bigr),
+ \end{equation}
+-the product running over the primes $p$ that divide $d$, so that $J_2(1)=1$. It is multiplicative, and for a prime power $p^a$ with $a\ge1$ we have $\sum_{i=0}^{a}J_2(p^i)=1+\sum_{i=1}^{a}(p^{2i}-p^{2i-2})=p^{2a}$. If $n=n_1n_2$ with $(n_1,n_2)=1$, every divisor of $n$ is uniquely a product $d_1d_2$ with $d_1\mid n_1$ and $d_2\mid n_2$, so the function $n\mapsto\sum_{d\mid n}J_2(d)$ is multiplicative too. Hence
++the product running over the primes $p$ that divide $d$, so that $J_2(1)=1$. It is multiplicative, and for a prime power $p^a$ with $a\ge1$ we have $\sum_{b=0}^{a}J_2(p^b)=1+\sum_{b=1}^{a}(p^{2b}-p^{2b-2})=p^{2a}$. If $n=n_1n_2$ with $(n_1,n_2)=1$, every divisor of $n$ is uniquely a product $d_1d_2$ with $d_1\mid n_1$ and $d_2\mid n_2$, so the function $n\mapsto\sum_{d\mid n}J_2(d)$ is multiplicative too. Hence
+ \begin{equation}\label{eq:J2sum}
+ \sum_{d\mid n}J_2(d)=n^2\qquad(n\ge1).
+ \end{equation}
+@@ -736,7 +737,7 @@
+ \end{corollary}
+ 
+ \begin{proof}
+-For an integer $n\ge1$ let $\operatorname{har}(n)=\sum_{i=1}^{n}1/i$. For $1\le d\le K$ the integers $k\le K$ divisible by $d$ are $k=di$ with $1\le i\le\lfloor K/d\rfloor$, so $\sum_{k\le K,\ d\mid k}1/k=\operatorname{har}(\lfloor K/d\rfloor)/d$. By \CGeqref{eq:squares} with $N=K$ and $c_k=1$,
++For an integer $n\ge1$ let $\operatorname{har}(n)=\sum_{b=1}^{n}1/b$. For $1\le d\le K$ the integers $k\le K$ divisible by $d$ are $k=db$ with $1\le b\le\lfloor K/d\rfloor$, so $\sum_{k\le K,\ d\mid k}1/k=\operatorname{har}(\lfloor K/d\rfloor)/d$. By \CGeqref{eq:squares} with $N=K$ and $c_k=1$,
+ \begin{equation}\label{eq:partialexact}
+ \operatorname{av}\Bigl[\Bigl(\sum_{k=1}^{K}h(x/k)\Bigr)^2\Bigr]=\frac{\pi^2}{12}\sum_{d=1}^{K}\frac{J_2(d)}{d^2}\,\operatorname{har}(\lfloor K/d\rfloor)^2 .
+ \end{equation}
+@@ -744,7 +745,7 @@
+ \begin{equation}\label{eq:partialupper}
+ \sum_{d=1}^{K}\Bigl(1+\log\frac Kd\Bigr)^2\le(1+\log K)^2+\int_1^K\Bigl(1+\log\frac K\tau\Bigr)^2d\tau\le(1+\log K)^2+K\int_0^1(1-\log u)^2\,du,
+ \end{equation}
+-and $\int_0^1(1-\log u)^2\,du=1+2+2=5$. For the lower bound we keep only the terms with $K/2<d\le K$. For them $\lfloor K/d\rfloor=1$ and $\operatorname{har}(1)=1$. Since $\prod_i(1-a_i)\ge1-\sum_ia_i$ for numbers $a_i\in[0,1]$, \CGeqref{eq:J2} gives $J_2(d)/d^2\ge1-\sum_{n\ge2}1/n^2=2-\pi^2/6$. The number of integers $d$ with $K/2<d\le K$ is $K-\lfloor K/2\rfloor\ge K/2$. This gives the lower bound in \CGeqref{eq:partial}.
++and $\int_0^1(1-\log u)^2\,du=1+2+2=5$. For the lower bound we keep only the terms with $K/2<d\le K$. For them $\lfloor K/d\rfloor=1$ and $\operatorname{har}(1)=1$. Since $\prod_b(1-a_b)\ge1-\sum_ba_b$ for numbers $a_b\in[0,1]$, \CGeqref{eq:J2} gives $J_2(d)/d^2\ge1-\sum_{n\ge2}1/n^2=2-\pi^2/6$. The number of integers $d$ with $K/2<d\le K$ is $K-\lfloor K/2\rfloor\ge K/2$. This gives the lower bound in \CGeqref{eq:partial}.
+ \end{proof}
+ 
+ \section{The power weight on a half-line}\label{sec:weighted}
+@@ -787,7 +788,7 @@
+ \begin{equation}\label{eq:Tpartial}
+ \frac{1}{2(m_*+j'l)(n_*+k'l)}=\frac{1}{2j'k'(l+\alpha)(l+\beta)}=\frac{1}{2j'k'(\alpha-\beta)}\Bigl(\frac1{l+\beta}-\frac1{l+\alpha}\Bigr)=\frac1{2r'}\Bigl(\frac1{l+\beta}-\frac1{l+\alpha}\Bigr).
+ \end{equation}
+-The left side is $O(l^{-2})$, so the series converges. Summing over $l\ge0$ and using the formula for $\psi(\alpha)-\psi(\beta)$ stated after \CGeqref{eq:psi} gives \CGeqref{eq:Tclosed}.
++The left side is $O(l^{-2})$, so the series converges. Summing over $l\ge0$ and using the formula for $\psi(\alpha)-\psi(\beta)$ stated after \CGeqref{eq:psi} gives \CGeqref{eq:Tclosed}. This holds for both signs of $r'$. Each term $1/(l+\beta)-1/(l+\alpha)$ has the sign of $\alpha-\beta$, which is the sign of $r'$. Hence in \CGeqref{eq:Tclosed} the difference $\psi(m_*/j')-\psi(n_*/k')$ and the denominator $2r'$ change sign together, and $T_{jk}(r)>0$.
+ \end{proof}
+ 
+ \begin{lemma}[Fourier coefficients of a product of two factors]\label{lem:coeff}\VCGreviewed{2}
+@@ -842,7 +843,7 @@
+ \begin{proof}
+ Put $L=[j,k]$, $F(x)=h(x/j)h(x/k)$ and $F_0=F-T_{jk}(0)$, where $T_{jk}(0)$ is the pair sum \CGeqref{eq:T} with $r=0$. By Theorem~\CGref{thm:flat} and \CGeqref{eq:T0}, $F$ has period $L$ and $\operatorname{av}[F_0]=0$. By the Cauchy--Schwarz inequality and \CGeqref{eq:flat} with $j=k$, $\operatorname{av}[|F|]\le(\operatorname{av}[h(x/j)^2]\operatorname{av}[h(x/k)^2])^{1/2}=\pi^2/12$. Also $0<T_{jk}(0)\le\pi^2/12$ because $g^2\le jk$. Hence $\int_0^L|F_0|\le L\pi^2/6$.
+ 
+-The absolute convergence follows from $\int_a^\infty|F|x^{-2\sigma-1}dx\le\sum_{i\ge0}(a+iL)^{-2\sigma-1}\int_0^L|F|<\infty$. For $x\ge a$ let $Y(x)=\int_a^xF_0$. The integral of $F_0$ over any interval of length $L$ is $0$, so $Y(x)$ equals the integral of $F_0$ over an interval of length less than $L$, and $|Y(x)|\le L\pi^2/6$. For $X>a$, integration by parts gives
++The absolute convergence follows from $\int_a^\infty|F|x^{-2\sigma-1}dx\le\sum_{b\ge0}(a+bL)^{-2\sigma-1}\int_0^L|F|<\infty$. For $x\ge a$ let $Y(x)=\int_a^xF_0$. The integral of $F_0$ over any interval of length $L$ is $0$, so $Y(x)$ equals the integral of $F_0$ over an interval of length less than $L$, and $|Y(x)|\le L\pi^2/6$. For $X>a$, integration by parts gives
+ \begin{equation}\label{eq:boundparts}
+ \int_a^XF_0(x)\,x^{-2\sigma-1}\,dx=Y(X)X^{-2\sigma-1}+(2\sigma+1)\int_a^XY(x)\,x^{-2\sigma-2}\,dx .
+ \end{equation}
+@@ -881,7 +882,7 @@
+ 
+ \section{Numerical comparison}\label{sec:num}
+ 
+-Table~\CGref{tab:check} compares the two sides of \CGeqref{eq:weighted} in four cases. The left side $I_{jk}(\sigma)$ was computed by numerical integration of \CGeqref{eq:I} over $150$ periods of length $[j,k]$, with the remaining tail replaced by its gcd term. By \CGeqref{eq:bound}, applied on the tail, the error of this replacement is at most $\frac{\pi^2}{6}[j,k]X^{-2\sigma-1}$ with $X=j\vee k+150\,[j,k]$. The right side was computed with the terms $r\le20000$ of the series, using \CGeqref{eq:Tclosed} for $T_{jk}(\pm r)$. The last column is the gcd term $\frac{\pi^2}{12}\frac{g^2}{jk}\frac{(j\vee k)^{-2\sigma}}{2\sigma}$ alone. The two computations agree to seven decimal places in the four cases. For $(j,k)=(2,3)$ and $(j,k)=(4,6)$ the weighted entry is negative.
++Table~\CGref{tab:check} compares the two sides of \CGeqref{eq:weighted} in four cases. It is a numerical check and is not used in any proof. The left side $I_{jk}(\sigma)$ was computed by numerical integration of \CGeqref{eq:I} over $150$ periods of length $[j,k]$, with the remaining tail replaced by its gcd term. By \CGeqref{eq:bound}, applied on the tail, the error of this replacement is at most $\frac{\pi^2}{6}[j,k]X^{-2\sigma-1}$ with $X=j\vee k+150\,[j,k]$. In the four cases of the table this bound equals $4.1\cdot10^{-7}$, $1.5\cdot10^{-7}$, $2.5\cdot10^{-5}$ and $1.4\cdot10^{-4}$, rounded up. The right side was computed with the terms $r\le20000$ of the series, using \CGeqref{eq:Tclosed} for $T_{jk}(\pm r)$. The error of the quadrature and the tail $r>20000$ of the series are not bounded here. The last column is the gcd term $\frac{\pi^2}{12}\frac{g^2}{jk}\frac{(j\vee k)^{-2\sigma}}{2\sigma}$ alone. The two computed values differ by at most $1.3\cdot10^{-8}$ in the four cases. For $(j,k)=(2,3)$ and $(j,k)=(4,6)$ the weighted entry is negative.
+ 
+ \begin{table}[ht]
+ \centering
+@@ -914,7 +915,7 @@
+ 
+ Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show $\log_{10}$ of the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, on a grid of $39\times157$ points. Figure~\CGref{fig:zetasurf} shows, on the same grid, the modulus of the Riemann zeta function $\zeta(s)$, which is not used anywhere else in this note. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le9.1\cdot10^{-7}$. This relation is not proved and not used in this note.
+ 
+-Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. At those six points the computed value of $|G-A|$ is below $10^{-11}$. Each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
++Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. The quotient $G/A$ is formed only at points where $A(s)\ne0$. At the $39\times157$ grid points the computed values satisfy $|A(s)|\ge0.072$, and the arcs are the level lines drawn from the grid values. That $A$ has no zero in the whole rectangle is not proved in this note. At those six points the computed value of $|G-A|$ is below $10^{-11}$. In the computed figure each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. This pairing is a numerical observation for these six zeros. It is not proved, and no correspondence between the zeros of $G$ and the points with $G=A$ is claimed. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
+ 
+ \begin{figure}[ht]
+ \centering
+@@ -955,7 +956,7 @@
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.6\textwidth]{fig_zero_map.png}
+-\caption{Zeros of $G$, points with $G=A$, and the arcs of $\operatorname{Im}(G/A)=0$ with $0<\operatorname{Re}(G/A)<1$.}\label{fig:zeromap}
++\caption{Computed zeros of $G$, computed points with $G=A$, and the computed arcs of $\operatorname{Im}(G/A)=0$ with $0<\operatorname{Re}(G/A)<1$, at points where $A\ne0$. The pairing shown by the arcs is a numerical observation.}\label{fig:zeromap}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+@@ -967,6 +968,10 @@
+ \clearpage
+ \begin{thebibliography}{9}
+ 
++\bibitem{Johansson2017}
++F.~Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithmetic, \emph{IEEE Trans. Comput.} \textbf{66} (2017), no.~8, 1281--1292.
++\href{https://doi.org/10.1109/TC.2017.2690633}{doi:10.1109/TC.2017.2690633}.
++
+ \bibitem{Smith1875}
+ H.~J.~S.~Smith, On the value of a certain arithmetical determinant, \emph{Proc. London Math. Soc.} \textbf{7} (1875/76), 208--212.
+ \href{https://doi.org/10.1112/plms/s1-7.1.208}{doi:10.1112/plms/s1-7.1.208}.

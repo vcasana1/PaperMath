@@ -1,0 +1,11 @@
+eq:Afactor
+eq:G
+eq:GminusA
+fig:Areal
+fig:GAsurf
+fig:Greal
+fig:Gsurf
+fig:zeromap
+preamble
+sec:fig
+tab:symbols

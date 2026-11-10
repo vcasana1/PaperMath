@@ -1,0 +1,44 @@
+G: 79 zeros, frequencies in [15.0013, 198.4690]
+   mean of the curve E_G on [0, 2 pi] = -0.00029 +0.00188 i   (trapezoid rule: -0.00029 +0.00188 i)
+   mean of |E_G(x)| on [0, 2 pi] = 0.0847,  max over x >= 0.3: 0.2542
+A: 101 zeros, frequencies in [-2.0000, 199.5787]
+   mean of the curve E_A on [0, 2 pi] = 0.00151 +0.00423 i   (trapezoid rule: 0.00151 +0.00423 i)
+   mean of |E_A(x)| on [0, 2 pi] = 0.0364,  max over x >= 0.3: 0.9642
+centroid of the zeros of G: 0.45923 +119.21486 i;  Re s in [0.1037, 1.1273]
+centroid of the real zeros of A: 99.44250
+
+E_G(log n) for 2 <= n <= 31:   n   kind   Re   Im   modulus
+  2  prime        -0.126  -0.085  0.152
+  3  prime        -0.161  -0.105  0.192
+  4  prime power  -0.122  -0.062  0.137
+  5  prime        -0.150  -0.125  0.195
+  6  other        -0.065  +0.003  0.065
+  7  prime        -0.145  -0.147  0.207
+  8  prime power  -0.080  -0.042  0.090
+  9  prime power  -0.093  -0.088  0.128
+ 10  other        -0.071  -0.039  0.081
+ 11  prime        -0.124  -0.176  0.215
+ 12  other        -0.005  +0.030  0.030
+ 13  prime        -0.106  -0.187  0.215
+ 14  other        -0.043  -0.032  0.054
+ 15  other        -0.053  -0.066  0.084
+ 16  prime power  -0.063  -0.068  0.092
+ 17  prime        -0.068  -0.196  0.208
+ 18  other        +0.026  +0.033  0.041
+ 19  prime        -0.054  -0.225  0.231
+ 20  other        +0.017  +0.011  0.020
+ 21  other        -0.032  -0.076  0.082
+ 22  other        -0.103  -0.069  0.124
+ 23  prime        -0.053  -0.235  0.241
+ 24  other        +0.029  -0.034  0.045
+ 25  prime power  -0.038  -0.161  0.165
+ 26  other        -0.082  -0.062  0.103
+ 27  prime power  -0.045  -0.183  0.189
+ 28  other        -0.020  -0.092  0.094
+ 29  prime        -0.030  -0.252  0.254
+ 30  other        +0.033  +0.002  0.033
+ 31  prime        -0.032  -0.236  0.238
+prime      : modulus between 0.152 and 0.254; real part between -0.161 and -0.030
+prime power: modulus between 0.090 and 0.189; real part between -0.122 and -0.038
+other      : modulus between 0.020 and 0.124; real part between -0.103 and +0.033
+E_A: |E_A(pi)| = 0.9263, |E_A(2 pi)| = 0.7840; max of |E_A| on [0.3, 2 pi] outside |x - pi| < 0.2 and x > 2 pi - 0.2: 0.0730
