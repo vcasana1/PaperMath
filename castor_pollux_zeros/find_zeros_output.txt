@@ -1,0 +1,2 @@
+G: 79 zeros found; argument principle on the rectangle gives 79.0000 (largest phase step 0.018 rad)
+A: 0 zeros found; argument principle on the rectangle gives 0.0000 (largest phase step 0.003 rad)

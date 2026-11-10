@@ -1,0 +1,8 @@
+G: N=79 zeros, o_k in [15.0013, 198.4690]
+   centroid of the zeros      = 0.4592320578 +119.2148649879 i
+   centroid of the series     = -0.0002930978 +0.0018830324 i   (trapezoid check -0.0002929926 +0.0018810610 i)
+   mean |S(x)| on [0,2pi]     = 0.084728
+A: N=101 zeros, o_k in [-2.0000, 199.5787]
+   centroid of the zeros      = 99.4425048548 +0.0000000000 i
+   centroid of the series     = 0.0015102058 +0.0042322262 i   (trapezoid check 0.0015105174 +0.0042294379 i)
+   mean |S(x)| on [0,2pi]     = 0.036361

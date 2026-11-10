@@ -1,0 +1,4 @@
+argument principle for A, -60<Re s<201, 0.001<Im s<0.2: -0.000000 (largest phase step 1.853)
+argument principle for A, -60<Re s<201, 0.2<Im s<200:   0.000000 (largest phase step 0.013)
+|A(n)| at even negative integers: A(-2)=5.83e-23, A(-4)=9.13e-02, A(-6)=1.12e-01, A(-8)=1.15e-01, A(-10)=1.12e-01, A(-12)=1.07e-01
+number of real zeros found: 101; first ones: -2.000000, -1.000000, 3.042767, 5.098062, 7.147762, 9.189172, 11.223259, 13.251545
