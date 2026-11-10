@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where G, A and zeta meet</title>
+<style>
+.viz-root{color-scheme:light;--page:#f9f9f7;--surface-1:#fcfcfb;--text-primary:#0b0b0b;--text-secondary:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--border:rgba(11,11,11,0.10);
+--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--mark:#0b0b0b;
+--q0:#fcfcfb;--q1:#cde2fb;--q2:#9ec5f4;--q3:#6da7ec;--q4:#3987e5;--q5:#256abf;--q6:#184f95;--q7:#0d366b}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .viz-root{color-scheme:dark;--page:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);
+--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--mark:#f0efec;
+--q0:#1a1a19;--q1:#0d366b;--q2:#104281;--q3:#184f95;--q4:#256abf;--q5:#3987e5;--q6:#6da7ec;--q7:#b7d3f6}}
+:root[data-theme="dark"] .viz-root{color-scheme:dark;--page:#0d0d0d;--surface-1:#1a1a19;--text-primary:#f0efec;--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--border:rgba(255,255,255,0.10);
+--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--mark:#f0efec;
+--q0:#1a1a19;--q1:#0d366b;--q2:#104281;--q3:#184f95;--q4:#256abf;--q5:#3987e5;--q6:#6da7ec;--q7:#b7d3f6}
+html,body{margin:0;background:var(--page)}
+.viz-root{background:var(--page);color:var(--text-primary);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:20px;max-width:1180px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px}
+h2{font-size:15px;margin:0 0 2px}
+.sub{color:var(--text-secondary);margin:0 0 14px;max-width:900px}
+.formula{font-family:"Latin Modern Math","STIX Two Math","Cambria Math",serif;font-size:17px;margin:6px 0 14px;color:var(--text-primary)}
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:center;background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:14px}
+.controls label{color:var(--text-secondary)}
+.controls output{font-variant-numeric:tabular-nums;font-weight:600;color:var(--text-primary);min-width:3.2em;display:inline-block}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.seg button{background:transparent;color:var(--text-secondary);border:0;padding:5px 10px;font:inherit;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--grid);color:var(--text-primary);font-weight:600}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px;position:relative}
+.note{color:var(--text-secondary);font-size:13px;margin:2px 0 8px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--text-secondary);margin:4px 0 6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:3px;border-radius:2px;display:inline-block}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:860px){.row{grid-template-columns:1fr}}
+canvas{display:block;width:100%}
+.tip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:6px 9px;font-size:12px;color:var(--text-primary);box-shadow:0 2px 8px rgba(0,0,0,.12);display:none;white-space:nowrap;font-variant-numeric:tabular-nums;z-index:5}
+.tip .k{color:var(--text-secondary)}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:4px 8px;text-align:right;border-bottom:1px solid var(--grid)}
+th{color:var(--text-secondary);font-weight:600}
+td:first-child,th:first-child{text-align:left}
+.ramp{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary);margin-top:6px}
+.ramp i{display:inline-block;width:160px;height:10px;border-radius:3px;border:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="viz-root">
+<h1>Where G, A and ζ meet</h1>
+<p class="sub">G(s) = ∫<sub>1</sub><sup>∞</sup> log|2 sin πu| u<sup>−s−1</sup> du and the auxiliary function A of Castor and Pollux I, Proposition 14.1. Proposition 17.1 of version 5 proves the identity below. For non-real s, G(s) = A(s) exactly when ζ(s) = 0, and at those points G and A are equal but <b>not zero</b>: they meet at a common nonzero value.</p>
+<div class="formula">G(s) − A(s) = (π/s) · cot(πs/2) · ζ(s)</div>
+
+<div class="controls">
+  <span><label for="sig">Re s = σ </label><input id="sig" type="range" min="0" max="16" step="1" value="8" aria-label="sigma"> <output id="sigOut">0.50</output></span>
+  <span><label>Range of t = Im s </label><span class="seg" id="rng"><button data-a="1" data-b="60">1–60</button><button data-a="10" data-b="60" aria-pressed="true">10–60</button><button data-a="10" data-b="40">10–40</button><button data-a="12" data-b="16">12–16</button></span></span>
+  <span class="note" style="margin:0">Hover any chart to read values. Click the map to set σ.</span>
+</div>
+
+<div class="card">
+  <h2>Moduli along the line Re s = σ</h2>
+  <p class="note">Linear scale, values above 1.5 clipped. Dotted verticals: imaginary parts γ<sub>k</sub> of the zeros of ζ. At σ = 0.5, |G − A| and |ζ| touch 0 together at every γ<sub>k</sub>, while |G| and |A| stay positive there.</p>
+  <div class="legend"><span><i class="sw" style="background:var(--s1)"></i>|G(s)|</span><span><i class="sw" style="background:var(--s2)"></i>|A(s)|</span><span><i class="sw" style="background:var(--s3)"></i>|G(s) − A(s)|</span><span><i class="sw" style="background:var(--s4)"></i>|ζ(s)|</span></div>
+  <canvas id="c1" height="330"></canvas>
+  <div class="tip" id="tip1"></div>
+</div>
+
+<div class="row">
+  <div class="card">
+    <h2>G and A in the complex plane</h2>
+    <p class="note">The curves t ↦ G(σ+it) and t ↦ A(σ+it). Dots: the points with t = γ<sub>k</sub>, filled on G, ringed on A. At σ = 0.5 each filled dot sits inside its ring: that is the meeting point. Hovering the top chart joins G and A at the same t; the segment has length |G − A|.</p>
+    <div class="legend"><span><i class="sw" style="background:var(--s1)"></i>G(σ+it)</span><span><i class="sw" style="background:var(--s2)"></i>A(σ+it)</span></div>
+    <canvas id="c2" height="420"></canvas>
+    <div class="tip" id="tip2"></div>
+  </div>
+  <div class="card">
+    <h2>|G − A| on the strip</h2>
+    <p class="note">0.05 ≤ σ ≤ 0.95. Light = near 0, values above 0.03 at the darkest step. Rings: the points ½ + iγ<sub>k</sub>. The pale spots, where G = A, line up on σ = 0.5. Click to set σ.</p>
+    <canvas id="c3" height="420"></canvas>
+    <div class="ramp"><span>0</span><i id="rampbar"></i><span>≥ 0.03</span></div>
+    <div class="tip" id="tip3"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>3D: the surfaces |G|, |A|, |ζ| and the curve where |G| and |A| cut</h2>
+  <p class="note">0.05 ≤ σ ≤ 0.95, 10 ≤ t ≤ 60, linear vertical axis, values above 0.4 clipped. The black curve is where the surfaces |G| and |A| cut each other (|G| = |A|), drawn at its height |G|. One branch of it crosses the strip through each point ½ + iγ<sub>k</sub>. At those points G and A are equal as complex numbers (red points on the curve, at height |G(ρ)| = |A(ρ)| between 0.05 and 0.15) and |ζ| = 0 (red points at height 0). The dashed verticals join the two: the three surfaces meet above the same points ½ + iγ<sub>k</sub>, but not at a common height, because |G| = |A| ≠ 0 there. Drag to rotate; click a legend entry to hide a surface.</p>
+  <div id="c4" style="height:620px"></div>
+</div>
+<div class="card">
+  <h2>Values at s = ½ + iγ<sub>k</sub></h2>
+  <p class="note">G and A computed from their definitions (no ζ); ζ computed independently. Computed values in double precision.</p>
+  <table id="tab"><thead><tr><th>k</th><th>γ<sub>k</sub></th><th>G(½+iγ<sub>k</sub>)</th><th>A(½+iγ<sub>k</sub>)</th><th>|G − A|</th><th>|ζ|</th></tr></thead><tbody></tbody></table>
+</div>
+<p class="note">Castor and Pollux I, version 5. Data: cut_data.py (grid t step 0.02 for the lines, 0.01 × 0.1 for the map); on the line grid max |G − A − (π/s)cot(πs/2)ζ(s)| = 2.7·10<sup>−11</sup>.</p>
+</div>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script>
+const D = __DATA__;
+const D3 = __DATA3D__;
+const css = n => getComputedStyle(document.querySelector('.viz-root')).getPropertyValue(n).trim();
+let si = 8, ta = 10, tb = 60, hoverT = null;
+const sigs = D.sig, T = D.t;
+const fmt = (x, d = 4) => (Math.abs(x) < 1e-3 && x !== 0) ? x.toExponential(1) : x.toFixed(d);
+const cplx = (r, i) => fmt(r, 5) + (i < 0 ? ' − ' : ' + ') + fmt(Math.abs(i), 5) + 'i';
+
+function setup(c) {
+  const dpr = window.devicePixelRatio || 1, w = c.clientWidth, h = +c.getAttribute('height');
+  c.width = w * dpr; c.height = h * dpr; c.style.height = h + 'px';
+  const g = c.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); return [g, w, h];
+}
+function idxRange() { let a = 0; while (a < T.length && T[a] < ta) a++; let b = T.length - 1; while (b > 0 && T[b] > tb) b--; return [a, b]; }
+function series(k) {
+  const s = String(sigs[si]);
+  if (k === 'G') return D.Gr[s].map((r, i) => Math.hypot(r, D.Gi[s][i]));
+  if (k === 'A') return D.Ar[s].map((r, i) => Math.hypot(r, D.Ai[s][i]));
+  return D[k][s];
+}
+function niceTicks(lo, hi, n) {
+  const raw = (hi - lo) / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p;
+  const st = (m < 1.5 ? 1 : m < 3 ? 2 : m < 7 ? 5 : 10) * p, out = [];
+  for (let v = Math.ceil(lo / st) * st; v <= hi + 1e-12; v += st) out.push(+v.toFixed(10)); return out;
+}
+
+// ---------- chart 1
+const c1 = document.getElementById('c1'), tip1 = document.getElementById('tip1');
+let L1 = null;
+function draw1() {
+  const [g, w, h] = setup(c1), m = {l: 44, r: 54, t: 8, b: 30}, YM = 1.5;
+  const [a, b] = idxRange(), X = t => m.l + (t - ta) / (tb - ta) * (w - m.l - m.r), Y = v => m.t + (1 - Math.min(v, YM) / YM) * (h - m.t - m.b);
+  L1 = {m, w, h, X, a, b};
+  g.font = '12px system-ui,sans-serif'; g.fillStyle = css('--muted'); g.strokeStyle = css('--grid'); g.lineWidth = 1;
+  for (const v of niceTicks(0, YM, 5)) { g.beginPath(); g.moveTo(m.l, Y(v)); g.lineTo(w - m.r, Y(v)); g.stroke(); g.textAlign = 'right'; g.fillText(v.toFixed(1), m.l - 6, Y(v) + 4); }
+  g.textAlign = 'center';
+  for (const v of niceTicks(ta, tb, 8)) g.fillText(v, X(v), h - m.b + 16);
+  g.fillText('t = Im s', (m.l + w - m.r) / 2, h - 2);
+  g.strokeStyle = css('--axis'); g.beginPath(); g.moveTo(m.l, Y(0)); g.lineTo(w - m.r, Y(0)); g.stroke();
+  g.setLineDash([2, 3]); g.strokeStyle = css('--muted');
+  for (const z of D.zeros) if (z >= ta && z <= tb) { g.beginPath(); g.moveTo(X(z), m.t); g.lineTo(X(z), Y(0)); g.stroke(); }
+  g.setLineDash([]);
+  const keys = [['G', '--s1', '|G|'], ['A', '--s2', '|A|'], ['D', '--s3', '|G−A|'], ['Z', '--s4', '|ζ|']];
+  for (const [k, col] of keys) {
+    const v = series(k); g.strokeStyle = css(col); g.lineWidth = 2; g.lineJoin = 'round'; g.beginPath();
+    for (let i = a; i <= b; i++) { const x = X(T[i]), y = Y(v[i]); i === a ? g.moveTo(x, y) : g.lineTo(x, y); } g.stroke();
+  }
+  // direct labels at the right end, text in ink, small colored tick beside
+  const ends = keys.map(([k, col, lab]) => [Y(series(k)[b]), col, lab]).sort((p, q) => p[0] - q[0]);
+  for (let i = 1; i < ends.length; i++) if (ends[i][0] - ends[i - 1][0] < 13) ends[i][0] = ends[i - 1][0] + 13;
+  g.textAlign = 'left';
+  for (const [y, col, lab] of ends) { g.fillStyle = css(col); g.fillRect(w - m.r + 4, y - 1.5, 8, 3); g.fillStyle = css('--text-secondary'); g.fillText(lab, w - m.r + 15, y + 4); }
+  if (hoverT !== null && hoverT >= ta && hoverT <= tb) {
+    g.strokeStyle = css('--text-secondary'); g.lineWidth = 1; g.beginPath(); g.moveTo(X(hoverT), m.t); g.lineTo(X(hoverT), Y(0)); g.stroke();
+    const i = nearest(hoverT);
+    for (const [k, col] of keys) { const y = Y(series(k)[i]); g.fillStyle = css(col); g.strokeStyle = css('--surface-1'); g.lineWidth = 2; g.beginPath(); g.arc(X(T[i]), y, 4.5, 0, 7); g.fill(); g.stroke(); }
+  }
+}
+function nearest(t) { return Math.max(0, Math.min(T.length - 1, Math.round((t - T[0]) / 0.02))); }
+c1.addEventListener('mousemove', e => {
+  if (!L1) return; const r = c1.getBoundingClientRect(), x = e.clientX - r.left;
+  const t = ta + (x - L1.m.l) / (L1.w - L1.m.l - L1.m.r) * (tb - ta);
+  if (t < ta || t > tb) { leave1(); return; }
+  hoverT = t; const i = nearest(t), s = String(sigs[si]);
+  tip1.innerHTML = `<div><span class="k">s =</span> ${sigs[si].toFixed(2)} + ${T[i].toFixed(2)}i</div>` +
+    `<div><span class="k">|G| </span>${fmt(series('G')[i])}</div><div><span class="k">|A| </span>${fmt(series('A')[i])}</div>` +
+    `<div><span class="k">|G − A| </span>${fmt(D.D[s][i])}</div><div><span class="k">|ζ| </span>${fmt(D.Z[s][i])}</div>`;
+  place(tip1, c1, x, e.clientY - r.top); draw1(); draw2();
+});
+function leave1() { hoverT = null; tip1.style.display = 'none'; draw1(); draw2(); }
+c1.addEventListener('mouseleave', leave1);
+function place(tip, c, x, y) { tip.style.display = 'block'; const cw = c.clientWidth; const tw = tip.offsetWidth; tip.style.left = (c.offsetLeft + (x + 14 + tw > cw ? x - tw - 14 : x + 14)) + 'px'; tip.style.top = (c.offsetTop + Math.max(0, y - 30)) + 'px'; }
+
+// ---------- chart 2: complex plane
+const c2 = document.getElementById('c2'), tip2 = document.getElementById('tip2');
+let L2 = null;
+function draw2() {
+  const [g, w, h] = setup(c2), m = {l: 48, r: 12, t: 10, b: 32}, s = String(sigs[si]);
+  const [a, b] = idxRange(), ga = Math.max(a, nearest(Math.max(ta, 5)));
+  const xs = [], ys = [];
+  for (let i = ga; i <= b; i++) { xs.push(D.Gr[s][i], D.Ar[s][i]); ys.push(D.Gi[s][i], D.Ai[s][i]); }
+  let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const pw = w - m.l - m.r, ph = h - m.t - m.b, sc = Math.min(pw / (x1 - x0 || 1), ph / (y1 - y0 || 1)) * 0.92;
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, X = v => m.l + pw / 2 + (v - cx) * sc, Y = v => m.t + ph / 2 - (v - cy) * sc;
+  L2 = {X, Y, sc, m, w, h, cx, cy, pw, ph};
+  g.font = '12px system-ui,sans-serif'; g.strokeStyle = css('--grid'); g.fillStyle = css('--muted'); g.lineWidth = 1;
+  const xr = [cx - pw / 2 / sc, cx + pw / 2 / sc], yr = [cy - ph / 2 / sc, cy + ph / 2 / sc];
+  g.textAlign = 'center'; for (const v of niceTicks(xr[0], xr[1], 5)) { g.beginPath(); g.moveTo(X(v), m.t); g.lineTo(X(v), h - m.b); g.stroke(); g.fillText(v, X(v), h - m.b + 16); }
+  g.textAlign = 'right'; for (const v of niceTicks(yr[0], yr[1], 6)) { g.beginPath(); g.moveTo(m.l, Y(v)); g.lineTo(w - m.r, Y(v)); g.stroke(); g.fillText(v, m.l - 6, Y(v) + 4); }
+  g.textAlign = 'center'; g.fillText('Re', (m.l + w - m.r) / 2, h - 2); g.save(); g.translate(12, (m.t + h - m.b) / 2); g.rotate(-Math.PI / 2); g.fillText('Im', 0, 0); g.restore();
+  for (const [re, im, col] of [[D.Gr, D.Gi, '--s1'], [D.Ar, D.Ai, '--s2']]) {
+    g.strokeStyle = css(col); g.lineWidth = 2; g.beginPath();
+    for (let i = ga; i <= b; i++) { const x = X(re[s][i]), y = Y(im[s][i]); i === ga ? g.moveTo(x, y) : g.lineTo(x, y); } g.stroke();
+  }
+  for (const z of D.zeros) {
+    if (z < T[ga] || z > tb) continue; const i = nearest(z);
+    g.strokeStyle = css('--s2'); g.lineWidth = 2; g.beginPath(); g.arc(X(D.Ar[s][i]), Y(D.Ai[s][i]), 7, 0, 7); g.stroke();
+    g.fillStyle = css('--s1'); g.strokeStyle = css('--surface-1'); g.beginPath(); g.arc(X(D.Gr[s][i]), Y(D.Gi[s][i]), 4, 0, 7); g.fill(); g.stroke();
+  }
+  if (hoverT !== null && hoverT >= T[ga] && hoverT <= tb) {
+    const i = nearest(hoverT), gx = X(D.Gr[s][i]), gy = Y(D.Gi[s][i]), ax = X(D.Ar[s][i]), ay = Y(D.Ai[s][i]);
+    g.strokeStyle = css('--mark'); g.lineWidth = 1.5; g.beginPath(); g.moveTo(gx, gy); g.lineTo(ax, ay); g.stroke();
+    for (const [x, y, col] of [[gx, gy, '--s1'], [ax, ay, '--s2']]) { g.fillStyle = css(col); g.strokeStyle = css('--surface-1'); g.lineWidth = 2; g.beginPath(); g.arc(x, y, 6, 0, 7); g.fill(); g.stroke(); }
+  }
+}
+c2.addEventListener('mousemove', e => {
+  if (!L2) return; const r = c2.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, s = String(sigs[si]);
+  const [a, b] = idxRange(), ga = Math.max(a, nearest(Math.max(ta, 5))); let best = 1e9, bi = -1, bw = '';
+  for (let i = ga; i <= b; i++) for (const [re, im, nm] of [[D.Gr, D.Gi, 'G'], [D.Ar, D.Ai, 'A']]) {
+    const d = Math.hypot(L2.X(re[s][i]) - x, L2.Y(im[s][i]) - y); if (d < best) { best = d; bi = i; bw = nm; } }
+  if (best > 14) { tip2.style.display = 'none'; return; }
+  tip2.innerHTML = `<div><span class="k">t =</span> ${T[bi].toFixed(2)}, <span class="k">nearest curve</span> ${bw}</div><div><span class="k">G </span>${cplx(D.Gr[s][bi], D.Gi[s][bi])}</div><div><span class="k">A </span>${cplx(D.Ar[s][bi], D.Ai[s][bi])}</div><div><span class="k">|G − A| </span>${fmt(D.D[s][bi])}</div>`;
+  place(tip2, c2, x, y);
+});
+c2.addEventListener('mouseleave', () => tip2.style.display = 'none');
+
+// ---------- chart 3: map of |G - A|
+const c3 = document.getElementById('c3'), tip3 = document.getElementById('tip3');
+let L3 = null;
+const steps = ['--q0', '--q1', '--q2', '--q3', '--q4', '--q5', '--q6', '--q7'];
+function hex(c) { c = c.replace('#', ''); return [0, 2, 4].map(k => parseInt(c.substr(k, 2), 16)); }
+function rampColor(v) { // v in [0,1]
+  const cs = steps.map(n => hex(css(n))), p = Math.min(1, Math.max(0, v)) * (cs.length - 1), k = Math.min(cs.length - 2, Math.floor(p)), f = p - k;
+  return cs[k].map((c, j) => Math.round(c + (cs[k + 1][j] - c) * f));
+}
+function draw3() {
+  const [g, w, h] = setup(c3), m = {l: 40, r: 12, t: 10, b: 32}, MS = D.msig, MT = D.mt, VM = 0.03;
+  let a = 0; while (a < MT.length && MT[a] < ta) a++; let b = MT.length - 1; while (b > 0 && MT[b] > tb) b--;
+  const pw = w - m.l - m.r, ph = h - m.t - m.b;
+  const X = sg => m.l + (sg - 0.045) / 0.91 * pw, Y = t => m.t + (1 - (t - ta) / (tb - ta)) * ph;
+  L3 = {X, Y, m, pw, ph, a, b};
+  const img = g.createImageData(Math.ceil(pw), Math.ceil(ph)), dw = img.width, dh = img.height;
+  for (let py = 0; py < dh; py++) {
+    const t = tb - py / dh * (tb - ta); let it = Math.round((t - MT[0]) / 0.1); it = Math.max(0, Math.min(MT.length - 1, it));
+    for (let px = 0; px < dw; px++) {
+      const sg = 0.045 + px / dw * 0.91; let is = Math.round((sg - MS[0]) / 0.01); is = Math.max(0, Math.min(MS.length - 1, is));
+      const v = Math.pow(10, D.map[it][is]) / VM, c = rampColor(v), o = 4 * (py * dw + px);
+      img.data[o] = c[0]; img.data[o + 1] = c[1]; img.data[o + 2] = c[2]; img.data[o + 3] = 255;
+    }
+  }
+  const dpr = window.devicePixelRatio || 1; const tmp = document.createElement('canvas'); tmp.width = dw; tmp.height = dh; tmp.getContext('2d').putImageData(img, 0, 0);
+  g.imageSmoothingEnabled = true; g.drawImage(tmp, m.l, m.t, pw, ph);
+  g.font = '12px system-ui,sans-serif'; g.fillStyle = css('--muted'); g.textAlign = 'center';
+  for (const v of [0.1, 0.3, 0.5, 0.7, 0.9]) g.fillText(v, X(v), h - m.b + 16);
+  g.fillText('σ = Re s', m.l + pw / 2, h - 2); g.textAlign = 'right';
+  for (const v of niceTicks(ta, tb, 7)) g.fillText(v, m.l - 6, Y(v) + 4);
+  g.save(); g.translate(10, m.t + ph / 2); g.rotate(-Math.PI / 2); g.textAlign = 'center'; g.fillText('t', 0, 0); g.restore();
+  g.strokeStyle = css('--s2'); g.lineWidth = 2; g.setLineDash([5, 4]); g.beginPath(); g.moveTo(X(sigs[si]), m.t); g.lineTo(X(sigs[si]), m.t + ph); g.stroke(); g.setLineDash([]);
+  g.strokeStyle = css('--mark'); g.lineWidth = 1.5;
+  for (const z of D.zeros) if (z >= ta && z <= tb) { g.beginPath(); g.arc(X(0.5), Y(z), 6, 0, 7); g.stroke(); }
+}
+function v3(e) {
+  const r = c3.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+  const sg = 0.045 + (x - L3.m.l) / L3.pw * 0.91, t = tb - (y - L3.m.t) / L3.ph * (tb - ta); return [x, y, sg, t];
+}
+c3.addEventListener('mousemove', e => {
+  if (!L3) return; const [x, y, sg, t] = v3(e);
+  if (sg < 0.05 || sg > 0.95 || t < ta || t > tb) { tip3.style.display = 'none'; return; }
+  const is = Math.round((sg - D.msig[0]) / 0.01), it = Math.round((t - D.mt[0]) / 0.1);
+  tip3.innerHTML = `<div><span class="k">s =</span> ${D.msig[is].toFixed(2)} + ${D.mt[it].toFixed(1)}i</div><div><span class="k">|G − A| </span>${fmt(Math.pow(10, D.map[it][is]))}</div><div class="k">click: set σ</div>`;
+  place(tip3, c3, x, y);
+});
+c3.addEventListener('mouseleave', () => tip3.style.display = 'none');
+c3.addEventListener('click', e => { const [, , sg] = v3(e); let k = Math.round((sg - 0.1) / 0.05); k = Math.max(0, Math.min(16, k)); setSig(k); });
+
+// ---------- controls, table
+const sl = document.getElementById('sig'), so = document.getElementById('sigOut');
+function setSig(k) { si = k; sl.value = k; so.textContent = sigs[k].toFixed(2); drawAll(); }
+sl.addEventListener('input', () => setSig(+sl.value));
+document.querySelectorAll('#rng button').forEach(bt => bt.addEventListener('click', () => {
+  document.querySelectorAll('#rng button').forEach(x => x.setAttribute('aria-pressed', 'false')); bt.setAttribute('aria-pressed', 'true');
+  ta = +bt.dataset.a; tb = +bt.dataset.b; drawAll(); }));
+const tb_ = document.querySelector('#tab tbody');
+for (const r of D.rows) { const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${r[0]}</td><td>${r[1].toFixed(6)}</td><td>${cplx(r[2], r[3])}</td><td>${cplx(r[4], r[5])}</td><td>${r[6].toExponential(1)}</td><td>${r[7].toExponential(1)}</td>`; tb_.appendChild(tr); }
+function drawAll() { draw1(); draw2(); draw3(); document.getElementById('rampbar').style.background = 'linear-gradient(90deg,' + steps.map(n => css(n)).join(',') + ')'; }
+window.addEventListener('resize', drawAll);
+if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { drawAll(); draw4(); });
+new MutationObserver(() => { drawAll(); draw4(); }).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+
+// ---------- chart 4: 3D
+function draw4() {
+  if (!window.Plotly) { document.getElementById('c4').textContent = 'Plotly did not load.'; return; }
+  const ZM = 0.4, clip = M => M.map(r => r.map(v => Math.min(v, ZM)));
+  const one = c => [[0, c], [1, c]];
+  const surf = (Z, col, name, op) => ({type: 'surface', x: D3.s, y: D3.t, z: clip(Z), name, showlegend: true, opacity: op, colorscale: one(col), showscale: false,
+    hovertemplate: name + '<br>σ=%{x:.2f}, t=%{y:.2f}<br>value %{z:.4f}<extra></extra>', contours: {z: {show: false}}});
+  const tr = [surf(D3.G, css('--s1'), '|G|', 0.55), surf(D3.A, css('--s2'), '|A|', 0.55), surf(D3.Z, css('--s4'), '|ζ|', 0.22)];
+  D3.curves.forEach((c, k) => tr.push({type: 'scatter3d', mode: 'lines', x: c[0], y: c[1], z: c[2], line: {color: css('--mark'), width: 6},
+    name: '|G| = |A|', legendgroup: 'cut', showlegend: k === 0, hovertemplate: '|G| = |A|<br>σ=%{x:.3f}, t=%{y:.3f}<br>height %{z:.4f}<extra></extra>'}));
+  const red = '#e34948', P = D3.pts;
+  tr.push({type: 'scatter3d', mode: 'markers', x: P.map(() => 0.5), y: P.map(p => p[0]), z: P.map(p => p[1]), marker: {size: 7, color: red, line: {color: css('--surface-1'), width: 1}},
+    name: 'G = A (½+iγ_k)', hovertemplate: 'G = A at ½+i%{y:.6f}<br>|G| = |A| = %{z:.5f}<extra></extra>'});
+  tr.push({type: 'scatter3d', mode: 'markers', x: P.map(() => 0.5), y: P.map(p => p[0]), z: P.map(() => 0), marker: {size: 6, color: red, symbol: 'diamond'},
+    name: 'ζ = 0', hovertemplate: 'ζ = 0 at ½+i%{y:.6f}<extra></extra>'});
+  const vx = [], vy = [], vz = []; for (const p of P) { vx.push(0.5, 0.5, null); vy.push(p[0], p[0], null); vz.push(0, p[1], null); }
+  tr.push({type: 'scatter3d', mode: 'lines', x: vx, y: vy, z: vz, line: {color: red, width: 3, dash: 'dash'}, name: 'same point s', hoverinfo: 'skip'});
+  const ax = (title, extra) => Object.assign({title: {text: title, font: {color: css('--text-secondary')}}, gridcolor: css('--grid'), zerolinecolor: css('--axis'), color: css('--muted'), backgroundcolor: css('--surface-1'), showbackground: true}, extra || {});
+  Plotly.react('c4', tr, {paper_bgcolor: css('--surface-1'), font: {color: css('--text-secondary'), family: 'system-ui,sans-serif', size: 12}, margin: {l: 0, r: 0, t: 0, b: 0},
+    legend: {orientation: 'h', x: 0, y: 1.0, bgcolor: 'rgba(0,0,0,0)'},
+    scene: {xaxis: ax('σ = Re s', {range: [0.05, 0.95]}), yaxis: ax('t = Im s'), zaxis: ax('modulus', {range: [0, ZM]}), aspectmode: 'manual', aspectratio: {x: 1, y: 2.1, z: 0.8},
+      camera: {eye: {x: 1.5, y: -1.3, z: 1.7}}}}, {responsive: true, displaylogo: false});
+}
+setSig(8);
+draw4();
+</script>
+</body>
+</html>

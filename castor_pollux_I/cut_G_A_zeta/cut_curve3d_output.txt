@@ -1,0 +1,15 @@
+|G| = |A| curve: 14 pieces, 2172 points
+gamma=14.134725 |G|=|A|=0.14734 distance to the computed curve 0.0003
+gamma=21.022040 |G|=|A|=0.11279 distance to the computed curve 0.0000
+gamma=25.010858 |G|=|A|=0.10019 distance to the computed curve 0.0001
+gamma=30.424876 |G|=|A|=0.08753 distance to the computed curve 0.0001
+gamma=32.935062 |G|=|A|=0.08283 distance to the computed curve 0.0001
+gamma=37.586178 |G|=|A|=0.07550 distance to the computed curve 0.0002
+gamma=40.918719 |G|=|A|=0.07110 distance to the computed curve 0.0003
+gamma=43.327073 |G|=|A|=0.06826 distance to the computed curve 0.0001
+gamma=48.005151 |G|=|A|=0.06344 distance to the computed curve 0.0002
+gamma=49.773832 |G|=|A|=0.06181 distance to the computed curve 0.0008
+gamma=52.970321 |G|=|A|=0.05910 distance to the computed curve 0.0003
+gamma=56.446248 |G|=|A|=0.05644 distance to the computed curve 0.0002
+gamma=59.347044 |G|=|A|=0.05442 distance to the computed curve 0.0000
+surfaces 46 x 501; time 15.2 s
