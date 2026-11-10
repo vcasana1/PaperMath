@@ -1,6 +1,6 @@
-# Castor-Pollux I v3: surfaces on a fine grid (all labels in English).
-# The surfaces show -log10|F(s)| on the vertical axis, so that a zero of F is a peak.  The grid is a tensor grid that
-# contains the real and imaginary parts of the zeros as grid lines; values are clipped at CLIP.
+# Castor-Pollux I v4: surfaces on a fine grid (all labels in English).
+# The surfaces show |F(s)| on a linear vertical axis, inverted (0 at the top), so that a zero of F is a peak whose tip is at 0.  The grid is a tensor grid that
+# contains the real and imaginary parts of the zeros as grid lines.
 # G and A are evaluated with cp_eval.py (kernel K only; no zeta function).  zeta is used only for its own figure,
 # for the six points 1/2 + i t and for the check of the grid relation.
 import time
@@ -12,8 +12,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import cp_eval as E
 
-CLIP = 6.0
-out = open('figures_v3_output.txt', 'w')
+out = open('figures_v4_output.txt', 'w')
 
 
 def log(s=''):
@@ -60,36 +59,32 @@ log('min |A| on the fine grid = %.6f at s = %.2f + %.2f i;  max |A| = %.4f' % (n
 gd = np.abs(E.G(zD) - E.A(zD))
 log('|G - A| at the six points 1/2 + i t: ' + ' '.join('%.1e' % v for v in gd))
 log('|G| at the six zeros of G (double precision evaluator): ' + ' '.join('%.1e' % v for v in np.abs(E.G(zG40))))
-np.savez_compressed('grid_values_v3.npz', sigma=sig, t=tt, G=Gv, A=Av, zeta=Zv)
+np.savez_compressed('grid_values_v4.npz', sigma=sig, t=tt, G=Gv, A=Av, zeta=Zv)
 
 
-def surface(V, title, fname, zlabel, marks, marklabel, Sg=S, Tg=T, elev=32, azim=-62, lo=None, figsize=(9, 7)):
-    """-log10|F| is the vertical axis, so a zero of F is a peak."""
-    Zs = -np.log10(np.abs(V) + 1e-300)
-    Zs = np.clip(Zs, lo, CLIP)
+def surface(V, title, fname, zlabel, marks, marklabel, Sg=S, Tg=T, elev=52, azim=-66, top=None, figsize=(9, 7.5)):
+    """|F| on a linear vertical axis, inverted (0 at the top): a zero of F is a peak whose tip is at 0."""
+    Zs = np.abs(V)
+    if top is not None:
+        Zs = np.minimum(Zs, top)
     fig = plt.figure(figsize=figsize)
-    ax = fig.add_subplot(111, projection='3d')
-    ax.plot_surface(Sg, Tg, Zs, cmap='viridis', linewidth=0, antialiased=False, rcount=Sg.shape[0], ccount=Sg.shape[1])
+    ax = fig.add_subplot(111, projection='3d', computed_zorder=False)
+    ax.plot_surface(Sg, Tg, Zs, cmap='viridis_r', zorder=1, linewidth=0, antialiased=False, rcount=Sg.shape[0], ccount=Sg.shape[1])
     if len(marks):
-        # the section of the surface along Im s through each zero, drawn as a line so that the thin peak is visible
-        sv, tv = Sg[0], Tg[:, 0]
-        for z in marks:
-            j = np.argmin(np.abs(sv - z.real))
-            m = np.abs(tv - z.imag) <= 0.6
-            ax.plot(np.full(m.sum(), sv[j]), tv[m], Zs[m, j], color='gold', lw=0.9, zorder=5)
-        ax.scatter(marks.real, marks.imag, np.full(len(marks), CLIP), color='red', s=22, depthshade=False, label=marklabel, zorder=6)
+        ax.scatter(marks.real, marks.imag, np.zeros(len(marks)), color='red', s=26, depthshade=False, label=marklabel, zorder=10)
         ax.legend(loc='upper left', fontsize=9)
     ax.set_xlabel('Re s'); ax.set_ylabel('Im s'); ax.set_zlabel(zlabel); ax.set_title(title, fontsize=10)
+    ax.set_zlim(0, Zs.max()); ax.invert_zaxis()
     ax.view_init(elev=elev, azim=azim)
     fig.tight_layout(); fig.savefig(fname, dpi=200); plt.close(fig)
-    log('wrote %s' % fname)
+    log('wrote %s   (largest plotted value %.4f)' % (fname, Zs.max()))
 
 
 none = np.array([], complex)
-surface(Gv, 'G(s): the zeros are the peaks of -log10 |G(s)| (clipped at %g)' % CLIP, 'fig_G_surface.png', '-log10 |G(s)|', zG40, 'zeros of G')
-surface(Av, 'A(s) on the same rectangle: no zero of A here', 'fig_A_surface.png', '-log10 |A(s)|', none, '')
-surface(Gv - Av, 'G(s) - A(s): peaks of -log10 |G(s) - A(s)| (clipped at %g)' % CLIP, 'fig_GminusA_surface.png', '-log10 |G(s) - A(s)|', zD, 'points with G = A')
-surface(Zv, 'Riemann zeta function: the zeros are the peaks of -log10 |zeta(s)| (clipped at %g)' % CLIP, 'fig_zeta_surface.png', '-log10 |zeta(s)|', zD, 'zeros of zeta')
+surface(Gv, '|G(s)|, linear scale, vertical axis inverted: the zeros of G are the red points at 0', 'fig_G_surface.png', '|G(s)|', zG40, 'zeros of G')
+surface(Av, '|A(s)| on the same rectangle, vertical axis inverted: no zero of A here', 'fig_A_surface.png', '|A(s)|', none, '')
+surface(Gv - Av, '|G(s) - A(s)| (clipped at 0.6), linear scale, vertical axis inverted: red points at 0', 'fig_GminusA_surface.png', '|G(s) - A(s)|', zD, 'points with G = A', top=0.6)
+surface(Zv, 'Riemann zeta function: |zeta(s)| (clipped at 1.5), linear scale, vertical axis inverted: the zeros are the red points at 0', 'fig_zeta_surface.png', '|zeta(s)|', zD, 'zeros of zeta', top=1.5)
 
 # ---------------------------------------------------------------- A near the real axis: real zeros and poles
 zA_all = np.loadtxt('zeros_A.txt')[:, 0]
@@ -100,8 +95,8 @@ ta = np.unique(np.concatenate([np.round(np.arange(-2.0, 2.0001, 0.01), 2), OFF_A
 Sa, Ta = np.meshgrid(sa, ta)
 Aa = E.A(Sa + 1j * Ta)
 log('A near the real axis: %d x %d points; real zeros shown: %s' % (len(sa), len(ta), ' '.join('%.4f' % v for v in zA)))
-surface(Aa, 'A(s) near the real axis: real zeros (peaks) at -2, -1 and in (2,4), (4,6), (6,8), (8,10); poles (pits) at 0, 2, 4, 6, 8',
-        'fig_A_real_surface.png', '-log10 |A(s)|', zA.astype(complex), 'real zeros of A', Sg=Sa, Tg=Ta, elev=38, azim=-75, lo=-2.0, figsize=(11, 6.5))
+surface(Aa, '|A(s)| near the real axis (clipped at 1.5), vertical axis inverted: real zeros of A at 0 (red); poles at 0, 2, 4, 6, 8',
+        'fig_A_real_surface.png', '|A(s)|', zA.astype(complex), 'real zeros of A', Sg=Sa, Tg=Ta, elev=48, azim=-78, top=1.5, figsize=(11, 6.5))
 
 # ---------------------------------------------------------------- zero map on the fine grid
 Psi = Gv / Av

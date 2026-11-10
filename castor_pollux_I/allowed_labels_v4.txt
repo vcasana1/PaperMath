@@ -1,0 +1,7 @@
+eq:Aparts
+fig:Areal
+fig:Asurf
+fig:GAsurf
+fig:Greal
+fig:Gsurf
+preamble

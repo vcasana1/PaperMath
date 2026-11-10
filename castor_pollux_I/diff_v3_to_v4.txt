@@ -1,0 +1,72 @@
+--- ../Castor_Pollux_I_v3.tex	2026-11-10 19:50:13.978130145 +0000
++++ ../Castor_Pollux_I_v4.tex	2026-11-10 19:54:15.650540766 +0000
+@@ -153,10 +153,10 @@
+ \expandafter\gdef\csname CGTip@eq:GminusA\endcsname{Equation: G(s)-A(s)= int\_0\textasciicircum{}infinity(h(u)-log(2pi u)) u\textasciicircum{}(-s-1) du .}
+ \expandafter\gdef\csname CGTip@fig:kernel\endcsname{Figure: The function h on one period and the positive kernel K.}
+ \expandafter\gdef\csname CGTip@fig:Greal\endcsname{Figure: G on the real axis.}
+-\expandafter\gdef\csname CGTip@fig:Gsurf\endcsname{Figure: -log\_(10)|G(s)|, clipped at 6. The peaks are the six zeros of G of Table tab:rouche.}
+-\expandafter\gdef\csname CGTip@fig:Asurf\endcsname{Figure: -log\_(10)|A(s)| on the rectangle of Figure fig:Gsurf.}
+-\expandafter\gdef\csname CGTip@fig:GAsurf\endcsname{Figure: -log\_(10)|G(s)-A(s)|, clipped at 6. The peaks are at the six points 1/2+it of Figure fig:zeromap.}
+-\expandafter\gdef\csname CGTip@fig:zetasurf\endcsname{Figure: -log\_(10)|zeta(s)|, clipped at 6. The peaks are the first six nontrivial zeros of zeta.}
++\expandafter\gdef\csname CGTip@fig:Gsurf\endcsname{Figure: |G(s)| on a linear scale, with the vertical axis inverted. The red points, at the value 0, are the six zeros of G of Table tab:rouche.}
++\expandafter\gdef\csname CGTip@fig:Asurf\endcsname{Figure: |A(s)| on the rectangle of Figure fig:Gsurf, with the vertical axis inverted.}
++\expandafter\gdef\csname CGTip@fig:GAsurf\endcsname{Figure: |G(s)-A(s)|, clipped above 0.6, with the vertical axis inverted. The red points, at the value 0, are the six points 1/2+it of Figure fig:zeromap.}
++\expandafter\gdef\csname CGTip@fig:zetasurf\endcsname{Figure: |zeta(s)|, clipped above 1.5, with the vertical axis inverted. The red points, at the value 0, are the first six nontrivial zeros of zeta.}
+ \expandafter\gdef\csname CGTip@fig:zeromap\endcsname{Figure: Computed zeros of G, computed points with G=A, and the computed arcs of (Im)(G/A)=0 with 0<(Re)(G/A)<1, at points where A!=0. The pairing shown by the arcs is a numerical observation.}
+ \expandafter\gdef\csname CGTip@fig:gram\endcsname{Figure: Gram matrices of the factors h(x/k), 1<= k<=10: mean over a period, and weight x\textasciicircum{}(-2sigma-1) with sigma=3/4.}
+ \expandafter\gdef\csname CGTip@prop:A\endcsname{Proposition - Continuation and real zeros of A: Put Sigma\_(2k)=sum\_(m>=1)m\textasciicircum{}(-2k) for the integers k>=1. The function A of (eq:A) extends to a meromorphic function on C, given by A(s)=(log(2pi))/(s)+frac 1(s\textasciicircum{}2)+sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) . Its poles are a double pole at 0 and a simple pole at each}
+@@ -166,7 +166,7 @@
+ \expandafter\gdef\csname CGTip@eq:Aterm\endcsname{Equation: - int\_0\textasciicircum{}1log(sin(pi u))/(pi u) u\textasciicircum{}(-s-1) du=sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) ; ((Re)s<2).}
+ \expandafter\gdef\csname CGTip@eq:Aparts\endcsname{Equation: int\_tau\textasciicircum{}1h(u) u\textasciicircum{}(-s-1) du=frac ( K'(tau) tau\textasciicircum{}(-s-1))(4pi\textasciicircum{}2)+frac ((s+1) K(tau) tau\textasciicircum{}(-s-2))(4pi\textasciicircum{}2)-((s+1)(s+2))/(4pi\textasciicircum{}2) int\_tau\textasciicircum{}1 K(u) u\textasciicircum{}(-s-3) du .}
+ \expandafter\gdef\csname CGTip@eq:expsum\endcsname{Equation: E\_G(x)=frac 1(n\_G)sum\_(b=1)\textasciicircum{}(n\_G)e\textasciicircum{}(ix(Im)z\textasciicircum{}G\_b), ; E\_A(x)=frac 1(n\_A)sum\_(b=1)\textasciicircum{}(n\_A)e\textasciicircum{}(ixz\textasciicircum{}A\_b).}
+-\expandafter\gdef\csname CGTip@fig:Areal\endcsname{Figure: -log\_(10)|A(s)| near the real axis, clipped to [-2,6]. The peaks are real zeros of A and the pits are its poles at 0,2,4,6,8.}
++\expandafter\gdef\csname CGTip@fig:Areal\endcsname{Figure: |A(s)| near the real axis, clipped above 1.5, with the vertical axis inverted. The red points, at the value 0, are real zeros of A. The pits are its poles at 0,2,4,6,8.}
+ \expandafter\gdef\csname CGTip@fig:expsum3d\endcsname{Figure: The exponential sums E\_G(x) and E\_A(x) of (eq:expsum) for 0<= x<=2pi. The variable x is the vertical axis. The dashed lines are the means of the two curves.}
+ \expandafter\gdef\csname CGTip@fig:expsumplane\endcsname{Figure: Left: the curves E\_G and E\_A in the complex plane. Right: the 79 computed zeros of G and the 101 computed real zeros of A, with their centroids.}
+ \expandafter\gdef\csname CGTip@fig:expsummod\endcsname{Figure: Top: | E\_G(x)| for 0.3<= x<=4.2, with vertical lines at x=log n for the prime powers n<=66. Bottom: | E\_G(x)| and | E\_A(x)| for 0<= x<=2pi.}
+@@ -965,7 +965,7 @@
+ 
+ Formula \CGeqref{eq:Afactor} is the counterpart of \CGeqref{eq:factor} for the part of $\mathcal K$ on $(0,1)$.
+ 
+-Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show $-\log_{10}$ of the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, so that a zero is a peak. The grid has $253\times889$ points. Its steps are $0.01$ in $\operatorname{Re}s$ and $0.05$ in $\operatorname{Im}s$, and it is refined near the six zeros of $G$ of Table~\CGref{tab:rouche} and near the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}, which are grid points. The plotted values are clipped at $6$, that is, where the modulus is below $10^{-6}$. At the six zeros of $G$ the computed values of $|G|$ are between $4.1\cdot10^{-12}$ and $2.8\cdot10^{-11}$. On this rectangle $A$ has no peak. Figure~\CGref{fig:Areal} shows $-\log_{10}|A(s)|$ for $-3.5\le\operatorname{Re}s\le9.5$ and $|\operatorname{Im}s|\le2$, computed from \CGeqref{eq:Aseries}. Its peaks are the real zeros of Proposition~\CGref{prop:A} at $-2$ and $-1$ and the computed zeros $3.0428$, $5.0981$, $7.1478$ and $9.1892$, and its pits are the poles at $0,2,4,6,8$. Figure~\CGref{fig:zetasurf} shows, on the grid of Figure~\CGref{fig:Gsurf}, $-\log_{10}$ of the modulus of the Riemann zeta function $\zeta(s)$, which is not used anywhere else in this note. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le1.2\cdot10^{-11}$. This relation is not proved and not used in this note.
++Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, on a linear scale. The vertical axis is inverted, with the value $0$ at the top, so that a zero is a peak whose tip is at $0$, where the red points are. The grid has $253\times889$ points. Its steps are $0.01$ in $\operatorname{Re}s$ and $0.05$ in $\operatorname{Im}s$, and it is refined near the six zeros of $G$ of Table~\CGref{tab:rouche} and near the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}, which are grid points. In Figure~\CGref{fig:GAsurf} the values above $0.6$ are clipped. At the six zeros of $G$ the computed values of $|G|$ are between $4.1\cdot10^{-12}$ and $2.8\cdot10^{-11}$. On this rectangle the surface of $|A|$ does not reach $0$. Figure~\CGref{fig:Areal} shows $|A(s)|$ in the same way for $-3.5\le\operatorname{Re}s\le9.5$ and $|\operatorname{Im}s|\le2$, computed from \CGeqref{eq:Aseries} and clipped above $1.5$. Its peaks are the real zeros of Proposition~\CGref{prop:A} at $-2$ and $-1$ and the computed zeros $3.0428$, $5.0981$, $7.1478$ and $9.1892$, and its pits are the poles at $0,2,4,6,8$. Figure~\CGref{fig:zetasurf} shows in the same way, on the grid of Figure~\CGref{fig:Gsurf}, the modulus of the Riemann zeta function $\zeta(s)$, clipped above $1.5$, which is not used anywhere else in this note. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le1.2\cdot10^{-11}$. This relation is not proved and not used in this note.
+ 
+ Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. The quotient $G/A$ is formed only at points where $A(s)\ne0$. At the $253\times889$ grid points the computed values satisfy $|A(s)|\ge0.072$, and the arcs are the level lines drawn from the grid values. That $A$ has no zero in the whole rectangle is not proved in this note. At those six points the computed value of $|G-A|$ is at most $1.1\cdot10^{-11}$. In the computed figure each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. This pairing is a numerical observation for these six zeros. It is not proved, and no correspondence between the zeros of $G$ and the points with $G=A$ is claimed. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
+ 
+@@ -992,31 +992,31 @@
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_G_surface.png}
+-\caption{$-\log_{10}|G(s)|$, clipped at $6$. The peaks are the six zeros of $G$ of Table~\CGref{tab:rouche}.}\label{fig:Gsurf}
++\caption{$|G(s)|$ on a linear scale, with the vertical axis inverted. The red points, at the value $0$, are the six zeros of $G$ of Table~\CGref{tab:rouche}.}\label{fig:Gsurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_A_surface.png}
+-\caption{$-\log_{10}|A(s)|$ on the rectangle of Figure~\CGref{fig:Gsurf}.}\label{fig:Asurf}
++\caption{$|A(s)|$ on the rectangle of Figure~\CGref{fig:Gsurf}, with the vertical axis inverted.}\label{fig:Asurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.95\textwidth]{fig_A_real_surface.png}
+-\caption{$-\log_{10}|A(s)|$ near the real axis, clipped to $[-2,6]$. The peaks are real zeros of $A$ and the pits are its poles at $0,2,4,6,8$.}\label{fig:Areal}
++\caption{$|A(s)|$ near the real axis, clipped above $1.5$, with the vertical axis inverted. The red points, at the value $0$, are real zeros of $A$. The pits are its poles at $0,2,4,6,8$.}\label{fig:Areal}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_GminusA_surface.png}
+-\caption{$-\log_{10}|G(s)-A(s)|$, clipped at $6$. The peaks are at the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}.}\label{fig:GAsurf}
++\caption{$|G(s)-A(s)|$, clipped above $0.6$, with the vertical axis inverted. The red points, at the value $0$, are the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}.}\label{fig:GAsurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{fig_zeta_surface.png}
+-\caption{$-\log_{10}|\zeta(s)|$, clipped at $6$. The peaks are the first six nontrivial zeros of $\zeta$.}\label{fig:zetasurf}
++\caption{$|\zeta(s)|$, clipped above $1.5$, with the vertical axis inverted. The red points, at the value $0$, are the first six nontrivial zeros of $\zeta$.}\label{fig:zetasurf}
+ \end{figure}
+ 
+ \begin{figure}[ht]
