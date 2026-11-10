@@ -159,6 +159,59 @@
 \expandafter\gdef\csname CGTip@fig:zetasurf\endcsname{Figure: |zeta(s)|, clipped above 1.5, with the vertical axis inverted. The red points, at the value 0, are the first six nontrivial zeros of zeta.}
 \expandafter\gdef\csname CGTip@fig:zeromap\endcsname{Figure: Computed zeros of G, computed points with G=A, and the computed arcs of (Im)(G/A)=0 with 0<(Re)(G/A)<1, at points where A!=0. The pairing shown by the arcs is a numerical observation.}
 \expandafter\gdef\csname CGTip@fig:gram\endcsname{Figure: Gram matrices of the factors h(x/k), 1<= k<=10: mean over a period, and weight x\textasciicircum{}(-2sigma-1) with sigma=3/4.}
+\expandafter\gdef\csname CGTip@sec:GA\endcsname{Section: The difference G-A}
+\expandafter\gdef\csname CGTip@eq:ell\endcsname{Equation: ell(u)=log(pi u)/(|sin(pi u)|) .}
+\expandafter\gdef\csname CGTip@eq:GAell\endcsname{Equation: G(s)-A(s)=- int\_0\textasciicircum{}infinityell(u) u\textasciicircum{}(-s-1) du ; (0<(Re)s<2).}
+\expandafter\gdef\csname CGTip@prop:GAbound\endcsname{Proposition - Sign and size of G-A: Let 0<sigma<2. Then G(sigma)-A(sigma)<0, and for every real t |G(sigma+it)-A(sigma+it)|<= A(sigma)-G(sigma), with equality only for t=0. In particular G(s)!= A(s) for real s with 0<s<2.}
+\expandafter\gdef\csname CGTip@eq:GAbound\endcsname{Equation: |G(sigma+it)-A(sigma+it)|<= A(sigma)-G(sigma),}
+\expandafter\gdef\csname CGTip@eq:q0\endcsname{Equation: q\_0(u)=log(pi u (1-u\textasciicircum{}2))/(sin(pi u))=sum\_(k>=1)frac (Sigma\_(2k)-1)(k) u\textasciicircum{}(2k), ; Q\_0(s)= int\_0\textasciicircum{}1q\_0(u) u\textasciicircum{}(-s-1) du ((Re)s<2).}
+\expandafter\gdef\csname CGTip@eq:Q0series\endcsname{Equation: Q\_0(s)=sum\_(k>=1)frac (Sigma\_(2k)-1)(k (2k-s)) ; ((Re)s<2).}
+\expandafter\gdef\csname CGTip@prop:GAdigamma\endcsname{Proposition - The difference G-A through the digamma function: For every complex s!=0 that is not an even integer, sA(s)=log(2pi)+frac 1s-psi(1-s/2)-gamma+s Q\_0(s) ; ((Re)s<2), and for 0<(Re)s<2, with Q as in (eq:q), G(s)-A(s)=(psi(1-s/2)-psi(1+s))/(s)-Q(s)-Q\_0(s), where (psi(1-s/2)-psi(1+s))/(s)=-sum\_(n>=1)(3)/((n+s)(2n-}
+\expandafter\gdef\csname CGTip@eq:sA\endcsname{Equation: sA(s)=log(2pi)+frac 1s-psi(1-s/2)-gamma+s Q\_0(s) ; ((Re)s<2),}
+\expandafter\gdef\csname CGTip@eq:GAthree\endcsname{Equation: G(s)-A(s)=(psi(1-s/2)-psi(1+s))/(s)-Q(s)-Q\_0(s),}
+\expandafter\gdef\csname CGTip@eq:digseries\endcsname{Equation: (psi(1-s/2)-psi(1+s))/(s)=-sum\_(n>=1)(3)/((n+s)(2n-s)) .}
+\expandafter\gdef\csname CGTip@eq:psihalf\endcsname{Equation: sum\_(k>=1)frac 1(k (2k-s))=-frac 1ssum\_(l>=0)(frac 1(l+1)-frac 1(l+1-s/2))=-(psi(1-s/2)+gamma)/(s) .}
+\expandafter\gdef\csname CGTip@eq:psidiff\endcsname{Equation: psi(1-s/2)-psi(1+s)=sum\_(n>=1)(frac 1(n+s)-frac 1(n-s/2))=-sum\_(n>=1)(3s)/((n+s)(2n-s)),}
+\expandafter\gdef\csname CGTip@lem:repsi\endcsname{Lemma - A lower bound for the real part of the digamma function: For real x with 1/2<= x<=1 and real y, (Re)psi(x+iy)>=1/2log(x\textasciicircum{}2+y\textasciicircum{}2)-gamma-log2+(y\textasciicircum{}2)/(2x (x\textasciicircum{}2+y\textasciicircum{}2)) .}
+\expandafter\gdef\csname CGTip@eq:repsi\endcsname{Equation: (Re)psi(x+iy)>=1/2log(x\textasciicircum{}2+y\textasciicircum{}2)-gamma-log2+(y\textasciicircum{}2)/(2x (x\textasciicircum{}2+y\textasciicircum{}2)) .}
+\expandafter\gdef\csname CGTip@eq:convex\endcsname{Equation: (d\textasciicircum{}2)/(dw\textasciicircum{}2) frac 1(w (w\textasciicircum{}2+y\textasciicircum{}2))=(12w\textasciicircum{}4+6w\textasciicircum{}2y\textasciicircum{}2+2y\textasciicircum{}4)/(w\textasciicircum{}3(w\textasciicircum{}2+y\textasciicircum{}2)\textasciicircum{}3)>0,}
+\expandafter\gdef\csname CGTip@thm:Anonzero\endcsname{Theorem - A does not vanish above height 9: Let 0<=sigma<=1 and |t|>=9, and put Q(t)=log(8pi)-1/2log(1+t\textasciicircum{}2)-(t\textasciicircum{}2)/(2(t\textasciicircum{}2+4))+frac 1(t\textasciicircum{}2)-0.64 (t\textasciicircum{}2-1)/(t\textasciicircum{}2+4)+10\textasciicircum{}(-27) . Then (Re)(sA(s))<= Q(t)<0 for s=sigma+it. In particular A(s)!=0.}
+\expandafter\gdef\csname CGTip@eq:Qbound\endcsname{Equation: Q(t)=log(8pi)-1/2log(1+t\textasciicircum{}2)-(t\textasciicircum{}2)/(2(t\textasciicircum{}2+4))+frac 1(t\textasciicircum{}2)-0.64 (t\textasciicircum{}2-1)/(t\textasciicircum{}2+4)+10\textasciicircum{}(-27) .}
+\expandafter\gdef\csname CGTip@eq:psibound\endcsname{Equation: -(Re)psi(1-s/2)-gamma<=2log2-1/2log(1+t\textasciicircum{}2)-(t\textasciicircum{}2)/(2(t\textasciicircum{}2+4)) .}
+\expandafter\gdef\csname CGTip@eq:rhok\endcsname{Equation: r\_k=(Re)(s)/(2k-s)=(2ksigma-sigma\textasciicircum{}2-t\textasciicircum{}2)/((2k-sigma)\textasciicircum{}2+t\textasciicircum{}2) .}
+\expandafter\gdef\csname CGTip@rem:Acert\endcsname{Remark - A computer-assisted complement: Theorem thm:Anonzero leaves the rectangle 0<=(Re)s<=1, |(Im)s|<9, and its proof gives nothing there. On the real segment 0<s<2 we have A(s)>0 by Proposition prop:A. The program texttt(A\\_nonvanishing\\_check.py) of the files that accompany this note encloses s\textasciicircum{}}
+\expandafter\gdef\csname CGTip@sec:B\endcsname{Section: A positive convex kernel for G-A}
+\expandafter\gdef\csname CGTip@eq:Bdef\endcsname{Equation: B(u)=4pi\textasciicircum{}2 int\_0\textasciicircum{}u(u-lambda) ell(lambda) dlambda, ; Omega(s)= int\_0\textasciicircum{}infinity B(u) u\textasciicircum{}(-s-3) du (0<(Re)s<2).}
+\expandafter\gdef\csname CGTip@prop:B\endcsname{Proposition - The kernel B: The function B has the following properties. textup((i)) B is continuously differentiable on [0,infinity), B'(u)=4pi\textasciicircum{}2 int\_0\textasciicircum{}uell is absolutely continuous and nondecreasing, B''=4pi\textasciicircum{}2ell almost everywhere, B is convex, and B(u)>0 for u>0. textup((ii)) For eve}
+\expandafter\gdef\csname CGTip@eq:BK\endcsname{Equation: B(u)= K(u)+2pi\textasciicircum{}2u\textasciicircum{}2(log u+ b).}
+\expandafter\gdef\csname CGTip@eq:Bseries\endcsname{Equation: B(u)=4pi\textasciicircum{}2sum\_(k>=1)frac (Sigma\_(2k))(k (2k+1)(2k+2)) u\textasciicircum{}(2k+2),}
+\expandafter\gdef\csname CGTip@eq:GAOmega\endcsname{Equation: G(s)-A(s)=-((s+1)(s+2))/(4pi\textasciicircum{}2) Omega(s).}
+\expandafter\gdef\csname CGTip@eq:Bparts\endcsname{Equation: 4pi\textasciicircum{}2 int\_tau\textasciicircum{}Xell(u) u\textasciicircum{}(-s-1) du=[ B'(u)u\textasciicircum{}(-s-1)+(s+1) B(u)u\textasciicircum{}(-s-2)]\_tau\textasciicircum{}X+(s+1)(s+2) int\_tau\textasciicircum{}X B(u) u\textasciicircum{}(-s-3) du .}
+\expandafter\gdef\csname CGTip@prop:Binv\endcsname{Proposition - An inversion inequality and two positive weights: For u>1 and 0<sigma<=1, B(u)>u\textasciicircum{}(2sigma+4) B(1/u) . For real sigma with 0<sigma<2 and real v put upsilon\_sigma(v)=e\textasciicircum{}(-(sigma+2)v) B(e\textasciicircum{}v), ; upsilon\_sigma\textasciicircum{}pm(v)=upsilon\_sigma(v)pmupsilon\_sigma(-v) (v>0). Then Omega(sigma+it)= int\_( R)upsilon\_sigma(v)e\textasciicircum{}(-itv) dv}
+\expandafter\gdef\csname CGTip@eq:Binv\endcsname{Equation: B(u)>u\textasciicircum{}(2sigma+4) B(1/u) .}
+\expandafter\gdef\csname CGTip@eq:upsilon\endcsname{Equation: upsilon\_sigma(v)=e\textasciicircum{}(-(sigma+2)v) B(e\textasciicircum{}v), ; upsilon\_sigma\textasciicircum{}pm(v)=upsilon\_sigma(v)pmupsilon\_sigma(-v) (v>0).}
+\expandafter\gdef\csname CGTip@eq:ReImOmega\endcsname{Equation: (Re)Omega(sigma+it)= int\_0\textasciicircum{}infinityupsilon\textasciicircum{}+\_sigma(v)cos(tv) dv, ; (Im)Omega(sigma+it)=- int\_0\textasciicircum{}infinityupsilon\textasciicircum{}-\_sigma(v)sin(tv) dv .}
+\expandafter\gdef\csname CGTip@thm:GAexcl\endcsname{Theorem - A region without solutions of G=A near the real axis: For 0<sigma<2 and j=0,1,2 put M\_j(sigma)= int\_0\textasciicircum{}infinity(log u)\textasciicircum{}j B(u) u\textasciicircum{}(-sigma-3) du. If t is real and t\textasciicircum{}2( M\_0(sigma) M\_2(sigma)- M\_1(sigma)\textasciicircum{}2)<2 M\_0(sigma)\textasciicircum{}2, then G(sigma+it)!= A(sigma+it). In particular G(sigma+it)!= A(sigma+it) whenever |t|<sqrt(2 M\_0(}
+\expandafter\gdef\csname CGTip@eq:GAexcl\endcsname{Equation: t\textasciicircum{}2( M\_0(sigma) M\_2(sigma)- M\_1(sigma)\textasciicircum{}2)<2 M\_0(sigma)\textasciicircum{}2,}
+\expandafter\gdef\csname CGTip@eq:Omegacos\endcsname{Equation: |Omega(sigma+it)|>= M\_0-frac (t\textasciicircum{}2)2 int\_( R)(v-mu)\textasciicircum{}2upsilon\_sigma(v) dv= M\_0-frac (t\textasciicircum{}2)2( M\_2-( M\_1\textasciicircum{}2)/( M\_0)).}
+\expandafter\gdef\csname CGTip@prop:Omegadecay\endcsname{Proposition - Decay of Omega: Let 0<sigma<2. The function upsilon\_sigma is continuously differentiable on R, upsilon\_sigma' is absolutely continuous, upsilon\_sigma'' is integrable on R, and for real t!=0 |Omega(sigma+it)|<=frac 1(t\textasciicircum{}2) int\_( R)|upsilon\_sigma''(v)| dv .}
+\expandafter\gdef\csname CGTip@eq:Omegadecay\endcsname{Equation: |Omega(sigma+it)|<=frac 1(t\textasciicircum{}2) int\_( R)|upsilon\_sigma''(v)| dv .}
+\expandafter\gdef\csname CGTip@eq:Ksharp\endcsname{Equation: K\textasciicircum{}sharp(x)=1-cos(2pi x)+2\textasciicircum{}(-11/4)(1-cos(4pi x)) .}
+\expandafter\gdef\csname CGTip@eq:Cdef\endcsname{Equation: C(s)= int\_0\textasciicircum{}infinity(1-cos y) y\textasciicircum{}(-s-3) dy ; (-2<(Re)s<0).}
+\expandafter\gdef\csname CGTip@prop:Ksharp\endcsname{Proposition - A positive kernel with solutions off the line: The functions widetilde H\textasciicircum{}sharp and C extend to meromorphic functions on (Re)s>-2 whose poles are real, and on (Re)s>-2 G\textasciicircum{}sharp(s)-A\textasciicircum{}sharp(s)=-((s+1)(s+2))/(4pi\textasciicircum{}2) (2pi)\textasciicircum{}(s+2)(1+2\textasciicircum{}(s-3/4)) C(s) . Consequently G\textasciicircum{}sharp(s)=A\textasciicircum{}sharp(s) at the points s=3/4+i(2k+1)pi}
+\expandafter\gdef\csname CGTip@eq:GAsharp\endcsname{Equation: G\textasciicircum{}sharp(s)-A\textasciicircum{}sharp(s)=-((s+1)(s+2))/(4pi\textasciicircum{}2) (2pi)\textasciicircum{}(s+2)(1+2\textasciicircum{}(s-3/4)) C(s) .}
+\expandafter\gdef\csname CGTip@eq:HHsharp\endcsname{Equation: H\textasciicircum{}sharp(s)+widetilde H\textasciicircum{}sharp(s)= int\_0\textasciicircum{}infinity K\textasciicircum{}sharp(u) u\textasciicircum{}(-s-3) du=((2pi)\textasciicircum{}(s+2)+2\textasciicircum{}(-11/4)(4pi)\textasciicircum{}(s+2)) C(s)=(2pi)\textasciicircum{}(s+2)(1+2\textasciicircum{}(s-3/4)) C(s),}
+\expandafter\gdef\csname CGTip@sec:zeta\endcsname{Section: The difference G-A and the Riemann zeta function}
+\expandafter\gdef\csname CGTip@eq:zetafe\endcsname{Equation: zeta(1-s)=2\textasciicircum{}(1-s)pi\textasciicircum{}(-s)cos(frac (pi s)2)Gamma(s)zeta(s) .}
+\expandafter\gdef\csname CGTip@prop:zeta\endcsname{Proposition - The difference G-A through zeta: For -2<(Re)s<0, H(s)+widetilde H(s)= int\_0\textasciicircum{}infinity K(u) u\textasciicircum{}(-s-3) du=(2pi)\textasciicircum{}(s+2)zeta(1-s) C(s), and on C, as an identity between meromorphic functions, G(s)-A(s)=frac pi scot(frac (pi s)2)zeta(s) .}
+\expandafter\gdef\csname CGTip@eq:HHzeta\endcsname{Equation: H(s)+widetilde H(s)= int\_0\textasciicircum{}infinity K(u) u\textasciicircum{}(-s-3) du=(2pi)\textasciicircum{}(s+2)zeta(1-s) C(s),}
+\expandafter\gdef\csname CGTip@eq:GAzeta\endcsname{Equation: G(s)-A(s)=frac pi scot(frac (pi s)2)zeta(s) .}
+\expandafter\gdef\csname CGTip@eq:Cgamma\endcsname{Equation: C(s)=frac 1(s+2) int\_0\textasciicircum{}infinity y\textasciicircum{}(-s-2)sin y dy=-(Gamma(-s-1))/(s+2)sin(frac (pi(s+1))2)=-(Gamma(-s-1))/(s+2)cos(frac (pi s)2).}
+\expandafter\gdef\csname CGTip@eq:GAgamma\endcsname{Equation: G(s)-A(s)=-(2pi)\textasciicircum{}s Gamma(-s)cos(frac (pi s)2)zeta(1-s)=-2 Gamma(s)Gamma(-s)cos\textasciicircum{}2(frac (pi s)2)zeta(s),}
+\expandafter\gdef\csname CGTip@cor:RH\endcsname{Corollary - The condition on G and A is the Riemann hypothesis: For every non-real s, G(s)=A(s) if and only if zeta(s)=0, and the multiplicity of s as a zero of G-A equals its multiplicity as a zero of zeta. Hence the following two statements are equivalent. textup((a)) Every s with (Im)s!=0 and G(s)=A(s) has the form s=1/}
+\expandafter\gdef\csname CGTip@eq:NT\endcsname{Equation: N(T)=frac T(2pi)logfrac T(2pi e)+O(log T) ; (T->infinity).}
+\expandafter\gdef\csname CGTip@eq:tauk\endcsname{Equation: tau\_k=frac (2pi(k-frac (11)8))(W((k-frac (11)8)/e)),}
+\expandafter\gdef\csname CGTip@sec:concl\endcsname{Section: Conclusions}
 \expandafter\gdef\csname CGTip@prop:A\endcsname{Proposition - Continuation and real zeros of A: Put Sigma\_(2k)=sum\_(m>=1)m\textasciicircum{}(-2k) for the integers k>=1. The function A of (eq:A) extends to a meromorphic function on C, given by A(s)=(log(2pi))/(s)+frac 1(s\textasciicircum{}2)+sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) . Its poles are a double pole at 0 and a simple pole at each}
 \expandafter\gdef\csname CGTip@eq:Aseries\endcsname{Equation: A(s)=(log(2pi))/(s)+frac 1(s\textasciicircum{}2)+sum\_(k>=1)frac (Sigma\_(2k))(k (2k-s)) .}
 \expandafter\gdef\csname CGTip@eq:Afactor\endcsname{Equation: A(s)=- int\_0\textasciicircum{}1h(u) u\textasciicircum{}(-s-1) du=((s+1)(s+2))/(4pi\textasciicircum{}2) widetilde H(s), ; widetilde H(s)= int\_0\textasciicircum{}1 K(u) u\textasciicircum{}(-s-3) du .}
@@ -187,7 +240,7 @@
   pdftitle={Castor and Pollux I: the log-sine transform G and the Gram matrix of the factors of a sine product},
   pdfauthor={V. Casa\~na-Giner},
   pdfsubject={Products of sines; Mellin transforms; gcd matrices},
-  pdfkeywords={products of sines, log-sine function, Mellin transform, positive kernel, gcd matrices, Jordan totient, Gram matrix, digamma function}
+  pdfkeywords={products of sines, log-sine function, Mellin transform, positive kernel, gcd matrices, Jordan totient, Gram matrix, digamma function, Riemann hypothesis}
 }
 % Back-references in the bibliography.
 \renewcommand*{\backref}[1]{}
@@ -252,11 +305,11 @@
 \date{}
 
 \begin{abstract}
-Let $h(u)=\log|2\sin(\pi u)|$, so that $\sum_{k\le K}h(x/k)$ is the logarithm of the product $\prod_{k\le K}|2\sin(\pi x/k)|$. The first part of this note studies the transform $G(s)=\int_1^\infty h(u)u^{-s-1}\,du$, which is the local factor of the Mellin transform of every weighted sum of the functions $h(x/k)$. Two primitives of the Fourier series of $h$ give the exact factorization $G(s)=-(s+1)(s+2)H(s)/(4\pi^2)$, where $H$ is the Mellin transform of a strictly positive periodic kernel. It follows that $G$ is entire, that on the real axis $G$ is positive on $(-2,-1)$, vanishes simply at $-1$ and is negative for $s>-1$, and that a complex zero $\sigma+it$ with $\sigma>-2$ satisfies $t^2V(\sigma)\ge2$, where $V$ is the variance of an explicit probability measure. We also prove an asymptotic expansion of $G$ in right sectors, which excludes zeros there, and explicit truncation and quadrature bounds with a Rouch\'e test that isolates a zero in a disc. The second part computes the Gram matrix of the factors $x\mapsto h(x/k)$. For the mean over a common period it is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$, which gives a sum of squares with weights given by the Jordan totient $J_2$. For the weight $x^{-2\sigma-1}$ on $[\max(j,k),\infty)$ we prove an exact formula in which the pairs of harmonics $(m,n)$ with $mk-nj=r$ enter through an explicit kernel, and their total weight is evaluated by the digamma function. The proofs use the Fourier series of $h$, Parseval's identity and integration by parts, together with the Cauchy--Schwarz inequality, Rouch\'e's theorem and standard real and complex analysis. Twelve figures show the kernels, the moduli of $G$, of an auxiliary function $A$ and of the Riemann zeta function on a rectangle, exponential sums over computed zeros of $G$ and of $A$, and the two Gram matrices.
+Let $h(u)=\log|2\sin(\pi u)|$, so that $\sum_{k\le K}h(x/k)$ is the logarithm of the product $\prod_{k\le K}|2\sin(\pi x/k)|$. The first part of this note studies the transform $G(s)=\int_1^\infty h(u)u^{-s-1}\,du$, which is the local factor of the Mellin transform of every weighted sum of the functions $h(x/k)$. Two primitives of the Fourier series of $h$ give the exact factorization $G(s)=-(s+1)(s+2)H(s)/(4\pi^2)$, where $H$ is the Mellin transform of a strictly positive periodic kernel. It follows that $G$ is entire, that on the real axis $G$ is positive on $(-2,-1)$, vanishes simply at $-1$ and is negative for $s>-1$, and that a complex zero $\sigma+it$ with $\sigma>-2$ satisfies $t^2V(\sigma)\ge2$, where $V$ is the variance of an explicit probability measure. We also prove an asymptotic expansion of $G$ in right sectors, which excludes zeros there, and explicit truncation and quadrature bounds with a Rouch\'e test that isolates a zero in a disc. The second part computes the Gram matrix of the factors $x\mapsto h(x/k)$. For the mean over a common period it is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$, which gives a sum of squares with weights given by the Jordan totient $J_2$. For the weight $x^{-2\sigma-1}$ on $[\max(j,k),\infty)$ we prove an exact formula in which the pairs of harmonics $(m,n)$ with $mk-nj=r$ enter through an explicit kernel, and their total weight is evaluated by the digamma function. We then study the difference $G-A$, where $A$ is an explicit auxiliary function, using only $h$. On the strip $0<\operatorname{Re}s<2$, $G-A$ is minus the Mellin transform of the positive function $\log(\pi u/|\sin(\pi u)|)$, and, after the factor $-(s+1)(s+2)/(4\pi^2)$, the Mellin transform of an explicit positive convex kernel that satisfies a strict inversion inequality. This gives the bound $|G-A|\le A(\operatorname{Re}s)-G(\operatorname{Re}s)$, a decomposition through the digamma function, a region without solutions of $G=A$ around the real axis, and the decay of the transform. We prove analytically that $A(s)\ne0$ for $0\le\operatorname{Re}s\le1$ and $|\operatorname{Im}s|\ge9$. A positive periodic kernel with two harmonics shows that positivity and periodicity alone do not place the solutions of $G=A$ on $\operatorname{Re}s=\frac12$. Finally, through the functional equation of the Riemann zeta function, $G(s)-A(s)=\frac\pi s\cot(\frac{\pi s}2)\zeta(s)$, so that the statement that every non-real solution of $G(s)=A(s)$ has real part $\frac12$ is equivalent to the Riemann hypothesis. The proofs use the Fourier series of $h$, Parseval's identity and integration by parts, together with the Cauchy--Schwarz inequality, Rouch\'e's theorem and standard real and complex analysis, and, in one section only, cited results on the zeta and gamma functions. Twelve figures show the kernels, the moduli of $G$, of an auxiliary function $A$ and of the Riemann zeta function on a rectangle, exponential sums over computed zeros of $G$ and of $A$, and the two Gram matrices.
 \end{abstract}
 
-\subjclass[2020]{11A05; 11C20; 42A16; 33B15; 30C15; 44A15}
-\keywords{products of sines; log-sine function; Mellin transform; positive kernel; zeros of entire functions; gcd matrices; Jordan totient; Gram matrix; digamma function}
+\subjclass[2020]{11A05; 11C20; 42A16; 33B15; 30C15; 44A15; 11M06; 11M26}
+\keywords{products of sines; log-sine function; Mellin transform; positive kernel; zeros of entire functions; gcd matrices; Jordan totient; Gram matrix; digamma function; Riemann hypothesis}
 
 \maketitle
 \tableofcontents
@@ -277,11 +330,11 @@ Proposition~\CGref{prop:conv} recalls why $G$ is the relevant object: the Mellin
 
 The second part, Sections~\CGref{sec:flat} to~\CGref{sec:num}, computes the inner products of the functions $x\mapsto h(x/j)$ and $x\mapsto h(x/k)$ for integers $j,k\ge1$. For the mean over a common period, Theorem~\CGref{thm:flat} shows that the Gram matrix is the gcd matrix $\frac{\pi^2}{12}\gcd(j,k)^2/(jk)$. Corollary~\CGref{cor:squares} writes the mean square of any finite combination of factors as a sum of squares with weights given by the Jordan totient $J_2$, and Corollary~\CGref{cor:partial} bounds the mean square of the first $K$ factors between two explicit multiples of $K$. The mechanism of Theorem~\CGref{thm:flat}, Parseval's identity for dilates of one periodic function, is classical, and the factorization of a gcd matrix through a totient goes back to H.~J.~S.~Smith \cite{Smith1875}. Both are proved here in full for the kernel $h$. For the weight $x^{-2\sigma-1}$ on the half-line $x\ge\max(j,k)$, Theorem~\CGref{thm:weighted} gives the Gram entry exactly, as the gcd term plus an absolutely convergent series indexed by the integers $r\ge1$. Lemma~\CGref{lem:T} evaluates the sum over the pairs of harmonics with $mk-nj=r$ by the digamma function, and Proposition~\CGref{prop:bound} bounds the difference between the weighted entry and its gcd term.
 
-Section~\CGref{sec:fig} contains the figures, the continuation and the real zeros of the auxiliary function $A$ (Proposition~\CGref{prop:A}), and exponential sums over computed zeros of $G$ and of $A$. Section~\CGref{sec:notation} lists every symbol of the note with its single meaning.
+Section~\CGref{sec:fig} contains the figures, the continuation and the real zeros of the auxiliary function $A$ (Proposition~\CGref{prop:A}), and exponential sums over computed zeros of $G$ and of $A$. Section~\CGref{sec:GA} writes $G-A$ as minus the Mellin transform of the positive function $\log(\pi u/|\sin(\pi u)|)$ (Proposition~\CGref{prop:GAbound}) and through the digamma function (Proposition~\CGref{prop:GAdigamma}), and proves that $A(s)\ne0$ for $0\le\operatorname{Re}s\le1$ and $|\operatorname{Im}s|\ge9$ (Theorem~\CGref{thm:Anonzero}). Section~\CGref{sec:B} writes $G-A$ through the Mellin transform of a positive convex kernel (Proposition~\CGref{prop:B}), proves an inversion inequality for it (Proposition~\CGref{prop:Binv}), a region without solutions of $G=A$ around the real axis (Theorem~\CGref{thm:GAexcl}) and a decay bound (Proposition~\CGref{prop:Omegadecay}), and gives a positive kernel with two harmonics for which the counterpart of $G-A$ vanishes at points with real part $\frac34$ (Proposition~\CGref{prop:Ksharp}). These two sections do not use the Riemann zeta function. Section~\CGref{sec:zeta} introduces it and proves that $G(s)-A(s)=\frac\pi s\cot(\frac{\pi s}2)\zeta(s)$ (Proposition~\CGref{prop:zeta}), so that the condition that every non-real solution of $G=A$ has real part $\frac12$ is the Riemann hypothesis (Corollary~\CGref{cor:RH}). Section~\CGref{sec:concl} states the conclusions: what is characterized without $\zeta$, why the introduction of $\zeta$ does not lead further, and whether and where $G$ and $A$ intersect. Section~\CGref{sec:notation} lists every symbol of the note with its single meaning.
 
 \section{Notation}\label{sec:notation}
 
-Throughout, $s=\sigma+it$ is a complex number with real part $\sigma$ and imaginary part $t$. When no $s$ is present, $\sigma$ is a real number. The letter $i$ always denotes the imaginary unit. The letters $b,j,k,l,m,n,d,r$ denote integers. The letters $u,x,v,\tau,\lambda,\theta$ denote real variables. For integers $j,k\ge1$, $(j,k)$ is the greatest common divisor, $[j,k]$ the least common multiple and $j\vee k=\max(j,k)$. For real $x$, $\{x\}=x-\lfloor x\rfloor$. Euler's constant is $\gamma$. If $\Phi$ is a locally integrable function on $\mathbb R$ with a period $L>0$, its mean is
+Throughout, $s=\sigma+it$ is a complex number with real part $\sigma$ and imaginary part $t$. When no $s$ is present, $\sigma$ is a real number. The letter $i$ always denotes the imaginary unit. The letters $b,j,k,l,m,n,d,r$ denote integers. The letters $u,x,y,v,\tau,\lambda,\theta$ denote real variables. For integers $j,k\ge1$, $(j,k)$ is the greatest common divisor, $[j,k]$ the least common multiple and $j\vee k=\max(j,k)$. For real $x$, $\{x\}=x-\lfloor x\rfloor$. Euler's constant is $\gamma$. If $\Phi$ is a locally integrable function on $\mathbb R$ with a period $L>0$, its mean is
 \begin{equation}\label{eq:av}
 \operatorname{av}[\Phi]=\frac1L\int_0^L\Phi(x)\,dx ,
 \end{equation}
@@ -360,7 +413,19 @@ $\widetilde H(s)$ & transform of $\mathcal K$ on $(0,1)$ & \CGeqref{eq:Afactor}\
 $z^G_b,n_G$ & computed zeros of $G$ and their number & Section~\CGref{sec:fig}\\
 $z^A_b,n_A$ & computed real zeros of $A$ and their number & Section~\CGref{sec:fig}\\
 $\mathcal E_G(x),\mathcal E_A(x)$ & exponential sums over these zeros & \CGeqref{eq:expsum}\\
-$\zeta(s)$ & Riemann zeta function, used only in Section~\CGref{sec:fig} & Section~\CGref{sec:fig}\\
+$\zeta(s)$ & Riemann zeta function, used only in Sections~\CGref{sec:fig}, \CGref{sec:zeta} and~\CGref{sec:concl} & Section~\CGref{sec:fig}\\
+$\ell(u)$ & $\log(\pi u/|\sin(\pi u)|)$, $u>0$ & \CGeqref{eq:ell}\\
+$q_0(u),Q_0(s)$ & remainder on $(0,1)$ and its transform & \CGeqref{eq:q0}, \CGeqref{eq:Q0series}\\
+$\mathcal Q(t),\mathfrak r_k$ & upper bound for $\operatorname{Re}(sA(s))$, real part of $s/(2k-s)$ & Theorem~\CGref{thm:Anonzero}\\
+$\mathfrak b$ & $\log(2\pi)-\frac32$ & Section~\CGref{sec:B}\\
+$\mathcal B(u),\Omega(s)$ & positive convex kernel of $G-A$ and its Mellin transform & \CGeqref{eq:Bdef}\\
+$\upsilon_\sigma(v),\upsilon^\pm_\sigma(v)$ & weights of $\Omega$ in the variable $v=\log u$ & \CGeqref{eq:upsilon}\\
+$\mathcal M_j(\sigma)$ & moments of $\mathcal B$, $j=0,1,2$ & Theorem~\CGref{thm:GAexcl}\\
+$\mathcal K^\sharp,H^\sharp,\widetilde H^\sharp,G^\sharp,A^\sharp,\mathfrak c_n$ & kernel with two harmonics and its counterparts of $H,\widetilde H,G,A$; Taylor coefficients & \CGeqref{eq:Ksharp}\\
+$\mathcal C(s)$ & $\int_0^\infty(1-\cos y)y^{-s-3}dy$ & \CGeqref{eq:Cdef}\\
+$\Gamma(s)$ & Euler's gamma function, used only in Section~\CGref{sec:zeta} & Section~\CGref{sec:zeta}\\
+$N(T),N_0(T)$ & number of zeros of $\zeta$ up to height $T$, main term plus $\frac78$ & \CGeqref{eq:NT}\\
+$\tau_k,W$ & solutions of $N_0(\tau_k)=k-\frac12$, inverse of $w\mapsto we^w$ & \CGeqref{eq:tauk}\\
 \end{longtable}
 
 \section{The kernel $h$ and the transform $G$}\label{sec:G}
@@ -725,7 +790,7 @@ The Jordan totient of order $2$ is the function defined for integers $d\ge1$ by
 \begin{equation}\label{eq:J2}
 J_2(d)=d^2\prod_{p\mid d}\Bigl(1-\frac1{p^2}\Bigr),
 \end{equation}
-the product running over the primes $p$ that divide $d$, so that $J_2(1)=1$. It is multiplicative, and for a prime power $p^a$ with $a\ge1$ we have $\sum_{b=0}^{a}J_2(p^b)=1+\sum_{b=1}^{a}(p^{2b}-p^{2b-2})=p^{2a}$. If $n=n_1n_2$ with $(n_1,n_2)=1$, every divisor of $n$ is uniquely a product $d_1d_2$ with $d_1\mid n_1$ and $d_2\mid n_2$, so the function $n\mapsto\sum_{d\mid n}J_2(d)$ is multiplicative too. Hence
+the product running over the primes $p$ that divide $d$, so that $J_2(1)=1$. It is multiplicative, and for a prime power $p^k$ with $k\ge1$ we have $\sum_{b=0}^{k}J_2(p^b)=1+\sum_{b=1}^{k}(p^{2b}-p^{2b-2})=p^{2k}$. If $n=n_1n_2$ with $(n_1,n_2)=1$, every divisor of $n$ is uniquely a product $d_1d_2$ with $d_1\mid n_1$ and $d_2\mid n_2$, so the function $n\mapsto\sum_{d\mid n}J_2(d)$ is multiplicative too. Hence
 \begin{equation}\label{eq:J2sum}
 \sum_{d\mid n}J_2(d)=n^2\qquad(n\ge1).
 \end{equation}
@@ -761,7 +826,7 @@ By \CGeqref{eq:J2}, $0<J_2(d)/d^2\le1$. For the upper bound, $\operatorname{har}
 \begin{equation}\label{eq:partialupper}
 \sum_{d=1}^{K}\Bigl(1+\log\frac Kd\Bigr)^2\le(1+\log K)^2+\int_1^K\Bigl(1+\log\frac K\tau\Bigr)^2d\tau\le(1+\log K)^2+K\int_0^1(1-\log u)^2\,du,
 \end{equation}
-and $\int_0^1(1-\log u)^2\,du=1+2+2=5$. For the lower bound we keep only the terms with $K/2<d\le K$. For them $\lfloor K/d\rfloor=1$ and $\operatorname{har}(1)=1$. Since $\prod_b(1-a_b)\ge1-\sum_ba_b$ for numbers $a_b\in[0,1]$, \CGeqref{eq:J2} gives $J_2(d)/d^2\ge1-\sum_{n\ge2}1/n^2=2-\pi^2/6$. The number of integers $d$ with $K/2<d\le K$ is $K-\lfloor K/2\rfloor\ge K/2$. This gives the lower bound in \CGeqref{eq:partial}.
+and $\int_0^1(1-\log u)^2\,du=1+2+2=5$. For the lower bound we keep only the terms with $K/2<d\le K$. For them $\lfloor K/d\rfloor=1$ and $\operatorname{har}(1)=1$. Since $\prod_b(1-\theta_b)\ge1-\sum_b\theta_b$ for numbers $\theta_b\in[0,1]$, \CGeqref{eq:J2} gives $J_2(d)/d^2\ge1-\sum_{n\ge2}1/n^2=2-\pi^2/6$. The number of integers $d$ with $K/2<d\le K$ is $K-\lfloor K/2\rfloor\ge K/2$. This gives the lower bound in \CGeqref{eq:partial}.
 \end{proof}
 
 \section{The power weight on a half-line}\label{sec:weighted}
@@ -965,9 +1030,9 @@ For real $s<0$ we have $\widetilde H(s)>0$, because $\mathcal K>0$ on $(0,1)$ by
 
 Formula \CGeqref{eq:Afactor} is the counterpart of \CGeqref{eq:factor} for the part of $\mathcal K$ on $(0,1)$.
 
-Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, on a linear scale. The vertical axis is inverted, with the value $0$ at the top, so that a zero is a peak whose tip is at $0$, where the red points are. The grid has $253\times889$ points. Its steps are $0.01$ in $\operatorname{Re}s$ and $0.05$ in $\operatorname{Im}s$, and it is refined near the six zeros of $G$ of Table~\CGref{tab:rouche} and near the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}, which are grid points. In Figure~\CGref{fig:GAsurf} the values above $0.6$ are clipped. At the six zeros of $G$ the computed values of $|G|$ are between $4.1\cdot10^{-12}$ and $2.8\cdot10^{-11}$. On this rectangle the surface of $|A|$ does not reach $0$. Figure~\CGref{fig:Areal} shows $|A(s)|$ in the same way for $-3.5\le\operatorname{Re}s\le9.5$ and $|\operatorname{Im}s|\le2$, computed from \CGeqref{eq:Aseries} and clipped above $1.5$. Its peaks are the real zeros of Proposition~\CGref{prop:A} at $-2$ and $-1$ and the computed zeros $3.0428$, $5.0981$, $7.1478$ and $9.1892$, and its pits are the poles at $0,2,4,6,8$. Figure~\CGref{fig:zetasurf} shows in the same way, on the grid of Figure~\CGref{fig:Gsurf}, the modulus of the Riemann zeta function $\zeta(s)$, clipped above $1.5$, which is not used anywhere else in this note. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le1.2\cdot10^{-11}$. This relation is not proved and not used in this note.
+Figures~\CGref{fig:Gsurf}, \CGref{fig:Asurf} and~\CGref{fig:GAsurf} show the moduli of $G$, $A$ and $G-A$ on the rectangle $0.05\le\operatorname{Re}s\le1.95$, $1\le\operatorname{Im}s\le40$, on a linear scale. The vertical axis is inverted, with the value $0$ at the top, so that a zero is a peak whose tip is at $0$, where the red points are. The grid has $253\times889$ points. Its steps are $0.01$ in $\operatorname{Re}s$ and $0.05$ in $\operatorname{Im}s$, and it is refined near the six zeros of $G$ of Table~\CGref{tab:rouche} and near the six points $\frac12+it$ of Figure~\CGref{fig:zeromap}, which are grid points. In Figure~\CGref{fig:GAsurf} the values above $0.6$ are clipped. At the six zeros of $G$ the computed values of $|G|$ are between $4.1\cdot10^{-12}$ and $2.8\cdot10^{-11}$. On this rectangle the surface of $|A|$ does not reach $0$. Figure~\CGref{fig:Areal} shows $|A(s)|$ in the same way for $-3.5\le\operatorname{Re}s\le9.5$ and $|\operatorname{Im}s|\le2$, computed from \CGeqref{eq:Aseries} and clipped above $1.5$. Its peaks are the real zeros of Proposition~\CGref{prop:A} at $-2$ and $-1$ and the computed zeros $3.0428$, $5.0981$, $7.1478$ and $9.1892$, and its pits are the poles at $0,2,4,6,8$. Figure~\CGref{fig:zetasurf} shows in the same way, on the grid of Figure~\CGref{fig:Gsurf}, the modulus of the Riemann zeta function $\zeta(s)$, clipped above $1.5$, which is used elsewhere only in Sections~\CGref{sec:zeta} and~\CGref{sec:concl}. On that grid the computed values satisfy $|G(s)-A(s)-\frac\pi s\cot(\frac{\pi s}2)\zeta(s)|\le1.2\cdot10^{-11}$. This relation is proved in Proposition~\CGref{prop:zeta}.
 
-Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. The quotient $G/A$ is formed only at points where $A(s)\ne0$. At the $253\times889$ grid points the computed values satisfy $|A(s)|\ge0.072$, and the arcs are the level lines drawn from the grid values. That $A$ has no zero in the whole rectangle is not proved in this note. At those six points the computed value of $|G-A|$ is at most $1.1\cdot10^{-11}$. In the computed figure each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. This pairing is a numerical observation for these six zeros. It is not proved, and no correspondence between the zeros of $G$ and the points with $G=A$ is claimed. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
+Figure~\CGref{fig:zeromap} shows, in the same rectangle, the six zeros of $G$ of Table~\CGref{tab:rouche}, the six points $\frac12+it$ where $t$ is the imaginary part of one of the first six nontrivial zeros of $\zeta$, and the arcs of the curve $\operatorname{Im}(G/A)=0$ on which $0<\operatorname{Re}(G/A)<1$. The quotient $G/A$ is formed only at points where $A(s)\ne0$. At the $253\times889$ grid points the computed values satisfy $|A(s)|\ge0.072$, and the arcs are the level lines drawn from the grid values. That $A$ has no zero for $0.05\le\operatorname{Re}s\le1$ and $9\le\operatorname{Im}s\le40$ is Theorem~\CGref{thm:Anonzero}. On the rest of the rectangle it is not proved in this note. At those six points the computed value of $|G-A|$ is at most $1.1\cdot10^{-11}$. In the computed figure each arc joins a zero of $G$, where $G/A=0$, to one of those points, where $G/A=1$. This pairing is a numerical observation for these six zeros. It is not proved, and no correspondence between the zeros of $G$ and the points with $G=A$ is claimed. Figure~\CGref{fig:gram} shows the Gram matrices of Theorems~\CGref{thm:flat} and~\CGref{thm:weighted} for $1\le j,k\le10$. In the second panel the entries are $2\sigma(j\vee k)^{2\sigma}I_{jk}(\sigma)$ with $\sigma=\frac34$, that is, the bracket of \CGeqref{eq:weighted}, computed with the terms $r\le1500$. Of its $100$ entries, $52$ are negative.
 
 The last three figures concern exponential sums over computed zeros. In the rectangle $-1.5\le\operatorname{Re}s\le3$, $0.2\le\operatorname{Im}s\le200$ a numerical search finds $n_G=79$ zeros $z^G_1,\dots,z^G_{n_G}$ of $G$, and the computed variation of the argument of $G$ along the boundary of this rectangle corresponds to $79$ zeros. Their real parts lie between $0.1036$ and $1.1274$, and the six with the smallest imaginary parts are the zeros of Table~\CGref{tab:rouche}. For $A$ the same search finds no zero with $-60\le\operatorname{Re}s\le201$ and $0.2\le\operatorname{Im}s\le200$, and exactly one zero in each interval $(2l,2l+2)$ with $1\le l\le99$. With $-2$ and $-1$ this gives $n_A=101$ real zeros $z^A_1,\dots,z^A_{n_A}$ of $A$ in $[-60,200]$. These counts are computed and not proved. For real $x$ put
 \begin{equation}\label{eq:expsum}
@@ -1050,6 +1115,288 @@ Figure~\CGref{fig:expsummod} shows the moduli. The mean of $|\mathcal E_G(x)|$ o
 \end{figure}
 
 \clearpage
+\section{The difference $G-A$}\label{sec:GA}
+
+This section and the next one use only the function $h$ and the functions defined from it in the previous sections. The Riemann zeta function is not used. For real $u>0$ with $u\notin\mathbb Z$ put
+\begin{equation}\label{eq:ell}
+\ell(u)=\log\frac{\pi u}{|\sin(\pi u)|} .
+\end{equation}
+Since $|\sin(\pi u)|<\pi u$ for $u>0$, we have $\ell(u)>0$. By \CGeqref{eq:h}, $h(u)-\log(2\pi u)=-\ell(u)$, so \CGeqref{eq:GminusA} reads
+\begin{equation}\label{eq:GAell}
+G(s)-A(s)=-\int_0^\infty\ell(u)\,u^{-s-1}\,du\qquad(0<\operatorname{Re}s<2).
+\end{equation}
+
+\begin{proposition}[Sign and size of $G-A$]\label{prop:GAbound}\VCGreviewed{1}
+Let $0<\sigma<2$. Then $G(\sigma)-A(\sigma)<0$, and for every real $t$
+\begin{equation}\label{eq:GAbound}
+|G(\sigma+it)-A(\sigma+it)|\le A(\sigma)-G(\sigma),
+\end{equation}
+with equality only for $t=0$. In particular $G(s)\ne A(s)$ for real $s$ with $0<s<2$.
+\end{proposition}
+
+\begin{proof}
+The integral in \CGeqref{eq:GAell} converges absolutely, as stated after \CGeqref{eq:A}. The substitution $u=e^v$ gives $G(\sigma+it)-A(\sigma+it)=-\int_{\mathbb R}f(v)e^{-itv}\,dv$ with $f(v)=\ell(e^v)e^{-\sigma v}$, and $f(v)>0$ for every $v$ with $e^v\notin\mathbb Z$. Hence $G(\sigma)-A(\sigma)=-\int_{\mathbb R}f<0$ and $|G(\sigma+it)-A(\sigma+it)|\le\int_{\mathbb R}f=A(\sigma)-G(\sigma)$. Suppose that equality holds, and choose a real $\theta$ with $\int_{\mathbb R}f(v)e^{-itv}dv=e^{i\theta}\int_{\mathbb R}f$. Then $\int_{\mathbb R}f(v)\bigl(1-\cos(tv+\theta)\bigr)dv=0$. The integrand is nonnegative and $f>0$ almost everywhere, so $\cos(tv+\theta)=1$ for almost every real $v$, which forces $t=0$.
+\end{proof}
+
+For $0<u<1$ put
+\begin{equation}\label{eq:q0}
+q_0(u)=\log\frac{\pi u\,(1-u^2)}{\sin(\pi u)}=\sum_{k\ge1}\frac{\Sigma_{2k}-1}{k}\,u^{2k},\qquad Q_0(s)=\int_0^1q_0(u)\,u^{-s-1}\,du\quad(\operatorname{Re}s<2).
+\end{equation}
+The series follows from \CGeqref{eq:logsinc} and $\log(1-u^2)=-\sum_{k\ge1}u^{2k}/k$. Its terms are nonnegative, and $\Sigma_{2k}-1=\sum_{m\ge2}m^{-2k}\le4^{-k}+\int_2^\infty\lambda^{-2k}d\lambda=4^{-k}(1+\frac2{2k-1})\le3\cdot4^{-k}$. Hence $0\le q_0(u)\le3\sum_{k\ge1}4^{-k}/k=3\log\frac43$ on $(0,1)$, and termwise integration gives
+\begin{equation}\label{eq:Q0series}
+Q_0(s)=\sum_{k\ge1}\frac{\Sigma_{2k}-1}{k\,(2k-s)}\qquad(\operatorname{Re}s<2).
+\end{equation}
+The right side of \CGeqref{eq:Q0series} is meromorphic on $\mathbb C$, with simple poles at the even integers $2k\ge2$, and we use it as the definition of $Q_0$ on $\mathbb C$.
+
+\begin{proposition}[The difference $G-A$ through the digamma function]\label{prop:GAdigamma}\VCGreviewed{1}
+For every complex $s\ne0$ that is not an even integer,
+\begin{equation}\label{eq:sA}
+sA(s)=\log(2\pi)+\frac1s-\psi\Bigl(1-\frac s2\Bigr)-\gamma+s\,Q_0(s)\qquad(\operatorname{Re}s<2),
+\end{equation}
+and for $0<\operatorname{Re}s<2$, with $Q$ as in \CGeqref{eq:q},
+\begin{equation}\label{eq:GAthree}
+G(s)-A(s)=\frac{\psi(1-\frac s2)-\psi(1+s)}{s}-Q(s)-Q_0(s),
+\end{equation}
+where
+\begin{equation}\label{eq:digseries}
+\frac{\psi(1-\frac s2)-\psi(1+s)}{s}=-\sum_{n\ge1}\frac{3}{(n+s)(2n-s)} .
+\end{equation}
+For $0<\operatorname{Re}s<2$ the real part of the series in \CGeqref{eq:digseries} is positive, so the real part of the first term of \CGeqref{eq:GAthree} is negative.
+\end{proposition}
+
+\begin{proof}
+Let $\operatorname{Re}s<2$, $s\ne0$ and $s\notin2\mathbb Z$. For $k\ge1$ we have $1/(k(2k-s))=\frac1s\bigl(1/(k-\frac s2)-1/k\bigr)$. By \CGeqref{eq:psi} with argument $1-\frac s2$, whose real part is positive,
+\begin{equation}\label{eq:psihalf}
+\sum_{k\ge1}\frac1{k\,(2k-s)}=-\frac1s\sum_{l\ge0}\Bigl(\frac1{l+1}-\frac1{l+1-\frac s2}\Bigr)=-\frac{\psi(1-\frac s2)+\gamma}{s} .
+\end{equation}
+Writing $\Sigma_{2k}=1+(\Sigma_{2k}-1)$ in \CGeqref{eq:Aseries} and using \CGeqref{eq:psihalf} and \CGeqref{eq:Q0series} gives \CGeqref{eq:sA}. For $0<\operatorname{Re}s<2$, \CGeqref{eq:digamma} gives $G(s)=(\log(2\pi)-\gamma-\psi(s))/s-Q(s)$. Subtracting \CGeqref{eq:sA} divided by $s$, and using $\psi(1+s)=\psi(s)+1/s$, which follows from \CGeqref{eq:psi}, gives \CGeqref{eq:GAthree}. By \CGeqref{eq:psi} again,
+\begin{equation}\label{eq:psidiff}
+\psi\Bigl(1-\frac s2\Bigr)-\psi(1+s)=\sum_{n\ge1}\Bigl(\frac1{n+s}-\frac1{n-\frac s2}\Bigr)=-\sum_{n\ge1}\frac{3s}{(n+s)(2n-s)},
+\end{equation}
+which is \CGeqref{eq:digseries}. Write $s=\sigma+it$. Then $\operatorname{Re}\bigl((n+s)(2n-s)\bigr)=2n^2+n\sigma-\sigma^2+t^2\ge2+\sigma-\sigma^2+t^2=(2-\sigma)(1+\sigma)+t^2>0$ for $n\ge1$ and $0<\sigma<2$. Since $\operatorname{Re}(1/w)=\operatorname{Re}w/|w|^2$ for $w\ne0$, every term of the series has positive real part.
+\end{proof}
+
+The next lemma and theorem give an analytic proof that $A$ does not vanish in the closed strip $0\le\operatorname{Re}s\le1$ above height $9$.
+
+\begin{lemma}[A lower bound for the real part of the digamma function]\label{lem:repsi}\VCGreviewed{1}
+For real $x$ with $\frac12\le x\le1$ and real $y$,
+\begin{equation}\label{eq:repsi}
+\operatorname{Re}\psi(x+iy)\ge\frac12\log(x^2+y^2)-\gamma-\log2+\frac{y^2}{2x\,(x^2+y^2)} .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \CGeqref{eq:psi}, $\operatorname{Re}\psi(x+iy)-\psi(x)=\sum_{l\ge0}f(l)$ with $f(\lambda)=y^2/((\lambda+x)((\lambda+x)^2+y^2))$ for $\lambda\ge0$. With $w=\lambda+x>0$ one finds
+\begin{equation}\label{eq:convex}
+\frac{d^2}{dw^2}\,\frac1{w\,(w^2+y^2)}=\frac{12w^4+6w^2y^2+2y^4}{w^3(w^2+y^2)^3}>0,
+\end{equation}
+so $f$ is convex. For a convex function the chord lies above the graph, so $\int_l^{l+1}f\le\frac12(f(l)+f(l+1))$ for every integer $l\ge0$. Summing over $l$, and using $f(\lambda)\to0$ as $\lambda\to\infty$, gives $\int_0^\infty f\le\sum_{l\ge0}f(l)-\frac12f(0)$. Since $\int_0^\infty f=\int_x^\infty y^2\,dw/(w(w^2+y^2))=\frac12\log(1+y^2/x^2)$, we obtain $\operatorname{Re}\psi(x+iy)\ge\psi(x)+\frac12\log(1+y^2/x^2)+y^2/(2x(x^2+y^2))$. Termwise differentiation of \CGeqref{eq:psi} for real $x>0$ gives $\frac{d}{dx}(\psi(x)-\log x)=\sum_{l\ge0}(l+x)^{-2}-\frac1x>0$, because $(l+x)^{-2}>\int_l^{l+1}(\lambda+x)^{-2}d\lambda$ and the integrals add up to $\frac1x$. By \CGeqref{eq:psi}, $\psi(\frac12)=-\gamma-2\sum_{l\ge0}\bigl(\frac1{2l+1}-\frac1{2l+2}\bigr)=-\gamma-2\log2$. Hence for $x\ge\frac12$ we have $\psi(x)\ge\log x+\psi(\frac12)+\log2=\log x-\gamma-\log2$, and $\log x+\frac12\log(1+y^2/x^2)=\frac12\log(x^2+y^2)$ gives \CGeqref{eq:repsi}.
+\end{proof}
+
+\begin{theorem}[$A$ does not vanish above height $9$]\label{thm:Anonzero}\VCGreviewed{1}
+Let $0\le\sigma\le1$ and $|t|\ge9$, and put
+\begin{equation}\label{eq:Qbound}
+\mathcal Q(t)=\log(8\pi)-\frac12\log(1+t^2)-\frac{t^2}{2(t^2+4)}+\frac1{t^2}-0.64\,\frac{t^2-1}{t^2+4}+10^{-27} .
+\end{equation}
+Then $\operatorname{Re}\bigl(sA(s)\bigr)\le\mathcal Q(t)<0$ for $s=\sigma+it$. In particular $A(s)\ne0$.
+\end{theorem}
+
+\begin{proof}
+Since $A(\bar s)=\overline{A(s)}$ by \CGeqref{eq:Aseries}, we may assume $t\ge9$. We bound the real parts of the terms of \CGeqref{eq:sA}. First, $\operatorname{Re}(1/s)=\sigma/(\sigma^2+t^2)\le1/t^2$. Second, apply Lemma~\CGref{lem:repsi} with $x=1-\frac\sigma2\in[\frac12,1]$ and $y=-\frac t2$. Then $x^2+y^2\ge\frac14(1+t^2)$, and $x\le1$, $x^2+y^2\le\frac14(4+t^2)$ give $y^2/(2x(x^2+y^2))\ge t^2/(2(t^2+4))$. Hence
+\begin{equation}\label{eq:psibound}
+-\operatorname{Re}\psi\Bigl(1-\frac s2\Bigr)-\gamma\le2\log2-\frac12\log(1+t^2)-\frac{t^2}{2(t^2+4)} .
+\end{equation}
+Third, by \CGeqref{eq:Q0series}, $\operatorname{Re}(sQ_0(s))=\sum_{k\ge1}\frac{\Sigma_{2k}-1}k\,\mathfrak r_k$ with
+\begin{equation}\label{eq:rhok}
+\mathfrak r_k=\operatorname{Re}\frac{s}{2k-s}=\frac{2k\sigma-\sigma^2-t^2}{(2k-\sigma)^2+t^2} .
+\end{equation}
+For $0\le\sigma\le1$ we have $2k\sigma-\sigma^2\le2k-1$, because the left side increases with $\sigma$ on $[0,1]$. For $k=1$ the numerator is at most $1-t^2<0$ and the denominator is at most $4+t^2$, so $\rho_1\le-(t^2-1)/(t^2+4)$. If $2\le k$ and $2k-1<t^2$, then $\mathfrak r_k<0$. If $2k-1\ge t^2$, then $k\ge41$ because $t^2\ge81$, and $\mathfrak r_k\le(2k-1)/(2k-1)^2=1/(2k-1)$, since the denominator is at least $(2k-1)^2$. With $\Sigma_{2k}-1\le3\cdot4^{-k}$ these terms add up to at most $\frac{3}{41\cdot81}\sum_{k\ge41}4^{-k}=4^{-40}/3321<10^{-27}$. Finally $\Sigma_2-1>\sum_{m=2}^{10}m^{-2}+\int_{11}^\infty\lambda^{-2}d\lambda>0.5497+0.0909>0.64$. Adding up, $\operatorname{Re}(sA(s))\le\mathcal Q(t)$.
+
+Each of the terms $-\frac12\log(1+t^2)$, $-\frac{t^2}{2(t^2+4)}=-\frac12+\frac2{t^2+4}$, $\frac1{t^2}$ and $-0.64\frac{t^2-1}{t^2+4}=-0.64+\frac{3.2}{t^2+4}$ decreases for $t>0$, so $\mathcal Q(t)\le\mathcal Q(9)$ for $t\ge9$. Since $e^{3.2242}>25.1328>8\pi$ and $e^{4.4066}<82$, we have $\log(8\pi)<3.2242$ and $\frac12\log82>2.2033$. With $\frac{81}{170}>0.4764$, $\frac1{81}<0.0124$ and $0.64\cdot\frac{80}{85}>0.6023$ this gives $\mathcal Q(9)<3.2242-2.2033-0.4764+0.0124-0.6023+10^{-27}<-0.045$.
+\end{proof}
+
+\begin{remark}[A computer-assisted complement]\label{rem:Acert}
+Theorem~\CGref{thm:Anonzero} leaves the rectangle $0\le\operatorname{Re}s\le1$, $|\operatorname{Im}s|<9$, and its proof gives nothing there. On the real segment $0<s<2$ we have $A(s)>0$ by Proposition~\CGref{prop:A}. The program \texttt{A\_nonvanishing\_check.py} of the files that accompany this note encloses $s^2A(s)$, written through \CGeqref{eq:sA}, in ball arithmetic \cite{Johansson2017} on $188892$ boxes that cover $0\le\operatorname{Re}s\le1$, $0\le\operatorname{Im}s\le102$, and none of the enclosures contains $0$. This is a computer-assisted verification of $A(s)\ne0$ on that rectangle. No other statement of this note depends on it.
+\end{remark}
+
+\section{A positive convex kernel for $G-A$}\label{sec:B}
+
+Put $\mathfrak b=\log(2\pi)-\frac32$. Since $2\pi>e^{3/2}$, we have $\mathfrak b>0$. For real $u\ge0$ put
+\begin{equation}\label{eq:Bdef}
+\mathcal B(u)=4\pi^2\int_0^u(u-\lambda)\,\ell(\lambda)\,d\lambda,\qquad\Omega(s)=\int_0^\infty\mathcal B(u)\,u^{-s-3}\,du\quad(0<\operatorname{Re}s<2).
+\end{equation}
+The integral defining $\mathcal B$ converges because $\ell$ is nonnegative and locally integrable on $[0,\infty)$: it has only logarithmic singularities at the positive integers, and $\ell(\lambda)\le\pi^2\lambda^2/3$ for $0<\lambda\le\frac12$ by the bound $|\log(\sin(\pi\tau)/(\pi\tau))|\le\pi^2\tau^2/3$ from the proof of Lemma~\CGref{lem:Klocal}.
+
+\begin{proposition}[The kernel $\mathcal B$]\label{prop:B}\VCGreviewed{1}
+The function $\mathcal B$ has the following properties.
+\textup{(i)} $\mathcal B$ is continuously differentiable on $[0,\infty)$, $\mathcal B'(u)=4\pi^2\int_0^u\ell$ is absolutely continuous and nondecreasing, $\mathcal B''=4\pi^2\ell$ almost everywhere, $\mathcal B$ is convex, and $\mathcal B(u)>0$ for $u>0$.
+\textup{(ii)} For every $u>0$,
+\begin{equation}\label{eq:BK}
+\mathcal B(u)=\mathcal K(u)+2\pi^2u^2(\log u+\mathfrak b).
+\end{equation}
+In particular $\mathcal B(1)=2\pi^2\mathfrak b$ and $\mathcal B'(1)=2\pi^2(1+2\mathfrak b)$.
+\textup{(iii)} For $0\le u\le1$,
+\begin{equation}\label{eq:Bseries}
+\mathcal B(u)=4\pi^2\sum_{k\ge1}\frac{\Sigma_{2k}}{k\,(2k+1)(2k+2)}\,u^{2k+2},
+\end{equation}
+and $0<\mathcal B(u)<2\pi^2\mathfrak b\,u^4$ for $0<u<1$.
+\textup{(iv)} The integral $\Omega(s)$ converges absolutely for $0<\operatorname{Re}s<2$, and there
+\begin{equation}\label{eq:GAOmega}
+G(s)-A(s)=-\frac{(s+1)(s+2)}{4\pi^2}\,\Omega(s).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+\textup{(i)} By Fubini's theorem $\int_0^u(u-\lambda)\ell(\lambda)d\lambda=\int_0^u\bigl(\int_0^\mu\ell\bigr)d\mu$. The inner integral is a continuous nondecreasing function of $\mu$, absolutely continuous with derivative $\ell$ almost everywhere. This gives the statements on $\mathcal B'$ and $\mathcal B''$. A function with nondecreasing derivative is convex, and $\mathcal B(u)>0$ for $u>0$ because $\ell>0$.
+
+\textup{(ii)} By \CGeqref{eq:Kprime}, $\mathcal K(0)=0$ and Fubini's theorem, $\mathcal K(u)=\int_0^u\mathcal K'(\mu)\,d\mu=-4\pi^2\int_0^u\int_0^\mu h(\lambda)\,d\lambda\,d\mu=-4\pi^2\int_0^u(u-\lambda)h(\lambda)\,d\lambda$. Since $\ell(\lambda)+h(\lambda)=\log(2\pi\lambda)$ and $\int_0^u(u-\lambda)\log(2\pi\lambda)\,d\lambda=\frac{u^2}2\log(2\pi u)-\frac{3u^2}4$, we get $\mathcal B(u)-\mathcal K(u)=2\pi^2u^2(\log(2\pi u)-\frac32)$, which is \CGeqref{eq:BK}. At $u=1$, \CGeqref{eq:Kprops} gives $\mathcal K(1)=\mathcal K'(1)=0$, hence $\mathcal B(1)=2\pi^2\mathfrak b$ and $\mathcal B'(1)=2\pi^2(2\cdot1\cdot\log1+1+2\mathfrak b)=2\pi^2(1+2\mathfrak b)$.
+
+\textup{(iii)} For $0\le\lambda<1$, \CGeqref{eq:logsinc} gives $\ell(\lambda)=\sum_{k\ge1}\Sigma_{2k}\lambda^{2k}/k$ with nonnegative terms. Since $\int_0^u(u-\lambda)\lambda^{2k}d\lambda=u^{2k+2}/((2k+1)(2k+2))$, monotone convergence gives \CGeqref{eq:Bseries} for $0\le u\le1$. All the coefficients are positive and all the exponents are at least $4$. Hence for $0<u<1$ every term with $k\ge2$ is strictly smaller than its value at $u=1$ times $u^4$, the term with $k=1$ equals its value at $u=1$ times $u^4$, and $0<\mathcal B(u)<u^4\mathcal B(1)=2\pi^2\mathfrak b\,u^4$.
+
+\textup{(iv)} Let $\sigma=\operatorname{Re}s$. Near $0$ we have $\mathcal B(u)u^{-\sigma-3}<2\pi^2\mathfrak b\,u^{1-\sigma}$, which is integrable for $\sigma<2$. For $u\ge1$, \CGeqref{eq:Kprops} and \CGeqref{eq:BK} give $\mathcal B(u)\le\frac52+2\pi^2u^2(\log u+\mathfrak b)$, and $\mathcal B(u)u^{-\sigma-3}$ is integrable on $[1,\infty)$ for $\sigma>0$. Let $0<\tau<\frac12<X$. Since $\mathcal B'$ is absolutely continuous with $\mathcal B''=4\pi^2\ell$, two integrations by parts give
+\begin{equation}\label{eq:Bparts}
+4\pi^2\int_\tau^X\ell(u)\,u^{-s-1}\,du=\Bigl[\mathcal B'(u)u^{-s-1}+(s+1)\mathcal B(u)u^{-s-2}\Bigr]_\tau^X+(s+1)(s+2)\int_\tau^X\mathcal B(u)\,u^{-s-3}\,du .
+\end{equation}
+For $u\le\frac12$ the bound $\ell(\lambda)\le\pi^2\lambda^2/3$ gives $\mathcal B'(u)\le4\pi^4u^3/9$ and $\mathcal B(u)\le\pi^4u^4/9$, so the terms at $\tau$ are $O(\tau^{2-\sigma})$ and tend to $0$. The series of derivatives in the proof of Proposition~\CGref{prop:K} gives $|\mathcal K'|\le2\pi\Sigma_2$, so by \CGeqref{eq:BK} $\mathcal B'(X)=O(X\log X)$ and $\mathcal B(X)=O(X^2\log X)$, and the terms at $X$ are $O(X^{-\sigma}\log X)$ and tend to $0$. Letting $\tau\to0$ and $X\to\infty$ and using \CGeqref{eq:GAell} gives \CGeqref{eq:GAOmega}.
+\end{proof}
+
+By \CGeqref{eq:GAOmega}, and since $(s+1)(s+2)\ne0$ for $0<\operatorname{Re}s<2$, the solutions of $G(s)=A(s)$ in the strip $0<\operatorname{Re}s<2$ are exactly the zeros of $\Omega$ there.
+
+\begin{proposition}[An inversion inequality and two positive weights]\label{prop:Binv}\VCGreviewed{1}
+For $u>1$ and $0<\sigma\le1$,
+\begin{equation}\label{eq:Binv}
+\mathcal B(u)>u^{2\sigma+4}\,\mathcal B(1/u) .
+\end{equation}
+For real $\sigma$ with $0<\sigma<2$ and real $v$ put
+\begin{equation}\label{eq:upsilon}
+\upsilon_\sigma(v)=e^{-(\sigma+2)v}\mathcal B(e^v),\qquad\upsilon_\sigma^\pm(v)=\upsilon_\sigma(v)\pm\upsilon_\sigma(-v)\quad(v>0).
+\end{equation}
+Then $\Omega(\sigma+it)=\int_{\mathbb R}\upsilon_\sigma(v)e^{-itv}\,dv$ for real $t$, and
+\begin{equation}\label{eq:ReImOmega}
+\operatorname{Re}\Omega(\sigma+it)=\int_0^\infty\upsilon^+_\sigma(v)\cos(tv)\,dv,\qquad\operatorname{Im}\Omega(\sigma+it)=-\int_0^\infty\upsilon^-_\sigma(v)\sin(tv)\,dv .
+\end{equation}
+For $0<\sigma\le1$ and $v>0$ we have $\upsilon^+_\sigma(v)>\upsilon^-_\sigma(v)>0$. The function $\Omega$ is positive on the real interval $(0,2)$ and strictly decreasing on $(0,1]$.
+\end{proposition}
+
+\begin{proof}
+Let $u>1$ and $0<\sigma\le1$. By Proposition~\CGref{prop:B}\textup{(iii)} with $1/u$ in place of $u$, $u^{2\sigma+4}\mathcal B(1/u)<2\pi^2\mathfrak b\,u^{2\sigma}\le2\pi^2\mathfrak b\,u^2$. By \CGeqref{eq:BK} and $\mathcal K\ge0$, $\mathcal B(u)\ge2\pi^2u^2(\log u+\mathfrak b)>2\pi^2\mathfrak b\,u^2$. This proves \CGeqref{eq:Binv}. The substitution $u=e^v$ in \CGeqref{eq:Bdef} gives the integral over $\mathbb R$. Splitting it at $v=0$ and replacing $v$ by $-v$ on $(-\infty,0)$ gives \CGeqref{eq:ReImOmega}. For $v>0$, \CGeqref{eq:Binv} with $u=e^v$ is $\upsilon_\sigma(v)>\upsilon_\sigma(-v)$, and $\upsilon_\sigma(-v)>0$ by Proposition~\CGref{prop:B}\textup{(i)}. For real $\sigma\in(0,2)$, $\Omega(\sigma)=\int_{\mathbb R}\upsilon_\sigma>0$. On a compact interval $[\sigma_1,\sigma_2]\subset(0,2)$ we have $|v|\upsilon_\sigma(v)\le|v|(\upsilon_{\sigma_1}(v)+\upsilon_{\sigma_2}(v))$, which is integrable, so differentiation under the integral sign is allowed and $\Omega'(\sigma)=-\int_{\mathbb R}v\,\upsilon_\sigma(v)\,dv=-\int_0^\infty v\,\upsilon^-_\sigma(v)\,dv$. For $0<\sigma\le1$ this is negative.
+\end{proof}
+
+\begin{theorem}[A region without solutions of $G=A$ near the real axis]\label{thm:GAexcl}\VCGreviewed{1}
+For $0<\sigma<2$ and $j=0,1,2$ put $\mathcal M_j(\sigma)=\int_0^\infty(\log u)^j\,\mathcal B(u)\,u^{-\sigma-3}\,du$. If $t$ is real and
+\begin{equation}\label{eq:GAexcl}
+t^2\bigl(\mathcal M_0(\sigma)\mathcal M_2(\sigma)-\mathcal M_1(\sigma)^2\bigr)<2\,\mathcal M_0(\sigma)^2,
+\end{equation}
+then $G(\sigma+it)\ne A(\sigma+it)$. In particular $G(\sigma+it)\ne A(\sigma+it)$ whenever $|t|<\sqrt{2\mathcal M_0(\sigma)/\mathcal M_2(\sigma)}$.
+\end{theorem}
+
+\begin{proof}
+By the substitution $u=e^v$, $\mathcal M_j(\sigma)=\int_{\mathbb R}v^j\upsilon_\sigma(v)\,dv$, and these integrals converge by Proposition~\CGref{prop:B}\textup{(iii)} and \textup{(iv)}. Put $\mu=\mathcal M_1/\mathcal M_0$. By Proposition~\CGref{prop:Binv}, $e^{it\mu}\Omega(\sigma+it)=\int_{\mathbb R}\upsilon_\sigma(v)e^{-it(v-\mu)}dv$. Its real part is $\int_{\mathbb R}\upsilon_\sigma(v)\cos(t(v-\mu))\,dv$, and $\cos y\ge1-\frac{y^2}2$ for real $y$ gives
+\begin{equation}\label{eq:Omegacos}
+|\Omega(\sigma+it)|\ge\mathcal M_0-\frac{t^2}2\int_{\mathbb R}(v-\mu)^2\upsilon_\sigma(v)\,dv=\mathcal M_0-\frac{t^2}2\Bigl(\mathcal M_2-\frac{\mathcal M_1^2}{\mathcal M_0}\Bigr).
+\end{equation}
+Under \CGeqref{eq:GAexcl} the right side is positive, and \CGeqref{eq:GAOmega} gives $G\ne A$. The last statement follows because $\mathcal M_0\mathcal M_2-\mathcal M_1^2\le\mathcal M_0\mathcal M_2$.
+\end{proof}
+
+\begin{proposition}[Decay of $\Omega$]\label{prop:Omegadecay}\VCGreviewed{1}
+Let $0<\sigma<2$. The function $\upsilon_\sigma$ is continuously differentiable on $\mathbb R$, $\upsilon_\sigma'$ is absolutely continuous, $\upsilon_\sigma''$ is integrable on $\mathbb R$, and for real $t\ne0$
+\begin{equation}\label{eq:Omegadecay}
+|\Omega(\sigma+it)|\le\frac1{t^2}\int_{\mathbb R}|\upsilon_\sigma''(v)|\,dv .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Put $u=e^v$. By Proposition~\CGref{prop:B}\textup{(i)}, $\upsilon_\sigma'(v)=u^{-\sigma-2}\bigl(u\mathcal B'(u)-(\sigma+2)\mathcal B(u)\bigr)$ is continuous and absolutely continuous, and almost everywhere $\upsilon_\sigma''(v)=u^{-\sigma-2}\bigl(4\pi^2u^2\ell(u)-(2\sigma+3)u\mathcal B'(u)+(\sigma+2)^2\mathcal B(u)\bigr)$. With $dv=du/u$, the three terms contribute to $\int_{\mathbb R}|\upsilon_\sigma''|$ at most constant multiples of $\int_0^\infty\ell(u)u^{-\sigma-1}du$, $\int_0^\infty\mathcal B'(u)u^{-\sigma-2}du$ and $\int_0^\infty\mathcal B(u)u^{-\sigma-3}du$. The first is finite by \CGeqref{eq:GAell}, and the other two by the bounds for $\mathcal B$ and $\mathcal B'$ near $0$ and near $\infty$ in the proof of Proposition~\CGref{prop:B}\textup{(iv)}. The same bounds show that $\upsilon_\sigma(v)$ and $\upsilon_\sigma'(v)$ tend to $0$ as $v\to\pm\infty$. Two integrations by parts in $\Omega(\sigma+it)=\int_{\mathbb R}\upsilon_\sigma(v)e^{-itv}dv$ give $\Omega(\sigma+it)=-t^{-2}\int_{\mathbb R}\upsilon_\sigma''(v)e^{-itv}dv$, and \CGeqref{eq:Omegadecay} follows.
+\end{proof}
+
+The inequality \CGeqref{eq:Binv} holds for every $\sigma\in(0,1]$, so Proposition~\CGref{prop:Binv} does not distinguish the value $\sigma=\frac12$. The next proposition shows that positivity and periodicity of the kernel alone cannot place the solutions of $G=A$ on $\operatorname{Re}s=\frac12$. For real $x$ put
+\begin{equation}\label{eq:Ksharp}
+\mathcal K^\sharp(x)=1-\cos(2\pi x)+2^{-11/4}\bigl(1-\cos(4\pi x)\bigr) .
+\end{equation}
+Like $\mathcal K$, the function $\mathcal K^\sharp$ is even, has period $1$, satisfies $\mathcal K^\sharp>0$ off the integers and $\mathcal K^\sharp(n)=(\mathcal K^\sharp)'(n)=0$ at the integers $n$. Put $H^\sharp(s)=\int_1^\infty\mathcal K^\sharp(u)u^{-s-3}du$ for $\operatorname{Re}s>-2$, $\widetilde H^\sharp(s)=\int_0^1\mathcal K^\sharp(u)u^{-s-3}du$ for $\operatorname{Re}s<0$, and
+\begin{equation}\label{eq:Cdef}
+\mathcal C(s)=\int_0^\infty(1-\cos y)\,y^{-s-3}\,dy\qquad(-2<\operatorname{Re}s<0).
+\end{equation}
+In view of \CGeqref{eq:factor} and \CGeqref{eq:Afactor}, the counterparts of $G$ and $A$ for $\mathcal K^\sharp$ are $G^\sharp=-\frac{(s+1)(s+2)}{4\pi^2}H^\sharp$ and $A^\sharp=\frac{(s+1)(s+2)}{4\pi^2}\widetilde H^\sharp$.
+
+\begin{proposition}[A positive kernel with solutions off the line]\label{prop:Ksharp}\VCGreviewed{1}
+The functions $\widetilde H^\sharp$ and $\mathcal C$ extend to meromorphic functions on $\operatorname{Re}s>-2$ whose poles are real, and on $\operatorname{Re}s>-2$
+\begin{equation}\label{eq:GAsharp}
+G^\sharp(s)-A^\sharp(s)=-\frac{(s+1)(s+2)}{4\pi^2}\,(2\pi)^{s+2}\bigl(1+2^{s-3/4}\bigr)\,\mathcal C(s) .
+\end{equation}
+Consequently $G^\sharp(s)=A^\sharp(s)$ at the points $s=\frac34+i(2k+1)\pi/\log2$, $k\in\mathbb Z$, which have real part $\frac34$ and nonzero imaginary part.
+\end{proposition}
+
+\begin{proof}
+The Taylor series $\mathcal K^\sharp(u)=\sum_{n\ge1}\mathfrak c_nu^{2n}$ at $0$ converges for all $u$, with $|\mathfrak c_n|\le(4\pi)^{2n}/(2n)!$. Termwise integration gives $\widetilde H^\sharp(s)=\sum_{n\ge1}\mathfrak c_n/(2n-2-s)$ for $\operatorname{Re}s<0$, and the right side is meromorphic on $\mathbb C$ with poles at the even integers $2n-2\ge0$. In the same way $\int_0^1(1-\cos y)y^{-s-3}dy=\sum_{n\ge1}(-1)^{n+1}/((2n)!(2n-2-s))$, while $\int_1^\infty(1-\cos y)y^{-s-3}dy$ and $H^\sharp(s)$ are holomorphic on $\operatorname{Re}s>-2$ because $1-\cos y$ and $\mathcal K^\sharp$ are bounded. Let $-2<\operatorname{Re}s<0$. The substitutions $y=2\pi u$ and $y=4\pi u$ give
+\begin{equation}\label{eq:HHsharp}
+H^\sharp(s)+\widetilde H^\sharp(s)=\int_0^\infty\mathcal K^\sharp(u)\,u^{-s-3}\,du=\bigl((2\pi)^{s+2}+2^{-11/4}(4\pi)^{s+2}\bigr)\mathcal C(s)=(2\pi)^{s+2}\bigl(1+2^{s-3/4}\bigr)\mathcal C(s),
+\end{equation}
+and multiplication by $-\frac{(s+1)(s+2)}{4\pi^2}$ gives \CGeqref{eq:GAsharp} there. Both sides of \CGeqref{eq:GAsharp} are meromorphic on the connected set $\operatorname{Re}s>-2$, so the identity holds on all of it. At $s_k=\frac34+i(2k+1)\pi/\log2$ we have $2^{s_k-3/4}=e^{i(2k+1)\pi}=-1$, and $s_k$ is not real, so it is not a pole of $\mathcal C$ or of $A^\sharp$. Hence the right side of \CGeqref{eq:GAsharp} vanishes at $s_k$.
+\end{proof}
+
+\section{The difference $G-A$ and the Riemann zeta function}\label{sec:zeta}
+
+In this section, and only here and in Section~\CGref{sec:fig}, $\zeta$ denotes the Riemann zeta function, and $\Gamma$ denotes Euler's gamma function. We use three cited results. The functional equation in the form \cite[(2.1.8), p.~16]{Titchmarsh1986}
+\begin{equation}\label{eq:zetafe}
+\zeta(1-s)=2^{1-s}\pi^{-s}\cos\Bigl(\frac{\pi s}2\Bigr)\Gamma(s)\zeta(s) .
+\end{equation}
+The evaluation $\int_0^\infty y^{-w-1}\sin y\,dy=-\Gamma(-w)\sin(\frac{\pi w}2)$ for $-1<\operatorname{Re}w<0$, which is the last step of the first proof of the functional equation in \cite[p.~15]{Titchmarsh1986}. The relations $\Gamma(z+1)=z\Gamma(z)$ and $\Gamma(z)\Gamma(1-z)=\pi/\sin(\pi z)$ for non-integral $z$, and the fact that $1/\Gamma$ is an entire function \cite[\S4.41, p.~149]{Titchmarsh1939}.
+
+\begin{proposition}[The difference $G-A$ through $\zeta$]\label{prop:zeta}\VCGreviewed{1}
+For $-2<\operatorname{Re}s<0$,
+\begin{equation}\label{eq:HHzeta}
+H(s)+\widetilde H(s)=\int_0^\infty\mathcal K(u)\,u^{-s-3}\,du=(2\pi)^{s+2}\zeta(1-s)\,\mathcal C(s),
+\end{equation}
+and on $\mathbb C$, as an identity between meromorphic functions,
+\begin{equation}\label{eq:GAzeta}
+G(s)-A(s)=\frac\pi s\cot\Bigl(\frac{\pi s}2\Bigr)\zeta(s) .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $-2<\sigma<0$. The terms of \CGeqref{eq:K} are nonnegative, and the substitution $y=2\pi mu$ gives $\int_0^\infty(1-\cos(2\pi mu))u^{-\sigma-3}du=(2\pi m)^{\sigma+2}\mathcal C(\sigma)$. Since $\sum_{m\ge1}m^{-3}(2\pi m)^{\sigma+2}=(2\pi)^{\sigma+2}\sum_{m\ge1}m^{\sigma-1}<\infty$, the theorems of Tonelli and Fubini allow termwise integration for complex $s$ with $\operatorname{Re}s=\sigma$, and $\sum_{m\ge1}m^{s-1}=\zeta(1-s)$. This gives \CGeqref{eq:HHzeta}, where $H$ and $\widetilde H$ are as in \CGeqref{eq:H} and \CGeqref{eq:Afactor}. Now let $-2<\sigma<-1$. Integration by parts in \CGeqref{eq:Cdef}, whose boundary terms vanish because $(1-\cos y)y^{-\sigma-2}$ tends to $0$ at $0$ and at $\infty$, and the evaluation quoted above with $w=s+1$ give
+\begin{equation}\label{eq:Cgamma}
+\mathcal C(s)=\frac1{s+2}\int_0^\infty y^{-s-2}\sin y\,dy=-\frac{\Gamma(-s-1)}{s+2}\sin\Bigl(\frac{\pi(s+1)}2\Bigr)=-\frac{\Gamma(-s-1)}{s+2}\cos\Bigl(\frac{\pi s}2\Bigr).
+\end{equation}
+By \CGeqref{eq:factor}, valid on $\mathbb C$ by Theorem~\CGref{thm:entire}, and by \CGeqref{eq:Afactor}, $G-A=-\frac{(s+1)(s+2)}{4\pi^2}(H+\widetilde H)$ for $-2<\sigma<0$. With \CGeqref{eq:HHzeta} and $(s+1)\Gamma(-s-1)=-\Gamma(-s)$ this gives, for $-2<\sigma<-1$,
+\begin{equation}\label{eq:GAgamma}
+G(s)-A(s)=-(2\pi)^s\,\Gamma(-s)\cos\Bigl(\frac{\pi s}2\Bigr)\zeta(1-s)=-2\,\Gamma(s)\Gamma(-s)\cos^2\Bigl(\frac{\pi s}2\Bigr)\zeta(s),
+\end{equation}
+by \CGeqref{eq:zetafe}. Since $\Gamma(1-s)=-s\Gamma(-s)$, we have $\Gamma(s)\Gamma(-s)=-\pi/(s\sin(\pi s))$, and $\sin(\pi s)=2\sin(\frac{\pi s}2)\cos(\frac{\pi s}2)$ gives \CGeqref{eq:GAzeta} for $-2<\sigma<-1$. Both sides of \CGeqref{eq:GAzeta} are meromorphic on $\mathbb C$, so the identity holds on $\mathbb C$.
+\end{proof}
+
+\begin{corollary}[The condition on $G$ and $A$ is the Riemann hypothesis]\label{cor:RH}\VCGreviewed{1}
+For every non-real $s$, $G(s)=A(s)$ if and only if $\zeta(s)=0$, and the multiplicity of $s$ as a zero of $G-A$ equals its multiplicity as a zero of $\zeta$. Hence the following two statements are equivalent.
+\textup{(a)} Every $s$ with $\operatorname{Im}s\ne0$ and $G(s)=A(s)$ has the form $s=\frac12+it$ with real $t\ne0$.
+\textup{(b)} Every zero of $\zeta$ that is not real has real part $\frac12$, that is, the Riemann hypothesis.
+\end{corollary}
+
+\begin{proof}
+Let $s$ be non-real. The poles of $A$ are real by Proposition~\CGref{prop:A}, so $G(s)-A(s)$ is finite. The function $\frac\pi s\cot(\frac{\pi s}2)$ is holomorphic and nonzero at $s$, because $\sin z$ vanishes only at the real points $z\in\pi\mathbb Z$ and $\cos z$ only at the real points $z\in\frac\pi2+\pi\mathbb Z$. Hence \CGeqref{eq:GAzeta} gives the first statement, with multiplicities, and the equivalence of \textup{(a)} and \textup{(b)} follows.
+\end{proof}
+
+Through Corollary~\CGref{cor:RH}, every theorem on the non-real zeros of $\zeta$ is a theorem on the non-real solutions of $G=A$. For instance, $\zeta(1+it)\ne0$ for real $t\ne0$ \cite[\S3.1, p.~45]{Titchmarsh1986}, so $G(1+it)\ne A(1+it)$ for $t\ne0$, and also $G(1)\ne A(1)$ by Proposition~\CGref{prop:GAbound}. Let $N(T)$ be the number of zeros of $\zeta$ with $0\le\operatorname{Re}s\le1$ and $0<\operatorname{Im}s\le T$, counted with multiplicity \cite[\S9.2, p.~211]{Titchmarsh1986}. By Corollary~\CGref{cor:RH}, $N(T)$ is also the number of solutions of $G=A$ in the same region, and by \cite[Theorem~9.4, p.~214]{Titchmarsh1986}
+\begin{equation}\label{eq:NT}
+N(T)=\frac T{2\pi}\log\frac T{2\pi e}+O(\log T)\qquad(T\to\infty).
+\end{equation}
+Put $N_0(T)=\frac T{2\pi}\log\frac T{2\pi e}+\frac78$, the main term of \CGeqref{eq:NT} plus the constant $\frac78$. On $T>2\pi$ the function $N_0$ increases from $-\frac18$ to $\infty$. For every integer $k\ge1$ let $\tau_k>2\pi$ be the solution of $N_0(\tau_k)=k-\frac12$. This equation reads $\frac{\tau_k}{2\pi e}\log\frac{\tau_k}{2\pi e}=(k-\frac{11}8)/e$ with $\log\frac{\tau_k}{2\pi e}>-1$, so that $\log\frac{\tau_k}{2\pi e}=W((k-\frac{11}8)/e)$ and
+\begin{equation}\label{eq:tauk}
+\tau_k=\frac{2\pi(k-\frac{11}8)}{W\bigl((k-\frac{11}8)/e\bigr)},
+\end{equation}
+where $W$ is the inverse function of $w\mapsto we^w$ on $[-1,\infty)$. The first values are $\tau_1=14.5213$, $\tau_2=20.6557$, $\tau_3=25.4927$, $\tau_4=29.7394$, $\tau_5=33.6245$ and $\tau_6=37.2574$. The imaginary parts of the six solutions of $G=A$ shown in Figure~\CGref{fig:zeromap}, which are those of the first six non-real zeros of $\zeta$ in the upper half-plane, differ from $\tau_1,\dots,\tau_6$ by at most $0.69$. At the points $\frac12+i\tau_k$ with $k\le6$ the computed values of $|G-A|$ lie between $0.054$ and $0.105$, so these points are not solutions of $G=A$. The statements of the last two sentences are numerical observations.
+
+\section{Conclusions}\label{sec:concl}
+
+Sections~\CGref{sec:GA} and~\CGref{sec:B} characterize the difference $G-A$ without the Riemann zeta function, using only the function $h$. On the strip $0<\operatorname{Re}s<2$ it is minus the Mellin transform \CGeqref{eq:GAell} of the positive function $\ell(u)=\log(\pi u/|\sin(\pi u)|)$, so that $|G-A|$ is bounded by its value $A(\sigma)-G(\sigma)$ on the real axis, which is attained only there. It is also the sum \CGeqref{eq:GAthree} of an explicit digamma term, whose real part is negative, and of two transforms of nonnegative remainders. After the factor $-(s+1)(s+2)/(4\pi^2)$, it is the Mellin transform $\Omega$ of the convex kernel $\mathcal B$ of \CGeqref{eq:Bdef}. This kernel is positive and continuously differentiable, and on $(0,1)$ it is a power series with positive coefficients and exponents at least $4$. It satisfies the strict inversion inequality \CGeqref{eq:Binv}, so that the real and imaginary parts of $\Omega$ are cosine and sine transforms of two positive weights. It follows that $\Omega$ is positive and decreasing on the real segment $(0,1]$, that there is the region \CGeqref{eq:GAexcl} without solutions of $G=A$ around the real axis, and that $\Omega(\sigma+it)=O(t^{-2})$. Theorem~\CGref{thm:Anonzero} proves that $A(s)\ne0$ for $0\le\operatorname{Re}s\le1$ and $|\operatorname{Im}s|\ge9$, so that there the equation $G=A$ is the equation $G/A=1$. The condition on $G$ and $A$ that every solution of $G(s)=A(s)$ with $\operatorname{Im}s\ne0$ has the form $s=\frac12+it$ is a statement about these two functions alone, and it can be formulated without $\zeta$.
+
+None of these properties places the solutions on the line $\operatorname{Re}s=\frac12$. The inversion inequality holds for every $\sigma\in(0,1]$ and does not single out $\sigma=\frac12$. Proposition~\CGref{prop:Ksharp} gives a kernel $\mathcal K^\sharp$ with two harmonics that is nonnegative, has period $1$ and vanishes to second order at the integers, exactly like $\mathcal K$, and for which the counterpart of $G-A$ vanishes at points with real part $\frac34$. Therefore a proof of the condition has to use the coefficients $m^{-3}$ of all the harmonics of $\mathcal K$, and not only the positivity and the periodicity of the kernel.
+
+Proposition~\CGref{prop:zeta} shows where these coefficients go. The sum over all the harmonics of $\mathcal K$ is the Dirichlet series of $\zeta(1-s)$, and $G-A$ equals $\frac\pi s\cot(\frac{\pi s}2)\zeta(s)$. This is the problem that appears when $\zeta$ is introduced. By Corollary~\CGref{cor:RH} the condition on $G$ and $A$ is then equivalent to the Riemann hypothesis. The introduction of $\zeta$ therefore does not reduce the condition to a weaker statement. The step that remains after it is the Riemann hypothesis itself. What $\zeta$ brings are the known theorems on its zeros, which become theorems on the solutions of $G=A$. The theorem of Hadamard and de la Vall\'ee Poussin excludes solutions on the line $\operatorname{Re}s=1$, which the methods of Sections~\CGref{sec:GA} and~\CGref{sec:B} do not do. The Riemann--von Mangoldt formula \CGeqref{eq:NT} counts the solutions with $0<\operatorname{Im}s\le T$, and the points $\tau_k$ of \CGeqref{eq:tauk} are defined from its main term. But \CGeqref{eq:NT} and the points $\tau_k$ concern only the imaginary parts of the solutions. They give no information on the real parts, and the points $\frac12+i\tau_k$ are not themselves solutions. The two routes therefore stop at the same place, the real parts of the solutions of $G=A$ in the strip $0<\operatorname{Re}s<1$. Without $\zeta$, the obstruction is that the structure proved so far is shared by kernels whose solutions lie off the line. With $\zeta$, the obstruction is the Riemann hypothesis.
+
+It remains to say whether $G$ and $A$ intersect, and where. They do intersect, and this is not impossible to prove. On the real axis, $G(-1)=0$ by \CGeqref{eq:special} and $A(-1)=0$ by Proposition~\CGref{prop:A}, so $G(-1)=A(-1)$ without any use of $\zeta$, while $G(s)\ne A(s)$ for $0<s<2$ by Proposition~\CGref{prop:GAbound}. By \CGeqref{eq:GAzeta}, $G(s)=A(s)$ also at every odd integer $s\ge3$ and $s\le-3$, because $\cot(\frac{\pi s}2)=0$ there and $\zeta$ is finite at every $s\ne1$ \cite[Theorem~2.1, p.~13]{Titchmarsh1986}. Off the real axis, Corollary~\CGref{cor:RH} and Hardy's theorem that $\zeta$ has infinitely many zeros on the line $\operatorname{Re}s=\frac12$ \cite[\S10.2, p.~256]{Titchmarsh1986} show that $G=A$ at infinitely many points $\frac12+it$. So it is proved that $G$ and $A$ intersect infinitely often off the real axis, and on the line $\operatorname{Re}s=\frac12$ itself. Hardy's proof uses that $\zeta(\frac12+it)$ times an explicit factor is real, which is a consequence of the functional equation. The representations of Sections~\CGref{sec:GA} and~\CGref{sec:B} do not show a symmetry of $G-A$ under $s\mapsto1-s$, and this note does not prove the existence of a non-real solution of $G=A$ without $\zeta$. What is not proved is that $G$ and $A$ intersect off the real axis only on the line $\operatorname{Re}s=\frac12$. By Corollary~\CGref{cor:RH} this is the Riemann hypothesis. It is not known to be impossible to prove; it is open.
+
+\clearpage
 \begin{thebibliography}{9}
 
 \bibitem{Johansson2017}
@@ -1059,6 +1406,12 @@ F.~Johansson, Arb: efficient arbitrary-precision midpoint-radius interval arithm
 \bibitem{Smith1875}
 H.~J.~S.~Smith, On the value of a certain arithmetical determinant, \emph{Proc. London Math. Soc.} \textbf{7} (1875/76), 208--212.
 \href{https://doi.org/10.1112/plms/s1-7.1.208}{doi:10.1112/plms/s1-7.1.208}.
+
+\bibitem{Titchmarsh1939}
+E.~C.~Titchmarsh, \emph{The Theory of Functions}, 2nd ed., Oxford University Press, Oxford, 1939. No DOI.
+
+\bibitem{Titchmarsh1986}
+E.~C.~Titchmarsh, \emph{The Theory of the Riemann Zeta-Function}, 2nd ed., revised by D.~R.~Heath-Brown, Clarendon Press, Oxford, 1986. No DOI.
 
 \end{thebibliography}
 
