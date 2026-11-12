@@ -1,0 +1,3 @@
+python-flint 0.9.0, precision 80 bits, K = 60
+B1 (-38.2, 2.0, 5.0, 40.2): CERTIFIED Im A > 0;  1238720 ball evaluations;  smallest certified lower bound 1.0228e-09 on box sigma in [-2.9739, -2.9737], t in [5.0002, 5.0005];  93.9 s
+B2 (2.0, 8.4, 5.0, 8.4): CERTIFIED Im A > 0;  2320988 ball evaluations;  smallest certified lower bound 1.1774e-06 on box sigma in [7.4688, 7.4727], t in [6.9375, 6.9414];  170.5 s

@@ -1,0 +1,156 @@
+zeros of G in -1.0 <= sigma <= 2.5, 200 < t <= 300
+  found 58 zeros; argument principle on the rectangle: 58.0000; largest phase step 0.014 rad
+
+window W1: -1 <= sigma <= 3, 10 <= t <= 60 (steps 0.01 x 0.05)
+  sign of |G| - |A| on sigma = 3: min -4.844e-02 max 1.512e-02;  on sigma = -1: min 4.487e-01 max 1.878e+00
+  loop  0: OPEN, cut by the window, sigma in [0.254, 3.000], t in [10.000, 17.367]; winding of Q -1.0384; G = A points 1; zeros of G inside 1 1.1273+15.0013i
+           G = A at sigma=0.49998 t=14.13482   (|t - gamma| = 9.5e-05)
+           meets sigma=1/2 at t=14.1348  type I   phi=+0.0001  |phi| = 5.7e-05
+           meets sigma=1/2 at t=15.7160  type II  phi=-2.5644  |phi - (pi + 2 alpha)| = 2.1e-04
+  loop  1: OPEN, both ends on sigma=3, sigma in [0.006, 3.000], t in [20.565, 26.955]; winding of Q -1.9705; G = A points 2; zeros of G inside 2 0.5336+21.7633i 0.8947+25.6248i
+           G = A at sigma=0.49993 t=25.01096   (|t - gamma| = 9.7e-05)
+           G = A at sigma=0.49968 t=21.02219   (|t - gamma| = 1.5e-04)
+           meets sigma=1/2 at t=21.0220  type I   phi=+0.0006  |phi| = 5.5e-04
+           meets sigma=1/2 at t=22.6035  type II  phi=+2.1396  |phi - (pi + 2 alpha)| = 8.4e-05
+           meets sigma=1/2 at t=25.0108  type I   phi=+0.0002  |phi| = 2.2e-04
+           meets sigma=1/2 at t=26.1067  type II  phi=-2.6778  |phi - (pi + 2 alpha)| = 2.6e-04
+  loop  2: OPEN, both ends on sigma=3, sigma in [-0.133, 3.000], t in [30.420, 35.210]; winding of Q -1.9575; G = A points 2; zeros of G inside 2 0.2277+30.9760i 0.9505+33.5991i
+           G = A at sigma=0.49990 t=32.93505   (|t - gamma| = 7.1e-06)
+           G = A at sigma=0.49951 t=30.42504   (|t - gamma| = 1.7e-04)
+           meets sigma=1/2 at t=30.4250  type I   phi=+0.0008  |phi| = 7.7e-04
+           meets sigma=1/2 at t=31.7872  type II  phi=+1.1299  |phi - (pi + 2 alpha)| = 3.0e-05
+           meets sigma=1/2 at t=32.9348  type I   phi=+0.0004  |phi| = 4.4e-04
+           meets sigma=1/2 at t=34.0012  type II  phi=-2.5632  |phi - (pi + 2 alpha)| = 5.3e-05
+  loop  3: closed, sigma in [0.105, 1.518], t in [37.554, 38.625]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.4309+38.0549i
+           G = A at sigma=0.49957 t=37.58628   (|t - gamma| = 1.0e-04)
+           meets sigma=1/2 at t=37.5862  type I   phi=+0.0010  |phi| = 9.7e-04
+           meets sigma=1/2 at t=38.5643  type II  phi=+1.9540  |phi - (pi + 2 alpha)| = 6.6e-04
+  loop  4: OPEN, both ends on sigma=3, sigma in [-0.011, 3.000], t in [40.028, 44.882]; winding of Q -1.9623; G = A points 2; zeros of G inside 2 0.3452+41.5145i 0.8984+43.8587i
+           G = A at sigma=0.49990 t=43.32708   (|t - gamma| = 4.7e-06)
+           G = A at sigma=0.49948 t=40.91886   (|t - gamma| = 1.4e-04)
+           meets sigma=1/2 at t=40.9187  type I   phi=+0.0009  |phi| = 9.1e-04
+           meets sigma=1/2 at t=42.2823  type II  phi=+1.2833  |phi - (pi + 2 alpha)| = 9.2e-05
+           meets sigma=1/2 at t=43.3268  type I   phi=+0.0006  |phi| = 5.8e-04
+           meets sigma=1/2 at t=44.1602  type II  phi=-2.3539  |phi - (pi + 2 alpha)| = 4.4e-04
+  loop  5: OPEN, both ends on sigma=3, sigma in [-0.115, 3.000], t in [47.974, 54.044]; winding of Q -2.9652; G = A points 3; zeros of G inside 3 0.1342+48.3207i 0.6921+50.5065i 0.6450+53.4219i
+           G = A at sigma=0.49963 t=52.97053   (|t - gamma| = 2.1e-04)
+           G = A at sigma=0.49964 t=49.77380   (|t - gamma| = 3.1e-05)
+           G = A at sigma=0.49976 t=48.00529   (|t - gamma| = 1.4e-04)
+           meets sigma=1/2 at t=48.0054  type I   phi=+0.0004  |phi| = 4.2e-04
+           meets sigma=1/2 at t=48.8713  type II  phi=+0.7487  |phi - (pi + 2 alpha)| = 3.0e-05
+           meets sigma=1/2 at t=49.7732  type I   phi=+0.0010  |phi| = 1.0e-03
+           meets sigma=1/2 at t=51.0702  type II  phi=+2.4570  |phi - (pi + 2 alpha)| = 8.5e-04
+           meets sigma=1/2 at t=52.9702  type I   phi=+0.0013  |phi| = 1.3e-03
+           meets sigma=1/2 at t=53.8209  type II  phi=+2.8865  |phi - (pi + 2 alpha)| = 1.4e-03
+  loop  6: closed, sigma in [0.118, 1.158], t in [56.439, 57.271]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.3788+56.8327i
+           G = A at sigma=0.49981 t=56.44628   (|t - gamma| = 2.9e-05)
+           meets sigma=1/2 at t=56.4462  type I   phi=+0.0005  |phi| = 4.5e-04
+           meets sigma=1/2 at t=57.2533  type II  phi=+1.6721  |phi - (pi + 2 alpha)| = 2.7e-04
+  loop  7: OPEN, cut by the window, sigma in [-0.122, 3.000], t in [58.545, 60.000]; winding of Q -0.7959; G = A points 1; zeros of G inside 1 0.1292+59.7875i
+           G = A at sigma=0.49985 t=59.34709   (|t - gamma| = 4.9e-05)
+           meets sigma=1/2 at t=59.3471  type I   phi=+0.0002  |phi| = 2.1e-04
+  closed loops and loops with both ends on sigma = 3: round|winding| = #zeros of G inside = #(G = A on the loop): True
+
+window W2: -1 <= sigma <= 3, 268 <= t <= 300 (steps 0.01 x 0.02)
+  sign of |G| - |A| on sigma = 3: min -1.735e-03 max 1.784e-03;  on sigma = -1: min 2.338e+00 max 5.101e+00
+  loop  0: OPEN, cut by the window, sigma in [0.231, 3.000], t in [268.000, 272.197]; winding of Q -2.8481; G = A points 2; zeros of G inside 3 0.5715+268.4435i 0.4186+270.2933i 0.5192+271.8229i
+           G = A at sigma=0.49988 t=271.49407   (|t - gamma| = 1.9e-05)
+           G = A at sigma=0.49983 t=269.97048   (|t - gamma| = 3.1e-05)
+           meets sigma=1/2 at t=268.8102  type II  phi=+2.0210  |phi - (pi + 2 alpha)| = 3.5e-04
+           meets sigma=1/2 at t=269.9704  type I   phi=+0.0006  |phi| = 5.5e-04
+           meets sigma=1/2 at t=270.6363  type II  phi=+1.4380  |phi - (pi + 2 alpha)| = 1.6e-04
+           meets sigma=1/2 at t=271.4940  type I   phi=+0.0005  |phi| = 5.0e-04
+           meets sigma=1/2 at t=272.1062  type II  phi=+2.1851  |phi - (pi + 2 alpha)| = 4.7e-04
+  loop  1: closed, sigma in [0.258, 0.820], t in [273.457, 273.930]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.4119+273.6950i
+           G = A at sigma=0.49999 t=273.45961   (|t - gamma| = 6.7e-07)
+           meets sigma=1/2 at t=273.4596  type I   phi=+0.0001  |phi| = 5.1e-05
+           meets sigma=1/2 at t=273.9285  type II  phi=+1.5941  |phi - (pi + 2 alpha)| = 5.9e-04
+  loop  2: closed, sigma in [0.030, 0.601], t in [275.485, 275.942]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.1662+275.6753i
+           G = A at sigma=0.49980 t=275.58762   (|t - gamma| = 1.3e-04)
+           meets sigma=1/2 at t=275.5878  type I   phi=+0.0004  |phi| = 4.2e-04
+           meets sigma=1/2 at t=275.9302  type II  phi=+0.3127  |phi - (pi + 2 alpha)| = 3.5e-04
+  loop  3: OPEN, both ends on sigma=3, sigma in [0.084, 3.000], t in [276.129, 280.390]; winding of Q -2.9662; G = A points 3; zeros of G inside 3 0.3558+276.9664i 0.2528+278.6426i 0.8980+279.6747i
+           G = A at sigma=0.49992 t=279.22913   (|t - gamma| = 1.2e-04)
+           G = A at sigma=0.49982 t=278.25079   (|t - gamma| = 4.4e-05)
+           G = A at sigma=0.49984 t=276.45200   (|t - gamma| = 4.5e-05)
+           meets sigma=1/2 at t=276.4519  type I   phi=+0.0003  |phi| = 2.8e-04
+           meets sigma=1/2 at t=277.3979  type II  phi=+1.0402  |phi - (pi + 2 alpha)| = 2.8e-05
+           meets sigma=1/2 at t=278.2507  type I   phi=+0.0003  |phi| = 3.3e-04
+           meets sigma=1/2 at t=279.2295  type I   phi=-0.0010  |phi| = 9.8e-04
+  loop  4: closed, sigma in [0.086, 0.511], t in [282.295, 282.678]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.2097+282.4516i
+           G = A at sigma=0.49980 t=282.46525   (|t - gamma| = 1.4e-04)
+           meets sigma=1/2 at t=282.4659  type I   phi=+0.0012  |phi| = 1.2e-03
+           meets sigma=1/2 at t=282.5880  type II  phi=+0.1779  |phi - (pi + 2 alpha)| = 2.9e-03
+  loop  5: OPEN, both ends on sigma=3, sigma in [0.119, 3.000], t in [283.135, 290.249]; winding of Q -4.9765; G = A points 5; zeros of G inside 5 0.3213+283.6452i 0.4053+285.2199i 0.2882+286.9794i 0.5145+288.3832i 0.5912+289.8852i
+           G = A at sigma=0.50000 t=289.57986   (|t - gamma| = 8.9e-07)
+           G = A at sigma=0.49987 t=287.91192   (|t - gamma| = 9.4e-07)
+           G = A at sigma=0.49983 t=286.66748   (|t - gamma| = 3.1e-05)
+           G = A at sigma=0.49989 t=284.83597   (|t - gamma| = 2.8e-06)
+           G = A at sigma=0.49982 t=283.21113   (|t - gamma| = 5.8e-05)
+           meets sigma=1/2 at t=283.2110  type I   phi=+0.0003  |phi| = 2.7e-04
+           meets sigma=1/2 at t=284.0232  type II  phi=+0.9971  |phi - (pi + 2 alpha)| = 6.6e-05
+           meets sigma=1/2 at t=284.8359  type I   phi=+0.0003  |phi| = 2.9e-04
+           meets sigma=1/2 at t=285.5705  type II  phi=+1.3780  |phi - (pi + 2 alpha)| = 2.7e-04
+           meets sigma=1/2 at t=286.6674  type I   phi=+0.0004  |phi| = 3.6e-04
+           meets sigma=1/2 at t=287.3817  type II  phi=+0.7424  |phi - (pi + 2 alpha)| = 3.6e-05
+           meets sigma=1/2 at t=287.9117  type I   phi=+0.0005  |phi| = 4.7e-04
+           meets sigma=1/2 at t=288.7816  type II  phi=+1.6695  |phi - (pi + 2 alpha)| = 6.6e-05
+           meets sigma=1/2 at t=289.5799  type I   phi=+0.0000  |phi| = 1.8e-05
+           meets sigma=1/2 at t=290.1226  type II  phi=+2.8157  |phi - (pi + 2 alpha)| = 3.2e-04
+  loop  6: closed, sigma in [0.210, 0.650], t in [291.833, 292.221]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.3449+292.0171i
+           G = A at sigma=0.49983 t=291.84634   (|t - gamma| = 5.3e-05)
+           meets sigma=1/2 at t=291.8464  type I   phi=+0.0006  |phi| = 6.2e-04
+           meets sigma=1/2 at t=292.2131  type II  phi=+1.0783  |phi - (pi + 2 alpha)| = 7.4e-04
+  loop  7: closed, sigma in [0.069, 0.668], t in [293.517, 293.998]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.2153+293.7326i
+           G = A at sigma=0.49994 t=293.55845   (|t - gamma| = 1.9e-05)
+           meets sigma=1/2 at t=293.5585  type I   phi=+0.0001  |phi| = 1.2e-04
+           meets sigma=1/2 at t=293.9857  type II  phi=+0.5495  |phi - (pi + 2 alpha)| = 3.5e-04
+  loop  8: OPEN, both ends on sigma=3, sigma in [-0.048, 3.000], t in [294.211, 298.262]; winding of Q -1.9703; G = A points 2; zeros of G inside 2 0.0822+295.1813i 0.8082+296.3448i
+           G = A at sigma=0.49986 t=295.57309   (|t - gamma| = 1.7e-04)
+           G = A at sigma=0.49985 t=294.96545   (|t - gamma| = 8.2e-05)
+           meets sigma=1/2 at t=294.9655  type I   phi=+0.0001  |phi| = 1.3e-04
+           meets sigma=1/2 at t=295.5734  type I   phi=-0.0004  |phi| = 3.9e-04
+           meets sigma=1/2 at t=295.8945  type II  phi=-0.5152  |phi - (pi + 2 alpha)| = 4.9e-04
+           meets sigma=1/2 at t=296.5338  type II  phi=-2.9786  |phi - (pi + 2 alpha)| = 2.8e-04
+  loop  9: closed, sigma in [0.314, 1.205], t in [297.926, 298.519]; winding of Q -1.0000; G = A points 1; zeros of G inside 1 0.4833+298.2362i
+           G = A at sigma=0.49998 t=297.97928   (|t - gamma| = 4.9e-06)
+           meets sigma=1/2 at t=297.9793  type I   phi=+0.0001  |phi| = 1.1e-04
+           meets sigma=1/2 at t=298.4851  type II  phi=+2.0594  |phi - (pi + 2 alpha)| = 4.7e-04
+  loop 10: OPEN, cut by the window, sigma in [0.245, 0.759], t in [299.840, 300.000]; winding of Q -0.4088; G = A points 1; zeros of G inside 0 
+           G = A at sigma=0.49999 t=299.84033   (|t - gamma| = 1.6e-06)
+           meets sigma=1/2 at t=299.8403  type I   phi=+0.0000  |phi| = 4.2e-05
+  closed loops and loops with both ends on sigma = 3: round|winding| = #zeros of G inside = #(G = A on the loop): True
+
+pairing: zeros of G with 0 < Im <= 300: 137; zeros of zeta with 0 < gamma <= 300: 138
+  strict interlacing gamma_k < Im zG_k < gamma_{k+1}: fails for k = [127]
+  Gram positions x_k = (theta(gamma_k)/pi - k) mod 2 outside [0,1): k = [127, 136]
+  corr(x_k, (Im zG_k - gamma_k)/spacing) for k <= 137: -0.557
+    k    gamma_k        Im zG_k       Re zG_k    (Im zG_k-gamma_k)/sp   x_k
+   111   255.306256   255.461160    0.24815    +0.0913          0.7712
+   112   256.380714   256.786770    0.45712    +0.2397          0.4050
+   113   258.610439   258.808681    0.21413    +0.1173          0.7227
+   114   259.874407   260.269958    0.18121    +0.2343          0.4710
+   115   260.805085   261.374296    0.91592    +0.3375          0.0227
+   116   263.573894   263.750956    0.39046    +0.1053          0.6669
+   117   265.557852   265.663780    0.19037    +0.0631          0.8479
+   118   266.614974   267.040567    0.24639    +0.2539          0.4781
+   119   267.921915   268.443546    0.57151    +0.3116          0.2582
+   120   269.970449   270.293272    0.41856    +0.1932          0.4830
+   121   271.494056   271.822854    0.51918    +0.1971          0.3956
+   122   273.459609   273.694953    0.41187    +0.1413          0.5748
+   123   275.587493   275.675257    0.16617    +0.0528          0.8540
+   124   276.452050   276.966388    0.35585    +0.3098          0.3745
+   125   278.250744   278.642612    0.25277    +0.2364          0.4587
+   126   279.229251   279.674732    0.89799    +0.2690          0.0493
+   127   282.465115   282.451599    0.20973    -0.0082          1.0063
+   128   283.211186   283.645200    0.32134    +0.2631          0.4583
+   129   284.835964   285.219921    0.40525    +0.2331          0.4439
+   130   286.667445   286.979430    0.28817    +0.1897          0.5566
+   131   287.911921   288.383179    0.51447    +0.2869          0.3137
+   132   289.579855   289.885220    0.59123    +0.1862          0.3298
+   133   291.846291   292.017140    0.34490    +0.1044          0.7129
+   134   293.558434   293.732597    0.21533    +0.1066          0.7597
+   135   294.965370   295.181323    0.08224    +0.1323          0.6210
+   136   295.573255   296.344790    0.80820    +0.4729          1.9935
+   137   297.979277   298.236156    0.48326    +0.1578          0.4697
+time 146.2 s

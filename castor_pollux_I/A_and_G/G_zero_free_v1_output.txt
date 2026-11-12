@@ -1,0 +1,12 @@
+zero-free abscissa sigma_G(t) for 10 <= t <= 300 (criterion d(sigma) < |B/C|):
+  t =    10   sigma_G = 2.109    1 + pi/l(t) = 4.015
+  t =    15   sigma_G = 1.990    1 + pi/l(t) = 3.171
+  t =    25   sigma_G = 1.870    1 + pi/l(t) = 2.604
+  t =    50   sigma_G = 1.742    1 + pi/l(t) = 2.185
+  t =   100   sigma_G = 1.645    1 + pi/l(t) = 1.939
+  t =   150   sigma_G = 1.598    1 + pi/l(t) = 1.838
+  t =   200   sigma_G = 1.568    1 + pi/l(t) = 1.778
+  t =   250   sigma_G = 1.547    1 + pi/l(t) = 1.737
+  t =   300   sigma_G = 1.531    1 + pi/l(t) = 1.707
+zeros of G with 10 <= t <= 300: 137;  all satisfy Re z < sigma_G(Im z): True;  smallest gap sigma_G - Re z = 0.576 (at 1.0083+170.5400i)
+max Re of zeros of G: 1.1273
