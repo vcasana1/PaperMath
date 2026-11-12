@@ -1,0 +1,14 @@
+preamble
+sec:intro
+tab:notation
+eq:D
+eq:logV
+eq:cp
+eq:Pdt
+tab:robust
+sec:real
+eq:dampfun
+eq:Tdeph
+eq:PN
+sec:GA
+sec:concl
