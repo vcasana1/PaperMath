@@ -1,0 +1,16 @@
+preamble
+sec:intro
+tab:notation
+eq:pn
+eq:boundCg
+eq:bracket
+tab:robust
+eq:hot
+eq:Rmin
+tab:values
+eq:sumrule
+eq:sumproof
+eq:PN
+eq:harm
+eq:Jsum
+sec:concl

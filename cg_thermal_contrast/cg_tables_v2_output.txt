@@ -1,0 +1,18 @@
+Si(2 pi) = 1.41815157613263
+c_1(1) = 1 - pi^2 + 2 pi Si(2 pi) = 0.0409047454207452  (series form 0.0409047454207452 )
+1/(4 pi^2) = 0.02533029591   1 - c_1 = 0.9590952546
+
+Table: displaced thermal states (nbar_th = 0 means Poisson of mean |xi|^2)
+ nbar_th  |xi|^2   p0          V_1         logV1/logp0   V(1/2)       2V(1/2)/(1+V(1/2))   ratio to p0
+  0.0     1.0   0.3678794  0.3832395  0.959095   0.1353353  0.2384058   0.64805
+  0.5     0.0   0.6666667  0.676317  0.964555   0.5  0.6666667   1.0
+  0.5    0.25   0.5643211  0.5753983  0.966023   0.3894004  0.5605301   0.99328
+  0.5     1.0   0.3422781  0.3543427  0.96769   0.1839397  0.3107248   0.90781
+  0.5     2.0   0.1757314  0.1856507  0.968421   0.06766764  0.1267579   0.72132
+
+Damping: largest kappa/chi with eps = 0.1, U = 20:  eps / (pi Lambda (2 nbar + 1) U)
+  nbar   0.1  kappa/chi <= 0.003014   (kappa/2pi <= 3014.0 Hz for chi/2pi = 1 MHz)
+  nbar   1.0  kappa/chi <= 6.631e-5   (kappa/2pi <= 66.31 Hz for chi/2pi = 1 MHz)
+  nbar  20.0  kappa/chi <= 2.311e-8   (kappa/2pi <= 0.02311 Hz for chi/2pi = 1 MHz)
+  kappa/2pi for a single-photon lifetime of 25.6 ms: 6.217 Hz
+Truncation, nbar = 20, s = 1, U = 20: bound L/U = 0.1857
