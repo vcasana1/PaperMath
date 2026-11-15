@@ -1,0 +1,41 @@
+To: rendmat@mat.uniroma1.it
+Subject: Submission to Rendiconti di Matematica e delle sue Applicazioni: An elementary-arithmetic splitting of the log-sine Mellin transform
+
+Dear Editors,
+
+I would like to submit the enclosed manuscript, "An elementary-arithmetic splitting of the log-sine Mellin transform", for publication as a research article in Rendiconti di Matematica e delle sue Applicazioni.
+
+The paper contains three results that I would like to bring to your attention.
+
+1. A new constant, analogous to Euler's constant. The paper introduces
+
+   C_g = - int_0^1 log sin(pi {1/v}) dv = 0.7437948618...,
+
+where {.} is the fractional part. It is the log-sine analogue of the classical formula 1 - gamma = int_0^1 {1/v} dv for Euler's constant: the fractional part {1/v} is replaced by -log sin(pi {1/v}). The constant has a closed expression in terms of the values zeta(2k), and its decimal expansion has been allocated the number A402034 in the OEIS.
+
+2. A limit formula at the primes. For the product P(x) of the numbers sin(pi x/k) over the integers 2 <= k < x, which is zero exactly at the composite integers, the paper proves that
+
+   |P(p)|^(1/p) -> e^(-C_g) as p -> infinity through the primes.
+
+So C_g is the exponential rate of this product along the primes.
+
+3. A new kind of decomposition for the zeta function: an arithmetic part and an elementary part. The proof of the limit leads to two functions of s, both Mellin integrals of h(u) = log|2 sin(pi u)|: the arithmetic part G(s), taken over u > 1, which contains every singularity of h at the integers and is entire, and the elementary part A(s), taken over the single period 0 < u < 1, which is meromorphic with an explicit Mittag-Leffler expansion whose coefficients are zeta(2k)/k. They satisfy
+
+   G(s) - A(s) = (pi/s) cot(pi s/2) zeta(s),
+
+so that a non-real s is a zero of zeta if and only if G(s) = A(s), and C_g = log 2 - G(1). The zeros are thus described by the equality of two functions of different nature, which can be studied separately.
+
+The paper then studies this identification: a non-negative function Q with Q'' = -h whose Mellin transform is the sum of three terms, one given by G and two, which cancel to two orders, given by A; and deformations of h that keep this non-negative function while placing the points where the deformed parts coincide on prescribed vertical lines.
+
+I believe the paper may interest readers working on the zeta function, on log-sine integrals and on mathematical constants.
+
+Attached are the PDF, the LaTeX source file (.tex) and the figure file used by the source (fig_J_terms_v4.eps). The manuscript is written in English, is not under consideration elsewhere, and I am its only author. The declaration on the use of Artificial Intelligence is at the end of the introduction.
+
+Corresponding author:
+Víctor Casaña-Giner
+Universidad Nacional de Educación a Distancia (UNED), Madrid, Spain
+Email: vcasana1@alumno.uned.es
+ORCID: 0000-0002-8252-2608
+
+Yours sincerely,
+Víctor Casaña-Giner
